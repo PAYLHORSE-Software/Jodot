@@ -8,16 +8,19 @@ build :: () {
 
     options := get_build_options();
 
-    options.output_type = .DYNAMIC_LIBRARY;
-    options.output_executable_name = "demo";
-    options.output_path = "bin";
-    options.entry_point_name = "jodot_init";
+    using options;
+
+    output_type = .DYNAMIC_LIBRARY;
+    output_executable_name = "demo";
+    output_path = "bin";
+    entry_point_name = "jodot_init";
+    runtime_support_definitions = .ONLY_INIT;
     import: [2] string;
     import[0] = "../../..";
     import[1] = "src";
     import_view: [] string;
     import_view = import;
-    options.import_path = import_view;
+    import_path = import_view;
 
     set_build_options(options, w);
     add_build_file("src/main.jai", w);

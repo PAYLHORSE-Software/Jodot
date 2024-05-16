@@ -50,9 +50,8 @@ GDExtensionVariantType :: enum s32 {
     PACKED_VECTOR2_ARRAY :: 35;
     PACKED_VECTOR3_ARRAY :: 36;
     PACKED_COLOR_ARRAY   :: 37;
-    PACKED_VECTOR4_ARRAY :: 38;
 
-    VARIANT_MAX          :: 39;
+    VARIANT_MAX          :: 38;
 
     GDEXTENSION_VARIANT_TYPE_NIL                  :: NIL;
 
@@ -96,7 +95,6 @@ GDExtensionVariantType :: enum s32 {
     GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY :: PACKED_VECTOR2_ARRAY;
     GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY :: PACKED_VECTOR3_ARRAY;
     GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY   :: PACKED_COLOR_ARRAY;
-    GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR4_ARRAY :: PACKED_VECTOR4_ARRAY;
 
     GDEXTENSION_VARIANT_TYPE_VARIANT_MAX          :: VARIANT_MAX;
 }
@@ -287,7 +285,6 @@ GDExtensionMethodInfo :: struct {
 
 GDExtensionClassGetPropertyList :: #type (p_instance: GDExtensionClassInstancePtr, r_count: *u32) -> *GDExtensionPropertyInfo #c_call;
 GDExtensionClassFreePropertyList :: #type (p_instance: GDExtensionClassInstancePtr, p_list: *GDExtensionPropertyInfo) -> void #c_call;
-GDExtensionClassFreePropertyList2 :: #type (p_instance: GDExtensionClassInstancePtr, p_list: *GDExtensionPropertyInfo, p_count: u32) -> void #c_call;
 GDExtensionClassPropertyCanRevert :: #type (p_instance: GDExtensionClassInstancePtr, p_name: GDExtensionConstStringNamePtr) -> GDExtensionBool #c_call;
 GDExtensionClassPropertyGetRevert :: #type (p_instance: GDExtensionClassInstancePtr, p_name: GDExtensionConstStringNamePtr, r_ret: GDExtensionVariantPtr) -> GDExtensionBool #c_call;
 GDExtensionClassValidateProperty :: #type (p_instance: GDExtensionClassInstancePtr, p_property: *GDExtensionPropertyInfo) -> GDExtensionBool #c_call;
@@ -332,43 +329,6 @@ GDExtensionClassCreationInfo2 :: struct {
     get_func:                    GDExtensionClassGet;
     get_property_list_func:      GDExtensionClassGetPropertyList;
     free_property_list_func:     GDExtensionClassFreePropertyList;
-    property_can_revert_func:    GDExtensionClassPropertyCanRevert;
-    property_get_revert_func:    GDExtensionClassPropertyGetRevert;
-    validate_property_func:      GDExtensionClassValidateProperty;
-    notification_func:           GDExtensionClassNotification2;
-    to_string_func:              GDExtensionClassToString;
-    reference_func:              GDExtensionClassReference;
-    unreference_func:            GDExtensionClassUnreference;
-    create_instance_func:        GDExtensionClassCreateInstance; // (Default) constructor; mandatory. If the class is not instantiable, consider making it virtual or abstract.
-    free_instance_func:          GDExtensionClassFreeInstance; // Destructor; mandatory.
-    recreate_instance_func:      GDExtensionClassRecreateInstance;
-
-    // Queries a virtual function by name and returns a callback to invoke the requested virtual function.
-    get_virtual_func:            GDExtensionClassGetVirtual;
-
-    // Paired with `call_virtual_with_data_func`, this is an alternative to `get_virtual_func` for extensions that
-    // need or benefit from extra data when calling virtual functions.
-    // Returns user data that will be passed to `call_virtual_with_data_func`.
-    // Returning `NULL` from this function signals to Godot that the virtual function is not overridden.
-    // Data returned from this function should be managed by the extension and must be valid until the extension is deinitialized.
-    // You should supply either `get_virtual_func`, or `get_virtual_call_data_func` with `call_virtual_with_data_func`.
-    get_virtual_call_data_func:  GDExtensionClassGetVirtualCallData;
-
-    // Used to call virtual functions when `get_virtual_call_data_func` is not null.
-    call_virtual_with_data_func: GDExtensionClassCallVirtualWithData;
-    get_rid_func:                GDExtensionClassGetRID;
-    class_userdata:              *void; // Per-class user data, later accessible in instance bindings.
-}
-
-GDExtensionClassCreationInfo3 :: struct {
-    is_virtual:                  GDExtensionBool;
-    is_abstract:                 GDExtensionBool;
-    is_exposed:                  GDExtensionBool;
-    is_runtime:                  GDExtensionBool;
-    set_func:                    GDExtensionClassSet;
-    get_func:                    GDExtensionClassGet;
-    get_property_list_func:      GDExtensionClassGetPropertyList;
-    free_property_list_func:     GDExtensionClassFreePropertyList2;
     property_can_revert_func:    GDExtensionClassPropertyCanRevert;
     property_get_revert_func:    GDExtensionClassPropertyGetRevert;
     validate_property_func:      GDExtensionClassValidateProperty;
@@ -455,18 +415,13 @@ GDExtensionClassMethodInfo :: struct {
     ptrcall_func:           GDExtensionClassMethodPtrCall;
     method_flags:           u32; // Bitfield of `GDExtensionClassMethodFlags`.
 
-    /* If `has_return_value` is false, `return_value_info` and `return_value_metadata` are ignored.
-    *
-    * @todo Consider dropping `has_return_value` and making the other two properties match `GDExtensionMethodInfo` and `GDExtensionClassVirtualMethod` for consistency in future version of this struct.
-    */
+    /* If `has_return_value` is false, `return_value_info` and `return_value_metadata` are ignored. */
     has_return_value:       GDExtensionBool;
     return_value_info:      *GDExtensionPropertyInfo;
     return_value_metadata:  GDExtensionClassMethodArgumentMetadata;
 
     /* Arguments: `arguments_info` and `arguments_metadata` are array of size `argument_count`.
     * Name and hint information for the argument can be omitted in release builds. Class name should always be present if it applies.
-    *
-    * @todo Consider renaming `arguments_info` to `arguments` for consistency in future version of this struct.
     */
     argument_count:         u32;
     arguments_info:         *GDExtensionPropertyInfo;
@@ -475,18 +430,6 @@ GDExtensionClassMethodInfo :: struct {
     /* Default arguments: `default_arguments` is an array of size `default_argument_count`. */
     default_argument_count: u32;
     default_arguments:      *GDExtensionVariantPtr;
-}
-
-GDExtensionClassVirtualMethodInfo :: struct {
-    name:                  GDExtensionStringNamePtr;
-    method_flags:          u32; // Bitfield of `GDExtensionClassMethodFlags`.
-
-    return_value:          GDExtensionPropertyInfo;
-    return_value_metadata: GDExtensionClassMethodArgumentMetadata;
-
-    argument_count:        u32;
-    arguments:             *GDExtensionPropertyInfo;
-    arguments_metadata:    *GDExtensionClassMethodArgumentMetadata;
 }
 
 GDExtensionCallableCustomCall :: #type (callable_userdata: *void, p_args: *GDExtensionConstVariantPtr, p_argument_count: GDExtensionInt, r_return: GDExtensionVariantPtr, r_error: *GDExtensionCallError) -> void #c_call;
@@ -498,8 +441,6 @@ GDExtensionCallableCustomEqual :: #type (callable_userdata_a: *void, callable_us
 GDExtensionCallableCustomLessThan :: #type (callable_userdata_a: *void, callable_userdata_b: *void) -> GDExtensionBool #c_call;
 
 GDExtensionCallableCustomToString :: #type (callable_userdata: *void, r_is_valid: *GDExtensionBool, r_out: GDExtensionStringPtr) -> void #c_call;
-
-GDExtensionCallableCustomGetArgumentCount :: #type (callable_userdata: *void, r_is_valid: *GDExtensionBool) -> GDExtensionInt #c_call;
 
 GDExtensionCallableCustomInfo :: struct {
     /* Only `call_func` and `token` are strictly required, however, `object_id` should be passed if its not a static method.
@@ -532,39 +473,6 @@ GDExtensionCallableCustomInfo :: struct {
     to_string_func:    GDExtensionCallableCustomToString;
 }
 
-GDExtensionCallableCustomInfo2 :: struct {
-    /* Only `call_func` and `token` are strictly required, however, `object_id` should be passed if its not a static method.
-    *
-    * `token` should point to an address that uniquely identifies the GDExtension (for example, the
-    * `GDExtensionClassLibraryPtr` passed to the entry symbol function.
-    *
-    * `hash_func`, `equal_func`, and `less_than_func` are optional. If not provided both `call_func` and
-    * `callable_userdata` together are used as the identity of the callable for hashing and comparison purposes.
-    *
-    * The hash returned by `hash_func` is cached, `hash_func` will not be called more than once per callable.
-    *
-    * `is_valid_func` is necessary if the validity of the callable can change before destruction.
-    *
-    * `free_func` is necessary if `callable_userdata` needs to be cleaned up when the callable is freed.
-    */
-    callable_userdata:       *void;
-    token:                   *void;
-
-    object_id:               GDObjectInstanceID;
-
-    call_func:               GDExtensionCallableCustomCall;
-    is_valid_func:           GDExtensionCallableCustomIsValid;
-    free_func:               GDExtensionCallableCustomFree;
-
-    hash_func:               GDExtensionCallableCustomHash;
-    equal_func:              GDExtensionCallableCustomEqual;
-    less_than_func:          GDExtensionCallableCustomLessThan;
-
-    to_string_func:          GDExtensionCallableCustomToString;
-
-    get_argument_count_func: GDExtensionCallableCustomGetArgumentCount;
-}
-
 /* SCRIPT INSTANCE EXTENSION */
 GDExtensionScriptInstanceDataPtr :: *void;
 
@@ -572,7 +480,6 @@ GDExtensionScriptInstanceSet :: #type (p_instance: GDExtensionScriptInstanceData
 GDExtensionScriptInstanceGet :: #type (p_instance: GDExtensionScriptInstanceDataPtr, p_name: GDExtensionConstStringNamePtr, r_ret: GDExtensionVariantPtr) -> GDExtensionBool #c_call;
 GDExtensionScriptInstanceGetPropertyList :: #type (p_instance: GDExtensionScriptInstanceDataPtr, r_count: *u32) -> *GDExtensionPropertyInfo #c_call;
 GDExtensionScriptInstanceFreePropertyList :: #type (p_instance: GDExtensionScriptInstanceDataPtr, p_list: *GDExtensionPropertyInfo) -> void #c_call;
-GDExtensionScriptInstanceFreePropertyList2 :: #type (p_instance: GDExtensionScriptInstanceDataPtr, p_list: *GDExtensionPropertyInfo, p_count: u32) -> void #c_call;
 GDExtensionScriptInstanceGetClassCategory :: #type (p_instance: GDExtensionScriptInstanceDataPtr, p_class_category: *GDExtensionPropertyInfo) -> GDExtensionBool #c_call;
 
 GDExtensionScriptInstanceGetPropertyType :: #type (p_instance: GDExtensionScriptInstanceDataPtr, p_name: GDExtensionConstStringNamePtr, r_is_valid: *GDExtensionBool) -> GDExtensionVariantType #c_call;
@@ -587,11 +494,8 @@ GDExtensionScriptInstanceGetPropertyState :: #type (p_instance: GDExtensionScrip
 
 GDExtensionScriptInstanceGetMethodList :: #type (p_instance: GDExtensionScriptInstanceDataPtr, r_count: *u32) -> *GDExtensionMethodInfo #c_call;
 GDExtensionScriptInstanceFreeMethodList :: #type (p_instance: GDExtensionScriptInstanceDataPtr, p_list: *GDExtensionMethodInfo) -> void #c_call;
-GDExtensionScriptInstanceFreeMethodList2 :: #type (p_instance: GDExtensionScriptInstanceDataPtr, p_list: *GDExtensionMethodInfo, p_count: u32) -> void #c_call;
 
 GDExtensionScriptInstanceHasMethod :: #type (p_instance: GDExtensionScriptInstanceDataPtr, p_name: GDExtensionConstStringNamePtr) -> GDExtensionBool #c_call;
-
-GDExtensionScriptInstanceGetMethodArgumentCount :: #type (p_instance: GDExtensionScriptInstanceDataPtr, p_name: GDExtensionConstStringNamePtr, r_is_valid: *GDExtensionBool) -> GDExtensionInt #c_call;
 
 GDExtensionScriptInstanceCall :: #type (p_self: GDExtensionScriptInstanceDataPtr, p_method: GDExtensionConstStringNamePtr, p_args: *GDExtensionConstVariantPtr, p_argument_count: GDExtensionInt, r_return: GDExtensionVariantPtr, r_error: *GDExtensionCallError) -> void #c_call;
 GDExtensionScriptInstanceNotification :: #type (p_instance: GDExtensionScriptInstanceDataPtr, p_what: s32) -> void #c_call;
@@ -688,48 +592,6 @@ GDExtensionScriptInstanceInfo2 :: struct {
     get_language_func:         GDExtensionScriptInstanceGetLanguage;
 
     free_func:                 GDExtensionScriptInstanceFree;
-}
-
-GDExtensionScriptInstanceInfo3 :: struct {
-    set_func:                       GDExtensionScriptInstanceSet;
-    get_func:                       GDExtensionScriptInstanceGet;
-    get_property_list_func:         GDExtensionScriptInstanceGetPropertyList;
-    free_property_list_func:        GDExtensionScriptInstanceFreePropertyList2;
-    get_class_category_func:        GDExtensionScriptInstanceGetClassCategory; // Optional. Set to NULL for the default behavior.
-
-    property_can_revert_func:       GDExtensionScriptInstancePropertyCanRevert;
-    property_get_revert_func:       GDExtensionScriptInstancePropertyGetRevert;
-
-    get_owner_func:                 GDExtensionScriptInstanceGetOwner;
-    get_property_state_func:        GDExtensionScriptInstanceGetPropertyState;
-
-    get_method_list_func:           GDExtensionScriptInstanceGetMethodList;
-    free_method_list_func:          GDExtensionScriptInstanceFreeMethodList2;
-    get_property_type_func:         GDExtensionScriptInstanceGetPropertyType;
-    validate_property_func:         GDExtensionScriptInstanceValidateProperty;
-
-    has_method_func:                GDExtensionScriptInstanceHasMethod;
-
-    get_method_argument_count_func: GDExtensionScriptInstanceGetMethodArgumentCount;
-
-    call_func:                      GDExtensionScriptInstanceCall;
-    notification_func:              GDExtensionScriptInstanceNotification2;
-
-    to_string_func:                 GDExtensionScriptInstanceToString;
-
-    refcount_incremented_func:      GDExtensionScriptInstanceRefCountIncremented;
-    refcount_decremented_func:      GDExtensionScriptInstanceRefCountDecremented;
-
-    get_script_func:                GDExtensionScriptInstanceGetScript;
-
-    is_placeholder_func:            GDExtensionScriptInstanceIsPlaceholder;
-
-    set_fallback_func:              GDExtensionScriptInstanceSet;
-    get_fallback_func:              GDExtensionScriptInstanceGet;
-
-    get_language_func:              GDExtensionScriptInstanceGetLanguage;
-
-    free_func:                      GDExtensionScriptInstanceFree;
 }
 
 /* INITIALIZATION */
@@ -2004,6 +1866,32 @@ GDExtensionInterfacePackedByteArrayOperatorIndex :: #type (p_self: GDExtensionTy
 GDExtensionInterfacePackedByteArrayOperatorIndexConst :: #type (p_self: GDExtensionConstTypePtr, p_index: GDExtensionInt) -> *u8 #c_call;
 
 /**
+* @name packed_color_array_operator_index
+* @since 4.1
+*
+* Gets a pointer to a color in a PackedColorArray.
+*
+* @param p_self A pointer to a PackedColorArray object.
+* @param p_index The index of the Color to get.
+*
+* @return A pointer to the requested Color.
+*/
+GDExtensionInterfacePackedColorArrayOperatorIndex :: #type (p_self: GDExtensionTypePtr, p_index: GDExtensionInt) -> GDExtensionTypePtr #c_call;
+
+/**
+* @name packed_color_array_operator_index_const
+* @since 4.1
+*
+* Gets a const pointer to a color in a PackedColorArray.
+*
+* @param p_self A const pointer to a const PackedColorArray object.
+* @param p_index The index of the Color to get.
+*
+* @return A const pointer to the requested Color.
+*/
+GDExtensionInterfacePackedColorArrayOperatorIndexConst :: #type (p_self: GDExtensionConstTypePtr, p_index: GDExtensionInt) -> GDExtensionTypePtr #c_call;
+
+/**
 * @name packed_float32_array_operator_index
 * @since 4.1
 *
@@ -2184,58 +2072,6 @@ GDExtensionInterfacePackedVector3ArrayOperatorIndex :: #type (p_self: GDExtensio
 * @return A const pointer to the requested Vector3.
 */
 GDExtensionInterfacePackedVector3ArrayOperatorIndexConst :: #type (p_self: GDExtensionConstTypePtr, p_index: GDExtensionInt) -> GDExtensionTypePtr #c_call;
-
-/**
-* @name packed_vector4_array_operator_index
-* @since 4.3
-*
-* Gets a pointer to a Vector4 in a PackedVector4Array.
-*
-* @param p_self A pointer to a PackedVector4Array object.
-* @param p_index The index of the Vector4 to get.
-*
-* @return A pointer to the requested Vector4.
-*/
-GDExtensionInterfacePackedVector4ArrayOperatorIndex :: #type (p_self: GDExtensionTypePtr, p_index: GDExtensionInt) -> GDExtensionTypePtr #c_call;
-
-/**
-* @name packed_vector4_array_operator_index_const
-* @since 4.3
-*
-* Gets a const pointer to a Vector4 in a PackedVector4Array.
-*
-* @param p_self A const pointer to a PackedVector4Array object.
-* @param p_index The index of the Vector4 to get.
-*
-* @return A const pointer to the requested Vector4.
-*/
-GDExtensionInterfacePackedVector4ArrayOperatorIndexConst :: #type (p_self: GDExtensionConstTypePtr, p_index: GDExtensionInt) -> GDExtensionTypePtr #c_call;
-
-/**
-* @name packed_color_array_operator_index
-* @since 4.1
-*
-* Gets a pointer to a color in a PackedColorArray.
-*
-* @param p_self A pointer to a PackedColorArray object.
-* @param p_index The index of the Color to get.
-*
-* @return A pointer to the requested Color.
-*/
-GDExtensionInterfacePackedColorArrayOperatorIndex :: #type (p_self: GDExtensionTypePtr, p_index: GDExtensionInt) -> GDExtensionTypePtr #c_call;
-
-/**
-* @name packed_color_array_operator_index_const
-* @since 4.1
-*
-* Gets a const pointer to a color in a PackedColorArray.
-*
-* @param p_self A const pointer to a PackedColorArray object.
-* @param p_index The index of the Color to get.
-*
-* @return A const pointer to the requested Color.
-*/
-GDExtensionInterfacePackedColorArrayOperatorIndexConst :: #type (p_self: GDExtensionConstTypePtr, p_index: GDExtensionInt) -> GDExtensionTypePtr #c_call;
 
 /**
 * @name array_operator_index
@@ -2465,34 +2301,6 @@ GDExtensionInterfaceObjectGetInstanceFromId :: #type (p_instance_id: GDObjectIns
 GDExtensionInterfaceObjectGetInstanceId :: #type (p_object: GDExtensionConstObjectPtr) -> GDObjectInstanceID #c_call;
 
 /**
-* @name object_has_script_method
-* @since 4.3
-*
-* Checks if this object has a script with the given method.
-*
-* @param p_object A pointer to the Object.
-* @param p_method A pointer to a StringName identifying the method.
-*
-* @returns true if the object has a script and that script has a method with the given name. Returns false if the object has no script.
-*/
-GDExtensionInterfaceObjectHasScriptMethod :: #type (p_object: GDExtensionConstObjectPtr, p_method: GDExtensionConstStringNamePtr) -> GDExtensionBool #c_call;
-
-/**
-* @name object_call_script_method
-* @since 4.3
-*
-* Call the given script method on this object.
-*
-* @param p_object A pointer to the Object.
-* @param p_method A pointer to a StringName identifying the method.
-* @param p_args A pointer to a C array of Variant.
-* @param p_argument_count The number of arguments.
-* @param r_return A pointer a Variant which will be assigned the return value.
-* @param r_error A pointer the structure which will hold error information.
-*/
-GDExtensionInterfaceObjectCallScriptMethod :: #type (p_object: GDExtensionObjectPtr, p_method: GDExtensionConstStringNamePtr, p_args: *GDExtensionConstVariantPtr, p_argument_count: GDExtensionInt, r_return: GDExtensionUninitializedVariantPtr, r_error: *GDExtensionCallError) -> void #c_call;
-
-/**
 * @name ref_get_object
 * @since 4.1
 *
@@ -2518,7 +2326,7 @@ GDExtensionInterfaceRefSetObject :: #type (p_ref: GDExtensionRefPtr, p_object: G
 /**
 * @name script_instance_create
 * @since 4.1
-* @deprecated in Godot 4.2. Use `script_instance_create3` instead.
+* @deprecated in Godot 4.2. Use `script_instance_create2` instead.
 *
 * Creates a script instance that contains the given info and instance data.
 *
@@ -2532,7 +2340,6 @@ GDExtensionInterfaceScriptInstanceCreate :: #type (p_info: *GDExtensionScriptIns
 /**
 * @name script_instance_create2
 * @since 4.2
-* @deprecated in Godot 4.3. Use `script_instance_create3` instead.
 *
 * Creates a script instance that contains the given info and instance data.
 *
@@ -2542,19 +2349,6 @@ GDExtensionInterfaceScriptInstanceCreate :: #type (p_info: *GDExtensionScriptIns
 * @return A pointer to a ScriptInstanceExtension object.
 */
 GDExtensionInterfaceScriptInstanceCreate2 :: #type (p_info: *GDExtensionScriptInstanceInfo2, p_instance_data: GDExtensionScriptInstanceDataPtr) -> GDExtensionScriptInstancePtr #c_call;
-
-/**
-* @name script_instance_create3
-* @since 4.3
-*
-* Creates a script instance that contains the given info and instance data.
-*
-* @param p_info A pointer to a GDExtensionScriptInstanceInfo3 struct.
-* @param p_instance_data A pointer to a data representing the script instance in the GDExtension. This will be passed to all the function pointers on p_info.
-*
-* @return A pointer to a ScriptInstanceExtension object.
-*/
-GDExtensionInterfaceScriptInstanceCreate3 :: #type (p_info: *GDExtensionScriptInstanceInfo3, p_instance_data: GDExtensionScriptInstanceDataPtr) -> GDExtensionScriptInstancePtr #c_call;
 
 /**
 * @name placeholder_script_instance_create
@@ -2603,7 +2397,6 @@ GDExtensionInterfaceObjectGetScriptInstance :: #type (p_object: GDExtensionConst
 /**
 * @name callable_custom_create
 * @since 4.2
-* @deprecated in Godot 4.3. Use `callable_custom_create2` instead.
 *
 * Creates a custom Callable object from a function pointer.
 *
@@ -2613,19 +2406,6 @@ GDExtensionInterfaceObjectGetScriptInstance :: #type (p_object: GDExtensionConst
 * @param p_callable_custom_info The info required to construct a Callable.
 */
 GDExtensionInterfaceCallableCustomCreate :: #type (r_callable: GDExtensionUninitializedTypePtr, p_callable_custom_info: *GDExtensionCallableCustomInfo) -> void #c_call;
-
-/**
-* @name callable_custom_create2
-* @since 4.3
-*
-* Creates a custom Callable object from a function pointer.
-*
-* Provided struct can be safely freed once the function returns.
-*
-* @param r_callable A pointer that will receive the new Callable.
-* @param p_callable_custom_info The info required to construct a Callable.
-*/
-GDExtensionInterfaceCallableCustomCreate2 :: #type (r_callable: GDExtensionUninitializedTypePtr, p_callable_custom_info: *GDExtensionCallableCustomInfo2) -> void #c_call;
 
 /**
 * @name callable_custom_get_userdata
@@ -2712,21 +2492,6 @@ GDExtensionInterfaceClassdbRegisterExtensionClass :: #type (p_library: GDExtensi
 GDExtensionInterfaceClassdbRegisterExtensionClass2 :: #type (p_library: GDExtensionClassLibraryPtr, p_class_name: GDExtensionConstStringNamePtr, p_parent_class_name: GDExtensionConstStringNamePtr, p_extension_funcs: *GDExtensionClassCreationInfo2) -> void #c_call;
 
 /**
-* @name classdb_register_extension_class3
-* @since 4.3
-*
-* Registers an extension class in the ClassDB.
-*
-* Provided struct can be safely freed once the function returns.
-*
-* @param p_library A pointer the library received by the GDExtension's entry point function.
-* @param p_class_name A pointer to a StringName with the class name.
-* @param p_parent_class_name A pointer to a StringName with the parent class name.
-* @param p_extension_funcs A pointer to a GDExtensionClassCreationInfo2 struct.
-*/
-GDExtensionInterfaceClassdbRegisterExtensionClass3 :: #type (p_library: GDExtensionClassLibraryPtr, p_class_name: GDExtensionConstStringNamePtr, p_parent_class_name: GDExtensionConstStringNamePtr, p_extension_funcs: *GDExtensionClassCreationInfo3) -> void #c_call;
-
-/**
 * @name classdb_register_extension_class_method
 * @since 4.1
 *
@@ -2739,20 +2504,6 @@ GDExtensionInterfaceClassdbRegisterExtensionClass3 :: #type (p_library: GDExtens
 * @param p_method_info A pointer to a GDExtensionClassMethodInfo struct.
 */
 GDExtensionInterfaceClassdbRegisterExtensionClassMethod :: #type (p_library: GDExtensionClassLibraryPtr, p_class_name: GDExtensionConstStringNamePtr, p_method_info: *GDExtensionClassMethodInfo) -> void #c_call;
-
-/**
-* @name classdb_register_extension_class_virtual_method
-* @since 4.3
-*
-* Registers a virtual method on an extension class in ClassDB, that can be implemented by scripts or other extensions.
-*
-* Provided struct can be safely freed once the function returns.
-*
-* @param p_library A pointer the library received by the GDExtension's entry point function.
-* @param p_class_name A pointer to a StringName with the class name.
-* @param p_method_info A pointer to a GDExtensionClassMethodInfo struct.
-*/
-GDExtensionInterfaceClassdbRegisterExtensionClassVirtualMethod :: #type (p_library: GDExtensionClassLibraryPtr, p_class_name: GDExtensionConstStringNamePtr, p_method_info: *GDExtensionClassVirtualMethodInfo) -> void #c_call;
 
 /**
 * @name classdb_register_extension_class_integer_constant
@@ -2888,39 +2639,7 @@ GDExtensionInterfaceEditorAddPlugin :: #type (p_class_name: GDExtensionConstStri
 */
 GDExtensionInterfaceEditorRemovePlugin :: #type (p_class_name: GDExtensionConstStringNamePtr) -> void #c_call;
 
-/**
-* @name editor_help_load_xml_from_utf8_chars
-* @since 4.3
-*
-* Loads new XML-formatted documentation data in the editor.
-*
-* The provided pointer can be immediately freed once the function returns.
-*
-* @param p_data A pointer to a UTF-8 encoded C string (null terminated).
-*/
-GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8Chars :: #type (p_data: *u8) -> void #c_call;
-
-/**
-* @name editor_help_load_xml_from_utf8_chars_and_len
-* @since 4.3
-*
-* Loads new XML-formatted documentation data in the editor.
-*
-* The provided pointer can be immediately freed once the function returns.
-*
-* @param p_data A pointer to a UTF-8 encoded C string.
-* @param p_size The number of bytes (not code units).
-*/
-GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8CharsAndLen :: #type (p_data: *u8, p_size: GDExtensionInt) -> void #c_call;
-
 godot :: struct {
-    internal :: struct {
-        DocDataRegistration :: struct {
-            Constructor :: (this: *DocDataRegistration, p_hash: *u8, p_uncompressed_size: s32, p_compressed_size: s32, p_data: *u8) -> void #cpp_method #foreign godot_cpp "??0DocDataRegistration@internal@godot@@QEAA@PEBDHHPEBE@Z";
-            __empty_struct_padding: u8; // C++ makes empty structs have length 1
-        }
-    }
-
     ModuleInitializationLevel :: enum s32 {
         CORE    :: 0;
         SERVERS :: 1;
@@ -3132,57 +2851,6 @@ godot_cpp :: #library,no_dll "godot-cpp/bin/windows/godot-cpp";
     }
 
     {
-        instance: GDExtensionClassCreationInfo3;
-        assert(((cast(*void)(*instance.is_virtual)) - cast(*void)(*instance)) == 0, "GDExtensionClassCreationInfo3.is_virtual has unexpected offset % instead of 0", ((cast(*void)(*instance.is_virtual)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassCreationInfo3.is_virtual)) == 1, "GDExtensionClassCreationInfo3.is_virtual has unexpected size % instead of 1", size_of(type_of(GDExtensionClassCreationInfo3.is_virtual)));
-        assert(((cast(*void)(*instance.is_abstract)) - cast(*void)(*instance)) == 1, "GDExtensionClassCreationInfo3.is_abstract has unexpected offset % instead of 1", ((cast(*void)(*instance.is_abstract)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassCreationInfo3.is_abstract)) == 1, "GDExtensionClassCreationInfo3.is_abstract has unexpected size % instead of 1", size_of(type_of(GDExtensionClassCreationInfo3.is_abstract)));
-        assert(((cast(*void)(*instance.is_exposed)) - cast(*void)(*instance)) == 2, "GDExtensionClassCreationInfo3.is_exposed has unexpected offset % instead of 2", ((cast(*void)(*instance.is_exposed)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassCreationInfo3.is_exposed)) == 1, "GDExtensionClassCreationInfo3.is_exposed has unexpected size % instead of 1", size_of(type_of(GDExtensionClassCreationInfo3.is_exposed)));
-        assert(((cast(*void)(*instance.is_runtime)) - cast(*void)(*instance)) == 3, "GDExtensionClassCreationInfo3.is_runtime has unexpected offset % instead of 3", ((cast(*void)(*instance.is_runtime)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassCreationInfo3.is_runtime)) == 1, "GDExtensionClassCreationInfo3.is_runtime has unexpected size % instead of 1", size_of(type_of(GDExtensionClassCreationInfo3.is_runtime)));
-        assert(((cast(*void)(*instance.set_func)) - cast(*void)(*instance)) == 8, "GDExtensionClassCreationInfo3.set_func has unexpected offset % instead of 8", ((cast(*void)(*instance.set_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassCreationInfo3.set_func)) == 8, "GDExtensionClassCreationInfo3.set_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.set_func)));
-        assert(((cast(*void)(*instance.get_func)) - cast(*void)(*instance)) == 16, "GDExtensionClassCreationInfo3.get_func has unexpected offset % instead of 16", ((cast(*void)(*instance.get_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassCreationInfo3.get_func)) == 8, "GDExtensionClassCreationInfo3.get_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.get_func)));
-        assert(((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)) == 24, "GDExtensionClassCreationInfo3.get_property_list_func has unexpected offset % instead of 24", ((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassCreationInfo3.get_property_list_func)) == 8, "GDExtensionClassCreationInfo3.get_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.get_property_list_func)));
-        assert(((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)) == 32, "GDExtensionClassCreationInfo3.free_property_list_func has unexpected offset % instead of 32", ((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassCreationInfo3.free_property_list_func)) == 8, "GDExtensionClassCreationInfo3.free_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.free_property_list_func)));
-        assert(((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)) == 40, "GDExtensionClassCreationInfo3.property_can_revert_func has unexpected offset % instead of 40", ((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassCreationInfo3.property_can_revert_func)) == 8, "GDExtensionClassCreationInfo3.property_can_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.property_can_revert_func)));
-        assert(((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)) == 48, "GDExtensionClassCreationInfo3.property_get_revert_func has unexpected offset % instead of 48", ((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassCreationInfo3.property_get_revert_func)) == 8, "GDExtensionClassCreationInfo3.property_get_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.property_get_revert_func)));
-        assert(((cast(*void)(*instance.validate_property_func)) - cast(*void)(*instance)) == 56, "GDExtensionClassCreationInfo3.validate_property_func has unexpected offset % instead of 56", ((cast(*void)(*instance.validate_property_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassCreationInfo3.validate_property_func)) == 8, "GDExtensionClassCreationInfo3.validate_property_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.validate_property_func)));
-        assert(((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)) == 64, "GDExtensionClassCreationInfo3.notification_func has unexpected offset % instead of 64", ((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassCreationInfo3.notification_func)) == 8, "GDExtensionClassCreationInfo3.notification_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.notification_func)));
-        assert(((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)) == 72, "GDExtensionClassCreationInfo3.to_string_func has unexpected offset % instead of 72", ((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassCreationInfo3.to_string_func)) == 8, "GDExtensionClassCreationInfo3.to_string_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.to_string_func)));
-        assert(((cast(*void)(*instance.reference_func)) - cast(*void)(*instance)) == 80, "GDExtensionClassCreationInfo3.reference_func has unexpected offset % instead of 80", ((cast(*void)(*instance.reference_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassCreationInfo3.reference_func)) == 8, "GDExtensionClassCreationInfo3.reference_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.reference_func)));
-        assert(((cast(*void)(*instance.unreference_func)) - cast(*void)(*instance)) == 88, "GDExtensionClassCreationInfo3.unreference_func has unexpected offset % instead of 88", ((cast(*void)(*instance.unreference_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassCreationInfo3.unreference_func)) == 8, "GDExtensionClassCreationInfo3.unreference_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.unreference_func)));
-        assert(((cast(*void)(*instance.create_instance_func)) - cast(*void)(*instance)) == 96, "GDExtensionClassCreationInfo3.create_instance_func has unexpected offset % instead of 96", ((cast(*void)(*instance.create_instance_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassCreationInfo3.create_instance_func)) == 8, "GDExtensionClassCreationInfo3.create_instance_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.create_instance_func)));
-        assert(((cast(*void)(*instance.free_instance_func)) - cast(*void)(*instance)) == 104, "GDExtensionClassCreationInfo3.free_instance_func has unexpected offset % instead of 104", ((cast(*void)(*instance.free_instance_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassCreationInfo3.free_instance_func)) == 8, "GDExtensionClassCreationInfo3.free_instance_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.free_instance_func)));
-        assert(((cast(*void)(*instance.recreate_instance_func)) - cast(*void)(*instance)) == 112, "GDExtensionClassCreationInfo3.recreate_instance_func has unexpected offset % instead of 112", ((cast(*void)(*instance.recreate_instance_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassCreationInfo3.recreate_instance_func)) == 8, "GDExtensionClassCreationInfo3.recreate_instance_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.recreate_instance_func)));
-        assert(((cast(*void)(*instance.get_virtual_func)) - cast(*void)(*instance)) == 120, "GDExtensionClassCreationInfo3.get_virtual_func has unexpected offset % instead of 120", ((cast(*void)(*instance.get_virtual_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassCreationInfo3.get_virtual_func)) == 8, "GDExtensionClassCreationInfo3.get_virtual_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.get_virtual_func)));
-        assert(((cast(*void)(*instance.get_virtual_call_data_func)) - cast(*void)(*instance)) == 128, "GDExtensionClassCreationInfo3.get_virtual_call_data_func has unexpected offset % instead of 128", ((cast(*void)(*instance.get_virtual_call_data_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassCreationInfo3.get_virtual_call_data_func)) == 8, "GDExtensionClassCreationInfo3.get_virtual_call_data_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.get_virtual_call_data_func)));
-        assert(((cast(*void)(*instance.call_virtual_with_data_func)) - cast(*void)(*instance)) == 136, "GDExtensionClassCreationInfo3.call_virtual_with_data_func has unexpected offset % instead of 136", ((cast(*void)(*instance.call_virtual_with_data_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassCreationInfo3.call_virtual_with_data_func)) == 8, "GDExtensionClassCreationInfo3.call_virtual_with_data_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.call_virtual_with_data_func)));
-        assert(((cast(*void)(*instance.get_rid_func)) - cast(*void)(*instance)) == 144, "GDExtensionClassCreationInfo3.get_rid_func has unexpected offset % instead of 144", ((cast(*void)(*instance.get_rid_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassCreationInfo3.get_rid_func)) == 8, "GDExtensionClassCreationInfo3.get_rid_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.get_rid_func)));
-        assert(((cast(*void)(*instance.class_userdata)) - cast(*void)(*instance)) == 152, "GDExtensionClassCreationInfo3.class_userdata has unexpected offset % instead of 152", ((cast(*void)(*instance.class_userdata)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassCreationInfo3.class_userdata)) == 8, "GDExtensionClassCreationInfo3.class_userdata has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.class_userdata)));
-        assert(size_of(GDExtensionClassCreationInfo3) == 160, "GDExtensionClassCreationInfo3 has size % instead of 160", size_of(GDExtensionClassCreationInfo3));
-    }
-
-    {
         instance: GDExtensionClassMethodInfo;
         assert(((cast(*void)(*instance.name)) - cast(*void)(*instance)) == 0, "GDExtensionClassMethodInfo.name has unexpected offset % instead of 0", ((cast(*void)(*instance.name)) - cast(*void)(*instance)));
         assert(size_of(type_of(GDExtensionClassMethodInfo.name)) == 8, "GDExtensionClassMethodInfo.name has unexpected size % instead of 8", size_of(type_of(GDExtensionClassMethodInfo.name)));
@@ -3214,25 +2882,6 @@ godot_cpp :: #library,no_dll "godot-cpp/bin/windows/godot-cpp";
     }
 
     {
-        instance: GDExtensionClassVirtualMethodInfo;
-        assert(((cast(*void)(*instance.name)) - cast(*void)(*instance)) == 0, "GDExtensionClassVirtualMethodInfo.name has unexpected offset % instead of 0", ((cast(*void)(*instance.name)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassVirtualMethodInfo.name)) == 8, "GDExtensionClassVirtualMethodInfo.name has unexpected size % instead of 8", size_of(type_of(GDExtensionClassVirtualMethodInfo.name)));
-        assert(((cast(*void)(*instance.method_flags)) - cast(*void)(*instance)) == 8, "GDExtensionClassVirtualMethodInfo.method_flags has unexpected offset % instead of 8", ((cast(*void)(*instance.method_flags)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassVirtualMethodInfo.method_flags)) == 4, "GDExtensionClassVirtualMethodInfo.method_flags has unexpected size % instead of 4", size_of(type_of(GDExtensionClassVirtualMethodInfo.method_flags)));
-        assert(((cast(*void)(*instance.return_value)) - cast(*void)(*instance)) == 16, "GDExtensionClassVirtualMethodInfo.return_value has unexpected offset % instead of 16", ((cast(*void)(*instance.return_value)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassVirtualMethodInfo.return_value)) == 48, "GDExtensionClassVirtualMethodInfo.return_value has unexpected size % instead of 48", size_of(type_of(GDExtensionClassVirtualMethodInfo.return_value)));
-        assert(((cast(*void)(*instance.return_value_metadata)) - cast(*void)(*instance)) == 64, "GDExtensionClassVirtualMethodInfo.return_value_metadata has unexpected offset % instead of 64", ((cast(*void)(*instance.return_value_metadata)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassVirtualMethodInfo.return_value_metadata)) == 4, "GDExtensionClassVirtualMethodInfo.return_value_metadata has unexpected size % instead of 4", size_of(type_of(GDExtensionClassVirtualMethodInfo.return_value_metadata)));
-        assert(((cast(*void)(*instance.argument_count)) - cast(*void)(*instance)) == 68, "GDExtensionClassVirtualMethodInfo.argument_count has unexpected offset % instead of 68", ((cast(*void)(*instance.argument_count)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassVirtualMethodInfo.argument_count)) == 4, "GDExtensionClassVirtualMethodInfo.argument_count has unexpected size % instead of 4", size_of(type_of(GDExtensionClassVirtualMethodInfo.argument_count)));
-        assert(((cast(*void)(*instance.arguments)) - cast(*void)(*instance)) == 72, "GDExtensionClassVirtualMethodInfo.arguments has unexpected offset % instead of 72", ((cast(*void)(*instance.arguments)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassVirtualMethodInfo.arguments)) == 8, "GDExtensionClassVirtualMethodInfo.arguments has unexpected size % instead of 8", size_of(type_of(GDExtensionClassVirtualMethodInfo.arguments)));
-        assert(((cast(*void)(*instance.arguments_metadata)) - cast(*void)(*instance)) == 80, "GDExtensionClassVirtualMethodInfo.arguments_metadata has unexpected offset % instead of 80", ((cast(*void)(*instance.arguments_metadata)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionClassVirtualMethodInfo.arguments_metadata)) == 8, "GDExtensionClassVirtualMethodInfo.arguments_metadata has unexpected size % instead of 8", size_of(type_of(GDExtensionClassVirtualMethodInfo.arguments_metadata)));
-        assert(size_of(GDExtensionClassVirtualMethodInfo) == 88, "GDExtensionClassVirtualMethodInfo has size % instead of 88", size_of(GDExtensionClassVirtualMethodInfo));
-    }
-
-    {
         instance: GDExtensionCallableCustomInfo;
         assert(((cast(*void)(*instance.callable_userdata)) - cast(*void)(*instance)) == 0, "GDExtensionCallableCustomInfo.callable_userdata has unexpected offset % instead of 0", ((cast(*void)(*instance.callable_userdata)) - cast(*void)(*instance)));
         assert(size_of(type_of(GDExtensionCallableCustomInfo.callable_userdata)) == 8, "GDExtensionCallableCustomInfo.callable_userdata has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo.callable_userdata)));
@@ -3255,33 +2904,6 @@ godot_cpp :: #library,no_dll "godot-cpp/bin/windows/godot-cpp";
         assert(((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)) == 72, "GDExtensionCallableCustomInfo.to_string_func has unexpected offset % instead of 72", ((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)));
         assert(size_of(type_of(GDExtensionCallableCustomInfo.to_string_func)) == 8, "GDExtensionCallableCustomInfo.to_string_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo.to_string_func)));
         assert(size_of(GDExtensionCallableCustomInfo) == 80, "GDExtensionCallableCustomInfo has size % instead of 80", size_of(GDExtensionCallableCustomInfo));
-    }
-
-    {
-        instance: GDExtensionCallableCustomInfo2;
-        assert(((cast(*void)(*instance.callable_userdata)) - cast(*void)(*instance)) == 0, "GDExtensionCallableCustomInfo2.callable_userdata has unexpected offset % instead of 0", ((cast(*void)(*instance.callable_userdata)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionCallableCustomInfo2.callable_userdata)) == 8, "GDExtensionCallableCustomInfo2.callable_userdata has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.callable_userdata)));
-        assert(((cast(*void)(*instance.token)) - cast(*void)(*instance)) == 8, "GDExtensionCallableCustomInfo2.token has unexpected offset % instead of 8", ((cast(*void)(*instance.token)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionCallableCustomInfo2.token)) == 8, "GDExtensionCallableCustomInfo2.token has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.token)));
-        assert(((cast(*void)(*instance.object_id)) - cast(*void)(*instance)) == 16, "GDExtensionCallableCustomInfo2.object_id has unexpected offset % instead of 16", ((cast(*void)(*instance.object_id)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionCallableCustomInfo2.object_id)) == 8, "GDExtensionCallableCustomInfo2.object_id has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.object_id)));
-        assert(((cast(*void)(*instance.call_func)) - cast(*void)(*instance)) == 24, "GDExtensionCallableCustomInfo2.call_func has unexpected offset % instead of 24", ((cast(*void)(*instance.call_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionCallableCustomInfo2.call_func)) == 8, "GDExtensionCallableCustomInfo2.call_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.call_func)));
-        assert(((cast(*void)(*instance.is_valid_func)) - cast(*void)(*instance)) == 32, "GDExtensionCallableCustomInfo2.is_valid_func has unexpected offset % instead of 32", ((cast(*void)(*instance.is_valid_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionCallableCustomInfo2.is_valid_func)) == 8, "GDExtensionCallableCustomInfo2.is_valid_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.is_valid_func)));
-        assert(((cast(*void)(*instance.free_func)) - cast(*void)(*instance)) == 40, "GDExtensionCallableCustomInfo2.free_func has unexpected offset % instead of 40", ((cast(*void)(*instance.free_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionCallableCustomInfo2.free_func)) == 8, "GDExtensionCallableCustomInfo2.free_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.free_func)));
-        assert(((cast(*void)(*instance.hash_func)) - cast(*void)(*instance)) == 48, "GDExtensionCallableCustomInfo2.hash_func has unexpected offset % instead of 48", ((cast(*void)(*instance.hash_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionCallableCustomInfo2.hash_func)) == 8, "GDExtensionCallableCustomInfo2.hash_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.hash_func)));
-        assert(((cast(*void)(*instance.equal_func)) - cast(*void)(*instance)) == 56, "GDExtensionCallableCustomInfo2.equal_func has unexpected offset % instead of 56", ((cast(*void)(*instance.equal_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionCallableCustomInfo2.equal_func)) == 8, "GDExtensionCallableCustomInfo2.equal_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.equal_func)));
-        assert(((cast(*void)(*instance.less_than_func)) - cast(*void)(*instance)) == 64, "GDExtensionCallableCustomInfo2.less_than_func has unexpected offset % instead of 64", ((cast(*void)(*instance.less_than_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionCallableCustomInfo2.less_than_func)) == 8, "GDExtensionCallableCustomInfo2.less_than_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.less_than_func)));
-        assert(((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)) == 72, "GDExtensionCallableCustomInfo2.to_string_func has unexpected offset % instead of 72", ((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionCallableCustomInfo2.to_string_func)) == 8, "GDExtensionCallableCustomInfo2.to_string_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.to_string_func)));
-        assert(((cast(*void)(*instance.get_argument_count_func)) - cast(*void)(*instance)) == 80, "GDExtensionCallableCustomInfo2.get_argument_count_func has unexpected offset % instead of 80", ((cast(*void)(*instance.get_argument_count_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionCallableCustomInfo2.get_argument_count_func)) == 8, "GDExtensionCallableCustomInfo2.get_argument_count_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.get_argument_count_func)));
-        assert(size_of(GDExtensionCallableCustomInfo2) == 88, "GDExtensionCallableCustomInfo2 has size % instead of 88", size_of(GDExtensionCallableCustomInfo2));
     }
 
     {
@@ -3391,63 +3013,6 @@ godot_cpp :: #library,no_dll "godot-cpp/bin/windows/godot-cpp";
     }
 
     {
-        instance: GDExtensionScriptInstanceInfo3;
-        assert(((cast(*void)(*instance.set_func)) - cast(*void)(*instance)) == 0, "GDExtensionScriptInstanceInfo3.set_func has unexpected offset % instead of 0", ((cast(*void)(*instance.set_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.set_func)) == 8, "GDExtensionScriptInstanceInfo3.set_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.set_func)));
-        assert(((cast(*void)(*instance.get_func)) - cast(*void)(*instance)) == 8, "GDExtensionScriptInstanceInfo3.get_func has unexpected offset % instead of 8", ((cast(*void)(*instance.get_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_func)) == 8, "GDExtensionScriptInstanceInfo3.get_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_func)));
-        assert(((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)) == 16, "GDExtensionScriptInstanceInfo3.get_property_list_func has unexpected offset % instead of 16", ((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_property_list_func)) == 8, "GDExtensionScriptInstanceInfo3.get_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_property_list_func)));
-        assert(((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)) == 24, "GDExtensionScriptInstanceInfo3.free_property_list_func has unexpected offset % instead of 24", ((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.free_property_list_func)) == 8, "GDExtensionScriptInstanceInfo3.free_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.free_property_list_func)));
-        assert(((cast(*void)(*instance.get_class_category_func)) - cast(*void)(*instance)) == 32, "GDExtensionScriptInstanceInfo3.get_class_category_func has unexpected offset % instead of 32", ((cast(*void)(*instance.get_class_category_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_class_category_func)) == 8, "GDExtensionScriptInstanceInfo3.get_class_category_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_class_category_func)));
-        assert(((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)) == 40, "GDExtensionScriptInstanceInfo3.property_can_revert_func has unexpected offset % instead of 40", ((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.property_can_revert_func)) == 8, "GDExtensionScriptInstanceInfo3.property_can_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.property_can_revert_func)));
-        assert(((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)) == 48, "GDExtensionScriptInstanceInfo3.property_get_revert_func has unexpected offset % instead of 48", ((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.property_get_revert_func)) == 8, "GDExtensionScriptInstanceInfo3.property_get_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.property_get_revert_func)));
-        assert(((cast(*void)(*instance.get_owner_func)) - cast(*void)(*instance)) == 56, "GDExtensionScriptInstanceInfo3.get_owner_func has unexpected offset % instead of 56", ((cast(*void)(*instance.get_owner_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_owner_func)) == 8, "GDExtensionScriptInstanceInfo3.get_owner_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_owner_func)));
-        assert(((cast(*void)(*instance.get_property_state_func)) - cast(*void)(*instance)) == 64, "GDExtensionScriptInstanceInfo3.get_property_state_func has unexpected offset % instead of 64", ((cast(*void)(*instance.get_property_state_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_property_state_func)) == 8, "GDExtensionScriptInstanceInfo3.get_property_state_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_property_state_func)));
-        assert(((cast(*void)(*instance.get_method_list_func)) - cast(*void)(*instance)) == 72, "GDExtensionScriptInstanceInfo3.get_method_list_func has unexpected offset % instead of 72", ((cast(*void)(*instance.get_method_list_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_method_list_func)) == 8, "GDExtensionScriptInstanceInfo3.get_method_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_method_list_func)));
-        assert(((cast(*void)(*instance.free_method_list_func)) - cast(*void)(*instance)) == 80, "GDExtensionScriptInstanceInfo3.free_method_list_func has unexpected offset % instead of 80", ((cast(*void)(*instance.free_method_list_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.free_method_list_func)) == 8, "GDExtensionScriptInstanceInfo3.free_method_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.free_method_list_func)));
-        assert(((cast(*void)(*instance.get_property_type_func)) - cast(*void)(*instance)) == 88, "GDExtensionScriptInstanceInfo3.get_property_type_func has unexpected offset % instead of 88", ((cast(*void)(*instance.get_property_type_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_property_type_func)) == 8, "GDExtensionScriptInstanceInfo3.get_property_type_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_property_type_func)));
-        assert(((cast(*void)(*instance.validate_property_func)) - cast(*void)(*instance)) == 96, "GDExtensionScriptInstanceInfo3.validate_property_func has unexpected offset % instead of 96", ((cast(*void)(*instance.validate_property_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.validate_property_func)) == 8, "GDExtensionScriptInstanceInfo3.validate_property_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.validate_property_func)));
-        assert(((cast(*void)(*instance.has_method_func)) - cast(*void)(*instance)) == 104, "GDExtensionScriptInstanceInfo3.has_method_func has unexpected offset % instead of 104", ((cast(*void)(*instance.has_method_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.has_method_func)) == 8, "GDExtensionScriptInstanceInfo3.has_method_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.has_method_func)));
-        assert(((cast(*void)(*instance.get_method_argument_count_func)) - cast(*void)(*instance)) == 112, "GDExtensionScriptInstanceInfo3.get_method_argument_count_func has unexpected offset % instead of 112", ((cast(*void)(*instance.get_method_argument_count_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_method_argument_count_func)) == 8, "GDExtensionScriptInstanceInfo3.get_method_argument_count_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_method_argument_count_func)));
-        assert(((cast(*void)(*instance.call_func)) - cast(*void)(*instance)) == 120, "GDExtensionScriptInstanceInfo3.call_func has unexpected offset % instead of 120", ((cast(*void)(*instance.call_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.call_func)) == 8, "GDExtensionScriptInstanceInfo3.call_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.call_func)));
-        assert(((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)) == 128, "GDExtensionScriptInstanceInfo3.notification_func has unexpected offset % instead of 128", ((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.notification_func)) == 8, "GDExtensionScriptInstanceInfo3.notification_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.notification_func)));
-        assert(((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)) == 136, "GDExtensionScriptInstanceInfo3.to_string_func has unexpected offset % instead of 136", ((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.to_string_func)) == 8, "GDExtensionScriptInstanceInfo3.to_string_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.to_string_func)));
-        assert(((cast(*void)(*instance.refcount_incremented_func)) - cast(*void)(*instance)) == 144, "GDExtensionScriptInstanceInfo3.refcount_incremented_func has unexpected offset % instead of 144", ((cast(*void)(*instance.refcount_incremented_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.refcount_incremented_func)) == 8, "GDExtensionScriptInstanceInfo3.refcount_incremented_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.refcount_incremented_func)));
-        assert(((cast(*void)(*instance.refcount_decremented_func)) - cast(*void)(*instance)) == 152, "GDExtensionScriptInstanceInfo3.refcount_decremented_func has unexpected offset % instead of 152", ((cast(*void)(*instance.refcount_decremented_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.refcount_decremented_func)) == 8, "GDExtensionScriptInstanceInfo3.refcount_decremented_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.refcount_decremented_func)));
-        assert(((cast(*void)(*instance.get_script_func)) - cast(*void)(*instance)) == 160, "GDExtensionScriptInstanceInfo3.get_script_func has unexpected offset % instead of 160", ((cast(*void)(*instance.get_script_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_script_func)) == 8, "GDExtensionScriptInstanceInfo3.get_script_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_script_func)));
-        assert(((cast(*void)(*instance.is_placeholder_func)) - cast(*void)(*instance)) == 168, "GDExtensionScriptInstanceInfo3.is_placeholder_func has unexpected offset % instead of 168", ((cast(*void)(*instance.is_placeholder_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.is_placeholder_func)) == 8, "GDExtensionScriptInstanceInfo3.is_placeholder_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.is_placeholder_func)));
-        assert(((cast(*void)(*instance.set_fallback_func)) - cast(*void)(*instance)) == 176, "GDExtensionScriptInstanceInfo3.set_fallback_func has unexpected offset % instead of 176", ((cast(*void)(*instance.set_fallback_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.set_fallback_func)) == 8, "GDExtensionScriptInstanceInfo3.set_fallback_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.set_fallback_func)));
-        assert(((cast(*void)(*instance.get_fallback_func)) - cast(*void)(*instance)) == 184, "GDExtensionScriptInstanceInfo3.get_fallback_func has unexpected offset % instead of 184", ((cast(*void)(*instance.get_fallback_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_fallback_func)) == 8, "GDExtensionScriptInstanceInfo3.get_fallback_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_fallback_func)));
-        assert(((cast(*void)(*instance.get_language_func)) - cast(*void)(*instance)) == 192, "GDExtensionScriptInstanceInfo3.get_language_func has unexpected offset % instead of 192", ((cast(*void)(*instance.get_language_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_language_func)) == 8, "GDExtensionScriptInstanceInfo3.get_language_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_language_func)));
-        assert(((cast(*void)(*instance.free_func)) - cast(*void)(*instance)) == 200, "GDExtensionScriptInstanceInfo3.free_func has unexpected offset % instead of 200", ((cast(*void)(*instance.free_func)) - cast(*void)(*instance)));
-        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.free_func)) == 8, "GDExtensionScriptInstanceInfo3.free_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.free_func)));
-        assert(size_of(GDExtensionScriptInstanceInfo3) == 208, "GDExtensionScriptInstanceInfo3 has size % instead of 208", size_of(GDExtensionScriptInstanceInfo3));
-    }
-
-    {
         instance: GDExtensionInitialization;
         assert(((cast(*void)(*instance.minimum_initialization_level)) - cast(*void)(*instance)) == 0, "GDExtensionInitialization.minimum_initialization_level has unexpected offset % instead of 0", ((cast(*void)(*instance.minimum_initialization_level)) - cast(*void)(*instance)));
         assert(size_of(type_of(GDExtensionInitialization.minimum_initialization_level)) == 4, "GDExtensionInitialization.minimum_initialization_level has unexpected size % instead of 4", size_of(type_of(GDExtensionInitialization.minimum_initialization_level)));
@@ -3472,8 +3037,6 @@ godot_cpp :: #library,no_dll "godot-cpp/bin/windows/godot-cpp";
         assert(size_of(type_of(GDExtensionGodotVersion._string)) == 8, "GDExtensionGodotVersion._string has unexpected size % instead of 8", size_of(type_of(GDExtensionGodotVersion._string)));
         assert(size_of(GDExtensionGodotVersion) == 24, "GDExtensionGodotVersion has size % instead of 24", size_of(GDExtensionGodotVersion));
     }
-
-    assert(size_of(godot.internal.DocDataRegistration) == 1, "godot.internal.DocDataRegistration has size % instead of 1", size_of(godot.internal.DocDataRegistration));
 
     {
         instance: godot.GDExtensionBinding.InitData;

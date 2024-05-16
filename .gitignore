@@ -1,7 +1,9 @@
 .DS_Store
 .idea
 *.log
+*.tmp
 tmp/
 godot-cpp/
 .build/
 demo/jai/.build
+demo/godot/.godot
