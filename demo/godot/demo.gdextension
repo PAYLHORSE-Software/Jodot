@@ -1,0 +1,13 @@
+[configuration]
+entry_symbol = "jodot_init"
+compatibility_minimum = 4.3
+
+[libraries]
+linux.debug.x86_64 = "res://../jai/bin/demo.so"
+linux.release.x86_64 = "res://../jai/bin/demo.so"
+windows.debug.x86_64 = "res://../jai/bin/demo.dll"
+windows.release.x86_64 = "res://../jai/bin/demo.dll"
+macos.debug = "res://../jai/bin/demo.dylib"
+macos.release = "res://../jai/bin/demo.dylib"
+macos.debug.arm64 = "res://../jai/bin/demo.dylib"
+macos.release.arm64 = "res://../jai/bin/demo.dylib"

@@ -1,0 +1,7 @@
+.DS_Store
+.idea
+*.log
+tmp/
+godot-cpp/
+.build/
+demo/jai/.build
