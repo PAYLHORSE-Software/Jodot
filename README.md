@@ -1,5 +1,8 @@
-## JODOT
+<p align="center">
+<img src="demo/godot/icon.png" alt="logo" width="200"/>
+</p>
 
-<!-- <p align="center"> -->
-<!-- <img src="https://github.com/paylhorse/godot-typst/assets/74363924/61433620-8126-46a4-8deb-39c7eac1c5f1" alt="logo" width="200"/> -->
-<!-- </p> -->
+## ABOUT
+**Secret language bindings for the GDExtension API.**
+
+Generated from [godot-cpp](https://github.com/godotengine/godot-cpp).
