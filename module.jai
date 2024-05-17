@@ -1,11 +1,11 @@
 // Godot 4 Bindings generated from godot-cpp
 
-#if OS == .WINDOWS {
-    #load "windows.jai";
+#load "bindings.jai";
 
+#if OS == .WINDOWS {
     // This shouldn't be a requisite to using Jodot :(
     // TODO: solve linker errors somehow...
     #library,system,link_always "msvcprt";
 } else {
-    #load "unix.jai";
+    // C++ libs for Linux and Macos here!
 }
