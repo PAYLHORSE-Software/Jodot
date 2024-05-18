@@ -2,7 +2,7 @@
 // JODOT - Secret Language Bindings for Godot 4
 // --------------------------------------------
 
-// Bindings generated from C header using Bindings_Generator (generate.jai)
+// Bindings generated from C header using Bindings_Generator (sys_generate.jai)
 #load "sys_bindings.jai";
 
 #import "Basic";
