@@ -5,4 +5,4 @@
 ## ABOUT
 **Secret language bindings for the GDExtension API.**
 
-Work in progress!
+Work in progress! See docs.
