@@ -8,7 +8,6 @@
 #import "Basic";
 
 godot :: struct {
-
     // TODO: generate bindings from API JSON and load that here!
     // #load "gdt_bindings.jai";
 
@@ -108,73 +107,6 @@ godot :: struct {
         g: float;
         b: float;
         a: float;
-    }
-
-    // --------------------------
-    // JSON DESERIALIZATION NOTES
-    // --------------------------
-
-    // --- FUNC/METHOD ---
-
-    // JSON gives us:
-
-    // is_const: bool
-    // is_vararg: bool
-    // is_static: bool
-    // is_virtual: bool
-
-    // hash: u32
-
-    // return_value: Type
-
-    // category: string
-
-    // arguments
-    // // name: string
-    // // type: Type
-    // // default_value
-
-    // --- ENUM (enum) ---
-
-    // JSON gives us:
-
-    // is_bitfield: bool
-
-    // --- CLASS (struct) ---
-
-    // JSON gives us:
-
-    // is_refcounted: bool
-    // is_instantiable: bool
-
-    // inherits: struct ;))
-
-    // api_type: string
-
-    // constants
-    // seem to be u8s universally
-
-    // enums*
-
-    // methods*
-
-    // organize by api_type with comment?
-    Object :: struct {
-        // constants
-        NOTIFICATION_POSTINITIALIZE: u8 : 0;
-        NOTIFICATION_PREDELETE: u8 : 1;
-        NOTIFICATION_EXTENSION_RELOADED: u8 : 2;
-
-        // enums
-        ConnectFlags :: enum u8 {
-            CONNECT_DEFERRED :: 1;
-            CONNECT_PERSIST :: 2;
-            CONNECT_ONE_SHOT :: 4;
-            CONNECT_REFERENCE_COUNTED :: 8;
-        }
-
-        // methods
-
     }
 }
 
