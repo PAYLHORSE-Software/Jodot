@@ -1,6 +1,6 @@
 ## DEVLOG/DOCS
 
-Due to precarioussness, I'll document my current understanding of the GDExtension API and approach to bindings.
+Due to precarioussness, I'll document my current understanding of the GDExtension API and approach to bindings here.
 
 ### Starting Resources
 ```
@@ -8,7 +8,11 @@ godot --dump-extension-api --dump-gdextension-interface
 ```
 We pull from the godot binary two files: **extension_api.json** and **gdextension_interface.h**.
 
-Feed **gdextension_interface.h** to the Bindings_Generator jai module to get our interface bindings. Stored as **sys_bindings.jai**.
+Feed **gdextension_interface.h** to the Bindings_Generator jai module to get our interface bindings. Stored as **sys_bindings.jai**. 
+
+The generator seems to declare all enums as `s32`, despite `u8` being sufficient for all the interface enums. 
+
+So replace `s32` with `u8`. Godot seems to be fine with it.
 
 ### extension_api.json
 
@@ -32,15 +36,15 @@ Bit offsets of each member, for each builtin class, for each build configuration
 
 `global_enums`
 
-Straightforward, just enums. There's an `is_bitfield` boolean: when true, the enum values are more or less a doubling series.
+Straightforward, just enums. There's an `is_bitfield` boolean: when true, the enum values are more or less a doubling series. We can attempt a dynamic assignment of integer type based on the enum values, and see how that goes.
 
 `utility_functions`
 
-We should be able to skip these for now. Any of these functions can be reimplemented natively in jai.
+We should be able to skip these for now. Any of these functions can (and should) be reimplemented natively in jai.
 
 `builtin_classes`
 
-Operators, constructors, destructors for godot's builtin types/classes. Skip these too for now?
+Operators, constructors, destructors for godot's builtin types/classes. Skip these too?
 
 `classes`
 
