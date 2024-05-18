@@ -5,4 +5,4 @@
 ## ABOUT
 **Secret language bindings for the GDExtension API.**
 
-Generated from [godot-cpp](https://github.com/godotengine/godot-cpp).
+Work in progress!
