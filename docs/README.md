@@ -60,6 +60,10 @@ A subset of the classes above, flagged for implementation as singeltons I guess.
 
 Straightforward, just structs.
 
+See footer of **gdt_generator.jai** for a complete annotation of JSON fields.
+
+### Roadmap
+
 Jodot development will proceed as follows:
 
 - [ ] Set up a metaprogram to generate bindings from the JSON: this will be **gdt_bindings.jai**.
