@@ -103,6 +103,11 @@ godot :: struct {
         b: float;
         a: float;
     }
+
+    // --- SINGLETONS ---
+
+    ClassDB :: struct {
+    }
 }
 
 #run {

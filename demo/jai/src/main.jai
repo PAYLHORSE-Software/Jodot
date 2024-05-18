@@ -3,47 +3,49 @@
 
 main :: () {}
 
-// NOTE: this doesn't compile anymore as of godot-cpp divorce :(
+#program_export
+initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationLevel) #c_call {
+    if p_level != .INITIALIZATION_SCENE {
+        return;
+    }
 
-// #program_export
-// initialize_example_module :: (p_level: ModuleInitializationLevel) #c_call {
-//     if p_level != .MODULE_INITIALIZATION_LEVEL_SCENE {
-//         return;
-//     }
+    // TODO: set this up!
+    // ClassDB::register_class(pseudoGod);
 
-//     // TODO: set this up!
-//     // ClassDB::register_class();
+    new_context: Context;
+    push_context new_context {
+        print("Hello, Sailor!");
+    }
+}
 
-//     new_context: Context;
-//     push_context new_context {
-//         print("Hello, Sailor!");
-//     }
-// }
+#program_export
+deinitialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationLevel) #c_call {
+    if p_level != .INITIALIZATION_SCENE {
+        return;
+    }
 
-// #program_export
-// uninitialize_example_module :: (p_level: ModuleInitializationLevel) #c_call {
-//     if p_level != .MODULE_INITIALIZATION_LEVEL_SCENE {
-//         return;
-//     }
+    // Perform any necessary cleanup!
+}
 
-//     // Perform any necessary cleanup!
-// }
+#program_export
+jodot_init :: (p_get_proc_address: GDExtensionInterfaceGetProcAddress, p_library: GDExtensionClassLibraryPtr, r_initialization: *GDExtensionInitialization) -> GDExtensionBool #c_call {
 
-// #program_export
-// jodot_init :: (p_get_proc_address: GDExtensionInterfaceGetProcAddress, p_library: GDExtensionClassLibraryPtr, r_initialization: *GDExtensionInitialization) -> GDExtensionBool #c_call {
-//     init_obj: GDExtensionBinding.InitObject;
-//     init_obj.Constructor(*init_obj, p_get_proc_address, p_library, r_initialization);
+    godot_init_params := GDExtensionInitialization.{
+        minimum_initialization_level = .INITIALIZATION_SCENE,
+        userdata = null,
+        initialize = initialize_jodot_module,
+        deinitialize = deinitialize_jodot_module,
+    };
 
-//     init_obj.register_initializer(*init_obj, initialize_example_module);
-//     init_obj.register_terminator(*init_obj, uninitialize_example_module);
-//     init_obj.set_minimum_library_initialization_level(*init_obj, .MODULE_INITIALIZATION_LEVEL_SCENE);
+    << r_initialization = godot_init_params;
 
-//     return init_obj.init(*init_obj);
-// }
+    gdext_bool: GDExtensionBool = 1;
+    return gdext_bool;
+}
 
 // // CUSTOM CLASSES
 
-// // Define the custom class GDExample
+// // Define the custom class pseudoGod
 // pseudoGod :: struct {
 //     time_accumulator: float64;
 
