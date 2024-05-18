@@ -1,6 +1,8 @@
 #import "Basic";
 #import "Jodot";
 
+// NOTE: this doesn't compile anymore as of godot-cpp divorce :(
+
 #program_export
 initialize_example_module :: (p_level: ModuleInitializationLevel) #c_call {
     if p_level != .MODULE_INITIALIZATION_LEVEL_SCENE {

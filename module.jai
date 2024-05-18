@@ -1,11 +1,9 @@
-// Godot 4 Bindings generated from godot-cpp
+// --------------------------------------------
+// JODOT - Secret Language Bindings for Godot 4
+// --------------------------------------------
 
-#load "bindings.jai";
+// Bindings generated from C header using Bindings_Generator
+#load "gen_bindings.jai";
 
-#if OS == .WINDOWS {
-    // This shouldn't be a requisite to using Jodot :(
-    // TODO: solve linker errors somehow...
-    #library,system,link_always "msvcprt";
-} else {
-    // C++ libs for Linux and Macos here!
-}
+// Now, we'll parse the API JSON.
+#import "Basic"

@@ -41,7 +41,7 @@ generate_bindings :: (args: [] string) -> bool {
         array_add(*source_files, tprint("%/gdextension_interface.h", GDEXT_PATH));
         array_add(*extra_clang_arguments, "-x", "c++", "-DWIN32_LEAN_AND_MEAN");
         log_unsupported = true;
-        output_filename = "bindings.jai";
+        output_filename = "gen_bindings.jai";
     }
 
     return generate_bindings(opts, output_filename);
