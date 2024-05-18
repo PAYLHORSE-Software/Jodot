@@ -4,6 +4,7 @@
 #import "Basic";
 #import "Bindings_Generator";
 #import "Compiler";
+#import "File";
 
 AT_COMPILE_TIME :: true;
 
