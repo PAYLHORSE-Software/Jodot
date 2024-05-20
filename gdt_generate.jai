@@ -4,6 +4,9 @@ main :: () {}
     set_build_options_dc(.{do_output=false});
 
     // ---- JAISON ----
+
+    // Optional fields as pointers, so they default to null?
+
     ExtensionAPI :: struct {
         header: Header;
         // builtin_class_sizes
@@ -31,50 +34,49 @@ main :: () {}
         name: string;
 
         // Builtin specific
-        indexing_return_type: string;
-        is_keyed: bool;
+        indexing_return_type: *string;
+        is_keyed: *bool;
+        // TODO: operators, constructor, destructor - not sure how these should be set up
 
-        is_refcounted: bool;
-        is_instantiable: bool;
-        inherits: string;
-        api_type: string;
-        enums: [] Enum;
-        methods: [] Method;
-        properties: [] Property;
+        is_refcounted: *bool;
+        is_instantiable: *bool;
+        inherits: *string;
+        api_type: *string;
+        enums: *[] Enum;
+        methods: *[] Method;
+        properties: *[] GenericValue;
     }
 
     Method :: struct {
         name: string;
 
         // Builtin specific
-        return_type: string;
+        return_type: *string;
 
         is_const: bool;
         is_vararg: bool;
         is_static: bool;
-        is_virtual: bool;
+        is_virtual: *bool;
         hash: u32;
-        return_value: GenericValue;
-        arguments: [] GenericValue;
+        return_value: *GenericValue;
+        arguments: *[] GenericValue;
     }
 
     GenericValue :: struct {
         name: string;
-        type: string;
+        type: *string;
         // C type
-        meta: string;
-        value: s64;
-        default_value: string;
-    }
+        meta: *string;
+        value: *s64;
+        default_value: *string;
 
-    Property :: struct {
-        type: string;
-        name: string;
-        setter: string;
-        getter: string;
+        // Property specific
+        setter: *string;
+        getter: *string;
     }
 
     NativeStruct :: struct {
+        // TODO: parsed but not sure how to metaprogram
         name: string;
         format: string;
     }
@@ -86,9 +88,14 @@ main :: () {}
 
     // print("ExtensionAPI dump:\n %", result);
 
-    // Now, we parse the ExtensionAPI struct.
-    // ---- BINDGEN METAPROGRAM ----
+    print("This should be null: %\n", result.singletons[0].value);
+    print("This should be null: %\n", result.singletons[0].meta);
+    print("This should be null: %\n", result.classes[0].properties);
 
+    print("Size of final struct: %\n", size_of(ExtensionAPI));
+
+    // Now, we parse result, the ExtensionAPI struct, and generate native definitions.
+    // Native definitions then go to jodot_init to be hooked to pointers.
 }
 
 #import "Basic";
@@ -108,6 +115,8 @@ main :: () {}
 // is_vararg: bool
 // is_static: bool
 // is_virtual: bool
+
+// _ready, _process, _physics_process, _enter_tree, _exit_treem _input are all false, false, false, true (virtual)
 
 // hash: u32
 
@@ -143,23 +152,3 @@ main :: () {}
 // enums*
 
 // methods*
-
-// organize by api_type with comment?
-example_class :: () {
-    Object :: struct {
-        // constants
-        NOTIFICATION_POSTINITIALIZE: u8 : 0;
-        NOTIFICATION_PREDELETE: u8 : 1;
-        NOTIFICATION_EXTENSION_RELOADED: u8 : 2;
-
-        // enums
-        ConnectFlags :: enum u8 {
-            CONNECT_DEFERRED :: 1;
-            CONNECT_PERSIST :: 2;
-            CONNECT_ONE_SHOT :: 4;
-            CONNECT_REFERENCE_COUNTED :: 8;
-        }
-
-        // methods
-    }
-}

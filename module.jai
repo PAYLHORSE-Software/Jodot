@@ -5,6 +5,9 @@
 // Bindings generated from C header using Bindings_Generator (sys_generate.jai)
 #load "sys_bindings.jai";
 
+// Entry point and initialization
+#load "jodot_init.jai";
+
 #import "Basic";
 
 godot :: struct {
@@ -108,13 +111,32 @@ godot :: struct {
         b: float;
         a: float;
     }
+
+    // api_type: core
+    Object :: struct {
+        // is_refcounted: false
+        // is_instantiable: true
+        // constants
+        NOTIFICATION_POSTINITIALIZE: u8 : 0;
+        NOTIFICATION_PREDELETE: u8 : 1;
+        NOTIFICATION_EXTENSION_RELOADED: u8 : 2;
+
+        // enums
+        ConnectFlags :: enum u8 {
+            CONNECT_DEFERRED :: 1;
+            CONNECT_PERSIST :: 2;
+            CONNECT_ONE_SHOT :: 4;
+            CONNECT_REFERENCE_COUNTED :: 8;
+        }
+
+
+        // methods
+    }
 }
 
 #run {
 
     using godot;
-
-    print("Hello, Sailor!\n");
 
     // ---- BUILTIN TYPE SIZES (FLOAT32 CONFIG) ----
     // TODO: auto-generate from JSON
