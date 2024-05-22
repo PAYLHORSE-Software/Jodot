@@ -74,7 +74,7 @@ This procedure pushes initialization parameters to godot, which include an initi
 
 Currently, we're restricted to `initialize_jodot_module()` as our only window to execute jai. It's a `#c_call`, so we're all the more restricted in that we can't access context. Our workaround for setting up native interface procedures is to decalre the procedures at the highest level of the program, in global scope, and then set them using `p_get_proc_address()` during initialization.
 
-## Class Registration
+### Class Registration
 
 Our test class is simply a string at this point: 'JodotTestClass'. We set up class creation parameters for a new class of this name that inherits from Node, and use the interface function `classdb_register_extension_class()`.
 
