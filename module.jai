@@ -11,12 +11,13 @@
 #import "Basic";
 
 godot :: struct {
-    // TODO: generate bindings from API JSON and load that here!
+    // TODO: generate bindings from API JSON and load that here?
     // #load "gdt_bindings.jai";
 
     // ------------------------------
     // BUILTIN TYPES (FLOAT32 CONFIG)
     // ------------------------------
+    // Doing these by hand...
 
     Vector2 :: struct {
         x: float;
@@ -112,14 +113,14 @@ godot :: struct {
         a: float;
     }
 
-    // api_type: core
+    // Do we need to declare all of godot's classes natively like so? Not sure.
     Object :: struct {
-        // is_refcounted: false
-        // is_instantiable: true
+        is_refcounted : GDExtensionBool = 0;
+        is_instantiable : GDExtensionBool = 1;
         // constants
-        NOTIFICATION_POSTINITIALIZE: u8 : 0;
-        NOTIFICATION_PREDELETE: u8 : 1;
-        NOTIFICATION_EXTENSION_RELOADED: u8 : 2;
+        NOTIFICATION_POSTINITIALIZE: u8 = 0;
+        NOTIFICATION_PREDELETE: u8 = 1;
+        NOTIFICATION_EXTENSION_RELOADED: u8 = 2;
 
         // enums
         ConnectFlags :: enum u8 {
@@ -128,9 +129,8 @@ godot :: struct {
             CONNECT_ONE_SHOT :: 4;
             CONNECT_REFERENCE_COUNTED :: 8;
         }
-
-
-        // methods
+        // methods?
+        // signals?
     }
 }
 
@@ -139,7 +139,7 @@ godot :: struct {
     using godot;
 
     // ---- BUILTIN TYPE SIZES (FLOAT32 CONFIG) ----
-    // TODO: auto-generate from JSON
+    // TODO: should be able to auto-generate from JSON
     // assert(size_of(GString) == 4, "GString has size % instead of 4", size_of(GString));
     assert(size_of(Vector2) == 8, "Vector2 has size % instead of 8", size_of(Vector2));
     assert(size_of(Vector2i) == 8, "Vector2i has size % instead of 8", size_of(Vector2i));

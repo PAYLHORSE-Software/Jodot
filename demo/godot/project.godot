@@ -15,6 +15,10 @@ run/main_scene="res://test.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.png"
 
+[display]
+
+mouse_cursor/custom_image="res://menu/sprite/mouse_cursor.png"
+
 [gui]
 
 theme/custom_font="res://menu/font/Karmina Regular.ttf"
