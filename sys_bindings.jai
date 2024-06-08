@@ -2630,6 +2630,7 @@ GDExtensionInterfaceCallableCustomGetUserData :: #type (p_callable: GDExtensionC
 GDExtensionInterfaceClassdbConstructObject :: #type (p_classname: GDExtensionConstStringNamePtr) -> GDExtensionObjectPtr #c_call;
 
 /**
+NOTE
 * @name classdb_get_method_bind
 * @since 4.1
 *
@@ -2717,6 +2718,7 @@ GDExtensionInterfaceClassdbRegisterExtensionClass3 :: #type (p_library: GDExtens
 GDExtensionInterfaceClassdbRegisterExtensionClassMethod :: #type (p_library: GDExtensionClassLibraryPtr, p_class_name: GDExtensionConstStringNamePtr, p_method_info: *GDExtensionClassMethodInfo) -> void #c_call;
 
 /**
+NOTE
 * @name classdb_register_extension_class_virtual_method
 * @since 4.3
 *
@@ -2746,6 +2748,7 @@ GDExtensionInterfaceClassdbRegisterExtensionClassVirtualMethod :: #type (p_libra
 GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant :: #type (p_library: GDExtensionClassLibraryPtr, p_class_name: GDExtensionConstStringNamePtr, p_enum_name: GDExtensionConstStringNamePtr, p_constant_name: GDExtensionConstStringNamePtr, p_constant_value: GDExtensionInt, p_is_bitfield: GDExtensionBool) -> void #c_call;
 
 /**
+NOTE
 * @name classdb_register_extension_class_property
 * @since 4.1
 *

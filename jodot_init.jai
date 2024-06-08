@@ -2,7 +2,26 @@
 P_GET_PROC_ADDRESS : GDExtensionInterfaceGetProcAddress;
 P_LIBRARY : GDExtensionClassLibraryPtr;
 
-// ---- RAW PROCEDURES ----
+// == UTILITY ==
+
+// -- LOGGING --
+print_error :: (msg: string) {
+    log_error("\x1b[1;38;5;9mERROR: %\n\x1b[0m", msg);
+}
+
+print_affirm :: (msg: string) {
+    log("\x1b[1;38;5;144m%\x1b[0m", msg);
+}
+
+print_muted :: (msg: string) {
+    log("\x1b[38;5;246m%\x1b[0m", msg);
+}
+
+print_warn :: (msg: string) {
+    log("\x1b[38;5;180m%\x1b[0m", msg);
+}
+
+// == RAW PROCEDURES ==
 
 // arguments (comment)
 // definition
@@ -29,6 +48,8 @@ object_set_instance: GDExtensionInterfaceObjectSetInstance;
 classdb_register_extension_class: GDExtensionInterfaceClassdbRegisterExtensionClass3;
 // GDExtensionInterfaceClassdbGetClassTag :: #type (p_classname: GDExtensionConstStringNamePtr) -> *void #c_call;
 classdb_get_class_tag: GDExtensionInterfaceClassdbGetClassTag;
+// (p_library: GDExtensionClassLibraryPtr, p_class_name: GDExtensionConstStringNamePtr, p_method_info: *GDExtensionClassMethodInfo) -> void #c_call;
+classdb_register_extension_class_method: GDExtensionInterfaceClassdbRegisterExtensionClassMethod;
 
 // It seems we have to declare/allocate memory for everything in advance of godot entry.
 class_userdata: ClassUserdata;
@@ -41,79 +62,41 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
         return;
     }
 
-    // TODO: use godot_print
-    // print("Hello from secret language!\n");
-    // print("Initializing Jodot module...\n");
+    new_context: Context;
+    push_context new_context {
 
-    get_godot_version: GDExtensionInterfaceGetGodotVersion = cast(GDExtensionInterfaceGetGodotVersion)P_GET_PROC_ADDRESS("get_godot_version");
+        print("Hello from secret language!\n");
+        print("Initializing Jodot module...\n");
 
-    godot_version: GDExtensionGodotVersion;
-    get_godot_version(*godot_version);
+        get_godot_version: GDExtensionInterfaceGetGodotVersion = xx P_GET_PROC_ADDRESS("get_godot_version");
 
-    // print("\nGODOT VERSION: %.%.%\n", godot_version.major, godot_version.minor, godot_version.patch);
+        godot_version: GDExtensionGodotVersion;
+        get_godot_version(*godot_version);
 
-    print_error_with_message = cast(GDExtensionInterfacePrintErrorWithMessage)P_GET_PROC_ADDRESS("print_error_with_message");
-    print_warning_with_message = cast(GDExtensionInterfacePrintWarningWithMessage)P_GET_PROC_ADDRESS("print_warning_with_message");
+        print("\nGODOT VERSION: %.%.%\n", godot_version.major, godot_version.minor, godot_version.patch);
 
-    string_new_with_utf8_chars = cast(GDExtensionInterfaceStringNewWithUtf8Chars)P_GET_PROC_ADDRESS("string_new_with_utf8_chars");
-    string_to_utf8_chars = cast(GDExtensionInterfaceStringNewWithUtf8Chars)P_GET_PROC_ADDRESS("string_to_utf8_chars");
+        print_error_with_message = xx P_GET_PROC_ADDRESS("print_error_with_message");
+        print_warning_with_message = xx P_GET_PROC_ADDRESS("print_warning_with_message");
 
-    string_name_new_with_utf8_chars = cast(GDExtensionInterfaceStringNameNewWithUtf8Chars)P_GET_PROC_ADDRESS("string_name_new_with_utf8_chars");
+        string_new_with_utf8_chars = xx P_GET_PROC_ADDRESS("string_new_with_utf8_chars");
+        string_to_utf8_chars = xx P_GET_PROC_ADDRESS("string_to_utf8_chars");
 
-    classdb_construct_object = cast(GDExtensionInterfaceClassdbConstructObject)P_GET_PROC_ADDRESS("classdb_construct_object");
-    object_set_instance = cast(GDExtensionInterfaceObjectSetInstance)P_GET_PROC_ADDRESS("object_set_instance");
+        string_name_new_with_utf8_chars = xx P_GET_PROC_ADDRESS("string_name_new_with_utf8_chars");
 
-    classdb_register_extension_class = cast(GDExtensionInterfaceClassdbRegisterExtensionClass3)P_GET_PROC_ADDRESS("classdb_register_extension_class3");
-    classdb_get_class_tag = cast(GDExtensionInterfaceClassdbGetClassTag)P_GET_PROC_ADDRESS("classdb_get_class_tag");
+        classdb_construct_object = xx P_GET_PROC_ADDRESS("classdb_construct_object");
+        object_set_instance = xx P_GET_PROC_ADDRESS("object_set_instance");
 
-    // Test raw procedures?
-    // print_error_with_message(null, "Test Error! Don't panic ;)", null, "Jodot", 0, 1);
-    // print_warning_with_message(null, "Test Warning! Don't panic ;)", null, "Jodot", 0, 1);
+        classdb_register_extension_class = xx P_GET_PROC_ADDRESS("classdb_register_extension_class3");
+        classdb_get_class_tag = xx P_GET_PROC_ADDRESS("classdb_get_class_tag");
+        classdb_register_extension_class_method = xx P_GET_PROC_ADDRESS("classdb_register_extension_class_virtual_method");
 
-    // Test custom class registration?
+        // -- CUSTOM CLASS REGISTRATION --
 
-    // GDExtensionClassCreationInfo3 :: struct {
-    //     is_virtual:                  GDExtensionBool;
-    //     is_abstract:                 GDExtensionBool;
-    //     is_exposed:                  GDExtensionBool;
-    //     is_runtime:                  GDExtensionBool;
-    //     set_func:                    GDExtensionClassSet;
-    //     get_func:                    GDExtensionClassGet;
-    //     get_property_list_func:      GDExtensionClassGetPropertyList;
-    //     free_property_list_func:     GDExtensionClassFreePropertyList;
-    //     property_can_revert_func:    GDExtensionClassPropertyCanRevert;
-    //     property_get_revert_func:    GDExtensionClassPropertyGetRevert;
-    //     validate_property_func:      GDExtensionClassValidateProperty;
-    //     notification_func:           GDExtensionClassNotification2;
-    //     to_string_func:              GDExtensionClassToString;
-    //     reference_func:              GDExtensionClassReference;
-    //     unreference_func:            GDExtensionClassUnreference;
-    //     create_instance_func:        GDExtensionClassCreateInstance; // (Default) constructor; mandatory. If the class is not instantiable, consider making it virtual or abstract.
-    //     free_instance_func:          GDExtensionClassFreeInstance; // Destructor; mandatory.
-    //     recreate_instance_func:      GDExtensionClassRecreateInstance;
-
-    //     // Queries a virtual function by name and returns a callback to invoke the requested virtual function.
-    //     get_virtual_func:            GDExtensionClassGetVirtual; TODO
-
-    //     // Paired with `call_virtual_with_data_func`, this is an alternative to `get_virtual_func` for extensions that
-    //     // need or benefit from extra data when calling virtual functions.
-    //     // Returns user data that will be passed to `call_virtual_with_data_func`.
-    //     // Returning `NULL` from this function signals to Godot that the virtual function is not overridden.
-    //     // Data returned from this function should be managed by the extension and must be valid until the extension is deinitialized.
-    //     // You should supply either `get_virtual_func`, or `get_virtual_call_data_func` with `call_virtual_with_data_func`.
-    //     get_virtual_call_data_func:  GDExtensionClassGetVirtualCallData;
-
-    //     // Used to call virtual functions when `get_virtual_call_data_func` is not null.
-    //     call_virtual_with_data_func: GDExtensionClassCallVirtualWithData;
-    //     get_rid_func:                GDExtensionClassGetRID;
-    //     class_userdata:              *void; // Per-class user data, later accessible in instance bindings.
-    // }
-
-    class_creation_info := GDExtensionClassCreationInfo3.{
-        is_virtual = 0,
-        is_abstract = 0,
-        is_exposed = 1,
-        is_runtime = 1,
+        class_create_info: GDExtensionClassCreationInfo3;
+        class_create_info.is_virtual = 0;
+        class_create_info.is_abstract = 0;
+        class_create_info.is_exposed = 1;
+        class_create_info.is_runtime = 1;
         //     set_func
         //     get_func
         //     get_property_list_func
@@ -125,41 +108,153 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
         //     to_string_func
         //     reference_func
         //     unreference_func
-        create_instance_func = class_create_instance,
-        free_instance_func = class_free_instance,
+        class_create_info.create_instance_func = class_create_instance;
+        class_create_info.free_instance_func = class_free_instance;
         //     recreate_instance_func
-        // get_virtual_func = default_get_virtual_func,
+        class_create_info.get_virtual_func = get_virtual_func;
         //     get_virtual_call_data_func
         //     call_virtual_with_data_func
         //     get_rid_func
         //     class_userdata
-    };
 
-    // print("Success! All systems Jo :)\n");
+        // -- METHOD REGISTRATION --
 
-    new_context: Context;
-    push_context new_context {
+        // ...
+
+        vm_create_info: GDExtensionClassVirtualMethodInfo;
+
         // Setup p_class_userdata:
         p_class_name := make_p_stringname("JodotTestClass");
         p_parent_class_name := make_p_stringname("Node");
         class_userdata = ClassUserdata.{p_class_name, p_parent_class_name};
 
-        class_creation_info.class_userdata = *class_userdata;
+        class_create_info.class_userdata = *class_userdata;
 
         // Register class!
-        classdb_register_extension_class(P_LIBRARY, p_class_name, p_parent_class_name, *class_creation_info);
+        classdb_register_extension_class(P_LIBRARY, p_class_name, p_parent_class_name, *class_create_info);
 
         // Registration can fail silently, so check...
         tag := classdb_get_class_tag(p_class_name);
         if tag == null print_error_with_message(null, "Extension class registration failed!", null, "Jodot", 0, 1);
-        print("Class registered with class tag: %\n", tag);
+        print_affirm(tprint("Extension class registered: %", tag));
 
-        print("Hello, Sailor?\n");
+        // Register custom methods!
 
         print("All systems Jo :)\n");
     }
 
 }
+
+get_virtual_func :: (p_class_userdata: *void, p_name: GDExtensionConstStringNamePtr) -> GDExtensionClassCallVirtual #c_call {
+    new_context: Context;
+    push_context new_context {
+
+        name: [4] u8;
+        memcpy(name.data, p_name, 4);
+        print_muted(tprint("GETTING VIRUAL FUNCTION: %", name));
+        p_ready_stringname := make_p_stringname("_ready");
+        ready_name: [4] u8;
+        memcpy(ready_name.data, p_ready_stringname, 4);
+        p_process_stringname := make_p_stringname("_process");
+        process_name: [4] u8;
+        memcpy(process_name.data, p_process_stringname, 4);
+        p_input_stringname := make_p_stringname("_input");
+        input_name: [4] u8;
+        memcpy(input_name.data, p_input_stringname, 4);
+        print_muted(tprint("'_READY': %", ready_name));
+        print_muted(tprint("'_PROCESS': %", process_name));
+        print_muted(tprint("'_INPUT': %", input_name));
+        if name[0] == ready_name[0] &&
+            name[1] == ready_name[1] &&
+            name[2] == ready_name[2] &&
+            name[3] == ready_name[3] {
+                return method_ready;
+            }
+        // Sir, this is a Wendy's
+        else if name[0] == process_name[0] &&
+            name[1] == process_name[1] &&
+            name[2] == process_name[2] &&
+            name[3] == process_name[3] {
+                return method_process;
+            }
+        else if name[0] == input_name[0] &&
+            name[1] == input_name[1] &&
+            name[2] == input_name[2] &&
+            name[3] == input_name[3] {
+                return method_input;
+            }
+        else return method_virtual_dummy;
+    }
+}
+
+// GDExtensionClassCallVirtual :: #type (p_instance: GDExtensionClassInstancePtr, p_args: *GDExtensionConstTypePtr, r_ret: GDExtensionTypePtr) -> void #c_call;
+method_init :: (
+    p_instance: GDExtensionClassInstancePtr,
+    p_args: *GDExtensionConstTypePtr,
+    r_ret: GDExtensionTypePtr
+) #c_call {
+
+    // From some reddit post:
+
+    /* First we get a pointer to the object which is calling the function */
+    // MyClass *instance = static_cast<MyClass *>(p_instance);
+
+    /* Then we unpack the arguments from p_args */
+    // Node *arg1 = *static_cast<Node3D * const *>(p_args[0]);
+    // int arg2 = *static_cast<const int *>(p_args[1]);
+
+    /* Now we call the function on its arguments and get its result (if any)
+     * You MUST use the call() function to invoke method() */
+    // Variant return_var = instance->call("method", arg1, arg2);
+    // int result = static_cast<int>(return_var);
+
+    /* Finally, we return the output through the r_ret pointer */
+    // *static_cast<int *>(r_ret) = result;
+
+    new_context: Context;
+    push_context new_context {
+        print_muted("JODOT TEST CLASS _INIT METHOD!");
+    }
+}
+
+method_ready :: (
+    p_instance: GDExtensionClassInstancePtr,
+    p_args: *GDExtensionConstTypePtr,
+    r_ret: GDExtensionTypePtr
+) #c_call {
+    new_context: Context;
+    push_context new_context {
+        print_muted("JODOT TEST CLASS _READY METHOD!");
+    }
+}
+
+method_process :: (
+    p_instance: GDExtensionClassInstancePtr,
+    p_args: *GDExtensionConstTypePtr,
+    r_ret: GDExtensionTypePtr
+) #c_call {
+    new_context: Context;
+    push_context new_context {
+        // print_muted("JODOT TEST CLASS _PROCESS METHOD!");
+    }
+}
+
+method_input :: (
+    p_instance: GDExtensionClassInstancePtr,
+    p_args: *GDExtensionConstTypePtr,
+    r_ret: GDExtensionTypePtr
+) #c_call {
+    new_context: Context;
+    push_context new_context {
+        // print_muted("JODOT TEST CLASS _INPUT METHOD!");
+    }
+}
+
+method_virtual_dummy :: (
+    p_instance: GDExtensionClassInstancePtr,
+    p_args: *GDExtensionConstTypePtr,
+    r_ret: GDExtensionTypePtr
+) #c_call {}
 
 deinitialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationLevel) #c_call {
     if p_level != .INITIALIZATION_SCENE {
@@ -220,6 +315,11 @@ make_p_stringname :: (native_string: string) -> *void {
     return p_stringname;
 }
 
+p_stringname_to_string :: (p_stringname: *void) -> string {
+    jai_string := to_string(<< p_stringname);
+    return jai_string;
+}
+
 class_create_instance :: (p_class_userdata: *void) -> GDExtensionObjectPtr #c_call {
     new_context: Context;
     push_context new_context {
@@ -236,9 +336,6 @@ class_create_instance :: (p_class_userdata: *void) -> GDExtensionObjectPtr #c_ca
 class_free_instance :: (p_class_userdata: *void, p_instance: GDExtensionClassInstancePtr) #c_call {
     // TODO: figure this out...
 }
-
-// default_get_virtual_func :: (p_class_userdata: *void, p_name: GDExtensionConstStringNamePtr) -> GDExtensionClassCallVirtual #c_call {
-// }
 
 ClassUserdata :: struct {
     p_class_name: *void;
@@ -268,5 +365,10 @@ JodotTestClass :: struct {
         // register_method("JodotTestClass::_process", _process);
     }
 }
+
+// --------------------
+// METHOD REGISTRATION?
+// --------------------
+
 
 #import "Basic";
