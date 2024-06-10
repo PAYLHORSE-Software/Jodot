@@ -45,4 +45,11 @@ some_custom_method :: () #c_call {}
 // Let's have it so that these procedures are NOT member functions, as a first step to breaking free of godot's OOP.
 // We'll find a way of declaring all custom procedures in bulk, in global scope.
 
-JodotTestClass :: struct {}
+JodotTestClass :: struct @godot {
+    #as using sys: ExtensionClass;
+    type = #this;
+
+    // The user designates a parent class from the gdt submodule.
+    #as using base: gdtp.Node;
+    parent_type = type_of(base);
+}

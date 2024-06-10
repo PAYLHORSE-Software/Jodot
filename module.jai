@@ -18,5 +18,9 @@ gdtp :: struct {
     Node :: struct {}
 }
 
+// TODO: these placeholders should be added automatically...
+// #placeholder Character;
+// #placeholder JodotTestClass;
+
 // Entry point and initialization
 #load "sys_init.jai";
