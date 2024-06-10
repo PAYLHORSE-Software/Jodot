@@ -51,6 +51,196 @@ classdb_get_class_tag: GDExtensionInterfaceClassdbGetClassTag;
 // (p_library: GDExtensionClassLibraryPtr, p_class_name: GDExtensionConstStringNamePtr, p_method_info: *GDExtensionClassMethodInfo) -> void #c_call;
 classdb_register_extension_class_method: GDExtensionInterfaceClassdbRegisterExtensionClassMethod;
 
+// -------------------------
+// CUSTOM CLASS REGISTRATION
+// -------------------------
+
+// user_class_declarations: [1] ExtensionClass;
+// user_class_declaration_list :: "user_class_declarations[0] = Character.{};";
+
+#placeholder user_class_declarations;
+#placeholder user_class_declaration_list;
+
+// Wrapper struct for extension classes:
+
+ExtensionClass :: struct {
+    type: Type = void;
+    parent_type: Type;
+    fld: Any;
+    virtual: Any;
+
+    p_class_name: *void;
+    p_parent_class_name: *void;
+}
+
+class_create_info :: GDExtensionClassCreationInfo3.{
+        is_virtual = 0,
+        is_abstract = 0,
+        is_exposed = 1,
+        is_runtime = 1,
+        //     set_func
+        //     get_func
+        //     get_property_list_func
+        //     free_property_list_func
+        //     property_can_revert_func
+        //     property_get_revert_func
+        //     validate_property_func
+        //     notification_func
+        //     to_string_func
+        //     reference_func
+        //     unreference_func
+        create_instance_func = class_create_instance,
+        free_instance_func = class_free_instance,
+        //     recreate_instance_func
+        get_virtual_func = get_virtual_func,
+        //     get_virtual_call_data_func
+        //     call_virtual_with_data_func
+        //     get_rid_func
+};
+
+make_user_class_declarations :: () -> string {
+
+    return "array_add(*user_class_declarations, .{type = JodotTestClass, parent_type = gdtp.Node});";
+}
+
+// message_loop :: () #expand {
+//     print_muted("\n\n\n==== METAPROGRAM ====");
+
+//     tagged_names : [..] string;
+//     gen_code := false;
+
+//     while true {
+
+//         message := compiler_wait_for_message();
+//         if message.kind == {
+//             case .TYPECHECKED;
+//                 typechecked := cast(*Message_Typechecked) message;
+
+//                 for decl: typechecked.declarations {
+//                     for note: decl.expression.notes {
+//                         if equal(note.text, "godot") {
+//                             print_affirm(tprint("Found extension class declaration: %", decl.expression.name));
+//                             array_add(*tagged_names, copy_string(decl.expression.name));
+//                         }
+//                     }
+//                 }
+//             case .PHASE;
+//                 phase := cast(*Message_Phase) message;
+//                 if gen_code == false && phase.phase == .TYPECHECKED_ALL_WE_CAN {
+//                     builder: String_Builder;
+//                     // print_to_builder(*builder, "#scope_module\n");
+//                     print_to_builder(*builder, "user_class_declarations: [%] ExtensionClass;\n", tagged_names.count);
+//                     // print_to_builder(*builder, "important_array: [%] ExtensionClass;\n", tagged_names.count);
+//                     list_builder: String_Builder;
+//                     for tagged_names {
+//                         print_to_builder(*list_builder, "user_class_declarations[%] = %.{};", it_index, it);
+//                     }
+//                     list := builder_to_string(*list_builder);
+//                     print_to_builder(*builder, "user_class_declaration_list :: \"%\";", list);
+//                     print_affirm(tprint("ADDING BUILD STRING: %", builder_to_string(*builder)));
+//                     add_build_string(builder_to_string(*builder), `w);
+//                     gen_code = true;
+//                 }
+//           case .COMPLETE;
+//             break;
+//         }
+//     }
+// }
+
+// == MEMALLOC ==
+
+pool: Flat_Pool;
+
+buffer := [1024 * 1024] u8;
+
+make_user_class_case :: () -> string {
+    builder: String_Builder;
+    init_string_builder(*builder);
+    append(*builder, "if extension_class.type == {\n");
+    for user_class_declarations {
+        if it.type == void break;
+        print_to_builder(*builder, "case %;\n", it.type);
+        print_to_builder(*builder, "    user_class_instance = New(%,, a);\n", it.type);
+        print_to_builder(*builder, "    print_affirm(\"Instantiated a %!\");", it.type);
+    }
+    append(*builder, "}\n");
+    return builder_to_string(*builder);
+}
+
+class_create_instance :: (p_class_userdata: *void) -> GDExtensionObjectPtr #c_call {
+
+    extension_class: ExtensionClass;
+    memcpy(*extension_class, p_class_userdata, size_of(ExtensionClass));
+
+    p_object := classdb_construct_object(extension_class.p_parent_class_name);
+
+    a: Allocator;
+    a.proc = flat_pool_allocator_proc;
+    a.data = *pool;
+
+    new_context: Context;
+    new_context.allocator = a;
+
+    push_context new_context {
+
+        user_class_instance: Any;
+
+        #insert #run make_user_class_case();
+
+        object_set_instance(p_object, extension_class.p_class_name, *user_class_instance);
+    }
+
+    return p_object;
+}
+
+class_free_instance :: (p_class_userdata: *void, p_instance: GDExtensionClassInstancePtr) #c_call {
+
+    a: Allocator;
+    a.proc = flat_pool_allocator_proc;
+    a.data = *pool;
+
+    new_context: Context;
+    new_context.allocator = a;
+
+    push_context new_context {
+        // We probably shouldn't be using a Flat_Pool...
+        free(p_instance);
+    }
+}
+
+register_extension_classes :: () {
+
+    // For some reason, using large-iterator and for * causes an access violation
+    for it_index: 0..user_class_declarations.count - 1 {
+
+        if user_class_declarations[it_index].type == void break;
+
+        // TODO: verify that extension classes are valid?
+
+        user_class_declarations[it_index].p_class_name = make_p_stringname(tprint("%", user_class_declarations[it_index].type));
+        user_class_declarations[it_index].p_parent_class_name = make_p_stringname(tprint("%", user_class_declarations[it_index].parent_type));
+
+        unique_class_create_info := class_create_info;
+        unique_class_create_info.class_userdata = *user_class_declarations[it_index];
+
+        classdb_register_extension_class(
+            P_LIBRARY,
+            user_class_declarations[it_index].p_class_name,
+            user_class_declarations[it_index].p_parent_class_name,
+            *unique_class_create_info
+        );
+
+        // Registration can fail silently, so check...
+        tag := classdb_get_class_tag(user_class_declarations[it_index].p_class_name);
+        if tag == null print_error_with_message(null, "Extension class registration failed!", null, "Jodot", 0, 1);
+        print_affirm(tprint("Extension class registered: %", tag));
+    }
+}
+
+// -----------
+// ENTRY POINT
+// -----------
+
 // Here, we capture and interrogate the godot runtime for pointers.
 initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationLevel) #c_call {
     if p_level != .INITIALIZATION_SCENE {
@@ -85,11 +275,11 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
         classdb_get_class_tag = xx P_GET_PROC_ADDRESS("classdb_get_class_tag");
         classdb_register_extension_class_method = xx P_GET_PROC_ADDRESS("classdb_register_extension_class_virtual_method");
 
+        #insert user_class_declaration_list;
         register_extension_classes();
 
         print("All systems Jo :)\n");
     }
-
 }
 
 get_virtual_func :: (p_class_userdata: *void, p_name: GDExtensionConstStringNamePtr) -> GDExtensionClassCallVirtual #c_call {
@@ -265,3 +455,6 @@ p_stringname_to_string :: (p_stringname: *void) -> string {
 }
 
 #import "Basic";
+#import "Compiler";
+#import "String";
+#import "Flat_Pool";
