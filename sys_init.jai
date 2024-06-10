@@ -51,11 +51,6 @@ classdb_get_class_tag: GDExtensionInterfaceClassdbGetClassTag;
 // (p_library: GDExtensionClassLibraryPtr, p_class_name: GDExtensionConstStringNamePtr, p_method_info: *GDExtensionClassMethodInfo) -> void #c_call;
 classdb_register_extension_class_method: GDExtensionInterfaceClassdbRegisterExtensionClassMethod;
 
-// It seems we have to declare/allocate memory for everything in advance of godot entry.
-class_userdata: ClassUserdata;
-
-object: godot.Object;
-
 // Here, we capture and interrogate the godot runtime for pointers.
 initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationLevel) #c_call {
     if p_level != .INITIALIZATION_SCENE {
@@ -90,55 +85,7 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
         classdb_get_class_tag = xx P_GET_PROC_ADDRESS("classdb_get_class_tag");
         classdb_register_extension_class_method = xx P_GET_PROC_ADDRESS("classdb_register_extension_class_virtual_method");
 
-        // -- CUSTOM CLASS REGISTRATION --
-
-        class_create_info: GDExtensionClassCreationInfo3;
-        class_create_info.is_virtual = 0;
-        class_create_info.is_abstract = 0;
-        class_create_info.is_exposed = 1;
-        class_create_info.is_runtime = 1;
-        //     set_func
-        //     get_func
-        //     get_property_list_func
-        //     free_property_list_func
-        //     property_can_revert_func
-        //     property_get_revert_func
-        //     validate_property_func
-        //     notification_func
-        //     to_string_func
-        //     reference_func
-        //     unreference_func
-        class_create_info.create_instance_func = class_create_instance;
-        class_create_info.free_instance_func = class_free_instance;
-        //     recreate_instance_func
-        class_create_info.get_virtual_func = get_virtual_func;
-        //     get_virtual_call_data_func
-        //     call_virtual_with_data_func
-        //     get_rid_func
-        //     class_userdata
-
-        // -- METHOD REGISTRATION --
-
-        // ...
-
-        vm_create_info: GDExtensionClassVirtualMethodInfo;
-
-        // Setup p_class_userdata:
-        p_class_name := make_p_stringname("JodotTestClass");
-        p_parent_class_name := make_p_stringname("Node");
-        class_userdata = ClassUserdata.{p_class_name, p_parent_class_name};
-
-        class_create_info.class_userdata = *class_userdata;
-
-        // Register class!
-        classdb_register_extension_class(P_LIBRARY, p_class_name, p_parent_class_name, *class_create_info);
-
-        // Registration can fail silently, so check...
-        tag := classdb_get_class_tag(p_class_name);
-        if tag == null print_error_with_message(null, "Extension class registration failed!", null, "Jodot", 0, 1);
-        print_affirm(tprint("Extension class registered: %", tag));
-
-        // Register custom methods!
+        register_extension_classes();
 
         print("All systems Jo :)\n");
     }
@@ -279,9 +226,6 @@ jodot_init :: (p_get_proc_address: GDExtensionInterfaceGetProcAddress, p_library
     P_GET_PROC_ADDRESS = p_get_proc_address;
     P_LIBRARY = p_library;
 
-    // ------ CUSTOM CLASS TEST ------
-    // -------------------------------
-
     gdext_bool: GDExtensionBool = 1;
     return gdext_bool;
 }
@@ -319,56 +263,5 @@ p_stringname_to_string :: (p_stringname: *void) -> string {
     jai_string := to_string(<< p_stringname);
     return jai_string;
 }
-
-class_create_instance :: (p_class_userdata: *void) -> GDExtensionObjectPtr #c_call {
-    new_context: Context;
-    push_context new_context {
-        print("JodotTestClass: creating class instance...\n");
-    }
-    memcpy(*class_userdata, p_class_userdata, size_of(ClassUserdata));
-    p_object := classdb_construct_object(class_userdata.p_parent_class_name);
-    // TODO: here, I presume we should create an *instance* of the class in the jai environment?
-    object_set_instance(p_object, class_userdata.p_class_name, *class_userdata);
-    // object_set_instance(class_userdata.p_object, class_userdata.p_class_name, *class_userdata);
-    return p_object;
-}
-
-class_free_instance :: (p_class_userdata: *void, p_instance: GDExtensionClassInstancePtr) #c_call {
-    // TODO: figure this out...
-}
-
-ClassUserdata :: struct {
-    p_class_name: *void;
-    p_parent_class_name: *void;
-}
-
-// --------------------
-// CUSTOM CLASS EXAMPLE
-// --------------------
-JodotTestClass :: struct {
-    // #as using base: Node;
-    time_accumulator: float64;
-
-    // Constructor?
-    init :: (self: *JodotTestClass) {
-        self.time_accumulator = 0.0;
-    }
-
-    // Process method
-    _process :: (self: *JodotTestClass, delta: float32) {
-        self.time_accumulator += delta;
-    }
-
-    // Binding methods
-    _bind_methods :: () {
-        // Register the _process method
-        // register_method("JodotTestClass::_process", _process);
-    }
-}
-
-// --------------------
-// METHOD REGISTRATION?
-// --------------------
-
 
 #import "Basic";

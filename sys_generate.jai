@@ -1,10 +1,7 @@
-// This script generates a sys_bindings.jai into the 'gen' directory!
+// This script generates bindings for the GDExtension API from gdextension_interface.h...
+// ...henceforth referred to as the 'sys' submodule.
+// sys_bindings.jai lands in the 'gen' directory!
 // The sys_bindings.jai in the root directory has been hand-edited.
-
-#import "Basic";
-#import "Bindings_Generator";
-#import "Compiler";
-#import "File";
 
 AT_COMPILE_TIME :: true;
 
@@ -49,3 +46,8 @@ generate_bindings :: (args: [] string) -> bool {
 
     return generate_bindings(opts, output_filename);
 }
+
+#import "Basic";
+#import "Bindings_Generator";
+#import "Compiler";
+#import "File";

@@ -1,11 +1,7 @@
-//
-// This file was auto-generated using the following command:
-//
-// jai generate.jai
-//
-// but EDITED since as follows:
-// s32 --> u8
-//
+// HAND-EDITED as follows:
+// TODO: integrate into generation
+// (*) s32 --> u8
+// (*) ...
 
 /* VARIANT TYPES */
 GDExtensionVariantType :: enum u8 {
@@ -2897,7 +2893,6 @@ GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8CharsAndLen :: #type (p_data: *u8,
 #import "Basic"; // For assert
 
 // TODO: lower sizes to account for s32 --> u8
-// no godot-side issues so far with this change, so this change should be maintained as norm!
 #run {
     // {
     //     instance: GDExtensionCallError;

@@ -1,3 +1,6 @@
+// This script should generate bindings for Godot data types, from extension_api.json...
+// ...henceforth referred to as the 'gdt' submodule.
+
 main :: () {}
 
 #run,stallable {
