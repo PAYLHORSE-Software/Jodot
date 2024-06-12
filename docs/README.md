@@ -10,10 +10,6 @@ We pull from the godot binary two files: **extension_api.json** and **gdextensio
 
 Feed **gdextension_interface.h** to the Bindings_Generator jai module to get our interface bindings. Stored as **sys_bindings.jai**. 
 
-The generator seems to declare all enums as `s32`, despite `u8` being sufficient for all the interface enums. 
-
-So replace `s32` with `u8`. Godot seems to be fine with it.
-
 ### gdextension_interface.h / sys_bindings
 
 Of most apparent relevance here are the interface function pointers listed from line 800 onwards. We use `p_get_proc_address()` during module initialization to create native procedures from these pointers, and we're locked and loaded. More on module initialization later.
@@ -64,38 +60,28 @@ A subset of the classes above, flagged for implementation as singeltons I guess.
 
 Straightforward, just structs.
 
-See footer of **gdt_generator.jai** for a complete annotation of JSON fields.
+See footer of **gen/gdt_generator.jai** for a complete annotation of JSON fields.
 
 ### The Entry Point
 
 Our first step for mankind is to declare an inititialization procedure to be exposed as the DLL entry point. We choose to call this `jodot_init()`, and set up our .gdextension config file godot-side to reflect that.
 
-This procedure pushes initialization parameters to godot, which include an initialization function callback. We're thus given a procedure that we can call `initialize_jodot_module()` to set things up for ourselves, having been provided direct access to the extension interface from godot's entry. 
-
-Currently, we're restricted to `initialize_jodot_module()` as our only window to execute jai. It's a `#c_call`, so we're all the more restricted in that we can't access context. Our workaround for setting up native interface procedures is to decalre the procedures at the highest level of the program, in global scope, and then set them using `p_get_proc_address()` during initialization.
+This procedure pushes initialization parameters to godot, which include an initialization function callback. We're thus given a procedure that we can call (`initialize_jodot_module()`) to set things up for ourselves, having been provided direct access to the extension interface from godot's entry. 
 
 ### Class Registration
 
-Our test class is simply a string at this point: 'JodotTestClass'. We set up class creation parameters for a new class of this name that inherits from Node, and use the interface function `classdb_register_extension_class()`.
+We use the note `@godot` to tag custom classes in user code, redefined as Entities. A metaprogram crawls the user code for these Entities and stores them in an array. We set up class creation parameters for a new 'class' of this name from the Entity struct, and use the interface function `classdb_register_extension_class()` to add them to godot's database.
 
-As part of this registration, we've had to set up another custom `#c_call` function: `class_create_instance()`. Here, we're expected to instatiate the class in jai, construct an object in godot to hold this class, and bind the two together.
-
-Here, our context limitation begins to rear it's head. In order for this registration to go through, we must allocate memory for an instanced JodotTestClass in global scope...
-
-What kind of overall structure should Jodot have, given this hard limtation? An open question.
+As part of this registration, we've had to set up another custom `#c_call` function: `class_create_instance()`. Here, we're expected to instatiate the class in jai, construct an object in godot to hold this class, and bind the two together. This is where **memory allocation** comes in, and we should treat this aspect of the module with great care.
 
 ### Roadmap
 
 Jodot development will proceed as follows:
 
-- [ ] Set up a metaprogram to generate bindings from the JSON: this will be **gdt_bindings.jai**.
+- [ ] Set up codegen from the JSON: this will be **gdt_bindings.jai**.
 
-- [ ] Set up abstraction for sys_bindings if necessary.
+- [ ] Figure out an alternative to class methods. Leverage native jai for vector algebra, matrix algebra etc. in footsteps of godot-rust. Favor native jai when any opportunity to do so arises.
+
+- [ ] Ignore features of godot that are deemed unneccessary or reductive, while maintaining strong interoperability with godot where it matters... allowing us to declare the module as feature-complete whenever we see fit.
 
 -- v1.0 milestone --
-
-- [ ] Leverage native jai modules for vector algebra, matrix algebra etc. in footsteps of godot-rust.
-
-- [ ] Favor 'idiomatic' jai when opportunities to do so arise.
-
-payl is typing...
