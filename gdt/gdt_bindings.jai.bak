@@ -103,8 +103,8 @@ gdt :: struct {
 
     // Do we need to declare all of godot's classes natively like so? Not sure.
     Object :: struct {
-        is_refcounted : GDExtensionBool = 0;
-        is_instantiable : GDExtensionBool = 1;
+        is_refcounted : u8 = 0;
+        is_instantiable : u8 = 1;
         // constants
         NOTIFICATION_POSTINITIALIZE: u8 = 0;
         NOTIFICATION_PREDELETE: u8 = 1;

@@ -1,10 +1,16 @@
-// HAND-EDITED as follows:
-// TODO: integrate into generation
-// (*) s32 --> u8
-// (*) ...
+//
+// This file was auto-generated using the following command:
+//
+// jai generate.jai
+//
+//  --------------------
+// | JODOT SYS BINDINGS |
+//  --------------------
+
+
 
 /* VARIANT TYPES */
-GDExtensionVariantType :: enum u8 {
+GDExtensionVariantType :: enum s32 {
     NIL                  :: 0;
 
     BOOL                 :: 1;
@@ -96,7 +102,7 @@ GDExtensionVariantType :: enum u8 {
     GDEXTENSION_VARIANT_TYPE_VARIANT_MAX          :: VARIANT_MAX;
 }
 
-GDExtensionVariantOperator :: enum u8 {
+GDExtensionVariantOperator :: enum s32 {
     EQUAL         :: 0;
     NOT_EQUAL     :: 1;
     LESS          :: 2;
@@ -198,7 +204,7 @@ GDExtensionRefPtr :: *void;
 GDExtensionConstRefPtr :: *void;
 
 /* VARIANT DATA I/O */
-GDExtensionCallErrorType :: enum u8 {
+GDExtensionCallErrorType :: enum s32 {
     OK                       :: 0;
     ERROR_INVALID_METHOD     :: 1;
     ERROR_INVALID_ARGUMENT   :: 2;
@@ -394,7 +400,7 @@ GDExtensionClassCreationInfo3 :: struct {
 GDExtensionClassLibraryPtr :: *void;
 
 /* Method */
-GDExtensionClassMethodFlags :: enum u8 {
+GDExtensionClassMethodFlags :: enum s32 {
     FLAG_NORMAL   :: 1;
     FLAG_EDITOR   :: 2;
     FLAG_CONST    :: 4;
@@ -412,7 +418,7 @@ GDExtensionClassMethodFlags :: enum u8 {
     GDEXTENSION_METHOD_FLAGS_DEFAULT :: FLAGS_DEFAULT;
 }
 
-GDExtensionClassMethodArgumentMetadata :: enum u8 {
+GDExtensionClassMethodArgumentMetadata :: enum s32 {
     NONE           :: 0;
     INT_IS_INT8    :: 1;
     INT_IS_INT16   :: 2;
@@ -727,7 +733,7 @@ GDExtensionScriptInstanceInfo3 :: struct {
 }
 
 /* INITIALIZATION */
-GDExtensionInitializationLevel :: enum u8 {
+GDExtensionInitializationLevel :: enum s32 {
     INITIALIZATION_CORE      :: 0;
     INITIALIZATION_SERVERS   :: 1;
     INITIALIZATION_SCENE     :: 2;
@@ -2626,7 +2632,6 @@ GDExtensionInterfaceCallableCustomGetUserData :: #type (p_callable: GDExtensionC
 GDExtensionInterfaceClassdbConstructObject :: #type (p_classname: GDExtensionConstStringNamePtr) -> GDExtensionObjectPtr #c_call;
 
 /**
-NOTE
 * @name classdb_get_method_bind
 * @since 4.1
 *
@@ -2714,7 +2719,6 @@ GDExtensionInterfaceClassdbRegisterExtensionClass3 :: #type (p_library: GDExtens
 GDExtensionInterfaceClassdbRegisterExtensionClassMethod :: #type (p_library: GDExtensionClassLibraryPtr, p_class_name: GDExtensionConstStringNamePtr, p_method_info: *GDExtensionClassMethodInfo) -> void #c_call;
 
 /**
-NOTE
 * @name classdb_register_extension_class_virtual_method
 * @since 4.3
 *
@@ -2744,7 +2748,6 @@ GDExtensionInterfaceClassdbRegisterExtensionClassVirtualMethod :: #type (p_libra
 GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant :: #type (p_library: GDExtensionClassLibraryPtr, p_class_name: GDExtensionConstStringNamePtr, p_enum_name: GDExtensionConstStringNamePtr, p_constant_name: GDExtensionConstStringNamePtr, p_constant_value: GDExtensionInt, p_is_bitfield: GDExtensionBool) -> void #c_call;
 
 /**
-NOTE
 * @name classdb_register_extension_class_property
 * @since 4.1
 *
@@ -2892,496 +2895,496 @@ GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8CharsAndLen :: #type (p_data: *u8,
 
 #import "Basic"; // For assert
 
-// TODO: lower sizes to account for s32 --> u8
+
 #run {
-    // {
-    //     instance: GDExtensionCallError;
-    //     assert(((cast(*void)(*instance.error)) - cast(*void)(*instance)) == 0, "GDExtensionCallError.error has unexpected offset % instead of 0", ((cast(*void)(*instance.error)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionCallError.error)) == 4, "GDExtensionCallError.error has unexpected size % instead of 4", size_of(type_of(GDExtensionCallError.error)));
-    //     assert(((cast(*void)(*instance.argument)) - cast(*void)(*instance)) == 4, "GDExtensionCallError.argument has unexpected offset % instead of 4", ((cast(*void)(*instance.argument)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionCallError.argument)) == 4, "GDExtensionCallError.argument has unexpected size % instead of 4", size_of(type_of(GDExtensionCallError.argument)));
-    //     assert(((cast(*void)(*instance.expected)) - cast(*void)(*instance)) == 8, "GDExtensionCallError.expected has unexpected offset % instead of 8", ((cast(*void)(*instance.expected)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionCallError.expected)) == 4, "GDExtensionCallError.expected has unexpected size % instead of 4", size_of(type_of(GDExtensionCallError.expected)));
-    //     assert(size_of(GDExtensionCallError) == 12, "GDExtensionCallError has size % instead of 12", size_of(GDExtensionCallError));
-    // }
+    {
+        instance: GDExtensionCallError;
+        assert(((cast(*void)(*instance.error)) - cast(*void)(*instance)) == 0, "GDExtensionCallError.error has unexpected offset % instead of 0", ((cast(*void)(*instance.error)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionCallError.error)) == 4, "GDExtensionCallError.error has unexpected size % instead of 4", size_of(type_of(GDExtensionCallError.error)));
+        assert(((cast(*void)(*instance.argument)) - cast(*void)(*instance)) == 4, "GDExtensionCallError.argument has unexpected offset % instead of 4", ((cast(*void)(*instance.argument)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionCallError.argument)) == 4, "GDExtensionCallError.argument has unexpected size % instead of 4", size_of(type_of(GDExtensionCallError.argument)));
+        assert(((cast(*void)(*instance.expected)) - cast(*void)(*instance)) == 8, "GDExtensionCallError.expected has unexpected offset % instead of 8", ((cast(*void)(*instance.expected)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionCallError.expected)) == 4, "GDExtensionCallError.expected has unexpected size % instead of 4", size_of(type_of(GDExtensionCallError.expected)));
+        assert(size_of(GDExtensionCallError) == 12, "GDExtensionCallError has size % instead of 12", size_of(GDExtensionCallError));
+    }
 
-    // {
-    //     instance: GDExtensionInstanceBindingCallbacks;
-    //     assert(((cast(*void)(*instance.create_callback)) - cast(*void)(*instance)) == 0, "GDExtensionInstanceBindingCallbacks.create_callback has unexpected offset % instead of 0", ((cast(*void)(*instance.create_callback)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionInstanceBindingCallbacks.create_callback)) == 8, "GDExtensionInstanceBindingCallbacks.create_callback has unexpected size % instead of 8", size_of(type_of(GDExtensionInstanceBindingCallbacks.create_callback)));
-    //     assert(((cast(*void)(*instance.free_callback)) - cast(*void)(*instance)) == 8, "GDExtensionInstanceBindingCallbacks.free_callback has unexpected offset % instead of 8", ((cast(*void)(*instance.free_callback)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionInstanceBindingCallbacks.free_callback)) == 8, "GDExtensionInstanceBindingCallbacks.free_callback has unexpected size % instead of 8", size_of(type_of(GDExtensionInstanceBindingCallbacks.free_callback)));
-    //     assert(((cast(*void)(*instance.reference_callback)) - cast(*void)(*instance)) == 16, "GDExtensionInstanceBindingCallbacks.reference_callback has unexpected offset % instead of 16", ((cast(*void)(*instance.reference_callback)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionInstanceBindingCallbacks.reference_callback)) == 8, "GDExtensionInstanceBindingCallbacks.reference_callback has unexpected size % instead of 8", size_of(type_of(GDExtensionInstanceBindingCallbacks.reference_callback)));
-    //     assert(size_of(GDExtensionInstanceBindingCallbacks) == 24, "GDExtensionInstanceBindingCallbacks has size % instead of 24", size_of(GDExtensionInstanceBindingCallbacks));
-    // }
+    {
+        instance: GDExtensionInstanceBindingCallbacks;
+        assert(((cast(*void)(*instance.create_callback)) - cast(*void)(*instance)) == 0, "GDExtensionInstanceBindingCallbacks.create_callback has unexpected offset % instead of 0", ((cast(*void)(*instance.create_callback)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionInstanceBindingCallbacks.create_callback)) == 8, "GDExtensionInstanceBindingCallbacks.create_callback has unexpected size % instead of 8", size_of(type_of(GDExtensionInstanceBindingCallbacks.create_callback)));
+        assert(((cast(*void)(*instance.free_callback)) - cast(*void)(*instance)) == 8, "GDExtensionInstanceBindingCallbacks.free_callback has unexpected offset % instead of 8", ((cast(*void)(*instance.free_callback)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionInstanceBindingCallbacks.free_callback)) == 8, "GDExtensionInstanceBindingCallbacks.free_callback has unexpected size % instead of 8", size_of(type_of(GDExtensionInstanceBindingCallbacks.free_callback)));
+        assert(((cast(*void)(*instance.reference_callback)) - cast(*void)(*instance)) == 16, "GDExtensionInstanceBindingCallbacks.reference_callback has unexpected offset % instead of 16", ((cast(*void)(*instance.reference_callback)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionInstanceBindingCallbacks.reference_callback)) == 8, "GDExtensionInstanceBindingCallbacks.reference_callback has unexpected size % instead of 8", size_of(type_of(GDExtensionInstanceBindingCallbacks.reference_callback)));
+        assert(size_of(GDExtensionInstanceBindingCallbacks) == 24, "GDExtensionInstanceBindingCallbacks has size % instead of 24", size_of(GDExtensionInstanceBindingCallbacks));
+    }
 
-    // {
-    //     instance: GDExtensionPropertyInfo;
-    //     assert(((cast(*void)(*instance.type)) - cast(*void)(*instance)) == 0, "GDExtensionPropertyInfo.type has unexpected offset % instead of 0", ((cast(*void)(*instance.type)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionPropertyInfo.type)) == 4, "GDExtensionPropertyInfo.type has unexpected size % instead of 4", size_of(type_of(GDExtensionPropertyInfo.type)));
-    //     assert(((cast(*void)(*instance.name)) - cast(*void)(*instance)) == 8, "GDExtensionPropertyInfo.name has unexpected offset % instead of 8", ((cast(*void)(*instance.name)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionPropertyInfo.name)) == 8, "GDExtensionPropertyInfo.name has unexpected size % instead of 8", size_of(type_of(GDExtensionPropertyInfo.name)));
-    //     assert(((cast(*void)(*instance.class_name)) - cast(*void)(*instance)) == 16, "GDExtensionPropertyInfo.class_name has unexpected offset % instead of 16", ((cast(*void)(*instance.class_name)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionPropertyInfo.class_name)) == 8, "GDExtensionPropertyInfo.class_name has unexpected size % instead of 8", size_of(type_of(GDExtensionPropertyInfo.class_name)));
-    //     assert(((cast(*void)(*instance.hint)) - cast(*void)(*instance)) == 24, "GDExtensionPropertyInfo.hint has unexpected offset % instead of 24", ((cast(*void)(*instance.hint)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionPropertyInfo.hint)) == 4, "GDExtensionPropertyInfo.hint has unexpected size % instead of 4", size_of(type_of(GDExtensionPropertyInfo.hint)));
-    //     assert(((cast(*void)(*instance.hint_string)) - cast(*void)(*instance)) == 32, "GDExtensionPropertyInfo.hint_string has unexpected offset % instead of 32", ((cast(*void)(*instance.hint_string)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionPropertyInfo.hint_string)) == 8, "GDExtensionPropertyInfo.hint_string has unexpected size % instead of 8", size_of(type_of(GDExtensionPropertyInfo.hint_string)));
-    //     assert(((cast(*void)(*instance.usage)) - cast(*void)(*instance)) == 40, "GDExtensionPropertyInfo.usage has unexpected offset % instead of 40", ((cast(*void)(*instance.usage)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionPropertyInfo.usage)) == 4, "GDExtensionPropertyInfo.usage has unexpected size % instead of 4", size_of(type_of(GDExtensionPropertyInfo.usage)));
-    //     assert(size_of(GDExtensionPropertyInfo) == 48, "GDExtensionPropertyInfo has size % instead of 48", size_of(GDExtensionPropertyInfo));
-    // }
+    {
+        instance: GDExtensionPropertyInfo;
+        assert(((cast(*void)(*instance.type)) - cast(*void)(*instance)) == 0, "GDExtensionPropertyInfo.type has unexpected offset % instead of 0", ((cast(*void)(*instance.type)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionPropertyInfo.type)) == 4, "GDExtensionPropertyInfo.type has unexpected size % instead of 4", size_of(type_of(GDExtensionPropertyInfo.type)));
+        assert(((cast(*void)(*instance.name)) - cast(*void)(*instance)) == 8, "GDExtensionPropertyInfo.name has unexpected offset % instead of 8", ((cast(*void)(*instance.name)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionPropertyInfo.name)) == 8, "GDExtensionPropertyInfo.name has unexpected size % instead of 8", size_of(type_of(GDExtensionPropertyInfo.name)));
+        assert(((cast(*void)(*instance.class_name)) - cast(*void)(*instance)) == 16, "GDExtensionPropertyInfo.class_name has unexpected offset % instead of 16", ((cast(*void)(*instance.class_name)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionPropertyInfo.class_name)) == 8, "GDExtensionPropertyInfo.class_name has unexpected size % instead of 8", size_of(type_of(GDExtensionPropertyInfo.class_name)));
+        assert(((cast(*void)(*instance.hint)) - cast(*void)(*instance)) == 24, "GDExtensionPropertyInfo.hint has unexpected offset % instead of 24", ((cast(*void)(*instance.hint)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionPropertyInfo.hint)) == 4, "GDExtensionPropertyInfo.hint has unexpected size % instead of 4", size_of(type_of(GDExtensionPropertyInfo.hint)));
+        assert(((cast(*void)(*instance.hint_string)) - cast(*void)(*instance)) == 32, "GDExtensionPropertyInfo.hint_string has unexpected offset % instead of 32", ((cast(*void)(*instance.hint_string)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionPropertyInfo.hint_string)) == 8, "GDExtensionPropertyInfo.hint_string has unexpected size % instead of 8", size_of(type_of(GDExtensionPropertyInfo.hint_string)));
+        assert(((cast(*void)(*instance.usage)) - cast(*void)(*instance)) == 40, "GDExtensionPropertyInfo.usage has unexpected offset % instead of 40", ((cast(*void)(*instance.usage)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionPropertyInfo.usage)) == 4, "GDExtensionPropertyInfo.usage has unexpected size % instead of 4", size_of(type_of(GDExtensionPropertyInfo.usage)));
+        assert(size_of(GDExtensionPropertyInfo) == 48, "GDExtensionPropertyInfo has size % instead of 48", size_of(GDExtensionPropertyInfo));
+    }
 
-    // {
-    //     instance: GDExtensionMethodInfo;
-    //     assert(((cast(*void)(*instance.name)) - cast(*void)(*instance)) == 0, "GDExtensionMethodInfo.name has unexpected offset % instead of 0", ((cast(*void)(*instance.name)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionMethodInfo.name)) == 8, "GDExtensionMethodInfo.name has unexpected size % instead of 8", size_of(type_of(GDExtensionMethodInfo.name)));
-    //     assert(((cast(*void)(*instance.return_value)) - cast(*void)(*instance)) == 8, "GDExtensionMethodInfo.return_value has unexpected offset % instead of 8", ((cast(*void)(*instance.return_value)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionMethodInfo.return_value)) == 48, "GDExtensionMethodInfo.return_value has unexpected size % instead of 48", size_of(type_of(GDExtensionMethodInfo.return_value)));
-    //     assert(((cast(*void)(*instance.flags)) - cast(*void)(*instance)) == 56, "GDExtensionMethodInfo.flags has unexpected offset % instead of 56", ((cast(*void)(*instance.flags)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionMethodInfo.flags)) == 4, "GDExtensionMethodInfo.flags has unexpected size % instead of 4", size_of(type_of(GDExtensionMethodInfo.flags)));
-    //     assert(((cast(*void)(*instance.id)) - cast(*void)(*instance)) == 60, "GDExtensionMethodInfo.id has unexpected offset % instead of 60", ((cast(*void)(*instance.id)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionMethodInfo.id)) == 4, "GDExtensionMethodInfo.id has unexpected size % instead of 4", size_of(type_of(GDExtensionMethodInfo.id)));
-    //     assert(((cast(*void)(*instance.argument_count)) - cast(*void)(*instance)) == 64, "GDExtensionMethodInfo.argument_count has unexpected offset % instead of 64", ((cast(*void)(*instance.argument_count)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionMethodInfo.argument_count)) == 4, "GDExtensionMethodInfo.argument_count has unexpected size % instead of 4", size_of(type_of(GDExtensionMethodInfo.argument_count)));
-    //     assert(((cast(*void)(*instance.arguments)) - cast(*void)(*instance)) == 72, "GDExtensionMethodInfo.arguments has unexpected offset % instead of 72", ((cast(*void)(*instance.arguments)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionMethodInfo.arguments)) == 8, "GDExtensionMethodInfo.arguments has unexpected size % instead of 8", size_of(type_of(GDExtensionMethodInfo.arguments)));
-    //     assert(((cast(*void)(*instance.default_argument_count)) - cast(*void)(*instance)) == 80, "GDExtensionMethodInfo.default_argument_count has unexpected offset % instead of 80", ((cast(*void)(*instance.default_argument_count)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionMethodInfo.default_argument_count)) == 4, "GDExtensionMethodInfo.default_argument_count has unexpected size % instead of 4", size_of(type_of(GDExtensionMethodInfo.default_argument_count)));
-    //     assert(((cast(*void)(*instance.default_arguments)) - cast(*void)(*instance)) == 88, "GDExtensionMethodInfo.default_arguments has unexpected offset % instead of 88", ((cast(*void)(*instance.default_arguments)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionMethodInfo.default_arguments)) == 8, "GDExtensionMethodInfo.default_arguments has unexpected size % instead of 8", size_of(type_of(GDExtensionMethodInfo.default_arguments)));
-    //     assert(size_of(GDExtensionMethodInfo) == 96, "GDExtensionMethodInfo has size % instead of 96", size_of(GDExtensionMethodInfo));
-    // }
+    {
+        instance: GDExtensionMethodInfo;
+        assert(((cast(*void)(*instance.name)) - cast(*void)(*instance)) == 0, "GDExtensionMethodInfo.name has unexpected offset % instead of 0", ((cast(*void)(*instance.name)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionMethodInfo.name)) == 8, "GDExtensionMethodInfo.name has unexpected size % instead of 8", size_of(type_of(GDExtensionMethodInfo.name)));
+        assert(((cast(*void)(*instance.return_value)) - cast(*void)(*instance)) == 8, "GDExtensionMethodInfo.return_value has unexpected offset % instead of 8", ((cast(*void)(*instance.return_value)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionMethodInfo.return_value)) == 48, "GDExtensionMethodInfo.return_value has unexpected size % instead of 48", size_of(type_of(GDExtensionMethodInfo.return_value)));
+        assert(((cast(*void)(*instance.flags)) - cast(*void)(*instance)) == 56, "GDExtensionMethodInfo.flags has unexpected offset % instead of 56", ((cast(*void)(*instance.flags)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionMethodInfo.flags)) == 4, "GDExtensionMethodInfo.flags has unexpected size % instead of 4", size_of(type_of(GDExtensionMethodInfo.flags)));
+        assert(((cast(*void)(*instance.id)) - cast(*void)(*instance)) == 60, "GDExtensionMethodInfo.id has unexpected offset % instead of 60", ((cast(*void)(*instance.id)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionMethodInfo.id)) == 4, "GDExtensionMethodInfo.id has unexpected size % instead of 4", size_of(type_of(GDExtensionMethodInfo.id)));
+        assert(((cast(*void)(*instance.argument_count)) - cast(*void)(*instance)) == 64, "GDExtensionMethodInfo.argument_count has unexpected offset % instead of 64", ((cast(*void)(*instance.argument_count)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionMethodInfo.argument_count)) == 4, "GDExtensionMethodInfo.argument_count has unexpected size % instead of 4", size_of(type_of(GDExtensionMethodInfo.argument_count)));
+        assert(((cast(*void)(*instance.arguments)) - cast(*void)(*instance)) == 72, "GDExtensionMethodInfo.arguments has unexpected offset % instead of 72", ((cast(*void)(*instance.arguments)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionMethodInfo.arguments)) == 8, "GDExtensionMethodInfo.arguments has unexpected size % instead of 8", size_of(type_of(GDExtensionMethodInfo.arguments)));
+        assert(((cast(*void)(*instance.default_argument_count)) - cast(*void)(*instance)) == 80, "GDExtensionMethodInfo.default_argument_count has unexpected offset % instead of 80", ((cast(*void)(*instance.default_argument_count)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionMethodInfo.default_argument_count)) == 4, "GDExtensionMethodInfo.default_argument_count has unexpected size % instead of 4", size_of(type_of(GDExtensionMethodInfo.default_argument_count)));
+        assert(((cast(*void)(*instance.default_arguments)) - cast(*void)(*instance)) == 88, "GDExtensionMethodInfo.default_arguments has unexpected offset % instead of 88", ((cast(*void)(*instance.default_arguments)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionMethodInfo.default_arguments)) == 8, "GDExtensionMethodInfo.default_arguments has unexpected size % instead of 8", size_of(type_of(GDExtensionMethodInfo.default_arguments)));
+        assert(size_of(GDExtensionMethodInfo) == 96, "GDExtensionMethodInfo has size % instead of 96", size_of(GDExtensionMethodInfo));
+    }
 
-    // {
-    //     instance: GDExtensionClassCreationInfo;
-    //     assert(((cast(*void)(*instance.is_virtual)) - cast(*void)(*instance)) == 0, "GDExtensionClassCreationInfo.is_virtual has unexpected offset % instead of 0", ((cast(*void)(*instance.is_virtual)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo.is_virtual)) == 1, "GDExtensionClassCreationInfo.is_virtual has unexpected size % instead of 1", size_of(type_of(GDExtensionClassCreationInfo.is_virtual)));
-    //     assert(((cast(*void)(*instance.is_abstract)) - cast(*void)(*instance)) == 1, "GDExtensionClassCreationInfo.is_abstract has unexpected offset % instead of 1", ((cast(*void)(*instance.is_abstract)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo.is_abstract)) == 1, "GDExtensionClassCreationInfo.is_abstract has unexpected size % instead of 1", size_of(type_of(GDExtensionClassCreationInfo.is_abstract)));
-    //     assert(((cast(*void)(*instance.set_func)) - cast(*void)(*instance)) == 8, "GDExtensionClassCreationInfo.set_func has unexpected offset % instead of 8", ((cast(*void)(*instance.set_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo.set_func)) == 8, "GDExtensionClassCreationInfo.set_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.set_func)));
-    //     assert(((cast(*void)(*instance.get_func)) - cast(*void)(*instance)) == 16, "GDExtensionClassCreationInfo.get_func has unexpected offset % instead of 16", ((cast(*void)(*instance.get_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo.get_func)) == 8, "GDExtensionClassCreationInfo.get_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.get_func)));
-    //     assert(((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)) == 24, "GDExtensionClassCreationInfo.get_property_list_func has unexpected offset % instead of 24", ((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo.get_property_list_func)) == 8, "GDExtensionClassCreationInfo.get_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.get_property_list_func)));
-    //     assert(((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)) == 32, "GDExtensionClassCreationInfo.free_property_list_func has unexpected offset % instead of 32", ((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo.free_property_list_func)) == 8, "GDExtensionClassCreationInfo.free_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.free_property_list_func)));
-    //     assert(((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)) == 40, "GDExtensionClassCreationInfo.property_can_revert_func has unexpected offset % instead of 40", ((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo.property_can_revert_func)) == 8, "GDExtensionClassCreationInfo.property_can_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.property_can_revert_func)));
-    //     assert(((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)) == 48, "GDExtensionClassCreationInfo.property_get_revert_func has unexpected offset % instead of 48", ((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo.property_get_revert_func)) == 8, "GDExtensionClassCreationInfo.property_get_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.property_get_revert_func)));
-    //     assert(((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)) == 56, "GDExtensionClassCreationInfo.notification_func has unexpected offset % instead of 56", ((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo.notification_func)) == 8, "GDExtensionClassCreationInfo.notification_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.notification_func)));
-    //     assert(((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)) == 64, "GDExtensionClassCreationInfo.to_string_func has unexpected offset % instead of 64", ((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo.to_string_func)) == 8, "GDExtensionClassCreationInfo.to_string_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.to_string_func)));
-    //     assert(((cast(*void)(*instance.reference_func)) - cast(*void)(*instance)) == 72, "GDExtensionClassCreationInfo.reference_func has unexpected offset % instead of 72", ((cast(*void)(*instance.reference_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo.reference_func)) == 8, "GDExtensionClassCreationInfo.reference_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.reference_func)));
-    //     assert(((cast(*void)(*instance.unreference_func)) - cast(*void)(*instance)) == 80, "GDExtensionClassCreationInfo.unreference_func has unexpected offset % instead of 80", ((cast(*void)(*instance.unreference_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo.unreference_func)) == 8, "GDExtensionClassCreationInfo.unreference_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.unreference_func)));
-    //     assert(((cast(*void)(*instance.create_instance_func)) - cast(*void)(*instance)) == 88, "GDExtensionClassCreationInfo.create_instance_func has unexpected offset % instead of 88", ((cast(*void)(*instance.create_instance_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo.create_instance_func)) == 8, "GDExtensionClassCreationInfo.create_instance_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.create_instance_func)));
-    //     assert(((cast(*void)(*instance.free_instance_func)) - cast(*void)(*instance)) == 96, "GDExtensionClassCreationInfo.free_instance_func has unexpected offset % instead of 96", ((cast(*void)(*instance.free_instance_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo.free_instance_func)) == 8, "GDExtensionClassCreationInfo.free_instance_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.free_instance_func)));
-    //     assert(((cast(*void)(*instance.get_virtual_func)) - cast(*void)(*instance)) == 104, "GDExtensionClassCreationInfo.get_virtual_func has unexpected offset % instead of 104", ((cast(*void)(*instance.get_virtual_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo.get_virtual_func)) == 8, "GDExtensionClassCreationInfo.get_virtual_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.get_virtual_func)));
-    //     assert(((cast(*void)(*instance.get_rid_func)) - cast(*void)(*instance)) == 112, "GDExtensionClassCreationInfo.get_rid_func has unexpected offset % instead of 112", ((cast(*void)(*instance.get_rid_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo.get_rid_func)) == 8, "GDExtensionClassCreationInfo.get_rid_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.get_rid_func)));
-    //     assert(((cast(*void)(*instance.class_userdata)) - cast(*void)(*instance)) == 120, "GDExtensionClassCreationInfo.class_userdata has unexpected offset % instead of 120", ((cast(*void)(*instance.class_userdata)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo.class_userdata)) == 8, "GDExtensionClassCreationInfo.class_userdata has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.class_userdata)));
-    //     assert(size_of(GDExtensionClassCreationInfo) == 128, "GDExtensionClassCreationInfo has size % instead of 128", size_of(GDExtensionClassCreationInfo));
-    // }
+    {
+        instance: GDExtensionClassCreationInfo;
+        assert(((cast(*void)(*instance.is_virtual)) - cast(*void)(*instance)) == 0, "GDExtensionClassCreationInfo.is_virtual has unexpected offset % instead of 0", ((cast(*void)(*instance.is_virtual)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo.is_virtual)) == 1, "GDExtensionClassCreationInfo.is_virtual has unexpected size % instead of 1", size_of(type_of(GDExtensionClassCreationInfo.is_virtual)));
+        assert(((cast(*void)(*instance.is_abstract)) - cast(*void)(*instance)) == 1, "GDExtensionClassCreationInfo.is_abstract has unexpected offset % instead of 1", ((cast(*void)(*instance.is_abstract)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo.is_abstract)) == 1, "GDExtensionClassCreationInfo.is_abstract has unexpected size % instead of 1", size_of(type_of(GDExtensionClassCreationInfo.is_abstract)));
+        assert(((cast(*void)(*instance.set_func)) - cast(*void)(*instance)) == 8, "GDExtensionClassCreationInfo.set_func has unexpected offset % instead of 8", ((cast(*void)(*instance.set_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo.set_func)) == 8, "GDExtensionClassCreationInfo.set_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.set_func)));
+        assert(((cast(*void)(*instance.get_func)) - cast(*void)(*instance)) == 16, "GDExtensionClassCreationInfo.get_func has unexpected offset % instead of 16", ((cast(*void)(*instance.get_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo.get_func)) == 8, "GDExtensionClassCreationInfo.get_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.get_func)));
+        assert(((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)) == 24, "GDExtensionClassCreationInfo.get_property_list_func has unexpected offset % instead of 24", ((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo.get_property_list_func)) == 8, "GDExtensionClassCreationInfo.get_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.get_property_list_func)));
+        assert(((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)) == 32, "GDExtensionClassCreationInfo.free_property_list_func has unexpected offset % instead of 32", ((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo.free_property_list_func)) == 8, "GDExtensionClassCreationInfo.free_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.free_property_list_func)));
+        assert(((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)) == 40, "GDExtensionClassCreationInfo.property_can_revert_func has unexpected offset % instead of 40", ((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo.property_can_revert_func)) == 8, "GDExtensionClassCreationInfo.property_can_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.property_can_revert_func)));
+        assert(((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)) == 48, "GDExtensionClassCreationInfo.property_get_revert_func has unexpected offset % instead of 48", ((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo.property_get_revert_func)) == 8, "GDExtensionClassCreationInfo.property_get_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.property_get_revert_func)));
+        assert(((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)) == 56, "GDExtensionClassCreationInfo.notification_func has unexpected offset % instead of 56", ((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo.notification_func)) == 8, "GDExtensionClassCreationInfo.notification_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.notification_func)));
+        assert(((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)) == 64, "GDExtensionClassCreationInfo.to_string_func has unexpected offset % instead of 64", ((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo.to_string_func)) == 8, "GDExtensionClassCreationInfo.to_string_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.to_string_func)));
+        assert(((cast(*void)(*instance.reference_func)) - cast(*void)(*instance)) == 72, "GDExtensionClassCreationInfo.reference_func has unexpected offset % instead of 72", ((cast(*void)(*instance.reference_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo.reference_func)) == 8, "GDExtensionClassCreationInfo.reference_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.reference_func)));
+        assert(((cast(*void)(*instance.unreference_func)) - cast(*void)(*instance)) == 80, "GDExtensionClassCreationInfo.unreference_func has unexpected offset % instead of 80", ((cast(*void)(*instance.unreference_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo.unreference_func)) == 8, "GDExtensionClassCreationInfo.unreference_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.unreference_func)));
+        assert(((cast(*void)(*instance.create_instance_func)) - cast(*void)(*instance)) == 88, "GDExtensionClassCreationInfo.create_instance_func has unexpected offset % instead of 88", ((cast(*void)(*instance.create_instance_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo.create_instance_func)) == 8, "GDExtensionClassCreationInfo.create_instance_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.create_instance_func)));
+        assert(((cast(*void)(*instance.free_instance_func)) - cast(*void)(*instance)) == 96, "GDExtensionClassCreationInfo.free_instance_func has unexpected offset % instead of 96", ((cast(*void)(*instance.free_instance_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo.free_instance_func)) == 8, "GDExtensionClassCreationInfo.free_instance_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.free_instance_func)));
+        assert(((cast(*void)(*instance.get_virtual_func)) - cast(*void)(*instance)) == 104, "GDExtensionClassCreationInfo.get_virtual_func has unexpected offset % instead of 104", ((cast(*void)(*instance.get_virtual_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo.get_virtual_func)) == 8, "GDExtensionClassCreationInfo.get_virtual_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.get_virtual_func)));
+        assert(((cast(*void)(*instance.get_rid_func)) - cast(*void)(*instance)) == 112, "GDExtensionClassCreationInfo.get_rid_func has unexpected offset % instead of 112", ((cast(*void)(*instance.get_rid_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo.get_rid_func)) == 8, "GDExtensionClassCreationInfo.get_rid_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.get_rid_func)));
+        assert(((cast(*void)(*instance.class_userdata)) - cast(*void)(*instance)) == 120, "GDExtensionClassCreationInfo.class_userdata has unexpected offset % instead of 120", ((cast(*void)(*instance.class_userdata)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo.class_userdata)) == 8, "GDExtensionClassCreationInfo.class_userdata has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo.class_userdata)));
+        assert(size_of(GDExtensionClassCreationInfo) == 128, "GDExtensionClassCreationInfo has size % instead of 128", size_of(GDExtensionClassCreationInfo));
+    }
 
-    // {
-    //     instance: GDExtensionClassCreationInfo2;
-    //     assert(((cast(*void)(*instance.is_virtual)) - cast(*void)(*instance)) == 0, "GDExtensionClassCreationInfo2.is_virtual has unexpected offset % instead of 0", ((cast(*void)(*instance.is_virtual)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo2.is_virtual)) == 1, "GDExtensionClassCreationInfo2.is_virtual has unexpected size % instead of 1", size_of(type_of(GDExtensionClassCreationInfo2.is_virtual)));
-    //     assert(((cast(*void)(*instance.is_abstract)) - cast(*void)(*instance)) == 1, "GDExtensionClassCreationInfo2.is_abstract has unexpected offset % instead of 1", ((cast(*void)(*instance.is_abstract)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo2.is_abstract)) == 1, "GDExtensionClassCreationInfo2.is_abstract has unexpected size % instead of 1", size_of(type_of(GDExtensionClassCreationInfo2.is_abstract)));
-    //     assert(((cast(*void)(*instance.is_exposed)) - cast(*void)(*instance)) == 2, "GDExtensionClassCreationInfo2.is_exposed has unexpected offset % instead of 2", ((cast(*void)(*instance.is_exposed)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo2.is_exposed)) == 1, "GDExtensionClassCreationInfo2.is_exposed has unexpected size % instead of 1", size_of(type_of(GDExtensionClassCreationInfo2.is_exposed)));
-    //     assert(((cast(*void)(*instance.set_func)) - cast(*void)(*instance)) == 8, "GDExtensionClassCreationInfo2.set_func has unexpected offset % instead of 8", ((cast(*void)(*instance.set_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo2.set_func)) == 8, "GDExtensionClassCreationInfo2.set_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.set_func)));
-    //     assert(((cast(*void)(*instance.get_func)) - cast(*void)(*instance)) == 16, "GDExtensionClassCreationInfo2.get_func has unexpected offset % instead of 16", ((cast(*void)(*instance.get_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo2.get_func)) == 8, "GDExtensionClassCreationInfo2.get_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.get_func)));
-    //     assert(((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)) == 24, "GDExtensionClassCreationInfo2.get_property_list_func has unexpected offset % instead of 24", ((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo2.get_property_list_func)) == 8, "GDExtensionClassCreationInfo2.get_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.get_property_list_func)));
-    //     assert(((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)) == 32, "GDExtensionClassCreationInfo2.free_property_list_func has unexpected offset % instead of 32", ((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo2.free_property_list_func)) == 8, "GDExtensionClassCreationInfo2.free_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.free_property_list_func)));
-    //     assert(((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)) == 40, "GDExtensionClassCreationInfo2.property_can_revert_func has unexpected offset % instead of 40", ((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo2.property_can_revert_func)) == 8, "GDExtensionClassCreationInfo2.property_can_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.property_can_revert_func)));
-    //     assert(((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)) == 48, "GDExtensionClassCreationInfo2.property_get_revert_func has unexpected offset % instead of 48", ((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo2.property_get_revert_func)) == 8, "GDExtensionClassCreationInfo2.property_get_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.property_get_revert_func)));
-    //     assert(((cast(*void)(*instance.validate_property_func)) - cast(*void)(*instance)) == 56, "GDExtensionClassCreationInfo2.validate_property_func has unexpected offset % instead of 56", ((cast(*void)(*instance.validate_property_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo2.validate_property_func)) == 8, "GDExtensionClassCreationInfo2.validate_property_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.validate_property_func)));
-    //     assert(((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)) == 64, "GDExtensionClassCreationInfo2.notification_func has unexpected offset % instead of 64", ((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo2.notification_func)) == 8, "GDExtensionClassCreationInfo2.notification_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.notification_func)));
-    //     assert(((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)) == 72, "GDExtensionClassCreationInfo2.to_string_func has unexpected offset % instead of 72", ((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo2.to_string_func)) == 8, "GDExtensionClassCreationInfo2.to_string_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.to_string_func)));
-    //     assert(((cast(*void)(*instance.reference_func)) - cast(*void)(*instance)) == 80, "GDExtensionClassCreationInfo2.reference_func has unexpected offset % instead of 80", ((cast(*void)(*instance.reference_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo2.reference_func)) == 8, "GDExtensionClassCreationInfo2.reference_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.reference_func)));
-    //     assert(((cast(*void)(*instance.unreference_func)) - cast(*void)(*instance)) == 88, "GDExtensionClassCreationInfo2.unreference_func has unexpected offset % instead of 88", ((cast(*void)(*instance.unreference_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo2.unreference_func)) == 8, "GDExtensionClassCreationInfo2.unreference_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.unreference_func)));
-    //     assert(((cast(*void)(*instance.create_instance_func)) - cast(*void)(*instance)) == 96, "GDExtensionClassCreationInfo2.create_instance_func has unexpected offset % instead of 96", ((cast(*void)(*instance.create_instance_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo2.create_instance_func)) == 8, "GDExtensionClassCreationInfo2.create_instance_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.create_instance_func)));
-    //     assert(((cast(*void)(*instance.free_instance_func)) - cast(*void)(*instance)) == 104, "GDExtensionClassCreationInfo2.free_instance_func has unexpected offset % instead of 104", ((cast(*void)(*instance.free_instance_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo2.free_instance_func)) == 8, "GDExtensionClassCreationInfo2.free_instance_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.free_instance_func)));
-    //     assert(((cast(*void)(*instance.recreate_instance_func)) - cast(*void)(*instance)) == 112, "GDExtensionClassCreationInfo2.recreate_instance_func has unexpected offset % instead of 112", ((cast(*void)(*instance.recreate_instance_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo2.recreate_instance_func)) == 8, "GDExtensionClassCreationInfo2.recreate_instance_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.recreate_instance_func)));
-    //     assert(((cast(*void)(*instance.get_virtual_func)) - cast(*void)(*instance)) == 120, "GDExtensionClassCreationInfo2.get_virtual_func has unexpected offset % instead of 120", ((cast(*void)(*instance.get_virtual_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo2.get_virtual_func)) == 8, "GDExtensionClassCreationInfo2.get_virtual_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.get_virtual_func)));
-    //     assert(((cast(*void)(*instance.get_virtual_call_data_func)) - cast(*void)(*instance)) == 128, "GDExtensionClassCreationInfo2.get_virtual_call_data_func has unexpected offset % instead of 128", ((cast(*void)(*instance.get_virtual_call_data_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo2.get_virtual_call_data_func)) == 8, "GDExtensionClassCreationInfo2.get_virtual_call_data_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.get_virtual_call_data_func)));
-    //     assert(((cast(*void)(*instance.call_virtual_with_data_func)) - cast(*void)(*instance)) == 136, "GDExtensionClassCreationInfo2.call_virtual_with_data_func has unexpected offset % instead of 136", ((cast(*void)(*instance.call_virtual_with_data_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo2.call_virtual_with_data_func)) == 8, "GDExtensionClassCreationInfo2.call_virtual_with_data_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.call_virtual_with_data_func)));
-    //     assert(((cast(*void)(*instance.get_rid_func)) - cast(*void)(*instance)) == 144, "GDExtensionClassCreationInfo2.get_rid_func has unexpected offset % instead of 144", ((cast(*void)(*instance.get_rid_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo2.get_rid_func)) == 8, "GDExtensionClassCreationInfo2.get_rid_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.get_rid_func)));
-    //     assert(((cast(*void)(*instance.class_userdata)) - cast(*void)(*instance)) == 152, "GDExtensionClassCreationInfo2.class_userdata has unexpected offset % instead of 152", ((cast(*void)(*instance.class_userdata)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo2.class_userdata)) == 8, "GDExtensionClassCreationInfo2.class_userdata has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.class_userdata)));
-    //     assert(size_of(GDExtensionClassCreationInfo2) == 160, "GDExtensionClassCreationInfo2 has size % instead of 160", size_of(GDExtensionClassCreationInfo2));
-    // }
+    {
+        instance: GDExtensionClassCreationInfo2;
+        assert(((cast(*void)(*instance.is_virtual)) - cast(*void)(*instance)) == 0, "GDExtensionClassCreationInfo2.is_virtual has unexpected offset % instead of 0", ((cast(*void)(*instance.is_virtual)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo2.is_virtual)) == 1, "GDExtensionClassCreationInfo2.is_virtual has unexpected size % instead of 1", size_of(type_of(GDExtensionClassCreationInfo2.is_virtual)));
+        assert(((cast(*void)(*instance.is_abstract)) - cast(*void)(*instance)) == 1, "GDExtensionClassCreationInfo2.is_abstract has unexpected offset % instead of 1", ((cast(*void)(*instance.is_abstract)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo2.is_abstract)) == 1, "GDExtensionClassCreationInfo2.is_abstract has unexpected size % instead of 1", size_of(type_of(GDExtensionClassCreationInfo2.is_abstract)));
+        assert(((cast(*void)(*instance.is_exposed)) - cast(*void)(*instance)) == 2, "GDExtensionClassCreationInfo2.is_exposed has unexpected offset % instead of 2", ((cast(*void)(*instance.is_exposed)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo2.is_exposed)) == 1, "GDExtensionClassCreationInfo2.is_exposed has unexpected size % instead of 1", size_of(type_of(GDExtensionClassCreationInfo2.is_exposed)));
+        assert(((cast(*void)(*instance.set_func)) - cast(*void)(*instance)) == 8, "GDExtensionClassCreationInfo2.set_func has unexpected offset % instead of 8", ((cast(*void)(*instance.set_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo2.set_func)) == 8, "GDExtensionClassCreationInfo2.set_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.set_func)));
+        assert(((cast(*void)(*instance.get_func)) - cast(*void)(*instance)) == 16, "GDExtensionClassCreationInfo2.get_func has unexpected offset % instead of 16", ((cast(*void)(*instance.get_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo2.get_func)) == 8, "GDExtensionClassCreationInfo2.get_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.get_func)));
+        assert(((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)) == 24, "GDExtensionClassCreationInfo2.get_property_list_func has unexpected offset % instead of 24", ((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo2.get_property_list_func)) == 8, "GDExtensionClassCreationInfo2.get_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.get_property_list_func)));
+        assert(((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)) == 32, "GDExtensionClassCreationInfo2.free_property_list_func has unexpected offset % instead of 32", ((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo2.free_property_list_func)) == 8, "GDExtensionClassCreationInfo2.free_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.free_property_list_func)));
+        assert(((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)) == 40, "GDExtensionClassCreationInfo2.property_can_revert_func has unexpected offset % instead of 40", ((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo2.property_can_revert_func)) == 8, "GDExtensionClassCreationInfo2.property_can_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.property_can_revert_func)));
+        assert(((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)) == 48, "GDExtensionClassCreationInfo2.property_get_revert_func has unexpected offset % instead of 48", ((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo2.property_get_revert_func)) == 8, "GDExtensionClassCreationInfo2.property_get_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.property_get_revert_func)));
+        assert(((cast(*void)(*instance.validate_property_func)) - cast(*void)(*instance)) == 56, "GDExtensionClassCreationInfo2.validate_property_func has unexpected offset % instead of 56", ((cast(*void)(*instance.validate_property_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo2.validate_property_func)) == 8, "GDExtensionClassCreationInfo2.validate_property_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.validate_property_func)));
+        assert(((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)) == 64, "GDExtensionClassCreationInfo2.notification_func has unexpected offset % instead of 64", ((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo2.notification_func)) == 8, "GDExtensionClassCreationInfo2.notification_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.notification_func)));
+        assert(((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)) == 72, "GDExtensionClassCreationInfo2.to_string_func has unexpected offset % instead of 72", ((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo2.to_string_func)) == 8, "GDExtensionClassCreationInfo2.to_string_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.to_string_func)));
+        assert(((cast(*void)(*instance.reference_func)) - cast(*void)(*instance)) == 80, "GDExtensionClassCreationInfo2.reference_func has unexpected offset % instead of 80", ((cast(*void)(*instance.reference_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo2.reference_func)) == 8, "GDExtensionClassCreationInfo2.reference_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.reference_func)));
+        assert(((cast(*void)(*instance.unreference_func)) - cast(*void)(*instance)) == 88, "GDExtensionClassCreationInfo2.unreference_func has unexpected offset % instead of 88", ((cast(*void)(*instance.unreference_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo2.unreference_func)) == 8, "GDExtensionClassCreationInfo2.unreference_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.unreference_func)));
+        assert(((cast(*void)(*instance.create_instance_func)) - cast(*void)(*instance)) == 96, "GDExtensionClassCreationInfo2.create_instance_func has unexpected offset % instead of 96", ((cast(*void)(*instance.create_instance_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo2.create_instance_func)) == 8, "GDExtensionClassCreationInfo2.create_instance_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.create_instance_func)));
+        assert(((cast(*void)(*instance.free_instance_func)) - cast(*void)(*instance)) == 104, "GDExtensionClassCreationInfo2.free_instance_func has unexpected offset % instead of 104", ((cast(*void)(*instance.free_instance_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo2.free_instance_func)) == 8, "GDExtensionClassCreationInfo2.free_instance_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.free_instance_func)));
+        assert(((cast(*void)(*instance.recreate_instance_func)) - cast(*void)(*instance)) == 112, "GDExtensionClassCreationInfo2.recreate_instance_func has unexpected offset % instead of 112", ((cast(*void)(*instance.recreate_instance_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo2.recreate_instance_func)) == 8, "GDExtensionClassCreationInfo2.recreate_instance_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.recreate_instance_func)));
+        assert(((cast(*void)(*instance.get_virtual_func)) - cast(*void)(*instance)) == 120, "GDExtensionClassCreationInfo2.get_virtual_func has unexpected offset % instead of 120", ((cast(*void)(*instance.get_virtual_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo2.get_virtual_func)) == 8, "GDExtensionClassCreationInfo2.get_virtual_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.get_virtual_func)));
+        assert(((cast(*void)(*instance.get_virtual_call_data_func)) - cast(*void)(*instance)) == 128, "GDExtensionClassCreationInfo2.get_virtual_call_data_func has unexpected offset % instead of 128", ((cast(*void)(*instance.get_virtual_call_data_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo2.get_virtual_call_data_func)) == 8, "GDExtensionClassCreationInfo2.get_virtual_call_data_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.get_virtual_call_data_func)));
+        assert(((cast(*void)(*instance.call_virtual_with_data_func)) - cast(*void)(*instance)) == 136, "GDExtensionClassCreationInfo2.call_virtual_with_data_func has unexpected offset % instead of 136", ((cast(*void)(*instance.call_virtual_with_data_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo2.call_virtual_with_data_func)) == 8, "GDExtensionClassCreationInfo2.call_virtual_with_data_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.call_virtual_with_data_func)));
+        assert(((cast(*void)(*instance.get_rid_func)) - cast(*void)(*instance)) == 144, "GDExtensionClassCreationInfo2.get_rid_func has unexpected offset % instead of 144", ((cast(*void)(*instance.get_rid_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo2.get_rid_func)) == 8, "GDExtensionClassCreationInfo2.get_rid_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.get_rid_func)));
+        assert(((cast(*void)(*instance.class_userdata)) - cast(*void)(*instance)) == 152, "GDExtensionClassCreationInfo2.class_userdata has unexpected offset % instead of 152", ((cast(*void)(*instance.class_userdata)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo2.class_userdata)) == 8, "GDExtensionClassCreationInfo2.class_userdata has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo2.class_userdata)));
+        assert(size_of(GDExtensionClassCreationInfo2) == 160, "GDExtensionClassCreationInfo2 has size % instead of 160", size_of(GDExtensionClassCreationInfo2));
+    }
 
-    // {
-    //     instance: GDExtensionClassCreationInfo3;
-    //     assert(((cast(*void)(*instance.is_virtual)) - cast(*void)(*instance)) == 0, "GDExtensionClassCreationInfo3.is_virtual has unexpected offset % instead of 0", ((cast(*void)(*instance.is_virtual)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo3.is_virtual)) == 1, "GDExtensionClassCreationInfo3.is_virtual has unexpected size % instead of 1", size_of(type_of(GDExtensionClassCreationInfo3.is_virtual)));
-    //     assert(((cast(*void)(*instance.is_abstract)) - cast(*void)(*instance)) == 1, "GDExtensionClassCreationInfo3.is_abstract has unexpected offset % instead of 1", ((cast(*void)(*instance.is_abstract)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo3.is_abstract)) == 1, "GDExtensionClassCreationInfo3.is_abstract has unexpected size % instead of 1", size_of(type_of(GDExtensionClassCreationInfo3.is_abstract)));
-    //     assert(((cast(*void)(*instance.is_exposed)) - cast(*void)(*instance)) == 2, "GDExtensionClassCreationInfo3.is_exposed has unexpected offset % instead of 2", ((cast(*void)(*instance.is_exposed)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo3.is_exposed)) == 1, "GDExtensionClassCreationInfo3.is_exposed has unexpected size % instead of 1", size_of(type_of(GDExtensionClassCreationInfo3.is_exposed)));
-    //     assert(((cast(*void)(*instance.is_runtime)) - cast(*void)(*instance)) == 3, "GDExtensionClassCreationInfo3.is_runtime has unexpected offset % instead of 3", ((cast(*void)(*instance.is_runtime)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo3.is_runtime)) == 1, "GDExtensionClassCreationInfo3.is_runtime has unexpected size % instead of 1", size_of(type_of(GDExtensionClassCreationInfo3.is_runtime)));
-    //     assert(((cast(*void)(*instance.set_func)) - cast(*void)(*instance)) == 8, "GDExtensionClassCreationInfo3.set_func has unexpected offset % instead of 8", ((cast(*void)(*instance.set_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo3.set_func)) == 8, "GDExtensionClassCreationInfo3.set_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.set_func)));
-    //     assert(((cast(*void)(*instance.get_func)) - cast(*void)(*instance)) == 16, "GDExtensionClassCreationInfo3.get_func has unexpected offset % instead of 16", ((cast(*void)(*instance.get_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo3.get_func)) == 8, "GDExtensionClassCreationInfo3.get_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.get_func)));
-    //     assert(((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)) == 24, "GDExtensionClassCreationInfo3.get_property_list_func has unexpected offset % instead of 24", ((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo3.get_property_list_func)) == 8, "GDExtensionClassCreationInfo3.get_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.get_property_list_func)));
-    //     assert(((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)) == 32, "GDExtensionClassCreationInfo3.free_property_list_func has unexpected offset % instead of 32", ((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo3.free_property_list_func)) == 8, "GDExtensionClassCreationInfo3.free_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.free_property_list_func)));
-    //     assert(((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)) == 40, "GDExtensionClassCreationInfo3.property_can_revert_func has unexpected offset % instead of 40", ((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo3.property_can_revert_func)) == 8, "GDExtensionClassCreationInfo3.property_can_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.property_can_revert_func)));
-    //     assert(((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)) == 48, "GDExtensionClassCreationInfo3.property_get_revert_func has unexpected offset % instead of 48", ((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo3.property_get_revert_func)) == 8, "GDExtensionClassCreationInfo3.property_get_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.property_get_revert_func)));
-    //     assert(((cast(*void)(*instance.validate_property_func)) - cast(*void)(*instance)) == 56, "GDExtensionClassCreationInfo3.validate_property_func has unexpected offset % instead of 56", ((cast(*void)(*instance.validate_property_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo3.validate_property_func)) == 8, "GDExtensionClassCreationInfo3.validate_property_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.validate_property_func)));
-    //     assert(((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)) == 64, "GDExtensionClassCreationInfo3.notification_func has unexpected offset % instead of 64", ((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo3.notification_func)) == 8, "GDExtensionClassCreationInfo3.notification_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.notification_func)));
-    //     assert(((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)) == 72, "GDExtensionClassCreationInfo3.to_string_func has unexpected offset % instead of 72", ((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo3.to_string_func)) == 8, "GDExtensionClassCreationInfo3.to_string_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.to_string_func)));
-    //     assert(((cast(*void)(*instance.reference_func)) - cast(*void)(*instance)) == 80, "GDExtensionClassCreationInfo3.reference_func has unexpected offset % instead of 80", ((cast(*void)(*instance.reference_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo3.reference_func)) == 8, "GDExtensionClassCreationInfo3.reference_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.reference_func)));
-    //     assert(((cast(*void)(*instance.unreference_func)) - cast(*void)(*instance)) == 88, "GDExtensionClassCreationInfo3.unreference_func has unexpected offset % instead of 88", ((cast(*void)(*instance.unreference_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo3.unreference_func)) == 8, "GDExtensionClassCreationInfo3.unreference_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.unreference_func)));
-    //     assert(((cast(*void)(*instance.create_instance_func)) - cast(*void)(*instance)) == 96, "GDExtensionClassCreationInfo3.create_instance_func has unexpected offset % instead of 96", ((cast(*void)(*instance.create_instance_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo3.create_instance_func)) == 8, "GDExtensionClassCreationInfo3.create_instance_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.create_instance_func)));
-    //     assert(((cast(*void)(*instance.free_instance_func)) - cast(*void)(*instance)) == 104, "GDExtensionClassCreationInfo3.free_instance_func has unexpected offset % instead of 104", ((cast(*void)(*instance.free_instance_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo3.free_instance_func)) == 8, "GDExtensionClassCreationInfo3.free_instance_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.free_instance_func)));
-    //     assert(((cast(*void)(*instance.recreate_instance_func)) - cast(*void)(*instance)) == 112, "GDExtensionClassCreationInfo3.recreate_instance_func has unexpected offset % instead of 112", ((cast(*void)(*instance.recreate_instance_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo3.recreate_instance_func)) == 8, "GDExtensionClassCreationInfo3.recreate_instance_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.recreate_instance_func)));
-    //     assert(((cast(*void)(*instance.get_virtual_func)) - cast(*void)(*instance)) == 120, "GDExtensionClassCreationInfo3.get_virtual_func has unexpected offset % instead of 120", ((cast(*void)(*instance.get_virtual_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo3.get_virtual_func)) == 8, "GDExtensionClassCreationInfo3.get_virtual_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.get_virtual_func)));
-    //     assert(((cast(*void)(*instance.get_virtual_call_data_func)) - cast(*void)(*instance)) == 128, "GDExtensionClassCreationInfo3.get_virtual_call_data_func has unexpected offset % instead of 128", ((cast(*void)(*instance.get_virtual_call_data_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo3.get_virtual_call_data_func)) == 8, "GDExtensionClassCreationInfo3.get_virtual_call_data_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.get_virtual_call_data_func)));
-    //     assert(((cast(*void)(*instance.call_virtual_with_data_func)) - cast(*void)(*instance)) == 136, "GDExtensionClassCreationInfo3.call_virtual_with_data_func has unexpected offset % instead of 136", ((cast(*void)(*instance.call_virtual_with_data_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo3.call_virtual_with_data_func)) == 8, "GDExtensionClassCreationInfo3.call_virtual_with_data_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.call_virtual_with_data_func)));
-    //     assert(((cast(*void)(*instance.get_rid_func)) - cast(*void)(*instance)) == 144, "GDExtensionClassCreationInfo3.get_rid_func has unexpected offset % instead of 144", ((cast(*void)(*instance.get_rid_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo3.get_rid_func)) == 8, "GDExtensionClassCreationInfo3.get_rid_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.get_rid_func)));
-    //     assert(((cast(*void)(*instance.class_userdata)) - cast(*void)(*instance)) == 152, "GDExtensionClassCreationInfo3.class_userdata has unexpected offset % instead of 152", ((cast(*void)(*instance.class_userdata)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassCreationInfo3.class_userdata)) == 8, "GDExtensionClassCreationInfo3.class_userdata has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.class_userdata)));
-    //     assert(size_of(GDExtensionClassCreationInfo3) == 160, "GDExtensionClassCreationInfo3 has size % instead of 160", size_of(GDExtensionClassCreationInfo3));
-    // }
+    {
+        instance: GDExtensionClassCreationInfo3;
+        assert(((cast(*void)(*instance.is_virtual)) - cast(*void)(*instance)) == 0, "GDExtensionClassCreationInfo3.is_virtual has unexpected offset % instead of 0", ((cast(*void)(*instance.is_virtual)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo3.is_virtual)) == 1, "GDExtensionClassCreationInfo3.is_virtual has unexpected size % instead of 1", size_of(type_of(GDExtensionClassCreationInfo3.is_virtual)));
+        assert(((cast(*void)(*instance.is_abstract)) - cast(*void)(*instance)) == 1, "GDExtensionClassCreationInfo3.is_abstract has unexpected offset % instead of 1", ((cast(*void)(*instance.is_abstract)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo3.is_abstract)) == 1, "GDExtensionClassCreationInfo3.is_abstract has unexpected size % instead of 1", size_of(type_of(GDExtensionClassCreationInfo3.is_abstract)));
+        assert(((cast(*void)(*instance.is_exposed)) - cast(*void)(*instance)) == 2, "GDExtensionClassCreationInfo3.is_exposed has unexpected offset % instead of 2", ((cast(*void)(*instance.is_exposed)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo3.is_exposed)) == 1, "GDExtensionClassCreationInfo3.is_exposed has unexpected size % instead of 1", size_of(type_of(GDExtensionClassCreationInfo3.is_exposed)));
+        assert(((cast(*void)(*instance.is_runtime)) - cast(*void)(*instance)) == 3, "GDExtensionClassCreationInfo3.is_runtime has unexpected offset % instead of 3", ((cast(*void)(*instance.is_runtime)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo3.is_runtime)) == 1, "GDExtensionClassCreationInfo3.is_runtime has unexpected size % instead of 1", size_of(type_of(GDExtensionClassCreationInfo3.is_runtime)));
+        assert(((cast(*void)(*instance.set_func)) - cast(*void)(*instance)) == 8, "GDExtensionClassCreationInfo3.set_func has unexpected offset % instead of 8", ((cast(*void)(*instance.set_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo3.set_func)) == 8, "GDExtensionClassCreationInfo3.set_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.set_func)));
+        assert(((cast(*void)(*instance.get_func)) - cast(*void)(*instance)) == 16, "GDExtensionClassCreationInfo3.get_func has unexpected offset % instead of 16", ((cast(*void)(*instance.get_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo3.get_func)) == 8, "GDExtensionClassCreationInfo3.get_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.get_func)));
+        assert(((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)) == 24, "GDExtensionClassCreationInfo3.get_property_list_func has unexpected offset % instead of 24", ((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo3.get_property_list_func)) == 8, "GDExtensionClassCreationInfo3.get_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.get_property_list_func)));
+        assert(((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)) == 32, "GDExtensionClassCreationInfo3.free_property_list_func has unexpected offset % instead of 32", ((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo3.free_property_list_func)) == 8, "GDExtensionClassCreationInfo3.free_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.free_property_list_func)));
+        assert(((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)) == 40, "GDExtensionClassCreationInfo3.property_can_revert_func has unexpected offset % instead of 40", ((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo3.property_can_revert_func)) == 8, "GDExtensionClassCreationInfo3.property_can_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.property_can_revert_func)));
+        assert(((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)) == 48, "GDExtensionClassCreationInfo3.property_get_revert_func has unexpected offset % instead of 48", ((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo3.property_get_revert_func)) == 8, "GDExtensionClassCreationInfo3.property_get_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.property_get_revert_func)));
+        assert(((cast(*void)(*instance.validate_property_func)) - cast(*void)(*instance)) == 56, "GDExtensionClassCreationInfo3.validate_property_func has unexpected offset % instead of 56", ((cast(*void)(*instance.validate_property_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo3.validate_property_func)) == 8, "GDExtensionClassCreationInfo3.validate_property_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.validate_property_func)));
+        assert(((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)) == 64, "GDExtensionClassCreationInfo3.notification_func has unexpected offset % instead of 64", ((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo3.notification_func)) == 8, "GDExtensionClassCreationInfo3.notification_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.notification_func)));
+        assert(((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)) == 72, "GDExtensionClassCreationInfo3.to_string_func has unexpected offset % instead of 72", ((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo3.to_string_func)) == 8, "GDExtensionClassCreationInfo3.to_string_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.to_string_func)));
+        assert(((cast(*void)(*instance.reference_func)) - cast(*void)(*instance)) == 80, "GDExtensionClassCreationInfo3.reference_func has unexpected offset % instead of 80", ((cast(*void)(*instance.reference_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo3.reference_func)) == 8, "GDExtensionClassCreationInfo3.reference_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.reference_func)));
+        assert(((cast(*void)(*instance.unreference_func)) - cast(*void)(*instance)) == 88, "GDExtensionClassCreationInfo3.unreference_func has unexpected offset % instead of 88", ((cast(*void)(*instance.unreference_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo3.unreference_func)) == 8, "GDExtensionClassCreationInfo3.unreference_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.unreference_func)));
+        assert(((cast(*void)(*instance.create_instance_func)) - cast(*void)(*instance)) == 96, "GDExtensionClassCreationInfo3.create_instance_func has unexpected offset % instead of 96", ((cast(*void)(*instance.create_instance_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo3.create_instance_func)) == 8, "GDExtensionClassCreationInfo3.create_instance_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.create_instance_func)));
+        assert(((cast(*void)(*instance.free_instance_func)) - cast(*void)(*instance)) == 104, "GDExtensionClassCreationInfo3.free_instance_func has unexpected offset % instead of 104", ((cast(*void)(*instance.free_instance_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo3.free_instance_func)) == 8, "GDExtensionClassCreationInfo3.free_instance_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.free_instance_func)));
+        assert(((cast(*void)(*instance.recreate_instance_func)) - cast(*void)(*instance)) == 112, "GDExtensionClassCreationInfo3.recreate_instance_func has unexpected offset % instead of 112", ((cast(*void)(*instance.recreate_instance_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo3.recreate_instance_func)) == 8, "GDExtensionClassCreationInfo3.recreate_instance_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.recreate_instance_func)));
+        assert(((cast(*void)(*instance.get_virtual_func)) - cast(*void)(*instance)) == 120, "GDExtensionClassCreationInfo3.get_virtual_func has unexpected offset % instead of 120", ((cast(*void)(*instance.get_virtual_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo3.get_virtual_func)) == 8, "GDExtensionClassCreationInfo3.get_virtual_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.get_virtual_func)));
+        assert(((cast(*void)(*instance.get_virtual_call_data_func)) - cast(*void)(*instance)) == 128, "GDExtensionClassCreationInfo3.get_virtual_call_data_func has unexpected offset % instead of 128", ((cast(*void)(*instance.get_virtual_call_data_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo3.get_virtual_call_data_func)) == 8, "GDExtensionClassCreationInfo3.get_virtual_call_data_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.get_virtual_call_data_func)));
+        assert(((cast(*void)(*instance.call_virtual_with_data_func)) - cast(*void)(*instance)) == 136, "GDExtensionClassCreationInfo3.call_virtual_with_data_func has unexpected offset % instead of 136", ((cast(*void)(*instance.call_virtual_with_data_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo3.call_virtual_with_data_func)) == 8, "GDExtensionClassCreationInfo3.call_virtual_with_data_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.call_virtual_with_data_func)));
+        assert(((cast(*void)(*instance.get_rid_func)) - cast(*void)(*instance)) == 144, "GDExtensionClassCreationInfo3.get_rid_func has unexpected offset % instead of 144", ((cast(*void)(*instance.get_rid_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo3.get_rid_func)) == 8, "GDExtensionClassCreationInfo3.get_rid_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.get_rid_func)));
+        assert(((cast(*void)(*instance.class_userdata)) - cast(*void)(*instance)) == 152, "GDExtensionClassCreationInfo3.class_userdata has unexpected offset % instead of 152", ((cast(*void)(*instance.class_userdata)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassCreationInfo3.class_userdata)) == 8, "GDExtensionClassCreationInfo3.class_userdata has unexpected size % instead of 8", size_of(type_of(GDExtensionClassCreationInfo3.class_userdata)));
+        assert(size_of(GDExtensionClassCreationInfo3) == 160, "GDExtensionClassCreationInfo3 has size % instead of 160", size_of(GDExtensionClassCreationInfo3));
+    }
 
-    // {
-    //     instance: GDExtensionClassMethodInfo;
-    //     assert(((cast(*void)(*instance.name)) - cast(*void)(*instance)) == 0, "GDExtensionClassMethodInfo.name has unexpected offset % instead of 0", ((cast(*void)(*instance.name)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassMethodInfo.name)) == 8, "GDExtensionClassMethodInfo.name has unexpected size % instead of 8", size_of(type_of(GDExtensionClassMethodInfo.name)));
-    //     assert(((cast(*void)(*instance.method_userdata)) - cast(*void)(*instance)) == 8, "GDExtensionClassMethodInfo.method_userdata has unexpected offset % instead of 8", ((cast(*void)(*instance.method_userdata)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassMethodInfo.method_userdata)) == 8, "GDExtensionClassMethodInfo.method_userdata has unexpected size % instead of 8", size_of(type_of(GDExtensionClassMethodInfo.method_userdata)));
-    //     assert(((cast(*void)(*instance.call_func)) - cast(*void)(*instance)) == 16, "GDExtensionClassMethodInfo.call_func has unexpected offset % instead of 16", ((cast(*void)(*instance.call_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassMethodInfo.call_func)) == 8, "GDExtensionClassMethodInfo.call_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassMethodInfo.call_func)));
-    //     assert(((cast(*void)(*instance.ptrcall_func)) - cast(*void)(*instance)) == 24, "GDExtensionClassMethodInfo.ptrcall_func has unexpected offset % instead of 24", ((cast(*void)(*instance.ptrcall_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassMethodInfo.ptrcall_func)) == 8, "GDExtensionClassMethodInfo.ptrcall_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassMethodInfo.ptrcall_func)));
-    //     assert(((cast(*void)(*instance.method_flags)) - cast(*void)(*instance)) == 32, "GDExtensionClassMethodInfo.method_flags has unexpected offset % instead of 32", ((cast(*void)(*instance.method_flags)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassMethodInfo.method_flags)) == 4, "GDExtensionClassMethodInfo.method_flags has unexpected size % instead of 4", size_of(type_of(GDExtensionClassMethodInfo.method_flags)));
-    //     assert(((cast(*void)(*instance.has_return_value)) - cast(*void)(*instance)) == 36, "GDExtensionClassMethodInfo.has_return_value has unexpected offset % instead of 36", ((cast(*void)(*instance.has_return_value)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassMethodInfo.has_return_value)) == 1, "GDExtensionClassMethodInfo.has_return_value has unexpected size % instead of 1", size_of(type_of(GDExtensionClassMethodInfo.has_return_value)));
-    //     assert(((cast(*void)(*instance.return_value_info)) - cast(*void)(*instance)) == 40, "GDExtensionClassMethodInfo.return_value_info has unexpected offset % instead of 40", ((cast(*void)(*instance.return_value_info)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassMethodInfo.return_value_info)) == 8, "GDExtensionClassMethodInfo.return_value_info has unexpected size % instead of 8", size_of(type_of(GDExtensionClassMethodInfo.return_value_info)));
-    //     assert(((cast(*void)(*instance.return_value_metadata)) - cast(*void)(*instance)) == 48, "GDExtensionClassMethodInfo.return_value_metadata has unexpected offset % instead of 48", ((cast(*void)(*instance.return_value_metadata)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassMethodInfo.return_value_metadata)) == 4, "GDExtensionClassMethodInfo.return_value_metadata has unexpected size % instead of 4", size_of(type_of(GDExtensionClassMethodInfo.return_value_metadata)));
-    //     assert(((cast(*void)(*instance.argument_count)) - cast(*void)(*instance)) == 52, "GDExtensionClassMethodInfo.argument_count has unexpected offset % instead of 52", ((cast(*void)(*instance.argument_count)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassMethodInfo.argument_count)) == 4, "GDExtensionClassMethodInfo.argument_count has unexpected size % instead of 4", size_of(type_of(GDExtensionClassMethodInfo.argument_count)));
-    //     assert(((cast(*void)(*instance.arguments_info)) - cast(*void)(*instance)) == 56, "GDExtensionClassMethodInfo.arguments_info has unexpected offset % instead of 56", ((cast(*void)(*instance.arguments_info)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassMethodInfo.arguments_info)) == 8, "GDExtensionClassMethodInfo.arguments_info has unexpected size % instead of 8", size_of(type_of(GDExtensionClassMethodInfo.arguments_info)));
-    //     assert(((cast(*void)(*instance.arguments_metadata)) - cast(*void)(*instance)) == 64, "GDExtensionClassMethodInfo.arguments_metadata has unexpected offset % instead of 64", ((cast(*void)(*instance.arguments_metadata)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassMethodInfo.arguments_metadata)) == 8, "GDExtensionClassMethodInfo.arguments_metadata has unexpected size % instead of 8", size_of(type_of(GDExtensionClassMethodInfo.arguments_metadata)));
-    //     assert(((cast(*void)(*instance.default_argument_count)) - cast(*void)(*instance)) == 72, "GDExtensionClassMethodInfo.default_argument_count has unexpected offset % instead of 72", ((cast(*void)(*instance.default_argument_count)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassMethodInfo.default_argument_count)) == 4, "GDExtensionClassMethodInfo.default_argument_count has unexpected size % instead of 4", size_of(type_of(GDExtensionClassMethodInfo.default_argument_count)));
-    //     assert(((cast(*void)(*instance.default_arguments)) - cast(*void)(*instance)) == 80, "GDExtensionClassMethodInfo.default_arguments has unexpected offset % instead of 80", ((cast(*void)(*instance.default_arguments)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassMethodInfo.default_arguments)) == 8, "GDExtensionClassMethodInfo.default_arguments has unexpected size % instead of 8", size_of(type_of(GDExtensionClassMethodInfo.default_arguments)));
-    //     assert(size_of(GDExtensionClassMethodInfo) == 88, "GDExtensionClassMethodInfo has size % instead of 88", size_of(GDExtensionClassMethodInfo));
-    // }
+    {
+        instance: GDExtensionClassMethodInfo;
+        assert(((cast(*void)(*instance.name)) - cast(*void)(*instance)) == 0, "GDExtensionClassMethodInfo.name has unexpected offset % instead of 0", ((cast(*void)(*instance.name)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassMethodInfo.name)) == 8, "GDExtensionClassMethodInfo.name has unexpected size % instead of 8", size_of(type_of(GDExtensionClassMethodInfo.name)));
+        assert(((cast(*void)(*instance.method_userdata)) - cast(*void)(*instance)) == 8, "GDExtensionClassMethodInfo.method_userdata has unexpected offset % instead of 8", ((cast(*void)(*instance.method_userdata)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassMethodInfo.method_userdata)) == 8, "GDExtensionClassMethodInfo.method_userdata has unexpected size % instead of 8", size_of(type_of(GDExtensionClassMethodInfo.method_userdata)));
+        assert(((cast(*void)(*instance.call_func)) - cast(*void)(*instance)) == 16, "GDExtensionClassMethodInfo.call_func has unexpected offset % instead of 16", ((cast(*void)(*instance.call_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassMethodInfo.call_func)) == 8, "GDExtensionClassMethodInfo.call_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassMethodInfo.call_func)));
+        assert(((cast(*void)(*instance.ptrcall_func)) - cast(*void)(*instance)) == 24, "GDExtensionClassMethodInfo.ptrcall_func has unexpected offset % instead of 24", ((cast(*void)(*instance.ptrcall_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassMethodInfo.ptrcall_func)) == 8, "GDExtensionClassMethodInfo.ptrcall_func has unexpected size % instead of 8", size_of(type_of(GDExtensionClassMethodInfo.ptrcall_func)));
+        assert(((cast(*void)(*instance.method_flags)) - cast(*void)(*instance)) == 32, "GDExtensionClassMethodInfo.method_flags has unexpected offset % instead of 32", ((cast(*void)(*instance.method_flags)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassMethodInfo.method_flags)) == 4, "GDExtensionClassMethodInfo.method_flags has unexpected size % instead of 4", size_of(type_of(GDExtensionClassMethodInfo.method_flags)));
+        assert(((cast(*void)(*instance.has_return_value)) - cast(*void)(*instance)) == 36, "GDExtensionClassMethodInfo.has_return_value has unexpected offset % instead of 36", ((cast(*void)(*instance.has_return_value)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassMethodInfo.has_return_value)) == 1, "GDExtensionClassMethodInfo.has_return_value has unexpected size % instead of 1", size_of(type_of(GDExtensionClassMethodInfo.has_return_value)));
+        assert(((cast(*void)(*instance.return_value_info)) - cast(*void)(*instance)) == 40, "GDExtensionClassMethodInfo.return_value_info has unexpected offset % instead of 40", ((cast(*void)(*instance.return_value_info)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassMethodInfo.return_value_info)) == 8, "GDExtensionClassMethodInfo.return_value_info has unexpected size % instead of 8", size_of(type_of(GDExtensionClassMethodInfo.return_value_info)));
+        assert(((cast(*void)(*instance.return_value_metadata)) - cast(*void)(*instance)) == 48, "GDExtensionClassMethodInfo.return_value_metadata has unexpected offset % instead of 48", ((cast(*void)(*instance.return_value_metadata)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassMethodInfo.return_value_metadata)) == 4, "GDExtensionClassMethodInfo.return_value_metadata has unexpected size % instead of 4", size_of(type_of(GDExtensionClassMethodInfo.return_value_metadata)));
+        assert(((cast(*void)(*instance.argument_count)) - cast(*void)(*instance)) == 52, "GDExtensionClassMethodInfo.argument_count has unexpected offset % instead of 52", ((cast(*void)(*instance.argument_count)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassMethodInfo.argument_count)) == 4, "GDExtensionClassMethodInfo.argument_count has unexpected size % instead of 4", size_of(type_of(GDExtensionClassMethodInfo.argument_count)));
+        assert(((cast(*void)(*instance.arguments_info)) - cast(*void)(*instance)) == 56, "GDExtensionClassMethodInfo.arguments_info has unexpected offset % instead of 56", ((cast(*void)(*instance.arguments_info)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassMethodInfo.arguments_info)) == 8, "GDExtensionClassMethodInfo.arguments_info has unexpected size % instead of 8", size_of(type_of(GDExtensionClassMethodInfo.arguments_info)));
+        assert(((cast(*void)(*instance.arguments_metadata)) - cast(*void)(*instance)) == 64, "GDExtensionClassMethodInfo.arguments_metadata has unexpected offset % instead of 64", ((cast(*void)(*instance.arguments_metadata)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassMethodInfo.arguments_metadata)) == 8, "GDExtensionClassMethodInfo.arguments_metadata has unexpected size % instead of 8", size_of(type_of(GDExtensionClassMethodInfo.arguments_metadata)));
+        assert(((cast(*void)(*instance.default_argument_count)) - cast(*void)(*instance)) == 72, "GDExtensionClassMethodInfo.default_argument_count has unexpected offset % instead of 72", ((cast(*void)(*instance.default_argument_count)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassMethodInfo.default_argument_count)) == 4, "GDExtensionClassMethodInfo.default_argument_count has unexpected size % instead of 4", size_of(type_of(GDExtensionClassMethodInfo.default_argument_count)));
+        assert(((cast(*void)(*instance.default_arguments)) - cast(*void)(*instance)) == 80, "GDExtensionClassMethodInfo.default_arguments has unexpected offset % instead of 80", ((cast(*void)(*instance.default_arguments)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassMethodInfo.default_arguments)) == 8, "GDExtensionClassMethodInfo.default_arguments has unexpected size % instead of 8", size_of(type_of(GDExtensionClassMethodInfo.default_arguments)));
+        assert(size_of(GDExtensionClassMethodInfo) == 88, "GDExtensionClassMethodInfo has size % instead of 88", size_of(GDExtensionClassMethodInfo));
+    }
 
-    // {
-    //     instance: GDExtensionClassVirtualMethodInfo;
-    //     assert(((cast(*void)(*instance.name)) - cast(*void)(*instance)) == 0, "GDExtensionClassVirtualMethodInfo.name has unexpected offset % instead of 0", ((cast(*void)(*instance.name)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassVirtualMethodInfo.name)) == 8, "GDExtensionClassVirtualMethodInfo.name has unexpected size % instead of 8", size_of(type_of(GDExtensionClassVirtualMethodInfo.name)));
-    //     assert(((cast(*void)(*instance.method_flags)) - cast(*void)(*instance)) == 8, "GDExtensionClassVirtualMethodInfo.method_flags has unexpected offset % instead of 8", ((cast(*void)(*instance.method_flags)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassVirtualMethodInfo.method_flags)) == 4, "GDExtensionClassVirtualMethodInfo.method_flags has unexpected size % instead of 4", size_of(type_of(GDExtensionClassVirtualMethodInfo.method_flags)));
-    //     assert(((cast(*void)(*instance.return_value)) - cast(*void)(*instance)) == 16, "GDExtensionClassVirtualMethodInfo.return_value has unexpected offset % instead of 16", ((cast(*void)(*instance.return_value)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassVirtualMethodInfo.return_value)) == 48, "GDExtensionClassVirtualMethodInfo.return_value has unexpected size % instead of 48", size_of(type_of(GDExtensionClassVirtualMethodInfo.return_value)));
-    //     assert(((cast(*void)(*instance.return_value_metadata)) - cast(*void)(*instance)) == 64, "GDExtensionClassVirtualMethodInfo.return_value_metadata has unexpected offset % instead of 64", ((cast(*void)(*instance.return_value_metadata)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassVirtualMethodInfo.return_value_metadata)) == 4, "GDExtensionClassVirtualMethodInfo.return_value_metadata has unexpected size % instead of 4", size_of(type_of(GDExtensionClassVirtualMethodInfo.return_value_metadata)));
-    //     assert(((cast(*void)(*instance.argument_count)) - cast(*void)(*instance)) == 68, "GDExtensionClassVirtualMethodInfo.argument_count has unexpected offset % instead of 68", ((cast(*void)(*instance.argument_count)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassVirtualMethodInfo.argument_count)) == 4, "GDExtensionClassVirtualMethodInfo.argument_count has unexpected size % instead of 4", size_of(type_of(GDExtensionClassVirtualMethodInfo.argument_count)));
-    //     assert(((cast(*void)(*instance.arguments)) - cast(*void)(*instance)) == 72, "GDExtensionClassVirtualMethodInfo.arguments has unexpected offset % instead of 72", ((cast(*void)(*instance.arguments)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassVirtualMethodInfo.arguments)) == 8, "GDExtensionClassVirtualMethodInfo.arguments has unexpected size % instead of 8", size_of(type_of(GDExtensionClassVirtualMethodInfo.arguments)));
-    //     assert(((cast(*void)(*instance.arguments_metadata)) - cast(*void)(*instance)) == 80, "GDExtensionClassVirtualMethodInfo.arguments_metadata has unexpected offset % instead of 80", ((cast(*void)(*instance.arguments_metadata)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionClassVirtualMethodInfo.arguments_metadata)) == 8, "GDExtensionClassVirtualMethodInfo.arguments_metadata has unexpected size % instead of 8", size_of(type_of(GDExtensionClassVirtualMethodInfo.arguments_metadata)));
-    //     assert(size_of(GDExtensionClassVirtualMethodInfo) == 88, "GDExtensionClassVirtualMethodInfo has size % instead of 88", size_of(GDExtensionClassVirtualMethodInfo));
-    // }
+    {
+        instance: GDExtensionClassVirtualMethodInfo;
+        assert(((cast(*void)(*instance.name)) - cast(*void)(*instance)) == 0, "GDExtensionClassVirtualMethodInfo.name has unexpected offset % instead of 0", ((cast(*void)(*instance.name)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassVirtualMethodInfo.name)) == 8, "GDExtensionClassVirtualMethodInfo.name has unexpected size % instead of 8", size_of(type_of(GDExtensionClassVirtualMethodInfo.name)));
+        assert(((cast(*void)(*instance.method_flags)) - cast(*void)(*instance)) == 8, "GDExtensionClassVirtualMethodInfo.method_flags has unexpected offset % instead of 8", ((cast(*void)(*instance.method_flags)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassVirtualMethodInfo.method_flags)) == 4, "GDExtensionClassVirtualMethodInfo.method_flags has unexpected size % instead of 4", size_of(type_of(GDExtensionClassVirtualMethodInfo.method_flags)));
+        assert(((cast(*void)(*instance.return_value)) - cast(*void)(*instance)) == 16, "GDExtensionClassVirtualMethodInfo.return_value has unexpected offset % instead of 16", ((cast(*void)(*instance.return_value)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassVirtualMethodInfo.return_value)) == 48, "GDExtensionClassVirtualMethodInfo.return_value has unexpected size % instead of 48", size_of(type_of(GDExtensionClassVirtualMethodInfo.return_value)));
+        assert(((cast(*void)(*instance.return_value_metadata)) - cast(*void)(*instance)) == 64, "GDExtensionClassVirtualMethodInfo.return_value_metadata has unexpected offset % instead of 64", ((cast(*void)(*instance.return_value_metadata)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassVirtualMethodInfo.return_value_metadata)) == 4, "GDExtensionClassVirtualMethodInfo.return_value_metadata has unexpected size % instead of 4", size_of(type_of(GDExtensionClassVirtualMethodInfo.return_value_metadata)));
+        assert(((cast(*void)(*instance.argument_count)) - cast(*void)(*instance)) == 68, "GDExtensionClassVirtualMethodInfo.argument_count has unexpected offset % instead of 68", ((cast(*void)(*instance.argument_count)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassVirtualMethodInfo.argument_count)) == 4, "GDExtensionClassVirtualMethodInfo.argument_count has unexpected size % instead of 4", size_of(type_of(GDExtensionClassVirtualMethodInfo.argument_count)));
+        assert(((cast(*void)(*instance.arguments)) - cast(*void)(*instance)) == 72, "GDExtensionClassVirtualMethodInfo.arguments has unexpected offset % instead of 72", ((cast(*void)(*instance.arguments)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassVirtualMethodInfo.arguments)) == 8, "GDExtensionClassVirtualMethodInfo.arguments has unexpected size % instead of 8", size_of(type_of(GDExtensionClassVirtualMethodInfo.arguments)));
+        assert(((cast(*void)(*instance.arguments_metadata)) - cast(*void)(*instance)) == 80, "GDExtensionClassVirtualMethodInfo.arguments_metadata has unexpected offset % instead of 80", ((cast(*void)(*instance.arguments_metadata)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionClassVirtualMethodInfo.arguments_metadata)) == 8, "GDExtensionClassVirtualMethodInfo.arguments_metadata has unexpected size % instead of 8", size_of(type_of(GDExtensionClassVirtualMethodInfo.arguments_metadata)));
+        assert(size_of(GDExtensionClassVirtualMethodInfo) == 88, "GDExtensionClassVirtualMethodInfo has size % instead of 88", size_of(GDExtensionClassVirtualMethodInfo));
+    }
 
-    // {
-    //     instance: GDExtensionCallableCustomInfo;
-    //     assert(((cast(*void)(*instance.callable_userdata)) - cast(*void)(*instance)) == 0, "GDExtensionCallableCustomInfo.callable_userdata has unexpected offset % instead of 0", ((cast(*void)(*instance.callable_userdata)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionCallableCustomInfo.callable_userdata)) == 8, "GDExtensionCallableCustomInfo.callable_userdata has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo.callable_userdata)));
-    //     assert(((cast(*void)(*instance.token)) - cast(*void)(*instance)) == 8, "GDExtensionCallableCustomInfo.token has unexpected offset % instead of 8", ((cast(*void)(*instance.token)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionCallableCustomInfo.token)) == 8, "GDExtensionCallableCustomInfo.token has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo.token)));
-    //     assert(((cast(*void)(*instance.object_id)) - cast(*void)(*instance)) == 16, "GDExtensionCallableCustomInfo.object_id has unexpected offset % instead of 16", ((cast(*void)(*instance.object_id)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionCallableCustomInfo.object_id)) == 8, "GDExtensionCallableCustomInfo.object_id has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo.object_id)));
-    //     assert(((cast(*void)(*instance.call_func)) - cast(*void)(*instance)) == 24, "GDExtensionCallableCustomInfo.call_func has unexpected offset % instead of 24", ((cast(*void)(*instance.call_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionCallableCustomInfo.call_func)) == 8, "GDExtensionCallableCustomInfo.call_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo.call_func)));
-    //     assert(((cast(*void)(*instance.is_valid_func)) - cast(*void)(*instance)) == 32, "GDExtensionCallableCustomInfo.is_valid_func has unexpected offset % instead of 32", ((cast(*void)(*instance.is_valid_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionCallableCustomInfo.is_valid_func)) == 8, "GDExtensionCallableCustomInfo.is_valid_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo.is_valid_func)));
-    //     assert(((cast(*void)(*instance.free_func)) - cast(*void)(*instance)) == 40, "GDExtensionCallableCustomInfo.free_func has unexpected offset % instead of 40", ((cast(*void)(*instance.free_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionCallableCustomInfo.free_func)) == 8, "GDExtensionCallableCustomInfo.free_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo.free_func)));
-    //     assert(((cast(*void)(*instance.hash_func)) - cast(*void)(*instance)) == 48, "GDExtensionCallableCustomInfo.hash_func has unexpected offset % instead of 48", ((cast(*void)(*instance.hash_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionCallableCustomInfo.hash_func)) == 8, "GDExtensionCallableCustomInfo.hash_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo.hash_func)));
-    //     assert(((cast(*void)(*instance.equal_func)) - cast(*void)(*instance)) == 56, "GDExtensionCallableCustomInfo.equal_func has unexpected offset % instead of 56", ((cast(*void)(*instance.equal_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionCallableCustomInfo.equal_func)) == 8, "GDExtensionCallableCustomInfo.equal_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo.equal_func)));
-    //     assert(((cast(*void)(*instance.less_than_func)) - cast(*void)(*instance)) == 64, "GDExtensionCallableCustomInfo.less_than_func has unexpected offset % instead of 64", ((cast(*void)(*instance.less_than_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionCallableCustomInfo.less_than_func)) == 8, "GDExtensionCallableCustomInfo.less_than_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo.less_than_func)));
-    //     assert(((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)) == 72, "GDExtensionCallableCustomInfo.to_string_func has unexpected offset % instead of 72", ((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionCallableCustomInfo.to_string_func)) == 8, "GDExtensionCallableCustomInfo.to_string_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo.to_string_func)));
-    //     assert(size_of(GDExtensionCallableCustomInfo) == 80, "GDExtensionCallableCustomInfo has size % instead of 80", size_of(GDExtensionCallableCustomInfo));
-    // }
+    {
+        instance: GDExtensionCallableCustomInfo;
+        assert(((cast(*void)(*instance.callable_userdata)) - cast(*void)(*instance)) == 0, "GDExtensionCallableCustomInfo.callable_userdata has unexpected offset % instead of 0", ((cast(*void)(*instance.callable_userdata)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionCallableCustomInfo.callable_userdata)) == 8, "GDExtensionCallableCustomInfo.callable_userdata has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo.callable_userdata)));
+        assert(((cast(*void)(*instance.token)) - cast(*void)(*instance)) == 8, "GDExtensionCallableCustomInfo.token has unexpected offset % instead of 8", ((cast(*void)(*instance.token)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionCallableCustomInfo.token)) == 8, "GDExtensionCallableCustomInfo.token has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo.token)));
+        assert(((cast(*void)(*instance.object_id)) - cast(*void)(*instance)) == 16, "GDExtensionCallableCustomInfo.object_id has unexpected offset % instead of 16", ((cast(*void)(*instance.object_id)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionCallableCustomInfo.object_id)) == 8, "GDExtensionCallableCustomInfo.object_id has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo.object_id)));
+        assert(((cast(*void)(*instance.call_func)) - cast(*void)(*instance)) == 24, "GDExtensionCallableCustomInfo.call_func has unexpected offset % instead of 24", ((cast(*void)(*instance.call_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionCallableCustomInfo.call_func)) == 8, "GDExtensionCallableCustomInfo.call_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo.call_func)));
+        assert(((cast(*void)(*instance.is_valid_func)) - cast(*void)(*instance)) == 32, "GDExtensionCallableCustomInfo.is_valid_func has unexpected offset % instead of 32", ((cast(*void)(*instance.is_valid_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionCallableCustomInfo.is_valid_func)) == 8, "GDExtensionCallableCustomInfo.is_valid_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo.is_valid_func)));
+        assert(((cast(*void)(*instance.free_func)) - cast(*void)(*instance)) == 40, "GDExtensionCallableCustomInfo.free_func has unexpected offset % instead of 40", ((cast(*void)(*instance.free_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionCallableCustomInfo.free_func)) == 8, "GDExtensionCallableCustomInfo.free_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo.free_func)));
+        assert(((cast(*void)(*instance.hash_func)) - cast(*void)(*instance)) == 48, "GDExtensionCallableCustomInfo.hash_func has unexpected offset % instead of 48", ((cast(*void)(*instance.hash_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionCallableCustomInfo.hash_func)) == 8, "GDExtensionCallableCustomInfo.hash_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo.hash_func)));
+        assert(((cast(*void)(*instance.equal_func)) - cast(*void)(*instance)) == 56, "GDExtensionCallableCustomInfo.equal_func has unexpected offset % instead of 56", ((cast(*void)(*instance.equal_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionCallableCustomInfo.equal_func)) == 8, "GDExtensionCallableCustomInfo.equal_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo.equal_func)));
+        assert(((cast(*void)(*instance.less_than_func)) - cast(*void)(*instance)) == 64, "GDExtensionCallableCustomInfo.less_than_func has unexpected offset % instead of 64", ((cast(*void)(*instance.less_than_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionCallableCustomInfo.less_than_func)) == 8, "GDExtensionCallableCustomInfo.less_than_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo.less_than_func)));
+        assert(((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)) == 72, "GDExtensionCallableCustomInfo.to_string_func has unexpected offset % instead of 72", ((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionCallableCustomInfo.to_string_func)) == 8, "GDExtensionCallableCustomInfo.to_string_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo.to_string_func)));
+        assert(size_of(GDExtensionCallableCustomInfo) == 80, "GDExtensionCallableCustomInfo has size % instead of 80", size_of(GDExtensionCallableCustomInfo));
+    }
 
-    // {
-    //     instance: GDExtensionCallableCustomInfo2;
-    //     assert(((cast(*void)(*instance.callable_userdata)) - cast(*void)(*instance)) == 0, "GDExtensionCallableCustomInfo2.callable_userdata has unexpected offset % instead of 0", ((cast(*void)(*instance.callable_userdata)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionCallableCustomInfo2.callable_userdata)) == 8, "GDExtensionCallableCustomInfo2.callable_userdata has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.callable_userdata)));
-    //     assert(((cast(*void)(*instance.token)) - cast(*void)(*instance)) == 8, "GDExtensionCallableCustomInfo2.token has unexpected offset % instead of 8", ((cast(*void)(*instance.token)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionCallableCustomInfo2.token)) == 8, "GDExtensionCallableCustomInfo2.token has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.token)));
-    //     assert(((cast(*void)(*instance.object_id)) - cast(*void)(*instance)) == 16, "GDExtensionCallableCustomInfo2.object_id has unexpected offset % instead of 16", ((cast(*void)(*instance.object_id)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionCallableCustomInfo2.object_id)) == 8, "GDExtensionCallableCustomInfo2.object_id has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.object_id)));
-    //     assert(((cast(*void)(*instance.call_func)) - cast(*void)(*instance)) == 24, "GDExtensionCallableCustomInfo2.call_func has unexpected offset % instead of 24", ((cast(*void)(*instance.call_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionCallableCustomInfo2.call_func)) == 8, "GDExtensionCallableCustomInfo2.call_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.call_func)));
-    //     assert(((cast(*void)(*instance.is_valid_func)) - cast(*void)(*instance)) == 32, "GDExtensionCallableCustomInfo2.is_valid_func has unexpected offset % instead of 32", ((cast(*void)(*instance.is_valid_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionCallableCustomInfo2.is_valid_func)) == 8, "GDExtensionCallableCustomInfo2.is_valid_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.is_valid_func)));
-    //     assert(((cast(*void)(*instance.free_func)) - cast(*void)(*instance)) == 40, "GDExtensionCallableCustomInfo2.free_func has unexpected offset % instead of 40", ((cast(*void)(*instance.free_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionCallableCustomInfo2.free_func)) == 8, "GDExtensionCallableCustomInfo2.free_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.free_func)));
-    //     assert(((cast(*void)(*instance.hash_func)) - cast(*void)(*instance)) == 48, "GDExtensionCallableCustomInfo2.hash_func has unexpected offset % instead of 48", ((cast(*void)(*instance.hash_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionCallableCustomInfo2.hash_func)) == 8, "GDExtensionCallableCustomInfo2.hash_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.hash_func)));
-    //     assert(((cast(*void)(*instance.equal_func)) - cast(*void)(*instance)) == 56, "GDExtensionCallableCustomInfo2.equal_func has unexpected offset % instead of 56", ((cast(*void)(*instance.equal_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionCallableCustomInfo2.equal_func)) == 8, "GDExtensionCallableCustomInfo2.equal_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.equal_func)));
-    //     assert(((cast(*void)(*instance.less_than_func)) - cast(*void)(*instance)) == 64, "GDExtensionCallableCustomInfo2.less_than_func has unexpected offset % instead of 64", ((cast(*void)(*instance.less_than_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionCallableCustomInfo2.less_than_func)) == 8, "GDExtensionCallableCustomInfo2.less_than_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.less_than_func)));
-    //     assert(((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)) == 72, "GDExtensionCallableCustomInfo2.to_string_func has unexpected offset % instead of 72", ((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionCallableCustomInfo2.to_string_func)) == 8, "GDExtensionCallableCustomInfo2.to_string_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.to_string_func)));
-    //     assert(((cast(*void)(*instance.get_argument_count_func)) - cast(*void)(*instance)) == 80, "GDExtensionCallableCustomInfo2.get_argument_count_func has unexpected offset % instead of 80", ((cast(*void)(*instance.get_argument_count_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionCallableCustomInfo2.get_argument_count_func)) == 8, "GDExtensionCallableCustomInfo2.get_argument_count_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.get_argument_count_func)));
-    //     assert(size_of(GDExtensionCallableCustomInfo2) == 88, "GDExtensionCallableCustomInfo2 has size % instead of 88", size_of(GDExtensionCallableCustomInfo2));
-    // }
+    {
+        instance: GDExtensionCallableCustomInfo2;
+        assert(((cast(*void)(*instance.callable_userdata)) - cast(*void)(*instance)) == 0, "GDExtensionCallableCustomInfo2.callable_userdata has unexpected offset % instead of 0", ((cast(*void)(*instance.callable_userdata)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionCallableCustomInfo2.callable_userdata)) == 8, "GDExtensionCallableCustomInfo2.callable_userdata has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.callable_userdata)));
+        assert(((cast(*void)(*instance.token)) - cast(*void)(*instance)) == 8, "GDExtensionCallableCustomInfo2.token has unexpected offset % instead of 8", ((cast(*void)(*instance.token)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionCallableCustomInfo2.token)) == 8, "GDExtensionCallableCustomInfo2.token has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.token)));
+        assert(((cast(*void)(*instance.object_id)) - cast(*void)(*instance)) == 16, "GDExtensionCallableCustomInfo2.object_id has unexpected offset % instead of 16", ((cast(*void)(*instance.object_id)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionCallableCustomInfo2.object_id)) == 8, "GDExtensionCallableCustomInfo2.object_id has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.object_id)));
+        assert(((cast(*void)(*instance.call_func)) - cast(*void)(*instance)) == 24, "GDExtensionCallableCustomInfo2.call_func has unexpected offset % instead of 24", ((cast(*void)(*instance.call_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionCallableCustomInfo2.call_func)) == 8, "GDExtensionCallableCustomInfo2.call_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.call_func)));
+        assert(((cast(*void)(*instance.is_valid_func)) - cast(*void)(*instance)) == 32, "GDExtensionCallableCustomInfo2.is_valid_func has unexpected offset % instead of 32", ((cast(*void)(*instance.is_valid_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionCallableCustomInfo2.is_valid_func)) == 8, "GDExtensionCallableCustomInfo2.is_valid_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.is_valid_func)));
+        assert(((cast(*void)(*instance.free_func)) - cast(*void)(*instance)) == 40, "GDExtensionCallableCustomInfo2.free_func has unexpected offset % instead of 40", ((cast(*void)(*instance.free_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionCallableCustomInfo2.free_func)) == 8, "GDExtensionCallableCustomInfo2.free_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.free_func)));
+        assert(((cast(*void)(*instance.hash_func)) - cast(*void)(*instance)) == 48, "GDExtensionCallableCustomInfo2.hash_func has unexpected offset % instead of 48", ((cast(*void)(*instance.hash_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionCallableCustomInfo2.hash_func)) == 8, "GDExtensionCallableCustomInfo2.hash_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.hash_func)));
+        assert(((cast(*void)(*instance.equal_func)) - cast(*void)(*instance)) == 56, "GDExtensionCallableCustomInfo2.equal_func has unexpected offset % instead of 56", ((cast(*void)(*instance.equal_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionCallableCustomInfo2.equal_func)) == 8, "GDExtensionCallableCustomInfo2.equal_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.equal_func)));
+        assert(((cast(*void)(*instance.less_than_func)) - cast(*void)(*instance)) == 64, "GDExtensionCallableCustomInfo2.less_than_func has unexpected offset % instead of 64", ((cast(*void)(*instance.less_than_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionCallableCustomInfo2.less_than_func)) == 8, "GDExtensionCallableCustomInfo2.less_than_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.less_than_func)));
+        assert(((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)) == 72, "GDExtensionCallableCustomInfo2.to_string_func has unexpected offset % instead of 72", ((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionCallableCustomInfo2.to_string_func)) == 8, "GDExtensionCallableCustomInfo2.to_string_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.to_string_func)));
+        assert(((cast(*void)(*instance.get_argument_count_func)) - cast(*void)(*instance)) == 80, "GDExtensionCallableCustomInfo2.get_argument_count_func has unexpected offset % instead of 80", ((cast(*void)(*instance.get_argument_count_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionCallableCustomInfo2.get_argument_count_func)) == 8, "GDExtensionCallableCustomInfo2.get_argument_count_func has unexpected size % instead of 8", size_of(type_of(GDExtensionCallableCustomInfo2.get_argument_count_func)));
+        assert(size_of(GDExtensionCallableCustomInfo2) == 88, "GDExtensionCallableCustomInfo2 has size % instead of 88", size_of(GDExtensionCallableCustomInfo2));
+    }
 
-    // {
-    //     instance: GDExtensionScriptInstanceInfo;
-    //     assert(((cast(*void)(*instance.set_func)) - cast(*void)(*instance)) == 0, "GDExtensionScriptInstanceInfo.set_func has unexpected offset % instead of 0", ((cast(*void)(*instance.set_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo.set_func)) == 8, "GDExtensionScriptInstanceInfo.set_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.set_func)));
-    //     assert(((cast(*void)(*instance.get_func)) - cast(*void)(*instance)) == 8, "GDExtensionScriptInstanceInfo.get_func has unexpected offset % instead of 8", ((cast(*void)(*instance.get_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo.get_func)) == 8, "GDExtensionScriptInstanceInfo.get_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.get_func)));
-    //     assert(((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)) == 16, "GDExtensionScriptInstanceInfo.get_property_list_func has unexpected offset % instead of 16", ((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo.get_property_list_func)) == 8, "GDExtensionScriptInstanceInfo.get_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.get_property_list_func)));
-    //     assert(((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)) == 24, "GDExtensionScriptInstanceInfo.free_property_list_func has unexpected offset % instead of 24", ((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo.free_property_list_func)) == 8, "GDExtensionScriptInstanceInfo.free_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.free_property_list_func)));
-    //     assert(((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)) == 32, "GDExtensionScriptInstanceInfo.property_can_revert_func has unexpected offset % instead of 32", ((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo.property_can_revert_func)) == 8, "GDExtensionScriptInstanceInfo.property_can_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.property_can_revert_func)));
-    //     assert(((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)) == 40, "GDExtensionScriptInstanceInfo.property_get_revert_func has unexpected offset % instead of 40", ((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo.property_get_revert_func)) == 8, "GDExtensionScriptInstanceInfo.property_get_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.property_get_revert_func)));
-    //     assert(((cast(*void)(*instance.get_owner_func)) - cast(*void)(*instance)) == 48, "GDExtensionScriptInstanceInfo.get_owner_func has unexpected offset % instead of 48", ((cast(*void)(*instance.get_owner_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo.get_owner_func)) == 8, "GDExtensionScriptInstanceInfo.get_owner_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.get_owner_func)));
-    //     assert(((cast(*void)(*instance.get_property_state_func)) - cast(*void)(*instance)) == 56, "GDExtensionScriptInstanceInfo.get_property_state_func has unexpected offset % instead of 56", ((cast(*void)(*instance.get_property_state_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo.get_property_state_func)) == 8, "GDExtensionScriptInstanceInfo.get_property_state_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.get_property_state_func)));
-    //     assert(((cast(*void)(*instance.get_method_list_func)) - cast(*void)(*instance)) == 64, "GDExtensionScriptInstanceInfo.get_method_list_func has unexpected offset % instead of 64", ((cast(*void)(*instance.get_method_list_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo.get_method_list_func)) == 8, "GDExtensionScriptInstanceInfo.get_method_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.get_method_list_func)));
-    //     assert(((cast(*void)(*instance.free_method_list_func)) - cast(*void)(*instance)) == 72, "GDExtensionScriptInstanceInfo.free_method_list_func has unexpected offset % instead of 72", ((cast(*void)(*instance.free_method_list_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo.free_method_list_func)) == 8, "GDExtensionScriptInstanceInfo.free_method_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.free_method_list_func)));
-    //     assert(((cast(*void)(*instance.get_property_type_func)) - cast(*void)(*instance)) == 80, "GDExtensionScriptInstanceInfo.get_property_type_func has unexpected offset % instead of 80", ((cast(*void)(*instance.get_property_type_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo.get_property_type_func)) == 8, "GDExtensionScriptInstanceInfo.get_property_type_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.get_property_type_func)));
-    //     assert(((cast(*void)(*instance.has_method_func)) - cast(*void)(*instance)) == 88, "GDExtensionScriptInstanceInfo.has_method_func has unexpected offset % instead of 88", ((cast(*void)(*instance.has_method_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo.has_method_func)) == 8, "GDExtensionScriptInstanceInfo.has_method_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.has_method_func)));
-    //     assert(((cast(*void)(*instance.call_func)) - cast(*void)(*instance)) == 96, "GDExtensionScriptInstanceInfo.call_func has unexpected offset % instead of 96", ((cast(*void)(*instance.call_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo.call_func)) == 8, "GDExtensionScriptInstanceInfo.call_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.call_func)));
-    //     assert(((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)) == 104, "GDExtensionScriptInstanceInfo.notification_func has unexpected offset % instead of 104", ((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo.notification_func)) == 8, "GDExtensionScriptInstanceInfo.notification_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.notification_func)));
-    //     assert(((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)) == 112, "GDExtensionScriptInstanceInfo.to_string_func has unexpected offset % instead of 112", ((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo.to_string_func)) == 8, "GDExtensionScriptInstanceInfo.to_string_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.to_string_func)));
-    //     assert(((cast(*void)(*instance.refcount_incremented_func)) - cast(*void)(*instance)) == 120, "GDExtensionScriptInstanceInfo.refcount_incremented_func has unexpected offset % instead of 120", ((cast(*void)(*instance.refcount_incremented_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo.refcount_incremented_func)) == 8, "GDExtensionScriptInstanceInfo.refcount_incremented_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.refcount_incremented_func)));
-    //     assert(((cast(*void)(*instance.refcount_decremented_func)) - cast(*void)(*instance)) == 128, "GDExtensionScriptInstanceInfo.refcount_decremented_func has unexpected offset % instead of 128", ((cast(*void)(*instance.refcount_decremented_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo.refcount_decremented_func)) == 8, "GDExtensionScriptInstanceInfo.refcount_decremented_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.refcount_decremented_func)));
-    //     assert(((cast(*void)(*instance.get_script_func)) - cast(*void)(*instance)) == 136, "GDExtensionScriptInstanceInfo.get_script_func has unexpected offset % instead of 136", ((cast(*void)(*instance.get_script_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo.get_script_func)) == 8, "GDExtensionScriptInstanceInfo.get_script_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.get_script_func)));
-    //     assert(((cast(*void)(*instance.is_placeholder_func)) - cast(*void)(*instance)) == 144, "GDExtensionScriptInstanceInfo.is_placeholder_func has unexpected offset % instead of 144", ((cast(*void)(*instance.is_placeholder_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo.is_placeholder_func)) == 8, "GDExtensionScriptInstanceInfo.is_placeholder_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.is_placeholder_func)));
-    //     assert(((cast(*void)(*instance.set_fallback_func)) - cast(*void)(*instance)) == 152, "GDExtensionScriptInstanceInfo.set_fallback_func has unexpected offset % instead of 152", ((cast(*void)(*instance.set_fallback_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo.set_fallback_func)) == 8, "GDExtensionScriptInstanceInfo.set_fallback_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.set_fallback_func)));
-    //     assert(((cast(*void)(*instance.get_fallback_func)) - cast(*void)(*instance)) == 160, "GDExtensionScriptInstanceInfo.get_fallback_func has unexpected offset % instead of 160", ((cast(*void)(*instance.get_fallback_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo.get_fallback_func)) == 8, "GDExtensionScriptInstanceInfo.get_fallback_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.get_fallback_func)));
-    //     assert(((cast(*void)(*instance.get_language_func)) - cast(*void)(*instance)) == 168, "GDExtensionScriptInstanceInfo.get_language_func has unexpected offset % instead of 168", ((cast(*void)(*instance.get_language_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo.get_language_func)) == 8, "GDExtensionScriptInstanceInfo.get_language_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.get_language_func)));
-    //     assert(((cast(*void)(*instance.free_func)) - cast(*void)(*instance)) == 176, "GDExtensionScriptInstanceInfo.free_func has unexpected offset % instead of 176", ((cast(*void)(*instance.free_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo.free_func)) == 8, "GDExtensionScriptInstanceInfo.free_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.free_func)));
-    //     assert(size_of(GDExtensionScriptInstanceInfo) == 184, "GDExtensionScriptInstanceInfo has size % instead of 184", size_of(GDExtensionScriptInstanceInfo));
-    // }
+    {
+        instance: GDExtensionScriptInstanceInfo;
+        assert(((cast(*void)(*instance.set_func)) - cast(*void)(*instance)) == 0, "GDExtensionScriptInstanceInfo.set_func has unexpected offset % instead of 0", ((cast(*void)(*instance.set_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo.set_func)) == 8, "GDExtensionScriptInstanceInfo.set_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.set_func)));
+        assert(((cast(*void)(*instance.get_func)) - cast(*void)(*instance)) == 8, "GDExtensionScriptInstanceInfo.get_func has unexpected offset % instead of 8", ((cast(*void)(*instance.get_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo.get_func)) == 8, "GDExtensionScriptInstanceInfo.get_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.get_func)));
+        assert(((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)) == 16, "GDExtensionScriptInstanceInfo.get_property_list_func has unexpected offset % instead of 16", ((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo.get_property_list_func)) == 8, "GDExtensionScriptInstanceInfo.get_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.get_property_list_func)));
+        assert(((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)) == 24, "GDExtensionScriptInstanceInfo.free_property_list_func has unexpected offset % instead of 24", ((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo.free_property_list_func)) == 8, "GDExtensionScriptInstanceInfo.free_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.free_property_list_func)));
+        assert(((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)) == 32, "GDExtensionScriptInstanceInfo.property_can_revert_func has unexpected offset % instead of 32", ((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo.property_can_revert_func)) == 8, "GDExtensionScriptInstanceInfo.property_can_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.property_can_revert_func)));
+        assert(((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)) == 40, "GDExtensionScriptInstanceInfo.property_get_revert_func has unexpected offset % instead of 40", ((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo.property_get_revert_func)) == 8, "GDExtensionScriptInstanceInfo.property_get_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.property_get_revert_func)));
+        assert(((cast(*void)(*instance.get_owner_func)) - cast(*void)(*instance)) == 48, "GDExtensionScriptInstanceInfo.get_owner_func has unexpected offset % instead of 48", ((cast(*void)(*instance.get_owner_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo.get_owner_func)) == 8, "GDExtensionScriptInstanceInfo.get_owner_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.get_owner_func)));
+        assert(((cast(*void)(*instance.get_property_state_func)) - cast(*void)(*instance)) == 56, "GDExtensionScriptInstanceInfo.get_property_state_func has unexpected offset % instead of 56", ((cast(*void)(*instance.get_property_state_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo.get_property_state_func)) == 8, "GDExtensionScriptInstanceInfo.get_property_state_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.get_property_state_func)));
+        assert(((cast(*void)(*instance.get_method_list_func)) - cast(*void)(*instance)) == 64, "GDExtensionScriptInstanceInfo.get_method_list_func has unexpected offset % instead of 64", ((cast(*void)(*instance.get_method_list_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo.get_method_list_func)) == 8, "GDExtensionScriptInstanceInfo.get_method_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.get_method_list_func)));
+        assert(((cast(*void)(*instance.free_method_list_func)) - cast(*void)(*instance)) == 72, "GDExtensionScriptInstanceInfo.free_method_list_func has unexpected offset % instead of 72", ((cast(*void)(*instance.free_method_list_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo.free_method_list_func)) == 8, "GDExtensionScriptInstanceInfo.free_method_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.free_method_list_func)));
+        assert(((cast(*void)(*instance.get_property_type_func)) - cast(*void)(*instance)) == 80, "GDExtensionScriptInstanceInfo.get_property_type_func has unexpected offset % instead of 80", ((cast(*void)(*instance.get_property_type_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo.get_property_type_func)) == 8, "GDExtensionScriptInstanceInfo.get_property_type_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.get_property_type_func)));
+        assert(((cast(*void)(*instance.has_method_func)) - cast(*void)(*instance)) == 88, "GDExtensionScriptInstanceInfo.has_method_func has unexpected offset % instead of 88", ((cast(*void)(*instance.has_method_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo.has_method_func)) == 8, "GDExtensionScriptInstanceInfo.has_method_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.has_method_func)));
+        assert(((cast(*void)(*instance.call_func)) - cast(*void)(*instance)) == 96, "GDExtensionScriptInstanceInfo.call_func has unexpected offset % instead of 96", ((cast(*void)(*instance.call_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo.call_func)) == 8, "GDExtensionScriptInstanceInfo.call_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.call_func)));
+        assert(((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)) == 104, "GDExtensionScriptInstanceInfo.notification_func has unexpected offset % instead of 104", ((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo.notification_func)) == 8, "GDExtensionScriptInstanceInfo.notification_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.notification_func)));
+        assert(((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)) == 112, "GDExtensionScriptInstanceInfo.to_string_func has unexpected offset % instead of 112", ((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo.to_string_func)) == 8, "GDExtensionScriptInstanceInfo.to_string_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.to_string_func)));
+        assert(((cast(*void)(*instance.refcount_incremented_func)) - cast(*void)(*instance)) == 120, "GDExtensionScriptInstanceInfo.refcount_incremented_func has unexpected offset % instead of 120", ((cast(*void)(*instance.refcount_incremented_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo.refcount_incremented_func)) == 8, "GDExtensionScriptInstanceInfo.refcount_incremented_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.refcount_incremented_func)));
+        assert(((cast(*void)(*instance.refcount_decremented_func)) - cast(*void)(*instance)) == 128, "GDExtensionScriptInstanceInfo.refcount_decremented_func has unexpected offset % instead of 128", ((cast(*void)(*instance.refcount_decremented_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo.refcount_decremented_func)) == 8, "GDExtensionScriptInstanceInfo.refcount_decremented_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.refcount_decremented_func)));
+        assert(((cast(*void)(*instance.get_script_func)) - cast(*void)(*instance)) == 136, "GDExtensionScriptInstanceInfo.get_script_func has unexpected offset % instead of 136", ((cast(*void)(*instance.get_script_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo.get_script_func)) == 8, "GDExtensionScriptInstanceInfo.get_script_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.get_script_func)));
+        assert(((cast(*void)(*instance.is_placeholder_func)) - cast(*void)(*instance)) == 144, "GDExtensionScriptInstanceInfo.is_placeholder_func has unexpected offset % instead of 144", ((cast(*void)(*instance.is_placeholder_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo.is_placeholder_func)) == 8, "GDExtensionScriptInstanceInfo.is_placeholder_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.is_placeholder_func)));
+        assert(((cast(*void)(*instance.set_fallback_func)) - cast(*void)(*instance)) == 152, "GDExtensionScriptInstanceInfo.set_fallback_func has unexpected offset % instead of 152", ((cast(*void)(*instance.set_fallback_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo.set_fallback_func)) == 8, "GDExtensionScriptInstanceInfo.set_fallback_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.set_fallback_func)));
+        assert(((cast(*void)(*instance.get_fallback_func)) - cast(*void)(*instance)) == 160, "GDExtensionScriptInstanceInfo.get_fallback_func has unexpected offset % instead of 160", ((cast(*void)(*instance.get_fallback_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo.get_fallback_func)) == 8, "GDExtensionScriptInstanceInfo.get_fallback_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.get_fallback_func)));
+        assert(((cast(*void)(*instance.get_language_func)) - cast(*void)(*instance)) == 168, "GDExtensionScriptInstanceInfo.get_language_func has unexpected offset % instead of 168", ((cast(*void)(*instance.get_language_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo.get_language_func)) == 8, "GDExtensionScriptInstanceInfo.get_language_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.get_language_func)));
+        assert(((cast(*void)(*instance.free_func)) - cast(*void)(*instance)) == 176, "GDExtensionScriptInstanceInfo.free_func has unexpected offset % instead of 176", ((cast(*void)(*instance.free_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo.free_func)) == 8, "GDExtensionScriptInstanceInfo.free_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo.free_func)));
+        assert(size_of(GDExtensionScriptInstanceInfo) == 184, "GDExtensionScriptInstanceInfo has size % instead of 184", size_of(GDExtensionScriptInstanceInfo));
+    }
 
-    // {
-    //     instance: GDExtensionScriptInstanceInfo2;
-    //     assert(((cast(*void)(*instance.set_func)) - cast(*void)(*instance)) == 0, "GDExtensionScriptInstanceInfo2.set_func has unexpected offset % instead of 0", ((cast(*void)(*instance.set_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo2.set_func)) == 8, "GDExtensionScriptInstanceInfo2.set_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.set_func)));
-    //     assert(((cast(*void)(*instance.get_func)) - cast(*void)(*instance)) == 8, "GDExtensionScriptInstanceInfo2.get_func has unexpected offset % instead of 8", ((cast(*void)(*instance.get_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo2.get_func)) == 8, "GDExtensionScriptInstanceInfo2.get_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.get_func)));
-    //     assert(((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)) == 16, "GDExtensionScriptInstanceInfo2.get_property_list_func has unexpected offset % instead of 16", ((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo2.get_property_list_func)) == 8, "GDExtensionScriptInstanceInfo2.get_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.get_property_list_func)));
-    //     assert(((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)) == 24, "GDExtensionScriptInstanceInfo2.free_property_list_func has unexpected offset % instead of 24", ((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo2.free_property_list_func)) == 8, "GDExtensionScriptInstanceInfo2.free_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.free_property_list_func)));
-    //     assert(((cast(*void)(*instance.get_class_category_func)) - cast(*void)(*instance)) == 32, "GDExtensionScriptInstanceInfo2.get_class_category_func has unexpected offset % instead of 32", ((cast(*void)(*instance.get_class_category_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo2.get_class_category_func)) == 8, "GDExtensionScriptInstanceInfo2.get_class_category_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.get_class_category_func)));
-    //     assert(((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)) == 40, "GDExtensionScriptInstanceInfo2.property_can_revert_func has unexpected offset % instead of 40", ((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo2.property_can_revert_func)) == 8, "GDExtensionScriptInstanceInfo2.property_can_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.property_can_revert_func)));
-    //     assert(((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)) == 48, "GDExtensionScriptInstanceInfo2.property_get_revert_func has unexpected offset % instead of 48", ((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo2.property_get_revert_func)) == 8, "GDExtensionScriptInstanceInfo2.property_get_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.property_get_revert_func)));
-    //     assert(((cast(*void)(*instance.get_owner_func)) - cast(*void)(*instance)) == 56, "GDExtensionScriptInstanceInfo2.get_owner_func has unexpected offset % instead of 56", ((cast(*void)(*instance.get_owner_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo2.get_owner_func)) == 8, "GDExtensionScriptInstanceInfo2.get_owner_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.get_owner_func)));
-    //     assert(((cast(*void)(*instance.get_property_state_func)) - cast(*void)(*instance)) == 64, "GDExtensionScriptInstanceInfo2.get_property_state_func has unexpected offset % instead of 64", ((cast(*void)(*instance.get_property_state_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo2.get_property_state_func)) == 8, "GDExtensionScriptInstanceInfo2.get_property_state_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.get_property_state_func)));
-    //     assert(((cast(*void)(*instance.get_method_list_func)) - cast(*void)(*instance)) == 72, "GDExtensionScriptInstanceInfo2.get_method_list_func has unexpected offset % instead of 72", ((cast(*void)(*instance.get_method_list_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo2.get_method_list_func)) == 8, "GDExtensionScriptInstanceInfo2.get_method_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.get_method_list_func)));
-    //     assert(((cast(*void)(*instance.free_method_list_func)) - cast(*void)(*instance)) == 80, "GDExtensionScriptInstanceInfo2.free_method_list_func has unexpected offset % instead of 80", ((cast(*void)(*instance.free_method_list_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo2.free_method_list_func)) == 8, "GDExtensionScriptInstanceInfo2.free_method_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.free_method_list_func)));
-    //     assert(((cast(*void)(*instance.get_property_type_func)) - cast(*void)(*instance)) == 88, "GDExtensionScriptInstanceInfo2.get_property_type_func has unexpected offset % instead of 88", ((cast(*void)(*instance.get_property_type_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo2.get_property_type_func)) == 8, "GDExtensionScriptInstanceInfo2.get_property_type_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.get_property_type_func)));
-    //     assert(((cast(*void)(*instance.validate_property_func)) - cast(*void)(*instance)) == 96, "GDExtensionScriptInstanceInfo2.validate_property_func has unexpected offset % instead of 96", ((cast(*void)(*instance.validate_property_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo2.validate_property_func)) == 8, "GDExtensionScriptInstanceInfo2.validate_property_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.validate_property_func)));
-    //     assert(((cast(*void)(*instance.has_method_func)) - cast(*void)(*instance)) == 104, "GDExtensionScriptInstanceInfo2.has_method_func has unexpected offset % instead of 104", ((cast(*void)(*instance.has_method_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo2.has_method_func)) == 8, "GDExtensionScriptInstanceInfo2.has_method_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.has_method_func)));
-    //     assert(((cast(*void)(*instance.call_func)) - cast(*void)(*instance)) == 112, "GDExtensionScriptInstanceInfo2.call_func has unexpected offset % instead of 112", ((cast(*void)(*instance.call_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo2.call_func)) == 8, "GDExtensionScriptInstanceInfo2.call_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.call_func)));
-    //     assert(((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)) == 120, "GDExtensionScriptInstanceInfo2.notification_func has unexpected offset % instead of 120", ((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo2.notification_func)) == 8, "GDExtensionScriptInstanceInfo2.notification_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.notification_func)));
-    //     assert(((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)) == 128, "GDExtensionScriptInstanceInfo2.to_string_func has unexpected offset % instead of 128", ((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo2.to_string_func)) == 8, "GDExtensionScriptInstanceInfo2.to_string_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.to_string_func)));
-    //     assert(((cast(*void)(*instance.refcount_incremented_func)) - cast(*void)(*instance)) == 136, "GDExtensionScriptInstanceInfo2.refcount_incremented_func has unexpected offset % instead of 136", ((cast(*void)(*instance.refcount_incremented_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo2.refcount_incremented_func)) == 8, "GDExtensionScriptInstanceInfo2.refcount_incremented_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.refcount_incremented_func)));
-    //     assert(((cast(*void)(*instance.refcount_decremented_func)) - cast(*void)(*instance)) == 144, "GDExtensionScriptInstanceInfo2.refcount_decremented_func has unexpected offset % instead of 144", ((cast(*void)(*instance.refcount_decremented_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo2.refcount_decremented_func)) == 8, "GDExtensionScriptInstanceInfo2.refcount_decremented_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.refcount_decremented_func)));
-    //     assert(((cast(*void)(*instance.get_script_func)) - cast(*void)(*instance)) == 152, "GDExtensionScriptInstanceInfo2.get_script_func has unexpected offset % instead of 152", ((cast(*void)(*instance.get_script_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo2.get_script_func)) == 8, "GDExtensionScriptInstanceInfo2.get_script_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.get_script_func)));
-    //     assert(((cast(*void)(*instance.is_placeholder_func)) - cast(*void)(*instance)) == 160, "GDExtensionScriptInstanceInfo2.is_placeholder_func has unexpected offset % instead of 160", ((cast(*void)(*instance.is_placeholder_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo2.is_placeholder_func)) == 8, "GDExtensionScriptInstanceInfo2.is_placeholder_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.is_placeholder_func)));
-    //     assert(((cast(*void)(*instance.set_fallback_func)) - cast(*void)(*instance)) == 168, "GDExtensionScriptInstanceInfo2.set_fallback_func has unexpected offset % instead of 168", ((cast(*void)(*instance.set_fallback_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo2.set_fallback_func)) == 8, "GDExtensionScriptInstanceInfo2.set_fallback_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.set_fallback_func)));
-    //     assert(((cast(*void)(*instance.get_fallback_func)) - cast(*void)(*instance)) == 176, "GDExtensionScriptInstanceInfo2.get_fallback_func has unexpected offset % instead of 176", ((cast(*void)(*instance.get_fallback_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo2.get_fallback_func)) == 8, "GDExtensionScriptInstanceInfo2.get_fallback_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.get_fallback_func)));
-    //     assert(((cast(*void)(*instance.get_language_func)) - cast(*void)(*instance)) == 184, "GDExtensionScriptInstanceInfo2.get_language_func has unexpected offset % instead of 184", ((cast(*void)(*instance.get_language_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo2.get_language_func)) == 8, "GDExtensionScriptInstanceInfo2.get_language_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.get_language_func)));
-    //     assert(((cast(*void)(*instance.free_func)) - cast(*void)(*instance)) == 192, "GDExtensionScriptInstanceInfo2.free_func has unexpected offset % instead of 192", ((cast(*void)(*instance.free_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo2.free_func)) == 8, "GDExtensionScriptInstanceInfo2.free_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.free_func)));
-    //     assert(size_of(GDExtensionScriptInstanceInfo2) == 200, "GDExtensionScriptInstanceInfo2 has size % instead of 200", size_of(GDExtensionScriptInstanceInfo2));
-    // }
+    {
+        instance: GDExtensionScriptInstanceInfo2;
+        assert(((cast(*void)(*instance.set_func)) - cast(*void)(*instance)) == 0, "GDExtensionScriptInstanceInfo2.set_func has unexpected offset % instead of 0", ((cast(*void)(*instance.set_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo2.set_func)) == 8, "GDExtensionScriptInstanceInfo2.set_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.set_func)));
+        assert(((cast(*void)(*instance.get_func)) - cast(*void)(*instance)) == 8, "GDExtensionScriptInstanceInfo2.get_func has unexpected offset % instead of 8", ((cast(*void)(*instance.get_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo2.get_func)) == 8, "GDExtensionScriptInstanceInfo2.get_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.get_func)));
+        assert(((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)) == 16, "GDExtensionScriptInstanceInfo2.get_property_list_func has unexpected offset % instead of 16", ((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo2.get_property_list_func)) == 8, "GDExtensionScriptInstanceInfo2.get_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.get_property_list_func)));
+        assert(((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)) == 24, "GDExtensionScriptInstanceInfo2.free_property_list_func has unexpected offset % instead of 24", ((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo2.free_property_list_func)) == 8, "GDExtensionScriptInstanceInfo2.free_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.free_property_list_func)));
+        assert(((cast(*void)(*instance.get_class_category_func)) - cast(*void)(*instance)) == 32, "GDExtensionScriptInstanceInfo2.get_class_category_func has unexpected offset % instead of 32", ((cast(*void)(*instance.get_class_category_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo2.get_class_category_func)) == 8, "GDExtensionScriptInstanceInfo2.get_class_category_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.get_class_category_func)));
+        assert(((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)) == 40, "GDExtensionScriptInstanceInfo2.property_can_revert_func has unexpected offset % instead of 40", ((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo2.property_can_revert_func)) == 8, "GDExtensionScriptInstanceInfo2.property_can_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.property_can_revert_func)));
+        assert(((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)) == 48, "GDExtensionScriptInstanceInfo2.property_get_revert_func has unexpected offset % instead of 48", ((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo2.property_get_revert_func)) == 8, "GDExtensionScriptInstanceInfo2.property_get_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.property_get_revert_func)));
+        assert(((cast(*void)(*instance.get_owner_func)) - cast(*void)(*instance)) == 56, "GDExtensionScriptInstanceInfo2.get_owner_func has unexpected offset % instead of 56", ((cast(*void)(*instance.get_owner_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo2.get_owner_func)) == 8, "GDExtensionScriptInstanceInfo2.get_owner_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.get_owner_func)));
+        assert(((cast(*void)(*instance.get_property_state_func)) - cast(*void)(*instance)) == 64, "GDExtensionScriptInstanceInfo2.get_property_state_func has unexpected offset % instead of 64", ((cast(*void)(*instance.get_property_state_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo2.get_property_state_func)) == 8, "GDExtensionScriptInstanceInfo2.get_property_state_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.get_property_state_func)));
+        assert(((cast(*void)(*instance.get_method_list_func)) - cast(*void)(*instance)) == 72, "GDExtensionScriptInstanceInfo2.get_method_list_func has unexpected offset % instead of 72", ((cast(*void)(*instance.get_method_list_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo2.get_method_list_func)) == 8, "GDExtensionScriptInstanceInfo2.get_method_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.get_method_list_func)));
+        assert(((cast(*void)(*instance.free_method_list_func)) - cast(*void)(*instance)) == 80, "GDExtensionScriptInstanceInfo2.free_method_list_func has unexpected offset % instead of 80", ((cast(*void)(*instance.free_method_list_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo2.free_method_list_func)) == 8, "GDExtensionScriptInstanceInfo2.free_method_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.free_method_list_func)));
+        assert(((cast(*void)(*instance.get_property_type_func)) - cast(*void)(*instance)) == 88, "GDExtensionScriptInstanceInfo2.get_property_type_func has unexpected offset % instead of 88", ((cast(*void)(*instance.get_property_type_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo2.get_property_type_func)) == 8, "GDExtensionScriptInstanceInfo2.get_property_type_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.get_property_type_func)));
+        assert(((cast(*void)(*instance.validate_property_func)) - cast(*void)(*instance)) == 96, "GDExtensionScriptInstanceInfo2.validate_property_func has unexpected offset % instead of 96", ((cast(*void)(*instance.validate_property_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo2.validate_property_func)) == 8, "GDExtensionScriptInstanceInfo2.validate_property_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.validate_property_func)));
+        assert(((cast(*void)(*instance.has_method_func)) - cast(*void)(*instance)) == 104, "GDExtensionScriptInstanceInfo2.has_method_func has unexpected offset % instead of 104", ((cast(*void)(*instance.has_method_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo2.has_method_func)) == 8, "GDExtensionScriptInstanceInfo2.has_method_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.has_method_func)));
+        assert(((cast(*void)(*instance.call_func)) - cast(*void)(*instance)) == 112, "GDExtensionScriptInstanceInfo2.call_func has unexpected offset % instead of 112", ((cast(*void)(*instance.call_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo2.call_func)) == 8, "GDExtensionScriptInstanceInfo2.call_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.call_func)));
+        assert(((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)) == 120, "GDExtensionScriptInstanceInfo2.notification_func has unexpected offset % instead of 120", ((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo2.notification_func)) == 8, "GDExtensionScriptInstanceInfo2.notification_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.notification_func)));
+        assert(((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)) == 128, "GDExtensionScriptInstanceInfo2.to_string_func has unexpected offset % instead of 128", ((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo2.to_string_func)) == 8, "GDExtensionScriptInstanceInfo2.to_string_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.to_string_func)));
+        assert(((cast(*void)(*instance.refcount_incremented_func)) - cast(*void)(*instance)) == 136, "GDExtensionScriptInstanceInfo2.refcount_incremented_func has unexpected offset % instead of 136", ((cast(*void)(*instance.refcount_incremented_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo2.refcount_incremented_func)) == 8, "GDExtensionScriptInstanceInfo2.refcount_incremented_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.refcount_incremented_func)));
+        assert(((cast(*void)(*instance.refcount_decremented_func)) - cast(*void)(*instance)) == 144, "GDExtensionScriptInstanceInfo2.refcount_decremented_func has unexpected offset % instead of 144", ((cast(*void)(*instance.refcount_decremented_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo2.refcount_decremented_func)) == 8, "GDExtensionScriptInstanceInfo2.refcount_decremented_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.refcount_decremented_func)));
+        assert(((cast(*void)(*instance.get_script_func)) - cast(*void)(*instance)) == 152, "GDExtensionScriptInstanceInfo2.get_script_func has unexpected offset % instead of 152", ((cast(*void)(*instance.get_script_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo2.get_script_func)) == 8, "GDExtensionScriptInstanceInfo2.get_script_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.get_script_func)));
+        assert(((cast(*void)(*instance.is_placeholder_func)) - cast(*void)(*instance)) == 160, "GDExtensionScriptInstanceInfo2.is_placeholder_func has unexpected offset % instead of 160", ((cast(*void)(*instance.is_placeholder_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo2.is_placeholder_func)) == 8, "GDExtensionScriptInstanceInfo2.is_placeholder_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.is_placeholder_func)));
+        assert(((cast(*void)(*instance.set_fallback_func)) - cast(*void)(*instance)) == 168, "GDExtensionScriptInstanceInfo2.set_fallback_func has unexpected offset % instead of 168", ((cast(*void)(*instance.set_fallback_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo2.set_fallback_func)) == 8, "GDExtensionScriptInstanceInfo2.set_fallback_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.set_fallback_func)));
+        assert(((cast(*void)(*instance.get_fallback_func)) - cast(*void)(*instance)) == 176, "GDExtensionScriptInstanceInfo2.get_fallback_func has unexpected offset % instead of 176", ((cast(*void)(*instance.get_fallback_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo2.get_fallback_func)) == 8, "GDExtensionScriptInstanceInfo2.get_fallback_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.get_fallback_func)));
+        assert(((cast(*void)(*instance.get_language_func)) - cast(*void)(*instance)) == 184, "GDExtensionScriptInstanceInfo2.get_language_func has unexpected offset % instead of 184", ((cast(*void)(*instance.get_language_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo2.get_language_func)) == 8, "GDExtensionScriptInstanceInfo2.get_language_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.get_language_func)));
+        assert(((cast(*void)(*instance.free_func)) - cast(*void)(*instance)) == 192, "GDExtensionScriptInstanceInfo2.free_func has unexpected offset % instead of 192", ((cast(*void)(*instance.free_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo2.free_func)) == 8, "GDExtensionScriptInstanceInfo2.free_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo2.free_func)));
+        assert(size_of(GDExtensionScriptInstanceInfo2) == 200, "GDExtensionScriptInstanceInfo2 has size % instead of 200", size_of(GDExtensionScriptInstanceInfo2));
+    }
 
-    // {
-    //     instance: GDExtensionScriptInstanceInfo3;
-    //     assert(((cast(*void)(*instance.set_func)) - cast(*void)(*instance)) == 0, "GDExtensionScriptInstanceInfo3.set_func has unexpected offset % instead of 0", ((cast(*void)(*instance.set_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo3.set_func)) == 8, "GDExtensionScriptInstanceInfo3.set_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.set_func)));
-    //     assert(((cast(*void)(*instance.get_func)) - cast(*void)(*instance)) == 8, "GDExtensionScriptInstanceInfo3.get_func has unexpected offset % instead of 8", ((cast(*void)(*instance.get_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_func)) == 8, "GDExtensionScriptInstanceInfo3.get_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_func)));
-    //     assert(((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)) == 16, "GDExtensionScriptInstanceInfo3.get_property_list_func has unexpected offset % instead of 16", ((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_property_list_func)) == 8, "GDExtensionScriptInstanceInfo3.get_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_property_list_func)));
-    //     assert(((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)) == 24, "GDExtensionScriptInstanceInfo3.free_property_list_func has unexpected offset % instead of 24", ((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo3.free_property_list_func)) == 8, "GDExtensionScriptInstanceInfo3.free_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.free_property_list_func)));
-    //     assert(((cast(*void)(*instance.get_class_category_func)) - cast(*void)(*instance)) == 32, "GDExtensionScriptInstanceInfo3.get_class_category_func has unexpected offset % instead of 32", ((cast(*void)(*instance.get_class_category_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_class_category_func)) == 8, "GDExtensionScriptInstanceInfo3.get_class_category_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_class_category_func)));
-    //     assert(((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)) == 40, "GDExtensionScriptInstanceInfo3.property_can_revert_func has unexpected offset % instead of 40", ((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo3.property_can_revert_func)) == 8, "GDExtensionScriptInstanceInfo3.property_can_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.property_can_revert_func)));
-    //     assert(((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)) == 48, "GDExtensionScriptInstanceInfo3.property_get_revert_func has unexpected offset % instead of 48", ((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo3.property_get_revert_func)) == 8, "GDExtensionScriptInstanceInfo3.property_get_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.property_get_revert_func)));
-    //     assert(((cast(*void)(*instance.get_owner_func)) - cast(*void)(*instance)) == 56, "GDExtensionScriptInstanceInfo3.get_owner_func has unexpected offset % instead of 56", ((cast(*void)(*instance.get_owner_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_owner_func)) == 8, "GDExtensionScriptInstanceInfo3.get_owner_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_owner_func)));
-    //     assert(((cast(*void)(*instance.get_property_state_func)) - cast(*void)(*instance)) == 64, "GDExtensionScriptInstanceInfo3.get_property_state_func has unexpected offset % instead of 64", ((cast(*void)(*instance.get_property_state_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_property_state_func)) == 8, "GDExtensionScriptInstanceInfo3.get_property_state_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_property_state_func)));
-    //     assert(((cast(*void)(*instance.get_method_list_func)) - cast(*void)(*instance)) == 72, "GDExtensionScriptInstanceInfo3.get_method_list_func has unexpected offset % instead of 72", ((cast(*void)(*instance.get_method_list_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_method_list_func)) == 8, "GDExtensionScriptInstanceInfo3.get_method_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_method_list_func)));
-    //     assert(((cast(*void)(*instance.free_method_list_func)) - cast(*void)(*instance)) == 80, "GDExtensionScriptInstanceInfo3.free_method_list_func has unexpected offset % instead of 80", ((cast(*void)(*instance.free_method_list_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo3.free_method_list_func)) == 8, "GDExtensionScriptInstanceInfo3.free_method_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.free_method_list_func)));
-    //     assert(((cast(*void)(*instance.get_property_type_func)) - cast(*void)(*instance)) == 88, "GDExtensionScriptInstanceInfo3.get_property_type_func has unexpected offset % instead of 88", ((cast(*void)(*instance.get_property_type_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_property_type_func)) == 8, "GDExtensionScriptInstanceInfo3.get_property_type_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_property_type_func)));
-    //     assert(((cast(*void)(*instance.validate_property_func)) - cast(*void)(*instance)) == 96, "GDExtensionScriptInstanceInfo3.validate_property_func has unexpected offset % instead of 96", ((cast(*void)(*instance.validate_property_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo3.validate_property_func)) == 8, "GDExtensionScriptInstanceInfo3.validate_property_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.validate_property_func)));
-    //     assert(((cast(*void)(*instance.has_method_func)) - cast(*void)(*instance)) == 104, "GDExtensionScriptInstanceInfo3.has_method_func has unexpected offset % instead of 104", ((cast(*void)(*instance.has_method_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo3.has_method_func)) == 8, "GDExtensionScriptInstanceInfo3.has_method_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.has_method_func)));
-    //     assert(((cast(*void)(*instance.get_method_argument_count_func)) - cast(*void)(*instance)) == 112, "GDExtensionScriptInstanceInfo3.get_method_argument_count_func has unexpected offset % instead of 112", ((cast(*void)(*instance.get_method_argument_count_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_method_argument_count_func)) == 8, "GDExtensionScriptInstanceInfo3.get_method_argument_count_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_method_argument_count_func)));
-    //     assert(((cast(*void)(*instance.call_func)) - cast(*void)(*instance)) == 120, "GDExtensionScriptInstanceInfo3.call_func has unexpected offset % instead of 120", ((cast(*void)(*instance.call_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo3.call_func)) == 8, "GDExtensionScriptInstanceInfo3.call_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.call_func)));
-    //     assert(((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)) == 128, "GDExtensionScriptInstanceInfo3.notification_func has unexpected offset % instead of 128", ((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo3.notification_func)) == 8, "GDExtensionScriptInstanceInfo3.notification_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.notification_func)));
-    //     assert(((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)) == 136, "GDExtensionScriptInstanceInfo3.to_string_func has unexpected offset % instead of 136", ((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo3.to_string_func)) == 8, "GDExtensionScriptInstanceInfo3.to_string_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.to_string_func)));
-    //     assert(((cast(*void)(*instance.refcount_incremented_func)) - cast(*void)(*instance)) == 144, "GDExtensionScriptInstanceInfo3.refcount_incremented_func has unexpected offset % instead of 144", ((cast(*void)(*instance.refcount_incremented_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo3.refcount_incremented_func)) == 8, "GDExtensionScriptInstanceInfo3.refcount_incremented_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.refcount_incremented_func)));
-    //     assert(((cast(*void)(*instance.refcount_decremented_func)) - cast(*void)(*instance)) == 152, "GDExtensionScriptInstanceInfo3.refcount_decremented_func has unexpected offset % instead of 152", ((cast(*void)(*instance.refcount_decremented_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo3.refcount_decremented_func)) == 8, "GDExtensionScriptInstanceInfo3.refcount_decremented_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.refcount_decremented_func)));
-    //     assert(((cast(*void)(*instance.get_script_func)) - cast(*void)(*instance)) == 160, "GDExtensionScriptInstanceInfo3.get_script_func has unexpected offset % instead of 160", ((cast(*void)(*instance.get_script_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_script_func)) == 8, "GDExtensionScriptInstanceInfo3.get_script_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_script_func)));
-    //     assert(((cast(*void)(*instance.is_placeholder_func)) - cast(*void)(*instance)) == 168, "GDExtensionScriptInstanceInfo3.is_placeholder_func has unexpected offset % instead of 168", ((cast(*void)(*instance.is_placeholder_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo3.is_placeholder_func)) == 8, "GDExtensionScriptInstanceInfo3.is_placeholder_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.is_placeholder_func)));
-    //     assert(((cast(*void)(*instance.set_fallback_func)) - cast(*void)(*instance)) == 176, "GDExtensionScriptInstanceInfo3.set_fallback_func has unexpected offset % instead of 176", ((cast(*void)(*instance.set_fallback_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo3.set_fallback_func)) == 8, "GDExtensionScriptInstanceInfo3.set_fallback_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.set_fallback_func)));
-    //     assert(((cast(*void)(*instance.get_fallback_func)) - cast(*void)(*instance)) == 184, "GDExtensionScriptInstanceInfo3.get_fallback_func has unexpected offset % instead of 184", ((cast(*void)(*instance.get_fallback_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_fallback_func)) == 8, "GDExtensionScriptInstanceInfo3.get_fallback_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_fallback_func)));
-    //     assert(((cast(*void)(*instance.get_language_func)) - cast(*void)(*instance)) == 192, "GDExtensionScriptInstanceInfo3.get_language_func has unexpected offset % instead of 192", ((cast(*void)(*instance.get_language_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_language_func)) == 8, "GDExtensionScriptInstanceInfo3.get_language_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_language_func)));
-    //     assert(((cast(*void)(*instance.free_func)) - cast(*void)(*instance)) == 200, "GDExtensionScriptInstanceInfo3.free_func has unexpected offset % instead of 200", ((cast(*void)(*instance.free_func)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionScriptInstanceInfo3.free_func)) == 8, "GDExtensionScriptInstanceInfo3.free_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.free_func)));
-    //     assert(size_of(GDExtensionScriptInstanceInfo3) == 208, "GDExtensionScriptInstanceInfo3 has size % instead of 208", size_of(GDExtensionScriptInstanceInfo3));
-    // }
+    {
+        instance: GDExtensionScriptInstanceInfo3;
+        assert(((cast(*void)(*instance.set_func)) - cast(*void)(*instance)) == 0, "GDExtensionScriptInstanceInfo3.set_func has unexpected offset % instead of 0", ((cast(*void)(*instance.set_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.set_func)) == 8, "GDExtensionScriptInstanceInfo3.set_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.set_func)));
+        assert(((cast(*void)(*instance.get_func)) - cast(*void)(*instance)) == 8, "GDExtensionScriptInstanceInfo3.get_func has unexpected offset % instead of 8", ((cast(*void)(*instance.get_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_func)) == 8, "GDExtensionScriptInstanceInfo3.get_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_func)));
+        assert(((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)) == 16, "GDExtensionScriptInstanceInfo3.get_property_list_func has unexpected offset % instead of 16", ((cast(*void)(*instance.get_property_list_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_property_list_func)) == 8, "GDExtensionScriptInstanceInfo3.get_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_property_list_func)));
+        assert(((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)) == 24, "GDExtensionScriptInstanceInfo3.free_property_list_func has unexpected offset % instead of 24", ((cast(*void)(*instance.free_property_list_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.free_property_list_func)) == 8, "GDExtensionScriptInstanceInfo3.free_property_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.free_property_list_func)));
+        assert(((cast(*void)(*instance.get_class_category_func)) - cast(*void)(*instance)) == 32, "GDExtensionScriptInstanceInfo3.get_class_category_func has unexpected offset % instead of 32", ((cast(*void)(*instance.get_class_category_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_class_category_func)) == 8, "GDExtensionScriptInstanceInfo3.get_class_category_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_class_category_func)));
+        assert(((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)) == 40, "GDExtensionScriptInstanceInfo3.property_can_revert_func has unexpected offset % instead of 40", ((cast(*void)(*instance.property_can_revert_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.property_can_revert_func)) == 8, "GDExtensionScriptInstanceInfo3.property_can_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.property_can_revert_func)));
+        assert(((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)) == 48, "GDExtensionScriptInstanceInfo3.property_get_revert_func has unexpected offset % instead of 48", ((cast(*void)(*instance.property_get_revert_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.property_get_revert_func)) == 8, "GDExtensionScriptInstanceInfo3.property_get_revert_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.property_get_revert_func)));
+        assert(((cast(*void)(*instance.get_owner_func)) - cast(*void)(*instance)) == 56, "GDExtensionScriptInstanceInfo3.get_owner_func has unexpected offset % instead of 56", ((cast(*void)(*instance.get_owner_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_owner_func)) == 8, "GDExtensionScriptInstanceInfo3.get_owner_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_owner_func)));
+        assert(((cast(*void)(*instance.get_property_state_func)) - cast(*void)(*instance)) == 64, "GDExtensionScriptInstanceInfo3.get_property_state_func has unexpected offset % instead of 64", ((cast(*void)(*instance.get_property_state_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_property_state_func)) == 8, "GDExtensionScriptInstanceInfo3.get_property_state_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_property_state_func)));
+        assert(((cast(*void)(*instance.get_method_list_func)) - cast(*void)(*instance)) == 72, "GDExtensionScriptInstanceInfo3.get_method_list_func has unexpected offset % instead of 72", ((cast(*void)(*instance.get_method_list_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_method_list_func)) == 8, "GDExtensionScriptInstanceInfo3.get_method_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_method_list_func)));
+        assert(((cast(*void)(*instance.free_method_list_func)) - cast(*void)(*instance)) == 80, "GDExtensionScriptInstanceInfo3.free_method_list_func has unexpected offset % instead of 80", ((cast(*void)(*instance.free_method_list_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.free_method_list_func)) == 8, "GDExtensionScriptInstanceInfo3.free_method_list_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.free_method_list_func)));
+        assert(((cast(*void)(*instance.get_property_type_func)) - cast(*void)(*instance)) == 88, "GDExtensionScriptInstanceInfo3.get_property_type_func has unexpected offset % instead of 88", ((cast(*void)(*instance.get_property_type_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_property_type_func)) == 8, "GDExtensionScriptInstanceInfo3.get_property_type_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_property_type_func)));
+        assert(((cast(*void)(*instance.validate_property_func)) - cast(*void)(*instance)) == 96, "GDExtensionScriptInstanceInfo3.validate_property_func has unexpected offset % instead of 96", ((cast(*void)(*instance.validate_property_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.validate_property_func)) == 8, "GDExtensionScriptInstanceInfo3.validate_property_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.validate_property_func)));
+        assert(((cast(*void)(*instance.has_method_func)) - cast(*void)(*instance)) == 104, "GDExtensionScriptInstanceInfo3.has_method_func has unexpected offset % instead of 104", ((cast(*void)(*instance.has_method_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.has_method_func)) == 8, "GDExtensionScriptInstanceInfo3.has_method_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.has_method_func)));
+        assert(((cast(*void)(*instance.get_method_argument_count_func)) - cast(*void)(*instance)) == 112, "GDExtensionScriptInstanceInfo3.get_method_argument_count_func has unexpected offset % instead of 112", ((cast(*void)(*instance.get_method_argument_count_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_method_argument_count_func)) == 8, "GDExtensionScriptInstanceInfo3.get_method_argument_count_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_method_argument_count_func)));
+        assert(((cast(*void)(*instance.call_func)) - cast(*void)(*instance)) == 120, "GDExtensionScriptInstanceInfo3.call_func has unexpected offset % instead of 120", ((cast(*void)(*instance.call_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.call_func)) == 8, "GDExtensionScriptInstanceInfo3.call_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.call_func)));
+        assert(((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)) == 128, "GDExtensionScriptInstanceInfo3.notification_func has unexpected offset % instead of 128", ((cast(*void)(*instance.notification_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.notification_func)) == 8, "GDExtensionScriptInstanceInfo3.notification_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.notification_func)));
+        assert(((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)) == 136, "GDExtensionScriptInstanceInfo3.to_string_func has unexpected offset % instead of 136", ((cast(*void)(*instance.to_string_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.to_string_func)) == 8, "GDExtensionScriptInstanceInfo3.to_string_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.to_string_func)));
+        assert(((cast(*void)(*instance.refcount_incremented_func)) - cast(*void)(*instance)) == 144, "GDExtensionScriptInstanceInfo3.refcount_incremented_func has unexpected offset % instead of 144", ((cast(*void)(*instance.refcount_incremented_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.refcount_incremented_func)) == 8, "GDExtensionScriptInstanceInfo3.refcount_incremented_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.refcount_incremented_func)));
+        assert(((cast(*void)(*instance.refcount_decremented_func)) - cast(*void)(*instance)) == 152, "GDExtensionScriptInstanceInfo3.refcount_decremented_func has unexpected offset % instead of 152", ((cast(*void)(*instance.refcount_decremented_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.refcount_decremented_func)) == 8, "GDExtensionScriptInstanceInfo3.refcount_decremented_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.refcount_decremented_func)));
+        assert(((cast(*void)(*instance.get_script_func)) - cast(*void)(*instance)) == 160, "GDExtensionScriptInstanceInfo3.get_script_func has unexpected offset % instead of 160", ((cast(*void)(*instance.get_script_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_script_func)) == 8, "GDExtensionScriptInstanceInfo3.get_script_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_script_func)));
+        assert(((cast(*void)(*instance.is_placeholder_func)) - cast(*void)(*instance)) == 168, "GDExtensionScriptInstanceInfo3.is_placeholder_func has unexpected offset % instead of 168", ((cast(*void)(*instance.is_placeholder_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.is_placeholder_func)) == 8, "GDExtensionScriptInstanceInfo3.is_placeholder_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.is_placeholder_func)));
+        assert(((cast(*void)(*instance.set_fallback_func)) - cast(*void)(*instance)) == 176, "GDExtensionScriptInstanceInfo3.set_fallback_func has unexpected offset % instead of 176", ((cast(*void)(*instance.set_fallback_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.set_fallback_func)) == 8, "GDExtensionScriptInstanceInfo3.set_fallback_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.set_fallback_func)));
+        assert(((cast(*void)(*instance.get_fallback_func)) - cast(*void)(*instance)) == 184, "GDExtensionScriptInstanceInfo3.get_fallback_func has unexpected offset % instead of 184", ((cast(*void)(*instance.get_fallback_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_fallback_func)) == 8, "GDExtensionScriptInstanceInfo3.get_fallback_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_fallback_func)));
+        assert(((cast(*void)(*instance.get_language_func)) - cast(*void)(*instance)) == 192, "GDExtensionScriptInstanceInfo3.get_language_func has unexpected offset % instead of 192", ((cast(*void)(*instance.get_language_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.get_language_func)) == 8, "GDExtensionScriptInstanceInfo3.get_language_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.get_language_func)));
+        assert(((cast(*void)(*instance.free_func)) - cast(*void)(*instance)) == 200, "GDExtensionScriptInstanceInfo3.free_func has unexpected offset % instead of 200", ((cast(*void)(*instance.free_func)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionScriptInstanceInfo3.free_func)) == 8, "GDExtensionScriptInstanceInfo3.free_func has unexpected size % instead of 8", size_of(type_of(GDExtensionScriptInstanceInfo3.free_func)));
+        assert(size_of(GDExtensionScriptInstanceInfo3) == 208, "GDExtensionScriptInstanceInfo3 has size % instead of 208", size_of(GDExtensionScriptInstanceInfo3));
+    }
 
-    // {
-    //     instance: GDExtensionInitialization;
-    //     assert(((cast(*void)(*instance.minimum_initialization_level)) - cast(*void)(*instance)) == 0, "GDExtensionInitialization.minimum_initialization_level has unexpected offset % instead of 0", ((cast(*void)(*instance.minimum_initialization_level)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionInitialization.minimum_initialization_level)) == 4, "GDExtensionInitialization.minimum_initialization_level has unexpected size % instead of 4", size_of(type_of(GDExtensionInitialization.minimum_initialization_level)));
-    //     assert(((cast(*void)(*instance.userdata)) - cast(*void)(*instance)) == 8, "GDExtensionInitialization.userdata has unexpected offset % instead of 8", ((cast(*void)(*instance.userdata)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionInitialization.userdata)) == 8, "GDExtensionInitialization.userdata has unexpected size % instead of 8", size_of(type_of(GDExtensionInitialization.userdata)));
-    //     assert(((cast(*void)(*instance.initialize)) - cast(*void)(*instance)) == 16, "GDExtensionInitialization.initialize has unexpected offset % instead of 16", ((cast(*void)(*instance.initialize)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionInitialization.initialize)) == 8, "GDExtensionInitialization.initialize has unexpected size % instead of 8", size_of(type_of(GDExtensionInitialization.initialize)));
-    //     assert(((cast(*void)(*instance.deinitialize)) - cast(*void)(*instance)) == 24, "GDExtensionInitialization.deinitialize has unexpected offset % instead of 24", ((cast(*void)(*instance.deinitialize)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionInitialization.deinitialize)) == 8, "GDExtensionInitialization.deinitialize has unexpected size % instead of 8", size_of(type_of(GDExtensionInitialization.deinitialize)));
-    //     assert(size_of(GDExtensionInitialization) == 32, "GDExtensionInitialization has size % instead of 32", size_of(GDExtensionInitialization));
-    // }
+    {
+        instance: GDExtensionInitialization;
+        assert(((cast(*void)(*instance.minimum_initialization_level)) - cast(*void)(*instance)) == 0, "GDExtensionInitialization.minimum_initialization_level has unexpected offset % instead of 0", ((cast(*void)(*instance.minimum_initialization_level)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionInitialization.minimum_initialization_level)) == 4, "GDExtensionInitialization.minimum_initialization_level has unexpected size % instead of 4", size_of(type_of(GDExtensionInitialization.minimum_initialization_level)));
+        assert(((cast(*void)(*instance.userdata)) - cast(*void)(*instance)) == 8, "GDExtensionInitialization.userdata has unexpected offset % instead of 8", ((cast(*void)(*instance.userdata)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionInitialization.userdata)) == 8, "GDExtensionInitialization.userdata has unexpected size % instead of 8", size_of(type_of(GDExtensionInitialization.userdata)));
+        assert(((cast(*void)(*instance.initialize)) - cast(*void)(*instance)) == 16, "GDExtensionInitialization.initialize has unexpected offset % instead of 16", ((cast(*void)(*instance.initialize)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionInitialization.initialize)) == 8, "GDExtensionInitialization.initialize has unexpected size % instead of 8", size_of(type_of(GDExtensionInitialization.initialize)));
+        assert(((cast(*void)(*instance.deinitialize)) - cast(*void)(*instance)) == 24, "GDExtensionInitialization.deinitialize has unexpected offset % instead of 24", ((cast(*void)(*instance.deinitialize)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionInitialization.deinitialize)) == 8, "GDExtensionInitialization.deinitialize has unexpected size % instead of 8", size_of(type_of(GDExtensionInitialization.deinitialize)));
+        assert(size_of(GDExtensionInitialization) == 32, "GDExtensionInitialization has size % instead of 32", size_of(GDExtensionInitialization));
+    }
 
-    // {
-    //     instance: GDExtensionGodotVersion;
-    //     assert(((cast(*void)(*instance.major)) - cast(*void)(*instance)) == 0, "GDExtensionGodotVersion.major has unexpected offset % instead of 0", ((cast(*void)(*instance.major)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionGodotVersion.major)) == 4, "GDExtensionGodotVersion.major has unexpected size % instead of 4", size_of(type_of(GDExtensionGodotVersion.major)));
-    //     assert(((cast(*void)(*instance.minor)) - cast(*void)(*instance)) == 4, "GDExtensionGodotVersion.minor has unexpected offset % instead of 4", ((cast(*void)(*instance.minor)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionGodotVersion.minor)) == 4, "GDExtensionGodotVersion.minor has unexpected size % instead of 4", size_of(type_of(GDExtensionGodotVersion.minor)));
-    //     assert(((cast(*void)(*instance.patch)) - cast(*void)(*instance)) == 8, "GDExtensionGodotVersion.patch has unexpected offset % instead of 8", ((cast(*void)(*instance.patch)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionGodotVersion.patch)) == 4, "GDExtensionGodotVersion.patch has unexpected size % instead of 4", size_of(type_of(GDExtensionGodotVersion.patch)));
-    //     assert(((cast(*void)(*instance._string)) - cast(*void)(*instance)) == 16, "GDExtensionGodotVersion._string has unexpected offset % instead of 16", ((cast(*void)(*instance._string)) - cast(*void)(*instance)));
-    //     assert(size_of(type_of(GDExtensionGodotVersion._string)) == 8, "GDExtensionGodotVersion._string has unexpected size % instead of 8", size_of(type_of(GDExtensionGodotVersion._string)));
-    //     assert(size_of(GDExtensionGodotVersion) == 24, "GDExtensionGodotVersion has size % instead of 24", size_of(GDExtensionGodotVersion));
-    // }
+    {
+        instance: GDExtensionGodotVersion;
+        assert(((cast(*void)(*instance.major)) - cast(*void)(*instance)) == 0, "GDExtensionGodotVersion.major has unexpected offset % instead of 0", ((cast(*void)(*instance.major)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionGodotVersion.major)) == 4, "GDExtensionGodotVersion.major has unexpected size % instead of 4", size_of(type_of(GDExtensionGodotVersion.major)));
+        assert(((cast(*void)(*instance.minor)) - cast(*void)(*instance)) == 4, "GDExtensionGodotVersion.minor has unexpected offset % instead of 4", ((cast(*void)(*instance.minor)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionGodotVersion.minor)) == 4, "GDExtensionGodotVersion.minor has unexpected size % instead of 4", size_of(type_of(GDExtensionGodotVersion.minor)));
+        assert(((cast(*void)(*instance.patch)) - cast(*void)(*instance)) == 8, "GDExtensionGodotVersion.patch has unexpected offset % instead of 8", ((cast(*void)(*instance.patch)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionGodotVersion.patch)) == 4, "GDExtensionGodotVersion.patch has unexpected size % instead of 4", size_of(type_of(GDExtensionGodotVersion.patch)));
+        assert(((cast(*void)(*instance._string)) - cast(*void)(*instance)) == 16, "GDExtensionGodotVersion._string has unexpected offset % instead of 16", ((cast(*void)(*instance._string)) - cast(*void)(*instance)));
+        assert(size_of(type_of(GDExtensionGodotVersion._string)) == 8, "GDExtensionGodotVersion._string has unexpected size % instead of 8", size_of(type_of(GDExtensionGodotVersion._string)));
+        assert(size_of(GDExtensionGodotVersion) == 24, "GDExtensionGodotVersion has size % instead of 24", size_of(GDExtensionGodotVersion));
+    }
 }
 

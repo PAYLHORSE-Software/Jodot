@@ -10,12 +10,6 @@ build :: () {
     output_path = "bin";
     entry_point_name = "jodot_init";
     runtime_support_definitions = .ONLY_INIT;
-    import: [2] string;
-    import[0] = "../../..";
-    import[1] = "src";
-    import_view: [] string;
-    import_view = import;
-    import_path = import_view;
     set_build_options(options, w);
 
     compiler_begin_intercept(w, .SKIP_EXPRESSIONS_WITHOUT_NOTES);

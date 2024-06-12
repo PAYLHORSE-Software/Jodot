@@ -1,27 +1,17 @@
 // This script should generate bindings for Godot data types, from extension_api.json...
 // ...henceforth referred to as the 'gdt' submodule.
 
-main :: () {}
-
-#run,stallable {
-    set_build_options_dc(.{do_output=false});
-
-    // ---- JAISON ----
-
-    // Optional fields as pointers, so they default to null?
-
-    ExtensionAPI :: struct {
-        header: Header;
-        // builtin_class_sizes
-        // builtin_class_member_offsets
-        // global_constants
-        global_enums: [] Enum;
-        // utility_functions
-        builtin_classes: [] Class;
-        classes: [] Class;
-        singletons: [] GenericValue;
-        native_structure: [] NativeStruct;
-    }
+GodotAPI :: struct {
+    header: Header;
+    // builtin_class_sizes
+    // builtin_class_member_offsets
+    // global_constants
+    global_enums: [] Enum;
+    // utility_functions
+    builtin_classes: [] Class;
+    classes: [] Class;
+    singletons: [] GenericValue;
+    native_structure: [] NativeStruct;
 
     Header :: struct {
         version_full_name: string;
@@ -79,32 +69,83 @@ main :: () {}
     }
 
     NativeStruct :: struct {
-        // TODO: parsed but not sure how to metaprogram
+        // TODO: parsed but not sure how declare...
         name: string;
         format: string;
     }
-
-    success, result := json_parse_file("gdextension/extension_api.json", ExtensionAPI);
-    assert(success);
-    assert(type_of(result) == ExtensionAPI);
-    print("JSON parsing successful!\n");
-
-    // print("ExtensionAPI dump:\n %", result);
-
-    print("This should be null: %\n", result.singletons[0].value);
-    print("This should be null: %\n", result.singletons[0].meta);
-    print("This should be null: %\n", result.classes[0].properties);
-
-    print("Size of final struct: %\n", size_of(ExtensionAPI));
-
-    // Now, we parse result, the ExtensionAPI struct, and generate native definitions.
-    // Native definitions then go to jodot_init to be hooked to pointers.
 }
+
+#no_reset godot_api: GodotAPI;
+
+fill_godot_api :: () {
+
+    print("Parsing godot JSON...\n");
+    success: bool;
+    success, godot_api = json_parse_file("bindgen/gdextension/extension_api.json", GodotAPI);
+    assert(success);
+    assert(type_of(godot_api) == GodotAPI);
+    print("JSON parsing successful!\n");
+}
+
+// =========
+//  CODEGEN
+// =========
+
+// Now, we parse the GodotAPI struct, and generate a script of native definitions.
+
+gdt_bindings_codegen :: () {
+
+    print("Generating gdt bindings code...\n");
+    builder: String_Builder;
+    init_string_builder(*builder);
+
+    // == HEADER ==
+
+    append(*builder, GDT_HEADER);
+    append(*builder, "gdt :: struct {\n\n");
+
+    assert(godot_api.builtin_classes.count != 0);
+
+    // == BUILTIN CLASSES ==
+
+    append(*builder, "// == BUILTIN CLASSES ==\n\n");
+
+    for godot_api.builtin_classes {
+
+        if equal(it.name, "bool") || equal(it.name, "int") || equal(it.name, "float") continue;
+
+        print_to_builder(*builder, "    % :: struct {\n", it.name);
+        append(*builder, "    }\n\n");
+    }
+
+    append(*builder, "}");
+
+    code := builder_to_string(*builder);
+    write_entire_file("gdt/gdt_bindings.jai", code);
+    print("'gdt/gdt_bindings.jai' generated!\n");
+}
+
+#run {
+
+    fill_godot_api();
+    gdt_bindings_codegen();
+}
+
+#scope_file
 
 #import "Basic";
 #import "Bindings_Generator";
 #import "Compiler";
 #import "Jaison";
+#import "String";
+#import "File";
+
+GDT_HEADER :: #string DONE
+//  --------------------
+// | JODOT GDT BINDINGS |
+//  --------------------
+
+DONE
 
 // --------------------------
 // JSON DESERIALIZATION NOTES

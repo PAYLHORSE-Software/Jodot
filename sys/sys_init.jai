@@ -55,9 +55,6 @@ classdb_register_extension_class_method: GDExtensionInterfaceClassdbRegisterExte
 // CUSTOM CLASS REGISTRATION
 // -------------------------
 
-// user_class_declarations: [1] ExtensionClass;
-// user_class_declaration_list :: "user_class_declarations[0] = Character.{};";
-
 #placeholder user_class_declarations;
 #placeholder user_class_declaration_list;
 
@@ -98,60 +95,11 @@ class_create_info :: GDExtensionClassCreationInfo3.{
         //     get_rid_func
 };
 
-make_user_class_declarations :: () -> string {
-
-    return "array_add(*user_class_declarations, .{type = JodotTestClass, parent_type = gdtp.Node});";
-}
-
-// message_loop :: () #expand {
-//     print_muted("\n\n\n==== METAPROGRAM ====");
-
-//     tagged_names : [..] string;
-//     gen_code := false;
-
-//     while true {
-
-//         message := compiler_wait_for_message();
-//         if message.kind == {
-//             case .TYPECHECKED;
-//                 typechecked := cast(*Message_Typechecked) message;
-
-//                 for decl: typechecked.declarations {
-//                     for note: decl.expression.notes {
-//                         if equal(note.text, "godot") {
-//                             print_affirm(tprint("Found extension class declaration: %", decl.expression.name));
-//                             array_add(*tagged_names, copy_string(decl.expression.name));
-//                         }
-//                     }
-//                 }
-//             case .PHASE;
-//                 phase := cast(*Message_Phase) message;
-//                 if gen_code == false && phase.phase == .TYPECHECKED_ALL_WE_CAN {
-//                     builder: String_Builder;
-//                     // print_to_builder(*builder, "#scope_module\n");
-//                     print_to_builder(*builder, "user_class_declarations: [%] ExtensionClass;\n", tagged_names.count);
-//                     // print_to_builder(*builder, "important_array: [%] ExtensionClass;\n", tagged_names.count);
-//                     list_builder: String_Builder;
-//                     for tagged_names {
-//                         print_to_builder(*list_builder, "user_class_declarations[%] = %.{};", it_index, it);
-//                     }
-//                     list := builder_to_string(*list_builder);
-//                     print_to_builder(*builder, "user_class_declaration_list :: \"%\";", list);
-//                     print_affirm(tprint("ADDING BUILD STRING: %", builder_to_string(*builder)));
-//                     add_build_string(builder_to_string(*builder), `w);
-//                     gen_code = true;
-//                 }
-//           case .COMPLETE;
-//             break;
-//         }
-//     }
-// }
-
 // == MEMALLOC ==
 
 pool: Flat_Pool;
 
-buffer := [1024 * 1024] u8;
+// buffer := [1024 * 1024] u8;
 
 make_user_class_case :: () -> string {
     builder: String_Builder;

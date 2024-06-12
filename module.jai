@@ -3,10 +3,10 @@
 // --------------------------------------------
 
 // The 'sys' submodule
-#load "sys_bindings.jai";
+#load "sys/sys_bindings.jai";
 
 // The 'gdt' submodule
-#load "gdt_bindings.jai";
+#load "gdt/gdt_bindings.jai";
 
 // ROUGH IDEA:
 
@@ -18,9 +18,5 @@ gdtp :: struct {
     Node :: struct {}
 }
 
-// TODO: these placeholders should be added automatically...
-// #placeholder Character;
-// #placeholder JodotTestClass;
-
 // Entry point and initialization
-#load "sys_init.jai";
+#load "sys/sys_init.jai";
