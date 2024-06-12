@@ -70,11 +70,11 @@ This procedure pushes initialization parameters to godot, which include an initi
 
 ### Class Registration
 
-We use the note `@godot` to tag custom classes in user code, redefined as Entities. A metaprogram crawls the user code for these Entities and stores them in an array. We set up class creation parameters for a new 'class' of this name from the Entity struct, and use the interface function `classdb_register_extension_class()` to add them to godot's database.
+We use the note `@godot` to tag custom classes in user code, redefined as Entities. A metaprogram crawls the user code for these Entities and stores them in an array. We set up creation parameters for a new 'class' of this name from each Entity struct, and use the interface function `classdb_register_extension_class()` to add them to godot's database.
 
 As part of this registration, we've had to set up another custom `#c_call` function: `class_create_instance()`. Here, we're expected to instatiate the class in jai, construct an object in godot to hold this class, and bind the two together. This is where **memory allocation** comes in, and we should treat this aspect of the module with great care.
 
-### Roadmap
+## ROADMAP
 
 Jodot development will proceed as follows:
 
