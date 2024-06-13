@@ -5,6 +5,8 @@
 ## ABOUT
 **Secret language bindings for the GDExtension API.**
 
+Pursuing antagonism to Godot's OOP, and a GDScript-free workflow.
+
 Work in progress! See docs.
 
 ## HANDBOOK
