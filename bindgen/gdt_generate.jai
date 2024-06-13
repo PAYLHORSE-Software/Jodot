@@ -3,8 +3,8 @@
 
 GodotAPI :: struct {
     header: Header;
-    // builtin_class_sizes
-    // builtin_class_member_offsets
+    builtin_class_sizes: [] SizeRef;
+     builtin_class_member_offsets: [] OffsetRef;
     // global_constants
     global_enums: [] Enum;
     // utility_functions
@@ -12,6 +12,10 @@ GodotAPI :: struct {
     classes: [] Class;
     singletons: [] GenericValue;
     native_structure: [] NativeStruct;
+
+    SizeRef :: struct {}
+
+    OffsetRef :: struct {}
 
     Header :: struct {
         version_full_name: string;
@@ -95,7 +99,7 @@ fill_godot_api :: () {
 
 gdt_bindings_codegen :: () {
 
-    print("Generating gdt bindings code...\n");
+    print("Generating gdt reference code...\n");
     builder: String_Builder;
     init_string_builder(*builder);
 
@@ -121,8 +125,8 @@ gdt_bindings_codegen :: () {
     append(*builder, "}");
 
     code := builder_to_string(*builder);
-    write_entire_file("gdt/gdt_bindings.jai", code);
-    print("'gdt/gdt_bindings.jai' generated!\n");
+    write_entire_file("gdt/gdt_reference.jai", code);
+    print("'gdt/gdt_reference.jai' generated!\n");
 }
 
 #run {
@@ -141,9 +145,11 @@ gdt_bindings_codegen :: () {
 #import "File";
 
 GDT_HEADER :: #string DONE
-//  --------------------
-// | JODOT GDT BINDINGS |
-//  --------------------
+//  ---------------------
+// | JODOT GDT REFERENCE |
+//  ---------------------
+
+// Just a reference for now. Bindings are hand-made in gdt_bindings.
 
 DONE
 

@@ -25,8 +25,8 @@ message_loop :: () {
 
                 for decl: typechecked.declarations {
                     for note: decl.expression.notes {
-                        if equal(note.text, "godot") {
-                            print_muted(tprint("Found extension class declaration: %\n", decl.expression.name));
+                        if equal(note.text, "jodot") {
+                            print_muted(tprint("Found extension entity declaration: %\n", decl.expression.name));
                             array_add(*tagged_names, copy_string(decl.expression.name));
                         }
                     }
@@ -35,7 +35,7 @@ message_loop :: () {
                 phase := cast(*Message_Phase) message;
                 if phase.phase == .TYPECHECKED_ALL_WE_CAN {
                     builder: String_Builder;
-                    print_to_builder(*builder, "user_class_declarations: [%] ExtensionClass;\n", tagged_names.count);
+                    print_to_builder(*builder, "user_class_declarations: [%] ExtensionEntity;\n", tagged_names.count);
                     list_builder: String_Builder;
                     for tagged_names {
                         print_to_builder(*builder, "#placeholder %;\n", it);

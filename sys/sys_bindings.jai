@@ -2287,6 +2287,7 @@ GDExtensionInterfaceDictionaryOperatorIndex :: #type (p_self: GDExtensionTypePtr
 */
 GDExtensionInterfaceDictionaryOperatorIndexConst :: #type (p_self: GDExtensionConstTypePtr, p_key: GDExtensionConstVariantPtr) -> GDExtensionVariantPtr #c_call;
 
+// NOTE
 /**
 * @name object_method_bind_call
 * @since 4.1
@@ -2617,6 +2618,7 @@ GDExtensionInterfaceCallableCustomCreate2 :: #type (r_callable: GDExtensionUnini
 */
 GDExtensionInterfaceCallableCustomGetUserData :: #type (p_callable: GDExtensionConstTypePtr, p_token: *void) -> *void #c_call;
 
+// NOTE
 /**
 * @name classdb_construct_object
 * @since 4.1

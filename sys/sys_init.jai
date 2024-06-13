@@ -39,8 +39,6 @@ string_to_utf8_chars: GDExtensionInterfaceStringNewWithUtf8Chars;
 string_name_new_with_utf8_chars: GDExtensionInterfaceStringNameNewWithUtf8Chars;
 // StringName is 4 bytes
 
-// (p_classname: GDExtensionConstStringNamePtr) -> GDExtensionObjectPtr #c_call;
-classdb_construct_object: GDExtensionInterfaceClassdbConstructObject;
 // (p_o: GDExtensionObjectPtr, p_classname: GDExtensionConstStringNamePtr, p_instance: GDExtensionClassInstancePtr) -> void #c_call;
 object_set_instance: GDExtensionInterfaceObjectSetInstance;
 
@@ -51,6 +49,17 @@ classdb_get_class_tag: GDExtensionInterfaceClassdbGetClassTag;
 // (p_library: GDExtensionClassLibraryPtr, p_class_name: GDExtensionConstStringNamePtr, p_method_info: *GDExtensionClassMethodInfo) -> void #c_call;
 classdb_register_extension_class_method: GDExtensionInterfaceClassdbRegisterExtensionClassMethod;
 
+// (p_classname: GDExtensionConstStringNamePtr, p_methodname: GDExtensionConstStringNamePtr, p_hash: GDExtensionInt) -> GDExtensionMethodBindPtr #c_call;
+classdb_get_method_bind: GDExtensionInterfaceClassdbGetMethodBind;
+// (p_method_bind: GDExtensionMethodBindPtr, p_instance: GDExtensionObjectPtr, p_args: *GDExtensionConstVariantPtr, p_arg_count: GDExtensionInt, r_ret: GDExtensionUninitializedVariantPtr, r_error: *GDExtensionCallError) -> void #c_call;
+object_method_bind_call: GDExtensionInterfaceObjectMethodBindCall;
+
+// (p_classname: GDExtensionConstStringNamePtr) -> GDExtensionObjectPtr #c_call;
+classdb_construct_object: GDExtensionInterfaceClassdbConstructObject;
+
+// (p_o: GDExtensionObjectPtr) -> void #c_call;
+object_destroy: GDExtensionInterfaceObjectDestroy;
+
 // -------------------------
 // CUSTOM CLASS REGISTRATION
 // -------------------------
@@ -60,7 +69,7 @@ classdb_register_extension_class_method: GDExtensionInterfaceClassdbRegisterExte
 
 // Wrapper struct for extension classes:
 
-ExtensionClass :: struct {
+ExtensionEntity :: struct {
     type: Type = void;
     parent_type: Type;
     fld: Any;
@@ -104,7 +113,7 @@ pool: Flat_Pool;
 make_user_class_case :: () -> string {
     builder: String_Builder;
     init_string_builder(*builder);
-    append(*builder, "if extension_class.type == {\n");
+    append(*builder, "if extension_entity.type == {\n");
     for user_class_declarations {
         if it.type == void break;
         print_to_builder(*builder, "case %;\n", it.type);
@@ -117,10 +126,10 @@ make_user_class_case :: () -> string {
 
 class_create_instance :: (p_class_userdata: *void) -> GDExtensionObjectPtr #c_call {
 
-    extension_class: ExtensionClass;
-    memcpy(*extension_class, p_class_userdata, size_of(ExtensionClass));
+    extension_entity: ExtensionEntity;
+    memcpy(*extension_entity, p_class_userdata, size_of(ExtensionEntity));
 
-    p_object := classdb_construct_object(extension_class.p_parent_class_name);
+    p_object := classdb_construct_object(extension_entity.p_parent_class_name);
 
     a: Allocator;
     a.proc = flat_pool_allocator_proc;
@@ -135,7 +144,7 @@ class_create_instance :: (p_class_userdata: *void) -> GDExtensionObjectPtr #c_ca
 
         #insert #run make_user_class_case();
 
-        object_set_instance(p_object, extension_class.p_class_name, *user_class_instance);
+        object_set_instance(p_object, extension_entity.p_class_name, *user_class_instance);
     }
 
     return p_object;
@@ -272,35 +281,16 @@ get_virtual_func :: (p_class_userdata: *void, p_name: GDExtensionConstStringName
     }
 }
 
-// GDExtensionClassCallVirtual :: #type (p_instance: GDExtensionClassInstancePtr, p_args: *GDExtensionConstTypePtr, r_ret: GDExtensionTypePtr) -> void #c_call;
-method_init :: (
-    p_instance: GDExtensionClassInstancePtr,
-    p_args: *GDExtensionConstTypePtr,
-    r_ret: GDExtensionTypePtr
-) #c_call {
-
-    // From some reddit post:
-
-    /* First we get a pointer to the object which is calling the function */
-    // MyClass *instance = static_cast<MyClass *>(p_instance);
-
-    /* Then we unpack the arguments from p_args */
-    // Node *arg1 = *static_cast<Node3D * const *>(p_args[0]);
-    // int arg2 = *static_cast<const int *>(p_args[1]);
-
-    /* Now we call the function on its arguments and get its result (if any)
-     * You MUST use the call() function to invoke method() */
-    // Variant return_var = instance->call("method", arg1, arg2);
-    // int result = static_cast<int>(return_var);
-
-    /* Finally, we return the output through the r_ret pointer */
-    // *static_cast<int *>(r_ret) = result;
-
-    new_context: Context;
-    push_context new_context {
-        print_muted("JODOT TEST CLASS _INIT METHOD!");
-    }
-}
+// method_init :: (
+//     p_instance: GDExtensionClassInstancePtr,
+//     p_args: *GDExtensionConstTypePtr,
+//     r_ret: GDExtensionTypePtr
+// ) #c_call {
+//     new_context: Context;
+//     push_context new_context {
+//         print_muted("JODOT TEST ENTITY _INIT METHOD!");
+//     }
+// }
 
 method_ready :: (
     p_instance: GDExtensionClassInstancePtr,
@@ -309,9 +299,11 @@ method_ready :: (
 ) #c_call {
     new_context: Context;
     push_context new_context {
-        print_muted("JODOT TEST CLASS _READY METHOD!");
+        print_muted("JODOT TEST ENTITY _READY METHOD!");
     }
 }
+
+greeter: JodotTestEntity;
 
 method_process :: (
     p_instance: GDExtensionClassInstancePtr,
@@ -320,7 +312,8 @@ method_process :: (
 ) #c_call {
     new_context: Context;
     push_context new_context {
-        // print_muted("JODOT TEST CLASS _PROCESS METHOD!");
+        greeter.time_accumulator += 1.0;
+        print_muted(tprint("Greeter's Stopwatch: %", greeter.time_accumulator));
     }
 }
 
@@ -331,21 +324,20 @@ method_input :: (
 ) #c_call {
     new_context: Context;
     push_context new_context {
-        // print_muted("JODOT TEST CLASS _INPUT METHOD!");
+        // print_muted("JODOT TEST ENTITY _INPUT METHOD!");
     }
 }
 
-method_virtual_dummy :: (
-    p_instance: GDExtensionClassInstancePtr,
-    p_args: *GDExtensionConstTypePtr,
-    r_ret: GDExtensionTypePtr
-) #c_call {}
+// method_virtual_dummy :: (
+//     p_instance: GDExtensionClassInstancePtr,
+//     p_args: *GDExtensionConstTypePtr,
+//     r_ret: GDExtensionTypePtr
+// ) #c_call {}
 
 deinitialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationLevel) #c_call {
     if p_level != .INITIALIZATION_SCENE {
         return;
     }
-
     // Perform any necessary cleanup!
 }
 
@@ -364,11 +356,11 @@ jodot_init :: (p_get_proc_address: GDExtensionInterfaceGetProcAddress, p_library
     P_GET_PROC_ADDRESS = p_get_proc_address;
     P_LIBRARY = p_library;
 
-    gdext_bool: GDExtensionBool = 1;
-    return gdext_bool;
+    success: GDExtensionBool = 1;
+    return success;
 }
 
-// ---- WRAPPERS ----
+// ==== WRAPPERS ====
 
 // TODO: these should push line number from the .jai source file
 godot_error :: (message: string) {

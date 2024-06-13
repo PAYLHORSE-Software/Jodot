@@ -5,9 +5,9 @@
 // CUSTOM CLASS DECLARATION
 // ------------------------
 
-Character :: struct @godot {
+Character :: struct @jodot {
 
-    #as using sys: ExtensionClass;
+    #as using sys: ExtensionEntity;
     type = #this;
 
     // The user designates a parent class from the gdt submodule.
@@ -19,18 +19,19 @@ Character :: struct @godot {
     time_accumulator : float = 0.0;
     character_name : string = "Nameless One";
 
-    // The user declares virtual method overrides.
-    _ready :: (self: *Character) #c_call {
-        new_context: Context;
-        push_context new_context {
-
-            print("Character spawned: %", self.character_name);
-        }
-            self.base.set_visible(true);
+    // The user declares virtual method overrides. These are the only 'class methods' in jodot.
+    ready :: (self: *Character) {
+        print("Character spawned: %", self.character_name);
+        self.base.set_visible(true);
     }
 
-    _process :: (self: *Character, delta: float32) #c_call {
+    process :: (self: *Character, delta: float32) #c_call {
+        self.time_accumulator += delta;
+        self.base.set_visible(true);
+        some_custom_method();
+    }
 
+    input :: (self: *Character, input: float32) #c_call {
         self.time_accumulator += delta;
         self.base.set_visible(true);
         some_custom_method();
@@ -43,13 +44,15 @@ Character :: struct @godot {
 some_custom_method :: () #c_call {}
 
 // Let's have it so that these procedures are NOT member functions, as a first step to breaking free of godot's OOP.
-// We'll find a way of declaring all custom procedures in bulk, in global scope.
+// We'll find a way of exporting tagged custom procedures if that becomes necessary.
 
-JodotTestClass :: struct @godot {
-    #as using sys: ExtensionClass;
+JodotTestEntity :: struct @jodot {
+    #as using sys: ExtensionEntity;
     type = #this;
 
     // The user designates a parent class from the gdt submodule.
     #as using base: gdtp.Node;
     parent_type = type_of(base);
+
+    time_accumulator : float = 0.0;
 }
