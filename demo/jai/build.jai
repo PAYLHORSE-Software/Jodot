@@ -1,4 +1,5 @@
 build :: () {
+
     w := compiler_create_workspace();
 
     options := get_build_options();
