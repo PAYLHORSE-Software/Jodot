@@ -18,5 +18,7 @@ gdtp :: struct {
     Node :: struct {}
 }
 
+def_extension_entity :: "#as using sys: ExtensionEntity; type = #this; parent_type = type_of(base);";
+
 // Entry point and initialization
 #load "sys/sys_init.jai";

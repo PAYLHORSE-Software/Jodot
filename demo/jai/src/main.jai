@@ -2,24 +2,25 @@
 #import "Jodot";
 
 // ------------------------
-// CUSTOM CLASS DECLARATION
+// JODOT ENTITY DECLARATION
 // ------------------------
 
+// We declare a jodot extension entity as a struct.
+// Steps to do so:
+
+// (1) Use the @jodot note in struct declaration.
 Character :: struct @jodot {
 
-    #as using sys: ExtensionEntity;
-    type = #this;
-
-    // The user designates a parent class from the gdt submodule.
+    // (2) Designate a parent class from the gdt submodule, as 'base'.
     #as using base: gdtp.CharacterBody3D;
-    parent_type = type_of(base);
 
-    // The user declares fields; the extension class 'properties'.
-    // Must they have defaults? Not sure.
+    // (3) Insert this macro to complete the definition.
+    #insert def_extension_entity;
+
+    // You can now declare fields as you would with any other struct.
     time_accumulator : float = 0.0;
     character_name : string = "Nameless One";
 
-    // The user declares virtual method overrides. These are the only 'class methods' in jodot.
     ready :: (self: *Character) {
         print("Character spawned: %", self.character_name);
         self.base.set_visible(true);
@@ -28,31 +29,32 @@ Character :: struct @jodot {
     process :: (self: *Character, delta: float32) #c_call {
         self.time_accumulator += delta;
         self.base.set_visible(true);
-        some_custom_method();
     }
 
-    input :: (self: *Character, input: float32) #c_call {
-        self.time_accumulator += delta;
-        self.base.set_visible(true);
-        some_custom_method();
-    }
+    input :: (self: *Character, input: float32) #c_call {}
 }
 
-// The user declares custom methods.
-// They should be able to use these in virtual method overrides...
-// ...so context limitation is a real issue.
-some_custom_method :: () #c_call {}
+// The user declares 'virtual method overrides' as native procedures.
+// These must be declared, must follow this naming convention, and must match the signature.
+ready_Character :: (entity: *Character) {
+    print("Hello from JodotTestEntity!\n");
+}
 
-// Let's have it so that these procedures are NOT member functions, as a first step to breaking free of godot's OOP.
-// We'll find a way of exporting tagged custom procedures if that becomes necessary.
+process_Character :: (entity: *Character, delta: float) {}
 
 JodotTestEntity :: struct @jodot {
-    #as using sys: ExtensionEntity;
-    type = #this;
 
-    // The user designates a parent class from the gdt submodule.
     #as using base: gdtp.Node;
-    parent_type = type_of(base);
+    #insert def_extension_entity;
 
     time_accumulator : float = 0.0;
+    character_name : string = "Nameless One";
+}
+
+ready_JodotTestEntity :: (entity: *JodotTestEntity) {
+    print("Hello from JodotTestEntity!\n");
+}
+
+process_JodotTestEntity :: (entity: *Character, delta: float) {
+    print("Delta from JodotTestEntity: %\n", delta);
 }

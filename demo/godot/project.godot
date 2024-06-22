@@ -17,8 +17,14 @@ config/icon="res://icon.png"
 
 [display]
 
+window/size/viewport_width=622
+window/size/viewport_height=350
 mouse_cursor/custom_image="res://menu/sprite/mouse_cursor.png"
 
 [gui]
 
 theme/custom_font="res://menu/font/Karmina Regular.ttf"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.0748452, 0.0748453, 0.0748452, 1)

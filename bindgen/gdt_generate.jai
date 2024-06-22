@@ -4,8 +4,7 @@
 GodotAPI :: struct {
     header: Header;
     builtin_class_sizes: [] SizeRef;
-     builtin_class_member_offsets: [] OffsetRef;
-    // global_constants
+    builtin_class_member_offsets: [] OffsetRef;
     global_enums: [] Enum;
     // utility_functions
     builtin_classes: [] Class;
@@ -112,17 +111,15 @@ gdt_bindings_codegen :: () {
 
     // == BUILTIN CLASSES ==
 
-    append(*builder, "// == BUILTIN CLASSES ==\n\n");
-
     for godot_api.builtin_classes {
 
         if equal(it.name, "bool") || equal(it.name, "int") || equal(it.name, "float") continue;
 
-        print_to_builder(*builder, "    % :: struct {\n", it.name);
-        append(*builder, "    }\n\n");
+        print_to_builder(*builder, "    % :: struct {", it.name);
+        append(*builder, "}\n");
     }
 
-    append(*builder, "}");
+    append(*builder, "\n}");
 
     code := builder_to_string(*builder);
     write_entire_file("gdt/gdt_reference.jai", code);
@@ -149,56 +146,6 @@ GDT_HEADER :: #string DONE
 // | JODOT GDT REFERENCE |
 //  ---------------------
 
-// Just a reference for now. Bindings are hand-made in gdt_bindings.
+// Just a reference for now. Bindings are hand-copied over to gdt_bindings.
 
 DONE
-
-// --------------------------
-// JSON DESERIALIZATION NOTES
-// --------------------------
-
-// --- FUNC/METHOD ---
-
-// JSON gives us:
-
-// is_const: bool
-// is_vararg: bool
-// is_static: bool
-// is_virtual: bool
-
-// _ready, _process, _physics_process, _enter_tree, _exit_treem _input are all false, false, false, true (virtual)
-
-// hash: u32
-
-// return_value: Type
-
-// category: string
-
-// arguments
-// // name: string
-// // type: Type
-// // default_value
-
-// --- ENUM (enum) ---
-
-// JSON gives us:
-
-// is_bitfield: bool
-
-// --- CLASS (struct) ---
-
-// JSON gives us:
-
-// is_refcounted: bool
-// is_instantiable: bool
-
-// inherits: struct ;))
-
-// api_type: string
-
-// constants
-// seem to be u8s universally
-
-// enums*
-
-// methods*

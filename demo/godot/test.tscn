@@ -1,7 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://g3datwjgdphy"]
 
 [ext_resource type="Texture2D" uid="uid://de1nlkch0ddh" path="res://menu/sprite/point_light.webp" id="1_cfeuw"]
-[ext_resource type="Texture2D" uid="uid://rvegpqr3v6rm" path="res://menu/graphic/world.png" id="1_dckvh"]
 [ext_resource type="Texture2D" uid="uid://ci2rka7vs3n5q" path="res://menu/sprite/greeter/walking 1.png" id="2_r4q7j"]
 [ext_resource type="Texture2D" uid="uid://dalgoyucfuvwp" path="res://menu/sprite/greeter/walking 2.png" id="3_cdxcp"]
 [ext_resource type="Texture2D" uid="uid://cn68p3qw166em" path="res://menu/sprite/greeter/walking 3.png" id="4_qv3w5"]
@@ -14,12 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://0bdrcbvbypff" path="res://menu/sprite/greeter/walking 10.png" id="11_v6itq"]
 [ext_resource type="Texture2D" uid="uid://cuxwg17yf8tcd" path="res://menu/sprite/greeter/walking 11.png" id="12_snx6w"]
 [ext_resource type="Texture2D" uid="uid://dea4tric6hyxu" path="res://menu/sprite/greeter/walking 12.png" id="13_ixjrd"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t8th5"]
-content_margin_left = 460.0
-content_margin_top = 280.0
-content_margin_right = 460.0
-bg_color = Color(0.0862745, 0.0862745, 0.0862745, 0.988235)
+[ext_resource type="Texture2D" uid="uid://50c0u6q4iyj" path="res://menu/graphic/ground.png" id="14_6fiel"]
+[ext_resource type="Script" path="res://script/scroll.gd" id="15_72wix"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m76yy"]
 animations = [{
@@ -67,27 +62,33 @@ animations = [{
 
 [node name="Node" type="Node"]
 
-[node name="bg" type="Sprite2D" parent="."]
-position = Vector2(576, 324)
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("1_dckvh")
+[node name="canvas" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="greeter" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -576.0
-offset_top = -324.0
-offset_right = 576.0
-offset_bottom = 324.0
+offset_left = 1.595
+offset_top = 121.34
+offset_right = 41.595
+offset_bottom = 161.34
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_t8th5")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer"]
-layout_mode = 2
+[node name="RichTextLabel" type="RichTextLabel" parent="greeter"]
+layout_mode = 0
+offset_left = -119.0
+offset_top = -125.375
+offset_right = 113.0
+offset_bottom = 242.625
 theme_override_colors/default_color = Color(0.332881, 0.332881, 0.332881, 1)
 theme_override_colors/font_shadow_color = Color(0.0605303, 0.0605303, 0.0605303, 1)
 theme_override_constants/shadow_offset_y = 3
@@ -99,16 +100,23 @@ bbcode_enabled = true
 text = "[center]I'm sorry, but GDScript is in another castle."
 fit_content = true
 
-[node name="PointLight2D" type="PointLight2D" parent="PanelContainer"]
-position = Vector2(581.3, 335.01)
+[node name="PointLight2D" type="PointLight2D" parent="greeter"]
+position = Vector2(2.29999, -48.015)
 scale = Vector2(1.58, 1.58)
 color = Color(1, 1, 1, 0.337255)
 texture = ExtResource("1_cfeuw")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer"]
-position = Vector2(579, 383.025)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="greeter"]
 scale = Vector2(0.33, 0.33)
 sprite_frames = SubResource("SpriteFrames_m76yy")
 autoplay = "default"
 
+[node name="bg" type="Sprite2D" parent="greeter"]
+position = Vector2(-3, -140.985)
+scale = Vector2(0.54, 0.54)
+texture = ExtResource("14_6fiel")
+script = ExtResource("15_72wix")
+
 [node name="JodotTestEntity" type="JodotTestEntity" parent="."]
+
+[node name="JodotTestEntity2" type="JodotTestEntity" parent="."]
