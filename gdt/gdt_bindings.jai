@@ -676,7 +676,9 @@ gdt :: struct {
         OP_MAX :: 25;
     }
 
-    AESContext :: struct {
+    AESContext :: struct {    // 0
+
+        #as using base: RefCounted;
 
         Mode :: enum s32 {
             MODE_ECB_ENCRYPT :: 0;
@@ -687,13 +689,19 @@ gdt :: struct {
         }
     }
 
-    AStar2D :: struct {
+    AStar2D :: struct {    // 1
+
+        #as using base: RefCounted;
     }
 
-    AStar3D :: struct {
+    AStar3D :: struct {    // 2
+
+        #as using base: RefCounted;
     }
 
-    AStarGrid2D :: struct {
+    AStarGrid2D :: struct {    // 3
+
+        #as using base: RefCounted;
 
         Heuristic :: enum s32 {
             HEURISTIC_EUCLIDEAN :: 0;
@@ -717,27 +725,86 @@ gdt :: struct {
             CELL_SHAPE_ISOMETRIC_DOWN :: 2;
             CELL_SHAPE_MAX :: 3;
         }
+
+        region: Rect2i;
+        size: Vector2i;
+        offset: Vector2;
+        cell_size: Vector2;
+        cell_shape: int;
+        jumping_enabled: bool;
+        default_compute_heuristic: int;
+        default_estimate_heuristic: int;
+        diagonal_mode: int;
     }
 
-    AcceptDialog :: struct {
+    AcceptDialog :: struct {    // 4
+
+        #as using base: Window;
+
+        ok_button_text: String;
+        dialog_text: String;
+        dialog_hide_on_ok: bool;
+        dialog_close_on_escape: bool;
+        dialog_autowrap: bool;
     }
 
-    AnimatableBody2D :: struct {
+    AnimatableBody2D :: struct {    // 5
+
+        #as using base: StaticBody2D;
+
+        sync_to_physics: bool;
     }
 
-    AnimatableBody3D :: struct {
+    AnimatableBody3D :: struct {    // 6
+
+        #as using base: StaticBody3D;
+
+        sync_to_physics: bool;
     }
 
-    AnimatedSprite2D :: struct {
+    AnimatedSprite2D :: struct {    // 7
+
+        #as using base: Node2D;
+
+        sprite_frames: SpriteFrames;
+        animation: StringName;
+        autoplay: StringName;
+        frame: int;
+        frame_progress: float;
+        speed_scale: float;
+        centered: bool;
+        offset: Vector2;
+        flip_h: bool;
+        flip_v: bool;
     }
 
-    AnimatedSprite3D :: struct {
+    AnimatedSprite3D :: struct {    // 8
+
+        #as using base: SpriteBase3D;
+
+        sprite_frames: SpriteFrames;
+        animation: StringName;
+        autoplay: StringName;
+        frame: int;
+        frame_progress: float;
+        speed_scale: float;
     }
 
-    AnimatedTexture :: struct {
+    AnimatedTexture :: struct {    // 9
+
+        #as using base: Texture2D;
+
+        MAX_FRAMES :: 256;
+        frames: int;
+        current_frame: int;
+        pause: bool;
+        one_shot: bool;
+        speed_scale: float;
     }
 
-    Animation :: struct {
+    Animation :: struct {    // 10
+
+        #as using base: Resource;
 
         TrackType :: enum s32 {
             TYPE_VALUE :: 0;
@@ -782,12 +849,20 @@ gdt :: struct {
             FIND_MODE_APPROX :: 1;
             FIND_MODE_EXACT :: 2;
         }
+
+        length: float;
+        loop_mode: int;
+        step: float;
     }
 
-    AnimationLibrary :: struct {
+    AnimationLibrary :: struct {    // 11
+
+        #as using base: Resource;
     }
 
-    AnimationMixer :: struct {
+    AnimationMixer :: struct {    // 12
+
+        #as using base: Node;
 
         AnimationCallbackModeProcess :: enum s32 {
             ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS :: 0;
@@ -805,9 +880,21 @@ gdt :: struct {
             ANIMATION_CALLBACK_MODE_DISCRETE_RECESSIVE :: 1;
             ANIMATION_CALLBACK_MODE_DISCRETE_FORCE_CONTINUOUS :: 2;
         }
+
+        active: bool;
+        deterministic: bool;
+        reset_on_save: bool;
+        root_node: NodePath;
+        root_motion_track: NodePath;
+        audio_max_polyphony: int;
+        callback_mode_process: int;
+        callback_mode_method: int;
+        callback_mode_discrete: int;
     }
 
-    AnimationNode :: struct {
+    AnimationNode :: struct {    // 13
+
+        #as using base: Resource;
 
         FilterAction :: enum s32 {
             FILTER_IGNORE :: 0;
@@ -815,50 +902,99 @@ gdt :: struct {
             FILTER_STOP :: 2;
             FILTER_BLEND :: 3;
         }
+
+        filter_enabled: bool;
+        filters: Array;
     }
 
-    AnimationNodeAdd2 :: struct {
+    AnimationNodeAdd2 :: struct {    // 14
+
+        #as using base: AnimationNodeSync;
     }
 
-    AnimationNodeAdd3 :: struct {
+    AnimationNodeAdd3 :: struct {    // 15
+
+        #as using base: AnimationNodeSync;
     }
 
-    AnimationNodeAnimation :: struct {
+    AnimationNodeAnimation :: struct {    // 16
+
+        #as using base: AnimationRootNode;
 
         PlayMode :: enum s32 {
             PLAY_MODE_FORWARD :: 0;
             PLAY_MODE_BACKWARD :: 1;
         }
+
+        animation: StringName;
+        play_mode: int;
     }
 
-    AnimationNodeBlend2 :: struct {
+    AnimationNodeBlend2 :: struct {    // 17
+
+        #as using base: AnimationNodeSync;
     }
 
-    AnimationNodeBlend3 :: struct {
+    AnimationNodeBlend3 :: struct {    // 18
+
+        #as using base: AnimationNodeSync;
     }
 
-    AnimationNodeBlendSpace1D :: struct {
+    AnimationNodeBlendSpace1D :: struct {    // 19
+
+        #as using base: AnimationRootNode;
 
         BlendMode :: enum s32 {
             BLEND_MODE_INTERPOLATED :: 0;
             BLEND_MODE_DISCRETE :: 1;
             BLEND_MODE_DISCRETE_CARRY :: 2;
         }
+
+        min_space: float;
+        max_space: float;
+        snap: float;
+        value_label: String;
+        blend_mode: int;
+        sync: bool;
     }
 
-    AnimationNodeBlendSpace2D :: struct {
+    AnimationNodeBlendSpace2D :: struct {    // 20
+
+        #as using base: AnimationRootNode;
 
         BlendMode :: enum s32 {
             BLEND_MODE_INTERPOLATED :: 0;
             BLEND_MODE_DISCRETE :: 1;
             BLEND_MODE_DISCRETE_CARRY :: 2;
         }
+
+        auto_triangles: bool;
+        triangles: PackedInt32Array;
+        min_space: Vector2;
+        max_space: Vector2;
+        snap: Vector2;
+        x_label: String;
+        y_label: String;
+        blend_mode: int;
+        sync: bool;
     }
 
-    AnimationNodeBlendTree :: struct {
+    AnimationNodeBlendTree :: struct {    // 21
+
+        #as using base: AnimationRootNode;
+
+        CONNECTION_OK :: 0;
+        CONNECTION_ERROR_NO_INPUT :: 1;
+        CONNECTION_ERROR_NO_INPUT_INDEX :: 2;
+        CONNECTION_ERROR_NO_OUTPUT :: 3;
+        CONNECTION_ERROR_SAME_NODE :: 4;
+        CONNECTION_ERROR_CONNECTION_EXISTS :: 5;
+        graph_offset: Vector2;
     }
 
-    AnimationNodeOneShot :: struct {
+    AnimationNodeOneShot :: struct {    // 22
+
+        #as using base: AnimationNodeSync;
 
         OneShotRequest :: enum s32 {
             ONE_SHOT_REQUEST_NONE :: 0;
@@ -871,24 +1007,45 @@ gdt :: struct {
             MIX_MODE_BLEND :: 0;
             MIX_MODE_ADD :: 1;
         }
+
+        mix_mode: int;
+        fadein_time: float;
+        fadein_curve: Curve;
+        fadeout_time: float;
+        fadeout_curve: Curve;
+        autorestart: bool;
+        autorestart_delay: float;
+        autorestart_random_delay: float;
     }
 
-    AnimationNodeOutput :: struct {
+    AnimationNodeOutput :: struct {    // 23
+
+        #as using base: AnimationNode;
     }
 
-    AnimationNodeStateMachine :: struct {
+    AnimationNodeStateMachine :: struct {    // 24
+
+        #as using base: AnimationRootNode;
 
         StateMachineType :: enum s32 {
             STATE_MACHINE_TYPE_ROOT :: 0;
             STATE_MACHINE_TYPE_NESTED :: 1;
             STATE_MACHINE_TYPE_GROUPED :: 2;
         }
+
+        state_machine_type: int;
+        allow_transition_to_self: bool;
+        reset_ends: bool;
     }
 
-    AnimationNodeStateMachinePlayback :: struct {
+    AnimationNodeStateMachinePlayback :: struct {    // 25
+
+        #as using base: Resource;
     }
 
-    AnimationNodeStateMachineTransition :: struct {
+    AnimationNodeStateMachineTransition :: struct {    // 26
+
+        #as using base: Resource;
 
         SwitchMode :: enum s32 {
             SWITCH_MODE_IMMEDIATE :: 0;
@@ -901,24 +1058,52 @@ gdt :: struct {
             ADVANCE_MODE_ENABLED :: 1;
             ADVANCE_MODE_AUTO :: 2;
         }
+
+        xfade_time: float;
+        xfade_curve: Curve;
+        reset: bool;
+        priority: int;
+        switch_mode: int;
+        advance_mode: int;
+        advance_condition: StringName;
+        advance_expression: String;
     }
 
-    AnimationNodeSub2 :: struct {
+    AnimationNodeSub2 :: struct {    // 27
+
+        #as using base: AnimationNodeSync;
     }
 
-    AnimationNodeSync :: struct {
+    AnimationNodeSync :: struct {    // 28
+
+        #as using base: AnimationNode;
+
+        sync: bool;
     }
 
-    AnimationNodeTimeScale :: struct {
+    AnimationNodeTimeScale :: struct {    // 29
+
+        #as using base: AnimationNode;
     }
 
-    AnimationNodeTimeSeek :: struct {
+    AnimationNodeTimeSeek :: struct {    // 30
+
+        #as using base: AnimationNode;
     }
 
-    AnimationNodeTransition :: struct {
+    AnimationNodeTransition :: struct {    // 31
+
+        #as using base: AnimationNodeSync;
+
+        xfade_time: float;
+        xfade_curve: Curve;
+        allow_transition_to_self: bool;
+        input_count: int;
     }
 
-    AnimationPlayer :: struct {
+    AnimationPlayer :: struct {    // 32
+
+        #as using base: AnimationMixer;
 
         AnimationProcessCallback :: enum s32 {
             ANIMATION_PROCESS_PHYSICS :: 0;
@@ -930,21 +1115,40 @@ gdt :: struct {
             ANIMATION_METHOD_CALL_DEFERRED :: 0;
             ANIMATION_METHOD_CALL_IMMEDIATE :: 1;
         }
+
+        current_animation: StringName;
+        assigned_animation: StringName;
+        autoplay: StringName;
+        current_animation_length: float;
+        current_animation_position: float;
+        playback_default_blend_time: float;
+        speed_scale: float;
+        movie_quit_on_finish: bool;
     }
 
-    AnimationRootNode :: struct {
+    AnimationRootNode :: struct {    // 33
+
+        #as using base: AnimationNode;
     }
 
-    AnimationTree :: struct {
+    AnimationTree :: struct {    // 34
+
+        #as using base: AnimationMixer;
 
         AnimationProcessCallback :: enum s32 {
             ANIMATION_PROCESS_PHYSICS :: 0;
             ANIMATION_PROCESS_IDLE :: 1;
             ANIMATION_PROCESS_MANUAL :: 2;
         }
+
+        tree_root: AnimationRootNode;
+        advance_expression_base_node: NodePath;
+        anim_player: NodePath;
     }
 
-    Area2D :: struct {
+    Area2D :: struct {    // 35
+
+        #as using base: CollisionObject2D;
 
         SpaceOverride :: enum s32 {
             SPACE_OVERRIDE_DISABLED :: 0;
@@ -953,9 +1157,27 @@ gdt :: struct {
             SPACE_OVERRIDE_REPLACE :: 3;
             SPACE_OVERRIDE_REPLACE_COMBINE :: 4;
         }
+
+        monitoring: bool;
+        monitorable: bool;
+        priority: int;
+        gravity_space_override: int;
+        gravity_point: bool;
+        gravity_point_unit_distance: float;
+        gravity_point_center: Vector2;
+        gravity_direction: Vector2;
+        gravity: float;
+        linear_damp_space_override: int;
+        linear_damp: float;
+        angular_damp_space_override: int;
+        angular_damp: float;
+        audio_bus_override: bool;
+        audio_bus_name: StringName;
     }
 
-    Area3D :: struct {
+    Area3D :: struct {    // 36
+
+        #as using base: CollisionObject3D;
 
         SpaceOverride :: enum s32 {
             SPACE_OVERRIDE_DISABLED :: 0;
@@ -964,15 +1186,51 @@ gdt :: struct {
             SPACE_OVERRIDE_REPLACE :: 3;
             SPACE_OVERRIDE_REPLACE_COMBINE :: 4;
         }
+
+        monitoring: bool;
+        monitorable: bool;
+        priority: int;
+        gravity_space_override: int;
+        gravity_point: bool;
+        gravity_point_unit_distance: float;
+        gravity_point_center: Vector3;
+        gravity_direction: Vector3;
+        gravity: float;
+        linear_damp_space_override: int;
+        linear_damp: float;
+        angular_damp_space_override: int;
+        angular_damp: float;
+        wind_force_magnitude: float;
+        wind_attenuation_factor: float;
+        wind_source_path: NodePath;
+        audio_bus_override: bool;
+        audio_bus_name: StringName;
+        reverb_bus_enabled: bool;
+        reverb_bus_name: StringName;
+        reverb_bus_amount: float;
+        reverb_bus_uniformity: float;
     }
 
-    ArrayMesh :: struct {
+    ArrayMesh :: struct {    // 37
+
+        #as using base: Mesh;
+
+        blend_shape_mode: int;
+        custom_aabb: AABB;
+        shadow_mesh: ArrayMesh;
     }
 
-    ArrayOccluder3D :: struct {
+    ArrayOccluder3D :: struct {    // 38
+
+        #as using base: Occluder3D;
+
+        vertices: PackedVector3Array;
+        indices: PackedInt32Array;
     }
 
-    AspectRatioContainer :: struct {
+    AspectRatioContainer :: struct {    // 39
+
+        #as using base: Container;
 
         StretchMode :: enum s32 {
             STRETCH_WIDTH_CONTROLS_HEIGHT :: 0;
@@ -986,39 +1244,101 @@ gdt :: struct {
             ALIGNMENT_CENTER :: 1;
             ALIGNMENT_END :: 2;
         }
+
+        ratio: float;
+        stretch_mode: int;
+        alignment_horizontal: int;
+        alignment_vertical: int;
     }
 
-    AtlasTexture :: struct {
+    AtlasTexture :: struct {    // 40
+
+        #as using base: Texture2D;
+
+        atlas: Texture2D;
+        region: Rect2;
+        margin: Rect2;
+        filter_clip: bool;
     }
 
-    AudioBusLayout :: struct {
+    AudioBusLayout :: struct {    // 41
+
+        #as using base: Resource;
     }
 
-    AudioEffect :: struct {
+    AudioEffect :: struct {    // 42
+
+        #as using base: Resource;
     }
 
-    AudioEffectAmplify :: struct {
+    AudioEffectAmplify :: struct {    // 43
+
+        #as using base: AudioEffect;
+
+        volume_db: float;
     }
 
-    AudioEffectBandLimitFilter :: struct {
+    AudioEffectBandLimitFilter :: struct {    // 44
+
+        #as using base: AudioEffectFilter;
     }
 
-    AudioEffectBandPassFilter :: struct {
+    AudioEffectBandPassFilter :: struct {    // 45
+
+        #as using base: AudioEffectFilter;
     }
 
-    AudioEffectCapture :: struct {
+    AudioEffectCapture :: struct {    // 46
+
+        #as using base: AudioEffect;
+
+        buffer_length: float;
     }
 
-    AudioEffectChorus :: struct {
+    AudioEffectChorus :: struct {    // 47
+
+        #as using base: AudioEffect;
+
+        voice_count: int;
+        dry: float;
+        wet: float;
     }
 
-    AudioEffectCompressor :: struct {
+    AudioEffectCompressor :: struct {    // 48
+
+        #as using base: AudioEffect;
+
+        threshold: float;
+        ratio: float;
+        gain: float;
+        attack_us: float;
+        release_ms: float;
+        mix: float;
+        sidechain: StringName;
     }
 
-    AudioEffectDelay :: struct {
+    AudioEffectDelay :: struct {    // 49
+
+        #as using base: AudioEffect;
+
+        dry: float;
+        tap1_active: bool;
+        tap1_delay_ms: float;
+        tap1_level_db: float;
+        tap1_pan: float;
+        tap2_active: bool;
+        tap2_delay_ms: float;
+        tap2_level_db: float;
+        tap2_pan: float;
+        feedback_active: bool;
+        feedback_delay_ms: float;
+        feedback_level_db: float;
+        feedback_lowpass: float;
     }
 
-    AudioEffectDistortion :: struct {
+    AudioEffectDistortion :: struct {    // 50
+
+        #as using base: AudioEffect;
 
         Mode :: enum s32 {
             MODE_CLIP :: 0;
@@ -1027,21 +1347,37 @@ gdt :: struct {
             MODE_OVERDRIVE :: 3;
             MODE_WAVESHAPE :: 4;
         }
+
+        mode: int;
+        pre_gain: float;
+        keep_hf_hz: float;
+        drive: float;
+        post_gain: float;
     }
 
-    AudioEffectEQ :: struct {
+    AudioEffectEQ :: struct {    // 51
+
+        #as using base: AudioEffect;
     }
 
-    AudioEffectEQ10 :: struct {
+    AudioEffectEQ10 :: struct {    // 52
+
+        #as using base: AudioEffectEQ;
     }
 
-    AudioEffectEQ21 :: struct {
+    AudioEffectEQ21 :: struct {    // 53
+
+        #as using base: AudioEffectEQ;
     }
 
-    AudioEffectEQ6 :: struct {
+    AudioEffectEQ6 :: struct {    // 54
+
+        #as using base: AudioEffectEQ;
     }
 
-    AudioEffectFilter :: struct {
+    AudioEffectFilter :: struct {    // 55
+
+        #as using base: AudioEffect;
 
         FilterDB :: enum s32 {
             FILTER_6DB :: 0;
@@ -1049,36 +1385,74 @@ gdt :: struct {
             FILTER_18DB :: 2;
             FILTER_24DB :: 3;
         }
+
+        cutoff_hz: float;
+        resonance: float;
+        gain: float;
+        db: int;
     }
 
-    AudioEffectHighPassFilter :: struct {
+    AudioEffectHighPassFilter :: struct {    // 56
+
+        #as using base: AudioEffectFilter;
     }
 
-    AudioEffectHighShelfFilter :: struct {
+    AudioEffectHighShelfFilter :: struct {    // 57
+
+        #as using base: AudioEffectFilter;
     }
 
-    AudioEffectInstance :: struct {
+    AudioEffectInstance :: struct {    // 58
+
+        #as using base: RefCounted;
     }
 
-    AudioEffectLimiter :: struct {
+    AudioEffectLimiter :: struct {    // 59
+
+        #as using base: AudioEffect;
+
+        ceiling_db: float;
+        threshold_db: float;
+        soft_clip_db: float;
+        soft_clip_ratio: float;
     }
 
-    AudioEffectLowPassFilter :: struct {
+    AudioEffectLowPassFilter :: struct {    // 60
+
+        #as using base: AudioEffectFilter;
     }
 
-    AudioEffectLowShelfFilter :: struct {
+    AudioEffectLowShelfFilter :: struct {    // 61
+
+        #as using base: AudioEffectFilter;
     }
 
-    AudioEffectNotchFilter :: struct {
+    AudioEffectNotchFilter :: struct {    // 62
+
+        #as using base: AudioEffectFilter;
     }
 
-    AudioEffectPanner :: struct {
+    AudioEffectPanner :: struct {    // 63
+
+        #as using base: AudioEffect;
+
+        pan: float;
     }
 
-    AudioEffectPhaser :: struct {
+    AudioEffectPhaser :: struct {    // 64
+
+        #as using base: AudioEffect;
+
+        range_min_hz: float;
+        range_max_hz: float;
+        rate_hz: float;
+        feedback: float;
+        depth: float;
     }
 
-    AudioEffectPitchShift :: struct {
+    AudioEffectPitchShift :: struct {    // 65
+
+        #as using base: AudioEffect;
 
         FFTSize :: enum s32 {
             FFT_SIZE_256 :: 0;
@@ -1088,15 +1462,36 @@ gdt :: struct {
             FFT_SIZE_4096 :: 4;
             FFT_SIZE_MAX :: 5;
         }
+
+        pitch_scale: float;
+        oversampling: float;
+        fft_size: int;
     }
 
-    AudioEffectRecord :: struct {
+    AudioEffectRecord :: struct {    // 66
+
+        #as using base: AudioEffect;
+
+        format: int;
     }
 
-    AudioEffectReverb :: struct {
+    AudioEffectReverb :: struct {    // 67
+
+        #as using base: AudioEffect;
+
+        predelay_msec: float;
+        predelay_feedback: float;
+        room_size: float;
+        damping: float;
+        spread: float;
+        hipass: float;
+        dry: float;
+        wet: float;
     }
 
-    AudioEffectSpectrumAnalyzer :: struct {
+    AudioEffectSpectrumAnalyzer :: struct {    // 68
+
+        #as using base: AudioEffect;
 
         FFTSize :: enum s32 {
             FFT_SIZE_256 :: 0;
@@ -1106,9 +1501,15 @@ gdt :: struct {
             FFT_SIZE_4096 :: 4;
             FFT_SIZE_MAX :: 5;
         }
+
+        buffer_length: float;
+        tap_back_pos: float;
+        fft_size: int;
     }
 
-    AudioEffectSpectrumAnalyzerInstance :: struct {
+    AudioEffectSpectrumAnalyzerInstance :: struct {    // 69
+
+        #as using base: AudioEffectInstance;
 
         MagnitudeMode :: enum s32 {
             MAGNITUDE_AVERAGE :: 0;
@@ -1116,16 +1517,28 @@ gdt :: struct {
         }
     }
 
-    AudioEffectStereoEnhance :: struct {
+    AudioEffectStereoEnhance :: struct {    // 70
+
+        #as using base: AudioEffect;
+
+        pan_pullout: float;
+        time_pullout_ms: float;
+        surround: float;
     }
 
-    AudioListener2D :: struct {
+    AudioListener2D :: struct {    // 71
+
+        #as using base: Node2D;
     }
 
-    AudioListener3D :: struct {
+    AudioListener3D :: struct {    // 72
+
+        #as using base: Node3D;
     }
 
-    AudioServer :: struct {
+    AudioServer :: struct {    // 73
+
+        #as using base: Object;
 
         SpeakerMode :: enum s32 {
             SPEAKER_MODE_STEREO :: 0;
@@ -1133,18 +1546,37 @@ gdt :: struct {
             SPEAKER_SURROUND_51 :: 2;
             SPEAKER_SURROUND_71 :: 3;
         }
+
+        bus_count: int;
+        output_device: String;
+        input_device: String;
+        playback_speed_scale: float;
     }
 
-    AudioStream :: struct {
+    AudioStream :: struct {    // 74
+
+        #as using base: Resource;
     }
 
-    AudioStreamGenerator :: struct {
+    AudioStreamGenerator :: struct {    // 75
+
+        #as using base: AudioStream;
+
+        mix_rate: float;
+        buffer_length: float;
     }
 
-    AudioStreamGeneratorPlayback :: struct {
+    AudioStreamGeneratorPlayback :: struct {    // 76
+
+        #as using base: AudioStreamPlaybackResampled;
     }
 
-    AudioStreamInteractive :: struct {
+    AudioStreamInteractive :: struct {    // 77
+
+        #as using base: AudioStream;
+
+        CLIP_ANY :: -1;
+
 
         TransitionFromTime :: enum s32 {
             TRANSITION_FROM_TIME_IMMEDIATE :: 0;
@@ -1171,51 +1603,120 @@ gdt :: struct {
             AUTO_ADVANCE_ENABLED :: 1;
             AUTO_ADVANCE_RETURN_TO_HOLD :: 2;
         }
+
+        initial_clip: int;
+        clip_count: int;
     }
 
-    AudioStreamMP3 :: struct {
+    AudioStreamMP3 :: struct {    // 78
+
+        #as using base: AudioStream;
+
+        data: PackedByteArray;
+        bpm: float;
+        beat_count: int;
+        bar_beats: int;
+        loop: bool;
+        loop_offset: float;
     }
 
-    AudioStreamMicrophone :: struct {
+    AudioStreamMicrophone :: struct {    // 79
+
+        #as using base: AudioStream;
     }
 
-    AudioStreamOggVorbis :: struct {
+    AudioStreamOggVorbis :: struct {    // 80
+
+        #as using base: AudioStream;
+
+        packet_sequence: Object;
+        bpm: float;
+        beat_count: int;
+        bar_beats: int;
+        loop: bool;
+        loop_offset: float;
     }
 
-    AudioStreamPlayback :: struct {
+    AudioStreamPlayback :: struct {    // 81
+
+        #as using base: RefCounted;
     }
 
-    AudioStreamPlaybackInteractive :: struct {
+    AudioStreamPlaybackInteractive :: struct {    // 82
+
+        #as using base: AudioStreamPlayback;
     }
 
-    AudioStreamPlaybackOggVorbis :: struct {
+    AudioStreamPlaybackOggVorbis :: struct {    // 83
+
+        #as using base: AudioStreamPlaybackResampled;
     }
 
-    AudioStreamPlaybackPlaylist :: struct {
+    AudioStreamPlaybackPlaylist :: struct {    // 84
+
+        #as using base: AudioStreamPlayback;
     }
 
-    AudioStreamPlaybackPolyphonic :: struct {
+    AudioStreamPlaybackPolyphonic :: struct {    // 85
+
+        #as using base: AudioStreamPlayback;
+
+        INVALID_ID :: -1;
+
     }
 
-    AudioStreamPlaybackResampled :: struct {
+    AudioStreamPlaybackResampled :: struct {    // 86
+
+        #as using base: AudioStreamPlayback;
     }
 
-    AudioStreamPlaybackSynchronized :: struct {
+    AudioStreamPlaybackSynchronized :: struct {    // 87
+
+        #as using base: AudioStreamPlayback;
     }
 
-    AudioStreamPlayer :: struct {
+    AudioStreamPlayer :: struct {    // 88
+
+        #as using base: Node;
 
         MixTarget :: enum s32 {
             MIX_TARGET_STEREO :: 0;
             MIX_TARGET_SURROUND :: 1;
             MIX_TARGET_CENTER :: 2;
         }
+
+        stream: AudioStream;
+        volume_db: float;
+        pitch_scale: float;
+        playing: bool;
+        autoplay: bool;
+        stream_paused: bool;
+        mix_target: int;
+        max_polyphony: int;
+        bus: StringName;
     }
 
-    AudioStreamPlayer2D :: struct {
+    AudioStreamPlayer2D :: struct {    // 89
+
+        #as using base: Node2D;
+
+        stream: AudioStream;
+        volume_db: float;
+        pitch_scale: float;
+        playing: bool;
+        autoplay: bool;
+        stream_paused: bool;
+        max_distance: float;
+        attenuation: float;
+        max_polyphony: int;
+        panning_strength: float;
+        bus: StringName;
+        area_mask: int;
     }
 
-    AudioStreamPlayer3D :: struct {
+    AudioStreamPlayer3D :: struct {    // 90
+
+        #as using base: Node3D;
 
         AttenuationModel :: enum s32 {
             ATTENUATION_INVERSE_DISTANCE :: 0;
@@ -1229,27 +1730,138 @@ gdt :: struct {
             DOPPLER_TRACKING_IDLE_STEP :: 1;
             DOPPLER_TRACKING_PHYSICS_STEP :: 2;
         }
+
+        stream: AudioStream;
+        attenuation_model: int;
+        volume_db: float;
+        unit_size: float;
+        max_db: float;
+        pitch_scale: float;
+        playing: bool;
+        autoplay: bool;
+        stream_paused: bool;
+        max_distance: float;
+        max_polyphony: int;
+        panning_strength: float;
+        bus: StringName;
+        area_mask: int;
+        emission_angle_enabled: bool;
+        emission_angle_degrees: float;
+        emission_angle_filter_attenuation_db: float;
+        attenuation_filter_cutoff_hz: float;
+        attenuation_filter_db: float;
+        doppler_tracking: int;
     }
 
-    AudioStreamPlaylist :: struct {
+    AudioStreamPlaylist :: struct {    // 91
+
+        #as using base: AudioStream;
+
+        MAX_STREAMS :: 64;
+        shuffle: bool;
+        loop: bool;
+        fade_time: float;
+        stream_count: int;
+        stream_0: AudioStream;
+        stream_1: AudioStream;
+        stream_2: AudioStream;
+        stream_3: AudioStream;
+        stream_4: AudioStream;
+        stream_5: AudioStream;
+        stream_6: AudioStream;
+        stream_7: AudioStream;
+        stream_8: AudioStream;
+        stream_9: AudioStream;
+        stream_10: AudioStream;
+        stream_11: AudioStream;
+        stream_12: AudioStream;
+        stream_13: AudioStream;
+        stream_14: AudioStream;
+        stream_15: AudioStream;
+        stream_16: AudioStream;
+        stream_17: AudioStream;
+        stream_18: AudioStream;
+        stream_19: AudioStream;
+        stream_20: AudioStream;
+        stream_21: AudioStream;
+        stream_22: AudioStream;
+        stream_23: AudioStream;
+        stream_24: AudioStream;
+        stream_25: AudioStream;
+        stream_26: AudioStream;
+        stream_27: AudioStream;
+        stream_28: AudioStream;
+        stream_29: AudioStream;
+        stream_30: AudioStream;
+        stream_31: AudioStream;
+        stream_32: AudioStream;
+        stream_33: AudioStream;
+        stream_34: AudioStream;
+        stream_35: AudioStream;
+        stream_36: AudioStream;
+        stream_37: AudioStream;
+        stream_38: AudioStream;
+        stream_39: AudioStream;
+        stream_40: AudioStream;
+        stream_41: AudioStream;
+        stream_42: AudioStream;
+        stream_43: AudioStream;
+        stream_44: AudioStream;
+        stream_45: AudioStream;
+        stream_46: AudioStream;
+        stream_47: AudioStream;
+        stream_48: AudioStream;
+        stream_49: AudioStream;
+        stream_50: AudioStream;
+        stream_51: AudioStream;
+        stream_52: AudioStream;
+        stream_53: AudioStream;
+        stream_54: AudioStream;
+        stream_55: AudioStream;
+        stream_56: AudioStream;
+        stream_57: AudioStream;
+        stream_58: AudioStream;
+        stream_59: AudioStream;
+        stream_60: AudioStream;
+        stream_61: AudioStream;
+        stream_62: AudioStream;
+        stream_63: AudioStream;
     }
 
-    AudioStreamPolyphonic :: struct {
+    AudioStreamPolyphonic :: struct {    // 92
+
+        #as using base: AudioStream;
+
+        polyphony: int;
     }
 
-    AudioStreamRandomizer :: struct {
+    AudioStreamRandomizer :: struct {    // 93
+
+        #as using base: AudioStream;
 
         PlaybackMode :: enum s32 {
             PLAYBACK_RANDOM_NO_REPEATS :: 0;
             PLAYBACK_RANDOM :: 1;
             PLAYBACK_SEQUENTIAL :: 2;
         }
+
+        playback_mode: int;
+        random_pitch: float;
+        random_volume_offset_db: float;
+        streams_count: int;
     }
 
-    AudioStreamSynchronized :: struct {
+    AudioStreamSynchronized :: struct {    // 94
+
+        #as using base: AudioStream;
+
+        MAX_STREAMS :: 32;
+        stream_count: int;
     }
 
-    AudioStreamWAV :: struct {
+    AudioStreamWAV :: struct {    // 95
+
+        #as using base: AudioStream;
 
         Format :: enum s32 {
             FORMAT_8_BITS :: 0;
@@ -1263,18 +1875,33 @@ gdt :: struct {
             LOOP_PINGPONG :: 2;
             LOOP_BACKWARD :: 3;
         }
+
+        data: PackedByteArray;
+        format: int;
+        loop_mode: int;
+        loop_begin: int;
+        loop_end: int;
+        mix_rate: int;
+        stereo: bool;
     }
 
-    BackBufferCopy :: struct {
+    BackBufferCopy :: struct {    // 96
+
+        #as using base: Node2D;
 
         CopyMode :: enum s32 {
             COPY_MODE_DISABLED :: 0;
             COPY_MODE_RECT :: 1;
             COPY_MODE_VIEWPORT :: 2;
         }
+
+        copy_mode: int;
+        rect: Rect2;
     }
 
-    BaseButton :: struct {
+    BaseButton :: struct {    // 97
+
+        #as using base: Control;
 
         DrawMode :: enum s32 {
             DRAW_NORMAL :: 0;
@@ -1288,9 +1915,22 @@ gdt :: struct {
             ACTION_MODE_BUTTON_PRESS :: 0;
             ACTION_MODE_BUTTON_RELEASE :: 1;
         }
+
+        disabled: bool;
+        toggle_mode: bool;
+        button_pressed: bool;
+        action_mode: int;
+        button_mask: int;
+        keep_pressed_outside: bool;
+        button_group: ButtonGroup;
+        shortcut: Shortcut;
+        shortcut_feedback: bool;
+        shortcut_in_tooltip: bool;
     }
 
-    BaseMaterial3D :: struct {
+    BaseMaterial3D :: struct {    // 98
+
+        #as using base: Material;
 
         TextureParam :: enum s32 {
             TEXTURE_ALBEDO :: 0;
@@ -1451,45 +2091,222 @@ gdt :: struct {
             DISTANCE_FADE_PIXEL_DITHER :: 2;
             DISTANCE_FADE_OBJECT_DITHER :: 3;
         }
+
+        transparency: int;
+        alpha_scissor_threshold: float;
+        alpha_hash_scale: float;
+        alpha_antialiasing_mode: int;
+        alpha_antialiasing_edge: float;
+        blend_mode: int;
+        cull_mode: int;
+        depth_draw_mode: int;
+        no_depth_test: bool;
+        shading_mode: int;
+        diffuse_mode: int;
+        specular_mode: int;
+        disable_ambient_light: bool;
+        disable_fog: bool;
+        vertex_color_use_as_albedo: bool;
+        vertex_color_is_srgb: bool;
+        albedo_color: Color;
+        albedo_texture: Texture2D;
+        albedo_texture_force_srgb: bool;
+        albedo_texture_msdf: bool;
+        orm_texture: Texture2D;
+        metallic: float;
+        metallic_specular: float;
+        metallic_texture: Texture2D;
+        metallic_texture_channel: int;
+        roughness: float;
+        roughness_texture: Texture2D;
+        roughness_texture_channel: int;
+        emission_enabled: bool;
+        emission: Color;
+        emission_energy_multiplier: float;
+        emission_intensity: float;
+        emission_operator: int;
+        emission_on_uv2: bool;
+        emission_texture: Texture2D;
+        normal_enabled: bool;
+        normal_scale: float;
+        normal_texture: Texture2D;
+        rim_enabled: bool;
+        rim: float;
+        rim_tint: float;
+        rim_texture: Texture2D;
+        clearcoat_enabled: bool;
+        clearcoat: float;
+        clearcoat_roughness: float;
+        clearcoat_texture: Texture2D;
+        anisotropy_enabled: bool;
+        anisotropy: float;
+        anisotropy_flowmap: Texture2D;
+        ao_enabled: bool;
+        ao_light_affect: float;
+        ao_texture: Texture2D;
+        ao_on_uv2: bool;
+        ao_texture_channel: int;
+        heightmap_enabled: bool;
+        heightmap_scale: float;
+        heightmap_deep_parallax: bool;
+        heightmap_min_layers: int;
+        heightmap_max_layers: int;
+        heightmap_flip_tangent: bool;
+        heightmap_flip_binormal: bool;
+        heightmap_texture: Texture2D;
+        heightmap_flip_texture: bool;
+        subsurf_scatter_enabled: bool;
+        subsurf_scatter_strength: float;
+        subsurf_scatter_skin_mode: bool;
+        subsurf_scatter_texture: Texture2D;
+        subsurf_scatter_transmittance_enabled: bool;
+        subsurf_scatter_transmittance_color: Color;
+        subsurf_scatter_transmittance_texture: Texture2D;
+        subsurf_scatter_transmittance_depth: float;
+        subsurf_scatter_transmittance_boost: float;
+        backlight_enabled: bool;
+        backlight: Color;
+        backlight_texture: Texture2D;
+        refraction_enabled: bool;
+        refraction_scale: float;
+        refraction_texture: Texture2D;
+        refraction_texture_channel: int;
+        detail_enabled: bool;
+        detail_mask: Texture2D;
+        detail_blend_mode: int;
+        detail_uv_layer: int;
+        detail_albedo: Texture2D;
+        detail_normal: Texture2D;
+        uv1_scale: Vector3;
+        uv1_offset: Vector3;
+        uv1_triplanar: bool;
+        uv1_triplanar_sharpness: float;
+        uv1_world_triplanar: bool;
+        uv2_scale: Vector3;
+        uv2_offset: Vector3;
+        uv2_triplanar: bool;
+        uv2_triplanar_sharpness: float;
+        uv2_world_triplanar: bool;
+        texture_filter: int;
+        texture_repeat: bool;
+        disable_receive_shadows: bool;
+        shadow_to_opacity: bool;
+        billboard_mode: int;
+        billboard_keep_scale: bool;
+        particles_anim_h_frames: int;
+        particles_anim_v_frames: int;
+        particles_anim_loop: bool;
+        grow: bool;
+        grow_amount: float;
+        fixed_size: bool;
+        use_point_size: bool;
+        point_size: float;
+        use_particle_trails: bool;
+        proximity_fade_enabled: bool;
+        proximity_fade_distance: float;
+        msdf_pixel_range: float;
+        msdf_outline_size: float;
+        distance_fade_mode: int;
+        distance_fade_min_distance: float;
+        distance_fade_max_distance: float;
     }
 
-    BitMap :: struct {
+    BitMap :: struct {    // 99
+
+        #as using base: Resource;
+
+        data: Dictionary;
     }
 
-    Bone2D :: struct {
+    Bone2D :: struct {    // 100
+
+        #as using base: Node2D;
+
+        rest: Transform2D;
     }
 
-    BoneAttachment3D :: struct {
+    BoneAttachment3D :: struct {    // 101
+
+        #as using base: Node3D;
+
+        bone_name: StringName;
+        bone_idx: int;
+        override_pose: bool;
     }
 
-    BoneMap :: struct {
+    BoneMap :: struct {    // 102
+
+        #as using base: Resource;
+
+        profile: SkeletonProfile;
     }
 
-    BoxContainer :: struct {
+    BoxContainer :: struct {    // 103
+
+        #as using base: Container;
 
         AlignmentMode :: enum s32 {
             ALIGNMENT_BEGIN :: 0;
             ALIGNMENT_CENTER :: 1;
             ALIGNMENT_END :: 2;
         }
+
+        alignment: int;
+        vertical: bool;
     }
 
-    BoxMesh :: struct {
+    BoxMesh :: struct {    // 104
+
+        #as using base: PrimitiveMesh;
+
+        size: Vector3;
+        subdivide_width: int;
+        subdivide_height: int;
+        subdivide_depth: int;
     }
 
-    BoxOccluder3D :: struct {
+    BoxOccluder3D :: struct {    // 105
+
+        #as using base: Occluder3D;
+
+        size: Vector3;
     }
 
-    BoxShape3D :: struct {
+    BoxShape3D :: struct {    // 106
+
+        #as using base: Shape3D;
+
+        size: Vector3;
     }
 
-    Button :: struct {
+    Button :: struct {    // 107
+
+        #as using base: BaseButton;
+
+        text: String;
+        icon: Texture2D;
+        flat: bool;
+        alignment: int;
+        text_overrun_behavior: int;
+        autowrap_mode: int;
+        clip_text: bool;
+        icon_alignment: int;
+        vertical_icon_alignment: int;
+        expand_icon: bool;
+        text_direction: int;
+        language: String;
     }
 
-    ButtonGroup :: struct {
+    ButtonGroup :: struct {    // 108
+
+        #as using base: Resource;
+
+        allow_unpress: bool;
     }
 
-    CPUParticles2D :: struct {
+    CPUParticles2D :: struct {    // 109
+
+        #as using base: Node2D;
 
         DrawOrder :: enum s32 {
             DRAW_ORDER_INDEX :: 0;
@@ -1528,9 +2345,77 @@ gdt :: struct {
             EMISSION_SHAPE_DIRECTED_POINTS :: 5;
             EMISSION_SHAPE_MAX :: 6;
         }
+
+        emitting: bool;
+        amount: int;
+        lifetime: float;
+        one_shot: bool;
+        preprocess: float;
+        speed_scale: float;
+        explosiveness: float;
+        randomness: float;
+        lifetime_randomness: float;
+        fixed_fps: int;
+        fract_delta: bool;
+        local_coords: bool;
+        draw_order: int;
+        texture: Texture2D;
+        emission_shape: int;
+        emission_sphere_radius: float;
+        emission_rect_extents: Vector2;
+        emission_points: PackedVector2Array;
+        emission_normals: PackedVector2Array;
+        emission_colors: PackedColorArray;
+        particle_flag_align_y: bool;
+        direction: Vector2;
+        spread: float;
+        gravity: Vector2;
+        initial_velocity_min: float;
+        initial_velocity_max: float;
+        angular_velocity_min: float;
+        angular_velocity_max: float;
+        angular_velocity_curve: Curve;
+        orbit_velocity_min: float;
+        orbit_velocity_max: float;
+        orbit_velocity_curve: Curve;
+        linear_accel_min: float;
+        linear_accel_max: float;
+        linear_accel_curve: Curve;
+        radial_accel_min: float;
+        radial_accel_max: float;
+        radial_accel_curve: Curve;
+        tangential_accel_min: float;
+        tangential_accel_max: float;
+        tangential_accel_curve: Curve;
+        damping_min: float;
+        damping_max: float;
+        damping_curve: Curve;
+        angle_min: float;
+        angle_max: float;
+        angle_curve: Curve;
+        scale_amount_min: float;
+        scale_amount_max: float;
+        scale_amount_curve: Curve;
+        split_scale: bool;
+        scale_curve_x: Curve;
+        scale_curve_y: Curve;
+        color: Color;
+        color_ramp: Gradient;
+        color_initial_ramp: Gradient;
+        hue_variation_min: float;
+        hue_variation_max: float;
+        hue_variation_curve: Curve;
+        anim_speed_min: float;
+        anim_speed_max: float;
+        anim_speed_curve: Curve;
+        anim_offset_min: float;
+        anim_offset_max: float;
+        anim_offset_curve: Curve;
     }
 
-    CPUParticles3D :: struct {
+    CPUParticles3D :: struct {    // 110
+
+        #as using base: GeometryInstance3D;
 
         DrawOrder :: enum s32 {
             DRAW_ORDER_INDEX :: 0;
@@ -1571,21 +2456,119 @@ gdt :: struct {
             EMISSION_SHAPE_RING :: 6;
             EMISSION_SHAPE_MAX :: 7;
         }
+
+        emitting: bool;
+        amount: int;
+        lifetime: float;
+        one_shot: bool;
+        preprocess: float;
+        speed_scale: float;
+        explosiveness: float;
+        randomness: float;
+        lifetime_randomness: float;
+        fixed_fps: int;
+        fract_delta: bool;
+        visibility_aabb: AABB;
+        local_coords: bool;
+        draw_order: int;
+        mesh: Mesh;
+        emission_shape: int;
+        emission_sphere_radius: float;
+        emission_box_extents: Vector3;
+        emission_points: PackedVector3Array;
+        emission_normals: PackedVector3Array;
+        emission_colors: PackedColorArray;
+        emission_ring_axis: Vector3;
+        emission_ring_height: float;
+        emission_ring_radius: float;
+        emission_ring_inner_radius: float;
+        particle_flag_align_y: bool;
+        particle_flag_rotate_y: bool;
+        particle_flag_disable_z: bool;
+        direction: Vector3;
+        spread: float;
+        flatness: float;
+        gravity: Vector3;
+        initial_velocity_min: float;
+        initial_velocity_max: float;
+        angular_velocity_min: float;
+        angular_velocity_max: float;
+        angular_velocity_curve: Curve;
+        orbit_velocity_min: float;
+        orbit_velocity_max: float;
+        orbit_velocity_curve: Curve;
+        linear_accel_min: float;
+        linear_accel_max: float;
+        linear_accel_curve: Curve;
+        radial_accel_min: float;
+        radial_accel_max: float;
+        radial_accel_curve: Curve;
+        tangential_accel_min: float;
+        tangential_accel_max: float;
+        tangential_accel_curve: Curve;
+        damping_min: float;
+        damping_max: float;
+        damping_curve: Curve;
+        angle_min: float;
+        angle_max: float;
+        angle_curve: Curve;
+        scale_amount_min: float;
+        scale_amount_max: float;
+        scale_amount_curve: Curve;
+        split_scale: bool;
+        scale_curve_x: Curve;
+        scale_curve_y: Curve;
+        scale_curve_z: Curve;
+        color: Color;
+        color_ramp: Gradient;
+        color_initial_ramp: Gradient;
+        hue_variation_min: float;
+        hue_variation_max: float;
+        hue_variation_curve: Curve;
+        anim_speed_min: float;
+        anim_speed_max: float;
+        anim_speed_curve: Curve;
+        anim_offset_min: float;
+        anim_offset_max: float;
+        anim_offset_curve: Curve;
     }
 
-    CSGBox3D :: struct {
+    CSGBox3D :: struct {    // 111
+
+        #as using base: CSGPrimitive3D;
+
+        size: Vector3;
+        material: BaseMaterial3D,ShaderMaterial;
     }
 
-    CSGCombiner3D :: struct {
+    CSGCombiner3D :: struct {    // 112
+
+        #as using base: CSGShape3D;
     }
 
-    CSGCylinder3D :: struct {
+    CSGCylinder3D :: struct {    // 113
+
+        #as using base: CSGPrimitive3D;
+
+        radius: float;
+        height: float;
+        sides: int;
+        cone: bool;
+        smooth_faces: bool;
+        material: BaseMaterial3D,ShaderMaterial;
     }
 
-    CSGMesh3D :: struct {
+    CSGMesh3D :: struct {    // 114
+
+        #as using base: CSGPrimitive3D;
+
+        mesh: Mesh;
+        material: BaseMaterial3D,ShaderMaterial;
     }
 
-    CSGPolygon3D :: struct {
+    CSGPolygon3D :: struct {    // 115
+
+        #as using base: CSGPrimitive3D;
 
         Mode :: enum s32 {
             MODE_DEPTH :: 0;
@@ -1603,30 +2586,82 @@ gdt :: struct {
             PATH_INTERVAL_DISTANCE :: 0;
             PATH_INTERVAL_SUBDIVIDE :: 1;
         }
+
+        polygon: PackedVector2Array;
+        mode: int;
+        depth: float;
+        spin_degrees: float;
+        spin_sides: int;
+        path_node: NodePath;
+        path_interval_type: int;
+        path_interval: float;
+        path_simplify_angle: float;
+        path_rotation: int;
+        path_local: bool;
+        path_continuous_u: bool;
+        path_u_distance: float;
+        path_joined: bool;
+        smooth_faces: bool;
+        material: BaseMaterial3D,ShaderMaterial;
     }
 
-    CSGPrimitive3D :: struct {
+    CSGPrimitive3D :: struct {    // 116
+
+        #as using base: CSGShape3D;
+
+        flip_faces: bool;
     }
 
-    CSGShape3D :: struct {
+    CSGShape3D :: struct {    // 117
+
+        #as using base: GeometryInstance3D;
 
         Operation :: enum s32 {
             OPERATION_UNION :: 0;
             OPERATION_INTERSECTION :: 1;
             OPERATION_SUBTRACTION :: 2;
         }
+
+        operation: int;
+        snap: float;
+        calculate_tangents: bool;
+        use_collision: bool;
+        collision_layer: int;
+        collision_mask: int;
+        collision_priority: float;
     }
 
-    CSGSphere3D :: struct {
+    CSGSphere3D :: struct {    // 118
+
+        #as using base: CSGPrimitive3D;
+
+        radius: float;
+        radial_segments: int;
+        rings: int;
+        smooth_faces: bool;
+        material: BaseMaterial3D,ShaderMaterial;
     }
 
-    CSGTorus3D :: struct {
+    CSGTorus3D :: struct {    // 119
+
+        #as using base: CSGPrimitive3D;
+
+        inner_radius: float;
+        outer_radius: float;
+        sides: int;
+        ring_sides: int;
+        smooth_faces: bool;
+        material: BaseMaterial3D,ShaderMaterial;
     }
 
-    CallbackTweener :: struct {
+    CallbackTweener :: struct {    // 120
+
+        #as using base: Tweener;
     }
 
-    Camera2D :: struct {
+    Camera2D :: struct {    // 121
+
+        #as using base: Node2D;
 
         AnchorMode :: enum s32 {
             ANCHOR_MODE_FIXED_TOP_LEFT :: 0;
@@ -1637,9 +2672,39 @@ gdt :: struct {
             CAMERA2D_PROCESS_PHYSICS :: 0;
             CAMERA2D_PROCESS_IDLE :: 1;
         }
+
+        offset: Vector2;
+        anchor_mode: int;
+        ignore_rotation: bool;
+        enabled: bool;
+        zoom: Vector2;
+        custom_viewport: Viewport;
+        process_callback: int;
+        limit_left: int;
+        limit_top: int;
+        limit_right: int;
+        limit_bottom: int;
+        limit_smoothed: bool;
+        position_smoothing_enabled: bool;
+        position_smoothing_speed: float;
+        rotation_smoothing_enabled: bool;
+        rotation_smoothing_speed: float;
+        drag_horizontal_enabled: bool;
+        drag_vertical_enabled: bool;
+        drag_horizontal_offset: float;
+        drag_vertical_offset: float;
+        drag_left_margin: float;
+        drag_top_margin: float;
+        drag_right_margin: float;
+        drag_bottom_margin: float;
+        editor_draw_screen: bool;
+        editor_draw_limits: bool;
+        editor_draw_drag_margin: bool;
     }
 
-    Camera3D :: struct {
+    Camera3D :: struct {    // 122
+
+        #as using base: Node3D;
 
         ProjectionType :: enum s32 {
             PROJECTION_PERSPECTIVE :: 0;
@@ -1657,18 +2722,67 @@ gdt :: struct {
             DOPPLER_TRACKING_IDLE_STEP :: 1;
             DOPPLER_TRACKING_PHYSICS_STEP :: 2;
         }
+
+        keep_aspect: int;
+        cull_mask: int;
+        environment: Environment;
+        attributes: CameraAttributesPractical,CameraAttributesPhysical;
+        compositor: Compositor;
+        h_offset: float;
+        v_offset: float;
+        doppler_tracking: int;
+        projection: int;
+        current: bool;
+        fov: float;
+        size: float;
+        frustum_offset: Vector2;
+        near: float;
+        far: float;
     }
 
-    CameraAttributes :: struct {
+    CameraAttributes :: struct {    // 123
+
+        #as using base: Resource;
+
+        exposure_sensitivity: float;
+        exposure_multiplier: float;
+        auto_exposure_enabled: bool;
+        auto_exposure_scale: float;
+        auto_exposure_speed: float;
     }
 
-    CameraAttributesPhysical :: struct {
+    CameraAttributesPhysical :: struct {    // 124
+
+        #as using base: CameraAttributes;
+
+        frustum_focus_distance: float;
+        frustum_focal_length: float;
+        frustum_near: float;
+        frustum_far: float;
+        exposure_aperture: float;
+        exposure_shutter_speed: float;
+        auto_exposure_min_exposure_value: float;
+        auto_exposure_max_exposure_value: float;
     }
 
-    CameraAttributesPractical :: struct {
+    CameraAttributesPractical :: struct {    // 125
+
+        #as using base: CameraAttributes;
+
+        dof_blur_far_enabled: bool;
+        dof_blur_far_distance: float;
+        dof_blur_far_transition: float;
+        dof_blur_near_enabled: bool;
+        dof_blur_near_distance: float;
+        dof_blur_near_transition: float;
+        dof_blur_amount: float;
+        auto_exposure_min_sensitivity: float;
+        auto_exposure_max_sensitivity: float;
     }
 
-    CameraFeed :: struct {
+    CameraFeed :: struct {    // 126
+
+        #as using base: RefCounted;
 
         FeedDataType :: enum s32 {
             FEED_NOIMAGE :: 0;
@@ -1682,9 +2796,14 @@ gdt :: struct {
             FEED_FRONT :: 1;
             FEED_BACK :: 2;
         }
+
+        feed_is_active: bool;
+        feed_transform: Transform2D;
     }
 
-    CameraServer :: struct {
+    CameraServer :: struct {    // 127
+
+        #as using base: Object;
 
         FeedImage :: enum s32 {
             FEED_RGBA_IMAGE :: 0;
@@ -1694,13 +2813,36 @@ gdt :: struct {
         }
     }
 
-    CameraTexture :: struct {
+    CameraTexture :: struct {    // 128
+
+        #as using base: Texture2D;
+
+        camera_feed_id: int;
+        which_feed: int;
+        camera_is_active: bool;
     }
 
-    CanvasGroup :: struct {
+    CanvasGroup :: struct {    // 129
+
+        #as using base: Node2D;
+
+        fit_margin: float;
+        clear_margin: float;
+        use_mipmaps: bool;
     }
 
-    CanvasItem :: struct {
+    CanvasItem :: struct {    // 130
+
+        #as using base: Node;
+
+        NOTIFICATION_TRANSFORM_CHANGED :: 2000;
+        NOTIFICATION_LOCAL_TRANSFORM_CHANGED :: 35;
+        NOTIFICATION_DRAW :: 30;
+        NOTIFICATION_VISIBILITY_CHANGED :: 31;
+        NOTIFICATION_ENTER_CANVAS :: 32;
+        NOTIFICATION_EXIT_CANVAS :: 33;
+        NOTIFICATION_WORLD_2D_CHANGED :: 36;
+
 
         TextureFilter :: enum s32 {
             TEXTURE_FILTER_PARENT_NODE :: 0;
@@ -1727,9 +2869,27 @@ gdt :: struct {
             CLIP_CHILDREN_AND_DRAW :: 2;
             CLIP_CHILDREN_MAX :: 3;
         }
+
+        visible: bool;
+        modulate: Color;
+        self_modulate: Color;
+        show_behind_parent: bool;
+        top_level: bool;
+        clip_children: int;
+        light_mask: int;
+        visibility_layer: int;
+        z_index: int;
+        z_as_relative: bool;
+        y_sort_enabled: bool;
+        texture_filter: int;
+        texture_repeat: int;
+        material: CanvasItemMaterial,ShaderMaterial;
+        use_parent_material: bool;
     }
 
-    CanvasItemMaterial :: struct {
+    CanvasItemMaterial :: struct {    // 131
+
+        #as using base: Material;
 
         BlendMode :: enum s32 {
             BLEND_MODE_MIX :: 0;
@@ -1744,33 +2904,105 @@ gdt :: struct {
             LIGHT_MODE_UNSHADED :: 1;
             LIGHT_MODE_LIGHT_ONLY :: 2;
         }
+
+        blend_mode: int;
+        light_mode: int;
+        particles_animation: bool;
+        particles_anim_h_frames: int;
+        particles_anim_v_frames: int;
+        particles_anim_loop: bool;
     }
 
-    CanvasLayer :: struct {
+    CanvasLayer :: struct {    // 132
+
+        #as using base: Node;
+
+        layer: int;
+        visible: bool;
+        offset: Vector2;
+        rotation: float;
+        scale: Vector2;
+        transform: Transform2D;
+        custom_viewport: Viewport;
+        follow_viewport_enabled: bool;
+        follow_viewport_scale: float;
     }
 
-    CanvasModulate :: struct {
+    CanvasModulate :: struct {    // 133
+
+        #as using base: Node2D;
+
+        color: Color;
     }
 
-    CanvasTexture :: struct {
+    CanvasTexture :: struct {    // 134
+
+        #as using base: Texture2D;
+
+        diffuse_texture: Texture2D;
+        normal_texture: Texture2D;
+        specular_texture: Texture2D;
+        specular_color: Color;
+        specular_shininess: float;
+        texture_filter: int;
+        texture_repeat: int;
     }
 
-    CapsuleMesh :: struct {
+    CapsuleMesh :: struct {    // 135
+
+        #as using base: PrimitiveMesh;
+
+        radius: float;
+        height: float;
+        radial_segments: int;
+        rings: int;
     }
 
-    CapsuleShape2D :: struct {
+    CapsuleShape2D :: struct {    // 136
+
+        #as using base: Shape2D;
+
+        radius: float;
+        height: float;
     }
 
-    CapsuleShape3D :: struct {
+    CapsuleShape3D :: struct {    // 137
+
+        #as using base: Shape3D;
+
+        radius: float;
+        height: float;
     }
 
-    CenterContainer :: struct {
+    CenterContainer :: struct {    // 138
+
+        #as using base: Container;
+
+        use_top_left: bool;
     }
 
-    CharFXTransform :: struct {
+    CharFXTransform :: struct {    // 139
+
+        #as using base: RefCounted;
+
+        transform: Transform2D;
+        range: Vector2i;
+        elapsed_time: float;
+        visible: bool;
+        outline: bool;
+        offset: Vector2;
+        color: Color;
+        env: Dictionary;
+        glyph_index: int;
+        glyph_count: int;
+        glyph_flags: int;
+        relative_index: int;
+        font: RID;
     }
 
-    CharacterBody2D :: struct {
+    CharacterBody2D :: struct {    // 140
+
+        #as using base: PhysicsBody2D;
 
         MotionMode :: enum s32 {
             MOTION_MODE_GROUNDED :: 0;
@@ -1782,9 +3014,27 @@ gdt :: struct {
             PLATFORM_ON_LEAVE_ADD_UPWARD_VELOCITY :: 1;
             PLATFORM_ON_LEAVE_DO_NOTHING :: 2;
         }
+
+        motion_mode: int;
+        up_direction: Vector2;
+        velocity: Vector2;
+        slide_on_ceiling: bool;
+        max_slides: int;
+        wall_min_slide_angle: float;
+        floor_stop_on_slope: bool;
+        floor_constant_speed: bool;
+        floor_block_on_wall: bool;
+        floor_max_angle: float;
+        floor_snap_length: float;
+        platform_on_leave: int;
+        platform_floor_layers: int;
+        platform_wall_layers: int;
+        safe_margin: float;
     }
 
-    CharacterBody3D :: struct {
+    CharacterBody3D :: struct {    // 141
+
+        #as using base: PhysicsBody3D;
 
         MotionMode :: enum s32 {
             MOTION_MODE_GROUNDED :: 0;
@@ -1796,21 +3046,49 @@ gdt :: struct {
             PLATFORM_ON_LEAVE_ADD_UPWARD_VELOCITY :: 1;
             PLATFORM_ON_LEAVE_DO_NOTHING :: 2;
         }
+
+        motion_mode: int;
+        up_direction: Vector3;
+        slide_on_ceiling: bool;
+        velocity: Vector3;
+        max_slides: int;
+        wall_min_slide_angle: float;
+        floor_stop_on_slope: bool;
+        floor_constant_speed: bool;
+        floor_block_on_wall: bool;
+        floor_max_angle: float;
+        floor_snap_length: float;
+        platform_on_leave: int;
+        platform_floor_layers: int;
+        platform_wall_layers: int;
+        safe_margin: float;
     }
 
-    CheckBox :: struct {
+    CheckBox :: struct {    // 142
+
+        #as using base: Button;
     }
 
-    CheckButton :: struct {
+    CheckButton :: struct {    // 143
+
+        #as using base: Button;
     }
 
-    CircleShape2D :: struct {
+    CircleShape2D :: struct {    // 144
+
+        #as using base: Shape2D;
+
+        radius: float;
     }
 
-    ClassDB :: struct {
+    ClassDB :: struct {    // 145
+
+        #as using base: Object;
     }
 
-    CodeEdit :: struct {
+    CodeEdit :: struct {    // 146
+
+        #as using base: TextEdit;
 
         CodeCompletionKind :: enum s32 {
             KIND_CLASS :: 0;
@@ -1831,47 +3109,125 @@ gdt :: struct {
             LOCATION_OTHER_USER_CODE :: 512;
             LOCATION_OTHER :: 1024;
         }
+
+        symbol_lookup_on_click: bool;
+        line_folding: bool;
+        line_length_guidelines: PackedInt32Array;
+        gutters_draw_breakpoints_gutter: bool;
+        gutters_draw_bookmarks: bool;
+        gutters_draw_executing_lines: bool;
+        gutters_draw_line_numbers: bool;
+        gutters_zero_pad_line_numbers: bool;
+        gutters_draw_fold_gutter: bool;
+        delimiter_strings: PackedStringArray;
+        delimiter_comments: PackedStringArray;
+        code_completion_enabled: bool;
+        code_completion_prefixes: PackedStringArray;
+        indent_size: int;
+        indent_use_spaces: bool;
+        indent_automatic: bool;
+        indent_automatic_prefixes: PackedStringArray;
+        auto_brace_completion_enabled: bool;
+        auto_brace_completion_highlight_matching: bool;
+        auto_brace_completion_pairs: Dictionary;
     }
 
-    CodeHighlighter :: struct {
+    CodeHighlighter :: struct {    // 147
+
+        #as using base: SyntaxHighlighter;
+
+        number_color: Color;
+        symbol_color: Color;
+        function_color: Color;
+        member_variable_color: Color;
+        keyword_colors: Dictionary;
+        member_keyword_colors: Dictionary;
+        color_regions: Dictionary;
     }
 
-    CollisionObject2D :: struct {
+    CollisionObject2D :: struct {    // 148
+
+        #as using base: Node2D;
 
         DisableMode :: enum s32 {
             DISABLE_MODE_REMOVE :: 0;
             DISABLE_MODE_MAKE_STATIC :: 1;
             DISABLE_MODE_KEEP_ACTIVE :: 2;
         }
+
+        disable_mode: int;
+        collision_layer: int;
+        collision_mask: int;
+        collision_priority: float;
+        input_pickable: bool;
     }
 
-    CollisionObject3D :: struct {
+    CollisionObject3D :: struct {    // 149
+
+        #as using base: Node3D;
 
         DisableMode :: enum s32 {
             DISABLE_MODE_REMOVE :: 0;
             DISABLE_MODE_MAKE_STATIC :: 1;
             DISABLE_MODE_KEEP_ACTIVE :: 2;
         }
+
+        disable_mode: int;
+        collision_layer: int;
+        collision_mask: int;
+        collision_priority: float;
+        input_ray_pickable: bool;
+        input_capture_on_drag: bool;
     }
 
-    CollisionPolygon2D :: struct {
+    CollisionPolygon2D :: struct {    // 150
+
+        #as using base: Node2D;
 
         BuildMode :: enum s32 {
             BUILD_SOLIDS :: 0;
             BUILD_SEGMENTS :: 1;
         }
+
+        build_mode: int;
+        polygon: PackedVector2Array;
+        disabled: bool;
+        one_way_collision: bool;
+        one_way_collision_margin: float;
     }
 
-    CollisionPolygon3D :: struct {
+    CollisionPolygon3D :: struct {    // 151
+
+        #as using base: Node3D;
+
+        depth: float;
+        disabled: bool;
+        polygon: PackedVector2Array;
+        margin: float;
     }
 
-    CollisionShape2D :: struct {
+    CollisionShape2D :: struct {    // 152
+
+        #as using base: Node2D;
+
+        shape: Shape2D;
+        disabled: bool;
+        one_way_collision: bool;
+        one_way_collision_margin: float;
+        debug_color: Color;
     }
 
-    CollisionShape3D :: struct {
+    CollisionShape3D :: struct {    // 153
+
+        #as using base: Node3D;
+
+        shape: Shape3D;
+        disabled: bool;
     }
 
-    ColorPicker :: struct {
+    ColorPicker :: struct {    // 154
+
+        #as using base: VBoxContainer;
 
         ColorModeType :: enum s32 {
             MODE_RGB :: 0;
@@ -1887,18 +3243,45 @@ gdt :: struct {
             SHAPE_OKHSL_CIRCLE :: 3;
             SHAPE_NONE :: 4;
         }
+
+        color: Color;
+        edit_alpha: bool;
+        color_mode: int;
+        deferred_mode: bool;
+        picker_shape: int;
+        can_add_swatches: bool;
+        sampler_visible: bool;
+        color_modes_visible: bool;
+        sliders_visible: bool;
+        hex_visible: bool;
+        presets_visible: bool;
     }
 
-    ColorPickerButton :: struct {
+    ColorPickerButton :: struct {    // 155
+
+        #as using base: Button;
+
+        color: Color;
+        edit_alpha: bool;
     }
 
-    ColorRect :: struct {
+    ColorRect :: struct {    // 156
+
+        #as using base: Control;
+
+        color: Color;
     }
 
-    Compositor :: struct {
+    Compositor :: struct {    // 157
+
+        #as using base: Resource;
+
+        compositor_effects: typedarray::24/17:CompositorEffect;
     }
 
-    CompositorEffect :: struct {
+    CompositorEffect :: struct {    // 158
+
+        #as using base: Resource;
 
         EffectCallbackType :: enum s32 {
             EFFECT_CALLBACK_TYPE_PRE_OPAQUE :: 0;
@@ -1908,33 +3291,70 @@ gdt :: struct {
             EFFECT_CALLBACK_TYPE_POST_TRANSPARENT :: 4;
             EFFECT_CALLBACK_TYPE_MAX :: 5;
         }
+
+        enabled: bool;
+        effect_callback_type: int;
+        access_resolved_color: bool;
+        access_resolved_depth: bool;
+        needs_motion_vectors: bool;
+        needs_normal_roughness: bool;
+        needs_separate_specular: bool;
     }
 
-    CompressedCubemap :: struct {
+    CompressedCubemap :: struct {    // 159
+
+        #as using base: CompressedTextureLayered;
     }
 
-    CompressedCubemapArray :: struct {
+    CompressedCubemapArray :: struct {    // 160
+
+        #as using base: CompressedTextureLayered;
     }
 
-    CompressedTexture2D :: struct {
+    CompressedTexture2D :: struct {    // 161
+
+        #as using base: Texture2D;
+
+        load_path: String;
     }
 
-    CompressedTexture2DArray :: struct {
+    CompressedTexture2DArray :: struct {    // 162
+
+        #as using base: CompressedTextureLayered;
     }
 
-    CompressedTexture3D :: struct {
+    CompressedTexture3D :: struct {    // 163
+
+        #as using base: Texture3D;
+
+        load_path: String;
     }
 
-    CompressedTextureLayered :: struct {
+    CompressedTextureLayered :: struct {    // 164
+
+        #as using base: TextureLayered;
+
+        load_path: String;
     }
 
-    ConcavePolygonShape2D :: struct {
+    ConcavePolygonShape2D :: struct {    // 165
+
+        #as using base: Shape2D;
+
+        segments: PackedVector2Array;
     }
 
-    ConcavePolygonShape3D :: struct {
+    ConcavePolygonShape3D :: struct {    // 166
+
+        #as using base: Shape3D;
+
+        data: PackedVector3Array;
+        backface_collision: bool;
     }
 
-    ConeTwistJoint3D :: struct {
+    ConeTwistJoint3D :: struct {    // 167
+
+        #as using base: Joint3D;
 
         Param :: enum s32 {
             PARAM_SWING_SPAN :: 0;
@@ -1944,18 +3364,51 @@ gdt :: struct {
             PARAM_RELAXATION :: 4;
             PARAM_MAX :: 5;
         }
+
+        swing_span: float;
+        twist_span: float;
+        bias: float;
+        softness: float;
+        relaxation: float;
     }
 
-    ConfigFile :: struct {
+    ConfigFile :: struct {    // 168
+
+        #as using base: RefCounted;
     }
 
-    ConfirmationDialog :: struct {
+    ConfirmationDialog :: struct {    // 169
+
+        #as using base: AcceptDialog;
+
+        cancel_button_text: String;
     }
 
-    Container :: struct {
+    Container :: struct {    // 170
+
+        #as using base: Control;
+
+        NOTIFICATION_PRE_SORT_CHILDREN :: 50;
+        NOTIFICATION_SORT_CHILDREN :: 51;
+
     }
 
-    Control :: struct {
+    Control :: struct {    // 171
+
+        #as using base: CanvasItem;
+
+        NOTIFICATION_RESIZED :: 40;
+        NOTIFICATION_MOUSE_ENTER :: 41;
+        NOTIFICATION_MOUSE_EXIT :: 42;
+        NOTIFICATION_MOUSE_ENTER_SELF :: 60;
+        NOTIFICATION_MOUSE_EXIT_SELF :: 61;
+        NOTIFICATION_FOCUS_ENTER :: 43;
+        NOTIFICATION_FOCUS_EXIT :: 44;
+        NOTIFICATION_THEME_CHANGED :: 45;
+        NOTIFICATION_SCROLL_BEGIN :: 47;
+        NOTIFICATION_SCROLL_END :: 48;
+        NOTIFICATION_LAYOUT_DIRECTION_CHANGED :: 49;
+
 
         FocusMode :: enum s32 {
             FOCUS_NONE :: 0;
@@ -2048,65 +3501,180 @@ gdt :: struct {
             TEXT_DIRECTION_LTR :: 1;
             TEXT_DIRECTION_RTL :: 2;
         }
+
+        clip_contents: bool;
+        custom_minimum_size: Vector2;
+        layout_direction: int;
+        layout_mode: int;
+        anchors_preset: int;
+        anchor_left: float;
+        anchor_top: float;
+        anchor_right: float;
+        anchor_bottom: float;
+        offset_left: int;
+        offset_top: int;
+        offset_right: int;
+        offset_bottom: int;
+        grow_horizontal: int;
+        grow_vertical: int;
+        size: Vector2;
+        position: Vector2;
+        global_position: Vector2;
+        rotation: float;
+        rotation_degrees: float;
+        scale: Vector2;
+        pivot_offset: Vector2;
+        size_flags_horizontal: int;
+        size_flags_vertical: int;
+        size_flags_stretch_ratio: float;
+        localize_numeral_system: bool;
+        auto_translate: bool;
+        tooltip_text: String;
+        focus_neighbor_left: NodePath;
+        focus_neighbor_top: NodePath;
+        focus_neighbor_right: NodePath;
+        focus_neighbor_bottom: NodePath;
+        focus_next: NodePath;
+        focus_previous: NodePath;
+        focus_mode: int;
+        mouse_filter: int;
+        mouse_force_pass_scroll_events: bool;
+        mouse_default_cursor_shape: int;
+        shortcut_context: Object;
+        theme: Theme;
+        theme_type_variation: String;
     }
 
-    ConvexPolygonShape2D :: struct {
+    ConvexPolygonShape2D :: struct {    // 172
+
+        #as using base: Shape2D;
+
+        points: PackedVector2Array;
     }
 
-    ConvexPolygonShape3D :: struct {
+    ConvexPolygonShape3D :: struct {    // 173
+
+        #as using base: Shape3D;
+
+        points: Array;
     }
 
-    Crypto :: struct {
+    Crypto :: struct {    // 174
+
+        #as using base: RefCounted;
     }
 
-    CryptoKey :: struct {
+    CryptoKey :: struct {    // 175
+
+        #as using base: Resource;
     }
 
-    Cubemap :: struct {
+    Cubemap :: struct {    // 176
+
+        #as using base: ImageTextureLayered;
     }
 
-    CubemapArray :: struct {
+    CubemapArray :: struct {    // 177
+
+        #as using base: ImageTextureLayered;
     }
 
-    Curve :: struct {
+    Curve :: struct {    // 178
+
+        #as using base: Resource;
 
         TangentMode :: enum s32 {
             TANGENT_FREE :: 0;
             TANGENT_LINEAR :: 1;
             TANGENT_MODE_COUNT :: 2;
         }
+
+        min_value: float;
+        max_value: float;
+        bake_resolution: int;
+        point_count: int;
     }
 
-    Curve2D :: struct {
+    Curve2D :: struct {    // 179
+
+        #as using base: Resource;
+
+        bake_interval: float;
+        point_count: int;
     }
 
-    Curve3D :: struct {
+    Curve3D :: struct {    // 180
+
+        #as using base: Resource;
+
+        bake_interval: float;
+        point_count: int;
+        up_vector_enabled: bool;
     }
 
-    CurveTexture :: struct {
+    CurveTexture :: struct {    // 181
+
+        #as using base: Texture2D;
 
         TextureMode :: enum s32 {
             TEXTURE_MODE_RGB :: 0;
             TEXTURE_MODE_RED :: 1;
         }
+
+        width: int;
+        texture_mode: int;
+        curve: Curve;
     }
 
-    CurveXYZTexture :: struct {
+    CurveXYZTexture :: struct {    // 182
+
+        #as using base: Texture2D;
+
+        width: int;
+        curve_x: Curve;
+        curve_y: Curve;
+        curve_z: Curve;
     }
 
-    CylinderMesh :: struct {
+    CylinderMesh :: struct {    // 183
+
+        #as using base: PrimitiveMesh;
+
+        top_radius: float;
+        bottom_radius: float;
+        height: float;
+        radial_segments: int;
+        rings: int;
+        cap_top: bool;
+        cap_bottom: bool;
     }
 
-    CylinderShape3D :: struct {
+    CylinderShape3D :: struct {    // 184
+
+        #as using base: Shape3D;
+
+        height: float;
+        radius: float;
     }
 
-    DTLSServer :: struct {
+    DTLSServer :: struct {    // 185
+
+        #as using base: RefCounted;
     }
 
-    DampedSpringJoint2D :: struct {
+    DampedSpringJoint2D :: struct {    // 186
+
+        #as using base: Joint2D;
+
+        length: float;
+        rest_length: float;
+        stiffness: float;
+        damping: float;
     }
 
-    Decal :: struct {
+    Decal :: struct {    // 187
+
+        #as using base: VisualInstance3D;
 
         DecalTexture :: enum s32 {
             TEXTURE_ALBEDO :: 0;
@@ -2115,15 +3683,43 @@ gdt :: struct {
             TEXTURE_EMISSION :: 3;
             TEXTURE_MAX :: 4;
         }
+
+        size: Vector3;
+        texture_albedo: Texture2D;
+        texture_normal: Texture2D;
+        texture_orm: Texture2D;
+        texture_emission: Texture2D;
+        emission_energy: float;
+        modulate: Color;
+        albedo_mix: float;
+        normal_fade: float;
+        upper_fade: float;
+        lower_fade: float;
+        distance_fade_enabled: bool;
+        distance_fade_begin: float;
+        distance_fade_length: float;
+        cull_mask: int;
     }
 
-    DirAccess :: struct {
+    DirAccess :: struct {    // 188
+
+        #as using base: RefCounted;
+
+        include_navigational: bool;
+        include_hidden: bool;
     }
 
-    DirectionalLight2D :: struct {
+    DirectionalLight2D :: struct {    // 189
+
+        #as using base: Light2D;
+
+        height: float;
+        max_distance: float;
     }
 
-    DirectionalLight3D :: struct {
+    DirectionalLight3D :: struct {    // 190
+
+        #as using base: Light3D;
 
         ShadowMode :: enum s32 {
             SHADOW_ORTHOGONAL :: 0;
@@ -2136,9 +3732,30 @@ gdt :: struct {
             SKY_MODE_LIGHT_ONLY :: 1;
             SKY_MODE_SKY_ONLY :: 2;
         }
+
+        directional_shadow_mode: int;
+        directional_shadow_split_1: float;
+        directional_shadow_split_2: float;
+        directional_shadow_split_3: float;
+        directional_shadow_blend_splits: bool;
+        directional_shadow_fade_start: float;
+        directional_shadow_max_distance: float;
+        directional_shadow_pancake_size: float;
+        sky_mode: int;
     }
 
-    DisplayServer :: struct {
+    DisplayServer :: struct {    // 191
+
+        #as using base: Object;
+
+        SCREEN_WITH_MOUSE_FOCUS :: -4;
+        SCREEN_WITH_KEYBOARD_FOCUS :: -3;
+        SCREEN_PRIMARY :: -2;
+        SCREEN_OF_MAIN_WINDOW :: -1;
+        MAIN_WINDOW_ID :: 0;
+        INVALID_WINDOW_ID :: -1;
+        INVALID_INDICATOR_ID :: -1;
+
 
         Feature :: enum s32 {
             FEATURE_GLOBAL_MENU :: 0;
@@ -2277,7 +3894,9 @@ gdt :: struct {
         }
     }
 
-    ENetConnection :: struct {
+    ENetConnection :: struct {    // 192
+
+        #as using base: RefCounted;
 
         CompressionMode :: enum s32 {
             COMPRESS_NONE :: 0;
@@ -2303,10 +3922,23 @@ gdt :: struct {
         }
     }
 
-    ENetMultiplayerPeer :: struct {
+    ENetMultiplayerPeer :: struct {    // 193
+
+        #as using base: MultiplayerPeer;
+
+        host: ENetConnection;
     }
 
-    ENetPacketPeer :: struct {
+    ENetPacketPeer :: struct {    // 194
+
+        #as using base: PacketPeer;
+
+        PACKET_LOSS_SCALE :: 65536;
+        PACKET_THROTTLE_SCALE :: 32;
+        FLAG_RELIABLE :: 1;
+        FLAG_UNSEQUENCED :: 2;
+        FLAG_UNRELIABLE_FRAGMENT :: 8;
+
 
         PeerState :: enum s32 {
             STATE_DISCONNECTED :: 0;
@@ -2339,43 +3971,69 @@ gdt :: struct {
         }
     }
 
-    EditorCommandPalette :: struct {
+    EditorCommandPalette :: struct {    // 195
+
+        #as using base: ConfirmationDialog;
     }
 
-    EditorDebuggerPlugin :: struct {
+    EditorDebuggerPlugin :: struct {    // 196
+
+        #as using base: RefCounted;
     }
 
-    EditorDebuggerSession :: struct {
+    EditorDebuggerSession :: struct {    // 197
+
+        #as using base: RefCounted;
     }
 
-    EditorExportPlatform :: struct {
+    EditorExportPlatform :: struct {    // 198
+
+        #as using base: RefCounted;
     }
 
-    EditorExportPlatformAndroid :: struct {
+    EditorExportPlatformAndroid :: struct {    // 199
+
+        #as using base: EditorExportPlatform;
     }
 
-    EditorExportPlatformIOS :: struct {
+    EditorExportPlatformIOS :: struct {    // 200
+
+        #as using base: EditorExportPlatform;
     }
 
-    EditorExportPlatformLinuxBSD :: struct {
+    EditorExportPlatformLinuxBSD :: struct {    // 201
+
+        #as using base: EditorExportPlatformPC;
     }
 
-    EditorExportPlatformMacOS :: struct {
+    EditorExportPlatformMacOS :: struct {    // 202
+
+        #as using base: EditorExportPlatform;
     }
 
-    EditorExportPlatformPC :: struct {
+    EditorExportPlatformPC :: struct {    // 203
+
+        #as using base: EditorExportPlatform;
     }
 
-    EditorExportPlatformWeb :: struct {
+    EditorExportPlatformWeb :: struct {    // 204
+
+        #as using base: EditorExportPlatform;
     }
 
-    EditorExportPlatformWindows :: struct {
+    EditorExportPlatformWindows :: struct {    // 205
+
+        #as using base: EditorExportPlatformPC;
     }
 
-    EditorExportPlugin :: struct {
+    EditorExportPlugin :: struct {    // 206
+
+        #as using base: RefCounted;
     }
 
-    EditorFeatureProfile :: struct {
+    EditorFeatureProfile :: struct {    // 207
+
+        #as using base: RefCounted;
 
         Feature :: enum s32 {
             FEATURE_3D :: 0;
@@ -2390,7 +4048,9 @@ gdt :: struct {
         }
     }
 
-    EditorFileDialog :: struct {
+    EditorFileDialog :: struct {    // 208
+
+        #as using base: ConfirmationDialog;
 
         FileMode :: enum s32 {
             FILE_MODE_OPEN_FILE :: 0;
@@ -2410,39 +4070,74 @@ gdt :: struct {
             DISPLAY_THUMBNAILS :: 0;
             DISPLAY_LIST :: 1;
         }
+
+        access: int;
+        display_mode: int;
+        file_mode: int;
+        current_dir: String;
+        current_file: String;
+        current_path: String;
+        filters: PackedStringArray;
+        show_hidden_files: bool;
+        disable_overwrite_warning: bool;
     }
 
-    EditorFileSystem :: struct {
+    EditorFileSystem :: struct {    // 209
+
+        #as using base: Node;
     }
 
-    EditorFileSystemDirectory :: struct {
+    EditorFileSystemDirectory :: struct {    // 210
+
+        #as using base: Object;
     }
 
-    EditorFileSystemImportFormatSupportQuery :: struct {
+    EditorFileSystemImportFormatSupportQuery :: struct {    // 211
+
+        #as using base: RefCounted;
     }
 
-    EditorImportPlugin :: struct {
+    EditorImportPlugin :: struct {    // 212
+
+        #as using base: ResourceImporter;
     }
 
-    EditorInspector :: struct {
+    EditorInspector :: struct {    // 213
+
+        #as using base: ScrollContainer;
     }
 
-    EditorInspectorPlugin :: struct {
+    EditorInspectorPlugin :: struct {    // 214
+
+        #as using base: RefCounted;
     }
 
-    EditorInterface :: struct {
+    EditorInterface :: struct {    // 215
+
+        #as using base: Object;
+
+        distraction_free_mode: bool;
+        movie_maker_enabled: bool;
     }
 
-    EditorNode3DGizmo :: struct {
+    EditorNode3DGizmo :: struct {    // 216
+
+        #as using base: Node3DGizmo;
     }
 
-    EditorNode3DGizmoPlugin :: struct {
+    EditorNode3DGizmoPlugin :: struct {    // 217
+
+        #as using base: Resource;
     }
 
-    EditorPaths :: struct {
+    EditorPaths :: struct {    // 218
+
+        #as using base: Object;
     }
 
-    EditorPlugin :: struct {
+    EditorPlugin :: struct {    // 219
+
+        #as using base: Node;
 
         CustomControlContainer :: enum s32 {
             CONTAINER_TOOLBAR :: 0;
@@ -2478,43 +4173,91 @@ gdt :: struct {
         }
     }
 
-    EditorProperty :: struct {
+    EditorProperty :: struct {    // 220
+
+        #as using base: Container;
+
+        label: String;
+        read_only: bool;
+        checkable: bool;
+        checked: bool;
+        draw_warning: bool;
+        keying: bool;
+        deletable: bool;
     }
 
-    EditorResourceConversionPlugin :: struct {
+    EditorResourceConversionPlugin :: struct {    // 221
+
+        #as using base: RefCounted;
     }
 
-    EditorResourcePicker :: struct {
+    EditorResourcePicker :: struct {    // 222
+
+        #as using base: HBoxContainer;
+
+        base_type: String;
+        edited_resource: Resource;
+        editable: bool;
+        toggle_mode: bool;
     }
 
-    EditorResourcePreview :: struct {
+    EditorResourcePreview :: struct {    // 223
+
+        #as using base: Node;
     }
 
-    EditorResourcePreviewGenerator :: struct {
+    EditorResourcePreviewGenerator :: struct {    // 224
+
+        #as using base: RefCounted;
     }
 
-    EditorResourceTooltipPlugin :: struct {
+    EditorResourceTooltipPlugin :: struct {    // 225
+
+        #as using base: RefCounted;
     }
 
-    EditorSceneFormatImporter :: struct {
+    EditorSceneFormatImporter :: struct {    // 226
+
+        #as using base: RefCounted;
+
+        IMPORT_SCENE :: 1;
+        IMPORT_ANIMATION :: 2;
+        IMPORT_FAIL_ON_MISSING_DEPENDENCIES :: 4;
+        IMPORT_GENERATE_TANGENT_ARRAYS :: 8;
+        IMPORT_USE_NAMED_SKIN_BINDS :: 16;
+        IMPORT_DISCARD_MESHES_AND_MATERIALS :: 32;
+        IMPORT_FORCE_DISABLE_MESH_COMPRESSION :: 64;
+
     }
 
-    EditorSceneFormatImporterBlend :: struct {
+    EditorSceneFormatImporterBlend :: struct {    // 227
+
+        #as using base: EditorSceneFormatImporter;
     }
 
-    EditorSceneFormatImporterFBX2GLTF :: struct {
+    EditorSceneFormatImporterFBX2GLTF :: struct {    // 228
+
+        #as using base: EditorSceneFormatImporter;
     }
 
-    EditorSceneFormatImporterGLTF :: struct {
+    EditorSceneFormatImporterGLTF :: struct {    // 229
+
+        #as using base: EditorSceneFormatImporter;
     }
 
-    EditorSceneFormatImporterUFBX :: struct {
+    EditorSceneFormatImporterUFBX :: struct {    // 230
+
+        #as using base: EditorSceneFormatImporter;
     }
 
-    EditorScenePostImport :: struct {
+    EditorScenePostImport :: struct {    // 231
+
+        #as using base: RefCounted;
     }
 
-    EditorScenePostImportPlugin :: struct {
+    EditorScenePostImportPlugin :: struct {    // 232
+
+        #as using base: RefCounted;
 
         InternalImportCategory :: enum s32 {
             INTERNAL_IMPORT_CATEGORY_NODE :: 0;
@@ -2528,28 +4271,55 @@ gdt :: struct {
         }
     }
 
-    EditorScript :: struct {
+    EditorScript :: struct {    // 233
+
+        #as using base: RefCounted;
     }
 
-    EditorScriptPicker :: struct {
+    EditorScriptPicker :: struct {    // 234
+
+        #as using base: EditorResourcePicker;
+
+        script_owner: Node;
     }
 
-    EditorSelection :: struct {
+    EditorSelection :: struct {    // 235
+
+        #as using base: Object;
     }
 
-    EditorSettings :: struct {
+    EditorSettings :: struct {    // 236
+
+        #as using base: Resource;
+
+        NOTIFICATION_EDITOR_SETTINGS_CHANGED :: 10000;
+
     }
 
-    EditorSpinSlider :: struct {
+    EditorSpinSlider :: struct {    // 237
+
+        #as using base: Range;
+
+        label: String;
+        suffix: String;
+        read_only: bool;
+        flat: bool;
+        hide_slider: bool;
     }
 
-    EditorSyntaxHighlighter :: struct {
+    EditorSyntaxHighlighter :: struct {    // 238
+
+        #as using base: SyntaxHighlighter;
     }
 
-    EditorTranslationParserPlugin :: struct {
+    EditorTranslationParserPlugin :: struct {    // 239
+
+        #as using base: RefCounted;
     }
 
-    EditorUndoRedoManager :: struct {
+    EditorUndoRedoManager :: struct {    // 240
+
+        #as using base: Object;
 
         SpecialHistory :: enum s32 {
             GLOBAL_HISTORY :: 0;
@@ -2558,7 +4328,9 @@ gdt :: struct {
         }
     }
 
-    EditorVCSInterface :: struct {
+    EditorVCSInterface :: struct {    // 241
+
+        #as using base: Object;
 
         ChangeType :: enum s32 {
             CHANGE_TYPE_NEW :: 0;
@@ -2576,19 +4348,38 @@ gdt :: struct {
         }
     }
 
-    EncodedObjectAsID :: struct {
+    EncodedObjectAsID :: struct {    // 242
+
+        #as using base: RefCounted;
+
+        object_id: int;
     }
 
-    Engine :: struct {
+    Engine :: struct {    // 243
+
+        #as using base: Object;
+
+        print_error_messages: bool;
+        physics_ticks_per_second: int;
+        max_physics_steps_per_frame: int;
+        max_fps: int;
+        time_scale: float;
+        physics_jitter_fix: float;
     }
 
-    EngineDebugger :: struct {
+    EngineDebugger :: struct {    // 244
+
+        #as using base: Object;
     }
 
-    EngineProfiler :: struct {
+    EngineProfiler :: struct {    // 245
+
+        #as using base: RefCounted;
     }
 
-    Environment :: struct {
+    Environment :: struct {    // 246
+
+        #as using base: Resource;
 
         BGMode :: enum s32 {
             BG_CLEAR_COLOR :: 0;
@@ -2638,18 +4429,120 @@ gdt :: struct {
             SDFGI_Y_SCALE_75_PERCENT :: 1;
             SDFGI_Y_SCALE_100_PERCENT :: 2;
         }
+
+        background_mode: int;
+        background_color: Color;
+        background_energy_multiplier: float;
+        background_intensity: float;
+        background_canvas_max_layer: int;
+        background_camera_feed_id: int;
+        sky: Sky;
+        sky_custom_fov: float;
+        sky_rotation: Vector3;
+        ambient_light_source: int;
+        ambient_light_color: Color;
+        ambient_light_sky_contribution: float;
+        ambient_light_energy: float;
+        reflected_light_source: int;
+        tonemap_mode: int;
+        tonemap_exposure: float;
+        tonemap_white: float;
+        ssr_enabled: bool;
+        ssr_max_steps: int;
+        ssr_fade_in: float;
+        ssr_fade_out: float;
+        ssr_depth_tolerance: float;
+        ssao_enabled: bool;
+        ssao_radius: float;
+        ssao_intensity: float;
+        ssao_power: float;
+        ssao_detail: float;
+        ssao_horizon: float;
+        ssao_sharpness: float;
+        ssao_light_affect: float;
+        ssao_ao_channel_affect: float;
+        ssil_enabled: bool;
+        ssil_radius: float;
+        ssil_intensity: float;
+        ssil_sharpness: float;
+        ssil_normal_rejection: float;
+        sdfgi_enabled: bool;
+        sdfgi_use_occlusion: bool;
+        sdfgi_read_sky_light: bool;
+        sdfgi_bounce_feedback: float;
+        sdfgi_cascades: int;
+        sdfgi_min_cell_size: float;
+        sdfgi_cascade0_distance: float;
+        sdfgi_max_distance: float;
+        sdfgi_y_scale: int;
+        sdfgi_energy: float;
+        sdfgi_normal_bias: float;
+        sdfgi_probe_bias: float;
+        glow_enabled: bool;
+        glow_normalized: bool;
+        glow_intensity: float;
+        glow_strength: float;
+        glow_mix: float;
+        glow_bloom: float;
+        glow_blend_mode: int;
+        glow_hdr_threshold: float;
+        glow_hdr_scale: float;
+        glow_hdr_luminance_cap: float;
+        glow_map_strength: float;
+        glow_map: Texture2D;
+        fog_enabled: bool;
+        fog_mode: int;
+        fog_light_color: Color;
+        fog_light_energy: float;
+        fog_sun_scatter: float;
+        fog_density: float;
+        fog_aerial_perspective: float;
+        fog_sky_affect: float;
+        fog_height: float;
+        fog_height_density: float;
+        fog_depth_curve: float;
+        fog_depth_begin: float;
+        fog_depth_end: float;
+        volumetric_fog_enabled: bool;
+        volumetric_fog_density: float;
+        volumetric_fog_albedo: Color;
+        volumetric_fog_emission: Color;
+        volumetric_fog_emission_energy: float;
+        volumetric_fog_gi_inject: float;
+        volumetric_fog_anisotropy: float;
+        volumetric_fog_length: float;
+        volumetric_fog_detail_spread: float;
+        volumetric_fog_ambient_inject: float;
+        volumetric_fog_sky_affect: float;
+        volumetric_fog_temporal_reprojection_enabled: bool;
+        volumetric_fog_temporal_reprojection_amount: float;
+        adjustment_enabled: bool;
+        adjustment_brightness: float;
+        adjustment_contrast: float;
+        adjustment_saturation: float;
+        adjustment_color_correction: Texture2D,Texture3D;
     }
 
-    Expression :: struct {
+    Expression :: struct {    // 247
+
+        #as using base: RefCounted;
     }
 
-    FBXDocument :: struct {
+    FBXDocument :: struct {    // 248
+
+        #as using base: GLTFDocument;
     }
 
-    FBXState :: struct {
+    FBXState :: struct {    // 249
+
+        #as using base: GLTFState;
+
+        allow_geometry_helper_nodes: bool;
     }
 
-    FastNoiseLite :: struct {
+    FastNoiseLite :: struct {    // 250
+
+        #as using base: Noise;
 
         NoiseType :: enum s32 {
             TYPE_VALUE :: 5;
@@ -2695,9 +4588,33 @@ gdt :: struct {
             DOMAIN_WARP_FRACTAL_PROGRESSIVE :: 1;
             DOMAIN_WARP_FRACTAL_INDEPENDENT :: 2;
         }
+
+        noise_type: int;
+        seed: int;
+        frequency: float;
+        offset: Vector3;
+        fractal_type: int;
+        fractal_octaves: int;
+        fractal_lacunarity: float;
+        fractal_gain: float;
+        fractal_weighted_strength: float;
+        fractal_ping_pong_strength: float;
+        cellular_distance_function: int;
+        cellular_jitter: float;
+        cellular_return_type: int;
+        domain_warp_enabled: bool;
+        domain_warp_type: int;
+        domain_warp_amplitude: float;
+        domain_warp_frequency: float;
+        domain_warp_fractal_type: int;
+        domain_warp_fractal_octaves: int;
+        domain_warp_fractal_lacunarity: float;
+        domain_warp_fractal_gain: float;
     }
 
-    FileAccess :: struct {
+    FileAccess :: struct {    // 251
+
+        #as using base: RefCounted;
 
         ModeFlags :: enum s32 {
             READ :: 1;
@@ -2728,9 +4645,13 @@ gdt :: struct {
             UNIX_SET_GROUP_ID :: 1024;
             UNIX_RESTRICTED_DELETE :: 512;
         } @bitfield
+
+        big_endian: bool;
     }
 
-    FileDialog :: struct {
+    FileDialog :: struct {    // 252
+
+        #as using base: ConfirmationDialog;
 
         FileMode :: enum s32 {
             FILE_MODE_OPEN_FILE :: 0;
@@ -2745,39 +4666,119 @@ gdt :: struct {
             ACCESS_USERDATA :: 1;
             ACCESS_FILESYSTEM :: 2;
         }
+
+        mode_overrides_title: bool;
+        file_mode: int;
+        access: int;
+        root_subfolder: String;
+        filters: PackedStringArray;
+        option_count: int;
+        show_hidden_files: bool;
+        use_native_dialog: bool;
+        current_dir: String;
+        current_file: String;
+        current_path: String;
     }
 
-    FileSystemDock :: struct {
+    FileSystemDock :: struct {    // 253
+
+        #as using base: VBoxContainer;
     }
 
-    FlowContainer :: struct {
+    FlowContainer :: struct {    // 254
+
+        #as using base: Container;
 
         AlignmentMode :: enum s32 {
             ALIGNMENT_BEGIN :: 0;
             ALIGNMENT_CENTER :: 1;
             ALIGNMENT_END :: 2;
         }
+
+        alignment: int;
+        vertical: bool;
+        reverse_fill: bool;
     }
 
-    FogMaterial :: struct {
+    FogMaterial :: struct {    // 255
+
+        #as using base: Material;
+
+        density: float;
+        albedo: Color;
+        emission: Color;
+        height_falloff: float;
+        edge_fade: float;
+        density_texture: Texture3D;
     }
 
-    FogVolume :: struct {
+    FogVolume :: struct {    // 256
+
+        #as using base: VisualInstance3D;
+
+        size: Vector3;
+        shape: int;
+        material: FogMaterial,ShaderMaterial;
     }
 
-    Font :: struct {
+    Font :: struct {    // 257
+
+        #as using base: Resource;
+
+        fallbacks: typedarray::24/17:Font;
     }
 
-    FontFile :: struct {
+    FontFile :: struct {    // 258
+
+        #as using base: Font;
+
+        data: PackedByteArray;
+        generate_mipmaps: bool;
+        disable_embedded_bitmaps: bool;
+        antialiasing: int;
+        font_name: String;
+        style_name: String;
+        font_style: int;
+        font_weight: int;
+        font_stretch: int;
+        subpixel_positioning: int;
+        multichannel_signed_distance_field: bool;
+        msdf_pixel_range: int;
+        msdf_size: int;
+        allow_system_fallback: bool;
+        force_autohinter: bool;
+        hinting: int;
+        oversampling: float;
+        fixed_size: int;
+        fixed_size_scale_mode: int;
+        opentype_feature_overrides: Dictionary;
     }
 
-    FontVariation :: struct {
+    FontVariation :: struct {    // 259
+
+        #as using base: Font;
+
+        base_font: Font;
+        variation_opentype: Dictionary;
+        variation_face_index: int;
+        variation_embolden: float;
+        variation_transform: Transform2D;
+        opentype_features: Dictionary;
+        spacing_glyph: int;
+        spacing_space: int;
+        spacing_top: int;
+        spacing_bottom: int;
+        baseline_offset: float;
     }
 
-    FramebufferCacheRD :: struct {
+    FramebufferCacheRD :: struct {    // 260
+
+        #as using base: Object;
     }
 
-    GDExtension :: struct {
+    GDExtension :: struct {    // 261
+
+        #as using base: Resource;
 
         InitializationLevel :: enum s32 {
             INITIALIZATION_LEVEL_CORE :: 0;
@@ -2787,7 +4788,9 @@ gdt :: struct {
         }
     }
 
-    GDExtensionManager :: struct {
+    GDExtensionManager :: struct {    // 262
+
+        #as using base: Object;
 
         LoadStatus :: enum s32 {
             LOAD_STATUS_OK :: 0;
@@ -2798,70 +4801,252 @@ gdt :: struct {
         }
     }
 
-    GDScript :: struct {
+    GDScript :: struct {    // 263
+
+        #as using base: Script;
     }
 
-    GLTFAccessor :: struct {
+    GLTFAccessor :: struct {    // 264
+
+        #as using base: Resource;
+
+        buffer_view: int;
+        byte_offset: int;
+        component_type: int;
+        normalized: bool;
+        count: int;
+        type: int;
+        min: PackedFloat64Array;
+        max: PackedFloat64Array;
+        sparse_count: int;
+        sparse_indices_buffer_view: int;
+        sparse_indices_byte_offset: int;
+        sparse_indices_component_type: int;
+        sparse_values_buffer_view: int;
+        sparse_values_byte_offset: int;
     }
 
-    GLTFAnimation :: struct {
+    GLTFAnimation :: struct {    // 265
+
+        #as using base: Resource;
+
+        original_name: String;
+        loop: bool;
     }
 
-    GLTFBufferView :: struct {
+    GLTFBufferView :: struct {    // 266
+
+        #as using base: Resource;
+
+        buffer: int;
+        byte_offset: int;
+        byte_length: int;
+        byte_stride: int;
+        indices: bool;
+        vertex_attributes: bool;
     }
 
-    GLTFCamera :: struct {
+    GLTFCamera :: struct {    // 267
+
+        #as using base: Resource;
+
+        perspective: bool;
+        fov: float;
+        size_mag: float;
+        depth_far: float;
+        depth_near: float;
     }
 
-    GLTFDocument :: struct {
+    GLTFDocument :: struct {    // 268
+
+        #as using base: Resource;
 
         RootNodeMode :: enum s32 {
             ROOT_NODE_MODE_SINGLE_ROOT :: 0;
             ROOT_NODE_MODE_KEEP_ROOT :: 1;
             ROOT_NODE_MODE_MULTI_ROOT :: 2;
         }
+
+        image_format: String;
+        lossy_quality: float;
+        root_node_mode: int;
     }
 
-    GLTFDocumentExtension :: struct {
+    GLTFDocumentExtension :: struct {    // 269
+
+        #as using base: Resource;
     }
 
-    GLTFDocumentExtensionConvertImporterMesh :: struct {
+    GLTFDocumentExtensionConvertImporterMesh :: struct {    // 270
+
+        #as using base: GLTFDocumentExtension;
     }
 
-    GLTFLight :: struct {
+    GLTFLight :: struct {    // 271
+
+        #as using base: Resource;
+
+        color: Color;
+        intensity: float;
+        light_type: String;
+        range: float;
+        inner_cone_angle: float;
+        outer_cone_angle: float;
     }
 
-    GLTFMesh :: struct {
+    GLTFMesh :: struct {    // 272
+
+        #as using base: Resource;
+
+        original_name: String;
+        mesh: Object;
+        blend_weights: PackedFloat32Array;
+        instance_materials: Array;
     }
 
-    GLTFNode :: struct {
+    GLTFNode :: struct {    // 273
+
+        #as using base: Resource;
+
+        original_name: String;
+        parent: int;
+        height: int;
+        xform: Transform3D;
+        mesh: int;
+        camera: int;
+        skin: int;
+        skeleton: int;
+        position: Vector3;
+        rotation: Quaternion;
+        scale: Vector3;
+        children: PackedInt32Array;
+        light: int;
     }
 
-    GLTFPhysicsBody :: struct {
+    GLTFPhysicsBody :: struct {    // 274
+
+        #as using base: Resource;
+
+        body_type: String;
+        mass: float;
+        linear_velocity: Vector3;
+        angular_velocity: Vector3;
+        center_of_mass: Vector3;
+        inertia_diagonal: Vector3;
+        inertia_orientation: Quaternion;
+        inertia_tensor: Basis;
     }
 
-    GLTFPhysicsShape :: struct {
+    GLTFPhysicsShape :: struct {    // 275
+
+        #as using base: Resource;
+
+        shape_type: String;
+        size: Vector3;
+        radius: float;
+        height: float;
+        is_trigger: bool;
+        mesh_index: int;
+        importer_mesh: ImporterMesh;
     }
 
-    GLTFSkeleton :: struct {
+    GLTFSkeleton :: struct {    // 276
+
+        #as using base: Resource;
+
+        joints: PackedInt32Array;
+        roots: PackedInt32Array;
+        unique_names: Array;
+        godot_bone_node: Dictionary;
     }
 
-    GLTFSkin :: struct {
+    GLTFSkin :: struct {    // 277
+
+        #as using base: Resource;
+
+        skin_root: int;
+        joints_original: PackedInt32Array;
+        inverse_binds: Array;
+        joints: PackedInt32Array;
+        non_joints: PackedInt32Array;
+        roots: PackedInt32Array;
+        skeleton: int;
+        joint_i_to_bone_i: Dictionary;
+        joint_i_to_name: Dictionary;
+        godot_skin: Skin;
     }
 
-    GLTFSpecGloss :: struct {
+    GLTFSpecGloss :: struct {    // 278
+
+        #as using base: Resource;
+
+        diffuse_img: Object;
+        diffuse_factor: Color;
+        gloss_factor: float;
+        specular_factor: Color;
+        spec_gloss_img: Object;
     }
 
-    GLTFState :: struct {
+    GLTFState :: struct {    // 279
+
+        #as using base: Resource;
+
+        HANDLE_BINARY_DISCARD_TEXTURES :: 0;
+        HANDLE_BINARY_EXTRACT_TEXTURES :: 1;
+        HANDLE_BINARY_EMBED_AS_BASISU :: 2;
+        HANDLE_BINARY_EMBED_AS_UNCOMPRESSED :: 3;
+        json: Dictionary;
+        major_version: int;
+        minor_version: int;
+        copyright: String;
+        glb_data: PackedByteArray;
+        use_named_skin_binds: bool;
+        nodes: Array;
+        buffers: Array;
+        buffer_views: Array;
+        accessors: Array;
+        meshes: Array;
+        materials: Array;
+        scene_name: String;
+        base_path: String;
+        filename: String;
+        root_nodes: PackedInt32Array;
+        textures: Array;
+        texture_samplers: Array;
+        images: Array;
+        skins: Array;
+        cameras: Array;
+        lights: Array;
+        unique_names: Array;
+        unique_animation_names: Array;
+        skeletons: Array;
+        create_animations: bool;
+        import_as_skeleton_bones: bool;
+        animations: Array;
+        handle_binary_image: int;
     }
 
-    GLTFTexture :: struct {
+    GLTFTexture :: struct {    // 280
+
+        #as using base: Resource;
+
+        src_image: int;
+        sampler: int;
     }
 
-    GLTFTextureSampler :: struct {
+    GLTFTextureSampler :: struct {    // 281
+
+        #as using base: Resource;
+
+        mag_filter: int;
+        min_filter: int;
+        wrap_s: int;
+        wrap_t: int;
     }
 
-    GPUParticles2D :: struct {
+    GPUParticles2D :: struct {    // 282
+
+        #as using base: Node2D;
 
         DrawOrder :: enum s32 {
             DRAW_ORDER_INDEX :: 0;
@@ -2876,9 +5061,39 @@ gdt :: struct {
             EMIT_FLAG_COLOR :: 8;
             EMIT_FLAG_CUSTOM :: 16;
         }
+
+        emitting: bool;
+        amount: int;
+        amount_ratio: float;
+        sub_emitter: NodePath;
+        process_material: ParticleProcessMaterial,ShaderMaterial;
+        texture: Texture2D;
+        lifetime: float;
+        one_shot: bool;
+        preprocess: float;
+        speed_scale: float;
+        explosiveness: float;
+        randomness: float;
+        fixed_fps: int;
+        interpolate: bool;
+        fract_delta: bool;
+        interp_to_end: float;
+        collision_base_size: float;
+        visibility_rect: Rect2;
+        local_coords: bool;
+        draw_order: int;
+        trail_enabled: bool;
+        trail_lifetime: float;
+        trail_sections: int;
+        trail_section_subdivisions: int;
     }
 
-    GPUParticles3D :: struct {
+    GPUParticles3D :: struct {    // 283
+
+        #as using base: GeometryInstance3D;
+
+        MAX_DRAW_PASSES :: 4;
+
 
         DrawOrder :: enum s32 {
             DRAW_ORDER_INDEX :: 0;
@@ -2901,27 +5116,86 @@ gdt :: struct {
             TRANSFORM_ALIGN_Y_TO_VELOCITY :: 2;
             TRANSFORM_ALIGN_Z_BILLBOARD_Y_TO_VELOCITY :: 3;
         }
+
+        emitting: bool;
+        amount: int;
+        amount_ratio: float;
+        sub_emitter: NodePath;
+        lifetime: float;
+        interp_to_end: float;
+        one_shot: bool;
+        preprocess: float;
+        speed_scale: float;
+        explosiveness: float;
+        randomness: float;
+        fixed_fps: int;
+        interpolate: bool;
+        fract_delta: bool;
+        collision_base_size: float;
+        visibility_aabb: AABB;
+        local_coords: bool;
+        draw_order: int;
+        transform_align: int;
+        trail_enabled: bool;
+        trail_lifetime: float;
+        process_material: ParticleProcessMaterial,ShaderMaterial;
+        draw_passes: int;
+        draw_pass_1: Mesh;
+        draw_pass_2: Mesh;
+        draw_pass_3: Mesh;
+        draw_pass_4: Mesh;
+        draw_skin: Skin;
     }
 
-    GPUParticlesAttractor3D :: struct {
+    GPUParticlesAttractor3D :: struct {    // 284
+
+        #as using base: VisualInstance3D;
+
+        strength: float;
+        attenuation: float;
+        directionality: float;
+        cull_mask: int;
     }
 
-    GPUParticlesAttractorBox3D :: struct {
+    GPUParticlesAttractorBox3D :: struct {    // 285
+
+        #as using base: GPUParticlesAttractor3D;
+
+        size: Vector3;
     }
 
-    GPUParticlesAttractorSphere3D :: struct {
+    GPUParticlesAttractorSphere3D :: struct {    // 286
+
+        #as using base: GPUParticlesAttractor3D;
+
+        radius: float;
     }
 
-    GPUParticlesAttractorVectorField3D :: struct {
+    GPUParticlesAttractorVectorField3D :: struct {    // 287
+
+        #as using base: GPUParticlesAttractor3D;
+
+        size: Vector3;
+        texture: Texture3D;
     }
 
-    GPUParticlesCollision3D :: struct {
+    GPUParticlesCollision3D :: struct {    // 288
+
+        #as using base: VisualInstance3D;
+
+        cull_mask: int;
     }
 
-    GPUParticlesCollisionBox3D :: struct {
+    GPUParticlesCollisionBox3D :: struct {    // 289
+
+        #as using base: GPUParticlesCollision3D;
+
+        size: Vector3;
     }
 
-    GPUParticlesCollisionHeightField3D :: struct {
+    GPUParticlesCollisionHeightField3D :: struct {    // 290
+
+        #as using base: GPUParticlesCollision3D;
 
         Resolution :: enum s32 {
             RESOLUTION_256 :: 0;
@@ -2937,9 +5211,16 @@ gdt :: struct {
             UPDATE_MODE_WHEN_MOVED :: 0;
             UPDATE_MODE_ALWAYS :: 1;
         }
+
+        size: Vector3;
+        resolution: int;
+        update_mode: int;
+        follow_camera_enabled: bool;
     }
 
-    GPUParticlesCollisionSDF3D :: struct {
+    GPUParticlesCollisionSDF3D :: struct {    // 291
+
+        #as using base: GPUParticlesCollision3D;
 
         Resolution :: enum s32 {
             RESOLUTION_16 :: 0;
@@ -2950,12 +5231,24 @@ gdt :: struct {
             RESOLUTION_512 :: 5;
             RESOLUTION_MAX :: 6;
         }
+
+        size: Vector3;
+        resolution: int;
+        thickness: float;
+        bake_mask: int;
+        texture: Texture3D;
     }
 
-    GPUParticlesCollisionSphere3D :: struct {
+    GPUParticlesCollisionSphere3D :: struct {    // 292
+
+        #as using base: GPUParticlesCollision3D;
+
+        radius: float;
     }
 
-    Generic6DOFJoint3D :: struct {
+    Generic6DOFJoint3D :: struct {    // 293
+
+        #as using base: Joint3D;
 
         Param :: enum s32 {
             PARAM_LINEAR_LOWER_LIMIT :: 0;
@@ -2994,7 +5287,9 @@ gdt :: struct {
         }
     }
 
-    Geometry2D :: struct {
+    Geometry2D :: struct {    // 294
+
+        #as using base: Object;
 
         PolyBooleanOperation :: enum s32 {
             OPERATION_UNION :: 0;
@@ -3018,10 +5313,14 @@ gdt :: struct {
         }
     }
 
-    Geometry3D :: struct {
+    Geometry3D :: struct {    // 295
+
+        #as using base: Object;
     }
 
-    GeometryInstance3D :: struct {
+    GeometryInstance3D :: struct {    // 296
+
+        #as using base: VisualInstance3D;
 
         ShadowCastingSetting :: enum s32 {
             SHADOW_CASTING_SETTING_OFF :: 0;
@@ -3049,9 +5348,27 @@ gdt :: struct {
             VISIBILITY_RANGE_FADE_SELF :: 1;
             VISIBILITY_RANGE_FADE_DEPENDENCIES :: 2;
         }
+
+        material_override: BaseMaterial3D,ShaderMaterial;
+        material_overlay: BaseMaterial3D,ShaderMaterial;
+        transparency: float;
+        cast_shadow: int;
+        extra_cull_margin: float;
+        custom_aabb: AABB;
+        lod_bias: float;
+        ignore_occlusion_culling: bool;
+        gi_mode: int;
+        gi_lightmap_scale: int;
+        visibility_range_begin: float;
+        visibility_range_begin_margin: float;
+        visibility_range_end: float;
+        visibility_range_end_margin: float;
+        visibility_range_fade_mode: int;
     }
 
-    Gradient :: struct {
+    Gradient :: struct {    // 297
+
+        #as using base: Resource;
 
         InterpolationMode :: enum s32 {
             GRADIENT_INTERPOLATE_LINEAR :: 0;
@@ -3064,12 +5381,25 @@ gdt :: struct {
             GRADIENT_COLOR_SPACE_LINEAR_SRGB :: 1;
             GRADIENT_COLOR_SPACE_OKLAB :: 2;
         }
+
+        interpolation_mode: int;
+        interpolation_color_space: int;
+        offsets: PackedFloat32Array;
+        colors: PackedColorArray;
     }
 
-    GradientTexture1D :: struct {
+    GradientTexture1D :: struct {    // 298
+
+        #as using base: Texture2D;
+
+        gradient: Gradient;
+        width: int;
+        use_hdr: bool;
     }
 
-    GradientTexture2D :: struct {
+    GradientTexture2D :: struct {    // 299
+
+        #as using base: Texture2D;
 
         Fill :: enum s32 {
             FILL_LINEAR :: 0;
@@ -3082,9 +5412,20 @@ gdt :: struct {
             REPEAT :: 1;
             REPEAT_MIRROR :: 2;
         }
+
+        gradient: Gradient;
+        width: int;
+        height: int;
+        use_hdr: bool;
+        fill: int;
+        fill_from: Vector2;
+        fill_to: Vector2;
+        repeat: int;
     }
 
-    GraphEdit :: struct {
+    GraphEdit :: struct {    // 300
+
+        #as using base: Control;
 
         PanningScheme :: enum s32 {
             SCROLL_ZOOMS :: 0;
@@ -3095,45 +5436,122 @@ gdt :: struct {
             GRID_PATTERN_LINES :: 0;
             GRID_PATTERN_DOTS :: 1;
         }
+
+        scroll_offset: Vector2;
+        show_grid: bool;
+        grid_pattern: int;
+        snapping_enabled: bool;
+        snapping_distance: int;
+        panning_scheme: int;
+        right_disconnects: bool;
+        connection_lines_curvature: float;
+        connection_lines_thickness: float;
+        connection_lines_antialiased: bool;
+        zoom: float;
+        zoom_min: float;
+        zoom_max: float;
+        zoom_step: float;
+        minimap_enabled: bool;
+        minimap_size: Vector2;
+        minimap_opacity: float;
+        show_menu: bool;
+        show_zoom_label: bool;
+        show_zoom_buttons: bool;
+        show_grid_buttons: bool;
+        show_minimap_button: bool;
+        show_arrange_button: bool;
     }
 
-    GraphElement :: struct {
+    GraphElement :: struct {    // 301
+
+        #as using base: Container;
+
+        position_offset: Vector2;
+        resizable: bool;
+        draggable: bool;
+        selectable: bool;
+        selected: bool;
     }
 
-    GraphNode :: struct {
+    GraphNode :: struct {    // 302
+
+        #as using base: GraphElement;
+
+        title: String;
     }
 
-    GridContainer :: struct {
+    GridContainer :: struct {    // 303
+
+        #as using base: Container;
+
+        columns: int;
     }
 
-    GridMap :: struct {
+    GridMap :: struct {    // 304
+
+        #as using base: Node3D;
+
+        INVALID_CELL_ITEM :: -1;
+        mesh_library: MeshLibrary;
+        physics_material: PhysicsMaterial;
+        cell_size: Vector3;
+        cell_octant_size: int;
+        cell_center_x: bool;
+        cell_center_y: bool;
+        cell_center_z: bool;
+        cell_scale: float;
+        collision_layer: int;
+        collision_mask: int;
+        collision_priority: float;
+        bake_navigation: bool;
     }
 
-    GrooveJoint2D :: struct {
+    GrooveJoint2D :: struct {    // 305
+
+        #as using base: Joint2D;
+
+        length: float;
+        initial_offset: float;
     }
 
-    HBoxContainer :: struct {
+    HBoxContainer :: struct {    // 306
+
+        #as using base: BoxContainer;
     }
 
-    HFlowContainer :: struct {
+    HFlowContainer :: struct {    // 307
+
+        #as using base: FlowContainer;
     }
 
-    HMACContext :: struct {
+    HMACContext :: struct {    // 308
+
+        #as using base: RefCounted;
     }
 
-    HScrollBar :: struct {
+    HScrollBar :: struct {    // 309
+
+        #as using base: ScrollBar;
     }
 
-    HSeparator :: struct {
+    HSeparator :: struct {    // 310
+
+        #as using base: Separator;
     }
 
-    HSlider :: struct {
+    HSlider :: struct {    // 311
+
+        #as using base: Slider;
     }
 
-    HSplitContainer :: struct {
+    HSplitContainer :: struct {    // 312
+
+        #as using base: SplitContainer;
     }
 
-    HTTPClient :: struct {
+    HTTPClient :: struct {    // 313
+
+        #as using base: RefCounted;
 
         Method :: enum s32 {
             METHOD_GET :: 0;
@@ -3224,9 +5642,15 @@ gdt :: struct {
             RESPONSE_NOT_EXTENDED :: 510;
             RESPONSE_NETWORK_AUTH_REQUIRED :: 511;
         }
+
+        blocking_mode_enabled: bool;
+        connection: StreamPeer;
+        read_chunk_size: int;
     }
 
-    HTTPRequest :: struct {
+    HTTPRequest :: struct {    // 314
+
+        #as using base: Node;
 
         Result :: enum s32 {
             RESULT_SUCCESS :: 0;
@@ -3244,9 +5668,19 @@ gdt :: struct {
             RESULT_REDIRECT_LIMIT_REACHED :: 12;
             RESULT_TIMEOUT :: 13;
         }
+
+        download_file: String;
+        download_chunk_size: int;
+        use_threads: bool;
+        accept_gzip: bool;
+        body_size_limit: int;
+        max_redirects: int;
+        timeout: float;
     }
 
-    HashingContext :: struct {
+    HashingContext :: struct {    // 315
+
+        #as using base: RefCounted;
 
         HashType :: enum s32 {
             HASH_MD5 :: 0;
@@ -3255,10 +5689,18 @@ gdt :: struct {
         }
     }
 
-    HeightMapShape3D :: struct {
+    HeightMapShape3D :: struct {    // 316
+
+        #as using base: Shape3D;
+
+        map_width: int;
+        map_depth: int;
+        map_data: PackedFloat32Array;
     }
 
-    HingeJoint3D :: struct {
+    HingeJoint3D :: struct {    // 317
+
+        #as using base: Joint3D;
 
         Param :: enum s32 {
             PARAM_BIAS :: 0;
@@ -3279,7 +5721,13 @@ gdt :: struct {
         }
     }
 
-    IP :: struct {
+    IP :: struct {    // 318
+
+        #as using base: Object;
+
+        RESOLVER_MAX_QUERIES :: 256;
+        RESOLVER_INVALID_ID :: -1;
+
 
         ResolverStatus :: enum s32 {
             RESOLVER_STATUS_NONE :: 0;
@@ -3296,7 +5744,13 @@ gdt :: struct {
         }
     }
 
-    Image :: struct {
+    Image :: struct {    // 319
+
+        #as using base: Resource;
+
+        MAX_WIDTH :: 16777216;
+        MAX_HEIGHT :: 16777216;
+
 
         Format :: enum s32 {
             FORMAT_L8 :: 0;
@@ -3383,9 +5837,13 @@ gdt :: struct {
             ASTC_FORMAT_4x4 :: 0;
             ASTC_FORMAT_8x8 :: 1;
         }
+
+        data: Dictionary;
     }
 
-    ImageFormatLoader :: struct {
+    ImageFormatLoader :: struct {    // 320
+
+        #as using base: RefCounted;
 
         LoaderFlags :: enum u64 {
             FLAG_NONE :: 0;
@@ -3394,28 +5852,55 @@ gdt :: struct {
         } @bitfield
     }
 
-    ImageFormatLoaderExtension :: struct {
+    ImageFormatLoaderExtension :: struct {    // 321
+
+        #as using base: ImageFormatLoader;
     }
 
-    ImageTexture :: struct {
+    ImageTexture :: struct {    // 322
+
+        #as using base: Texture2D;
     }
 
-    ImageTexture3D :: struct {
+    ImageTexture3D :: struct {    // 323
+
+        #as using base: Texture3D;
     }
 
-    ImageTextureLayered :: struct {
+    ImageTextureLayered :: struct {    // 324
+
+        #as using base: TextureLayered;
     }
 
-    ImmediateMesh :: struct {
+    ImmediateMesh :: struct {    // 325
+
+        #as using base: Mesh;
     }
 
-    ImporterMesh :: struct {
+    ImporterMesh :: struct {    // 326
+
+        #as using base: Resource;
     }
 
-    ImporterMeshInstance3D :: struct {
+    ImporterMeshInstance3D :: struct {    // 327
+
+        #as using base: Node3D;
+
+        mesh: ImporterMesh;
+        skin: Skin;
+        skeleton_path: NodePath;
+        layer_mask: int;
+        cast_shadow: int;
+        visibility_range_begin: float;
+        visibility_range_begin_margin: float;
+        visibility_range_end: float;
+        visibility_range_end_margin: float;
+        visibility_range_fade_mode: int;
     }
 
-    Input :: struct {
+    Input :: struct {    // 328
+
+        #as using base: Object;
 
         MouseMode :: enum s32 {
             MOUSE_MODE_VISIBLE :: 0;
@@ -3444,69 +5929,196 @@ gdt :: struct {
             CURSOR_HSPLIT :: 15;
             CURSOR_HELP :: 16;
         }
+
+        mouse_mode: int;
+        use_accumulated_input: bool;
+        emulate_mouse_from_touch: bool;
+        emulate_touch_from_mouse: bool;
     }
 
-    InputEvent :: struct {
+    InputEvent :: struct {    // 329
+
+        #as using base: Resource;
+
+        device: int;
     }
 
-    InputEventAction :: struct {
+    InputEventAction :: struct {    // 330
+
+        #as using base: InputEvent;
+
+        action: StringName;
+        pressed: bool;
+        strength: float;
     }
 
-    InputEventFromWindow :: struct {
+    InputEventFromWindow :: struct {    // 331
+
+        #as using base: InputEvent;
+
+        window_id: int;
     }
 
-    InputEventGesture :: struct {
+    InputEventGesture :: struct {    // 332
+
+        #as using base: InputEventWithModifiers;
+
+        position: Vector2;
     }
 
-    InputEventJoypadButton :: struct {
+    InputEventJoypadButton :: struct {    // 333
+
+        #as using base: InputEvent;
+
+        button_index: int;
+        pressure: float;
+        pressed: bool;
     }
 
-    InputEventJoypadMotion :: struct {
+    InputEventJoypadMotion :: struct {    // 334
+
+        #as using base: InputEvent;
+
+        axis: int;
+        axis_value: float;
     }
 
-    InputEventKey :: struct {
+    InputEventKey :: struct {    // 335
+
+        #as using base: InputEventWithModifiers;
+
+        pressed: bool;
+        keycode: int;
+        physical_keycode: int;
+        key_label: int;
+        unicode: int;
+        location: int;
+        echo: bool;
     }
 
-    InputEventMIDI :: struct {
+    InputEventMIDI :: struct {    // 336
+
+        #as using base: InputEvent;
+
+        channel: int;
+        message: int;
+        pitch: int;
+        velocity: int;
+        instrument: int;
+        pressure: int;
+        controller_number: int;
+        controller_value: int;
     }
 
-    InputEventMagnifyGesture :: struct {
+    InputEventMagnifyGesture :: struct {    // 337
+
+        #as using base: InputEventGesture;
+
+        factor: float;
     }
 
-    InputEventMouse :: struct {
+    InputEventMouse :: struct {    // 338
+
+        #as using base: InputEventWithModifiers;
+
+        button_mask: int;
+        position: Vector2;
+        global_position: Vector2;
     }
 
-    InputEventMouseButton :: struct {
+    InputEventMouseButton :: struct {    // 339
+
+        #as using base: InputEventMouse;
+
+        factor: float;
+        button_index: int;
+        canceled: bool;
+        pressed: bool;
+        double_click: bool;
     }
 
-    InputEventMouseMotion :: struct {
+    InputEventMouseMotion :: struct {    // 340
+
+        #as using base: InputEventMouse;
+
+        tilt: Vector2;
+        pressure: float;
+        pen_inverted: bool;
+        relative: Vector2;
+        screen_relative: Vector2;
+        velocity: Vector2;
+        screen_velocity: Vector2;
     }
 
-    InputEventPanGesture :: struct {
+    InputEventPanGesture :: struct {    // 341
+
+        #as using base: InputEventGesture;
+
+        delta: Vector2;
     }
 
-    InputEventScreenDrag :: struct {
+    InputEventScreenDrag :: struct {    // 342
+
+        #as using base: InputEventFromWindow;
+
+        index: int;
+        tilt: Vector2;
+        pressure: float;
+        pen_inverted: bool;
+        position: Vector2;
+        relative: Vector2;
+        screen_relative: Vector2;
+        velocity: Vector2;
+        screen_velocity: Vector2;
     }
 
-    InputEventScreenTouch :: struct {
+    InputEventScreenTouch :: struct {    // 343
+
+        #as using base: InputEventFromWindow;
+
+        index: int;
+        position: Vector2;
+        canceled: bool;
+        pressed: bool;
+        double_tap: bool;
     }
 
-    InputEventShortcut :: struct {
+    InputEventShortcut :: struct {    // 344
+
+        #as using base: InputEvent;
+
+        shortcut: Shortcut;
     }
 
-    InputEventWithModifiers :: struct {
+    InputEventWithModifiers :: struct {    // 345
+
+        #as using base: InputEventFromWindow;
+
+        command_or_control_autoremap: bool;
+        alt_pressed: bool;
+        shift_pressed: bool;
+        ctrl_pressed: bool;
+        meta_pressed: bool;
     }
 
-    InputMap :: struct {
+    InputMap :: struct {    // 346
+
+        #as using base: Object;
     }
 
-    InstancePlaceholder :: struct {
+    InstancePlaceholder :: struct {    // 347
+
+        #as using base: Node;
     }
 
-    IntervalTweener :: struct {
+    IntervalTweener :: struct {    // 348
+
+        #as using base: Tweener;
     }
 
-    ItemList :: struct {
+    ItemList :: struct {    // 349
+
+        #as using base: Control;
 
         IconMode :: enum s32 {
             ICON_MODE_TOP :: 0;
@@ -3517,15 +6129,38 @@ gdt :: struct {
             SELECT_SINGLE :: 0;
             SELECT_MULTI :: 1;
         }
+
+        select_mode: int;
+        allow_reselect: bool;
+        allow_rmb_select: bool;
+        allow_search: bool;
+        max_text_lines: int;
+        auto_height: bool;
+        text_overrun_behavior: int;
+        item_count: int;
+        max_columns: int;
+        same_column_width: bool;
+        fixed_column_width: int;
+        icon_mode: int;
+        icon_scale: float;
+        fixed_icon_size: Vector2i;
     }
 
-    JNISingleton :: struct {
+    JNISingleton :: struct {    // 350
+
+        #as using base: Object;
     }
 
-    JSON :: struct {
+    JSON :: struct {    // 351
+
+        #as using base: Resource;
+
+        data: Variant;
     }
 
-    JSONRPC :: struct {
+    JSONRPC :: struct {    // 352
+
+        #as using base: Object;
 
         ErrorCode :: enum s32 {
             PARSE_ERROR :: -32700;
@@ -3536,34 +6171,85 @@ gdt :: struct {
         }
     }
 
-    JavaClass :: struct {
+    JavaClass :: struct {    // 353
+
+        #as using base: RefCounted;
     }
 
-    JavaClassWrapper :: struct {
+    JavaClassWrapper :: struct {    // 354
+
+        #as using base: Object;
     }
 
-    JavaScriptBridge :: struct {
+    JavaScriptBridge :: struct {    // 355
+
+        #as using base: Object;
     }
 
-    JavaScriptObject :: struct {
+    JavaScriptObject :: struct {    // 356
+
+        #as using base: RefCounted;
     }
 
-    Joint2D :: struct {
+    Joint2D :: struct {    // 357
+
+        #as using base: Node2D;
+
+        node_a: NodePath;
+        node_b: NodePath;
+        bias: float;
+        disable_collision: bool;
     }
 
-    Joint3D :: struct {
+    Joint3D :: struct {    // 358
+
+        #as using base: Node3D;
+
+        node_a: NodePath;
+        node_b: NodePath;
+        solver_priority: int;
+        exclude_nodes_from_collision: bool;
     }
 
-    KinematicCollision2D :: struct {
+    KinematicCollision2D :: struct {    // 359
+
+        #as using base: RefCounted;
     }
 
-    KinematicCollision3D :: struct {
+    KinematicCollision3D :: struct {    // 360
+
+        #as using base: RefCounted;
     }
 
-    Label :: struct {
+    Label :: struct {    // 361
+
+        #as using base: Control;
+
+        text: String;
+        label_settings: LabelSettings;
+        horizontal_alignment: int;
+        vertical_alignment: int;
+        autowrap_mode: int;
+        justification_flags: int;
+        clip_text: bool;
+        text_overrun_behavior: int;
+        ellipsis_char: String;
+        uppercase: bool;
+        tab_stops: PackedFloat32Array;
+        lines_skipped: int;
+        max_lines_visible: int;
+        visible_characters: int;
+        visible_characters_behavior: int;
+        visible_ratio: float;
+        text_direction: int;
+        language: String;
+        structured_text_bidi_override: int;
+        structured_text_bidi_override_options: Array;
     }
 
-    Label3D :: struct {
+    Label3D :: struct {    // 362
+
+        #as using base: GeometryInstance3D;
 
         DrawFlags :: enum s32 {
             FLAG_SHADED :: 0;
@@ -3579,12 +6265,59 @@ gdt :: struct {
             ALPHA_CUT_OPAQUE_PREPASS :: 2;
             ALPHA_CUT_HASH :: 3;
         }
+
+        pixel_size: float;
+        offset: Vector2;
+        billboard: int;
+        shaded: bool;
+        double_sided: bool;
+        no_depth_test: bool;
+        fixed_size: bool;
+        alpha_cut: int;
+        alpha_scissor_threshold: float;
+        alpha_hash_scale: float;
+        alpha_antialiasing_mode: int;
+        alpha_antialiasing_edge: float;
+        texture_filter: int;
+        render_priority: int;
+        outline_render_priority: int;
+        modulate: Color;
+        outline_modulate: Color;
+        text: String;
+        font: Font;
+        font_size: int;
+        outline_size: int;
+        horizontal_alignment: int;
+        vertical_alignment: int;
+        uppercase: bool;
+        line_spacing: float;
+        autowrap_mode: int;
+        justification_flags: int;
+        width: float;
+        text_direction: int;
+        language: String;
+        structured_text_bidi_override: int;
+        structured_text_bidi_override_options: Array;
     }
 
-    LabelSettings :: struct {
+    LabelSettings :: struct {    // 363
+
+        #as using base: Resource;
+
+        line_spacing: float;
+        font: Font;
+        font_size: int;
+        font_color: Color;
+        outline_size: int;
+        outline_color: Color;
+        shadow_size: int;
+        shadow_color: Color;
+        shadow_offset: Vector2;
     }
 
-    Light2D :: struct {
+    Light2D :: struct {    // 364
+
+        #as using base: Node2D;
 
         ShadowFilter :: enum s32 {
             SHADOW_FILTER_NONE :: 0;
@@ -3597,9 +6330,27 @@ gdt :: struct {
             BLEND_MODE_SUB :: 1;
             BLEND_MODE_MIX :: 2;
         }
+
+        enabled: bool;
+        editor_only: bool;
+        color: Color;
+        energy: float;
+        blend_mode: int;
+        range_z_min: int;
+        range_z_max: int;
+        range_layer_min: int;
+        range_layer_max: int;
+        range_item_cull_mask: int;
+        shadow_enabled: bool;
+        shadow_color: Color;
+        shadow_filter: int;
+        shadow_filter_smooth: float;
+        shadow_item_cull_mask: int;
     }
 
-    Light3D :: struct {
+    Light3D :: struct {    // 365
+
+        #as using base: VisualInstance3D;
 
         Param :: enum s32 {
             PARAM_ENERGY :: 0;
@@ -3631,12 +6382,47 @@ gdt :: struct {
             BAKE_STATIC :: 1;
             BAKE_DYNAMIC :: 2;
         }
+
+        light_intensity_lumens: float;
+        light_intensity_lux: float;
+        light_temperature: float;
+        light_color: Color;
+        light_energy: float;
+        light_indirect_energy: float;
+        light_volumetric_fog_energy: float;
+        light_projector: Texture2D;
+        light_size: float;
+        light_angular_distance: float;
+        light_negative: bool;
+        light_specular: float;
+        light_bake_mode: int;
+        light_cull_mask: int;
+        shadow_enabled: bool;
+        shadow_bias: float;
+        shadow_normal_bias: float;
+        shadow_reverse_cull_face: bool;
+        shadow_transmittance_bias: float;
+        shadow_opacity: float;
+        shadow_blur: float;
+        distance_fade_enabled: bool;
+        distance_fade_begin: float;
+        distance_fade_shadow: float;
+        distance_fade_length: float;
+        editor_only: bool;
     }
 
-    LightOccluder2D :: struct {
+    LightOccluder2D :: struct {    // 366
+
+        #as using base: Node2D;
+
+        occluder: OccluderPolygon2D;
+        sdf_collision: bool;
+        occluder_light_mask: int;
     }
 
-    LightmapGI :: struct {
+    LightmapGI :: struct {    // 367
+
+        #as using base: VisualInstance3D;
 
         BakeQuality :: enum s32 {
             BAKE_QUALITY_LOW :: 0;
@@ -3672,21 +6458,57 @@ gdt :: struct {
             ENVIRONMENT_MODE_CUSTOM_SKY :: 2;
             ENVIRONMENT_MODE_CUSTOM_COLOR :: 3;
         }
+
+        quality: int;
+        bounces: int;
+        bounce_indirect_energy: float;
+        directional: bool;
+        use_texture_for_bounces: bool;
+        interior: bool;
+        use_denoiser: bool;
+        denoiser_strength: float;
+        bias: float;
+        texel_scale: float;
+        max_texture_size: int;
+        environment_mode: int;
+        environment_custom_sky: Sky;
+        environment_custom_color: Color;
+        environment_custom_energy: float;
+        camera_attributes: CameraAttributesPractical,CameraAttributesPhysical;
+        generate_probes_subdiv: int;
+        light_data: LightmapGIData;
     }
 
-    LightmapGIData :: struct {
+    LightmapGIData :: struct {    // 368
+
+        #as using base: Resource;
+
+        lightmap_textures: typedarray::TextureLayered;
+        uses_spherical_harmonics: bool;
+        user_data: Array;
+        probe_data: Dictionary;
+        light_texture: TextureLayered;
+        light_textures: Array;
     }
 
-    LightmapProbe :: struct {
+    LightmapProbe :: struct {    // 369
+
+        #as using base: Node3D;
     }
 
-    Lightmapper :: struct {
+    Lightmapper :: struct {    // 370
+
+        #as using base: RefCounted;
     }
 
-    LightmapperRD :: struct {
+    LightmapperRD :: struct {    // 371
+
+        #as using base: Lightmapper;
     }
 
-    Line2D :: struct {
+    Line2D :: struct {    // 372
+
+        #as using base: Node2D;
 
         LineJointMode :: enum s32 {
             LINE_JOINT_SHARP :: 0;
@@ -3705,9 +6527,26 @@ gdt :: struct {
             LINE_TEXTURE_TILE :: 1;
             LINE_TEXTURE_STRETCH :: 2;
         }
+
+        points: PackedVector2Array;
+        closed: bool;
+        width: float;
+        width_curve: Curve;
+        default_color: Color;
+        gradient: Gradient;
+        texture: Texture2D;
+        texture_mode: int;
+        joint_mode: int;
+        begin_cap_mode: int;
+        end_cap_mode: int;
+        sharp_limit: float;
+        round_precision: int;
+        antialiased: bool;
     }
 
-    LineEdit :: struct {
+    LineEdit :: struct {    // 373
+
+        #as using base: Control;
 
         MenuItems :: enum s32 {
             MENU_CUT :: 0;
@@ -3753,42 +6592,132 @@ gdt :: struct {
             KEYBOARD_TYPE_PASSWORD :: 6;
             KEYBOARD_TYPE_URL :: 7;
         }
+
+        text: String;
+        placeholder_text: String;
+        alignment: int;
+        max_length: int;
+        editable: bool;
+        expand_to_text_length: bool;
+        context_menu_enabled: bool;
+        virtual_keyboard_enabled: bool;
+        virtual_keyboard_type: int;
+        clear_button_enabled: bool;
+        shortcut_keys_enabled: bool;
+        middle_mouse_paste_enabled: bool;
+        selecting_enabled: bool;
+        deselect_on_focus_loss_enabled: bool;
+        drag_and_drop_selection_enabled: bool;
+        right_icon: Texture2D;
+        flat: bool;
+        draw_control_chars: bool;
+        select_all_on_focus: bool;
+        caret_blink: bool;
+        caret_blink_interval: float;
+        caret_column: int;
+        caret_force_displayed: bool;
+        caret_mid_grapheme: bool;
+        secret: bool;
+        secret_character: String;
+        text_direction: int;
+        language: String;
+        structured_text_bidi_override: int;
+        structured_text_bidi_override_options: Array;
     }
 
-    LinkButton :: struct {
+    LinkButton :: struct {    // 374
+
+        #as using base: BaseButton;
 
         UnderlineMode :: enum s32 {
             UNDERLINE_MODE_ALWAYS :: 0;
             UNDERLINE_MODE_ON_HOVER :: 1;
             UNDERLINE_MODE_NEVER :: 2;
         }
+
+        text: String;
+        underline: int;
+        uri: String;
+        text_direction: int;
+        language: String;
+        structured_text_bidi_override: int;
+        structured_text_bidi_override_options: Array;
     }
 
-    MainLoop :: struct {
+    MainLoop :: struct {    // 375
+
+        #as using base: Object;
+
+        NOTIFICATION_OS_MEMORY_WARNING :: 2009;
+        NOTIFICATION_TRANSLATION_CHANGED :: 2010;
+        NOTIFICATION_WM_ABOUT :: 2011;
+        NOTIFICATION_CRASH :: 2012;
+        NOTIFICATION_OS_IME_UPDATE :: 2013;
+        NOTIFICATION_APPLICATION_RESUMED :: 2014;
+        NOTIFICATION_APPLICATION_PAUSED :: 2015;
+        NOTIFICATION_APPLICATION_FOCUS_IN :: 2016;
+        NOTIFICATION_APPLICATION_FOCUS_OUT :: 2017;
+        NOTIFICATION_TEXT_SERVER_CHANGED :: 2018;
+
     }
 
-    MarginContainer :: struct {
+    MarginContainer :: struct {    // 376
+
+        #as using base: Container;
     }
 
-    Marker2D :: struct {
+    Marker2D :: struct {    // 377
+
+        #as using base: Node2D;
+
+        gizmo_extents: float;
     }
 
-    Marker3D :: struct {
+    Marker3D :: struct {    // 378
+
+        #as using base: Node3D;
+
+        gizmo_extents: float;
     }
 
-    Marshalls :: struct {
+    Marshalls :: struct {    // 379
+
+        #as using base: Object;
     }
 
-    Material :: struct {
+    Material :: struct {    // 380
+
+        #as using base: Resource;
+
+        RENDER_PRIORITY_MAX :: 127;
+        RENDER_PRIORITY_MIN :: -128;
+        render_priority: int;
+        next_pass: Material;
     }
 
-    MenuBar :: struct {
+    MenuBar :: struct {    // 381
+
+        #as using base: Control;
+
+        flat: bool;
+        start_index: int;
+        switch_on_hover: bool;
+        prefer_global_menu: bool;
+        text_direction: int;
+        language: String;
     }
 
-    MenuButton :: struct {
+    MenuButton :: struct {    // 382
+
+        #as using base: Button;
+
+        switch_on_hover: bool;
+        item_count: int;
     }
 
-    Mesh :: struct {
+    Mesh :: struct {    // 383
+
+        #as using base: Resource;
 
         PrimitiveType :: enum s32 {
             PRIMITIVE_POINTS :: 0;
@@ -3861,73 +6790,173 @@ gdt :: struct {
             BLEND_SHAPE_MODE_NORMALIZED :: 0;
             BLEND_SHAPE_MODE_RELATIVE :: 1;
         }
+
+        lightmap_size_hint: Vector2i;
     }
 
-    MeshConvexDecompositionSettings :: struct {
+    MeshConvexDecompositionSettings :: struct {    // 384
+
+        #as using base: RefCounted;
 
         Mode :: enum s32 {
             CONVEX_DECOMPOSITION_MODE_VOXEL :: 0;
             CONVEX_DECOMPOSITION_MODE_TETRAHEDRON :: 1;
         }
+
+        max_concavity: float;
+        symmetry_planes_clipping_bias: float;
+        revolution_axes_clipping_bias: float;
+        min_volume_per_convex_hull: float;
+        resolution: int;
+        max_num_vertices_per_convex_hull: int;
+        plane_downsampling: int;
+        convex_hull_downsampling: int;
+        normalize_mesh: bool;
+        mode: int;
+        convex_hull_approximation: bool;
+        max_convex_hulls: int;
+        project_hull_vertices: bool;
     }
 
-    MeshDataTool :: struct {
+    MeshDataTool :: struct {    // 385
+
+        #as using base: RefCounted;
     }
 
-    MeshInstance2D :: struct {
+    MeshInstance2D :: struct {    // 386
+
+        #as using base: Node2D;
+
+        mesh: Mesh;
+        texture: Texture2D;
     }
 
-    MeshInstance3D :: struct {
+    MeshInstance3D :: struct {    // 387
+
+        #as using base: GeometryInstance3D;
+
+        mesh: Mesh;
+        skin: Skin;
+        skeleton: NodePath;
     }
 
-    MeshLibrary :: struct {
+    MeshLibrary :: struct {    // 388
+
+        #as using base: Resource;
     }
 
-    MeshTexture :: struct {
+    MeshTexture :: struct {    // 389
+
+        #as using base: Texture2D;
+
+        mesh: Mesh;
+        base_texture: Texture2D;
+        image_size: Vector2;
     }
 
-    MethodTweener :: struct {
+    MethodTweener :: struct {    // 390
+
+        #as using base: Tweener;
     }
 
-    MissingNode :: struct {
+    MissingNode :: struct {    // 391
+
+        #as using base: Node;
+
+        original_class: String;
+        original_scene: String;
+        recording_properties: bool;
     }
 
-    MissingResource :: struct {
+    MissingResource :: struct {    // 392
+
+        #as using base: Resource;
+
+        original_class: String;
+        recording_properties: bool;
     }
 
-    MobileVRInterface :: struct {
+    MobileVRInterface :: struct {    // 393
+
+        #as using base: XRInterface;
+
+        eye_height: float;
+        iod: float;
+        display_width: float;
+        display_to_lens: float;
+        oversample: float;
+        k1: float;
+        k2: float;
     }
 
-    MovieWriter :: struct {
+    MovieWriter :: struct {    // 394
+
+        #as using base: Object;
     }
 
-    MultiMesh :: struct {
+    MultiMesh :: struct {    // 395
+
+        #as using base: Resource;
 
         TransformFormat :: enum s32 {
             TRANSFORM_2D :: 0;
             TRANSFORM_3D :: 1;
         }
+
+        transform_format: int;
+        use_colors: bool;
+        use_custom_data: bool;
+        custom_aabb: AABB;
+        instance_count: int;
+        visible_instance_count: int;
+        mesh: Mesh;
+        buffer: PackedFloat32Array;
+        transform_array: PackedVector3Array;
+        transform_2d_array: PackedVector2Array;
+        color_array: PackedColorArray;
+        custom_data_array: PackedColorArray;
     }
 
-    MultiMeshInstance2D :: struct {
+    MultiMeshInstance2D :: struct {    // 396
+
+        #as using base: Node2D;
+
+        multimesh: MultiMesh;
+        texture: Texture2D;
     }
 
-    MultiMeshInstance3D :: struct {
+    MultiMeshInstance3D :: struct {    // 397
+
+        #as using base: GeometryInstance3D;
+
+        multimesh: MultiMesh;
     }
 
-    MultiplayerAPI :: struct {
+    MultiplayerAPI :: struct {    // 398
+
+        #as using base: RefCounted;
 
         RPCMode :: enum s32 {
             RPC_MODE_DISABLED :: 0;
             RPC_MODE_ANY_PEER :: 1;
             RPC_MODE_AUTHORITY :: 2;
         }
+
+        multiplayer_peer: MultiplayerPeer;
     }
 
-    MultiplayerAPIExtension :: struct {
+    MultiplayerAPIExtension :: struct {    // 399
+
+        #as using base: MultiplayerAPI;
     }
 
-    MultiplayerPeer :: struct {
+    MultiplayerPeer :: struct {    // 400
+
+        #as using base: PacketPeer;
+
+        TARGET_PEER_BROADCAST :: 0;
+        TARGET_PEER_SERVER :: 1;
+
 
         ConnectionStatus :: enum s32 {
             CONNECTION_DISCONNECTED :: 0;
@@ -3940,27 +6969,52 @@ gdt :: struct {
             TRANSFER_MODE_UNRELIABLE_ORDERED :: 1;
             TRANSFER_MODE_RELIABLE :: 2;
         }
+
+        refuse_new_connections: bool;
+        transfer_mode: int;
+        transfer_channel: int;
     }
 
-    MultiplayerPeerExtension :: struct {
+    MultiplayerPeerExtension :: struct {    // 401
+
+        #as using base: MultiplayerPeer;
     }
 
-    MultiplayerSpawner :: struct {
+    MultiplayerSpawner :: struct {    // 402
+
+        #as using base: Node;
+
+        spawn_path: NodePath;
+        spawn_limit: int;
+        spawn_function: Callable;
     }
 
-    MultiplayerSynchronizer :: struct {
+    MultiplayerSynchronizer :: struct {    // 403
+
+        #as using base: Node;
 
         VisibilityUpdateMode :: enum s32 {
             VISIBILITY_PROCESS_IDLE :: 0;
             VISIBILITY_PROCESS_PHYSICS :: 1;
             VISIBILITY_PROCESS_NONE :: 2;
         }
+
+        root_path: NodePath;
+        replication_interval: float;
+        delta_interval: float;
+        replication_config: SceneReplicationConfig;
+        visibility_update_mode: int;
+        public_visibility: bool;
     }
 
-    Mutex :: struct {
+    Mutex :: struct {    // 404
+
+        #as using base: RefCounted;
     }
 
-    NativeMenu :: struct {
+    NativeMenu :: struct {    // 405
+
+        #as using base: Object;
 
         Feature :: enum s32 {
             FEATURE_GLOBAL_MENU :: 0;
@@ -3980,19 +7034,98 @@ gdt :: struct {
         }
     }
 
-    NavigationAgent2D :: struct {
+    NavigationAgent2D :: struct {    // 406
+
+        #as using base: Node;
+
+        target_position: Vector2;
+        path_desired_distance: float;
+        target_desired_distance: float;
+        path_max_distance: float;
+        navigation_layers: int;
+        pathfinding_algorithm: int;
+        path_postprocessing: int;
+        path_metadata_flags: int;
+        avoidance_enabled: bool;
+        velocity: Vector2;
+        radius: float;
+        neighbor_distance: float;
+        max_neighbors: int;
+        time_horizon_agents: float;
+        time_horizon_obstacles: float;
+        max_speed: float;
+        avoidance_layers: int;
+        avoidance_mask: int;
+        avoidance_priority: float;
+        debug_enabled: bool;
+        debug_use_custom: bool;
+        debug_path_custom_color: Color;
+        debug_path_custom_point_size: float;
+        debug_path_custom_line_width: float;
     }
 
-    NavigationAgent3D :: struct {
+    NavigationAgent3D :: struct {    // 407
+
+        #as using base: Node;
+
+        target_position: Vector3;
+        path_desired_distance: float;
+        target_desired_distance: float;
+        path_height_offset: float;
+        path_max_distance: float;
+        navigation_layers: int;
+        pathfinding_algorithm: int;
+        path_postprocessing: int;
+        path_metadata_flags: int;
+        avoidance_enabled: bool;
+        velocity: Vector3;
+        height: float;
+        radius: float;
+        neighbor_distance: float;
+        max_neighbors: int;
+        time_horizon_agents: float;
+        time_horizon_obstacles: float;
+        max_speed: float;
+        use_3d_avoidance: bool;
+        keep_y_velocity: bool;
+        avoidance_layers: int;
+        avoidance_mask: int;
+        avoidance_priority: float;
+        debug_enabled: bool;
+        debug_use_custom: bool;
+        debug_path_custom_color: Color;
+        debug_path_custom_point_size: float;
     }
 
-    NavigationLink2D :: struct {
+    NavigationLink2D :: struct {    // 408
+
+        #as using base: Node2D;
+
+        enabled: bool;
+        bidirectional: bool;
+        navigation_layers: int;
+        start_position: Vector2;
+        end_position: Vector2;
+        enter_cost: float;
+        travel_cost: float;
     }
 
-    NavigationLink3D :: struct {
+    NavigationLink3D :: struct {    // 409
+
+        #as using base: Node3D;
+
+        enabled: bool;
+        bidirectional: bool;
+        navigation_layers: int;
+        start_position: Vector3;
+        end_position: Vector3;
+        enter_cost: float;
+        travel_cost: float;
     }
 
-    NavigationMesh :: struct {
+    NavigationMesh :: struct {    // 410
+
+        #as using base: Resource;
 
         SamplePartitionType :: enum s32 {
             SAMPLE_PARTITION_WATERSHED :: 0;
@@ -4014,24 +7147,89 @@ gdt :: struct {
             SOURCE_GEOMETRY_GROUPS_EXPLICIT :: 2;
             SOURCE_GEOMETRY_MAX :: 3;
         }
+
+        vertices: PackedVector3Array;
+        polygons: Array;
+        sample_partition_type: int;
+        geometry_parsed_geometry_type: int;
+        geometry_collision_mask: int;
+        geometry_source_geometry_mode: int;
+        geometry_source_group_name: String;
+        cell_size: float;
+        cell_height: float;
+        border_size: float;
+        agent_height: float;
+        agent_radius: float;
+        agent_max_climb: float;
+        agent_max_slope: float;
+        region_min_size: float;
+        region_merge_size: float;
+        edge_max_length: float;
+        edge_max_error: float;
+        vertices_per_polygon: float;
+        detail_sample_distance: float;
+        detail_sample_max_error: float;
+        filter_low_hanging_obstacles: bool;
+        filter_ledge_spans: bool;
+        filter_walkable_low_height_spans: bool;
+        filter_baking_aabb: AABB;
+        filter_baking_aabb_offset: Vector3;
     }
 
-    NavigationMeshGenerator :: struct {
+    NavigationMeshGenerator :: struct {    // 411
+
+        #as using base: Object;
     }
 
-    NavigationMeshSourceGeometryData2D :: struct {
+    NavigationMeshSourceGeometryData2D :: struct {    // 412
+
+        #as using base: Resource;
+
+        traversable_outlines: Array;
+        obstruction_outlines: Array;
+        projected_obstructions: Array;
     }
 
-    NavigationMeshSourceGeometryData3D :: struct {
+    NavigationMeshSourceGeometryData3D :: struct {    // 413
+
+        #as using base: Resource;
+
+        vertices: PackedVector3Array;
+        indices: PackedInt32Array;
+        projected_obstructions: Array;
     }
 
-    NavigationObstacle2D :: struct {
+    NavigationObstacle2D :: struct {    // 414
+
+        #as using base: Node2D;
+
+        radius: float;
+        vertices: PackedVector2Array;
+        affect_navigation_mesh: bool;
+        carve_navigation_mesh: bool;
+        avoidance_enabled: bool;
+        velocity: Vector2;
+        avoidance_layers: int;
     }
 
-    NavigationObstacle3D :: struct {
+    NavigationObstacle3D :: struct {    // 415
+
+        #as using base: Node3D;
+
+        radius: float;
+        height: float;
+        vertices: PackedVector3Array;
+        affect_navigation_mesh: bool;
+        carve_navigation_mesh: bool;
+        avoidance_enabled: bool;
+        velocity: Vector3;
+        avoidance_layers: int;
+        use_3d_avoidance: bool;
     }
 
-    NavigationPathQueryParameters2D :: struct {
+    NavigationPathQueryParameters2D :: struct {    // 416
+
+        #as using base: RefCounted;
 
         PathfindingAlgorithm :: enum s32 {
             PATHFINDING_ALGORITHM_ASTAR :: 0;
@@ -4049,9 +7247,19 @@ gdt :: struct {
             PATH_METADATA_INCLUDE_OWNERS :: 4;
             PATH_METADATA_INCLUDE_ALL :: 7;
         } @bitfield
+
+        map: RID;
+        start_position: Vector2;
+        target_position: Vector2;
+        navigation_layers: int;
+        pathfinding_algorithm: int;
+        path_postprocessing: int;
+        metadata_flags: int;
     }
 
-    NavigationPathQueryParameters3D :: struct {
+    NavigationPathQueryParameters3D :: struct {    // 417
+
+        #as using base: RefCounted;
 
         PathfindingAlgorithm :: enum s32 {
             PATHFINDING_ALGORITHM_ASTAR :: 0;
@@ -4069,25 +7277,49 @@ gdt :: struct {
             PATH_METADATA_INCLUDE_OWNERS :: 4;
             PATH_METADATA_INCLUDE_ALL :: 7;
         } @bitfield
+
+        map: RID;
+        start_position: Vector3;
+        target_position: Vector3;
+        navigation_layers: int;
+        pathfinding_algorithm: int;
+        path_postprocessing: int;
+        metadata_flags: int;
     }
 
-    NavigationPathQueryResult2D :: struct {
+    NavigationPathQueryResult2D :: struct {    // 418
+
+        #as using base: RefCounted;
 
         PathSegmentType :: enum s32 {
             PATH_SEGMENT_TYPE_REGION :: 0;
             PATH_SEGMENT_TYPE_LINK :: 1;
         }
+
+        path: PackedVector2Array;
+        path_types: PackedInt32Array;
+        path_rids: typedarray::RID;
+        path_owner_ids: PackedInt64Array;
     }
 
-    NavigationPathQueryResult3D :: struct {
+    NavigationPathQueryResult3D :: struct {    // 419
+
+        #as using base: RefCounted;
 
         PathSegmentType :: enum s32 {
             PATH_SEGMENT_TYPE_REGION :: 0;
             PATH_SEGMENT_TYPE_LINK :: 1;
         }
+
+        path: PackedVector3Array;
+        path_types: PackedInt32Array;
+        path_rids: typedarray::RID;
+        path_owner_ids: PackedInt64Array;
     }
 
-    NavigationPolygon :: struct {
+    NavigationPolygon :: struct {    // 420
+
+        #as using base: Resource;
 
         ParsedGeometryType :: enum s32 {
             PARSED_GEOMETRY_MESH_INSTANCES :: 0;
@@ -4102,18 +7334,55 @@ gdt :: struct {
             SOURCE_GEOMETRY_GROUPS_EXPLICIT :: 2;
             SOURCE_GEOMETRY_MAX :: 3;
         }
+
+        vertices: PackedVector2Array;
+        polygons: Array;
+        outlines: Array;
+        parsed_geometry_type: int;
+        parsed_collision_mask: int;
+        source_geometry_mode: int;
+        source_geometry_group_name: String;
+        cell_size: float;
+        border_size: float;
+        agent_radius: float;
+        baking_rect: Rect2;
+        baking_rect_offset: Vector2;
     }
 
-    NavigationRegion2D :: struct {
+    NavigationRegion2D :: struct {    // 421
+
+        #as using base: Node2D;
+
+        navigation_polygon: NavigationPolygon;
+        enabled: bool;
+        use_edge_connections: bool;
+        navigation_layers: int;
+        enter_cost: float;
+        travel_cost: float;
+        constrain_avoidance: bool;
+        avoidance_layers: int;
     }
 
-    NavigationRegion3D :: struct {
+    NavigationRegion3D :: struct {    // 422
+
+        #as using base: Node3D;
+
+        navigation_mesh: NavigationMesh;
+        enabled: bool;
+        use_edge_connections: bool;
+        navigation_layers: int;
+        enter_cost: float;
+        travel_cost: float;
     }
 
-    NavigationServer2D :: struct {
+    NavigationServer2D :: struct {    // 423
+
+        #as using base: Object;
     }
 
-    NavigationServer3D :: struct {
+    NavigationServer3D :: struct {    // 424
+
+        #as using base: Object;
 
         ProcessInfo :: enum s32 {
             INFO_ACTIVE_MAPS :: 0;
@@ -4128,16 +7397,74 @@ gdt :: struct {
         }
     }
 
-    NinePatchRect :: struct {
+    NinePatchRect :: struct {    // 425
+
+        #as using base: Control;
 
         AxisStretchMode :: enum s32 {
             AXIS_STRETCH_MODE_STRETCH :: 0;
             AXIS_STRETCH_MODE_TILE :: 1;
             AXIS_STRETCH_MODE_TILE_FIT :: 2;
         }
+
+        texture: Texture2D;
+        draw_center: bool;
+        region_rect: Rect2;
+        patch_margin_left: int;
+        patch_margin_top: int;
+        patch_margin_right: int;
+        patch_margin_bottom: int;
+        axis_stretch_horizontal: int;
+        axis_stretch_vertical: int;
     }
 
-    Node :: struct {
+    Node :: struct {    // 426
+
+        #as using base: Object;
+
+        NOTIFICATION_ENTER_TREE :: 10;
+        NOTIFICATION_EXIT_TREE :: 11;
+        NOTIFICATION_MOVED_IN_PARENT :: 12;
+        NOTIFICATION_READY :: 13;
+        NOTIFICATION_PAUSED :: 14;
+        NOTIFICATION_UNPAUSED :: 15;
+        NOTIFICATION_PHYSICS_PROCESS :: 16;
+        NOTIFICATION_PROCESS :: 17;
+        NOTIFICATION_PARENTED :: 18;
+        NOTIFICATION_UNPARENTED :: 19;
+        NOTIFICATION_SCENE_INSTANTIATED :: 20;
+        NOTIFICATION_DRAG_BEGIN :: 21;
+        NOTIFICATION_DRAG_END :: 22;
+        NOTIFICATION_PATH_RENAMED :: 23;
+        NOTIFICATION_CHILD_ORDER_CHANGED :: 24;
+        NOTIFICATION_INTERNAL_PROCESS :: 25;
+        NOTIFICATION_INTERNAL_PHYSICS_PROCESS :: 26;
+        NOTIFICATION_POST_ENTER_TREE :: 27;
+        NOTIFICATION_DISABLED :: 28;
+        NOTIFICATION_ENABLED :: 29;
+        NOTIFICATION_EDITOR_PRE_SAVE :: 9001;
+        NOTIFICATION_EDITOR_POST_SAVE :: 9002;
+        NOTIFICATION_WM_MOUSE_ENTER :: 1002;
+        NOTIFICATION_WM_MOUSE_EXIT :: 1003;
+        NOTIFICATION_WM_WINDOW_FOCUS_IN :: 1004;
+        NOTIFICATION_WM_WINDOW_FOCUS_OUT :: 1005;
+        NOTIFICATION_WM_CLOSE_REQUEST :: 1006;
+        NOTIFICATION_WM_GO_BACK_REQUEST :: 1007;
+        NOTIFICATION_WM_SIZE_CHANGED :: 1008;
+        NOTIFICATION_WM_DPI_CHANGE :: 1009;
+        NOTIFICATION_VP_MOUSE_ENTER :: 1010;
+        NOTIFICATION_VP_MOUSE_EXIT :: 1011;
+        NOTIFICATION_OS_MEMORY_WARNING :: 2009;
+        NOTIFICATION_TRANSLATION_CHANGED :: 2010;
+        NOTIFICATION_WM_ABOUT :: 2011;
+        NOTIFICATION_CRASH :: 2012;
+        NOTIFICATION_OS_IME_UPDATE :: 2013;
+        NOTIFICATION_APPLICATION_RESUMED :: 2014;
+        NOTIFICATION_APPLICATION_PAUSED :: 2015;
+        NOTIFICATION_APPLICATION_FOCUS_IN :: 2016;
+        NOTIFICATION_APPLICATION_FOCUS_OUT :: 2017;
+        NOTIFICATION_TEXT_SERVER_CHANGED :: 2018;
+
 
         ProcessMode :: enum s32 {
             PROCESS_MODE_INHERIT :: 0;
@@ -4177,36 +7504,127 @@ gdt :: struct {
             AUTO_TRANSLATE_MODE_ALWAYS :: 1;
             AUTO_TRANSLATE_MODE_DISABLED :: 2;
         }
+
+        name: StringName;
+        unique_name_in_owner: bool;
+        scene_file_path: String;
+        owner: Node;
+        multiplayer: MultiplayerAPI;
+        process_mode: int;
+        process_priority: int;
+        process_physics_priority: int;
+        process_thread_group: int;
+        process_thread_group_order: int;
+        process_thread_messages: int;
+        auto_translate_mode: int;
+        editor_description: String;
     }
 
-    Node2D :: struct {
+    Node2D :: struct {    // 427
+
+        #as using base: CanvasItem;
+
+        position: Vector2;
+        rotation: float;
+        rotation_degrees: float;
+        scale: Vector2;
+        skew: float;
+        transform: Transform2D;
+        global_position: Vector2;
+        global_rotation: float;
+        global_rotation_degrees: float;
+        global_scale: Vector2;
+        global_skew: float;
+        global_transform: Transform2D;
     }
 
-    Node3D :: struct {
+    Node3D :: struct {    // 428
+
+        #as using base: Node;
+
+        NOTIFICATION_TRANSFORM_CHANGED :: 2000;
+        NOTIFICATION_ENTER_WORLD :: 41;
+        NOTIFICATION_EXIT_WORLD :: 42;
+        NOTIFICATION_VISIBILITY_CHANGED :: 43;
+        NOTIFICATION_LOCAL_TRANSFORM_CHANGED :: 44;
+
 
         RotationEditMode :: enum s32 {
             ROTATION_EDIT_MODE_EULER :: 0;
             ROTATION_EDIT_MODE_QUATERNION :: 1;
             ROTATION_EDIT_MODE_BASIS :: 2;
         }
+
+        transform: Transform3D;
+        global_transform: Transform3D;
+        position: Vector3;
+        rotation: Vector3;
+        rotation_degrees: Vector3;
+        quaternion: Quaternion;
+        basis: Basis;
+        scale: Vector3;
+        rotation_edit_mode: int;
+        rotation_order: int;
+        top_level: bool;
+        global_position: Vector3;
+        global_basis: Basis;
+        global_rotation: Vector3;
+        global_rotation_degrees: Vector3;
+        visible: bool;
+        visibility_parent: NodePath;
     }
 
-    Node3DGizmo :: struct {
+    Node3DGizmo :: struct {    // 429
+
+        #as using base: RefCounted;
     }
 
-    Noise :: struct {
+    Noise :: struct {    // 430
+
+        #as using base: Resource;
     }
 
-    NoiseTexture2D :: struct {
+    NoiseTexture2D :: struct {    // 431
+
+        #as using base: Texture2D;
+
+        width: int;
+        height: int;
+        invert: bool;
+        in_3d_space: bool;
+        generate_mipmaps: bool;
+        seamless: bool;
+        seamless_blend_skirt: float;
+        as_normal_map: bool;
+        bump_strength: float;
+        normalize: bool;
+        color_ramp: Gradient;
+        noise: Noise;
     }
 
-    NoiseTexture3D :: struct {
+    NoiseTexture3D :: struct {    // 432
+
+        #as using base: Texture3D;
+
+        width: int;
+        height: int;
+        depth: int;
+        invert: bool;
+        seamless: bool;
+        seamless_blend_skirt: float;
+        normalize: bool;
+        color_ramp: Gradient;
+        noise: Noise;
     }
 
-    ORMMaterial3D :: struct {
+    ORMMaterial3D :: struct {    // 433
+
+        #as using base: BaseMaterial3D;
     }
 
-    OS :: struct {
+    OS :: struct {    // 434
+
+        #as using base: Object;
 
         RenderingDriver :: enum s32 {
             RENDERING_DRIVER_VULKAN :: 0;
@@ -4224,9 +7642,18 @@ gdt :: struct {
             SYSTEM_DIR_PICTURES :: 6;
             SYSTEM_DIR_RINGTONES :: 7;
         }
+
+        low_processor_usage_mode: bool;
+        low_processor_usage_mode_sleep_usec: int;
+        delta_smoothing: bool;
     }
 
-    Object :: struct {
+    Object :: struct {    // 435
+
+        NOTIFICATION_POSTINITIALIZE :: 0;
+        NOTIFICATION_PREDELETE :: 1;
+        NOTIFICATION_EXTENSION_RELOADED :: 2;
+
 
         ConnectFlags :: enum s32 {
             CONNECT_DEFERRED :: 1;
@@ -4236,39 +7663,71 @@ gdt :: struct {
         }
     }
 
-    Occluder3D :: struct {
+    Occluder3D :: struct {    // 436
+
+        #as using base: Resource;
     }
 
-    OccluderInstance3D :: struct {
+    OccluderInstance3D :: struct {    // 437
+
+        #as using base: Node3D;
+
+        occluder: Occluder3D;
+        bake_mask: int;
+        bake_simplification_distance: float;
     }
 
-    OccluderPolygon2D :: struct {
+    OccluderPolygon2D :: struct {    // 438
+
+        #as using base: Resource;
 
         CullMode :: enum s32 {
             CULL_DISABLED :: 0;
             CULL_CLOCKWISE :: 1;
             CULL_COUNTER_CLOCKWISE :: 2;
         }
+
+        closed: bool;
+        cull_mode: int;
+        polygon: PackedVector2Array;
     }
 
-    OfflineMultiplayerPeer :: struct {
+    OfflineMultiplayerPeer :: struct {    // 439
+
+        #as using base: MultiplayerPeer;
     }
 
-    OggPacketSequence :: struct {
+    OggPacketSequence :: struct {    // 440
+
+        #as using base: Resource;
+
+        packet_data: typedarray::PackedByteArray;
+        granule_positions: PackedInt64Array;
+        sampling_rate: float;
     }
 
-    OggPacketSequencePlayback :: struct {
+    OggPacketSequencePlayback :: struct {    // 441
+
+        #as using base: RefCounted;
     }
 
-    OmniLight3D :: struct {
+    OmniLight3D :: struct {    // 442
+
+        #as using base: Light3D;
 
         ShadowMode :: enum s32 {
             SHADOW_DUAL_PARABOLOID :: 0;
             SHADOW_CUBE :: 1;
         }
+
+        omni_range: float;
+        omni_attenuation: float;
+        omni_shadow_mode: int;
     }
 
-    OpenXRAPIExtension :: struct {
+    OpenXRAPIExtension :: struct {    // 443
+
+        #as using base: RefCounted;
 
         OpenXRAlphaBlendModeSupport :: enum s32 {
             OPENXR_ALPHA_BLEND_MODE_SUPPORT_NONE :: 0;
@@ -4277,7 +7736,9 @@ gdt :: struct {
         }
     }
 
-    OpenXRAction :: struct {
+    OpenXRAction :: struct {    // 444
+
+        #as using base: Resource;
 
         ActionType :: enum s32 {
             OPENXR_ACTION_BOOL :: 0;
@@ -4285,18 +7746,37 @@ gdt :: struct {
             OPENXR_ACTION_VECTOR2 :: 2;
             OPENXR_ACTION_POSE :: 3;
         }
+
+        localized_name: String;
+        action_type: int;
+        toplevel_paths: PackedStringArray;
     }
 
-    OpenXRActionMap :: struct {
+    OpenXRActionMap :: struct {    // 445
+
+        #as using base: Resource;
+
+        action_sets: OpenXRActionSet;
+        interaction_profiles: OpenXRInteractionProfile;
     }
 
-    OpenXRActionSet :: struct {
+    OpenXRActionSet :: struct {    // 446
+
+        #as using base: Resource;
+
+        localized_name: String;
+        priority: int;
+        actions: OpenXRAction;
     }
 
-    OpenXRExtensionWrapperExtension :: struct {
+    OpenXRExtensionWrapperExtension :: struct {    // 447
+
+        #as using base: Object;
     }
 
-    OpenXRHand :: struct {
+    OpenXRHand :: struct {    // 448
+
+        #as using base: Node3D;
 
         Hands :: enum s32 {
             HAND_LEFT :: 0;
@@ -4321,18 +7801,38 @@ gdt :: struct {
             BONE_UPDATE_ROTATION_ONLY :: 1;
             BONE_UPDATE_MAX :: 2;
         }
+
+        hand: int;
+        motion_range: int;
+        hand_skeleton: NodePath;
+        skeleton_rig: int;
+        bone_update: int;
     }
 
-    OpenXRIPBinding :: struct {
+    OpenXRIPBinding :: struct {    // 449
+
+        #as using base: Resource;
+
+        action: OpenXRAction;
+        paths: PackedStringArray;
     }
 
-    OpenXRInteractionProfile :: struct {
+    OpenXRInteractionProfile :: struct {    // 450
+
+        #as using base: Resource;
+
+        interaction_profile_path: String;
+        bindings: OpenXRIPBinding;
     }
 
-    OpenXRInteractionProfileMetadata :: struct {
+    OpenXRInteractionProfileMetadata :: struct {    // 451
+
+        #as using base: Object;
     }
 
-    OpenXRInterface :: struct {
+    OpenXRInterface :: struct {    // 452
+
+        #as using base: XRInterface;
 
         Hand :: enum s32 {
             HAND_LEFT :: 0;
@@ -4392,24 +7892,46 @@ gdt :: struct {
             HAND_JOINT_LINEAR_VELOCITY_VALID :: 16;
             HAND_JOINT_ANGULAR_VELOCITY_VALID :: 32;
         } @bitfield
+
+        display_refresh_rate: float;
+        render_target_size_multiplier: float;
+        foveation_level: int;
+        foveation_dynamic: bool;
     }
 
-    OptimizedTranslation :: struct {
+    OptimizedTranslation :: struct {    // 453
+
+        #as using base: Translation;
     }
 
-    OptionButton :: struct {
+    OptionButton :: struct {    // 454
+
+        #as using base: Button;
+
+        selected: int;
+        fit_to_longest_item: bool;
+        allow_reselect: bool;
+        item_count: int;
     }
 
-    PCKPacker :: struct {
+    PCKPacker :: struct {    // 455
+
+        #as using base: RefCounted;
     }
 
-    PackedDataContainer :: struct {
+    PackedDataContainer :: struct {    // 456
+
+        #as using base: Resource;
     }
 
-    PackedDataContainerRef :: struct {
+    PackedDataContainerRef :: struct {    // 457
+
+        #as using base: RefCounted;
     }
 
-    PackedScene :: struct {
+    PackedScene :: struct {    // 458
+
+        #as using base: Resource;
 
         GenEditState :: enum s32 {
             GEN_EDIT_STATE_DISABLED :: 0;
@@ -4419,10 +7941,16 @@ gdt :: struct {
         }
     }
 
-    PacketPeer :: struct {
+    PacketPeer :: struct {    // 459
+
+        #as using base: RefCounted;
+
+        encode_buffer_max_size: int;
     }
 
-    PacketPeerDTLS :: struct {
+    PacketPeerDTLS :: struct {    // 460
+
+        #as using base: PacketPeer;
 
         Status :: enum s32 {
             STATUS_DISCONNECTED :: 0;
@@ -4433,34 +7961,84 @@ gdt :: struct {
         }
     }
 
-    PacketPeerExtension :: struct {
+    PacketPeerExtension :: struct {    // 461
+
+        #as using base: PacketPeer;
     }
 
-    PacketPeerStream :: struct {
+    PacketPeerStream :: struct {    // 462
+
+        #as using base: PacketPeer;
+
+        input_buffer_max_size: int;
+        output_buffer_max_size: int;
+        stream_peer: StreamPeer;
     }
 
-    PacketPeerUDP :: struct {
+    PacketPeerUDP :: struct {    // 463
+
+        #as using base: PacketPeer;
     }
 
-    Panel :: struct {
+    Panel :: struct {    // 464
+
+        #as using base: Control;
     }
 
-    PanelContainer :: struct {
+    PanelContainer :: struct {    // 465
+
+        #as using base: Container;
     }
 
-    PanoramaSkyMaterial :: struct {
+    PanoramaSkyMaterial :: struct {    // 466
+
+        #as using base: Material;
+
+        panorama: Texture2D;
+        filter: bool;
+        energy_multiplier: float;
     }
 
-    Parallax2D :: struct {
+    Parallax2D :: struct {    // 467
+
+        #as using base: Node2D;
+
+        scroll_scale: Vector2;
+        scroll_offset: Vector2;
+        repeat_size: Vector2;
+        autoscroll: Vector2;
+        repeat_times: int;
+        limit_begin: Vector2;
+        limit_end: Vector2;
+        follow_viewport: bool;
+        ignore_camera_scroll: bool;
+        screen_offset: Vector2;
     }
 
-    ParallaxBackground :: struct {
+    ParallaxBackground :: struct {    // 468
+
+        #as using base: CanvasLayer;
+
+        scroll_offset: Vector2;
+        scroll_base_offset: Vector2;
+        scroll_base_scale: Vector2;
+        scroll_limit_begin: Vector2;
+        scroll_limit_end: Vector2;
+        scroll_ignore_camera_zoom: bool;
     }
 
-    ParallaxLayer :: struct {
+    ParallaxLayer :: struct {    // 469
+
+        #as using base: Node2D;
+
+        motion_scale: Vector2;
+        motion_offset: Vector2;
+        motion_mirroring: Vector2;
     }
 
-    ParticleProcessMaterial :: struct {
+    ParticleProcessMaterial :: struct {    // 470
+
+        #as using base: Material;
 
         Parameter :: enum s32 {
             PARAM_INITIAL_LINEAR_VELOCITY :: 0;
@@ -4517,18 +8095,150 @@ gdt :: struct {
             COLLISION_HIDE_ON_CONTACT :: 2;
             COLLISION_MAX :: 3;
         }
+
+        lifetime_randomness: float;
+        particle_flag_align_y: bool;
+        particle_flag_rotate_y: bool;
+        particle_flag_disable_z: bool;
+        particle_flag_damping_as_friction: bool;
+        emission_shape_offset: Vector3;
+        emission_shape_scale: Vector3;
+        emission_shape: int;
+        emission_sphere_radius: float;
+        emission_box_extents: Vector3;
+        emission_point_texture: Texture2D;
+        emission_normal_texture: Texture2D;
+        emission_color_texture: Texture2D;
+        emission_point_count: int;
+        emission_ring_axis: Vector3;
+        emission_ring_height: float;
+        emission_ring_radius: float;
+        emission_ring_inner_radius: float;
+        angle: Vector2;
+        angle_min: float;
+        angle_max: float;
+        angle_curve: CurveTexture;
+        inherit_velocity_ratio: float;
+        velocity_pivot: Vector3;
+        direction: Vector3;
+        spread: float;
+        flatness: float;
+        initial_velocity: Vector2;
+        initial_velocity_min: float;
+        initial_velocity_max: float;
+        angular_velocity: Vector2;
+        angular_velocity_min: float;
+        angular_velocity_max: float;
+        angular_velocity_curve: CurveTexture;
+        directional_velocity: Vector2;
+        directional_velocity_min: float;
+        directional_velocity_max: float;
+        directional_velocity_curve: CurveXYZTexture;
+        orbit_velocity: Vector2;
+        orbit_velocity_min: float;
+        orbit_velocity_max: float;
+        orbit_velocity_curve: CurveTexture,CurveXYZTexture;
+        radial_velocity: Vector2;
+        radial_velocity_min: float;
+        radial_velocity_max: float;
+        radial_velocity_curve: CurveTexture;
+        velocity_limit_curve: CurveTexture;
+        gravity: Vector3;
+        linear_accel: Vector2;
+        linear_accel_min: float;
+        linear_accel_max: float;
+        linear_accel_curve: CurveTexture;
+        radial_accel: Vector2;
+        radial_accel_min: float;
+        radial_accel_max: float;
+        radial_accel_curve: CurveTexture;
+        tangential_accel: Vector2;
+        tangential_accel_min: float;
+        tangential_accel_max: float;
+        tangential_accel_curve: CurveTexture;
+        damping: Vector2;
+        damping_min: float;
+        damping_max: float;
+        damping_curve: CurveTexture;
+        attractor_interaction_enabled: bool;
+        scale: Vector2;
+        scale_min: float;
+        scale_max: float;
+        scale_curve: CurveTexture,CurveXYZTexture;
+        scale_over_velocity: Vector2;
+        scale_over_velocity_min: float;
+        scale_over_velocity_max: float;
+        scale_over_velocity_curve: CurveTexture,CurveXYZTexture;
+        color: Color;
+        color_ramp: GradientTexture1D;
+        color_initial_ramp: GradientTexture1D;
+        alpha_curve: CurveTexture;
+        emission_curve: CurveTexture;
+        hue_variation: Vector2;
+        hue_variation_min: float;
+        hue_variation_max: float;
+        hue_variation_curve: CurveTexture;
+        anim_speed: Vector2;
+        anim_speed_min: float;
+        anim_speed_max: float;
+        anim_speed_curve: CurveTexture;
+        anim_offset: Vector2;
+        anim_offset_min: float;
+        anim_offset_max: float;
+        anim_offset_curve: CurveTexture;
+        turbulence_enabled: bool;
+        turbulence_noise_strength: float;
+        turbulence_noise_scale: float;
+        turbulence_noise_speed: Vector3;
+        turbulence_noise_speed_random: float;
+        turbulence_influence: Vector2;
+        turbulence_influence_min: float;
+        turbulence_influence_max: float;
+        turbulence_initial_displacement: Vector2;
+        turbulence_initial_displacement_min: float;
+        turbulence_initial_displacement_max: float;
+        turbulence_influence_over_life: CurveTexture;
+        collision_mode: int;
+        collision_friction: float;
+        collision_bounce: float;
+        collision_use_scale: bool;
+        sub_emitter_mode: int;
+        sub_emitter_frequency: float;
+        sub_emitter_amount_at_end: int;
+        sub_emitter_amount_at_collision: int;
+        sub_emitter_keep_velocity: bool;
     }
 
-    Path2D :: struct {
+    Path2D :: struct {    // 471
+
+        #as using base: Node2D;
+
+        curve: Curve2D;
     }
 
-    Path3D :: struct {
+    Path3D :: struct {    // 472
+
+        #as using base: Node3D;
+
+        curve: Curve3D;
     }
 
-    PathFollow2D :: struct {
+    PathFollow2D :: struct {    // 473
+
+        #as using base: Node2D;
+
+        progress: float;
+        progress_ratio: float;
+        h_offset: float;
+        v_offset: float;
+        rotates: bool;
+        cubic_interp: bool;
+        loop: bool;
     }
 
-    PathFollow3D :: struct {
+    PathFollow3D :: struct {    // 474
+
+        #as using base: Node3D;
 
         RotationMode :: enum s32 {
             ROTATION_NONE :: 0;
@@ -4537,9 +8247,21 @@ gdt :: struct {
             ROTATION_XYZ :: 3;
             ROTATION_ORIENTED :: 4;
         }
+
+        progress: float;
+        progress_ratio: float;
+        h_offset: float;
+        v_offset: float;
+        rotation_mode: int;
+        use_model_front: bool;
+        cubic_interp: bool;
+        loop: bool;
+        tilt_enabled: bool;
     }
 
-    Performance :: struct {
+    Performance :: struct {    // 475
+
+        #as using base: Object;
 
         Monitor :: enum s32 {
             TIME_FPS :: 0;
@@ -4579,10 +8301,20 @@ gdt :: struct {
         }
     }
 
-    PhysicalBone2D :: struct {
+    PhysicalBone2D :: struct {    // 476
+
+        #as using base: RigidBody2D;
+
+        bone2d_nodepath: NodePath;
+        bone2d_index: int;
+        auto_configure_joint: bool;
+        simulate_physics: bool;
+        follow_bone_when_simulating: bool;
     }
 
-    PhysicalBone3D :: struct {
+    PhysicalBone3D :: struct {    // 477
+
+        #as using base: PhysicsBody3D;
 
         DampMode :: enum s32 {
             DAMP_MODE_COMBINE :: 0;
@@ -4597,57 +8329,190 @@ gdt :: struct {
             JOINT_TYPE_SLIDER :: 4;
             JOINT_TYPE_6DOF :: 5;
         }
+
+        joint_type: int;
+        joint_offset: Transform3D;
+        joint_rotation: Vector3;
+        body_offset: Transform3D;
+        mass: float;
+        friction: float;
+        bounce: float;
+        gravity_scale: float;
+        custom_integrator: bool;
+        linear_damp_mode: int;
+        linear_damp: float;
+        angular_damp_mode: int;
+        angular_damp: float;
+        linear_velocity: Vector3;
+        angular_velocity: Vector3;
+        can_sleep: bool;
     }
 
-    PhysicalSkyMaterial :: struct {
+    PhysicalSkyMaterial :: struct {    // 478
+
+        #as using base: Material;
+
+        rayleigh_coefficient: float;
+        rayleigh_color: Color;
+        mie_coefficient: float;
+        mie_eccentricity: float;
+        mie_color: Color;
+        turbidity: float;
+        sun_disk_scale: float;
+        ground_color: Color;
+        energy_multiplier: float;
+        use_debanding: bool;
+        night_sky: Texture2D;
     }
 
-    PhysicsBody2D :: struct {
+    PhysicsBody2D :: struct {    // 479
+
+        #as using base: CollisionObject2D;
     }
 
-    PhysicsBody3D :: struct {
+    PhysicsBody3D :: struct {    // 480
+
+        #as using base: CollisionObject3D;
+
+        axis_lock_linear_x: bool;
+        axis_lock_linear_y: bool;
+        axis_lock_linear_z: bool;
+        axis_lock_angular_x: bool;
+        axis_lock_angular_y: bool;
+        axis_lock_angular_z: bool;
     }
 
-    PhysicsDirectBodyState2D :: struct {
+    PhysicsDirectBodyState2D :: struct {    // 481
+
+        #as using base: Object;
+
+        step: float;
+        inverse_mass: float;
+        inverse_inertia: float;
+        total_angular_damp: float;
+        total_linear_damp: float;
+        total_gravity: Vector2;
+        center_of_mass: Vector2;
+        center_of_mass_local: Vector2;
+        angular_velocity: float;
+        linear_velocity: Vector2;
+        sleeping: bool;
+        transform: Transform2D;
     }
 
-    PhysicsDirectBodyState2DExtension :: struct {
+    PhysicsDirectBodyState2DExtension :: struct {    // 482
+
+        #as using base: PhysicsDirectBodyState2D;
     }
 
-    PhysicsDirectBodyState3D :: struct {
+    PhysicsDirectBodyState3D :: struct {    // 483
+
+        #as using base: Object;
+
+        step: float;
+        inverse_mass: float;
+        total_angular_damp: float;
+        total_linear_damp: float;
+        inverse_inertia: Vector3;
+        inverse_inertia_tensor: Basis;
+        total_gravity: Vector3;
+        center_of_mass: Vector3;
+        center_of_mass_local: Vector3;
+        principal_inertia_axes: Basis;
+        angular_velocity: Vector3;
+        linear_velocity: Vector3;
+        sleeping: bool;
+        transform: Transform3D;
     }
 
-    PhysicsDirectBodyState3DExtension :: struct {
+    PhysicsDirectBodyState3DExtension :: struct {    // 484
+
+        #as using base: PhysicsDirectBodyState3D;
     }
 
-    PhysicsDirectSpaceState2D :: struct {
+    PhysicsDirectSpaceState2D :: struct {    // 485
+
+        #as using base: Object;
     }
 
-    PhysicsDirectSpaceState2DExtension :: struct {
+    PhysicsDirectSpaceState2DExtension :: struct {    // 486
+
+        #as using base: PhysicsDirectSpaceState2D;
     }
 
-    PhysicsDirectSpaceState3D :: struct {
+    PhysicsDirectSpaceState3D :: struct {    // 487
+
+        #as using base: Object;
     }
 
-    PhysicsDirectSpaceState3DExtension :: struct {
+    PhysicsDirectSpaceState3DExtension :: struct {    // 488
+
+        #as using base: PhysicsDirectSpaceState3D;
     }
 
-    PhysicsMaterial :: struct {
+    PhysicsMaterial :: struct {    // 489
+
+        #as using base: Resource;
+
+        friction: float;
+        rough: bool;
+        bounce: float;
+        absorbent: bool;
     }
 
-    PhysicsPointQueryParameters2D :: struct {
+    PhysicsPointQueryParameters2D :: struct {    // 490
+
+        #as using base: RefCounted;
+
+        position: Vector2;
+        canvas_instance_id: int;
+        collision_mask: int;
+        exclude: typedarray::RID;
+        collide_with_bodies: bool;
+        collide_with_areas: bool;
     }
 
-    PhysicsPointQueryParameters3D :: struct {
+    PhysicsPointQueryParameters3D :: struct {    // 491
+
+        #as using base: RefCounted;
+
+        position: Vector3;
+        collision_mask: int;
+        exclude: typedarray::RID;
+        collide_with_bodies: bool;
+        collide_with_areas: bool;
     }
 
-    PhysicsRayQueryParameters2D :: struct {
+    PhysicsRayQueryParameters2D :: struct {    // 492
+
+        #as using base: RefCounted;
+
+        from: Vector2;
+        to: Vector2;
+        collision_mask: int;
+        exclude: typedarray::RID;
+        collide_with_bodies: bool;
+        collide_with_areas: bool;
+        hit_from_inside: bool;
     }
 
-    PhysicsRayQueryParameters3D :: struct {
+    PhysicsRayQueryParameters3D :: struct {    // 493
+
+        #as using base: RefCounted;
+
+        from: Vector3;
+        to: Vector3;
+        collision_mask: int;
+        exclude: typedarray::RID;
+        collide_with_bodies: bool;
+        collide_with_areas: bool;
+        hit_from_inside: bool;
+        hit_back_faces: bool;
     }
 
-    PhysicsServer2D :: struct {
+    PhysicsServer2D :: struct {    // 494
+
+        #as using base: Object;
 
         SpaceParameter :: enum s32 {
             SPACE_PARAM_CONTACT_RECYCLE_RADIUS :: 0;
@@ -4777,13 +8642,19 @@ gdt :: struct {
         }
     }
 
-    PhysicsServer2DExtension :: struct {
+    PhysicsServer2DExtension :: struct {    // 495
+
+        #as using base: PhysicsServer2D;
     }
 
-    PhysicsServer2DManager :: struct {
+    PhysicsServer2DManager :: struct {    // 496
+
+        #as using base: Object;
     }
 
-    PhysicsServer3D :: struct {
+    PhysicsServer3D :: struct {    // 497
+
+        #as using base: Object;
 
         JointType :: enum s32 {
             JOINT_TYPE_PIN :: 0;
@@ -4981,37 +8852,103 @@ gdt :: struct {
         }
     }
 
-    PhysicsServer3DExtension :: struct {
+    PhysicsServer3DExtension :: struct {    // 498
+
+        #as using base: PhysicsServer3D;
     }
 
-    PhysicsServer3DManager :: struct {
+    PhysicsServer3DManager :: struct {    // 499
+
+        #as using base: Object;
     }
 
-    PhysicsServer3DRenderingServerHandler :: struct {
+    PhysicsServer3DRenderingServerHandler :: struct {    // 500
+
+        #as using base: Object;
     }
 
-    PhysicsShapeQueryParameters2D :: struct {
+    PhysicsShapeQueryParameters2D :: struct {    // 501
+
+        #as using base: RefCounted;
+
+        collision_mask: int;
+        exclude: typedarray::RID;
+        margin: float;
+        motion: Vector2;
+        shape: Shape2D;
+        shape_rid: RID;
+        transform: Transform2D;
+        collide_with_bodies: bool;
+        collide_with_areas: bool;
     }
 
-    PhysicsShapeQueryParameters3D :: struct {
+    PhysicsShapeQueryParameters3D :: struct {    // 502
+
+        #as using base: RefCounted;
+
+        collision_mask: int;
+        exclude: typedarray::RID;
+        margin: float;
+        motion: Vector3;
+        shape: Shape3D;
+        shape_rid: RID;
+        transform: Transform3D;
+        collide_with_bodies: bool;
+        collide_with_areas: bool;
     }
 
-    PhysicsTestMotionParameters2D :: struct {
+    PhysicsTestMotionParameters2D :: struct {    // 503
+
+        #as using base: RefCounted;
+
+        from: Transform2D;
+        motion: Vector2;
+        margin: float;
+        collide_separation_ray: bool;
+        exclude_bodies: typedarray::RID;
+        exclude_objects: Array;
+        recovery_as_collision: bool;
     }
 
-    PhysicsTestMotionParameters3D :: struct {
+    PhysicsTestMotionParameters3D :: struct {    // 504
+
+        #as using base: RefCounted;
+
+        from: Transform3D;
+        motion: Vector3;
+        margin: float;
+        max_collisions: int;
+        collide_separation_ray: bool;
+        exclude_bodies: typedarray::RID;
+        exclude_objects: Array;
+        recovery_as_collision: bool;
     }
 
-    PhysicsTestMotionResult2D :: struct {
+    PhysicsTestMotionResult2D :: struct {    // 505
+
+        #as using base: RefCounted;
     }
 
-    PhysicsTestMotionResult3D :: struct {
+    PhysicsTestMotionResult3D :: struct {    // 506
+
+        #as using base: RefCounted;
     }
 
-    PinJoint2D :: struct {
+    PinJoint2D :: struct {    // 507
+
+        #as using base: Joint2D;
+
+        softness: float;
+        angular_limit_enabled: bool;
+        angular_limit_lower: float;
+        angular_limit_upper: float;
+        motor_enabled: bool;
+        motor_target_velocity: float;
     }
 
-    PinJoint3D :: struct {
+    PinJoint3D :: struct {    // 508
+
+        #as using base: Joint3D;
 
         Param :: enum s32 {
             PARAM_BIAS :: 0;
@@ -5020,64 +8957,150 @@ gdt :: struct {
         }
     }
 
-    PlaceholderCubemap :: struct {
+    PlaceholderCubemap :: struct {    // 509
+
+        #as using base: PlaceholderTextureLayered;
     }
 
-    PlaceholderCubemapArray :: struct {
+    PlaceholderCubemapArray :: struct {    // 510
+
+        #as using base: PlaceholderTextureLayered;
     }
 
-    PlaceholderMaterial :: struct {
+    PlaceholderMaterial :: struct {    // 511
+
+        #as using base: Material;
     }
 
-    PlaceholderMesh :: struct {
+    PlaceholderMesh :: struct {    // 512
+
+        #as using base: Mesh;
+
+        aabb: AABB;
     }
 
-    PlaceholderTexture2D :: struct {
+    PlaceholderTexture2D :: struct {    // 513
+
+        #as using base: Texture2D;
+
+        size: Vector2;
     }
 
-    PlaceholderTexture2DArray :: struct {
+    PlaceholderTexture2DArray :: struct {    // 514
+
+        #as using base: PlaceholderTextureLayered;
     }
 
-    PlaceholderTexture3D :: struct {
+    PlaceholderTexture3D :: struct {    // 515
+
+        #as using base: Texture3D;
+
+        size: Vector3i;
     }
 
-    PlaceholderTextureLayered :: struct {
+    PlaceholderTextureLayered :: struct {    // 516
+
+        #as using base: TextureLayered;
+
+        size: Vector2i;
+        layers: int;
     }
 
-    PlaneMesh :: struct {
+    PlaneMesh :: struct {    // 517
+
+        #as using base: PrimitiveMesh;
 
         Orientation :: enum s32 {
             FACE_X :: 0;
             FACE_Y :: 1;
             FACE_Z :: 2;
         }
+
+        size: Vector2;
+        subdivide_width: int;
+        subdivide_depth: int;
+        center_offset: Vector3;
+        orientation: int;
     }
 
-    PointLight2D :: struct {
+    PointLight2D :: struct {    // 518
+
+        #as using base: Light2D;
+
+        texture: Texture2D;
+        offset: Vector2;
+        texture_scale: float;
+        height: float;
     }
 
-    PointMesh :: struct {
+    PointMesh :: struct {    // 519
+
+        #as using base: PrimitiveMesh;
     }
 
-    Polygon2D :: struct {
+    Polygon2D :: struct {    // 520
+
+        #as using base: Node2D;
+
+        color: Color;
+        offset: Vector2;
+        antialiased: bool;
+        texture: Texture2D;
+        texture_offset: Vector2;
+        texture_scale: Vector2;
+        texture_rotation: float;
+        skeleton: NodePath;
+        invert_enabled: bool;
+        invert_border: float;
+        polygon: PackedVector2Array;
+        uv: PackedVector2Array;
+        vertex_colors: PackedColorArray;
+        polygons: Array;
+        bones: Array;
+        internal_vertex_count: int;
     }
 
-    PolygonOccluder3D :: struct {
+    PolygonOccluder3D :: struct {    // 521
+
+        #as using base: Occluder3D;
+
+        polygon: PackedVector2Array;
     }
 
-    PolygonPathFinder :: struct {
+    PolygonPathFinder :: struct {    // 522
+
+        #as using base: Resource;
+
+        data: Dictionary;
     }
 
-    Popup :: struct {
+    Popup :: struct {    // 523
+
+        #as using base: Window;
     }
 
-    PopupMenu :: struct {
+    PopupMenu :: struct {    // 524
+
+        #as using base: Popup;
+
+        hide_on_item_selection: bool;
+        hide_on_checkable_item_selection: bool;
+        hide_on_state_item_selection: bool;
+        submenu_popup_delay: float;
+        allow_search: bool;
+        system_menu_id: int;
+        prefer_native_menu: bool;
+        item_count: int;
     }
 
-    PopupPanel :: struct {
+    PopupPanel :: struct {    // 525
+
+        #as using base: Popup;
     }
 
-    PortableCompressedTexture2D :: struct {
+    PortableCompressedTexture2D :: struct {    // 526
+
+        #as using base: Texture2D;
 
         CompressionMode :: enum s32 {
             COMPRESSION_MODE_LOSSLESS :: 0;
@@ -5087,18 +9110,56 @@ gdt :: struct {
             COMPRESSION_MODE_ETC2 :: 4;
             COMPRESSION_MODE_BPTC :: 5;
         }
+
+        size_override: Vector2;
+        keep_compressed_buffer: bool;
     }
 
-    PrimitiveMesh :: struct {
+    PrimitiveMesh :: struct {    // 527
+
+        #as using base: Mesh;
+
+        material: BaseMaterial3D,ShaderMaterial;
+        custom_aabb: AABB;
+        flip_faces: bool;
+        add_uv2: bool;
+        uv2_padding: float;
     }
 
-    PrismMesh :: struct {
+    PrismMesh :: struct {    // 528
+
+        #as using base: PrimitiveMesh;
+
+        left_to_right: float;
+        size: Vector3;
+        subdivide_width: int;
+        subdivide_height: int;
+        subdivide_depth: int;
     }
 
-    ProceduralSkyMaterial :: struct {
+    ProceduralSkyMaterial :: struct {    // 529
+
+        #as using base: Material;
+
+        sky_top_color: Color;
+        sky_horizon_color: Color;
+        sky_curve: float;
+        sky_energy_multiplier: float;
+        sky_cover: Texture2D;
+        sky_cover_modulate: Color;
+        ground_bottom_color: Color;
+        ground_horizon_color: Color;
+        ground_curve: float;
+        ground_energy_multiplier: float;
+        sun_angle_max: float;
+        sun_curve: float;
+        use_debanding: bool;
+        energy_multiplier: float;
     }
 
-    ProgressBar :: struct {
+    ProgressBar :: struct {    // 530
+
+        #as using base: Range;
 
         FillMode :: enum s32 {
             FILL_BEGIN_TO_END :: 0;
@@ -5106,90 +9167,325 @@ gdt :: struct {
             FILL_TOP_TO_BOTTOM :: 2;
             FILL_BOTTOM_TO_TOP :: 3;
         }
+
+        fill_mode: int;
+        show_percentage: bool;
+        indeterminate: bool;
+        editor_preview_indeterminate: bool;
     }
 
-    ProjectSettings :: struct {
+    ProjectSettings :: struct {    // 531
+
+        #as using base: Object;
     }
 
-    PropertyTweener :: struct {
+    PropertyTweener :: struct {    // 532
+
+        #as using base: Tweener;
     }
 
-    QuadMesh :: struct {
+    QuadMesh :: struct {    // 533
+
+        #as using base: PlaneMesh;
     }
 
-    QuadOccluder3D :: struct {
+    QuadOccluder3D :: struct {    // 534
+
+        #as using base: Occluder3D;
+
+        size: Vector2;
     }
 
-    RDAttachmentFormat :: struct {
+    RDAttachmentFormat :: struct {    // 535
+
+        #as using base: RefCounted;
+
+        format: int;
+        samples: int;
+        usage_flags: int;
     }
 
-    RDFramebufferPass :: struct {
+    RDFramebufferPass :: struct {    // 536
+
+        #as using base: RefCounted;
+
+        ATTACHMENT_UNUSED :: -1;
+        color_attachments: PackedInt32Array;
+        input_attachments: PackedInt32Array;
+        resolve_attachments: PackedInt32Array;
+        preserve_attachments: PackedInt32Array;
+        depth_attachment: int;
     }
 
-    RDPipelineColorBlendState :: struct {
+    RDPipelineColorBlendState :: struct {    // 537
+
+        #as using base: RefCounted;
+
+        enable_logic_op: bool;
+        logic_op: int;
+        blend_constant: Color;
+        attachments: typedarray::RDPipelineColorBlendStateAttachment;
     }
 
-    RDPipelineColorBlendStateAttachment :: struct {
+    RDPipelineColorBlendStateAttachment :: struct {    // 538
+
+        #as using base: RefCounted;
+
+        enable_blend: bool;
+        src_color_blend_factor: int;
+        dst_color_blend_factor: int;
+        color_blend_op: int;
+        src_alpha_blend_factor: int;
+        dst_alpha_blend_factor: int;
+        alpha_blend_op: int;
+        write_r: bool;
+        write_g: bool;
+        write_b: bool;
+        write_a: bool;
     }
 
-    RDPipelineDepthStencilState :: struct {
+    RDPipelineDepthStencilState :: struct {    // 539
+
+        #as using base: RefCounted;
+
+        enable_depth_test: bool;
+        enable_depth_write: bool;
+        depth_compare_operator: int;
+        enable_depth_range: bool;
+        depth_range_min: float;
+        depth_range_max: float;
+        enable_stencil: bool;
+        front_op_fail: int;
+        front_op_pass: int;
+        front_op_depth_fail: int;
+        front_op_compare: int;
+        front_op_compare_mask: int;
+        front_op_write_mask: int;
+        front_op_reference: int;
+        back_op_fail: int;
+        back_op_pass: int;
+        back_op_depth_fail: int;
+        back_op_compare: int;
+        back_op_compare_mask: int;
+        back_op_write_mask: int;
+        back_op_reference: int;
     }
 
-    RDPipelineMultisampleState :: struct {
+    RDPipelineMultisampleState :: struct {    // 540
+
+        #as using base: RefCounted;
+
+        sample_count: int;
+        enable_sample_shading: bool;
+        min_sample_shading: float;
+        enable_alpha_to_coverage: bool;
+        enable_alpha_to_one: bool;
+        sample_masks: typedarray::int;
     }
 
-    RDPipelineRasterizationState :: struct {
+    RDPipelineRasterizationState :: struct {    // 541
+
+        #as using base: RefCounted;
+
+        enable_depth_clamp: bool;
+        discard_primitives: bool;
+        wireframe: bool;
+        cull_mode: int;
+        front_face: int;
+        depth_bias_enabled: bool;
+        depth_bias_constant_factor: float;
+        depth_bias_clamp: float;
+        depth_bias_slope_factor: float;
+        line_width: float;
+        patch_control_points: int;
     }
 
-    RDPipelineSpecializationConstant :: struct {
+    RDPipelineSpecializationConstant :: struct {    // 542
+
+        #as using base: RefCounted;
+
+        value: Variant;
+        constant_id: int;
     }
 
-    RDSamplerState :: struct {
+    RDSamplerState :: struct {    // 543
+
+        #as using base: RefCounted;
+
+        mag_filter: int;
+        min_filter: int;
+        mip_filter: int;
+        repeat_u: int;
+        repeat_v: int;
+        repeat_w: int;
+        lod_bias: float;
+        use_anisotropy: bool;
+        anisotropy_max: float;
+        enable_compare: bool;
+        compare_op: int;
+        min_lod: float;
+        max_lod: float;
+        border_color: int;
+        unnormalized_uvw: bool;
     }
 
-    RDShaderFile :: struct {
+    RDShaderFile :: struct {    // 544
+
+        #as using base: Resource;
+
+        base_error: String;
     }
 
-    RDShaderSPIRV :: struct {
+    RDShaderSPIRV :: struct {    // 545
+
+        #as using base: Resource;
+
+        bytecode_vertex: PackedByteArray;
+        bytecode_fragment: PackedByteArray;
+        bytecode_tesselation_control: PackedByteArray;
+        bytecode_tesselation_evaluation: PackedByteArray;
+        bytecode_compute: PackedByteArray;
+        compile_error_vertex: String;
+        compile_error_fragment: String;
+        compile_error_tesselation_control: String;
+        compile_error_tesselation_evaluation: String;
+        compile_error_compute: String;
     }
 
-    RDShaderSource :: struct {
+    RDShaderSource :: struct {    // 546
+
+        #as using base: RefCounted;
+
+        source_vertex: String;
+        source_fragment: String;
+        source_tesselation_control: String;
+        source_tesselation_evaluation: String;
+        source_compute: String;
+        language: int;
     }
 
-    RDTextureFormat :: struct {
+    RDTextureFormat :: struct {    // 547
+
+        #as using base: RefCounted;
+
+        format: int;
+        width: int;
+        height: int;
+        depth: int;
+        array_layers: int;
+        mipmaps: int;
+        texture_type: int;
+        samples: int;
+        usage_bits: int;
     }
 
-    RDTextureView :: struct {
+    RDTextureView :: struct {    // 548
+
+        #as using base: RefCounted;
+
+        format_override: int;
+        swizzle_r: int;
+        swizzle_g: int;
+        swizzle_b: int;
+        swizzle_a: int;
     }
 
-    RDUniform :: struct {
+    RDUniform :: struct {    // 549
+
+        #as using base: RefCounted;
+
+        uniform_type: int;
+        binding: int;
     }
 
-    RDVertexAttribute :: struct {
+    RDVertexAttribute :: struct {    // 550
+
+        #as using base: RefCounted;
+
+        location: int;
+        offset: int;
+        format: int;
+        stride: int;
+        frequency: int;
     }
 
-    RandomNumberGenerator :: struct {
+    RandomNumberGenerator :: struct {    // 551
+
+        #as using base: RefCounted;
+
+        seed: int;
+        state: int;
     }
 
-    Range :: struct {
+    Range :: struct {    // 552
+
+        #as using base: Control;
+
+        min_value: float;
+        max_value: float;
+        step: float;
+        page: float;
+        value: float;
+        ratio: float;
+        exp_edit: bool;
+        rounded: bool;
+        allow_greater: bool;
+        allow_lesser: bool;
     }
 
-    RayCast2D :: struct {
+    RayCast2D :: struct {    // 553
+
+        #as using base: Node2D;
+
+        enabled: bool;
+        exclude_parent: bool;
+        target_position: Vector2;
+        collision_mask: int;
+        hit_from_inside: bool;
+        collide_with_areas: bool;
+        collide_with_bodies: bool;
     }
 
-    RayCast3D :: struct {
+    RayCast3D :: struct {    // 554
+
+        #as using base: Node3D;
+
+        enabled: bool;
+        exclude_parent: bool;
+        target_position: Vector3;
+        collision_mask: int;
+        hit_from_inside: bool;
+        hit_back_faces: bool;
+        collide_with_areas: bool;
+        collide_with_bodies: bool;
+        debug_shape_custom_color: Color;
+        debug_shape_thickness: int;
     }
 
-    RectangleShape2D :: struct {
+    RectangleShape2D :: struct {    // 555
+
+        #as using base: Shape2D;
+
+        size: Vector2;
     }
 
-    RefCounted :: struct {
+    RefCounted :: struct {    // 556
+
+        #as using base: Object;
     }
 
-    ReferenceRect :: struct {
+    ReferenceRect :: struct {    // 557
+
+        #as using base: Control;
+
+        border_color: Color;
+        border_width: float;
+        editor_only: bool;
     }
 
-    ReflectionProbe :: struct {
+    ReflectionProbe :: struct {    // 558
+
+        #as using base: VisualInstance3D;
 
         UpdateMode :: enum s32 {
             UPDATE_ONCE :: 0;
@@ -5201,51 +9497,126 @@ gdt :: struct {
             AMBIENT_ENVIRONMENT :: 1;
             AMBIENT_COLOR :: 2;
         }
+
+        update_mode: int;
+        intensity: float;
+        max_distance: float;
+        size: Vector3;
+        origin_offset: Vector3;
+        box_projection: bool;
+        interior: bool;
+        enable_shadows: bool;
+        cull_mask: int;
+        reflection_mask: int;
+        mesh_lod_threshold: float;
+        ambient_mode: int;
+        ambient_color: Color;
+        ambient_color_energy: float;
     }
 
-    RegEx :: struct {
+    RegEx :: struct {    // 559
+
+        #as using base: RefCounted;
     }
 
-    RegExMatch :: struct {
+    RegExMatch :: struct {    // 560
+
+        #as using base: RefCounted;
+
+        subject: String;
+        names: Dictionary;
+        strings: Array;
     }
 
-    RemoteTransform2D :: struct {
+    RemoteTransform2D :: struct {    // 561
+
+        #as using base: Node2D;
+
+        remote_path: NodePath;
+        use_global_coordinates: bool;
+        update_position: bool;
+        update_rotation: bool;
+        update_scale: bool;
     }
 
-    RemoteTransform3D :: struct {
+    RemoteTransform3D :: struct {    // 562
+
+        #as using base: Node3D;
+
+        remote_path: NodePath;
+        use_global_coordinates: bool;
+        update_position: bool;
+        update_rotation: bool;
+        update_scale: bool;
     }
 
-    RenderData :: struct {
+    RenderData :: struct {    // 563
+
+        #as using base: Object;
     }
 
-    RenderDataExtension :: struct {
+    RenderDataExtension :: struct {    // 564
+
+        #as using base: RenderData;
     }
 
-    RenderDataRD :: struct {
+    RenderDataRD :: struct {    // 565
+
+        #as using base: RenderData;
     }
 
-    RenderSceneBuffers :: struct {
+    RenderSceneBuffers :: struct {    // 566
+
+        #as using base: RefCounted;
     }
 
-    RenderSceneBuffersConfiguration :: struct {
+    RenderSceneBuffersConfiguration :: struct {    // 567
+
+        #as using base: RefCounted;
+
+        render_target: RID;
+        internal_size: Vector2i;
+        target_size: Vector2i;
+        view_count: int;
+        scaling_3d_mode: int;
+        msaa_3d: int;
+        screen_space_aa: int;
+        fsr_sharpness: bool;
+        texture_mipmap_bias: bool;
     }
 
-    RenderSceneBuffersExtension :: struct {
+    RenderSceneBuffersExtension :: struct {    // 568
+
+        #as using base: RenderSceneBuffers;
     }
 
-    RenderSceneBuffersRD :: struct {
+    RenderSceneBuffersRD :: struct {    // 569
+
+        #as using base: RenderSceneBuffers;
     }
 
-    RenderSceneData :: struct {
+    RenderSceneData :: struct {    // 570
+
+        #as using base: Object;
     }
 
-    RenderSceneDataExtension :: struct {
+    RenderSceneDataExtension :: struct {    // 571
+
+        #as using base: RenderSceneData;
     }
 
-    RenderSceneDataRD :: struct {
+    RenderSceneDataRD :: struct {    // 572
+
+        #as using base: RenderSceneData;
     }
 
-    RenderingDevice :: struct {
+    RenderingDevice :: struct {    // 573
+
+        #as using base: Object;
+
+        INVALID_ID :: -1;
+        INVALID_FORMAT_ID :: -1;
+
 
         DeviceType :: enum s32 {
             DEVICE_TYPE_OTHER :: 0;
@@ -5825,7 +10196,26 @@ gdt :: struct {
         }
     }
 
-    RenderingServer :: struct {
+    RenderingServer :: struct {    // 574
+
+        #as using base: Object;
+
+        NO_INDEX_ARRAY :: -1;
+        ARRAY_WEIGHTS_SIZE :: 4;
+        CANVAS_ITEM_Z_MIN :: -4096;
+        CANVAS_ITEM_Z_MAX :: 4096;
+        MAX_GLOW_LEVELS :: 7;
+        MAX_CURSORS :: 8;
+        MAX_2D_DIRECTIONAL_LIGHTS :: 8;
+        MATERIAL_RENDER_PRIORITY_MIN :: -128;
+        MATERIAL_RENDER_PRIORITY_MAX :: 127;
+        ARRAY_CUSTOM_COUNT :: 4;
+        PARTICLES_EMIT_FLAG_POSITION :: 1;
+        PARTICLES_EMIT_FLAG_ROTATION_SCALE :: 2;
+        PARTICLES_EMIT_FLAG_VELOCITY :: 4;
+        PARTICLES_EMIT_FLAG_COLOR :: 8;
+        PARTICLES_EMIT_FLAG_CUSTOM :: 16;
+
 
         TextureLayeredType :: enum s32 {
             TEXTURE_LAYERED_2D_ARRAY :: 0;
@@ -6502,12 +10892,23 @@ gdt :: struct {
             FEATURE_SHADERS :: 0;
             FEATURE_MULTITHREADED :: 1;
         }
+
+        render_loop_enabled: bool;
     }
 
-    Resource :: struct {
+    Resource :: struct {    // 575
+
+        #as using base: RefCounted;
+
+        resource_local_to_scene: bool;
+        resource_path: String;
+        resource_name: String;
+        resource_scene_unique_id: String;
     }
 
-    ResourceFormatLoader :: struct {
+    ResourceFormatLoader :: struct {    // 576
+
+        #as using base: RefCounted;
 
         CacheMode :: enum s32 {
             CACHE_MODE_IGNORE :: 0;
@@ -6518,10 +10919,14 @@ gdt :: struct {
         }
     }
 
-    ResourceFormatSaver :: struct {
+    ResourceFormatSaver :: struct {    // 577
+
+        #as using base: RefCounted;
     }
 
-    ResourceImporter :: struct {
+    ResourceImporter :: struct {    // 578
+
+        #as using base: RefCounted;
 
         ImportOrder :: enum s32 {
             IMPORT_ORDER_DEFAULT :: 0;
@@ -6529,52 +10934,84 @@ gdt :: struct {
         }
     }
 
-    ResourceImporterBMFont :: struct {
+    ResourceImporterBMFont :: struct {    // 579
+
+        #as using base: ResourceImporter;
     }
 
-    ResourceImporterBitMap :: struct {
+    ResourceImporterBitMap :: struct {    // 580
+
+        #as using base: ResourceImporter;
     }
 
-    ResourceImporterCSVTranslation :: struct {
+    ResourceImporterCSVTranslation :: struct {    // 581
+
+        #as using base: ResourceImporter;
     }
 
-    ResourceImporterDynamicFont :: struct {
+    ResourceImporterDynamicFont :: struct {    // 582
+
+        #as using base: ResourceImporter;
     }
 
-    ResourceImporterImage :: struct {
+    ResourceImporterImage :: struct {    // 583
+
+        #as using base: ResourceImporter;
     }
 
-    ResourceImporterImageFont :: struct {
+    ResourceImporterImageFont :: struct {    // 584
+
+        #as using base: ResourceImporter;
     }
 
-    ResourceImporterLayeredTexture :: struct {
+    ResourceImporterLayeredTexture :: struct {    // 585
+
+        #as using base: ResourceImporter;
     }
 
-    ResourceImporterMP3 :: struct {
+    ResourceImporterMP3 :: struct {    // 586
+
+        #as using base: ResourceImporter;
     }
 
-    ResourceImporterOBJ :: struct {
+    ResourceImporterOBJ :: struct {    // 587
+
+        #as using base: ResourceImporter;
     }
 
-    ResourceImporterOggVorbis :: struct {
+    ResourceImporterOggVorbis :: struct {    // 588
+
+        #as using base: ResourceImporter;
     }
 
-    ResourceImporterScene :: struct {
+    ResourceImporterScene :: struct {    // 589
+
+        #as using base: ResourceImporter;
     }
 
-    ResourceImporterShaderFile :: struct {
+    ResourceImporterShaderFile :: struct {    // 590
+
+        #as using base: ResourceImporter;
     }
 
-    ResourceImporterTexture :: struct {
+    ResourceImporterTexture :: struct {    // 591
+
+        #as using base: ResourceImporter;
     }
 
-    ResourceImporterTextureAtlas :: struct {
+    ResourceImporterTextureAtlas :: struct {    // 592
+
+        #as using base: ResourceImporter;
     }
 
-    ResourceImporterWAV :: struct {
+    ResourceImporterWAV :: struct {    // 593
+
+        #as using base: ResourceImporter;
     }
 
-    ResourceLoader :: struct {
+    ResourceLoader :: struct {    // 594
+
+        #as using base: Object;
 
         ThreadLoadStatus :: enum s32 {
             THREAD_LOAD_INVALID_RESOURCE :: 0;
@@ -6592,10 +11029,16 @@ gdt :: struct {
         }
     }
 
-    ResourcePreloader :: struct {
+    ResourcePreloader :: struct {    // 595
+
+        #as using base: Node;
+
+        resources: Array;
     }
 
-    ResourceSaver :: struct {
+    ResourceSaver :: struct {    // 596
+
+        #as using base: Object;
 
         SaverFlags :: enum u64 {
             FLAG_NONE :: 0;
@@ -6609,21 +11052,39 @@ gdt :: struct {
         } @bitfield
     }
 
-    ResourceUID :: struct {
+    ResourceUID :: struct {    // 597
+
+        #as using base: Object;
+
+        INVALID_ID :: -1;
+
     }
 
-    RibbonTrailMesh :: struct {
+    RibbonTrailMesh :: struct {    // 598
+
+        #as using base: PrimitiveMesh;
 
         Shape :: enum s32 {
             SHAPE_FLAT :: 0;
             SHAPE_CROSS :: 1;
         }
+
+        shape: int;
+        size: float;
+        sections: int;
+        section_length: float;
+        section_segments: int;
+        curve: Curve;
     }
 
-    RichTextEffect :: struct {
+    RichTextEffect :: struct {    // 599
+
+        #as using base: Resource;
     }
 
-    RichTextLabel :: struct {
+    RichTextLabel :: struct {    // 600
+
+        #as using base: Control;
 
         ListType :: enum s32 {
             LIST_NUMBERS :: 0;
@@ -6654,9 +11115,36 @@ gdt :: struct {
             UPDATE_TOOLTIP :: 64;
             UPDATE_WIDTH_IN_PERCENT :: 128;
         } @bitfield
+
+        bbcode_enabled: bool;
+        text: String;
+        fit_content: bool;
+        scroll_active: bool;
+        scroll_following: bool;
+        autowrap_mode: int;
+        tab_size: int;
+        context_menu_enabled: bool;
+        shortcut_keys_enabled: bool;
+        custom_effects: typedarray::24/17:RichTextEffect;
+        meta_underlined: bool;
+        hint_underlined: bool;
+        threaded: bool;
+        progress_bar_delay: int;
+        selection_enabled: bool;
+        deselect_on_focus_loss_enabled: bool;
+        drag_and_drop_selection_enabled: bool;
+        visible_characters: int;
+        visible_characters_behavior: int;
+        visible_ratio: float;
+        text_direction: int;
+        language: String;
+        structured_text_bidi_override: int;
+        structured_text_bidi_override_options: Array;
     }
 
-    RigidBody2D :: struct {
+    RigidBody2D :: struct {    // 601
+
+        #as using base: PhysicsBody2D;
 
         FreezeMode :: enum s32 {
             FREEZE_MODE_STATIC :: 0;
@@ -6678,9 +11166,35 @@ gdt :: struct {
             CCD_MODE_CAST_RAY :: 1;
             CCD_MODE_CAST_SHAPE :: 2;
         }
+
+        mass: float;
+        physics_material_override: PhysicsMaterial;
+        gravity_scale: float;
+        center_of_mass_mode: int;
+        center_of_mass: Vector2;
+        inertia: float;
+        sleeping: bool;
+        can_sleep: bool;
+        lock_rotation: bool;
+        freeze: bool;
+        freeze_mode: int;
+        custom_integrator: bool;
+        continuous_cd: int;
+        contact_monitor: bool;
+        max_contacts_reported: int;
+        linear_velocity: Vector2;
+        linear_damp_mode: int;
+        linear_damp: float;
+        angular_velocity: float;
+        angular_damp_mode: int;
+        angular_damp: float;
+        constant_force: Vector2;
+        constant_torque: float;
     }
 
-    RigidBody3D :: struct {
+    RigidBody3D :: struct {    // 602
+
+        #as using base: PhysicsBody3D;
 
         FreezeMode :: enum s32 {
             FREEZE_MODE_STATIC :: 0;
@@ -6696,15 +11210,60 @@ gdt :: struct {
             DAMP_MODE_COMBINE :: 0;
             DAMP_MODE_REPLACE :: 1;
         }
+
+        mass: float;
+        physics_material_override: PhysicsMaterial;
+        gravity_scale: float;
+        center_of_mass_mode: int;
+        center_of_mass: Vector3;
+        inertia: Vector3;
+        sleeping: bool;
+        can_sleep: bool;
+        lock_rotation: bool;
+        freeze: bool;
+        freeze_mode: int;
+        custom_integrator: bool;
+        continuous_cd: bool;
+        contact_monitor: bool;
+        max_contacts_reported: int;
+        linear_velocity: Vector3;
+        linear_damp_mode: int;
+        linear_damp: float;
+        angular_velocity: Vector3;
+        angular_damp_mode: int;
+        angular_damp: float;
+        constant_force: Vector3;
+        constant_torque: Vector3;
     }
 
-    RootMotionView :: struct {
+    RootMotionView :: struct {    // 603
+
+        #as using base: VisualInstance3D;
+
+        animation_path: NodePath;
+        color: Color;
+        cell_size: float;
+        radius: float;
+        zero_y: bool;
     }
 
-    SceneMultiplayer :: struct {
+    SceneMultiplayer :: struct {    // 604
+
+        #as using base: MultiplayerAPI;
+
+        root_path: NodePath;
+        auth_callback: Callable;
+        auth_timeout: float;
+        allow_object_decoding: bool;
+        refuse_new_connections: bool;
+        server_relay: bool;
+        max_sync_packet_size: int;
+        max_delta_packet_size: int;
     }
 
-    SceneReplicationConfig :: struct {
+    SceneReplicationConfig :: struct {    // 605
+
+        #as using base: Resource;
 
         ReplicationMode :: enum s32 {
             REPLICATION_MODE_NEVER :: 0;
@@ -6713,7 +11272,9 @@ gdt :: struct {
         }
     }
 
-    SceneState :: struct {
+    SceneState :: struct {    // 606
+
+        #as using base: RefCounted;
 
         GenEditState :: enum s32 {
             GEN_EDIT_STATE_DISABLED :: 0;
@@ -6723,7 +11284,9 @@ gdt :: struct {
         }
     }
 
-    SceneTree :: struct {
+    SceneTree :: struct {    // 607
+
+        #as using base: MainLoop;
 
         GroupCallFlags :: enum s32 {
             GROUP_CALL_DEFAULT :: 0;
@@ -6731,27 +11294,56 @@ gdt :: struct {
             GROUP_CALL_DEFERRED :: 2;
             GROUP_CALL_UNIQUE :: 4;
         }
+
+        auto_accept_quit: bool;
+        quit_on_go_back: bool;
+        debug_collisions_hint: bool;
+        debug_paths_hint: bool;
+        debug_navigation_hint: bool;
+        paused: bool;
+        edited_scene_root: Node;
+        current_scene: Node;
+        root: Node;
+        multiplayer_poll: bool;
     }
 
-    SceneTreeTimer :: struct {
+    SceneTreeTimer :: struct {    // 608
+
+        #as using base: RefCounted;
+
+        time_left: float;
     }
 
-    Script :: struct {
+    Script :: struct {    // 609
+
+        #as using base: Resource;
+
+        source_code: String;
     }
 
-    ScriptCreateDialog :: struct {
+    ScriptCreateDialog :: struct {    // 610
+
+        #as using base: ConfirmationDialog;
     }
 
-    ScriptEditor :: struct {
+    ScriptEditor :: struct {    // 611
+
+        #as using base: PanelContainer;
     }
 
-    ScriptEditorBase :: struct {
+    ScriptEditorBase :: struct {    // 612
+
+        #as using base: VBoxContainer;
     }
 
-    ScriptExtension :: struct {
+    ScriptExtension :: struct {    // 613
+
+        #as using base: Script;
     }
 
-    ScriptLanguage :: struct {
+    ScriptLanguage :: struct {    // 614
+
+        #as using base: Object;
 
         ScriptNameCasing :: enum s32 {
             SCRIPT_NAME_CASING_AUTO :: 0;
@@ -6761,7 +11353,9 @@ gdt :: struct {
         }
     }
 
-    ScriptLanguageExtension :: struct {
+    ScriptLanguageExtension :: struct {    // 615
+
+        #as using base: ScriptLanguage;
 
         LookupResultType :: enum s32 {
             LOOKUP_RESULT_SCRIPT_LOCATION :: 0;
@@ -6798,10 +11392,16 @@ gdt :: struct {
         }
     }
 
-    ScrollBar :: struct {
+    ScrollBar :: struct {    // 616
+
+        #as using base: Range;
+
+        custom_step: float;
     }
 
-    ScrollContainer :: struct {
+    ScrollContainer :: struct {    // 617
+
+        #as using base: Container;
 
         ScrollMode :: enum s32 {
             SCROLL_MODE_DISABLED :: 0;
@@ -6809,24 +11409,54 @@ gdt :: struct {
             SCROLL_MODE_SHOW_ALWAYS :: 2;
             SCROLL_MODE_SHOW_NEVER :: 3;
         }
+
+        follow_focus: bool;
+        scroll_horizontal: int;
+        scroll_vertical: int;
+        scroll_horizontal_custom_step: float;
+        scroll_vertical_custom_step: float;
+        horizontal_scroll_mode: int;
+        vertical_scroll_mode: int;
+        scroll_deadzone: int;
     }
 
-    SegmentShape2D :: struct {
+    SegmentShape2D :: struct {    // 618
+
+        #as using base: Shape2D;
+
+        a: Vector2;
+        b: Vector2;
     }
 
-    Semaphore :: struct {
+    Semaphore :: struct {    // 619
+
+        #as using base: RefCounted;
     }
 
-    SeparationRayShape2D :: struct {
+    SeparationRayShape2D :: struct {    // 620
+
+        #as using base: Shape2D;
+
+        length: float;
+        slide_on_slope: bool;
     }
 
-    SeparationRayShape3D :: struct {
+    SeparationRayShape3D :: struct {    // 621
+
+        #as using base: Shape3D;
+
+        length: float;
+        slide_on_slope: bool;
     }
 
-    Separator :: struct {
+    Separator :: struct {    // 622
+
+        #as using base: Control;
     }
 
-    Shader :: struct {
+    Shader :: struct {    // 623
+
+        #as using base: Resource;
 
         Mode :: enum s32 {
             MODE_SPATIAL :: 0;
@@ -6835,87 +11465,227 @@ gdt :: struct {
             MODE_SKY :: 3;
             MODE_FOG :: 4;
         }
+
+        code: String;
     }
 
-    ShaderGlobalsOverride :: struct {
+    ShaderGlobalsOverride :: struct {    // 624
+
+        #as using base: Node;
     }
 
-    ShaderInclude :: struct {
+    ShaderInclude :: struct {    // 625
+
+        #as using base: Resource;
+
+        code: String;
     }
 
-    ShaderMaterial :: struct {
+    ShaderMaterial :: struct {    // 626
+
+        #as using base: Material;
+
+        shader: Shader;
     }
 
-    Shape2D :: struct {
+    Shape2D :: struct {    // 627
+
+        #as using base: Resource;
+
+        custom_solver_bias: float;
     }
 
-    Shape3D :: struct {
+    Shape3D :: struct {    // 628
+
+        #as using base: Resource;
+
+        custom_solver_bias: float;
+        margin: float;
     }
 
-    ShapeCast2D :: struct {
+    ShapeCast2D :: struct {    // 629
+
+        #as using base: Node2D;
+
+        enabled: bool;
+        shape: Shape2D;
+        exclude_parent: bool;
+        target_position: Vector2;
+        margin: float;
+        max_results: int;
+        collision_mask: int;
+        collision_result: Array;
+        collide_with_areas: bool;
+        collide_with_bodies: bool;
     }
 
-    ShapeCast3D :: struct {
+    ShapeCast3D :: struct {    // 630
+
+        #as using base: Node3D;
+
+        enabled: bool;
+        shape: Shape3D;
+        exclude_parent: bool;
+        target_position: Vector3;
+        margin: float;
+        max_results: int;
+        collision_mask: int;
+        collision_result: Array;
+        collide_with_areas: bool;
+        collide_with_bodies: bool;
+        debug_shape_custom_color: Color;
     }
 
-    Shortcut :: struct {
+    Shortcut :: struct {    // 631
+
+        #as using base: Resource;
+
+        events: typedarray::24/17:InputEvent;
     }
 
-    Skeleton2D :: struct {
+    Skeleton2D :: struct {    // 632
+
+        #as using base: Node2D;
     }
 
-    Skeleton3D :: struct {
+    Skeleton3D :: struct {    // 633
+
+        #as using base: Node3D;
+
+        NOTIFICATION_UPDATE_SKELETON :: 50;
+        motion_scale: float;
+        show_rest_only: bool;
+        animate_physical_bones: bool;
     }
 
-    SkeletonIK3D :: struct {
+    SkeletonIK3D :: struct {    // 634
+
+        #as using base: Node;
+
+        root_bone: StringName;
+        tip_bone: StringName;
+        interpolation: float;
+        target: Transform3D;
+        override_tip_basis: bool;
+        use_magnet: bool;
+        magnet: Vector3;
+        target_node: NodePath;
+        min_distance: float;
+        max_iterations: int;
     }
 
-    SkeletonModification2D :: struct {
+    SkeletonModification2D :: struct {    // 635
+
+        #as using base: Resource;
+
+        enabled: bool;
+        execution_mode: int;
     }
 
-    SkeletonModification2DCCDIK :: struct {
+    SkeletonModification2DCCDIK :: struct {    // 636
+
+        #as using base: SkeletonModification2D;
+
+        target_nodepath: NodePath;
+        tip_nodepath: NodePath;
+        ccdik_data_chain_length: int;
     }
 
-    SkeletonModification2DFABRIK :: struct {
+    SkeletonModification2DFABRIK :: struct {    // 637
+
+        #as using base: SkeletonModification2D;
+
+        target_nodepath: NodePath;
+        fabrik_data_chain_length: int;
     }
 
-    SkeletonModification2DJiggle :: struct {
+    SkeletonModification2DJiggle :: struct {    // 638
+
+        #as using base: SkeletonModification2D;
+
+        target_nodepath: NodePath;
+        jiggle_data_chain_length: int;
+        stiffness: float;
+        mass: float;
+        damping: float;
+        use_gravity: bool;
+        gravity: Vector2;
     }
 
-    SkeletonModification2DLookAt :: struct {
+    SkeletonModification2DLookAt :: struct {    // 639
+
+        #as using base: SkeletonModification2D;
+
+        bone_index: int;
+        bone2d_node: NodePath;
+        target_nodepath: NodePath;
     }
 
-    SkeletonModification2DPhysicalBones :: struct {
+    SkeletonModification2DPhysicalBones :: struct {    // 640
+
+        #as using base: SkeletonModification2D;
+
+        physical_bone_chain_length: int;
     }
 
-    SkeletonModification2DStackHolder :: struct {
+    SkeletonModification2DStackHolder :: struct {    // 641
+
+        #as using base: SkeletonModification2D;
     }
 
-    SkeletonModification2DTwoBoneIK :: struct {
+    SkeletonModification2DTwoBoneIK :: struct {    // 642
+
+        #as using base: SkeletonModification2D;
+
+        target_nodepath: NodePath;
+        target_minimum_distance: float;
+        target_maximum_distance: float;
+        flip_bend_direction: bool;
     }
 
-    SkeletonModificationStack2D :: struct {
+    SkeletonModificationStack2D :: struct {    // 643
+
+        #as using base: Resource;
+
+        enabled: bool;
+        strength: float;
+        modification_count: int;
     }
 
-    SkeletonProfile :: struct {
+    SkeletonProfile :: struct {    // 644
+
+        #as using base: Resource;
 
         TailDirection :: enum s32 {
             TAIL_DIRECTION_AVERAGE_CHILDREN :: 0;
             TAIL_DIRECTION_SPECIFIC_CHILD :: 1;
             TAIL_DIRECTION_END :: 2;
         }
+
+        root_bone: StringName;
+        scale_base_bone: StringName;
+        group_size: int;
+        bone_size: int;
     }
 
-    SkeletonProfileHumanoid :: struct {
+    SkeletonProfileHumanoid :: struct {    // 645
+
+        #as using base: SkeletonProfile;
     }
 
-    Skin :: struct {
+    Skin :: struct {    // 646
+
+        #as using base: Resource;
     }
 
-    SkinReference :: struct {
+    SkinReference :: struct {    // 647
+
+        #as using base: RefCounted;
     }
 
-    Sky :: struct {
+    Sky :: struct {    // 648
+
+        #as using base: Resource;
 
         RadianceSize :: enum s32 {
             RADIANCE_SIZE_32 :: 0;
@@ -6934,12 +11704,25 @@ gdt :: struct {
             PROCESS_MODE_INCREMENTAL :: 2;
             PROCESS_MODE_REALTIME :: 3;
         }
+
+        sky_material: PanoramaSkyMaterial,ProceduralSkyMaterial,PhysicalSkyMaterial,ShaderMaterial;
+        process_mode: int;
+        radiance_size: int;
     }
 
-    Slider :: struct {
+    Slider :: struct {    // 649
+
+        #as using base: Range;
+
+        editable: bool;
+        scrollable: bool;
+        tick_count: int;
+        ticks_on_borders: bool;
     }
 
-    SliderJoint3D :: struct {
+    SliderJoint3D :: struct {    // 650
+
+        #as using base: Joint3D;
 
         Param :: enum s32 {
             PARAM_LINEAR_LIMIT_UPPER :: 0;
@@ -6968,48 +11751,136 @@ gdt :: struct {
         }
     }
 
-    SoftBody3D :: struct {
+    SoftBody3D :: struct {    // 651
+
+        #as using base: MeshInstance3D;
 
         DisableMode :: enum s32 {
             DISABLE_MODE_REMOVE :: 0;
             DISABLE_MODE_KEEP_ACTIVE :: 1;
         }
+
+        collision_layer: int;
+        collision_mask: int;
+        parent_collision_ignore: NodePath;
+        simulation_precision: int;
+        total_mass: float;
+        linear_stiffness: float;
+        pressure_coefficient: float;
+        damping_coefficient: float;
+        drag_coefficient: float;
+        ray_pickable: bool;
+        disable_mode: int;
     }
 
-    SphereMesh :: struct {
+    SphereMesh :: struct {    // 652
+
+        #as using base: PrimitiveMesh;
+
+        radius: float;
+        height: float;
+        radial_segments: int;
+        rings: int;
+        is_hemisphere: bool;
     }
 
-    SphereOccluder3D :: struct {
+    SphereOccluder3D :: struct {    // 653
+
+        #as using base: Occluder3D;
+
+        radius: float;
     }
 
-    SphereShape3D :: struct {
+    SphereShape3D :: struct {    // 654
+
+        #as using base: Shape3D;
+
+        radius: float;
     }
 
-    SpinBox :: struct {
+    SpinBox :: struct {    // 655
+
+        #as using base: Range;
+
+        alignment: int;
+        editable: bool;
+        update_on_text_changed: bool;
+        prefix: String;
+        suffix: String;
+        custom_arrow_step: float;
+        select_all_on_focus: bool;
     }
 
-    SplitContainer :: struct {
+    SplitContainer :: struct {    // 656
+
+        #as using base: Container;
 
         DraggerVisibility :: enum s32 {
             DRAGGER_VISIBLE :: 0;
             DRAGGER_HIDDEN :: 1;
             DRAGGER_HIDDEN_COLLAPSED :: 2;
         }
+
+        split_offset: int;
+        collapsed: bool;
+        dragger_visibility: int;
+        vertical: bool;
     }
 
-    SpotLight3D :: struct {
+    SpotLight3D :: struct {    // 657
+
+        #as using base: Light3D;
+
+        spot_range: float;
+        spot_attenuation: float;
+        spot_angle: float;
+        spot_angle_attenuation: float;
     }
 
-    SpringArm3D :: struct {
+    SpringArm3D :: struct {    // 658
+
+        #as using base: Node3D;
+
+        collision_mask: int;
+        shape: Shape3D;
+        spring_length: float;
+        margin: float;
     }
 
-    Sprite2D :: struct {
+    Sprite2D :: struct {    // 659
+
+        #as using base: Node2D;
+
+        texture: Texture2D;
+        centered: bool;
+        offset: Vector2;
+        flip_h: bool;
+        flip_v: bool;
+        hframes: int;
+        vframes: int;
+        frame: int;
+        frame_coords: Vector2i;
+        region_enabled: bool;
+        region_rect: Rect2;
+        region_filter_clip_enabled: bool;
     }
 
-    Sprite3D :: struct {
+    Sprite3D :: struct {    // 660
+
+        #as using base: SpriteBase3D;
+
+        texture: Texture2D;
+        hframes: int;
+        vframes: int;
+        frame: int;
+        frame_coords: Vector2;
+        region_enabled: bool;
+        region_rect: Rect2;
     }
 
-    SpriteBase3D :: struct {
+    SpriteBase3D :: struct {    // 661
+
+        #as using base: GeometryInstance3D;
 
         DrawFlags :: enum s32 {
             FLAG_TRANSPARENT :: 0;
@@ -7026,36 +11897,95 @@ gdt :: struct {
             ALPHA_CUT_OPAQUE_PREPASS :: 2;
             ALPHA_CUT_HASH :: 3;
         }
+
+        centered: bool;
+        offset: Vector2;
+        flip_h: bool;
+        flip_v: bool;
+        modulate: Color;
+        pixel_size: float;
+        axis: int;
+        billboard: int;
+        transparent: bool;
+        shaded: bool;
+        double_sided: bool;
+        no_depth_test: bool;
+        fixed_size: bool;
+        alpha_cut: int;
+        alpha_scissor_threshold: float;
+        alpha_hash_scale: float;
+        alpha_antialiasing_mode: int;
+        alpha_antialiasing_edge: float;
+        texture_filter: int;
+        render_priority: int;
     }
 
-    SpriteFrames :: struct {
+    SpriteFrames :: struct {    // 662
+
+        #as using base: Resource;
+
+        animations: Array;
     }
 
-    StandardMaterial3D :: struct {
+    StandardMaterial3D :: struct {    // 663
+
+        #as using base: BaseMaterial3D;
     }
 
-    StaticBody2D :: struct {
+    StaticBody2D :: struct {    // 664
+
+        #as using base: PhysicsBody2D;
+
+        physics_material_override: PhysicsMaterial;
+        constant_linear_velocity: Vector2;
+        constant_angular_velocity: float;
     }
 
-    StaticBody3D :: struct {
+    StaticBody3D :: struct {    // 665
+
+        #as using base: PhysicsBody3D;
+
+        physics_material_override: PhysicsMaterial;
+        constant_linear_velocity: Vector3;
+        constant_angular_velocity: Vector3;
     }
 
-    StatusIndicator :: struct {
+    StatusIndicator :: struct {    // 666
+
+        #as using base: Node;
+
+        tooltip: String;
+        icon: Image;
+        visible: bool;
     }
 
-    StreamPeer :: struct {
+    StreamPeer :: struct {    // 667
+
+        #as using base: RefCounted;
+
+        big_endian: bool;
     }
 
-    StreamPeerBuffer :: struct {
+    StreamPeerBuffer :: struct {    // 668
+
+        #as using base: StreamPeer;
+
+        data_array: PackedByteArray;
     }
 
-    StreamPeerExtension :: struct {
+    StreamPeerExtension :: struct {    // 669
+
+        #as using base: StreamPeer;
     }
 
-    StreamPeerGZIP :: struct {
+    StreamPeerGZIP :: struct {    // 670
+
+        #as using base: StreamPeer;
     }
 
-    StreamPeerTCP :: struct {
+    StreamPeerTCP :: struct {    // 671
+
+        #as using base: StreamPeer;
 
         Status :: enum s32 {
             STATUS_NONE :: 0;
@@ -7065,7 +11995,9 @@ gdt :: struct {
         }
     }
 
-    StreamPeerTLS :: struct {
+    StreamPeerTLS :: struct {    // 672
+
+        #as using base: StreamPeer;
 
         Status :: enum s32 {
             STATUS_DISCONNECTED :: 0;
@@ -7076,28 +12008,90 @@ gdt :: struct {
         }
     }
 
-    StyleBox :: struct {
+    StyleBox :: struct {    // 673
+
+        #as using base: Resource;
+
+        content_margin_left: float;
+        content_margin_top: float;
+        content_margin_right: float;
+        content_margin_bottom: float;
     }
 
-    StyleBoxEmpty :: struct {
+    StyleBoxEmpty :: struct {    // 674
+
+        #as using base: StyleBox;
     }
 
-    StyleBoxFlat :: struct {
+    StyleBoxFlat :: struct {    // 675
+
+        #as using base: StyleBox;
+
+        bg_color: Color;
+        draw_center: bool;
+        skew: Vector2;
+        border_width_left: int;
+        border_width_top: int;
+        border_width_right: int;
+        border_width_bottom: int;
+        border_color: Color;
+        border_blend: bool;
+        corner_radius_top_left: int;
+        corner_radius_top_right: int;
+        corner_radius_bottom_right: int;
+        corner_radius_bottom_left: int;
+        corner_detail: int;
+        expand_margin_left: float;
+        expand_margin_top: float;
+        expand_margin_right: float;
+        expand_margin_bottom: float;
+        shadow_color: Color;
+        shadow_size: int;
+        shadow_offset: Vector2;
+        anti_aliasing: bool;
+        anti_aliasing_size: float;
     }
 
-    StyleBoxLine :: struct {
+    StyleBoxLine :: struct {    // 676
+
+        #as using base: StyleBox;
+
+        color: Color;
+        grow_begin: float;
+        grow_end: float;
+        thickness: int;
+        vertical: bool;
     }
 
-    StyleBoxTexture :: struct {
+    StyleBoxTexture :: struct {    // 677
+
+        #as using base: StyleBox;
 
         AxisStretchMode :: enum s32 {
             AXIS_STRETCH_MODE_STRETCH :: 0;
             AXIS_STRETCH_MODE_TILE :: 1;
             AXIS_STRETCH_MODE_TILE_FIT :: 2;
         }
+
+        texture: Texture2D;
+        texture_margin_left: float;
+        texture_margin_top: float;
+        texture_margin_right: float;
+        texture_margin_bottom: float;
+        expand_margin_left: float;
+        expand_margin_top: float;
+        expand_margin_right: float;
+        expand_margin_bottom: float;
+        axis_stretch_horizontal: int;
+        axis_stretch_vertical: int;
+        region_rect: Rect2;
+        modulate_color: Color;
+        draw_center: bool;
     }
 
-    SubViewport :: struct {
+    SubViewport :: struct {    // 678
+
+        #as using base: Viewport;
 
         ClearMode :: enum s32 {
             CLEAR_MODE_ALWAYS :: 0;
@@ -7112,12 +12106,25 @@ gdt :: struct {
             UPDATE_WHEN_PARENT_VISIBLE :: 3;
             UPDATE_ALWAYS :: 4;
         }
+
+        size: Vector2i;
+        size_2d_override: Vector2i;
+        size_2d_override_stretch: bool;
+        render_target_clear_mode: int;
+        render_target_update_mode: int;
     }
 
-    SubViewportContainer :: struct {
+    SubViewportContainer :: struct {    // 679
+
+        #as using base: Container;
+
+        stretch: bool;
+        stretch_shrink: int;
     }
 
-    SurfaceTool :: struct {
+    SurfaceTool :: struct {    // 680
+
+        #as using base: RefCounted;
 
         CustomFormat :: enum s32 {
             CUSTOM_RGBA8_UNORM :: 0;
@@ -7137,19 +12144,45 @@ gdt :: struct {
         }
     }
 
-    SyntaxHighlighter :: struct {
+    SyntaxHighlighter :: struct {    // 681
+
+        #as using base: Resource;
     }
 
-    SystemFont :: struct {
+    SystemFont :: struct {    // 682
+
+        #as using base: Font;
+
+        font_names: PackedStringArray;
+        font_italic: bool;
+        font_weight: int;
+        font_stretch: int;
+        antialiasing: int;
+        generate_mipmaps: bool;
+        disable_embedded_bitmaps: bool;
+        allow_system_fallback: bool;
+        force_autohinter: bool;
+        hinting: int;
+        subpixel_positioning: int;
+        multichannel_signed_distance_field: bool;
+        msdf_pixel_range: int;
+        msdf_size: int;
+        oversampling: float;
     }
 
-    TCPServer :: struct {
+    TCPServer :: struct {    // 683
+
+        #as using base: RefCounted;
     }
 
-    TLSOptions :: struct {
+    TLSOptions :: struct {    // 684
+
+        #as using base: RefCounted;
     }
 
-    TabBar :: struct {
+    TabBar :: struct {    // 685
+
+        #as using base: Control;
 
         AlignmentMode :: enum s32 {
             ALIGNMENT_LEFT :: 0;
@@ -7164,18 +12197,47 @@ gdt :: struct {
             CLOSE_BUTTON_SHOW_ALWAYS :: 2;
             CLOSE_BUTTON_MAX :: 3;
         }
+
+        current_tab: int;
+        tab_alignment: int;
+        clip_tabs: bool;
+        tab_close_display_policy: int;
+        max_tab_width: int;
+        scrolling_enabled: bool;
+        drag_to_rearrange_enabled: bool;
+        tabs_rearrange_group: int;
+        scroll_to_selected: bool;
+        select_with_rmb: bool;
+        deselect_enabled: bool;
+        tab_count: int;
     }
 
-    TabContainer :: struct {
+    TabContainer :: struct {    // 686
+
+        #as using base: Container;
 
         TabPosition :: enum s32 {
             POSITION_TOP :: 0;
             POSITION_BOTTOM :: 1;
             POSITION_MAX :: 2;
         }
+
+        tab_alignment: int;
+        current_tab: int;
+        tabs_position: int;
+        clip_tabs: bool;
+        tabs_visible: bool;
+        all_tabs_in_front: bool;
+        drag_to_rearrange_enabled: bool;
+        tabs_rearrange_group: int;
+        use_hidden_tabs_for_min_size: bool;
+        tab_focus_mode: int;
+        deselect_enabled: bool;
     }
 
-    TextEdit :: struct {
+    TextEdit :: struct {    // 687
+
+        #as using base: Control;
 
         MenuItems :: enum s32 {
             MENU_CUT :: 0;
@@ -7247,18 +12309,107 @@ gdt :: struct {
             GUTTER_TYPE_ICON :: 1;
             GUTTER_TYPE_CUSTOM :: 2;
         }
+
+        text: String;
+        placeholder_text: String;
+        editable: bool;
+        context_menu_enabled: bool;
+        shortcut_keys_enabled: bool;
+        selecting_enabled: bool;
+        deselect_on_focus_loss_enabled: bool;
+        drag_and_drop_selection_enabled: bool;
+        virtual_keyboard_enabled: bool;
+        middle_mouse_paste_enabled: bool;
+        wrap_mode: int;
+        autowrap_mode: int;
+        indent_wrapped_lines: bool;
+        scroll_smooth: bool;
+        scroll_v_scroll_speed: float;
+        scroll_past_end_of_file: bool;
+        scroll_vertical: float;
+        scroll_horizontal: int;
+        scroll_fit_content_height: bool;
+        minimap_draw: bool;
+        minimap_width: int;
+        caret_type: int;
+        caret_blink: bool;
+        caret_blink_interval: float;
+        caret_draw_when_editable_disabled: bool;
+        caret_move_on_right_click: bool;
+        caret_mid_grapheme: bool;
+        caret_multiple: bool;
+        syntax_highlighter: SyntaxHighlighter;
+        highlight_all_occurrences: bool;
+        highlight_current_line: bool;
+        draw_control_chars: bool;
+        draw_tabs: bool;
+        draw_spaces: bool;
+        text_direction: int;
+        language: String;
+        structured_text_bidi_override: int;
+        structured_text_bidi_override_options: Array;
     }
 
-    TextLine :: struct {
+    TextLine :: struct {    // 688
+
+        #as using base: RefCounted;
+
+        direction: int;
+        orientation: int;
+        preserve_invalid: bool;
+        preserve_control: bool;
+        width: float;
+        alignment: int;
+        flags: int;
+        text_overrun_behavior: int;
+        ellipsis_char: String;
     }
 
-    TextMesh :: struct {
+    TextMesh :: struct {    // 689
+
+        #as using base: PrimitiveMesh;
+
+        text: String;
+        font: Font;
+        font_size: int;
+        horizontal_alignment: int;
+        vertical_alignment: int;
+        uppercase: bool;
+        line_spacing: float;
+        autowrap_mode: int;
+        justification_flags: int;
+        pixel_size: float;
+        curve_step: float;
+        depth: float;
+        width: float;
+        offset: Vector2;
+        text_direction: int;
+        language: String;
+        structured_text_bidi_override: int;
+        structured_text_bidi_override_options: Array;
     }
 
-    TextParagraph :: struct {
+    TextParagraph :: struct {    // 690
+
+        #as using base: RefCounted;
+
+        direction: int;
+        custom_punctuation: String;
+        orientation: int;
+        preserve_invalid: bool;
+        preserve_control: bool;
+        alignment: int;
+        break_flags: int;
+        justification_flags: int;
+        text_overrun_behavior: int;
+        ellipsis_char: String;
+        width: float;
+        max_lines_visible: int;
     }
 
-    TextServer :: struct {
+    TextServer :: struct {    // 691
+
+        #as using base: RefCounted;
 
         FontAntialiasing :: enum s32 {
             FONT_ANTIALIASING_NONE :: 0;
@@ -7428,40 +12579,68 @@ gdt :: struct {
         }
     }
 
-    TextServerAdvanced :: struct {
+    TextServerAdvanced :: struct {    // 692
+
+        #as using base: TextServerExtension;
     }
 
-    TextServerDummy :: struct {
+    TextServerDummy :: struct {    // 693
+
+        #as using base: TextServerExtension;
     }
 
-    TextServerExtension :: struct {
+    TextServerExtension :: struct {    // 694
+
+        #as using base: TextServer;
     }
 
-    TextServerManager :: struct {
+    TextServerManager :: struct {    // 695
+
+        #as using base: Object;
     }
 
-    Texture :: struct {
+    Texture :: struct {    // 696
+
+        #as using base: Resource;
     }
 
-    Texture2D :: struct {
+    Texture2D :: struct {    // 697
+
+        #as using base: Texture;
     }
 
-    Texture2DArray :: struct {
+    Texture2DArray :: struct {    // 698
+
+        #as using base: ImageTextureLayered;
     }
 
-    Texture2DArrayRD :: struct {
+    Texture2DArrayRD :: struct {    // 699
+
+        #as using base: TextureLayeredRD;
     }
 
-    Texture2DRD :: struct {
+    Texture2DRD :: struct {    // 700
+
+        #as using base: Texture2D;
+
+        texture_rd_rid: RID;
     }
 
-    Texture3D :: struct {
+    Texture3D :: struct {    // 701
+
+        #as using base: Texture;
     }
 
-    Texture3DRD :: struct {
+    Texture3DRD :: struct {    // 702
+
+        #as using base: Texture3D;
+
+        texture_rd_rid: RID;
     }
 
-    TextureButton :: struct {
+    TextureButton :: struct {    // 703
+
+        #as using base: BaseButton;
 
         StretchMode :: enum s32 {
             STRETCH_SCALE :: 0;
@@ -7472,15 +12651,32 @@ gdt :: struct {
             STRETCH_KEEP_ASPECT_CENTERED :: 5;
             STRETCH_KEEP_ASPECT_COVERED :: 6;
         }
+
+        texture_normal: Texture2D;
+        texture_pressed: Texture2D;
+        texture_hover: Texture2D;
+        texture_disabled: Texture2D;
+        texture_focused: Texture2D;
+        texture_click_mask: BitMap;
+        ignore_texture_size: bool;
+        stretch_mode: int;
+        flip_h: bool;
+        flip_v: bool;
     }
 
-    TextureCubemapArrayRD :: struct {
+    TextureCubemapArrayRD :: struct {    // 704
+
+        #as using base: TextureLayeredRD;
     }
 
-    TextureCubemapRD :: struct {
+    TextureCubemapRD :: struct {    // 705
+
+        #as using base: TextureLayeredRD;
     }
 
-    TextureLayered :: struct {
+    TextureLayered :: struct {    // 706
+
+        #as using base: Texture;
 
         LayeredType :: enum s32 {
             LAYERED_TYPE_2D_ARRAY :: 0;
@@ -7489,10 +12685,16 @@ gdt :: struct {
         }
     }
 
-    TextureLayeredRD :: struct {
+    TextureLayeredRD :: struct {    // 707
+
+        #as using base: TextureLayered;
+
+        texture_rd_rid: RID;
     }
 
-    TextureProgressBar :: struct {
+    TextureProgressBar :: struct {    // 708
+
+        #as using base: Range;
 
         FillMode :: enum s32 {
             FILL_LEFT_TO_RIGHT :: 0;
@@ -7505,9 +12707,28 @@ gdt :: struct {
             FILL_BILINEAR_TOP_AND_BOTTOM :: 7;
             FILL_CLOCKWISE_AND_COUNTER_CLOCKWISE :: 8;
         }
+
+        fill_mode: int;
+        radial_initial_angle: float;
+        radial_fill_degrees: float;
+        radial_center_offset: Vector2;
+        nine_patch_stretch: bool;
+        stretch_margin_left: int;
+        stretch_margin_top: int;
+        stretch_margin_right: int;
+        stretch_margin_bottom: int;
+        texture_under: Texture2D;
+        texture_over: Texture2D;
+        texture_progress: Texture2D;
+        texture_progress_offset: Vector2;
+        tint_under: Color;
+        tint_over: Color;
+        tint_progress: Color;
     }
 
-    TextureRect :: struct {
+    TextureRect :: struct {    // 709
+
+        #as using base: Control;
 
         ExpandMode :: enum s32 {
             EXPAND_KEEP_SIZE :: 0;
@@ -7527,9 +12748,17 @@ gdt :: struct {
             STRETCH_KEEP_ASPECT_CENTERED :: 5;
             STRETCH_KEEP_ASPECT_COVERED :: 6;
         }
+
+        texture: Texture2D;
+        expand_mode: int;
+        stretch_mode: int;
+        flip_h: bool;
+        flip_v: bool;
     }
 
-    Theme :: struct {
+    Theme :: struct {    // 710
+
+        #as using base: Resource;
 
         DataType :: enum s32 {
             DATA_TYPE_COLOR :: 0;
@@ -7540,12 +12769,26 @@ gdt :: struct {
             DATA_TYPE_STYLEBOX :: 5;
             DATA_TYPE_MAX :: 6;
         }
+
+        default_base_scale: float;
+        default_font: Font;
+        default_font_size: int;
     }
 
-    ThemeDB :: struct {
+    ThemeDB :: struct {    // 711
+
+        #as using base: Object;
+
+        fallback_base_scale: float;
+        fallback_font: Font;
+        fallback_font_size: int;
+        fallback_icon: Texture2D;
+        fallback_stylebox: StyleBox;
     }
 
-    Thread :: struct {
+    Thread :: struct {    // 712
+
+        #as using base: RefCounted;
 
         Priority :: enum s32 {
             PRIORITY_LOW :: 0;
@@ -7554,25 +12797,54 @@ gdt :: struct {
         }
     }
 
-    TileData :: struct {
+    TileData :: struct {    // 713
+
+        #as using base: Object;
+
+        flip_h: bool;
+        flip_v: bool;
+        transpose: bool;
+        texture_origin: Vector2i;
+        modulate: Color;
+        material: CanvasItemMaterial,ShaderMaterial;
+        z_index: int;
+        y_sort_origin: int;
+        terrain_set: int;
+        terrain: int;
+        probability: float;
     }
 
-    TileMap :: struct {
+    TileMap :: struct {    // 714
+
+        #as using base: TileMapLayerGroup;
 
         VisibilityMode :: enum s32 {
             VISIBILITY_MODE_DEFAULT :: 0;
             VISIBILITY_MODE_FORCE_HIDE :: 2;
             VISIBILITY_MODE_FORCE_SHOW :: 1;
         }
+
+        rendering_quadrant_size: int;
+        collision_animatable: bool;
+        collision_visibility_mode: int;
+        navigation_visibility_mode: int;
     }
 
-    TileMapLayerGroup :: struct {
+    TileMapLayerGroup :: struct {    // 715
+
+        #as using base: Node2D;
+
+        tile_set: TileSet;
     }
 
-    TileMapPattern :: struct {
+    TileMapPattern :: struct {    // 716
+
+        #as using base: Resource;
     }
 
-    TileSet :: struct {
+    TileSet :: struct {    // 717
+
+        #as using base: Resource;
 
         TileShape :: enum s32 {
             TILE_SHAPE_SQUARE :: 0;
@@ -7619,24 +12891,49 @@ gdt :: struct {
             TERRAIN_MODE_MATCH_CORNERS :: 1;
             TERRAIN_MODE_MATCH_SIDES :: 2;
         }
+
+        tile_shape: int;
+        tile_layout: int;
+        tile_offset_axis: int;
+        tile_size: Vector2i;
+        uv_clipping: bool;
     }
 
-    TileSetAtlasSource :: struct {
+    TileSetAtlasSource :: struct {    // 718
+
+        #as using base: TileSetSource;
+
+        TRANSFORM_FLIP_H :: 4096;
+        TRANSFORM_FLIP_V :: 8192;
+        TRANSFORM_TRANSPOSE :: 16384;
+
 
         TileAnimationMode :: enum s32 {
             TILE_ANIMATION_MODE_DEFAULT :: 0;
             TILE_ANIMATION_MODE_RANDOM_START_TIMES :: 1;
             TILE_ANIMATION_MODE_MAX :: 2;
         }
+
+        texture: Texture2D;
+        margins: Vector2i;
+        separation: Vector2i;
+        texture_region_size: Vector2i;
+        use_texture_padding: bool;
     }
 
-    TileSetScenesCollectionSource :: struct {
+    TileSetScenesCollectionSource :: struct {    // 719
+
+        #as using base: TileSetSource;
     }
 
-    TileSetSource :: struct {
+    TileSetSource :: struct {    // 720
+
+        #as using base: Resource;
     }
 
-    Time :: struct {
+    Time :: struct {    // 721
+
+        #as using base: Object;
 
         Month :: enum s32 {
             MONTH_JANUARY :: 1;
@@ -7664,32 +12961,71 @@ gdt :: struct {
         }
     }
 
-    Timer :: struct {
+    Timer :: struct {    // 722
+
+        #as using base: Node;
 
         TimerProcessCallback :: enum s32 {
             TIMER_PROCESS_PHYSICS :: 0;
             TIMER_PROCESS_IDLE :: 1;
         }
+
+        process_callback: int;
+        wait_time: float;
+        one_shot: bool;
+        autostart: bool;
+        paused: bool;
+        time_left: float;
     }
 
-    TorusMesh :: struct {
+    TorusMesh :: struct {    // 723
+
+        #as using base: PrimitiveMesh;
+
+        inner_radius: float;
+        outer_radius: float;
+        rings: int;
+        ring_segments: int;
     }
 
-    TouchScreenButton :: struct {
+    TouchScreenButton :: struct {    // 724
+
+        #as using base: Node2D;
 
         VisibilityMode :: enum s32 {
             VISIBILITY_ALWAYS :: 0;
             VISIBILITY_TOUCHSCREEN_ONLY :: 1;
         }
+
+        texture_normal: Texture2D;
+        texture_pressed: Texture2D;
+        bitmask: BitMap;
+        shape: Shape2D;
+        shape_centered: bool;
+        shape_visible: bool;
+        passby_press: bool;
+        action: StringName;
+        visibility_mode: int;
     }
 
-    Translation :: struct {
+    Translation :: struct {    // 725
+
+        #as using base: Resource;
+
+        messages: Dictionary;
+        locale: String;
     }
 
-    TranslationServer :: struct {
+    TranslationServer :: struct {    // 726
+
+        #as using base: Object;
+
+        pseudolocalization_enabled: bool;
     }
 
-    Tree :: struct {
+    Tree :: struct {    // 727
+
+        #as using base: Control;
 
         SelectMode :: enum s32 {
             SELECT_SINGLE :: 0;
@@ -7702,9 +13038,24 @@ gdt :: struct {
             DROP_MODE_ON_ITEM :: 1;
             DROP_MODE_INBETWEEN :: 2;
         }
+
+        columns: int;
+        column_titles_visible: bool;
+        allow_reselect: bool;
+        allow_rmb_select: bool;
+        allow_search: bool;
+        hide_folding: bool;
+        enable_recursive_folding: bool;
+        hide_root: bool;
+        drop_mode_flags: int;
+        select_mode: int;
+        scroll_horizontal_enabled: bool;
+        scroll_vertical_enabled: bool;
     }
 
-    TreeItem :: struct {
+    TreeItem :: struct {    // 728
+
+        #as using base: Object;
 
         TreeCellMode :: enum s32 {
             CELL_MODE_STRING :: 0;
@@ -7713,15 +13064,35 @@ gdt :: struct {
             CELL_MODE_ICON :: 3;
             CELL_MODE_CUSTOM :: 4;
         }
+
+        collapsed: bool;
+        visible: bool;
+        disable_folding: bool;
+        custom_minimum_height: int;
     }
 
-    TriangleMesh :: struct {
+    TriangleMesh :: struct {    // 729
+
+        #as using base: RefCounted;
     }
 
-    TubeTrailMesh :: struct {
+    TubeTrailMesh :: struct {    // 730
+
+        #as using base: PrimitiveMesh;
+
+        radius: float;
+        radial_steps: int;
+        sections: int;
+        section_length: float;
+        section_rings: int;
+        cap_top: bool;
+        cap_bottom: bool;
+        curve: Curve;
     }
 
-    Tween :: struct {
+    Tween :: struct {    // 731
+
+        #as using base: RefCounted;
 
         TweenProcessMode :: enum s32 {
             TWEEN_PROCESS_PHYSICS :: 0;
@@ -7757,13 +13128,21 @@ gdt :: struct {
         }
     }
 
-    Tweener :: struct {
+    Tweener :: struct {    // 732
+
+        #as using base: RefCounted;
     }
 
-    UDPServer :: struct {
+    UDPServer :: struct {    // 733
+
+        #as using base: RefCounted;
+
+        max_pending_connections: int;
     }
 
-    UPNP :: struct {
+    UPNP :: struct {    // 734
+
+        #as using base: RefCounted;
 
         UPNPResult :: enum s32 {
             UPNP_RESULT_SUCCESS :: 0;
@@ -7796,9 +13175,15 @@ gdt :: struct {
             UPNP_RESULT_NO_DEVICES :: 27;
             UPNP_RESULT_UNKNOWN_ERROR :: 28;
         }
+
+        discover_multicast_if: String;
+        discover_local_port: int;
+        discover_ipv6: bool;
     }
 
-    UPNPDevice :: struct {
+    UPNPDevice :: struct {    // 735
+
+        #as using base: RefCounted;
 
         IGDStatus :: enum s32 {
             IGD_STATUS_OK :: 0;
@@ -7812,57 +13197,129 @@ gdt :: struct {
             IGD_STATUS_MALLOC_ERROR :: 8;
             IGD_STATUS_UNKNOWN_ERROR :: 9;
         }
+
+        description_url: String;
+        service_type: String;
+        igd_control_url: String;
+        igd_service_type: String;
+        igd_our_addr: String;
+        igd_status: int;
     }
 
-    UndoRedo :: struct {
+    UndoRedo :: struct {    // 736
+
+        #as using base: Object;
 
         MergeMode :: enum s32 {
             MERGE_DISABLE :: 0;
             MERGE_ENDS :: 1;
             MERGE_ALL :: 2;
         }
+
+        max_steps: int;
     }
 
-    UniformSetCacheRD :: struct {
+    UniformSetCacheRD :: struct {    // 737
+
+        #as using base: Object;
     }
 
-    VBoxContainer :: struct {
+    VBoxContainer :: struct {    // 738
+
+        #as using base: BoxContainer;
     }
 
-    VFlowContainer :: struct {
+    VFlowContainer :: struct {    // 739
+
+        #as using base: FlowContainer;
     }
 
-    VScrollBar :: struct {
+    VScrollBar :: struct {    // 740
+
+        #as using base: ScrollBar;
     }
 
-    VSeparator :: struct {
+    VSeparator :: struct {    // 741
+
+        #as using base: Separator;
     }
 
-    VSlider :: struct {
+    VSlider :: struct {    // 742
+
+        #as using base: Slider;
     }
 
-    VSplitContainer :: struct {
+    VSplitContainer :: struct {    // 743
+
+        #as using base: SplitContainer;
     }
 
-    VehicleBody3D :: struct {
+    VehicleBody3D :: struct {    // 744
+
+        #as using base: RigidBody3D;
+
+        engine_force: float;
+        brake: float;
+        steering: float;
     }
 
-    VehicleWheel3D :: struct {
+    VehicleWheel3D :: struct {    // 745
+
+        #as using base: Node3D;
+
+        engine_force: float;
+        brake: float;
+        steering: float;
+        use_as_traction: bool;
+        use_as_steering: bool;
+        wheel_roll_influence: float;
+        wheel_radius: float;
+        wheel_rest_length: float;
+        wheel_friction_slip: float;
+        suspension_travel: float;
+        suspension_stiffness: float;
+        suspension_max_force: float;
+        damping_compression: float;
+        damping_relaxation: float;
     }
 
-    VideoStream :: struct {
+    VideoStream :: struct {    // 746
+
+        #as using base: Resource;
+
+        file: String;
     }
 
-    VideoStreamPlayback :: struct {
+    VideoStreamPlayback :: struct {    // 747
+
+        #as using base: Resource;
     }
 
-    VideoStreamPlayer :: struct {
+    VideoStreamPlayer :: struct {    // 748
+
+        #as using base: Control;
+
+        audio_track: int;
+        stream: VideoStream;
+        volume_db: float;
+        volume: float;
+        autoplay: bool;
+        paused: bool;
+        expand: bool;
+        loop: bool;
+        buffering_msec: int;
+        stream_position: float;
+        bus: StringName;
     }
 
-    VideoStreamTheora :: struct {
+    VideoStreamTheora :: struct {    // 749
+
+        #as using base: VideoStream;
     }
 
-    Viewport :: struct {
+    Viewport :: struct {    // 750
+
+        #as using base: Node;
 
         PositionalShadowAtlasQuadrantSubdiv :: enum s32 {
             SHADOW_ATLAS_QUADRANT_SUBDIV_DISABLED :: 0;
@@ -7975,39 +13432,119 @@ gdt :: struct {
             VRS_XR :: 2;
             VRS_MAX :: 3;
         }
+
+        disable_3d: bool;
+        use_xr: bool;
+        own_world_3d: bool;
+        world_3d: World3D;
+        world_2d: World2D;
+        transparent_bg: bool;
+        handle_input_locally: bool;
+        snap_2d_transforms_to_pixel: bool;
+        snap_2d_vertices_to_pixel: bool;
+        msaa_2d: int;
+        msaa_3d: int;
+        screen_space_aa: int;
+        use_taa: bool;
+        use_debanding: bool;
+        use_occlusion_culling: bool;
+        mesh_lod_threshold: float;
+        debug_draw: int;
+        use_hdr_2d: bool;
+        scaling_3d_mode: int;
+        scaling_3d_scale: float;
+        texture_mipmap_bias: float;
+        fsr_sharpness: float;
+        vrs_mode: int;
+        vrs_texture: Texture2D;
+        canvas_item_default_texture_filter: int;
+        canvas_item_default_texture_repeat: int;
+        audio_listener_enable_2d: bool;
+        audio_listener_enable_3d: bool;
+        physics_object_picking: bool;
+        physics_object_picking_sort: bool;
+        physics_object_picking_first_only: bool;
+        gui_disable_input: bool;
+        gui_snap_controls_to_pixels: bool;
+        gui_embed_subwindows: bool;
+        sdf_oversize: int;
+        sdf_scale: int;
+        positional_shadow_atlas_size: int;
+        positional_shadow_atlas_16_bits: bool;
+        positional_shadow_atlas_quad_0: int;
+        positional_shadow_atlas_quad_1: int;
+        positional_shadow_atlas_quad_2: int;
+        positional_shadow_atlas_quad_3: int;
+        canvas_transform: Transform2D;
+        global_canvas_transform: Transform2D;
+        canvas_cull_mask: int;
     }
 
-    ViewportTexture :: struct {
+    ViewportTexture :: struct {    // 751
+
+        #as using base: Texture2D;
+
+        viewport_path: NodePath;
     }
 
-    VisibleOnScreenEnabler2D :: struct {
+    VisibleOnScreenEnabler2D :: struct {    // 752
+
+        #as using base: VisibleOnScreenNotifier2D;
 
         EnableMode :: enum s32 {
             ENABLE_MODE_INHERIT :: 0;
             ENABLE_MODE_ALWAYS :: 1;
             ENABLE_MODE_WHEN_PAUSED :: 2;
         }
+
+        enable_mode: int;
+        enable_node_path: NodePath;
     }
 
-    VisibleOnScreenEnabler3D :: struct {
+    VisibleOnScreenEnabler3D :: struct {    // 753
+
+        #as using base: VisibleOnScreenNotifier3D;
 
         EnableMode :: enum s32 {
             ENABLE_MODE_INHERIT :: 0;
             ENABLE_MODE_ALWAYS :: 1;
             ENABLE_MODE_WHEN_PAUSED :: 2;
         }
+
+        enable_mode: int;
+        enable_node_path: NodePath;
     }
 
-    VisibleOnScreenNotifier2D :: struct {
+    VisibleOnScreenNotifier2D :: struct {    // 754
+
+        #as using base: Node2D;
+
+        rect: Rect2;
     }
 
-    VisibleOnScreenNotifier3D :: struct {
+    VisibleOnScreenNotifier3D :: struct {    // 755
+
+        #as using base: VisualInstance3D;
+
+        aabb: AABB;
     }
 
-    VisualInstance3D :: struct {
+    VisualInstance3D :: struct {    // 756
+
+        #as using base: Node3D;
+
+        layers: int;
+        sorting_offset: float;
+        sorting_use_aabb_center: bool;
     }
 
-    VisualShader :: struct {
+    VisualShader :: struct {    // 757
+
+        #as using base: Shader;
+
+        NODE_ID_INVALID :: -1;
+        NODE_ID_OUTPUT :: 0;
+
 
         Type :: enum s32 {
             TYPE_VERTEX :: 0;
@@ -8040,9 +13577,13 @@ gdt :: struct {
             VARYING_TYPE_TRANSFORM :: 7;
             VARYING_TYPE_MAX :: 8;
         }
+
+        graph_offset: Vector2;
     }
 
-    VisualShaderNode :: struct {
+    VisualShaderNode :: struct {    // 758
+
+        #as using base: Resource;
 
         PortType :: enum s32 {
             PORT_TYPE_SCALAR :: 0;
@@ -8056,9 +13597,15 @@ gdt :: struct {
             PORT_TYPE_SAMPLER :: 8;
             PORT_TYPE_MAX :: 9;
         }
+
+        output_port_for_preview: int;
+        default_input_values: Array;
+        expanded_output_ports: Array;
     }
 
-    VisualShaderNodeBillboard :: struct {
+    VisualShaderNodeBillboard :: struct {    // 759
+
+        #as using base: VisualShaderNode;
 
         BillboardType :: enum s32 {
             BILLBOARD_TYPE_DISABLED :: 0;
@@ -8067,15 +13614,29 @@ gdt :: struct {
             BILLBOARD_TYPE_PARTICLES :: 3;
             BILLBOARD_TYPE_MAX :: 4;
         }
+
+        billboard_type: int;
+        keep_scale: bool;
     }
 
-    VisualShaderNodeBooleanConstant :: struct {
+    VisualShaderNodeBooleanConstant :: struct {    // 760
+
+        #as using base: VisualShaderNodeConstant;
+
+        constant: bool;
     }
 
-    VisualShaderNodeBooleanParameter :: struct {
+    VisualShaderNodeBooleanParameter :: struct {    // 761
+
+        #as using base: VisualShaderNodeParameter;
+
+        default_value_enabled: bool;
+        default_value: bool;
     }
 
-    VisualShaderNodeClamp :: struct {
+    VisualShaderNodeClamp :: struct {    // 762
+
+        #as using base: VisualShaderNode;
 
         OpType :: enum s32 {
             OP_TYPE_FLOAT :: 0;
@@ -8086,12 +13647,20 @@ gdt :: struct {
             OP_TYPE_VECTOR_4D :: 5;
             OP_TYPE_MAX :: 6;
         }
+
+        op_type: int;
     }
 
-    VisualShaderNodeColorConstant :: struct {
+    VisualShaderNodeColorConstant :: struct {    // 763
+
+        #as using base: VisualShaderNodeConstant;
+
+        constant: Color;
     }
 
-    VisualShaderNodeColorFunc :: struct {
+    VisualShaderNodeColorFunc :: struct {    // 764
+
+        #as using base: VisualShaderNode;
 
         Function :: enum s32 {
             FUNC_GRAYSCALE :: 0;
@@ -8100,9 +13669,13 @@ gdt :: struct {
             FUNC_SEPIA :: 3;
             FUNC_MAX :: 4;
         }
+
+        function: int;
     }
 
-    VisualShaderNodeColorOp :: struct {
+    VisualShaderNodeColorOp :: struct {    // 765
+
+        #as using base: VisualShaderNode;
 
         Operator :: enum s32 {
             OP_SCREEN :: 0;
@@ -8116,15 +13689,29 @@ gdt :: struct {
             OP_HARD_LIGHT :: 8;
             OP_MAX :: 9;
         }
+
+        operator: int;
     }
 
-    VisualShaderNodeColorParameter :: struct {
+    VisualShaderNodeColorParameter :: struct {    // 766
+
+        #as using base: VisualShaderNodeParameter;
+
+        default_value_enabled: bool;
+        default_value: Color;
     }
 
-    VisualShaderNodeComment :: struct {
+    VisualShaderNodeComment :: struct {    // 767
+
+        #as using base: VisualShaderNodeResizableBase;
+
+        title: String;
+        description: String;
     }
 
-    VisualShaderNodeCompare :: struct {
+    VisualShaderNodeCompare :: struct {    // 768
+
+        #as using base: VisualShaderNode;
 
         ComparisonType :: enum s32 {
             CTYPE_SCALAR :: 0;
@@ -8153,12 +13740,20 @@ gdt :: struct {
             COND_ANY :: 1;
             COND_MAX :: 2;
         }
+
+        type: int;
+        function: int;
+        condition: int;
     }
 
-    VisualShaderNodeConstant :: struct {
+    VisualShaderNodeConstant :: struct {    // 769
+
+        #as using base: VisualShaderNode;
     }
 
-    VisualShaderNodeCubemap :: struct {
+    VisualShaderNodeCubemap :: struct {    // 770
+
+        #as using base: VisualShaderNode;
 
         Source :: enum s32 {
             SOURCE_TEXTURE :: 0;
@@ -8172,21 +13767,42 @@ gdt :: struct {
             TYPE_NORMAL_MAP :: 2;
             TYPE_MAX :: 3;
         }
+
+        source: int;
+        cube_map: Cubemap;
+        texture_type: int;
     }
 
-    VisualShaderNodeCubemapParameter :: struct {
+    VisualShaderNodeCubemapParameter :: struct {    // 771
+
+        #as using base: VisualShaderNodeTextureParameter;
     }
 
-    VisualShaderNodeCurveTexture :: struct {
+    VisualShaderNodeCurveTexture :: struct {    // 772
+
+        #as using base: VisualShaderNodeResizableBase;
+
+        texture: CurveTexture;
     }
 
-    VisualShaderNodeCurveXYZTexture :: struct {
+    VisualShaderNodeCurveXYZTexture :: struct {    // 773
+
+        #as using base: VisualShaderNodeResizableBase;
+
+        texture: CurveXYZTexture;
     }
 
-    VisualShaderNodeCustom :: struct {
+    VisualShaderNodeCustom :: struct {    // 774
+
+        #as using base: VisualShaderNode;
+
+        initialized: bool;
+        properties: String;
     }
 
-    VisualShaderNodeDerivativeFunc :: struct {
+    VisualShaderNodeDerivativeFunc :: struct {    // 775
+
+        #as using base: VisualShaderNode;
 
         OpType :: enum s32 {
             OP_TYPE_SCALAR :: 0;
@@ -8209,27 +13825,49 @@ gdt :: struct {
             PRECISION_FINE :: 2;
             PRECISION_MAX :: 3;
         }
+
+        op_type: int;
+        function: int;
+        precision: int;
     }
 
-    VisualShaderNodeDeterminant :: struct {
+    VisualShaderNodeDeterminant :: struct {    // 776
+
+        #as using base: VisualShaderNode;
     }
 
-    VisualShaderNodeDistanceFade :: struct {
+    VisualShaderNodeDistanceFade :: struct {    // 777
+
+        #as using base: VisualShaderNode;
     }
 
-    VisualShaderNodeDotProduct :: struct {
+    VisualShaderNodeDotProduct :: struct {    // 778
+
+        #as using base: VisualShaderNode;
     }
 
-    VisualShaderNodeExpression :: struct {
+    VisualShaderNodeExpression :: struct {    // 779
+
+        #as using base: VisualShaderNodeGroupBase;
+
+        expression: String;
     }
 
-    VisualShaderNodeFaceForward :: struct {
+    VisualShaderNodeFaceForward :: struct {    // 780
+
+        #as using base: VisualShaderNodeVectorBase;
     }
 
-    VisualShaderNodeFloatConstant :: struct {
+    VisualShaderNodeFloatConstant :: struct {    // 781
+
+        #as using base: VisualShaderNodeConstant;
+
+        constant: float;
     }
 
-    VisualShaderNodeFloatFunc :: struct {
+    VisualShaderNodeFloatFunc :: struct {    // 782
+
+        #as using base: VisualShaderNode;
 
         Function :: enum s32 {
             FUNC_SIN :: 0;
@@ -8266,9 +13904,13 @@ gdt :: struct {
             FUNC_ONEMINUS :: 31;
             FUNC_MAX :: 32;
         }
+
+        function: int;
     }
 
-    VisualShaderNodeFloatOp :: struct {
+    VisualShaderNodeFloatOp :: struct {    // 783
+
+        #as using base: VisualShaderNode;
 
         Operator :: enum s32 {
             OP_ADD :: 0;
@@ -8283,9 +13925,13 @@ gdt :: struct {
             OP_STEP :: 9;
             OP_ENUM_SIZE :: 10;
         }
+
+        operator: int;
     }
 
-    VisualShaderNodeFloatParameter :: struct {
+    VisualShaderNodeFloatParameter :: struct {    // 784
+
+        #as using base: VisualShaderNodeParameter;
 
         Hint :: enum s32 {
             HINT_NONE :: 0;
@@ -8293,27 +13939,52 @@ gdt :: struct {
             HINT_RANGE_STEP :: 2;
             HINT_MAX :: 3;
         }
+
+        hint: int;
+        min: float;
+        max: float;
+        step: float;
+        default_value_enabled: bool;
+        default_value: float;
     }
 
-    VisualShaderNodeFresnel :: struct {
+    VisualShaderNodeFresnel :: struct {    // 785
+
+        #as using base: VisualShaderNode;
     }
 
-    VisualShaderNodeGlobalExpression :: struct {
+    VisualShaderNodeGlobalExpression :: struct {    // 786
+
+        #as using base: VisualShaderNodeExpression;
     }
 
-    VisualShaderNodeGroupBase :: struct {
+    VisualShaderNodeGroupBase :: struct {    // 787
+
+        #as using base: VisualShaderNodeResizableBase;
     }
 
-    VisualShaderNodeIf :: struct {
+    VisualShaderNodeIf :: struct {    // 788
+
+        #as using base: VisualShaderNode;
     }
 
-    VisualShaderNodeInput :: struct {
+    VisualShaderNodeInput :: struct {    // 789
+
+        #as using base: VisualShaderNode;
+
+        input_name: StringName;
     }
 
-    VisualShaderNodeIntConstant :: struct {
+    VisualShaderNodeIntConstant :: struct {    // 790
+
+        #as using base: VisualShaderNodeConstant;
+
+        constant: int;
     }
 
-    VisualShaderNodeIntFunc :: struct {
+    VisualShaderNodeIntFunc :: struct {    // 791
+
+        #as using base: VisualShaderNode;
 
         Function :: enum s32 {
             FUNC_ABS :: 0;
@@ -8322,9 +13993,13 @@ gdt :: struct {
             FUNC_BITWISE_NOT :: 3;
             FUNC_MAX :: 4;
         }
+
+        function: int;
     }
 
-    VisualShaderNodeIntOp :: struct {
+    VisualShaderNodeIntOp :: struct {    // 792
+
+        #as using base: VisualShaderNode;
 
         Operator :: enum s32 {
             OP_ADD :: 0;
@@ -8341,9 +14016,13 @@ gdt :: struct {
             OP_BITWISE_RIGHT_SHIFT :: 11;
             OP_ENUM_SIZE :: 12;
         }
+
+        operator: int;
     }
 
-    VisualShaderNodeIntParameter :: struct {
+    VisualShaderNodeIntParameter :: struct {    // 793
+
+        #as using base: VisualShaderNodeParameter;
 
         Hint :: enum s32 {
             HINT_NONE :: 0;
@@ -8351,21 +14030,36 @@ gdt :: struct {
             HINT_RANGE_STEP :: 2;
             HINT_MAX :: 3;
         }
+
+        hint: int;
+        min: int;
+        max: int;
+        step: int;
+        default_value_enabled: bool;
+        default_value: int;
     }
 
-    VisualShaderNodeIs :: struct {
+    VisualShaderNodeIs :: struct {    // 794
+
+        #as using base: VisualShaderNode;
 
         Function :: enum s32 {
             FUNC_IS_INF :: 0;
             FUNC_IS_NAN :: 1;
             FUNC_MAX :: 2;
         }
+
+        function: int;
     }
 
-    VisualShaderNodeLinearSceneDepth :: struct {
+    VisualShaderNodeLinearSceneDepth :: struct {    // 795
+
+        #as using base: VisualShaderNode;
     }
 
-    VisualShaderNodeMix :: struct {
+    VisualShaderNodeMix :: struct {    // 796
+
+        #as using base: VisualShaderNode;
 
         OpType :: enum s32 {
             OP_TYPE_SCALAR :: 0;
@@ -8377,9 +14071,13 @@ gdt :: struct {
             OP_TYPE_VECTOR_4D_SCALAR :: 6;
             OP_TYPE_MAX :: 7;
         }
+
+        op_type: int;
     }
 
-    VisualShaderNodeMultiplyAdd :: struct {
+    VisualShaderNodeMultiplyAdd :: struct {    // 797
+
+        #as using base: VisualShaderNode;
 
         OpType :: enum s32 {
             OP_TYPE_SCALAR :: 0;
@@ -8388,15 +14086,23 @@ gdt :: struct {
             OP_TYPE_VECTOR_4D :: 3;
             OP_TYPE_MAX :: 4;
         }
+
+        op_type: int;
     }
 
-    VisualShaderNodeOuterProduct :: struct {
+    VisualShaderNodeOuterProduct :: struct {    // 798
+
+        #as using base: VisualShaderNode;
     }
 
-    VisualShaderNodeOutput :: struct {
+    VisualShaderNodeOutput :: struct {    // 799
+
+        #as using base: VisualShaderNode;
     }
 
-    VisualShaderNodeParameter :: struct {
+    VisualShaderNodeParameter :: struct {    // 800
+
+        #as using base: VisualShaderNode;
 
         Qualifier :: enum s32 {
             QUAL_NONE :: 0;
@@ -8404,12 +14110,22 @@ gdt :: struct {
             QUAL_INSTANCE :: 2;
             QUAL_MAX :: 3;
         }
+
+        parameter_name: StringName;
+        qualifier: int;
     }
 
-    VisualShaderNodeParameterRef :: struct {
+    VisualShaderNodeParameterRef :: struct {    // 801
+
+        #as using base: VisualShaderNode;
+
+        parameter_name: StringName;
+        param_type: int;
     }
 
-    VisualShaderNodeParticleAccelerator :: struct {
+    VisualShaderNodeParticleAccelerator :: struct {    // 802
+
+        #as using base: VisualShaderNode;
 
         Mode :: enum s32 {
             MODE_LINEAR :: 0;
@@ -8417,15 +14133,23 @@ gdt :: struct {
             MODE_TANGENTIAL :: 2;
             MODE_MAX :: 3;
         }
+
+        mode: int;
     }
 
-    VisualShaderNodeParticleBoxEmitter :: struct {
+    VisualShaderNodeParticleBoxEmitter :: struct {    // 803
+
+        #as using base: VisualShaderNodeParticleEmitter;
     }
 
-    VisualShaderNodeParticleConeVelocity :: struct {
+    VisualShaderNodeParticleConeVelocity :: struct {    // 804
+
+        #as using base: VisualShaderNode;
     }
 
-    VisualShaderNodeParticleEmit :: struct {
+    VisualShaderNodeParticleEmit :: struct {    // 805
+
+        #as using base: VisualShaderNode;
 
         EmitFlags :: enum s32 {
             EMIT_FLAG_POSITION :: 1;
@@ -8434,21 +14158,41 @@ gdt :: struct {
             EMIT_FLAG_COLOR :: 8;
             EMIT_FLAG_CUSTOM :: 16;
         }
+
+        flags: int;
     }
 
-    VisualShaderNodeParticleEmitter :: struct {
+    VisualShaderNodeParticleEmitter :: struct {    // 806
+
+        #as using base: VisualShaderNode;
+
+        mode_2d: bool;
     }
 
-    VisualShaderNodeParticleMeshEmitter :: struct {
+    VisualShaderNodeParticleMeshEmitter :: struct {    // 807
+
+        #as using base: VisualShaderNodeParticleEmitter;
+
+        mesh: Mesh;
+        use_all_surfaces: bool;
+        surface_index: int;
     }
 
-    VisualShaderNodeParticleMultiplyByAxisAngle :: struct {
+    VisualShaderNodeParticleMultiplyByAxisAngle :: struct {    // 808
+
+        #as using base: VisualShaderNode;
+
+        degrees_mode: bool;
     }
 
-    VisualShaderNodeParticleOutput :: struct {
+    VisualShaderNodeParticleOutput :: struct {    // 809
+
+        #as using base: VisualShaderNodeOutput;
     }
 
-    VisualShaderNodeParticleRandomness :: struct {
+    VisualShaderNodeParticleRandomness :: struct {    // 810
+
+        #as using base: VisualShaderNode;
 
         OpType :: enum s32 {
             OP_TYPE_SCALAR :: 0;
@@ -8457,51 +14201,83 @@ gdt :: struct {
             OP_TYPE_VECTOR_4D :: 3;
             OP_TYPE_MAX :: 4;
         }
+
+        op_type: int;
     }
 
-    VisualShaderNodeParticleRingEmitter :: struct {
+    VisualShaderNodeParticleRingEmitter :: struct {    // 811
+
+        #as using base: VisualShaderNodeParticleEmitter;
     }
 
-    VisualShaderNodeParticleSphereEmitter :: struct {
+    VisualShaderNodeParticleSphereEmitter :: struct {    // 812
+
+        #as using base: VisualShaderNodeParticleEmitter;
     }
 
-    VisualShaderNodeProximityFade :: struct {
+    VisualShaderNodeProximityFade :: struct {    // 813
+
+        #as using base: VisualShaderNode;
     }
 
-    VisualShaderNodeRandomRange :: struct {
+    VisualShaderNodeRandomRange :: struct {    // 814
+
+        #as using base: VisualShaderNode;
     }
 
-    VisualShaderNodeRemap :: struct {
+    VisualShaderNodeRemap :: struct {    // 815
+
+        #as using base: VisualShaderNode;
     }
 
-    VisualShaderNodeResizableBase :: struct {
+    VisualShaderNodeResizableBase :: struct {    // 816
+
+        #as using base: VisualShaderNode;
+
+        size: Vector2;
     }
 
-    VisualShaderNodeRotationByAxis :: struct {
+    VisualShaderNodeRotationByAxis :: struct {    // 817
+
+        #as using base: VisualShaderNode;
     }
 
-    VisualShaderNodeSDFRaymarch :: struct {
+    VisualShaderNodeSDFRaymarch :: struct {    // 818
+
+        #as using base: VisualShaderNode;
     }
 
-    VisualShaderNodeSDFToScreenUV :: struct {
+    VisualShaderNodeSDFToScreenUV :: struct {    // 819
+
+        #as using base: VisualShaderNode;
     }
 
-    VisualShaderNodeSample3D :: struct {
+    VisualShaderNodeSample3D :: struct {    // 820
+
+        #as using base: VisualShaderNode;
 
         Source :: enum s32 {
             SOURCE_TEXTURE :: 0;
             SOURCE_PORT :: 1;
             SOURCE_MAX :: 2;
         }
+
+        source: int;
     }
 
-    VisualShaderNodeScreenNormalWorldSpace :: struct {
+    VisualShaderNodeScreenNormalWorldSpace :: struct {    // 821
+
+        #as using base: VisualShaderNode;
     }
 
-    VisualShaderNodeScreenUVToSDF :: struct {
+    VisualShaderNodeScreenUVToSDF :: struct {    // 822
+
+        #as using base: VisualShaderNode;
     }
 
-    VisualShaderNodeSmoothStep :: struct {
+    VisualShaderNodeSmoothStep :: struct {    // 823
+
+        #as using base: VisualShaderNode;
 
         OpType :: enum s32 {
             OP_TYPE_SCALAR :: 0;
@@ -8513,9 +14289,13 @@ gdt :: struct {
             OP_TYPE_VECTOR_4D_SCALAR :: 6;
             OP_TYPE_MAX :: 7;
         }
+
+        op_type: int;
     }
 
-    VisualShaderNodeStep :: struct {
+    VisualShaderNodeStep :: struct {    // 824
+
+        #as using base: VisualShaderNode;
 
         OpType :: enum s32 {
             OP_TYPE_SCALAR :: 0;
@@ -8527,9 +14307,13 @@ gdt :: struct {
             OP_TYPE_VECTOR_4D_SCALAR :: 6;
             OP_TYPE_MAX :: 7;
         }
+
+        op_type: int;
     }
 
-    VisualShaderNodeSwitch :: struct {
+    VisualShaderNodeSwitch :: struct {    // 825
+
+        #as using base: VisualShaderNode;
 
         OpType :: enum s32 {
             OP_TYPE_FLOAT :: 0;
@@ -8542,9 +14326,13 @@ gdt :: struct {
             OP_TYPE_TRANSFORM :: 7;
             OP_TYPE_MAX :: 8;
         }
+
+        op_type: int;
     }
 
-    VisualShaderNodeTexture :: struct {
+    VisualShaderNodeTexture :: struct {    // 826
+
+        #as using base: VisualShaderNode;
 
         Source :: enum s32 {
             SOURCE_TEXTURE :: 0;
@@ -8564,24 +14352,44 @@ gdt :: struct {
             TYPE_NORMAL_MAP :: 2;
             TYPE_MAX :: 3;
         }
+
+        source: int;
+        texture: Texture2D;
+        texture_type: int;
     }
 
-    VisualShaderNodeTexture2DArray :: struct {
+    VisualShaderNodeTexture2DArray :: struct {    // 827
+
+        #as using base: VisualShaderNodeSample3D;
+
+        texture_array: Texture2DArray;
     }
 
-    VisualShaderNodeTexture2DArrayParameter :: struct {
+    VisualShaderNodeTexture2DArrayParameter :: struct {    // 828
+
+        #as using base: VisualShaderNodeTextureParameter;
     }
 
-    VisualShaderNodeTexture2DParameter :: struct {
+    VisualShaderNodeTexture2DParameter :: struct {    // 829
+
+        #as using base: VisualShaderNodeTextureParameter;
     }
 
-    VisualShaderNodeTexture3D :: struct {
+    VisualShaderNodeTexture3D :: struct {    // 830
+
+        #as using base: VisualShaderNodeSample3D;
+
+        texture: Texture3D;
     }
 
-    VisualShaderNodeTexture3DParameter :: struct {
+    VisualShaderNodeTexture3DParameter :: struct {    // 831
+
+        #as using base: VisualShaderNodeTextureParameter;
     }
 
-    VisualShaderNodeTextureParameter :: struct {
+    VisualShaderNodeTextureParameter :: struct {    // 832
+
+        #as using base: VisualShaderNodeParameter;
 
         TextureType :: enum s32 {
             TYPE_DATA :: 0;
@@ -8623,36 +14431,62 @@ gdt :: struct {
             SOURCE_NORMAL_ROUGHNESS :: 3;
             SOURCE_MAX :: 4;
         }
+
+        texture_type: int;
+        color_default: int;
+        texture_filter: int;
+        texture_repeat: int;
+        texture_source: int;
     }
 
-    VisualShaderNodeTextureParameterTriplanar :: struct {
+    VisualShaderNodeTextureParameterTriplanar :: struct {    // 833
+
+        #as using base: VisualShaderNodeTextureParameter;
     }
 
-    VisualShaderNodeTextureSDF :: struct {
+    VisualShaderNodeTextureSDF :: struct {    // 834
+
+        #as using base: VisualShaderNode;
     }
 
-    VisualShaderNodeTextureSDFNormal :: struct {
+    VisualShaderNodeTextureSDFNormal :: struct {    // 835
+
+        #as using base: VisualShaderNode;
     }
 
-    VisualShaderNodeTransformCompose :: struct {
+    VisualShaderNodeTransformCompose :: struct {    // 836
+
+        #as using base: VisualShaderNode;
     }
 
-    VisualShaderNodeTransformConstant :: struct {
+    VisualShaderNodeTransformConstant :: struct {    // 837
+
+        #as using base: VisualShaderNodeConstant;
+
+        constant: Transform3D;
     }
 
-    VisualShaderNodeTransformDecompose :: struct {
+    VisualShaderNodeTransformDecompose :: struct {    // 838
+
+        #as using base: VisualShaderNode;
     }
 
-    VisualShaderNodeTransformFunc :: struct {
+    VisualShaderNodeTransformFunc :: struct {    // 839
+
+        #as using base: VisualShaderNode;
 
         Function :: enum s32 {
             FUNC_INVERSE :: 0;
             FUNC_TRANSPOSE :: 1;
             FUNC_MAX :: 2;
         }
+
+        function: int;
     }
 
-    VisualShaderNodeTransformOp :: struct {
+    VisualShaderNodeTransformOp :: struct {    // 840
+
+        #as using base: VisualShaderNode;
 
         Operator :: enum s32 {
             OP_AxB :: 0;
@@ -8666,12 +14500,21 @@ gdt :: struct {
             OP_B_DIV_A :: 8;
             OP_MAX :: 9;
         }
+
+        operator: int;
     }
 
-    VisualShaderNodeTransformParameter :: struct {
+    VisualShaderNodeTransformParameter :: struct {    // 841
+
+        #as using base: VisualShaderNodeParameter;
+
+        default_value_enabled: bool;
+        default_value: Transform3D;
     }
 
-    VisualShaderNodeTransformVecMult :: struct {
+    VisualShaderNodeTransformVecMult :: struct {    // 842
+
+        #as using base: VisualShaderNode;
 
         Operator :: enum s32 {
             OP_AxB :: 0;
@@ -8680,21 +14523,33 @@ gdt :: struct {
             OP_3x3_BxA :: 3;
             OP_MAX :: 4;
         }
+
+        operator: int;
     }
 
-    VisualShaderNodeUIntConstant :: struct {
+    VisualShaderNodeUIntConstant :: struct {    // 843
+
+        #as using base: VisualShaderNodeConstant;
+
+        constant: int;
     }
 
-    VisualShaderNodeUIntFunc :: struct {
+    VisualShaderNodeUIntFunc :: struct {    // 844
+
+        #as using base: VisualShaderNode;
 
         Function :: enum s32 {
             FUNC_NEGATE :: 0;
             FUNC_BITWISE_NOT :: 1;
             FUNC_MAX :: 2;
         }
+
+        function: int;
     }
 
-    VisualShaderNodeUIntOp :: struct {
+    VisualShaderNodeUIntOp :: struct {    // 845
+
+        #as using base: VisualShaderNode;
 
         Operator :: enum s32 {
             OP_ADD :: 0;
@@ -8711,51 +14566,102 @@ gdt :: struct {
             OP_BITWISE_RIGHT_SHIFT :: 11;
             OP_ENUM_SIZE :: 12;
         }
+
+        operator: int;
     }
 
-    VisualShaderNodeUIntParameter :: struct {
+    VisualShaderNodeUIntParameter :: struct {    // 846
+
+        #as using base: VisualShaderNodeParameter;
+
+        default_value_enabled: bool;
+        default_value: int;
     }
 
-    VisualShaderNodeUVFunc :: struct {
+    VisualShaderNodeUVFunc :: struct {    // 847
+
+        #as using base: VisualShaderNode;
 
         Function :: enum s32 {
             FUNC_PANNING :: 0;
             FUNC_SCALING :: 1;
             FUNC_MAX :: 2;
         }
+
+        function: int;
     }
 
-    VisualShaderNodeUVPolarCoord :: struct {
+    VisualShaderNodeUVPolarCoord :: struct {    // 848
+
+        #as using base: VisualShaderNode;
     }
 
-    VisualShaderNodeVarying :: struct {
+    VisualShaderNodeVarying :: struct {    // 849
+
+        #as using base: VisualShaderNode;
+
+        varying_name: StringName;
+        varying_type: int;
     }
 
-    VisualShaderNodeVaryingGetter :: struct {
+    VisualShaderNodeVaryingGetter :: struct {    // 850
+
+        #as using base: VisualShaderNodeVarying;
     }
 
-    VisualShaderNodeVaryingSetter :: struct {
+    VisualShaderNodeVaryingSetter :: struct {    // 851
+
+        #as using base: VisualShaderNodeVarying;
     }
 
-    VisualShaderNodeVec2Constant :: struct {
+    VisualShaderNodeVec2Constant :: struct {    // 852
+
+        #as using base: VisualShaderNodeConstant;
+
+        constant: Vector2;
     }
 
-    VisualShaderNodeVec2Parameter :: struct {
+    VisualShaderNodeVec2Parameter :: struct {    // 853
+
+        #as using base: VisualShaderNodeParameter;
+
+        default_value_enabled: bool;
+        default_value: Vector2;
     }
 
-    VisualShaderNodeVec3Constant :: struct {
+    VisualShaderNodeVec3Constant :: struct {    // 854
+
+        #as using base: VisualShaderNodeConstant;
+
+        constant: Vector3;
     }
 
-    VisualShaderNodeVec3Parameter :: struct {
+    VisualShaderNodeVec3Parameter :: struct {    // 855
+
+        #as using base: VisualShaderNodeParameter;
+
+        default_value_enabled: bool;
+        default_value: Vector3;
     }
 
-    VisualShaderNodeVec4Constant :: struct {
+    VisualShaderNodeVec4Constant :: struct {    // 856
+
+        #as using base: VisualShaderNodeConstant;
+
+        constant: Quaternion;
     }
 
-    VisualShaderNodeVec4Parameter :: struct {
+    VisualShaderNodeVec4Parameter :: struct {    // 857
+
+        #as using base: VisualShaderNodeParameter;
+
+        default_value_enabled: bool;
+        default_value: Vector4;
     }
 
-    VisualShaderNodeVectorBase :: struct {
+    VisualShaderNodeVectorBase :: struct {    // 858
+
+        #as using base: VisualShaderNode;
 
         OpType :: enum s32 {
             OP_TYPE_VECTOR_2D :: 0;
@@ -8763,18 +14669,28 @@ gdt :: struct {
             OP_TYPE_VECTOR_4D :: 2;
             OP_TYPE_MAX :: 3;
         }
+
+        op_type: int;
     }
 
-    VisualShaderNodeVectorCompose :: struct {
+    VisualShaderNodeVectorCompose :: struct {    // 859
+
+        #as using base: VisualShaderNodeVectorBase;
     }
 
-    VisualShaderNodeVectorDecompose :: struct {
+    VisualShaderNodeVectorDecompose :: struct {    // 860
+
+        #as using base: VisualShaderNodeVectorBase;
     }
 
-    VisualShaderNodeVectorDistance :: struct {
+    VisualShaderNodeVectorDistance :: struct {    // 861
+
+        #as using base: VisualShaderNodeVectorBase;
     }
 
-    VisualShaderNodeVectorFunc :: struct {
+    VisualShaderNodeVectorFunc :: struct {    // 862
+
+        #as using base: VisualShaderNodeVectorBase;
 
         Function :: enum s32 {
             FUNC_NORMALIZE :: 0;
@@ -8812,12 +14728,18 @@ gdt :: struct {
             FUNC_ONEMINUS :: 32;
             FUNC_MAX :: 33;
         }
+
+        function: int;
     }
 
-    VisualShaderNodeVectorLen :: struct {
+    VisualShaderNodeVectorLen :: struct {    // 863
+
+        #as using base: VisualShaderNodeVectorBase;
     }
 
-    VisualShaderNodeVectorOp :: struct {
+    VisualShaderNodeVectorOp :: struct {    // 864
+
+        #as using base: VisualShaderNodeVectorBase;
 
         Operator :: enum s32 {
             OP_ADD :: 0;
@@ -8834,15 +14756,23 @@ gdt :: struct {
             OP_STEP :: 11;
             OP_ENUM_SIZE :: 12;
         }
+
+        operator: int;
     }
 
-    VisualShaderNodeVectorRefract :: struct {
+    VisualShaderNodeVectorRefract :: struct {    // 865
+
+        #as using base: VisualShaderNodeVectorBase;
     }
 
-    VisualShaderNodeWorldPositionFromDepth :: struct {
+    VisualShaderNodeWorldPositionFromDepth :: struct {    // 866
+
+        #as using base: VisualShaderNode;
     }
 
-    VoxelGI :: struct {
+    VoxelGI :: struct {    // 867
+
+        #as using base: VisualInstance3D;
 
         Subdiv :: enum s32 {
             SUBDIV_64 :: 0;
@@ -8851,15 +14781,34 @@ gdt :: struct {
             SUBDIV_512 :: 3;
             SUBDIV_MAX :: 4;
         }
+
+        subdiv: int;
+        size: Vector3;
+        camera_attributes: CameraAttributesPractical,CameraAttributesPhysical;
+        data: VoxelGIData;
     }
 
-    VoxelGIData :: struct {
+    VoxelGIData :: struct {    // 868
+
+        #as using base: Resource;
+
+        dynamic_range: float;
+        energy: float;
+        bias: float;
+        normal_bias: float;
+        propagation: float;
+        use_two_bounces: bool;
+        interior: bool;
     }
 
-    WeakRef :: struct {
+    WeakRef :: struct {    // 869
+
+        #as using base: RefCounted;
     }
 
-    WebRTCDataChannel :: struct {
+    WebRTCDataChannel :: struct {    // 870
+
+        #as using base: PacketPeer;
 
         WriteMode :: enum s32 {
             WRITE_MODE_TEXT :: 0;
@@ -8872,15 +14821,23 @@ gdt :: struct {
             STATE_CLOSING :: 2;
             STATE_CLOSED :: 3;
         }
+
+        write_mode: int;
     }
 
-    WebRTCDataChannelExtension :: struct {
+    WebRTCDataChannelExtension :: struct {    // 871
+
+        #as using base: WebRTCDataChannel;
     }
 
-    WebRTCMultiplayerPeer :: struct {
+    WebRTCMultiplayerPeer :: struct {    // 872
+
+        #as using base: MultiplayerPeer;
     }
 
-    WebRTCPeerConnection :: struct {
+    WebRTCPeerConnection :: struct {    // 873
+
+        #as using base: RefCounted;
 
         ConnectionState :: enum s32 {
             STATE_NEW :: 0;
@@ -8907,13 +14864,26 @@ gdt :: struct {
         }
     }
 
-    WebRTCPeerConnectionExtension :: struct {
+    WebRTCPeerConnectionExtension :: struct {    // 874
+
+        #as using base: WebRTCPeerConnection;
     }
 
-    WebSocketMultiplayerPeer :: struct {
+    WebSocketMultiplayerPeer :: struct {    // 875
+
+        #as using base: MultiplayerPeer;
+
+        supported_protocols: PackedStringArray;
+        handshake_headers: PackedStringArray;
+        inbound_buffer_size: int;
+        outbound_buffer_size: int;
+        handshake_timeout: float;
+        max_queued_packets: int;
     }
 
-    WebSocketPeer :: struct {
+    WebSocketPeer :: struct {    // 876
+
+        #as using base: PacketPeer;
 
         WriteMode :: enum s32 {
             WRITE_MODE_TEXT :: 0;
@@ -8926,9 +14896,17 @@ gdt :: struct {
             STATE_CLOSING :: 2;
             STATE_CLOSED :: 3;
         }
+
+        supported_protocols: PackedStringArray;
+        handshake_headers: PackedStringArray;
+        inbound_buffer_size: int;
+        outbound_buffer_size: int;
+        max_queued_packets: int;
     }
 
-    WebXRInterface :: struct {
+    WebXRInterface :: struct {    // 877
+
+        #as using base: XRInterface;
 
         TargetRayMode :: enum s32 {
             TARGET_RAY_MODE_UNKNOWN :: 0;
@@ -8936,9 +14914,23 @@ gdt :: struct {
             TARGET_RAY_MODE_TRACKED_POINTER :: 2;
             TARGET_RAY_MODE_SCREEN :: 3;
         }
+
+        session_mode: String;
+        required_features: String;
+        optional_features: String;
+        requested_reference_space_types: String;
+        reference_space_type: String;
+        enabled_features: String;
+        visibility_state: String;
     }
 
-    Window :: struct {
+    Window :: struct {    // 878
+
+        #as using base: Viewport;
+
+        NOTIFICATION_VISIBILITY_CHANGED :: 30;
+        NOTIFICATION_THEME_CHANGED :: 32;
+
 
         Mode :: enum s32 {
             MODE_WINDOWED :: 0;
@@ -8994,30 +14986,101 @@ gdt :: struct {
             WINDOW_INITIAL_POSITION_CENTER_SCREEN_WITH_MOUSE_FOCUS :: 4;
             WINDOW_INITIAL_POSITION_CENTER_SCREEN_WITH_KEYBOARD_FOCUS :: 5;
         }
+
+        mode: int;
+        title: String;
+        initial_position: int;
+        position: Vector2i;
+        size: Vector2i;
+        current_screen: int;
+        mouse_passthrough_polygon: PackedVector2Array;
+        visible: bool;
+        wrap_controls: bool;
+        transient: bool;
+        transient_to_focused: bool;
+        exclusive: bool;
+        unresizable: bool;
+        borderless: bool;
+        always_on_top: bool;
+        transparent: bool;
+        unfocusable: bool;
+        popup_window: bool;
+        extend_to_title: bool;
+        mouse_passthrough: bool;
+        force_native: bool;
+        min_size: Vector2i;
+        max_size: Vector2i;
+        keep_title_visible: bool;
+        content_scale_size: Vector2i;
+        content_scale_mode: int;
+        content_scale_aspect: int;
+        content_scale_stretch: int;
+        content_scale_factor: float;
+        auto_translate: bool;
+        theme: Theme;
+        theme_type_variation: String;
     }
 
-    WorkerThreadPool :: struct {
+    WorkerThreadPool :: struct {    // 879
+
+        #as using base: Object;
     }
 
-    World2D :: struct {
+    World2D :: struct {    // 880
+
+        #as using base: Resource;
+
+        canvas: RID;
+        space: RID;
+        navigation_map: RID;
+        direct_space_state: PhysicsDirectSpaceState2D;
     }
 
-    World3D :: struct {
+    World3D :: struct {    // 881
+
+        #as using base: Resource;
+
+        environment: Environment;
+        fallback_environment: Environment;
+        camera_attributes: CameraAttributesPractical,CameraAttributesPhysical;
+        space: RID;
+        navigation_map: RID;
+        scenario: RID;
+        direct_space_state: PhysicsDirectSpaceState3D;
     }
 
-    WorldBoundaryShape2D :: struct {
+    WorldBoundaryShape2D :: struct {    // 882
+
+        #as using base: Shape2D;
+
+        normal: Vector2;
+        distance: float;
     }
 
-    WorldBoundaryShape3D :: struct {
+    WorldBoundaryShape3D :: struct {    // 883
+
+        #as using base: Shape3D;
+
+        plane: Plane;
     }
 
-    WorldEnvironment :: struct {
+    WorldEnvironment :: struct {    // 884
+
+        #as using base: Node;
+
+        environment: Environment;
+        camera_attributes: CameraAttributesPractical,CameraAttributesPhysical;
+        compositor: Compositor;
     }
 
-    X509Certificate :: struct {
+    X509Certificate :: struct {    // 885
+
+        #as using base: Resource;
     }
 
-    XMLParser :: struct {
+    XMLParser :: struct {    // 886
+
+        #as using base: RefCounted;
 
         NodeType :: enum s32 {
             NODE_NONE :: 0;
@@ -9030,10 +15093,14 @@ gdt :: struct {
         }
     }
 
-    XRAnchor3D :: struct {
+    XRAnchor3D :: struct {    // 887
+
+        #as using base: XRNode3D;
     }
 
-    XRBodyModifier3D :: struct {
+    XRBodyModifier3D :: struct {    // 888
+
+        #as using base: Node3D;
 
         BodyUpdate :: enum u64 {
             BODY_UPDATE_UPPER_BODY :: 1;
@@ -9046,9 +15113,17 @@ gdt :: struct {
             BONE_UPDATE_ROTATION_ONLY :: 1;
             BONE_UPDATE_MAX :: 2;
         }
+
+        body_tracker: String;
+        target: NodePath;
+        body_update: int;
+        bone_update: int;
+        show_when_tracked: bool;
     }
 
-    XRBodyTracker :: struct {
+    XRBodyTracker :: struct {    // 889
+
+        #as using base: RefCounted;
 
         BodyFlags :: enum u64 {
             BODY_FLAG_UPPER_BODY_SUPPORTED :: 1;
@@ -9142,18 +15217,32 @@ gdt :: struct {
             JOINT_FLAG_POSITION_VALID :: 4;
             JOINT_FLAG_POSITION_TRACKED :: 8;
         } @bitfield
+
+        has_tracking_data: bool;
+        body_flags: int;
     }
 
-    XRCamera3D :: struct {
+    XRCamera3D :: struct {    // 890
+
+        #as using base: Camera3D;
     }
 
-    XRController3D :: struct {
+    XRController3D :: struct {    // 891
+
+        #as using base: XRNode3D;
     }
 
-    XRFaceModifier3D :: struct {
+    XRFaceModifier3D :: struct {    // 892
+
+        #as using base: Node3D;
+
+        face_tracker: String;
+        target: NodePath;
     }
 
-    XRFaceTracker :: struct {
+    XRFaceTracker :: struct {    // 893
+
+        #as using base: RefCounted;
 
         BlendShapeEntry :: enum s32 {
             FT_EYE_LOOK_OUT_RIGHT :: 0;
@@ -9301,18 +15390,28 @@ gdt :: struct {
             FT_MOUTH_PRESS :: 142;
             FT_MAX :: 143;
         }
+
+        blend_shapes: PackedFloat32Array;
     }
 
-    XRHandModifier3D :: struct {
+    XRHandModifier3D :: struct {    // 894
+
+        #as using base: Node3D;
 
         BoneUpdate :: enum s32 {
             BONE_UPDATE_FULL :: 0;
             BONE_UPDATE_ROTATION_ONLY :: 1;
             BONE_UPDATE_MAX :: 2;
         }
+
+        hand_tracker: String;
+        target: NodePath;
+        bone_update: int;
     }
 
-    XRHandTracker :: struct {
+    XRHandTracker :: struct {    // 895
+
+        #as using base: RefCounted;
 
         Hand :: enum s32 {
             HAND_LEFT :: 0;
@@ -9365,9 +15464,15 @@ gdt :: struct {
             HAND_JOINT_FLAG_LINEAR_VELOCITY_VALID :: 16;
             HAND_JOINT_FLAG_ANGULAR_VELOCITY_VALID :: 32;
         } @bitfield
+
+        hand: int;
+        has_tracking_data: bool;
+        hand_tracking_source: int;
     }
 
-    XRInterface :: struct {
+    XRInterface :: struct {    // 896
+
+        #as using base: RefCounted;
 
         Capabilities :: enum s32 {
             XR_NONE :: 0;
@@ -9400,36 +15505,72 @@ gdt :: struct {
             XR_ENV_BLEND_MODE_ADDITIVE :: 1;
             XR_ENV_BLEND_MODE_ALPHA_BLEND :: 2;
         }
+
+        interface_is_primary: bool;
+        xr_play_area_mode: int;
+        environment_blend_mode: int;
+        ar_is_anchor_detection_enabled: bool;
     }
 
-    XRInterfaceExtension :: struct {
+    XRInterfaceExtension :: struct {    // 897
+
+        #as using base: XRInterface;
     }
 
-    XRNode3D :: struct {
+    XRNode3D :: struct {    // 898
+
+        #as using base: Node3D;
+
+        tracker: String;
+        pose: String;
     }
 
-    XROrigin3D :: struct {
+    XROrigin3D :: struct {    // 899
+
+        #as using base: Node3D;
+
+        world_scale: float;
+        current: bool;
     }
 
-    XRPose :: struct {
+    XRPose :: struct {    // 900
+
+        #as using base: RefCounted;
 
         TrackingConfidence :: enum s32 {
             XR_TRACKING_CONFIDENCE_NONE :: 0;
             XR_TRACKING_CONFIDENCE_LOW :: 1;
             XR_TRACKING_CONFIDENCE_HIGH :: 2;
         }
+
+        has_tracking_data: bool;
+        name: String;
+        transform: String;
+        linear_velocity: String;
+        angular_velocity: String;
+        tracking_confidence: int;
     }
 
-    XRPositionalTracker :: struct {
+    XRPositionalTracker :: struct {    // 901
+
+        #as using base: RefCounted;
 
         TrackerHand :: enum s32 {
             TRACKER_HAND_UNKNOWN :: 0;
             TRACKER_HAND_LEFT :: 1;
             TRACKER_HAND_RIGHT :: 2;
         }
+
+        type: int;
+        name: String;
+        description: String;
+        profile: String;
+        hand: int;
     }
 
-    XRServer :: struct {
+    XRServer :: struct {    // 902
+
+        #as using base: Object;
 
         TrackerType :: enum s32 {
             TRACKER_HEAD :: 1;
@@ -9446,9 +15587,15 @@ gdt :: struct {
             RESET_BUT_KEEP_TILT :: 1;
             DONT_RESET_ROTATION :: 2;
         }
+
+        world_scale: float;
+        world_origin: Vector3;
+        primary_interface: Object;
     }
 
-    ZIPPacker :: struct {
+    ZIPPacker :: struct {    // 903
+
+        #as using base: RefCounted;
 
         ZipAppend :: enum s32 {
             APPEND_CREATE :: 0;
@@ -9457,9 +15604,12 @@ gdt :: struct {
         }
     }
 
-    ZIPReader :: struct {
+    ZIPReader :: struct {    // 904
+
+        #as using base: RefCounted;
     }
 }
+
 
 #run {
 
@@ -9483,7 +15633,6 @@ gdt :: struct {
     assert(size_of(gdt.StringName) == 4);
     assert(size_of(gdt.NodePath) == 4);
     assert(size_of(gdt.RID) == 8);
-    assert(size_of(gdt.Object) == 4);
     assert(size_of(gdt.Callable) == 16);
     assert(size_of(gdt.Signal) == 16);
     assert(size_of(gdt.Dictionary) == 4);

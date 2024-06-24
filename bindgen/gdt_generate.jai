@@ -62,6 +62,7 @@ GodotAPI :: struct {
         inherits: *string;
         //api_type: *string;
 
+        constants: [] GenericValue;
         enums: [] Enum;
         methods: [] Method;
         properties: [] GenericValue;
@@ -144,8 +145,15 @@ gdt_bindings_codegen :: () {
 
     // == CLASSES ==
 
+    // TODO: fix formatting cancer
     for godot_api.classes {
         print_to_builder(*builder, "\n    % :: struct {", it.name);
+        print_to_builder(*builder, "    // %", it_index);
+        if it.inherits print_to_builder(*builder, "\n\n        #as using base: %;", it.inherits.*);
+        if it.constants append(*builder, "\n\n");
+        for it.constants {
+            print_to_builder(*builder, "        % :: %;\n", it.name, it.value.*);
+        }
         for it.enums {
             // A few class enums are bitfields with very large values
             if it.is_bitfield print_to_builder(*builder, "\n\n        % :: enum u64 {\n", it.name);
@@ -156,10 +164,28 @@ gdt_bindings_codegen :: () {
             if !it.is_bitfield print_to_builder(*builder, "        }");
             else print_to_builder(*builder, "        } @bitfield");
         }
-        print_to_builder(*builder, "\n    }\n");
+        if (it.enums && it.properties) || (!it.constants && !it.enums && it.properties) append(*builder, "\n\n");
+        for it.properties {
+            print_to_builder(*builder, "        %: %;\n", it.name, it.type.*);
+        }
+        if !it.properties append(*builder, "\n");
+        append(*builder, "    }\n");
     }
 
-    append(*builder, "}\n");
+    append(*builder, "}\n\n");
+
+    // == PROCEDURES ==
+    // Are *any* of these really necessary?
+
+    // for godot_api.classes {
+    //     for it.methods {
+    //         if !begins_with(it.name, "set") &&
+    //             !begins_with(it.name, "_set") &&
+    //             !begins_with(it.name, "get") &&
+    //             !begins_with(it.name, "_get")
+    //         print_to_builder(*builder, "% :: () {}\n", it.name);
+    //     }
+    // }
 
     // == SIZE/OFFSET ASSERTS ==
 
@@ -174,7 +200,8 @@ gdt_bindings_codegen :: () {
             if it.name == "bool" ||
                 it.name == "int" ||
                 it.name == "float" ||
-                it.name == "String"
+                it.name == "String" ||
+                it.name == "Object"
             continue;
             print_to_builder(*builder, "    assert(size_of(gdt.%) == %);\n", it.name, it.size);
         }
@@ -202,6 +229,7 @@ gdt_bindings_codegen :: () {
 #import "Compiler";
 #import "Jaison";
 #import "File";
+#import "String";
 
 print_muted :: (msg: string) {
     log("\x1b[38;5;246m%\x1b[0m", msg);
