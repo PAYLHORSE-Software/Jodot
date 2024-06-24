@@ -32,9 +32,10 @@ object_set_instance: GDExtensionInterfaceObjectSetInstance;
 classdb_register_extension_class: GDExtensionInterfaceClassdbRegisterExtensionClass3;
 classdb_get_class_tag: GDExtensionInterfaceClassdbGetClassTag;
 classdb_register_extension_class_method: GDExtensionInterfaceClassdbRegisterExtensionClassMethod;
+classdb_construct_object: GDExtensionInterfaceClassdbConstructObject;
 classdb_get_method_bind: GDExtensionInterfaceClassdbGetMethodBind;
 object_method_bind_call: GDExtensionInterfaceObjectMethodBindCall;
-classdb_construct_object: GDExtensionInterfaceClassdbConstructObject;
+objcet_method_bind_ptrcall: GDExtensionInterfaceObjectMethodBindPtrcall;
 object_destroy: GDExtensionInterfaceObjectDestroy;
 
 // -------------------------
@@ -186,6 +187,10 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
         classdb_register_extension_class = xx P_GET_PROC_ADDRESS("classdb_register_extension_class3");
         classdb_get_class_tag = xx P_GET_PROC_ADDRESS("classdb_get_class_tag");
         classdb_register_extension_class_method = xx P_GET_PROC_ADDRESS("classdb_register_extension_class_virtual_method");
+
+        // object_method_bind_call = xx P_GET_PROC_ADDRESS("object_method_bind_call");
+
+        // object_method_bind_ptrcall = xx P_GET_PROC_ADDRESS("object_method_bind_ptrcall");
 
         #insert user_entity_declaration_list;
 

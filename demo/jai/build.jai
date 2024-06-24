@@ -5,7 +5,6 @@ build :: () {
     options := get_build_options();
 
     using options;
-
     output_type = .DYNAMIC_LIBRARY;
     output_executable_name = "demo";
     output_path = "bin";
@@ -16,7 +15,6 @@ build :: () {
     compiler_begin_intercept(w, .SKIP_EXPRESSIONS_WITHOUT_NOTES);
 
     add_build_file("src/main.jai", w);
-
     JodotMeta.message_loop();
 
     compiler_end_intercept(w);

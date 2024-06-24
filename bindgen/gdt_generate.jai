@@ -12,9 +12,31 @@ GodotAPI :: struct {
     singletons: [] GenericValue;
     native_structure: [] NativeStruct;
 
-    SizeRef :: struct {}
+    SizeRef :: struct {
+        build_configuration: string;
+        sizes: [] Size;
+    }
 
-    OffsetRef :: struct {}
+    Size :: struct {
+        name: string;
+        size: u8;
+    }
+
+    OffsetRef :: struct {
+        build_configuration: string;
+        classes: [] OffsetClass;
+    }
+
+    OffsetClass :: struct {
+        name: string;
+        members: [] OffsetClassMember;
+    }
+
+    OffsetClassMember :: struct {
+        member: string;
+        offset: u8;
+        // meta:
+    }
 
     Header :: struct {
         version_full_name: string;
@@ -34,13 +56,15 @@ GodotAPI :: struct {
         // is_keyed: *bool;
         // TODO: operators, constructor, destructor - not sure how these should be set up
 
-        is_refcounted: *bool;
-        is_instantiable: *bool;
+        // Ignore?
+        // is_refcounted: *bool;
+        // is_instantiable: *bool;
         inherits: *string;
-        api_type: *string;
-        enums: *[] Enum;
-        methods: *[] Method;
-        properties: *[] GenericValue;
+        //api_type: *string;
+
+        enums: [] Enum;
+        methods: [] Method;
+        properties: [] GenericValue;
     }
 
     Method :: struct {
@@ -55,7 +79,7 @@ GodotAPI :: struct {
         is_virtual: *bool;
         hash: u32;
         return_value: *GenericValue;
-        arguments: *[] GenericValue;
+        arguments: [] GenericValue;
     }
 
     GenericValue :: struct {
@@ -108,16 +132,12 @@ gdt_bindings_codegen :: () {
     // == ENUMS ==
 
     for godot_api.global_enums {
-
-        if equal(it.name, "Variant.Type") print_to_builder(*builder, "\n    Variant_Type :: enum s32 {\n");
-        else if equal(it.name, "Variant.Operator") print_to_builder(*builder, "\n    Variant_Operator :: enum s32 {\n");
+        if it.name == "Variant.Type" print_to_builder(*builder, "\n    Variant_Type :: enum s32 {\n");
+        else if it.name == "Variant.Operator" print_to_builder(*builder, "\n    Variant_Operator :: enum s32 {\n");
         else print_to_builder(*builder, "\n    % :: enum s32 {\n", it.name);
-
         for it.values {
-
             print_to_builder(*builder, "        % :: %;\n", it.name, it.value.*);
         }
-
         if !it.is_bitfield print_to_builder(*builder, "    }\n");
         else print_to_builder(*builder, "    } @bitfield\n");
     }
@@ -125,13 +145,44 @@ gdt_bindings_codegen :: () {
     // == CLASSES ==
 
     for godot_api.classes {
-
         print_to_builder(*builder, "\n    % :: struct {", it.name);
-        print_to_builder(*builder, "}\n");
+        for it.enums {
+            // A few class enums are bitfields with very large values
+            if it.is_bitfield print_to_builder(*builder, "\n\n        % :: enum u64 {\n", it.name);
+            else print_to_builder(*builder, "\n\n        % :: enum s32 {\n", it.name);
+            for it.values {
+                print_to_builder(*builder, "            % :: %;\n", it.name, it.value.*);
+            }
+            if !it.is_bitfield print_to_builder(*builder, "        }");
+            else print_to_builder(*builder, "        } @bitfield");
+        }
+        print_to_builder(*builder, "\n    }\n");
     }
 
-    append(*builder, GDT_FOOTER);
+    append(*builder, "}\n");
 
+    // == SIZE/OFFSET ASSERTS ==
+
+    append(*builder, "\n#run {\n\n");
+
+    for godot_api.builtin_class_sizes {
+        if it.build_configuration == "float_64" ||
+            it.build_configuration == "double_32" ||
+            it.build_configuration == "double_64"
+        continue;
+        for it.sizes {
+            if it.name == "bool" ||
+                it.name == "int" ||
+                it.name == "float" ||
+                it.name == "String"
+            continue;
+            print_to_builder(*builder, "    assert(size_of(gdt.%) == %);\n", it.name, it.size);
+        }
+    }
+
+    append(*builder, "}\n");
+
+    append(*builder, GDT_FOOTER);
     code := builder_to_string(*builder);
     write_entire_file("gdt/gdt_bindings.jai", code);
     print_affirm("OK! generated 'gdt/gdt_bindings.jai'\n");
@@ -150,7 +201,6 @@ gdt_bindings_codegen :: () {
 #import "Bindings_Generator";
 #import "Compiler";
 #import "Jaison";
-#import "String";
 #import "File";
 
 print_muted :: (msg: string) {
@@ -170,11 +220,9 @@ gdt :: struct {
 
     Nil :: void;
 
-    // bool, int and float should match native
+    // bool, int and float (float64) match native
 
-    // TODO
-    String :: struct { // 32
-    }
+    gstring :: u32; // ??
 
     Vector2 :: Math.Vector2;
 
@@ -184,13 +232,13 @@ gdt :: struct {
     }
 
     Rect2 :: struct {
-        x: Vector2;
-        y: Vector2;
+        position: Vector2;
+        size: Vector2;
     }
 
     Rect2i :: struct {
-        x: Vector2i;
-        y: Vector2i;
+        position: Vector2i;
+        size: Vector2i;
     }
 
     Vector3 :: Math.Vector3;
@@ -210,10 +258,10 @@ gdt :: struct {
     Vector4 :: Math.Vector4;
 
     Vector4i :: struct {
-        x: u32;
-        y: u32;
-        z: u32;
-        w: u32;
+        x: s32;
+        y: s32;
+        z: s32;
+        w: s32;
     }
 
     Plane :: struct {
@@ -253,27 +301,27 @@ gdt :: struct {
         a: float;
     }
 
-    // TODO
-    StringName :: struct {}
-    NodePath :: struct {}
-    RID :: struct {}
-    Callable :: struct {}
-    Signal :: struct {}
-    Dictionary :: struct {}
-    Array :: struct {}
-    PackedByteArray :: struct {}
-    PackedInt32Array :: struct {}
-    PackedInt64Array :: struct {}
-    PackedFloat32Array :: struct {}
-    PackedFloat64Array :: struct {}
-    PackedStringArray :: struct {}
-    PackedVector2Array :: struct {}
-    PackedVector3Array :: struct {}
-    PackedColorArray :: struct {}
+    StringName :: u32; // ??
+    NodePath :: u32;
+    RID :: u64;
+    // Object :: u32;
+    Callable :: [16] u8;
+    Signal :: [16] u8;
+    Dictionary :: u32;
+    Array :: u32;
+    PackedByteArray :: *u8;
+    PackedInt32Array :: *u8;
+    PackedInt64Array :: *u8;
+    PackedFloat32Array :: *u8;
+    PackedFloat64Array :: *u8;
+    PackedStringArray :: *u8;
+    PackedVector2Array :: *u8;
+    PackedVector3Array :: *u8;
+    PackedColorArray :: *u8;
+    Variant :: [24] u8;
 DONE
 
 GDT_FOOTER :: #string DONE
-}
 
 #scope_file
 
