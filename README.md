@@ -7,7 +7,7 @@
 
 Pursuing antagonism to Godot's OOP, and favor to a GDScript-free workflow. WIP!
 
-> 📜 **A testament to the language, and to Temperance:**
+> 🛈 **A testament to the language, and to temperance:**
 >
 > Currently at: **3372 LOC**
 >
