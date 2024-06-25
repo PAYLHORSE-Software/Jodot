@@ -11,11 +11,15 @@ Pursuing antagonism to Godot's OOP, and favor to a GDScript-free workflow. WIP!
 >
 > Currently at: **3372 LOC**
 >
-> In comparison to:
->
-> [godot-cpp](https://github.com/godot-rust/gdext): **~22,000 LOC**
->
-> [godot-rust](https://github.com/godot-rust/gdext): **~43,000 LOC**
+> In comparison to [godot-rust](https://github.com/godot-rust/gdext) at **~43,000 LOC**
+
+## THE CHOPPING BLOCK
+
+Jodot is bespoke, opinionated and experimental in it's design philosophy. For a kitchen-sink alternative, see the aforementioned godot-rust, an excellent library far more feature-packed. With that said, here's the gist:
+
+**Methods, or member functions including getters and setters, are to be abolished.** Except from this abolishment are the **_ready**, **_process** and **_input** virtual methods, which have been reimplemented as hardcoded procedures.
+
+**Signals (the Observer Pattern) are to be abolished.**
 
 ## HANDBOOK
 ### Getting Started
