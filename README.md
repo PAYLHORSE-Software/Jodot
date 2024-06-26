@@ -9,7 +9,7 @@ Pursuing antagonism to Godot's OOP, and favor to a GDScript-free workflow. WIP!
 
 > 🛈 **A testament to the language, and to temperance:**
 >
-> Currently at: **3372 LOC**
+> Currently at: **731 LOC**
 >
 > In comparison to [godot-rust](https://github.com/godot-rust/gdext) at **~43,000 LOC**
 
