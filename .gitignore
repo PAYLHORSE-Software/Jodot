@@ -3,7 +3,6 @@
 *.log
 *.tmp
 tmp/
-godot-cpp/windows/godot-cpp.lib
 .build/
 demo/jai/.build
 demo/godot/.godot
