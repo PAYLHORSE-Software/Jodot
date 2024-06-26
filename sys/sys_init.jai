@@ -77,7 +77,9 @@ class_create_info :: GDExtensionClassCreationInfo3.{
         //     get_rid_func
 };
 
-// == MEMALLOC ==
+// --------
+// MEMALLOC
+// --------
 
 jodot_ctx: Context;
 
@@ -96,7 +98,7 @@ class_create_instance :: (p_class_userdata: *void) -> GDExtensionObjectPtr #c_ca
 
     push_context jodot_ctx {
 
-        print_muted(tprint("Instantiating type: %\n", extension_entity.type));
+        print_muted(tprint("** New entity: % **", extension_entity.type));
         #insert user_entity_case;
     }
 
@@ -135,9 +137,13 @@ register_extension_entities :: () {
 
         // Registration can fail silently, so check...
         tag := classdb_get_class_tag(user_entity_declarations[it_index].p_class_name);
-        if tag == null print_error_with_message(null, "Extension class registration failed!", null, "Jodot", 0, 1);
-        print_affirm(tprint("Extension class registered: %", tag));
+        if tag == null print_error_with_message(null, "Extension entity registration failed!", null, "Jodot", 0, 1);
+        print_affirm(tprint("Extension entity registered: %", user_entity_declarations[it_index].type));
     }
+}
+
+create :: (gdt_type: $T) -> T {
+    classdb_create_instance();
 }
 
 // -----------
@@ -263,6 +269,8 @@ call_virtual_with_data_fn :: (p_instance: GDExtensionClassInstancePtr, p_name: G
                 // == INPUT PROC ==
 
         }
+
+        // TODO: _init, _physics_process, _enter_tree, _exit_tree
     }
 }
 

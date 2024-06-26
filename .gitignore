@@ -7,4 +7,5 @@ godot-cpp/windows/godot-cpp.lib
 .build/
 demo/jai/.build
 demo/godot/.godot
-demo/godot/godot.exe
+gdt/gdt_bindings.jai
+sys/sys_bindings.jai

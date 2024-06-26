@@ -103,7 +103,7 @@ fit_content = true
 [node name="PointLight2D" type="PointLight2D" parent="greeter"]
 position = Vector2(2.29999, -48.015)
 scale = Vector2(1.58, 1.58)
-color = Color(1, 1, 1, 0.337255)
+color = Color(1, 1, 1, 0.454902)
 texture = ExtResource("1_cfeuw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="greeter"]
