@@ -18,22 +18,12 @@ Character :: struct @jodot {
     time_accumulator : float = 0.0;
     character_name : string = "Nameless One";
 
-    ready :: (self: *Character) {
-        print("Character spawned: %", self.character_name);
-        self.base.set_visible(true);
-    }
-
-    process :: (self: *Character, delta: float32) #c_call {
-        self.time_accumulator += delta;
-        self.base.set_visible(true);
-    }
-
-    input :: (self: *Character, input: float32) #c_call {}
+    _ready = ready_Character;
 }
 
 // The user declares 'virtual method overrides' as native procedures.
 // These must be declared, must follow this naming convention, and must match the signature.
-ready_Character :: (entity: *Character) {
+ready_Character :: (entity: *ExtensionEntity) {
     print("Hello from JodotTestEntity!\n");
 }
 
@@ -46,9 +36,11 @@ JodotTestEntity :: struct @jodot {
 
     time_accumulator : float = 0.0;
     character_name : string = "Nameless One";
+
+    _ready = ready_JodotTestEntity;
 }
 
-ready_JodotTestEntity :: (entity: *JodotTestEntity) {
+ready_JodotTestEntity :: (entity: *ExtensionEntity) {
     print("Hello from JodotTestEntity!\n");
 }
 

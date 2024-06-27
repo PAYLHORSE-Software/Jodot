@@ -52,11 +52,9 @@ message_loop :: (DEMO: bool = false) {
                     for tagged_names {
                         code := #string DONE
 #placeholder %;
-#placeholder ready_%;
-#placeholder process_%;
 entities_%: [64] %;
 DONE
-                        print_to_builder(*builder, code, it, it, it, it, it);
+                        print_to_builder(*builder, code, it, it, it);
                         print_to_builder(*list_builder, "user_entity_declarations[%] = %.{}; ", it_index, it);
                     }
                     list := builder_to_string(*list_builder);
@@ -72,30 +70,6 @@ DONE
                     append(*case_builder, "}");
                     cases := builder_to_string(*case_builder);
                     print_to_builder(*builder, "user_entity_case :: \"%\";\n", cases);
-                    // ----------
-                    ready_case_builder: String_Builder;
-                    init_string_builder(*ready_case_builder);
-                    append(*ready_case_builder, "if extension_entity.type == {");
-                    for tagged_names {
-                        print_to_builder(*ready_case_builder, "case %;", it);
-                        print_to_builder(*ready_case_builder, " entity := cast(*%) p_instance;", it);
-                        print_to_builder(*ready_case_builder, " ready_%(entity);", it);
-                    }
-                    append(*ready_case_builder, "}");
-                    ready_cases := builder_to_string(*ready_case_builder);
-                    print_to_builder(*builder, "ready_user_entity_case :: \"%\";\n", ready_cases);
-                    // ----------
-                    process_case_builder: String_Builder;
-                    init_string_builder(*process_case_builder);
-                    append(*process_case_builder, "if extension_entity.type == {");
-                    for tagged_names {
-                        print_to_builder(*process_case_builder, "case %;", it);
-                        print_to_builder(*process_case_builder, " entity := cast(*%) p_instance;", it);
-                        print_to_builder(*process_case_builder, " process_%(entity, delta);", it);
-                    }
-                    append(*process_case_builder, "}");
-                    process_cases := builder_to_string(*process_case_builder);
-                    print_to_builder(*builder, "process_user_entity_case :: \"%\";\n", process_cases);
                     // ----------
                     code := builder_to_string(*builder);
                     print_muted(tprint("ADDING BUILD STRING: %", code));

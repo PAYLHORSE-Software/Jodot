@@ -33,6 +33,8 @@ ExtensionEntity :: struct {
     p_parent_class_name: *void;
 
     _ready : #type (entity: *ExtensionEntity) = null;
+    _process : #type (entity: *ExtensionEntity, delta: float) = null;
+    _input : #type (entity: *ExtensionEntity, event: InputEvent) = null;
 }
 
 class_create_info :: GDExtensionClassCreationInfo3.{
@@ -87,14 +89,12 @@ class_create_instance :: (p_class_userdata: *void) -> GDExtensionObjectPtr #c_ca
 class_free_instance :: (p_class_userdata: *void, p_instance: GDExtensionClassInstancePtr) #c_call {
 
     push_context jodot_ctx {
-        // We probably shouldn't be using a Flat_Pool...?
-        free(p_instance);
+        // TODO: clear repective array index
     }
 }
 
 register_extension_entities :: () {
 
-    // For some reason, using large-iterator and for * causes an access violation
     for it_index: 0..user_entity_declarations.count - 1 {
 
         if user_entity_declarations[it_index].type == void break;
@@ -185,6 +185,8 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
     }
 }
 
+// NOTE: we use get_virtual_call_data_fn + call_virtual_with_data_fn instead of get_virtual_func simply for convenience
+
 get_virtual_call_data_fn :: (p_class_userdata: *void, p_name: GDExtensionConstStringNamePtr) -> *void #c_call {
     return p_class_userdata;
 }
@@ -217,8 +219,9 @@ call_virtual_with_data_fn :: (p_instance: GDExtensionClassInstancePtr, p_name: G
             name[3] == ready_name[3] {
 
                 // == READY PROC ==
-
-                #insert ready_user_entity_case;
+                if extension_entity._ready != null {
+                    extension_entity._ready(extension_entity);
+                }
         }
         // Sir, this is a Wendy's
         else if name[0] == process_name[0] &&
@@ -227,12 +230,10 @@ call_virtual_with_data_fn :: (p_instance: GDExtensionClassInstancePtr, p_name: G
             name[3] == process_name[3] {
 
                 // == PROCESS PROC ==
-
-                // #insert process_user_entity_case;
-
-                // extension_entity := cast(*JodotTestEntity) p_instance;
-                // extension_entity.time_accumulator += 1.0;
-                // print_muted(tprint("Greeter's Stopwatch: %", extension_entity.time_accumulator));
+                if extension_entity._process != null {
+                    delta := 0.0;
+                    extension_entity._process(extension_entity, delta);
+                }
         }
         else if name[0] == input_name[0] &&
             name[1] == input_name[1] &&
@@ -240,7 +241,10 @@ call_virtual_with_data_fn :: (p_instance: GDExtensionClassInstancePtr, p_name: G
             name[3] == input_name[3] {
 
                 // == INPUT PROC ==
-
+                if extension_entity._input != null {
+                    event: InputEvent;
+                    extension_entity._input(extension_entity, event);
+                }
         }
 
         // TODO: _init, _physics_process, _enter_tree, _exit_tree
