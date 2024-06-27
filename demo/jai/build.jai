@@ -1,5 +1,7 @@
 build :: () {
 
+    DEMO :: true;
+
     w := compiler_create_workspace();
 
     options := get_build_options();
@@ -15,15 +17,16 @@ build :: () {
     compiler_begin_intercept(w, .SKIP_EXPRESSIONS_WITHOUT_NOTES);
 
     add_build_file("src/main.jai", w);
-    JodotMeta.message_loop();
+    JodotMeta.message_loop(DEMO=true);
 
     compiler_end_intercept(w);
 
     set_build_options_dc(.{do_output=false});
 }
 
-
 #run build();
+
+#scope_file
 
 #import "Compiler";
 JodotMeta :: #import "Jodot/Meta";

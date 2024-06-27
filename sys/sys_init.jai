@@ -2,25 +2,6 @@
 P_GET_PROC_ADDRESS : GDExtensionInterfaceGetProcAddress;
 P_LIBRARY : GDExtensionClassLibraryPtr;
 
-// == UTILITY ==
-
-// -- LOGGING --
-print_error :: (msg: string) {
-    log_error("\x1b[1;38;5;9mERROR: %\n\x1b[0m", msg);
-}
-
-print_affirm :: (msg: string) {
-    log("\x1b[1;38;5;144m%\x1b[0m", msg);
-}
-
-print_muted :: (msg: string) {
-    log("\x1b[38;5;246m%\x1b[0m", msg);
-}
-
-print_warn :: (msg: string) {
-    log("\x1b[38;5;180m%\x1b[0m", msg);
-}
-
 // == RAW PROCEDURES ==
 
 print_error_with_message: GDExtensionInterfacePrintErrorWithMessage;
@@ -50,6 +31,8 @@ ExtensionEntity :: struct {
 
     p_class_name: *void;
     p_parent_class_name: *void;
+
+    _ready : #type (entity: *ExtensionEntity) = null;
 }
 
 class_create_info :: GDExtensionClassCreationInfo3.{
@@ -85,10 +68,6 @@ jodot_ctx: Context;
 
 pool: Flat_Pool;
 jodot_allocator: Allocator;
-
-make_user_entity_case :: () -> string {
-
-}
 
 class_create_instance :: (p_class_userdata: *void) -> GDExtensionObjectPtr #c_call {
 
@@ -163,11 +142,9 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
 
     push_context jodot_ctx {
 
-        print("Size of % is: %\n", ExtensionEntity, size_of(ExtensionEntity));
-        print("Size of % is: %\n", JodotTestEntity, size_of(JodotTestEntity));
-        print("Size of % is: %\n", Character, size_of(Character));
+        gdt_call("Node.set_name");
 
-        print("The Flat Pool is at % bytes.\n", pool.current_point - pool.memory_base);
+        // print("The Flat Pool is at % bytes.\n", pool.current_point - pool.memory_base);
 
         print("Hello from secret language!\n");
         print("Initializing Jodot module...\n");
@@ -194,6 +171,8 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
         classdb_get_class_tag = xx P_GET_PROC_ADDRESS("classdb_get_class_tag");
         classdb_register_extension_class_method = xx P_GET_PROC_ADDRESS("classdb_register_extension_class_virtual_method");
 
+        classdb_get_method_bind = xx P_GET_PROC_ADDRESS("classdb_get_method_bind");
+
         // object_method_bind_call = xx P_GET_PROC_ADDRESS("object_method_bind_call");
 
         // object_method_bind_ptrcall = xx P_GET_PROC_ADDRESS("object_method_bind_ptrcall");
@@ -204,12 +183,6 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
 
         print("All systems Jo :)\n");
     }
-}
-
-VirtualFn :: enum {
-    READY;
-    PROCESS;
-    INPUT;
 }
 
 get_virtual_call_data_fn :: (p_class_userdata: *void, p_name: GDExtensionConstStringNamePtr) -> *void #c_call {
@@ -281,6 +254,11 @@ deinitialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializatio
     // Perform any necessary cleanup!
 }
 
+gdt_call :: (method_name: string, args: .. Any) {
+    // hash := table_find_pointer(*ALL_METHODS, method_name);
+    // print_warn(tprint("HASH: %", hash.*));
+}
+
 #program_export
 jodot_init :: (p_get_proc_address: GDExtensionInterfaceGetProcAddress, p_library: GDExtensionClassLibraryPtr, r_initialization: *GDExtensionInitialization) -> GDExtensionBool #c_call {
 
@@ -338,3 +316,4 @@ p_stringname_to_string :: (p_stringname: *void) -> string {
 #import "Compiler";
 #import "String";
 #import "Flat_Pool";
+#import "Hash_Table";

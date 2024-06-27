@@ -1,7 +1,11 @@
-message_loop :: () {
+message_loop :: (DEMO: bool = false) {
 
     print_muted :: (msg: string) {
         log("\x1b[38;5;246m%\x1b[0m", msg);
+    }
+
+    print_warn :: (msg: string) {
+        log("\x1b[38;5;180m%\x1b[0m", msg);
     }
 
     print_muted("\n==== METAPROGRAM ====\n");
@@ -10,7 +14,15 @@ message_loop :: () {
     code: string;
     jodot_import: *Message_Import;
 
+    gen_check := true;
+    if DEMO gen_check = file_exists("../../sys/sys_bindings.jai");
+
     while true {
+
+        if !gen_check {
+            print_warn("!! Make sure to run generate.jai! !!");
+            break;
+        }
 
         message := compiler_wait_for_message();
         if message.kind == {
@@ -95,8 +107,7 @@ DONE
     }
 }
 
-#scope_file
-
 #import "Basic";
 #import "Compiler";
 #import "String";
+#import "File_Utilities";

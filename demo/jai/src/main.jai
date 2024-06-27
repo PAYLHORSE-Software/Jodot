@@ -1,6 +1,3 @@
-#import "Basic";
-#import "Jodot";
-
 // ------------------------
 // JODOT ENTITY DECLARATION
 // ------------------------
@@ -58,3 +55,6 @@ ready_JodotTestEntity :: (entity: *JodotTestEntity) {
 process_JodotTestEntity :: (entity: *Character, delta: float) {
     print("Delta from JodotTestEntity: %\n", delta);
 }
+
+#import "Basic";
+#import "Jodot";
