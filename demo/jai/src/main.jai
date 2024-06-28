@@ -38,13 +38,14 @@ JodotTestEntity :: struct @jodot {
     character_name : string = "Nameless One";
 
     _ready = ready_JodotTestEntity;
+    _process = process_JodotTestEntity;
 }
 
 ready_JodotTestEntity :: (entity: *ExtensionEntity) {
     print("Hello from JodotTestEntity!\n");
 }
 
-process_JodotTestEntity :: (entity: *Character, delta: float) {
+process_JodotTestEntity :: (entity: *ExtensionEntity, delta: float64) {
     print("Delta from JodotTestEntity: %\n", delta);
 }
 

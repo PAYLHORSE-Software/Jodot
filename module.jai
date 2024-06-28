@@ -41,3 +41,5 @@ def_extension_entity :: "#as using sys: ExtensionEntity; type = #this; parent_ty
 
 // Entry point and initialization
 #load "sys/sys_init.jai";
+
+#module_parameters(DEBUG := true);

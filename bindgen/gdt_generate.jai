@@ -375,18 +375,33 @@ gdt_bindings_codegen :: () {
         }
     }
     append(*builder, "];\n");
-    print_to_builder(*builder, "\nMETHOD_HASH : [%] u32 : .[\n", count);
+    print_to_builder(*builder, "\nMETHOD_HASH : [%] s64 : .[\n", count);
     for class: godot_api.classes {
         for class.methods {
             if it.is_virtual.* continue;
             print_to_builder(*builder, "    %,\n", it.hash);
         }
     }
-    append(*builder, "];\n");
+    append(*builder, "];\n\n");
+
+    // == BUILTIN CLASS ARRAY ==
+
+    // append(*builder, "BUILTIN_TYPES : [38] string : .[");
+    // for godot_api.builtin_class_sizes {
+    //     if it.build_configuration == "float_64" ||
+    //         it.build_configuration == "double_32" ||
+    //         it.build_configuration == "double_64" continue;
+    //     for it.sizes {
+    //         if it.name == "String" { append(*builder, "\"gstring\", "); continue; }
+    //         if it.name == "Variant" continue;
+    //         print_to_builder(*builder, "\"%\", ", it.name);
+    //     }
+    // }
+    // append(*builder, "];\n\n");
 
     // == SIZE/OFFSET ASSERTS ==
 
-    append(*builder, "\n#run {\n\n");
+    append(*builder, "#run {\n\n");
 
     for godot_api.builtin_class_sizes {
         if it.build_configuration == "float_64" ||
@@ -559,15 +574,15 @@ Callable :: [16] u8;
 Signal :: [16] u8;
 Dictionary :: u32;
 Array :: u32;
-PackedByteArray :: *u8;
-PackedInt32Array :: *u8;
-PackedInt64Array :: *u8;
-PackedFloat32Array :: *u8;
-PackedFloat64Array :: *u8;
-PackedStringArray :: *u8;
-PackedVector2Array :: *u8;
-PackedVector3Array :: *u8;
-PackedColorArray :: *u8;
+PackedByteArray :: u64;
+PackedInt32Array :: u64;
+PackedInt64Array :: u64;
+PackedFloat32Array :: u64;
+PackedFloat64Array :: u64;
+PackedStringArray :: u64;
+PackedVector2Array :: u64;
+PackedVector3Array :: u64;
+PackedColorArray :: u64;
 Variant :: [24] u8;
 DONE
 
