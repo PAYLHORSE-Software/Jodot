@@ -259,8 +259,18 @@ deinitialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializatio
 }
 
 gdt_call :: (method_name: string, args: .. Any) {
+    // TODO: HASH TABLE
     // hash := table_find_pointer(*ALL_METHODS, method_name);
     // print_warn(tprint("HASH: %", hash.*));
+    // SAD ARRAY
+    // this is O(N) and totally sucks
+    index : s64 = S64_MAX;
+    for METHOD_KEY {
+        if it == method_name { index = it_index; break; }
+    }
+    if index == S64_MAX { print_error("Could not find method!"); return; }
+    hash := METHOD_HASH[index];
+    print_warn(tprint("HASH: %", hash));
 }
 
 #program_export
@@ -320,4 +330,5 @@ p_stringname_to_string :: (p_stringname: *void) -> string {
 #import "Compiler";
 #import "String";
 #import "Flat_Pool";
-#import "Hash_Table";
+// #import "Hash_Table";
+#import "Math";

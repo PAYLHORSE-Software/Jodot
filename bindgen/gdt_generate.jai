@@ -353,17 +353,36 @@ gdt_bindings_codegen :: () {
     //     }
     // }
 
-    count := godot_api.classes.count;
-    append(*builder, "\nVALID_HASH : u32 : 2;");
-    print_to_builder(*builder, "\n\nALL_METHODS :: Table(string, u32).{count = %, allocated = %, slots_filled = %, entries = .[\n", count, count, count);
+    // HASH TABLE
+    count := 12759;
+    // append(*builder, "\nVALID_HASH : u32 : 2;");
+    // print_to_builder(*builder, "\n\nALL_METHODS :: Table(string, u32).{count = %, allocated = %, slots_filled = %, entries = .[\n", count, count, count);
+    // for class: godot_api.classes {
+    //     for class.methods {
+    //         if it.is_virtual.* continue;
+    //         print_to_builder(*builder, "    .{hash = VALID_HASH, key = \"%.%\", value = %},\n", class.name, it.name, it.hash);
+    //     }
+    // }
+    // append(*builder, "]};\n");
+
+    // ARRAY
+    // NOTE: using this sad alternative until we get phf
+    print_to_builder(*builder, "\nMETHOD_KEY : [%] string : .[\n", count);
     for class: godot_api.classes {
         for class.methods {
             if it.is_virtual.* continue;
-            print_to_builder(*builder, "    .{hash = VALID_HASH, key = \"%.%\", value = %},\n", class.name, it.name, it.hash);
+            print_to_builder(*builder, "    \"%.%\",\n", class.name, it.name);
         }
     }
-
-    append(*builder, "]};\n");
+    append(*builder, "];\n");
+    print_to_builder(*builder, "\nMETHOD_HASH : [%] u32 : .[\n", count);
+    for class: godot_api.classes {
+        for class.methods {
+            if it.is_virtual.* continue;
+            print_to_builder(*builder, "    %,\n", it.hash);
+        }
+    }
+    append(*builder, "];\n");
 
     // == SIZE/OFFSET ASSERTS ==
 
