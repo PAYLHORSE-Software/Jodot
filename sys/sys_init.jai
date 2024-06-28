@@ -209,9 +209,6 @@ ExtensionEntity :: struct {
     type: Type = void;
     parent_type: Type;
 
-    p_class_name: *StringName;
-    p_parent_class_name: *StringName;
-
     _ready : #type (entity: *ExtensionEntity) = null;
     _process : #type (entity: *ExtensionEntity, delta: float64) = null;
     _input : #type (entity: *ExtensionEntity, event: InputEvent) = null;
@@ -276,14 +273,18 @@ call_virtual_with_data_fn :: (p_instance: GDExtensionClassInstancePtr, p_name: G
 
 class_create_instance :: (p_class_userdata: *void) -> GDExtensionObjectPtr #c_call {
 
-    extension_entity := cast(*ExtensionEntity) p_class_userdata;
-    p_object := classdb_construct_object(extension_entity.p_parent_class_name);
     push_context jodot_ctx {
-        print_muted(tprint("** New entity: % **", extension_entity.type));
-        #insert user_entity_case;
-    }
+        extension_entity := cast(*ExtensionEntity) p_class_userdata;
+        p_class_name := make_stringname(tprint("%", extension_entity.type), null);
+        p_parent_class_name := make_stringname(tprint("%", extension_entity.parent_type), null);
+        p_object := classdb_construct_object(p_parent_class_name);
+        push_context jodot_ctx {
+            print_muted(tprint("** New entity: % **", extension_entity.type));
+            #insert user_entity_case;
+        }
 
-    return p_object;
+        return p_object;
+    }
 }
 
 class_free_instance :: (p_class_userdata: *void, p_instance: GDExtensionClassInstancePtr) #c_call {
@@ -298,21 +299,21 @@ register_extension_entities :: () {
     for it_index: 0..user_entity_declarations.count - 1 {
         if user_entity_declarations[it_index].type == void break;
         // TODO: verify that extension classes are valid?
-        user_entity_declarations[it_index].p_class_name = make_p_stringname(tprint("%", user_entity_declarations[it_index].type));
-        user_entity_declarations[it_index].p_parent_class_name = make_p_stringname(tprint("%", user_entity_declarations[it_index].parent_type));
+        p_class_name := make_stringname(tprint("%", user_entity_declarations[it_index].type), null);
+        p_parent_class_name := make_stringname(tprint("%", user_entity_declarations[it_index].parent_type), null);
 
         unique_class_create_info := class_create_info;
         unique_class_create_info.class_userdata = *user_entity_declarations[it_index];
 
         classdb_register_extension_class(
             P_LIBRARY,
-            user_entity_declarations[it_index].p_class_name,
-            user_entity_declarations[it_index].p_parent_class_name,
+            p_class_name,
+            p_parent_class_name,
             *unique_class_create_info
         );
 
         // Registration can fail silently, so check...
-        tag := classdb_get_class_tag(user_entity_declarations[it_index].p_class_name);
+        tag := classdb_get_class_tag(p_class_name);
         if tag == null print_error_with_message(null, "Extension entity registration failed!", null, "Jodot", 0, 1);
         print_affirm(tprint("Extension entity registered: %", user_entity_declarations[it_index].type));
     }
@@ -377,12 +378,9 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
         }
 
         // == STATIC STRINGNAMES ==
-        p_sn_ready := make_p_stringname("_ready");
-        memcpy(*vfn_stringnames[0], p_sn_ready, size_of(StringName));
-        p_sn_process := make_p_stringname("_process");
-        memcpy(*vfn_stringnames[1], p_sn_process, size_of(StringName));
-        p_sn_input := make_p_stringname("_input");
-        memcpy(*vfn_stringnames[2], p_sn_input, size_of(StringName));
+        make_stringname("_ready", *vfn_stringnames[0]);
+        make_stringname("_process", *vfn_stringnames[1]);
+        make_stringname("_input", *vfn_stringnames[2]);
 
         #insert user_entity_declaration_list;
         register_extension_entities();
@@ -413,8 +411,8 @@ gdt_call :: (call_string: string, args: .. Any) {
     if index == S64_MAX { print_error("Could not find method!"); return; }
     hash := METHOD_HASH[index];
     native_strings := split(call_string, ".");
-    p_classname := make_p_stringname(native_strings[0]);
-    //p_methodname := make_p_stringname(native_strings[1]);
+    p_classname := make_stringname(native_strings[0], null);
+    p_methodname := make_stringname(native_strings[1], null);
     print_warn(tprint("HASH: %", hash));
     //classdb_get_method_bind(p_classname, p_methodname, hash);
 }
@@ -460,10 +458,13 @@ break_gstring :: (gstring: *u8) -> string {
     return (cast(string) raw_string);
 }
 
-make_p_stringname :: (native_string: string) -> *StringName {
+make_stringname :: (native_string: string, dst: *StringName) -> *StringName {
     c_string := to_c_string(native_string);
     p_stringname := New(StringName,, allocator=temp);
     string_name_new_with_utf8_chars(p_stringname, c_string);
+    if dst != null memcpy(dst, p_stringname, size_of(StringName));
+    // For some reason, godot requires the *exact* pointer it generates here, as opposed to an arbitrary pointer to the StringName.
+    // So we return it, in case we need to capture it.
     return p_stringname;
 }
 

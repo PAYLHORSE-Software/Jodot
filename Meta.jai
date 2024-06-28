@@ -65,7 +65,7 @@ DONE
                     append(*case_builder, "if extension_entity.type == {");
                     for tagged_names {
                         print_to_builder(*case_builder, "case %;", it);
-                        print_to_builder(*case_builder, " object_set_instance(p_object, extension_entity.p_class_name, *entities_%[0]);", it);
+                        print_to_builder(*case_builder, " object_set_instance(p_object, p_class_name, *entities_%[0]);", it);
                     }
                     append(*case_builder, "}");
                     cases := builder_to_string(*case_builder);
