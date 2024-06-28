@@ -209,6 +209,8 @@ ExtensionEntity :: struct {
     type: Type = void;
     parent_type: Type;
 
+    p_object: *void;
+
     _ready : #type (entity: *ExtensionEntity) = null;
     _process : #type (entity: *ExtensionEntity, delta: float64) = null;
     _input : #type (entity: *ExtensionEntity, event: InputEvent) = null;
@@ -251,8 +253,8 @@ call_virtual_with_data_fn :: (p_instance: GDExtensionClassInstancePtr, p_name: G
         // == PROCESS PROC ==
         } else if sn_vfn == vfn_stringnames[1] {
             if extension_entity._process != null {
-                delta: float64;
-                memcpy(*delta, p_args, size_of(float64));
+                delta: Array;
+                memcpy(*delta, p_args.*, size_of(float64));
                 // delta := 0.0;
                 // extension_entity._process(extension_entity, delta);
             }
@@ -264,7 +266,7 @@ call_virtual_with_data_fn :: (p_instance: GDExtensionClassInstancePtr, p_name: G
             }
         }
 
-        // TODO: _init, _physics_process, _enter_tree, _exit_tree
+        // TODO: _init, _physics_process, _enter_tree, _exit_tree @Incomplete
     }
 }
 
@@ -283,6 +285,7 @@ class_create_instance :: (p_class_userdata: *void) -> GDExtensionObjectPtr #c_ca
             #insert user_entity_case;
         }
 
+        extension_entity.p_object = p_object;
         return p_object;
     }
 }
@@ -290,7 +293,7 @@ class_create_instance :: (p_class_userdata: *void) -> GDExtensionObjectPtr #c_ca
 class_free_instance :: (p_class_userdata: *void, p_instance: GDExtensionClassInstancePtr) #c_call {
 
     push_context jodot_ctx {
-        // TODO: clear repective array index
+        // TODO: reset respective array index for reuse
     }
 }
 
@@ -312,7 +315,6 @@ register_extension_entities :: () {
             *unique_class_create_info
         );
 
-        // Registration can fail silently, so check...
         tag := classdb_get_class_tag(p_class_name);
         if tag == null print_error_with_message(null, "Extension entity registration failed!", null, "Jodot", 0, 1);
         print_affirm(tprint("Extension entity registered: %", user_entity_declarations[it_index].type));
@@ -384,7 +386,7 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
 
         #insert user_entity_declaration_list;
         register_extension_entities();
-        gdt_call("Node.set_name");
+        // gdt_call("Node.set_name");
         print("All systems Jo :)\n");
         reset_temporary_storage; // STRINGNAMES WIPED
         print_warn(tprint("Temp Storage is at % bytes.\n", temp_storage.current_page_bytes_occupied));
@@ -398,23 +400,27 @@ deinitialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializatio
     // Perform any necessary cleanup!
 }
 
-gdt_call :: (call_string: string, args: .. Any) {
-    // TODO: HASH TABLE
+gdt_call :: (call_string: string, entity: *ExtensionEntity, args: .. Any) -> Variant {
+    // TODO: HASH TABLE once we have phf set up @Speed
     // hash := table_find_pointer(*ALL_METHODS, method_name);
     // print_warn(tprint("HASH: %", hash.*));
-    // SAD ARRAY
-    // this is O(N) and totally sucks
+    // SAD ARRAY: this is O(N) and totally sucks
     index : s64 = S64_MAX;
     for METHOD_KEY {
         if it == call_string { index = it_index; break; }
     }
-    if index == S64_MAX { print_error("Could not find method!"); return; }
+    ret: Variant;
+    if index == S64_MAX { print_error("Could not find method!"); return ret; }
     hash := METHOD_HASH[index];
+    ret_type := METHOD_RET[index];
     native_strings := split(call_string, ".");
     p_classname := make_stringname(native_strings[0], null);
     p_methodname := make_stringname(native_strings[1], null);
     print_warn(tprint("HASH: %", hash));
-    //classdb_get_method_bind(p_classname, p_methodname, hash);
+    p_method_bind := classdb_get_method_bind(p_classname, p_methodname, hash);
+    // TODO: convert args to array of variants @Incomplete
+    // object_method_bind_call(p_method_bind, entity.p_object, null, 0, *ret, null);
+    return ret;
 }
 
 #program_export

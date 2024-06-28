@@ -367,6 +367,8 @@ gdt_bindings_codegen :: () {
 
     // ARRAY
     // NOTE: using this sad alternative until we get phf
+
+    // names:
     print_to_builder(*builder, "\nMETHOD_KEY : [%] string : .[\n", count);
     for class: godot_api.classes {
         for class.methods {
@@ -375,6 +377,7 @@ gdt_bindings_codegen :: () {
         }
     }
     append(*builder, "];\n");
+    // hash:
     print_to_builder(*builder, "\nMETHOD_HASH : [%] s64 : .[\n", count);
     for class: godot_api.classes {
         for class.methods {
@@ -383,7 +386,66 @@ gdt_bindings_codegen :: () {
         }
     }
     append(*builder, "];\n\n");
-
+    // return args:
+    print_to_builder(*builder, "\nMETHOD_RET : [%] Type : .[\n", count);
+    for class: godot_api.classes {
+        for class.methods {
+            if it.is_virtual.* continue;
+            if it.return_value {
+                // This is just awful... TODO refactor
+                if contains(it.return_value.type.*, "enum::") {
+                    it.return_value.type.*.data = * it.return_value.type.*[6];
+                    it.return_value.type.*.count -= 6;
+                }
+                else if contains(it.return_value.type.*, "typedarray::") {
+                    it.return_value.type.*.data = * it.return_value.type.*[12];
+                    it.return_value.type.*.count -= 12;
+                    it.return_value.type.* = join("[] ", it.return_value.type.*);
+                }
+                else if contains(it.return_value.type.*, "bitfield::") {
+                    it.return_value.type.*.data = * it.return_value.type.*[10];
+                    it.return_value.type.*.count -= 10;
+                }
+                if contains(it.return_value.type.*, "const") {
+                    it.return_value.type.*.data = * it.return_value.type.*[6];
+                    it.return_value.type.*.count -= 6;
+                }
+                if contains(it.return_value.type.*, "**") {
+                    it.return_value.type.*.count -= 3;
+                    it.return_value.type.* = join("*", it.return_value.type.*);
+                }
+                if contains(it.return_value.type.*, "**") {
+                    it.return_value.type.*.data = * it.return_value.type.*[1];
+                    it.return_value.type.*.count -= 1;
+                    it.return_value.type.* = join("*", it.return_value.type.*);
+                }                if contains(it.return_value.type.*, "*") {
+                    it.return_value.type.*.count -= 1;
+                    it.return_value.type.* = join("*", it.return_value.type.*);
+                }
+                // if contains(it.return_value.type.*, "AudioFrame") ||
+                //     contains(it.return_value.type.*, "CaretInfo") ||
+                //     contains(it.return_value.type.*, "ExtensionRay") ||
+                //     contains(it.return_value.type.*, "ExtensionShape") ||
+                //     contains(it.return_value.type.*, "ExtensionMotion") ||
+                //     contains(it.return_value.type.*, "ScriptLanguageExtensionProfilingInfo") continue;
+                if it.return_value.type.* == "Variant.Type" it.return_value.type.* = "Variant_Type";
+                if it.return_value.type.* == "Vector2.Axis" it.return_value.type.* = "Vector2_Axis";
+                if it.return_value.type.* == "Vector2i.Axis" it.return_value.type.* = "Vector2_Axis";
+                if it.return_value.type.* == "Vector3.Axis" it.return_value.type.* = "Vector3_Axis";
+                if it.return_value.type.* == "Vector3i.Axis" it.return_value.type.* = "Vector3_Axis";
+                if it.return_value.type.* == "Vector4.Axis" it.return_value.type.* = "Vector4_Axis";
+                if it.return_value.type.* == "Vector4i.Axis" it.return_value.type.* = "Vector4_Axis";
+                if it.return_value.type.* == "Projection.Planes" it.return_value.type.* = "Projection_Planes";
+                if it.return_value.type.* == "String" it.return_value.type.* = "gstring";
+                if it.return_value.type.* == "[] String" it.return_value.type.* = "[] gstring";
+                if it.return_value.type.* == "*int32_t" it.return_value.type.* = "*s32";
+                if it.return_value.type.* == "**uint8_" it.return_value.type.* = "**u8";
+                if it.return_value.type.* == "*uint8_t" it.return_value.type.* = "*u8";
+                print_to_builder(*builder, "    %,\n", it.return_value.type.*);
+            } else { append(*builder, "    Nil,\n"); }
+        }
+    }
+    append(*builder, "];\n\n");
     // == BUILTIN CLASS ARRAY ==
 
     // append(*builder, "BUILTIN_TYPES : [38] string : .[");

@@ -52,9 +52,12 @@ message_loop :: (DEMO: bool = false) {
                     for tagged_names {
                         code := #string DONE
 #placeholder %;
+// TODO: better allocation this is sad
+// See @shwa entity system: https://discord.com/channels/661732390355337246/784843664651190273/1253563063978692608
 entities_%: [64] %;
+cursor_%: u8;
 DONE
-                        print_to_builder(*builder, code, it, it, it);
+                        print_to_builder(*builder, code, it, it, it, it);
                         print_to_builder(*list_builder, "user_entity_declarations[%] = %.{}; ", it_index, it);
                     }
                     list := builder_to_string(*list_builder);
@@ -65,7 +68,8 @@ DONE
                     append(*case_builder, "if extension_entity.type == {");
                     for tagged_names {
                         print_to_builder(*case_builder, "case %;", it);
-                        print_to_builder(*case_builder, " object_set_instance(p_object, p_class_name, *entities_%[0]);", it);
+                        print_to_builder(*case_builder, " object_set_instance(p_object, p_class_name, *entities_%[cursor_%]);", it, it);
+                        print_to_builder(*case_builder, " cursor_% += 1;", it);
                     }
                     append(*case_builder, "}");
                     cases := builder_to_string(*case_builder);

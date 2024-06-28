@@ -43,6 +43,8 @@ JodotTestEntity :: struct @jodot {
 
 ready_JodotTestEntity :: (entity: *ExtensionEntity) {
     print("Hello from JodotTestEntity!\n");
+    var := gdt_call("Node.is_node_ready", entity);
+    if var print_affirm("IT WORKED!");
 }
 
 process_JodotTestEntity :: (entity: *ExtensionEntity, delta: float64) {
