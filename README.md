@@ -5,27 +5,42 @@
 ## ABOUT
 **Secret language bindings for the GDExtension API.**
 
-Pursuing antagonism to Godot's OOP, and favor to a GDScript-free workflow.
+Pursuing antagonism to Godot's OOP, and a GDScript-free workflow.
 
-> 🛈 **A testament to the language, and to temperance:**
+> 🛈 **A testament to language design and to temperance:**
 >
-> Currently at: **731 LOC**
+> Currently at: **982 LOC**
 >
 > Compared to:
 >
-> [godot-cpp](https://github.com/godot-rust/gdext) at **~22,000 LOC**
+> [godot-cpp](https://github.com/godotengine/godot-cpp) at **~22,000 LOC**
 > 
 > [godot-rust](https://github.com/godot-rust/gdext) at **~43,000 LOC**
 
 ## THE CHOPPING BLOCK
 
-Jodot is bespoke, opinionated and experimental in it's design philosophy. For a kitchen-sink alternative, see the aforementioned godot-rust, an excellent library far more feature-packed. With that said, here's the gist of it:
+Jodot is bespoke, opinionated and experimental in it's design philosophy. For a kitchen-sink alternative, see the aforementioned godot-rust, an excellent library that is far more versatile. With that said, here's the gist of it:
 
-**Methods, or member functions, are to be abolished.** Except from this abolishment are the **_ready**, **_process** and **_input** virtual methods, which have been reimplemented as hardcoded procedures.
+**Methods, or member functions, are to be abolished. Except from this abolishment are the **_ready**, **_process**, **_physcis_process**, **_input**, **_enter_tree** and **_exit_tree** virtual methods, which can be declared as members.**
 
 Instead, you are offered `gdt_call(method_name, args...)` to call any of godot's class methods.
 
-payl is typing...
+```jai
+Character :: struct @jodot {
+    ...
+    character_name : string = "Nameless One";
+    _ready = ready_Character;
+}
+
+ready_Character :: (entity: *ExtensionEntity) {
+    gdt_call("Node3D.set_visible", entity, true);
+    position : Vector3 = gdt_call("Node3D.get_position", entity);
+}
+
+change_character_name :: (character: *Character, new_name: string) {...}
+```
+
+More will be added to the chopping block as opportunities to favor language idioms arise.
 
 ## HANDBOOK
 ### Getting Started
@@ -76,7 +91,7 @@ That should be all godot-side. Next, we'll configure our build in the language t
 This is a minimal example. The only hard requirements on your workspace are `entry_point_name = "jodot_init"` and `JodotMeta.message_loop()` in place.
 
 **build.jai**
-```
+```jai
 build :: () {
 
     w := compiler_create_workspace();
@@ -109,7 +124,23 @@ JodotMeta :: #import "Jodot/Meta";
 Import the full Jodot module in your main source file...
 
 **main.jai**
-```
+```jai
 #import "Jodot";
 ```
 And you're set! Refer to [**demo/jai/src/main.jai**](https://github.com/paylanon/Jodot/blob/main/demo/jai/src/main.jai) for comprehensive usage instructions.
+
+## ROADMAP
+
+- [x] Proof of concept: "It just works!"
+
+== v0.1 ==
+
+- [ ] Godot integration pass: exported properties and procedures.
+- [ ] Performance pass: bespoke allocator and perfect class method lookups.
+
+== v0.2 ==
+
+- [ ] Native godot classes, depracate `gdt_call()`.
+- [ ] 'Jodot System' god object, DOD, abolish virtual functions.
+
+== v0.3 ==
