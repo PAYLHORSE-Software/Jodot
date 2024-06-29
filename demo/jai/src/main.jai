@@ -22,7 +22,7 @@ Character :: struct @jodot {
 }
 
 // The user declares 'virtual method overrides' as native procedures.
-// These must be declared, must follow this naming convention, and must match the signature.
+// These must match the signature.
 ready_Character :: (entity: *ExtensionEntity) {
     print("Hello from JodotTestEntity!\n");
 }
@@ -39,6 +39,7 @@ JodotTestEntity :: struct @jodot {
 
     _ready = ready_JodotTestEntity;
     _process = process_JodotTestEntity;
+    _enter_tree = enter_JodotTestEntity;
 }
 
 ready_JodotTestEntity :: (entity: *ExtensionEntity) {
@@ -48,7 +49,14 @@ ready_JodotTestEntity :: (entity: *ExtensionEntity) {
 }
 
 process_JodotTestEntity :: (entity: *ExtensionEntity, delta: float64) {
-    print("Delta from JodotTestEntity: %\n", delta);
+
+    jentity := cast(*JodotTestEntity) entity;
+    jentity.time_accumulator += cast(float) delta;
+    print("Greeter's Stopwatch: %\n", jentity.time_accumulator);
+}
+
+enter_JodotTestEntity :: (entity: *ExtensionEntity) {
+    print_affirm("ENTERED TREE!!");
 }
 
 #import "Basic";

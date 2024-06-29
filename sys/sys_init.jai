@@ -9,7 +9,8 @@ jodot_allocator: Allocator;
 temp_storage: Temporary_Storage;
 temp_buffer: [1024] u8;
 
-vfn_stringnames: [3] StringName;
+// [_ready, _process, _physics_process, _input, _enter_tree, _exit_tree]
+vfn_stringnames: [6] StringName;
 
 // == RAW PROCEDURES ==
 
@@ -213,7 +214,10 @@ ExtensionEntity :: struct {
 
     _ready : #type (entity: *ExtensionEntity) = null;
     _process : #type (entity: *ExtensionEntity, delta: float64) = null;
+    _physics_process : #type (entity: *ExtensionEntity, delta: float64) = null;
     _input : #type (entity: *ExtensionEntity, event: InputEvent) = null;
+    _enter_tree : #type (entity: *ExtensionEntity) = null;
+    _exit_tree : #type (entity: *ExtensionEntity) = null;
 }
 
 class_create_info :: GDExtensionClassCreationInfo3.{
@@ -253,19 +257,34 @@ call_virtual_with_data_fn :: (p_instance: GDExtensionClassInstancePtr, p_name: G
         // == PROCESS PROC ==
         } else if sn_vfn == vfn_stringnames[1] {
             if extension_entity._process != null {
-                delta: Array;
+                delta: float64;
                 memcpy(*delta, p_args.*, size_of(float64));
-                // delta := 0.0;
-                // extension_entity._process(extension_entity, delta);
+                extension_entity._process(extension_entity, delta);
+            }
+        // == PHYSICS PROCESS PROC ==
+        } else if sn_vfn == vfn_stringnames[2] {
+            if extension_entity._physics_process != null {
+                delta: float64;
+                memcpy(*delta, p_args.*, size_of(float64));
+                extension_entity._physics_process(extension_entity, delta);
             }
         // == INPUT PROC ==
-        } else if sn_vfn == vfn_stringnames[2] {
+        } else if sn_vfn == vfn_stringnames[3] {
             if extension_entity._input != null {
                 event: InputEvent;
                 extension_entity._input(extension_entity, event);
             }
+        // == ENTER TREE PROC ==
+        } else if sn_vfn == vfn_stringnames[4] {
+            if extension_entity._enter_tree != null {
+                extension_entity._enter_tree(extension_entity);
+            }
+            // == EXIT TREE PROC ==
+        } else if sn_vfn == vfn_stringnames[5] {
+            if extension_entity._exit_tree != null {
+                extension_entity._exit_tree(extension_entity);
+            }
         }
-
         // TODO: _init, _physics_process, _enter_tree, _exit_tree @Incomplete
     }
 }
@@ -382,7 +401,10 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
         // == STATIC STRINGNAMES ==
         make_stringname("_ready", *vfn_stringnames[0]);
         make_stringname("_process", *vfn_stringnames[1]);
-        make_stringname("_input", *vfn_stringnames[2]);
+        make_stringname("_physics_process", *vfn_stringnames[2]);
+        make_stringname("_input", *vfn_stringnames[3]);
+        make_stringname("_enter_tree", *vfn_stringnames[4]);
+        make_stringname("_exit_tree", *vfn_stringnames[5]);
 
         #insert user_entity_declaration_list;
         register_extension_entities();
@@ -404,7 +426,7 @@ gdt_call :: (call_string: string, entity: *ExtensionEntity, args: .. Any) -> Var
     // TODO: HASH TABLE once we have phf set up @Speed
     // hash := table_find_pointer(*ALL_METHODS, method_name);
     // print_warn(tprint("HASH: %", hash.*));
-    // SAD ARRAY: this is O(N) and totally sucks
+    // SAD PARALLEL ARRAYS: this is O(N) and kinda sucks
     index : s64 = S64_MAX;
     for METHOD_KEY {
         if it == call_string { index = it_index; break; }
@@ -453,7 +475,7 @@ godot_warn :: (message: string) {
     print_warning(null, message, null, null, 0, 1);
 }
 
-// TODO: these should be set up as cast() calls instead of procedures
+// TODO: these should be set up as casts instead of procs
 make_gstring :: (native_string: string) {
     c_string := to_c_string(native_string);
 }
@@ -469,7 +491,7 @@ make_stringname :: (native_string: string, dst: *StringName) -> *StringName {
     p_stringname := New(StringName,, allocator=temp);
     string_name_new_with_utf8_chars(p_stringname, c_string);
     if dst != null memcpy(dst, p_stringname, size_of(StringName));
-    // For some reason, godot requires the *exact* pointer it generates here, as opposed to an arbitrary pointer to the StringName.
+    // For some reason, godot requires the *exact* pointer it generates here, as opposed to an arbitrary pointer to the StringName value.
     // So we return it, in case we need to capture it.
     return p_stringname;
 }
