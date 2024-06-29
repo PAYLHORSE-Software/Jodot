@@ -1,4 +1,4 @@
-# Once we can have this code in the language instead, Jodot hits 1.0
+# Once we can have this code in the language instead, Jodot is feature complete.
 
 extends Sprite2D
 

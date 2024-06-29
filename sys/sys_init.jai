@@ -237,7 +237,8 @@ class_create_info :: GDExtensionClassCreationInfo3.{
 // ------------------------
 // (NODE) VIRTUAL FUNCTIONS
 
-// NOTE: we use get_virtual_call_data_fn + call_virtual_with_data_fn instead of get_virtual_func simply for convenience
+// NOTE: using get_virtual_call_data_fn + call_virtual_with_data_fn instead of get_virtual_func is a convenience hack
+// Using get_virtual_func, we'd have to define #c_call procs for each vfn and pass them back
 
 get_virtual_call_data_fn :: (p_class_userdata: *void, p_name: GDExtensionConstStringNamePtr) -> *void #c_call {
     return p_class_userdata;
@@ -272,6 +273,7 @@ call_virtual_with_data_fn :: (p_instance: GDExtensionClassInstancePtr, p_name: G
         } else if sn_vfn == vfn_stringnames[3] {
             if extension_entity._input != null {
                 event: InputEvent;
+                // TODO: expose InputEvent @Incomplete
                 extension_entity._input(extension_entity, event);
             }
         // == ENTER TREE PROC ==
@@ -285,7 +287,6 @@ call_virtual_with_data_fn :: (p_instance: GDExtensionClassInstancePtr, p_name: G
                 extension_entity._exit_tree(extension_entity);
             }
         }
-        // TODO: _init, _physics_process, _enter_tree, _exit_tree @Incomplete
     }
 }
 
@@ -304,7 +305,7 @@ class_create_instance :: (p_class_userdata: *void) -> GDExtensionObjectPtr #c_ca
             #insert user_entity_case;
         }
 
-        extension_entity.p_object = p_object;
+        // print("++++++ P_OBJECT: % ++++++\n", p_object);
         return p_object;
     }
 }
@@ -312,7 +313,7 @@ class_create_instance :: (p_class_userdata: *void) -> GDExtensionObjectPtr #c_ca
 class_free_instance :: (p_class_userdata: *void, p_instance: GDExtensionClassInstancePtr) #c_call {
 
     push_context jodot_ctx {
-        // TODO: reset respective array index for reuse
+        // TODO: free here once we have better allocation @Incomplete
     }
 }
 
@@ -355,6 +356,7 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
         return;
     }
 
+    // TODO: replace pool allocator with custom allocator @Incomplete
     jodot_allocator.proc = flat_pool_allocator_proc;
     jodot_allocator.data = *pool;
     jodot_ctx.allocator = jodot_allocator;
@@ -362,8 +364,8 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
     temp_storage.size = size_of(type_of(temp_buffer));
     jodot_ctx.temporary_storage = *temp_storage;
     push_context jodot_ctx {
-        // print("The Flat Pool is at % bytes.\n", pool.current_point - pool.memory_base);
-        print_warn(tprint("Temp Storage is at % bytes.\n", temp_storage.current_page_bytes_occupied));
+        // if DEBUG print("The Flat Pool is at % bytes.\n", pool.current_point - pool.memory_base);
+        // if DEBUG print_warn(tprint("Temp Storage is at % bytes.\n", temp_storage.current_page_bytes_occupied));
         print("Hello from secret language!\n");
         print("Initializing Jodot module...\n");
 
@@ -395,7 +397,7 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
             if it == 38 break;
             VARIANT_FROM[it].* = get_variant_from_type_constructor(cast(GDExtensionVariantType) it);
             VARIANT_TO[it].* = get_variant_to_type_constructor(cast(GDExtensionVariantType) it);
-            if DEBUG print_muted(tprint("Variant procs ready for: %", cast(GDExtensionVariantType) it));
+            // if DEBUG print_muted(tprint("Variant procs ready for: %", cast(GDExtensionVariantType) it));
         }
 
         // == STATIC STRINGNAMES ==
@@ -408,10 +410,9 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
 
         #insert user_entity_declaration_list;
         register_extension_entities();
-        // gdt_call("Node.set_name");
         print("All systems Jo :)\n");
         reset_temporary_storage; // STRINGNAMES WIPED
-        print_warn(tprint("Temp Storage is at % bytes.\n", temp_storage.current_page_bytes_occupied));
+        // if DEBUG print_warn(tprint("Temp Storage is at % bytes.\n", temp_storage.current_page_bytes_occupied));
     }
 }
 
@@ -422,26 +423,38 @@ deinitialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializatio
     // Perform any necessary cleanup!
 }
 
-gdt_call :: (call_string: string, entity: *ExtensionEntity, args: .. Any) -> Variant {
+gdt_call :: (call_string: string, entity: *ExtensionEntity, args: .. Any) -> *Variant {
     // TODO: HASH TABLE once we have phf set up @Speed
     // hash := table_find_pointer(*ALL_METHODS, method_name);
     // print_warn(tprint("HASH: %", hash.*));
-    // SAD PARALLEL ARRAYS: this is O(N) and kinda sucks
+    // SAD O(N) PARALLEL ARRAYS
     index : s64 = S64_MAX;
     for METHOD_KEY {
         if it == call_string { index = it_index; break; }
     }
-    ret: Variant;
+    ret := New(Variant);
     if index == S64_MAX { print_error("Could not find method!"); return ret; }
     hash := METHOD_HASH[index];
     ret_type := METHOD_RET[index];
     native_strings := split(call_string, ".");
     p_classname := make_stringname(native_strings[0], null);
     p_methodname := make_stringname(native_strings[1], null);
-    print_warn(tprint("HASH: %", hash));
+    // if DEBUG print_warn("==== GDT CALL ====");
+    // if DEBUG print_warn(tprint("CLASS: %", native_strings[0]));
+    // if DEBUG print_warn(tprint("METHOD: %", native_strings[1]));
+    // if DEBUG print_warn(tprint("HASH: %", hash));
     p_method_bind := classdb_get_method_bind(p_classname, p_methodname, hash);
     // TODO: convert args to array of variants @Incomplete
-    // object_method_bind_call(p_method_bind, entity.p_object, null, 0, *ret, null);
+    error: GDExtensionCallError;
+    p_sn_newname := make_stringname("Sailor", null);
+    varholder := New(Variant,, allocator=temp);
+    variant_from_StringName(varholder, p_sn_newname);
+    args: [1] Variant;
+    memcpy(*args[0], *varholder, size_of(Variant));
+    // print("++++++ P_OBJECT: % ++++++\n", entity.p_object);
+    // print("++++++ P_ARGS: % ++++++\n", args.data);
+    object_method_bind_call(p_method_bind, entity.p_object, cast(*void) args.data, 1, ret, *error);
+    handle_call_error(error);
     return ret;
 }
 
@@ -464,41 +477,60 @@ jodot_init :: (p_get_proc_address: GDExtensionInterfaceGetProcAddress, p_library
     return success;
 }
 
+make_stringname :: (native_string: string, dst: *StringName) -> *StringName {
+    c_string := to_c_string(native_string);
+    p_stringname := New(StringName,, allocator=temp);
+    string_name_new_with_utf8_chars(p_stringname, c_string);
+    if dst != null memcpy(dst, p_stringname, size_of(StringName));
+    // NOTE: For some reason, godot requires the *exact* pointer it generates here, as opposed to an arbitrary pointer to the StringName value.
+    // So we return it, in case we need to capture.
+    return p_stringname;
+}
+
+handle_call_error :: (err: GDExtensionCallError) {
+    using GDExtensionCallErrorType;
+    if err.error == {
+        case OK;
+            if DEBUG print_affirm("gdt_call OK!");
+        case ERROR_INVALID_METHOD;
+            print_error("gdt_call failed! invalid method");
+        case ERROR_INVALID_ARGUMENT;
+            print_error("gdt_call failed! invalid argument");
+        case ERROR_TOO_MANY_ARGUMENTS;
+            print_error("gdt_call failed! too many arguments");
+        case ERROR_TOO_FEW_ARGUMENTS;
+            print_error("gdt_call failed! too few arguments");
+        case ERROR_INSTANCE_IS_NULL;
+            print_error("gdt_call failed! instance is null");
+        case ERROR_METHOD_NOT_CONST;
+            print_error("gdt_call failed! method not const");
+    }
+}
+
 // ==== WRAPPERS ====
 
 // TODO: these should push line number from the .jai source file
 godot_error :: (message: string) {
-    print_error(null, message, null, null, 0, 1);
+    print_error_with_message(null, message, null, null, 0, 1);
 }
 
 godot_warn :: (message: string) {
-    print_warning(null, message, null, null, 0, 1);
+    print_warning_with_message(null, message, null, null, 0, 1);
 }
 
 // TODO: these should be set up as casts instead of procs
-make_gstring :: (native_string: string) {
+make_gstring :: (native_string: string, dst: *Variant) -> *Variant {
     c_string := to_c_string(native_string);
+    p_gstring_var := New(Variant);
+    string_new_with_utf8_chars(p_gstring_var, c_string);
+    if dst != null memcpy(dst, p_gstring_var, size_of(Variant));
+    return p_gstring_var;
 }
 
 break_gstring :: (gstring: *u8) -> string {
     raw_string := string_to_utf8_chars(gstring);
     // This procedure already omits null terminator
     return (cast(string) raw_string);
-}
-
-make_stringname :: (native_string: string, dst: *StringName) -> *StringName {
-    c_string := to_c_string(native_string);
-    p_stringname := New(StringName,, allocator=temp);
-    string_name_new_with_utf8_chars(p_stringname, c_string);
-    if dst != null memcpy(dst, p_stringname, size_of(StringName));
-    // For some reason, godot requires the *exact* pointer it generates here, as opposed to an arbitrary pointer to the StringName value.
-    // So we return it, in case we need to capture it.
-    return p_stringname;
-}
-
-p_stringname_to_string :: (p_stringname: *void) -> string {
-    jai_string := to_string(<< p_stringname);
-    return jai_string;
 }
 
 #import "Basic";

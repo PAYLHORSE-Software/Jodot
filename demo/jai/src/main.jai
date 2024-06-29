@@ -29,35 +29,38 @@ ready_Character :: (entity: *ExtensionEntity) {
 
 process_Character :: (entity: *Character, delta: float) {}
 
+// Here's the test entity we've added to the demo scene:
+
 JodotTestEntity :: struct @jodot {
 
     #as using base: gdtp.Node;
     #insert def_extension_entity;
 
     time_accumulator : float = 0.0;
-    character_name : string = "Nameless One";
 
     _ready = ready_JodotTestEntity;
     _process = process_JodotTestEntity;
     _enter_tree = enter_JodotTestEntity;
 }
 
+enter_JodotTestEntity :: (entity: *ExtensionEntity) {
+    print("Enter tree from JodotTestEntity!\n");
+}
+
 ready_JodotTestEntity :: (entity: *ExtensionEntity) {
-    print("Hello from JodotTestEntity!\n");
-    var := gdt_call("Node.is_node_ready", entity);
-    if var print_affirm("IT WORKED!");
+    print("Ready JodotTestEntity!\n");
+    print("Wait for it...\n");
+    gdt_call("Node.set_name", entity, "Sailor");
+    // new_name := gdt_call("Node.get_name", entity);
 }
 
 process_JodotTestEntity :: (entity: *ExtensionEntity, delta: float64) {
 
     jentity := cast(*JodotTestEntity) entity;
     jentity.time_accumulator += cast(float) delta;
-    print("Greeter's Stopwatch: %\n", jentity.time_accumulator);
+    if jentity.time_accumulator > 10.0 print("Greeter's Pocketwatch: %\n", jentity.time_accumulator);
 }
 
-enter_JodotTestEntity :: (entity: *ExtensionEntity) {
-    print_affirm("ENTERED TREE!!");
-}
 
 #import "Basic";
 #import "Jodot";

@@ -50,10 +50,10 @@ message_loop :: (DEMO: bool = false) {
                     print_to_builder(*builder, "user_entity_declarations: [%] ExtensionEntity;\n", tagged_names.count);
                     list_builder: String_Builder;
                     for tagged_names {
+                        // TODO: better allocation this is sad
+                        // See @shwa entity system: https://discord.com/channels/661732390355337246/784843664651190273/1253563063978692608
                         code := #string DONE
 #placeholder %;
-// TODO: better allocation this is sad
-// See @shwa entity system: https://discord.com/channels/661732390355337246/784843664651190273/1253563063978692608
 entities_%: [64] %;
 cursor_%: u8;
 DONE
@@ -69,6 +69,7 @@ DONE
                     for tagged_names {
                         print_to_builder(*case_builder, "case %;", it);
                         print_to_builder(*case_builder, " object_set_instance(p_object, p_class_name, *entities_%[cursor_%]);", it, it);
+                        print_to_builder(*case_builder, " entities_%[cursor_%].p_object = p_object;", it, it);
                         print_to_builder(*case_builder, " cursor_% += 1;", it);
                     }
                     append(*case_builder, "}");
