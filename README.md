@@ -19,11 +19,11 @@ Pursuing antagonism to Godot's OOP, and a GDScript-free workflow.
 
 ## THE CHOPPING BLOCK
 
-Jodot is bespoke, opinionated and experimental in it's design philosophy. For a kitchen-sink alternative, see the aforementioned godot-rust, an excellent library that is far more versatile. With that said, here's the gist of it:
+Jodot is bespoke, opinionated and experimental in it's design philosophy. For a kitchen-sink alternative, see the aforementioned godot-rust, an excellent library. With that said, here's the gist of it:
 
 **Methods, or member functions, are to be abolished. Except from this abolishment are the **_ready**, **_process**, **_physcis_process**, **_input**, **_enter_tree** and **_exit_tree** virtual methods, which can be declared as members.**
 
-Instead, you are offered `gdt_call(method_name, args...)` to call any of godot's class methods.
+You are offered `gdt_call(method_name, args...)` to call any of godot's class methods.
 
 ```jai
 Character :: struct @jodot {
