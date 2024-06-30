@@ -135,12 +135,16 @@ And you're set! Refer to [**demo/jai/src/main.jai**](https://github.com/paylanon
 
 == v0.1 ==
 
+- [ ] Fully-featured with opaque classes
+
+== v0.2 ==
+
 - [ ] Godot integration pass: exported properties and procedures.
 - [ ] Performance pass: bespoke allocator and perfect class method lookups.
 
-== v0.2 ==
+== v0.3 ==
 
 - [ ] Native godot classes, depracate `gdt_call()`.
 - [ ] 'Jodot System' god object, DOD, abolish virtual functions.
 
-== v0.3 ==
+== v0.4 ==
