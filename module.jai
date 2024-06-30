@@ -33,6 +33,7 @@ print_warn :: (msg: string) {
 #load "sys/sys_bindings.jai";
 
 // The 'gdt' submodule
+#load "gdt/gdt_builtin.jai";
 #load "gdt/gdt_bindings.jai";
 
 // ROUGH IDEA:
