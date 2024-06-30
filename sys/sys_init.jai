@@ -523,8 +523,8 @@ gdt_call :: (class_name: string, method_name: string, hash: s64, entity: OpaqueC
     ret := alloc(size_of(Variant));
     err: GDExtensionCallError;
     // print("++++++ % ++++++\n", arg_variants.data);
-    object_method_bind_call(p_method_bind, entity.p_object, cast(*void) arg_variants.data, arg_variants.count, ret, *err);
-    handle_call_error(err);
+    // object_method_bind_call(p_method_bind, entity.p_object, cast(*void) arg_variants.data, arg_variants.count, ret, *err);
+    // handle_call_error(err);
     return ret;
 }
 
