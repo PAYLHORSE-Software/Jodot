@@ -44,16 +44,17 @@ JodotTestEntity :: struct @jodot {
 }
 
 enter_JodotTestEntity :: (entity: *ExtensionEntity) {
+    entity = cast(*JodotTestEntity) entity;
     print("Enter tree from JodotTestEntity!\n");
 }
 
 ready_JodotTestEntity :: (entity: *ExtensionEntity) {
+    entity = cast(*JodotTestEntity) entity;
     print("Ready from JodotTestEntity!\n");
     print("Wait for it...\n");
     new_name: StringName;
     make_stringname("HelloSailor", *new_name);
-    gdt_call("Node.set_name", entity, new_name);
-    // mouse_cursor := gdt_call("ResourceLoader.load", P_RESOURCE_LOADER, "menu/sprite/mouse_cursor.png");
+    set_name(cast(*Node) entity, "HelloSailor");
 }
 
 process_JodotTestEntity :: (entity: *ExtensionEntity, delta: float64) {

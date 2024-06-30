@@ -1,7 +1,7 @@
 P_GET_PROC_ADDRESS: GDExtensionInterfaceGetProcAddress;
 P_LIBRARY: GDExtensionClassLibraryPtr;
 
-P_RESOURCE_LOADER: GDExtensionObjectPtr;
+objects_gdt: [256] OpaqueClass;
 
 jodot_ctx: Context;
 
@@ -352,7 +352,6 @@ create :: (gdt_type: $T) -> T {
 // | ENTRY POINT |
 //  -------------
 
-// Here, we capture and interrogate the godot runtime for pointers.
 initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationLevel) #c_call {
 
     if p_level != .INITIALIZATION_SCENE {
@@ -372,6 +371,7 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
         print("Hello from secret language!\n");
         print("Initializing Jodot module...\n");
 
+        // Here, we interrogate the godot runtime for pointers.
         get_godot_version: GDExtensionInterfaceGetGodotVersion = xx P_GET_PROC_ADDRESS("get_godot_version");
         godot_version: GDExtensionGodotVersion;
         get_godot_version(*godot_version);
@@ -413,9 +413,46 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
         make_stringname("_exit_tree", *vfn_stringnames[5]);
 
         // == ENGINE SINGLETONS ==
+        // NOTE: copied over from gdt_bindings
+        S_Performance = global_get_singleton(make_stringname("Performance", null));
+        S_TextServerManager = global_get_singleton(make_stringname("TextServerManager", null));
+        S_PhysicsServer2DManager = global_get_singleton(make_stringname("PhysicsServer2DManager", null));
+        S_PhysicsServer3DManager = global_get_singleton(make_stringname("PhysicsServer3DManager", null));
+        S_NavigationMeshGenerator = global_get_singleton(make_stringname("NavigationMeshGenerator", null));
+        S_ProjectSettings = global_get_singleton(make_stringname("ProjectSettings", null));
+        S_IP = global_get_singleton(make_stringname("IP", null));
+        S_Geometry2D = global_get_singleton(make_stringname("Geometry2D", null));
+        S_Geometry3D = global_get_singleton(make_stringname("Geometry3D", null));
+        S_ResourceLoader = global_get_singleton(make_stringname("ResourceLoader", null));
+        S_ResourceSaver = global_get_singleton(make_stringname("ResourceSaver", null));
+        S_OS = global_get_singleton(make_stringname("OS", null));
+        S_Engine = global_get_singleton(make_stringname("Engine", null));
+        S_ClassDB = global_get_singleton(make_stringname("ClassDB", null));
+        S_Marshalls = global_get_singleton(make_stringname("Marshalls", null));
+        S_TranslationServer = global_get_singleton(make_stringname("TranslationServer", null));
+        S_Input = global_get_singleton(make_stringname("Input", null));
+        S_InputMap = global_get_singleton(make_stringname("InputMap", null));
+        S_EngineDebugger = global_get_singleton(make_stringname("EngineDebugger", null));
+        S_Time = global_get_singleton(make_stringname("Time", null));
+        S_GDExtensionManager = global_get_singleton(make_stringname("GDExtensionManager", null));
+        S_ResourceUID = global_get_singleton(make_stringname("ResourceUID", null));
+        S_WorkerThreadPool = global_get_singleton(make_stringname("WorkerThreadPool", null));
+        S_ThemeDB = global_get_singleton(make_stringname("ThemeDB", null));
+        // For some reason, these return as non-existent @Incomplete
+        // S_EditorInterface = global_get_singleton(make_stringname("EditorInterface", null));
+        // S_JavaClassWrapper = global_get_singleton(make_stringname("JavaClassWrapper", null));
+        // S_JavaScriptBridge = global_get_singleton(make_stringname("JavaScriptBridge", null));
+        // S_AudioServer = global_get_singleton(make_stringname("AudioServer", null));
+        // S_CameraServer = global_get_singleton(make_stringname("CameraServer", null));
+        // S_DisplayServer = global_get_singleton(make_stringname("DisplayServer", null));
+        // S_NativeMenu = global_get_singleton(make_stringname("NativeMenu", null));
+        // S_NavigationServer2D = global_get_singleton(make_stringname("NavigationServer2D", null));
+        // S_NavigationServer3D = global_get_singleton(make_stringname("NavigationServer3D", null));
+        // S_RenderingServer = global_get_singleton(make_stringname("RenderingServer", null));
+        // S_PhysicsServer2D = global_get_singleton(make_stringname("PhysicsServer2D", null));
+        // S_PhysicsServer3D = global_get_singleton(make_stringname("PhysicsServer3D", null));
+        // S_XRServer = global_get_singleton(make_stringname("XRServer", null));
 
-        p_sn_resloader := make_stringname("ResourceLoader", null);
-        P_RESOURCE_LOADER = global_get_singleton(p_sn_resloader);
         #insert user_entity_declaration_list;
         register_extension_entities();
         print("All systems Jo :)\n");
@@ -431,28 +468,15 @@ deinitialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializatio
     // Perform any necessary cleanup!
 }
 
-gdt_call :: (call_string: string, entity: *ExtensionEntity, args: .. Any) -> *Variant {
-    // TODO: HASH TABLE once we have phf set up @Speed
-    // hash := table_find_pointer(*ALL_METHODS, method_name);
-    // print_warn(tprint("HASH: %", hash.*));
-    // SAD O(N) PARALLEL ARRAYS
-    index : s64 = S64_MAX;
-    for METHOD_KEY {
-        if it == call_string { index = it_index; break; }
-    }
-    ret := New(Variant);
-    if index == S64_MAX { print_error("Could not find method!"); return ret; }
-    hash := METHOD_HASH[index];
-    ret_type := METHOD_RET[index];
-    native_strings := split(call_string, ".");
-    p_classname := make_stringname(native_strings[0], null);
-    p_methodname := make_stringname(native_strings[1], null);
+gdt_call :: (class_name: string, method_name: string, hash: s64, entity: OpaqueClass, args: .. Any) -> *Variant {
+
+    p_classname := make_stringname(class_name, null);
+    p_methodname := make_stringname(method_name, null);
     // if DEBUG print_warn("==== GDT CALL ====");
     // if DEBUG print_warn(tprint("CLASS: %", native_strings[0]));
     // if DEBUG print_warn(tprint("METHOD: %", native_strings[1]));
     // if DEBUG print_warn(tprint("HASH: %", hash));
     p_method_bind := classdb_get_method_bind(p_classname, p_methodname, hash);
-    // TODO: convert args to array of variants @Incomplete
 
     arg_variants : [..] Variant;
 
@@ -478,7 +502,6 @@ gdt_call :: (call_string: string, entity: *ExtensionEntity, args: .. Any) -> *Va
               variant_from_bool(var_holder, *p_bool);
             case STRING;
               native_str := (cast(*string) it.value_pointer).*;
-              print(native_str);
               p_var := make_gstring_var(native_str, *variant);
               array_add(*arg_variants, variant);
               continue;
@@ -497,8 +520,10 @@ gdt_call :: (call_string: string, entity: *ExtensionEntity, args: .. Any) -> *Va
         memcpy(*variant, *var_holder, size_of(Variant));
         array_add(*arg_variants, variant);
     }
+    ret := alloc(size_of(Variant));
     err: GDExtensionCallError;
-    object_method_bind_call(p_method_bind, entity.p_object, cast(*void) arg_variants.data, 1, ret, *err);
+    // print("++++++ % ++++++\n", arg_variants.data);
+    object_method_bind_call(p_method_bind, entity.p_object, cast(*void) arg_variants.data, arg_variants.count, ret, *err);
     handle_call_error(err);
     return ret;
 }

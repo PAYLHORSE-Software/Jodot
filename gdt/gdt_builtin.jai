@@ -2,6 +2,8 @@
 // | JODOT GDT BUILTIN |
 //  -------------------
 
+// ====== BUILTIN TYPES ======
+
 Nil :: void;
 
 // bool, int and float (float64) match native
