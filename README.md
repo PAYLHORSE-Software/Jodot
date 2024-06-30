@@ -5,7 +5,7 @@
 ## ABOUT
 **Secret language bindings for the GDExtension API.**
 
-Pursuing antagonism to Godot's OOP, and a GDScript-free workflow.
+Pursuing antagonism to Godot's OOP and GDScript-free performance.
 
 > 🛈 **A testament to language design and to temperance:**
 >
@@ -19,25 +19,28 @@ Pursuing antagonism to Godot's OOP, and a GDScript-free workflow.
 
 ## THE CHOPPING BLOCK
 
-Jodot is bespoke, opinionated and experimental in it's design philosophy. For a kitchen-sink alternative, see the aforementioned godot-rust, an excellent library. With that said, here's the gist of it:
+Jodot aims to be language idiomatic, and is thus selective and experimental. For a traditional alternative, see the aforementioned godot-rust, an excellent library. With that said, here's the gist of it:
 
-**Methods, or member functions, are to be abolished. Except from this abolishment are the **_ready**, **_process**, **_physcis_process**, **_input**, **_enter_tree** and **_exit_tree** virtual methods, which can be declared as members.**
+Jodot's version of the user class is an **Extension Entity**.
 
-You are offered `gdt_call(method_name, args...)` to call any of godot's class methods.
+**Methods, or member functions, have been abolished.** Except from this abolishment are the **ready**, **process**, **physics process**, **input**, **enter tree** and **exit tree** virtual methods, which can be declared as members of an Extension Entity.
+
+You are offered all of Godot's class methods as pure procedures instead.
 
 ```jai
-Character :: struct @jodot {
+MyCharacter :: struct @jodot {
     ...
-    character_name : string = "Nameless One";
-    _ready = ready_Character;
+    character_name := "Nameless One";
+    _ready = ready_MyCharacter;
 }
 
-ready_Character :: (entity: *ExtensionEntity) {
-    gdt_call("Node3D.set_visible", entity, true);
-    position : Vector3 = gdt_call("Node3D.get_position", entity);
+ready_MyCharacter :: (cast_me: *ExtensionEntity) {
+    as_self := cast(*MyCharacter) cast_me;
+    as_node3d := cast(*Node3D) cast_me;
+    as_self.character_name = "John Doe";
+    set_visible(as_node3d, true);
+    pos : Vector3 = get_global_position(as_node3d);
 }
-
-change_character_name :: (character: *Character, new_name: string) {...}
 ```
 
 More will be added to the chopping block as opportunities to favor language idioms arise.
@@ -60,7 +63,7 @@ project_dir
     └── bin/
         └── .dll / .so / .dylib
 ```
-First, we'll set up our godot project to link against Jodot's output.
+First, we'll set up our Godot project to link against Jodot's output.
 
 **demo.gdextension**
 ```
@@ -86,7 +89,7 @@ The next little file should be generated automatically by the editor, but you ma
 ```
 res://demo.gdextension
 ```
-That should be all godot-side. Next, we'll configure our build in the language to output to a **dynamic library**. We also have to pull in Jodot's **metaprogram** with an import.
+That should be all Godot-side. Next, we'll configure our build in the language to output to a **dynamic library**. We also have to pull in Jodot's **metaprogram** with an import.
 
 This is a minimal example. The only hard requirements on your workspace are `entry_point_name = "jodot_init"` and `JodotMeta.message_loop()` in place.
 
@@ -121,7 +124,7 @@ build :: () {
 JodotMeta :: #import "Jodot/Meta";
 ```
 
-Import the full Jodot module in your main source file...
+Import the Jodot module in your main source file...
 
 **main.jai**
 ```jai
