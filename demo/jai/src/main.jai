@@ -48,10 +48,12 @@ enter_JodotTestEntity :: (entity: *ExtensionEntity) {
 }
 
 ready_JodotTestEntity :: (entity: *ExtensionEntity) {
-    print("Ready JodotTestEntity!\n");
+    print("Ready from JodotTestEntity!\n");
     print("Wait for it...\n");
-    gdt_call("Node.set_name", entity, "Sailor");
-    // new_name := gdt_call("Node.get_name", entity);
+    new_name: StringName;
+    make_stringname("HelloSailor", *new_name);
+    gdt_call("Node.set_name", entity, new_name);
+    // mouse_cursor := gdt_call("ResourceLoader.load", P_RESOURCE_LOADER, "menu/sprite/mouse_cursor.png");
 }
 
 process_JodotTestEntity :: (entity: *ExtensionEntity, delta: float64) {

@@ -1,5 +1,7 @@
-P_GET_PROC_ADDRESS : GDExtensionInterfaceGetProcAddress;
-P_LIBRARY : GDExtensionClassLibraryPtr;
+P_GET_PROC_ADDRESS: GDExtensionInterfaceGetProcAddress;
+P_LIBRARY: GDExtensionClassLibraryPtr;
+
+P_RESOURCE_LOADER: GDExtensionObjectPtr;
 
 jodot_ctx: Context;
 
@@ -26,10 +28,11 @@ classdb_register_extension_class_method: GDExtensionInterfaceClassdbRegisterExte
 classdb_construct_object: GDExtensionInterfaceClassdbConstructObject;
 classdb_get_method_bind: GDExtensionInterfaceClassdbGetMethodBind;
 object_method_bind_call: GDExtensionInterfaceObjectMethodBindCall;
-// objcet_method_bind_ptrcall: GDExtensionInterfaceObjectMethodBindPtrcall;
+// object_method_bind_ptrcall: GDExtensionInterfaceObjectMethodBindPtrcall;
 object_destroy: GDExtensionInterfaceObjectDestroy;
 get_variant_from_type_constructor: GDExtensionInterfaceGetVariantFromTypeConstructor;
 get_variant_to_type_constructor: GDExtensionInterfaceGetVariantToTypeConstructor;
+global_get_singleton: GDExtensionInterfaceGlobalGetSingleton;
 
 // == VARIANT PROCS ==
 
@@ -248,43 +251,43 @@ call_virtual_with_data_fn :: (p_instance: GDExtensionClassInstancePtr, p_name: G
     push_context jodot_ctx {
         sn_vfn: StringName;
         memcpy(*sn_vfn, p_name, size_of(StringName));
-        extension_entity := cast(*ExtensionEntity) p_instance;
+        entity := cast(*ExtensionEntity) p_instance;
 
         // == READY PROC ==
-        if sn_vfn == vfn_stringnames[0] {
-            if extension_entity._ready != null {
-                extension_entity._ready(extension_entity);
+        if sn_equal(sn_vfn, vfn_stringnames[0]) {
+            if entity._ready != null {
+                entity._ready(entity);
             }
         // == PROCESS PROC ==
-        } else if sn_vfn == vfn_stringnames[1] {
-            if extension_entity._process != null {
+        } else if sn_equal(sn_vfn, vfn_stringnames[1]) {
+            if entity._process != null {
                 delta: float64;
                 memcpy(*delta, p_args.*, size_of(float64));
-                extension_entity._process(extension_entity, delta);
+                entity._process(entity, delta);
             }
         // == PHYSICS PROCESS PROC ==
-        } else if sn_vfn == vfn_stringnames[2] {
-            if extension_entity._physics_process != null {
+        } else if sn_equal(sn_vfn, vfn_stringnames[2]) {
+            if entity._physics_process != null {
                 delta: float64;
                 memcpy(*delta, p_args.*, size_of(float64));
-                extension_entity._physics_process(extension_entity, delta);
+                entity._physics_process(entity, delta);
             }
         // == INPUT PROC ==
-        } else if sn_vfn == vfn_stringnames[3] {
-            if extension_entity._input != null {
+        } else if sn_equal(sn_vfn, vfn_stringnames[3]) {
+            if entity._input != null {
                 event: InputEvent;
-                // TODO: expose InputEvent @Incomplete
-                extension_entity._input(extension_entity, event);
+                memcpy(*event, p_args.*, size_of(InputEvent)); // CHECK THIS
+                entity._input(entity, event);
             }
         // == ENTER TREE PROC ==
-        } else if sn_vfn == vfn_stringnames[4] {
-            if extension_entity._enter_tree != null {
-                extension_entity._enter_tree(extension_entity);
+        } else if sn_equal(sn_vfn, vfn_stringnames[4]) {
+            if entity._enter_tree != null {
+                entity._enter_tree(entity);
             }
-            // == EXIT TREE PROC ==
-        } else if sn_vfn == vfn_stringnames[5] {
-            if extension_entity._exit_tree != null {
-                extension_entity._exit_tree(extension_entity);
+        // == EXIT TREE PROC ==
+        } else if sn_equal(sn_vfn, vfn_stringnames[5]) {
+            if entity._exit_tree != null {
+                entity._exit_tree(entity);
             }
         }
     }
@@ -390,6 +393,7 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
         // object_method_bind_ptrcall = xx P_GET_PROC_ADDRESS("object_method_bind_ptrcall");
         get_variant_from_type_constructor = xx P_GET_PROC_ADDRESS("get_variant_from_type_constructor");
         get_variant_to_type_constructor = xx P_GET_PROC_ADDRESS("get_variant_to_type_constructor");
+        global_get_singleton = xx P_GET_PROC_ADDRESS("global_get_singleton");
 
         // == VARIANT CONVERSION ==
         for enum_values_as_s64(GDExtensionVariantType) {
@@ -408,6 +412,10 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
         make_stringname("_enter_tree", *vfn_stringnames[4]);
         make_stringname("_exit_tree", *vfn_stringnames[5]);
 
+        // == ENGINE SINGLETONS ==
+
+        p_sn_resloader := make_stringname("ResourceLoader", null);
+        P_RESOURCE_LOADER = global_get_singleton(p_sn_resloader);
         #insert user_entity_declaration_list;
         register_extension_entities();
         print("All systems Jo :)\n");
@@ -445,16 +453,53 @@ gdt_call :: (call_string: string, entity: *ExtensionEntity, args: .. Any) -> *Va
     // if DEBUG print_warn(tprint("HASH: %", hash));
     p_method_bind := classdb_get_method_bind(p_classname, p_methodname, hash);
     // TODO: convert args to array of variants @Incomplete
-    error: GDExtensionCallError;
-    p_sn_newname := make_stringname("Sailor", null);
-    varholder := New(Variant,, allocator=temp);
-    variant_from_StringName(varholder, p_sn_newname);
-    args: [1] Variant;
-    memcpy(*args[0], *varholder, size_of(Variant));
-    // print("++++++ P_OBJECT: % ++++++\n", entity.p_object);
-    // print("++++++ P_ARGS: % ++++++\n", args.data);
-    object_method_bind_call(p_method_bind, entity.p_object, cast(*void) args.data, 1, ret, *error);
-    handle_call_error(error);
+
+    arg_variants : [..] Variant;
+
+    for args {
+        type : Type = (cast(*Type) *it.type).*;
+        variant: Variant;
+        if type == [24] u8 {
+            variant = (cast(*Variant) it.value_pointer).*;
+            array_add(*arg_variants, variant);
+            continue;
+        }
+        var_holder := alloc(size_of(Variant),, allocator=temp);
+        using Type_Info_Tag;
+        if it.type.*.type == {
+            case INTEGER;
+              p_int := cast(*int) it.value_pointer;
+              variant_from_int(var_holder, *p_int);
+            case FLOAT;
+              p_float := cast(*float64) it.value_pointer;
+              variant_from_float(var_holder, *p_float);
+            case BOOL;
+              p_bool := cast(*bool) it.value_pointer;
+              variant_from_bool(var_holder, *p_bool);
+            case STRING;
+              native_str := (cast(*string) it.value_pointer).*;
+              print(native_str);
+              p_var := make_gstring_var(native_str, *variant);
+              array_add(*arg_variants, variant);
+              continue;
+            case ENUM;
+              p_int := cast(*int) it.value_pointer;
+              variant_from_int(var_holder, *p_int);
+            // case;
+              // print_error("gdt_call failed! unsupported argument");
+              // return null;
+        }
+        if type == {
+            case StringName;
+              p_sn := cast(*StringName) it.value_pointer;
+              variant_from_StringName(var_holder, p_sn);
+        }
+        memcpy(*variant, *var_holder, size_of(Variant));
+        array_add(*arg_variants, variant);
+    }
+    err: GDExtensionCallError;
+    object_method_bind_call(p_method_bind, entity.p_object, cast(*void) arg_variants.data, 1, ret, *err);
+    handle_call_error(err);
     return ret;
 }
 
@@ -479,7 +524,7 @@ jodot_init :: (p_get_proc_address: GDExtensionInterfaceGetProcAddress, p_library
 
 make_stringname :: (native_string: string, dst: *StringName) -> *StringName {
     c_string := to_c_string(native_string);
-    p_stringname := New(StringName,, allocator=temp);
+    p_stringname := alloc(size_of(StringName),, allocator=temp);
     string_name_new_with_utf8_chars(p_stringname, c_string);
     if dst != null memcpy(dst, p_stringname, size_of(StringName));
     // NOTE: For some reason, godot requires the *exact* pointer it generates here, as opposed to an arbitrary pointer to the StringName value.
@@ -496,6 +541,8 @@ handle_call_error :: (err: GDExtensionCallError) {
             print_error("gdt_call failed! invalid method");
         case ERROR_INVALID_ARGUMENT;
             print_error("gdt_call failed! invalid argument");
+            print_muted(tprint("argument given: %", err.argument));
+            print_muted(tprint("argument expected: %", err.expected));
         case ERROR_TOO_MANY_ARGUMENTS;
             print_error("gdt_call failed! too many arguments");
         case ERROR_TOO_FEW_ARGUMENTS;
@@ -519,9 +566,9 @@ godot_warn :: (message: string) {
 }
 
 // TODO: these should be set up as casts instead of procs
-make_gstring :: (native_string: string, dst: *Variant) -> *Variant {
+make_gstring_var :: (native_string: string, dst: *Variant) -> *Variant {
     c_string := to_c_string(native_string);
-    p_gstring_var := New(Variant);
+    p_gstring_var := alloc(size_of(Variant),, allocator=temp);
     string_new_with_utf8_chars(p_gstring_var, c_string);
     if dst != null memcpy(dst, p_gstring_var, size_of(Variant));
     return p_gstring_var;

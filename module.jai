@@ -4,6 +4,14 @@
 
 // == UTILITY ==
 
+sn_equal :: (a: StringName, b: StringName) -> bool {
+    if a[0] == b[0] &&
+        a[1] == b[1] &&
+        a[2] == b[2] &&
+        a[3] == b[3] return true;
+    else return false;
+}
+
 // -- LOGGING --
 print_error :: (msg: string) {
     log_error("\x1b[1;38;5;9mERROR: %\n\x1b[0m", msg);
