@@ -4,15 +4,11 @@
 
 // == UTILITY ==
 
-sn_equal :: (a: StringName, b: StringName) -> bool {
-    if a[0] == b[0] &&
-        a[1] == b[1] &&
-        a[2] == b[2] &&
-        a[3] == b[3] return true;
-    else return false;
+Option :: enum u8 {
+    NONE :: 0;
+    SOME :: 1;
 }
 
-// -- LOGGING --
 print_error :: (msg: string) {
     log_error("\x1b[1;38;5;9mERROR: %\n\x1b[0m", msg);
 }
@@ -35,20 +31,11 @@ print_warn :: (msg: string) {
 // The 'gdt' submodule
 #load "gdt/gdt_builtin.jai";
 #load "gdt/gdt_bindings.jai";
-
-// ROUGH IDEA:
-
-// gdt binding placeholder:
-gdtp :: struct {
-    CharacterBody3D :: struct {
-        set_visible :: (is_visible: bool) #c_call {}
-    }
-    Node :: struct {}
-}
-
-def_extension_entity :: "#as using sys: ExtensionEntity; type = #this; parent_type = type_of(base);";
+#load "gdt/gdt_native.jai";
 
 // Entry point and initialization
 #load "sys/sys_init.jai";
+
+def_extension_entity :: "#as using sys: ExtensionEntity; type = #this; parent_type = type_of(parent);";
 
 #module_parameters(DEBUG := true);

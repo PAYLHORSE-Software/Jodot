@@ -1,8 +1,6 @@
-//  -------------------
-// | JODOT GDT BUILTIN |
-//  -------------------
-
-// ====== BUILTIN TYPES ======
+//  -------------------------
+// | JODOT GDT BUILTIN TYPES |
+//  -------------------------
 
 Nil :: void;
 
@@ -116,9 +114,18 @@ Projection_Planes :: enum {
 
 // TODO: should be able to expose these
 StringName :: #type,distinct [4] u8; // ??
+
+sn_equal :: (a: StringName, b: StringName) -> bool {
+    if a[0] == b[0] &&
+        a[1] == b[1] &&
+        a[2] == b[2] &&
+        a[3] == b[3] return true;
+    else return false;
+}
+
 NodePath :: #type,distinct [4] u8;
 RID :: #type,distinct [8] u8;
-// Object :: u32;
+Object :: #type,distinct [4] u8;
 Callable :: #type,distinct [16] u8;
 Signal :: #type,distinct [16] u8;
 Dictionary :: #type,distinct [4] u8;

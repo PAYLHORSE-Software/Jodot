@@ -1,7 +1,8 @@
 P_GET_PROC_ADDRESS: GDExtensionInterfaceGetProcAddress;
 P_LIBRARY: GDExtensionClassLibraryPtr;
 
-objects_gdt: [256] OpaqueClass;
+objects_gdt: [1000] OpaqueClass;
+cursor_gdt: u16;
 
 jodot_ctx: Context;
 
@@ -22,6 +23,7 @@ string_new_with_utf8_chars: GDExtensionInterfaceStringNewWithUtf8Chars;
 string_to_utf8_chars: GDExtensionInterfaceStringNewWithUtf8Chars;
 string_name_new_with_utf8_chars: GDExtensionInterfaceStringNameNewWithUtf8Chars;
 object_set_instance: GDExtensionInterfaceObjectSetInstance;
+object_get_instance_binding: GDExtensionInterfaceObjectGetInstanceBinding;
 classdb_register_extension_class: GDExtensionInterfaceClassdbRegisterExtensionClass3;
 classdb_get_class_tag: GDExtensionInterfaceClassdbGetClassTag;
 classdb_register_extension_class_method: GDExtensionInterfaceClassdbRegisterExtensionClassMethod;
@@ -29,10 +31,13 @@ classdb_construct_object: GDExtensionInterfaceClassdbConstructObject;
 classdb_get_method_bind: GDExtensionInterfaceClassdbGetMethodBind;
 object_method_bind_call: GDExtensionInterfaceObjectMethodBindCall;
 // object_method_bind_ptrcall: GDExtensionInterfaceObjectMethodBindPtrcall;
+object_get_instance_id: GDExtensionInterfaceObjectGetInstanceId;
+object_get_class_name: GDExtensionInterfaceObjectGetClassName;
 object_destroy: GDExtensionInterfaceObjectDestroy;
 get_variant_from_type_constructor: GDExtensionInterfaceGetVariantFromTypeConstructor;
 get_variant_to_type_constructor: GDExtensionInterfaceGetVariantToTypeConstructor;
 global_get_singleton: GDExtensionInterfaceGlobalGetSingleton;
+get_native_struct_size: GDExtensionInterfaceGetNativeStructSize;
 
 // == VARIANT PROCS ==
 
@@ -210,17 +215,17 @@ VARIANT_TO : [38] *GDExtensionTypeFromVariantConstructorFunc : .[
 // Wrapper struct for extension classes:
 ExtensionEntity :: struct {
 
-    type: Type = void;
+    type : Type = void;
     parent_type: Type;
 
-    p_object: *void;
+    ID : u16 = U16_MAX;
 
-    _ready : #type (entity: *ExtensionEntity) = null;
-    _process : #type (entity: *ExtensionEntity, delta: float64) = null;
-    _physics_process : #type (entity: *ExtensionEntity, delta: float64) = null;
-    _input : #type (entity: *ExtensionEntity, event: InputEvent) = null;
-    _enter_tree : #type (entity: *ExtensionEntity) = null;
-    _exit_tree : #type (entity: *ExtensionEntity) = null;
+    _ready : #type (cast_me: *ExtensionEntity) = null;
+    _process : #type (cast_me: *ExtensionEntity, delta: float64) = null;
+    _physics_process : #type (cast_me: *ExtensionEntity, delta: float64) = null;
+    // _input : #type (cast_me: *ExtensionEntity, event: *InputEvent) = null;
+    _enter_tree : #type (cast_me: *ExtensionEntity) = null;
+    _exit_tree : #type (cast_me: *ExtensionEntity) = null;
 }
 
 class_create_info :: GDExtensionClassCreationInfo3.{
@@ -240,9 +245,6 @@ class_create_info :: GDExtensionClassCreationInfo3.{
 // ------------------------
 // (NODE) VIRTUAL FUNCTIONS
 
-// NOTE: using get_virtual_call_data_fn + call_virtual_with_data_fn instead of get_virtual_func is a convenience hack
-// Using get_virtual_func, we'd have to define #c_call procs for each vfn and pass them back
-
 get_virtual_call_data_fn :: (p_class_userdata: *void, p_name: GDExtensionConstStringNamePtr) -> *void #c_call {
     return p_class_userdata;
 }
@@ -251,43 +253,54 @@ call_virtual_with_data_fn :: (p_instance: GDExtensionClassInstancePtr, p_name: G
     push_context jodot_ctx {
         sn_vfn: StringName;
         memcpy(*sn_vfn, p_name, size_of(StringName));
-        entity := cast(*ExtensionEntity) p_instance;
+        instance := cast(*ExtensionEntity) p_instance;
+        entity := cast(*ExtensionEntity) p_virtual_call_userdata;
 
         // == READY PROC ==
         if sn_equal(sn_vfn, vfn_stringnames[0]) {
             if entity._ready != null {
-                entity._ready(entity);
+                entity._ready(instance);
             }
         // == PROCESS PROC ==
         } else if sn_equal(sn_vfn, vfn_stringnames[1]) {
             if entity._process != null {
                 delta: float64;
                 memcpy(*delta, p_args.*, size_of(float64));
-                entity._process(entity, delta);
+                entity._process(instance, delta);
             }
         // == PHYSICS PROCESS PROC ==
         } else if sn_equal(sn_vfn, vfn_stringnames[2]) {
             if entity._physics_process != null {
                 delta: float64;
                 memcpy(*delta, p_args.*, size_of(float64));
-                entity._physics_process(entity, delta);
+                entity._physics_process(instance, delta);
             }
-        // == INPUT PROC ==
-        } else if sn_equal(sn_vfn, vfn_stringnames[3]) {
-            if entity._input != null {
-                event: InputEvent;
-                memcpy(*event, p_args.*, size_of(InputEvent)); // CHECK THIS
-                entity._input(entity, event);
-            }
+        // == INPUT PROC == @Incomplete
+        // } else if sn_equal(sn_vfn, vfn_stringnames[3]) {
+            // if entity._input != null {
+                // event: InputEvent;
+                // (1) An object?
+                // object := Object;
+                // memcpy(*object, p_args.*, size_of(Object));
+                // classname := alloc(size_of(StringName));
+                // if object_get_class_name(*object, P_LIBRARY, *classname) print_warn("IT WORKED!");
+                // (2) A variant?
+                // p_object := alloc(size_of(Object));
+                // variant_to_Object(p_object, p_args.*);
+                // object := (cast(*Object) p_object).*;
+                // classname := alloc(size_of(StringName));
+                // if object_get_class_name(*object, P_LIBRARY, *classname) print_warn("IT WORKED!");
+                // entity._input(instance, *event);
+            // }
         // == ENTER TREE PROC ==
         } else if sn_equal(sn_vfn, vfn_stringnames[4]) {
             if entity._enter_tree != null {
-                entity._enter_tree(entity);
+                entity._enter_tree(instance);
             }
         // == EXIT TREE PROC ==
         } else if sn_equal(sn_vfn, vfn_stringnames[5]) {
             if entity._exit_tree != null {
-                entity._exit_tree(entity);
+                entity._exit_tree(instance);
             }
         }
     }
@@ -308,7 +321,7 @@ class_create_instance :: (p_class_userdata: *void) -> GDExtensionObjectPtr #c_ca
             #insert user_entity_case;
         }
 
-        // print("++++++ P_OBJECT: % ++++++\n", p_object);
+        // if DEBUG print("++++++ P_OBJECT: % ++++++\n", p_object);
         return p_object;
     }
 }
@@ -344,8 +357,14 @@ register_extension_entities :: () {
     }
 }
 
-create :: (gdt_type: $T) -> T {
-    classdb_create_instance();
+gdt_new :: (gdt_type: $T) -> *T {
+    name := to_sring(T);
+    p_sn := make_stringname(name, null);
+    p_object := classdb_construct_object(p_sn);
+    object_set_instance(p_object, name, objects_gdt[cursor_gdt]);
+    objects_gdt[cursor_gdt].p_object = p_object;
+    cursor_gdt += 1;
+    return cast(*T) *objects_gdt[cursor_gdt];
 }
 
 //  -------------
@@ -385,15 +404,19 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
         string_name_new_with_utf8_chars = xx P_GET_PROC_ADDRESS("string_name_new_with_utf8_chars");
         classdb_construct_object = xx P_GET_PROC_ADDRESS("classdb_construct_object");
         object_set_instance = xx P_GET_PROC_ADDRESS("object_set_instance");
+        object_get_instance_binding = xx P_GET_PROC_ADDRESS("object_get_instance_binding");
         classdb_register_extension_class = xx P_GET_PROC_ADDRESS("classdb_register_extension_class3");
         classdb_get_class_tag = xx P_GET_PROC_ADDRESS("classdb_get_class_tag");
         classdb_register_extension_class_method = xx P_GET_PROC_ADDRESS("classdb_register_extension_class_virtual_method");
         classdb_get_method_bind = xx P_GET_PROC_ADDRESS("classdb_get_method_bind");
         object_method_bind_call = xx P_GET_PROC_ADDRESS("object_method_bind_call");
         // object_method_bind_ptrcall = xx P_GET_PROC_ADDRESS("object_method_bind_ptrcall");
+        object_get_instance_id = xx P_GET_PROC_ADDRESS("object_get_instance_id");
+        object_get_class_name = xx P_GET_PROC_ADDRESS("object_get_class_name");
         get_variant_from_type_constructor = xx P_GET_PROC_ADDRESS("get_variant_from_type_constructor");
         get_variant_to_type_constructor = xx P_GET_PROC_ADDRESS("get_variant_to_type_constructor");
         global_get_singleton = xx P_GET_PROC_ADDRESS("global_get_singleton");
+        get_native_struct_size = xx P_GET_PROC_ADDRESS("get_native_struct_size");
 
         // == VARIANT CONVERSION ==
         for enum_values_as_s64(GDExtensionVariantType) {
@@ -412,32 +435,47 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
         make_stringname("_enter_tree", *vfn_stringnames[4]);
         make_stringname("_exit_tree", *vfn_stringnames[5]);
 
+        assert(get_native_struct_size(make_stringname("AudioFrame", null)) == size_of(AudioFrame));
+        assert(get_native_struct_size(make_stringname("CaretInfo", null)) == size_of(CaretInfo));
+        // assert(get_native_struct_size(make_stringname("Glyph", null)) == size_of(Glyph));
+        assert(get_native_struct_size(make_stringname("ObjectID", null)) == size_of(ObjectID));
+        // assert(get_native_struct_size(make_stringname("PhysicsServer2DExtensionMotionResult", null)) == size_of(PhysicsServer2DExtensionMotionResult));
+        // assert(get_native_struct_size(make_stringname("PhysicsServer2DExtensionRayResult", null)) == size_of(PhysicsServer2DExtensionRayResult));
+        // assert(get_native_struct_size(make_stringname("PhysicsServer2DExtensionShapeRestInfo", null)) == size_of(PhysicsServer2DExtensionShapeRestInfo));
+        // assert(get_native_struct_size(make_stringname("PhysicsServer2DExtensionShapeResult", null)) == size_of(PhysicsServer2DExtensionShapeResult));
+        // assert(get_native_struct_size(make_stringname("PhysicsServer3DExtensionMotionCollision", null)) == size_of(PhysicsServer3DExtensionMotionCollision));
+        // assert(get_native_struct_size(make_stringname("PhysicsServer3DExtensionMotionResult", null)) == size_of(PhysicsServer3DExtensionMotionResult));
+        // assert(get_native_struct_size(make_stringname("PhysicsServer3DExtensionRayResult", null)) == size_of(PhysicsServer3DExtensionRayResult));
+        // assert(get_native_struct_size(make_stringname("PhysicsServer3DExtensionShapeRestInfo", null)) == size_of(PhysicsServer3DExtensionShapeRestInfo));
+        // assert(get_native_struct_size(make_stringname("PhysicsServer3DExtensionShapeResult", null)) == size_of(PhysicsServer3DExtensionShapeResult));
+        // assert(get_native_struct_size(make_stringname("ScriptLanguageExtensionProfilingInfo", null)) == size_of(ScriptLanguageExtensionProfilingInfo));
+
         // == ENGINE SINGLETONS ==
         // NOTE: copied over from gdt_bindings
-        S_Performance = global_get_singleton(make_stringname("Performance", null));
-        S_TextServerManager = global_get_singleton(make_stringname("TextServerManager", null));
-        S_PhysicsServer2DManager = global_get_singleton(make_stringname("PhysicsServer2DManager", null));
-        S_PhysicsServer3DManager = global_get_singleton(make_stringname("PhysicsServer3DManager", null));
-        S_NavigationMeshGenerator = global_get_singleton(make_stringname("NavigationMeshGenerator", null));
-        S_ProjectSettings = global_get_singleton(make_stringname("ProjectSettings", null));
-        S_IP = global_get_singleton(make_stringname("IP", null));
-        S_Geometry2D = global_get_singleton(make_stringname("Geometry2D", null));
-        S_Geometry3D = global_get_singleton(make_stringname("Geometry3D", null));
-        S_ResourceLoader = global_get_singleton(make_stringname("ResourceLoader", null));
-        S_ResourceSaver = global_get_singleton(make_stringname("ResourceSaver", null));
-        S_OS = global_get_singleton(make_stringname("OS", null));
-        S_Engine = global_get_singleton(make_stringname("Engine", null));
-        S_ClassDB = global_get_singleton(make_stringname("ClassDB", null));
-        S_Marshalls = global_get_singleton(make_stringname("Marshalls", null));
-        S_TranslationServer = global_get_singleton(make_stringname("TranslationServer", null));
-        S_Input = global_get_singleton(make_stringname("Input", null));
-        S_InputMap = global_get_singleton(make_stringname("InputMap", null));
-        S_EngineDebugger = global_get_singleton(make_stringname("EngineDebugger", null));
-        S_Time = global_get_singleton(make_stringname("Time", null));
-        S_GDExtensionManager = global_get_singleton(make_stringname("GDExtensionManager", null));
-        S_ResourceUID = global_get_singleton(make_stringname("ResourceUID", null));
-        S_WorkerThreadPool = global_get_singleton(make_stringname("WorkerThreadPool", null));
-        S_ThemeDB = global_get_singleton(make_stringname("ThemeDB", null));
+        S_Performance.p_object = global_get_singleton(make_stringname("Performance", null));
+        S_TextServerManager.p_object = global_get_singleton(make_stringname("TextServerManager", null));
+        S_PhysicsServer2DManager.p_object = global_get_singleton(make_stringname("PhysicsServer2DManager", null));
+        S_PhysicsServer3DManager.p_object = global_get_singleton(make_stringname("PhysicsServer3DManager", null));
+        S_NavigationMeshGenerator.p_object = global_get_singleton(make_stringname("NavigationMeshGenerator", null));
+        S_ProjectSettings.p_object = global_get_singleton(make_stringname("ProjectSettings", null));
+        S_IP.p_object = global_get_singleton(make_stringname("IP", null));
+        S_Geometry2D.p_object = global_get_singleton(make_stringname("Geometry2D", null));
+        S_Geometry3D.p_object = global_get_singleton(make_stringname("Geometry3D", null));
+        S_ResourceLoader.p_object = global_get_singleton(make_stringname("ResourceLoader", null));
+        S_ResourceSaver.p_object = global_get_singleton(make_stringname("ResourceSaver", null));
+        S_OS.p_object = global_get_singleton(make_stringname("OS", null));
+        S_Engine.p_object = global_get_singleton(make_stringname("Engine", null));
+        S_ClassDB.p_object = global_get_singleton(make_stringname("ClassDB", null));
+        S_Marshalls.p_object = global_get_singleton(make_stringname("Marshalls", null));
+        S_TranslationServer.p_object = global_get_singleton(make_stringname("TranslationServer", null));
+        S_Input.p_object = global_get_singleton(make_stringname("Input", null));
+        S_InputMap.p_object = global_get_singleton(make_stringname("InputMap", null));
+        S_EngineDebugger.p_object = global_get_singleton(make_stringname("EngineDebugger", null));
+        S_Time.p_object = global_get_singleton(make_stringname("Time", null));
+        S_GDExtensionManager.p_object = global_get_singleton(make_stringname("GDExtensionManager", null));
+        S_ResourceUID.p_object = global_get_singleton(make_stringname("ResourceUID", null));
+        S_WorkerThreadPool.p_object = global_get_singleton(make_stringname("WorkerThreadPool", null));
+        S_ThemeDB.p_object = global_get_singleton(make_stringname("ThemeDB", null));
         // For some reason, these return as non-existent @Incomplete
         // S_EditorInterface = global_get_singleton(make_stringname("EditorInterface", null));
         // S_JavaClassWrapper = global_get_singleton(make_stringname("JavaClassWrapper", null));
@@ -468,14 +506,14 @@ deinitialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializatio
     // Perform any necessary cleanup!
 }
 
-gdt_call :: (class_name: string, method_name: string, hash: s64, entity: OpaqueClass, args: .. Any) -> *Variant {
+gdt_call :: (class_name: string, method_name: string, hash: s64, return_type: $T, p_object: GDExtensionObjectPtr, args: .. Any) -> *T {
 
+    // if DEBUG print_warn("==== GDT CALL ====");
+    // if DEBUG print_warn(tprint("CLASS: %", class_name));
+    // if DEBUG print_warn(tprint("METHOD: %", method_name));
+    // if DEBUG print_warn(tprint("HASH: %", hash));
     p_classname := make_stringname(class_name, null);
     p_methodname := make_stringname(method_name, null);
-    // if DEBUG print_warn("==== GDT CALL ====");
-    // if DEBUG print_warn(tprint("CLASS: %", native_strings[0]));
-    // if DEBUG print_warn(tprint("METHOD: %", native_strings[1]));
-    // if DEBUG print_warn(tprint("HASH: %", hash));
     p_method_bind := classdb_get_method_bind(p_classname, p_methodname, hash);
 
     arg_variants : [..] Variant;
@@ -493,39 +531,61 @@ gdt_call :: (class_name: string, method_name: string, hash: s64, entity: OpaqueC
         if it.type.*.type == {
             case INTEGER;
               p_int := cast(*int) it.value_pointer;
-              variant_from_int(var_holder, *p_int);
+              variant_from_int(var_holder, p_int);
             case FLOAT;
               p_float := cast(*float64) it.value_pointer;
-              variant_from_float(var_holder, *p_float);
+              variant_from_float(var_holder, p_float);
             case BOOL;
               p_bool := cast(*bool) it.value_pointer;
-              variant_from_bool(var_holder, *p_bool);
+              variant_from_bool(var_holder, p_bool);
             case STRING;
               native_str := (cast(*string) it.value_pointer).*;
-              p_var := make_gstring_var(native_str, *variant);
-              array_add(*arg_variants, variant);
-              continue;
+              // print_muted(native_str);
+              p_str := make_gstring(native_str, null);
+              variant_from_gstring(var_holder, p_str);
             case ENUM;
               p_int := cast(*int) it.value_pointer;
-              variant_from_int(var_holder, *p_int);
-            // case;
-              // print_error("gdt_call failed! unsupported argument");
-              // return null;
+              variant_from_int(var_holder, p_int);
         }
-        if type == {
-            case StringName;
-              p_sn := cast(*StringName) it.value_pointer;
-              variant_from_StringName(var_holder, p_sn);
-        }
+        // if type == {
+        //     case StringName;
+        //       p_sn := cast(*StringName) it.value_pointer;
+        //       variant_from_StringName(var_holder, p_sn);
+        // }
         memcpy(*variant, *var_holder, size_of(Variant));
         array_add(*arg_variants, variant);
     }
     ret := alloc(size_of(Variant));
     err: GDExtensionCallError;
-    // print("++++++ % ++++++\n", arg_variants.data);
-    // object_method_bind_call(p_method_bind, entity.p_object, cast(*void) arg_variants.data, arg_variants.count, ret, *err);
-    // handle_call_error(err);
-    return ret;
+    // if DEBUG print("++++++ P_OBJECT: % ++++++\n", p_object);
+    object_method_bind_call(p_method_bind, p_object, cast(*void) arg_variants.data, arg_variants.count, ret, *err);
+    handle_call_error(err);
+
+    if return_type == Nil return null;
+    final_var := (cast(*Variant) ret).*;
+
+    // VARIANT TO RETURN VALUE
+    // using Type_Info_Tag;
+    // if ti == {
+    //     case INTEGER;
+    //       variant_to_int();
+    //     case FLOAT;
+    //       variant_to_float();
+    //     case BOOL;
+    //       variant_to_bool();
+    //     case POINTER;
+    //       // An Opaque Class
+    //       variant_to_bool();
+    //     case ENUM;
+    // }
+    // // Handle builtin types!
+    // if type == {
+    //     case StringName;
+    //       p_sn := cast(*StringName) it.value_pointer;
+    //       variant_from_StringName(var_holder, p_sn);
+    // }
+
+    return null;
 }
 
 #program_export
@@ -547,6 +607,7 @@ jodot_init :: (p_get_proc_address: GDExtensionInterfaceGetProcAddress, p_library
     return success;
 }
 
+// TODO: debug print gstring and stringname
 make_stringname :: (native_string: string, dst: *StringName) -> *StringName {
     c_string := to_c_string(native_string);
     p_stringname := alloc(size_of(StringName),, allocator=temp);
@@ -557,17 +618,25 @@ make_stringname :: (native_string: string, dst: *StringName) -> *StringName {
     return p_stringname;
 }
 
+make_gstring :: (native_string: string, dst: *gstring) -> *gstring {
+    c_string := to_c_string(native_string);
+    p_gstring := alloc(size_of(gstring),, allocator=temp);
+    string_new_with_utf8_chars(p_gstring, c_string);
+    if dst != null memcpy(dst, p_gstring, size_of(gstring));
+    return p_gstring;
+}
+
 handle_call_error :: (err: GDExtensionCallError) {
     using GDExtensionCallErrorType;
     if err.error == {
         case OK;
-            if DEBUG print_affirm("gdt_call OK!");
+            // if DEBUG print_affirm("gdt_call OK!");
         case ERROR_INVALID_METHOD;
             print_error("gdt_call failed! invalid method");
         case ERROR_INVALID_ARGUMENT;
             print_error("gdt_call failed! invalid argument");
-            print_muted(tprint("argument given: %", err.argument));
-            print_muted(tprint("argument expected: %", err.expected));
+            print_muted(tprint("argument given: %", cast(GDExtensionVariantType) err.argument));
+            print_muted(tprint("argument expected: %", cast(GDExtensionVariantType) err.expected));
         case ERROR_TOO_MANY_ARGUMENTS;
             print_error("gdt_call failed! too many arguments");
         case ERROR_TOO_FEW_ARGUMENTS;
@@ -588,21 +657,6 @@ godot_error :: (message: string) {
 
 godot_warn :: (message: string) {
     print_warning_with_message(null, message, null, null, 0, 1);
-}
-
-// TODO: these should be set up as casts instead of procs
-make_gstring_var :: (native_string: string, dst: *Variant) -> *Variant {
-    c_string := to_c_string(native_string);
-    p_gstring_var := alloc(size_of(Variant),, allocator=temp);
-    string_new_with_utf8_chars(p_gstring_var, c_string);
-    if dst != null memcpy(dst, p_gstring_var, size_of(Variant));
-    return p_gstring_var;
-}
-
-break_gstring :: (gstring: *u8) -> string {
-    raw_string := string_to_utf8_chars(gstring);
-    // This procedure already omits null terminator
-    return (cast(string) raw_string);
 }
 
 #import "Basic";

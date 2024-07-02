@@ -55,7 +55,7 @@ message_loop :: (DEMO: bool = false) {
                         code := #string DONE
 #placeholder %;
 entities_%: [64] %;
-cursor_%: u8;
+cursor_%: u16;
 DONE
                         print_to_builder(*builder, code, it, it, it, it);
                         print_to_builder(*list_builder, "user_entity_declarations[%] = %.{}; ", it_index, it);
@@ -70,6 +70,7 @@ DONE
                         print_to_builder(*case_builder, "case %;", it);
                         print_to_builder(*case_builder, " object_set_instance(p_object, p_class_name, *entities_%[cursor_%]);", it, it);
                         print_to_builder(*case_builder, " entities_%[cursor_%].p_object = p_object;", it, it);
+                        print_to_builder(*case_builder, " entities_%[cursor_%].ID = cursor_%;", it, it, it);
                         print_to_builder(*case_builder, " cursor_% += 1;", it);
                     }
                     append(*case_builder, "}");
