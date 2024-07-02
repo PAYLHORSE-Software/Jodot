@@ -252,7 +252,7 @@ get_virtual_call_data_fn :: (p_class_userdata: *void, p_name: GDExtensionConstSt
 call_virtual_with_data_fn :: (p_instance: GDExtensionClassInstancePtr, p_name: GDExtensionConstStringNamePtr, p_virtual_call_userdata: *void, p_args: *GDExtensionConstTypePtr, r_ret: GDExtensionTypePtr) #c_call {
     push_context jodot_ctx {
         sn_vfn: StringName;
-        memcpy(*sn_vfn, p_name, size_of(StringName));
+        ptr_to_val(sn_vfn, p_name);
         instance := cast(*ExtensionEntity) p_instance;
         entity := cast(*ExtensionEntity) p_virtual_call_userdata;
 
@@ -265,14 +265,14 @@ call_virtual_with_data_fn :: (p_instance: GDExtensionClassInstancePtr, p_name: G
         } else if sn_equal(sn_vfn, vfn_stringnames[1]) {
             if entity._process != null {
                 delta: float64;
-                memcpy(*delta, p_args.*, size_of(float64));
+                ptr_to_val(delta, p_args.*);
                 entity._process(instance, delta);
             }
         // == PHYSICS PROCESS PROC ==
         } else if sn_equal(sn_vfn, vfn_stringnames[2]) {
             if entity._physics_process != null {
                 delta: float64;
-                memcpy(*delta, p_args.*, size_of(float64));
+                ptr_to_val(delta, p_args.*);
                 entity._physics_process(instance, delta);
             }
         // == INPUT PROC == @Incomplete
@@ -547,12 +547,7 @@ gdt_call :: (class_name: string, method_name: string, hash: s64, return_type: $T
               p_int := cast(*int) it.value_pointer;
               variant_from_int(var_holder, p_int);
         }
-        // if type == {
-        //     case StringName;
-        //       p_sn := cast(*StringName) it.value_pointer;
-        //       variant_from_StringName(var_holder, p_sn);
-        // }
-        memcpy(*variant, *var_holder, size_of(Variant));
+        ptr_to_val(variant, var_holder);
         array_add(*arg_variants, variant);
     }
     ret := alloc(size_of(Variant));
@@ -562,7 +557,9 @@ gdt_call :: (class_name: string, method_name: string, hash: s64, return_type: $T
     handle_call_error(err);
 
     if return_type == Nil return null;
-    final_var := (cast(*Variant) ret).*;
+    final_var: Variant;
+    ptr_to_val(final_var, ret);
+
 
     // VARIANT TO RETURN VALUE
     // using Type_Info_Tag;
