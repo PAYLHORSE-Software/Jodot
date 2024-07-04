@@ -7,7 +7,7 @@ GodotAPI :: struct {
     builtin_class_member_offsets: [] OffsetRef;
     global_enums: [] Enum;
     // utility_functions
-    // builtin_classes: [] Class;
+    builtin_classes: [] Class;
     classes: [] Class;
     singletons: [] GenericValue;
 
@@ -154,8 +154,10 @@ gdt_bindings_codegen :: () {
 
     // == PROCEDURES ==
 
+    // all_classes := godot.builtin_classes + godot.classes;
+
     // NOTE: this gives us valid native procedures, it's just atrocious and not worth it.
-    for class: godot_api.classes {
+    for class: all_classes {
         for * method: class.methods {
             if method.is_virtual.* == true continue;
             if method.name == "remove" method.name = "_remove";
@@ -213,8 +215,9 @@ gdt_bindings_codegen :: () {
                 if it.type.* == "Vector4i.Axis" it.type.* = "Vector4_Axis";
                 if it.type.* == "Projection.Planes" it.type.* = "Projection_Planes";
                 if it.type.* == "String" it.type.* = "string";
-                if it.type.* == "StringName" it.type.* = "string";
                 if it.type.* == "[] String" it.type.* = "[] string";
+                if it.type.* == "StringName" it.type.* = "string";
+                if it.type.* == "[] StringName" it.type.* = "[] string";
                 if it.type.* == "*int32_t" it.type.* = "*s32";
                 if it.type.* == "**uint8_" it.type.* = "**u8";
                 if it.type.* == "*uint8_t" it.type.* = "*u8";
@@ -272,6 +275,8 @@ gdt_bindings_codegen :: () {
                 if method.return_value.type.* == "Projection.Planes" method.return_value.type.* = "Projection_Planes";
                 if method.return_value.type.* == "String" method.return_value.type.* = "string";
                 if method.return_value.type.* == "[] String" method.return_value.type.* = "[] string";
+                if method.return_value.type.* == "StringName" method.return_value.type.* = "string";
+                if method.return_value.type.* == "[] StringName" method.return_value.type.* = "[] string";
                 if method.return_value.type.* == "*int32_t" method.return_value.type.* = "*s32";
                 if method.return_value.type.* == "**uint8_" method.return_value.type.* = "**u8";
                 if method.return_value.type.* == "*uint8_t" method.return_value.type.* = "*u8";
@@ -279,13 +284,22 @@ gdt_bindings_codegen :: () {
             } else { append(*builder, ")"); }
 
             append(*builder, " { ");
-            if method.return_value print_to_builder(*builder, "gdt_call(\"%\", \"%\", %, %, main.p_object", class.name, method.name, method.hash, method.return_value.type.*);
+            if method.return_value print_to_builder(*builder, "call_ret := cast(*%) gdt_call(\"%\", \"%\", %, %, main.p_object", method.return_value.type.*, class.name, method.name, method.hash, method.return_value.type.*);
             else print_to_builder(*builder, "gdt_call(\"%\", \"%\", %, Nil, main.p_object", class.name, method.name, method.hash);
             for method.arguments {
                 if it.default_value != null continue; // @Temp
                 print_to_builder(*builder, ", %", it.name);
             }
-            print_to_builder(*builder, "); }  // %\n", it_index);
+            append(*builder, "); ");
+            if method.return_value {
+                is_opaque_class := false;
+                for opaque_classes {
+                    if method.return_value.type.* == it is_opaque_class = true;
+                }
+                if is_opaque_class append(*builder, "return call_ret;");
+                else print_to_builder(*builder, "return call_ret.*;");
+            }
+            print_to_builder(*builder, " }  // %\n", it_index);
         }
 
         append(*builder, "\n");

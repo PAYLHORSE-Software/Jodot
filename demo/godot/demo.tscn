@@ -1,6 +1,5 @@
-[gd_scene load_steps=18 format=3 uid="uid://g3datwjgdphy"]
+[gd_scene load_steps=17 format=3 uid="uid://g3datwjgdphy"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_43hs2"]
 [ext_resource type="Texture2D" uid="uid://de1nlkch0ddh" path="res://menu/sprite/point_light.webp" id="1_cfeuw"]
 [ext_resource type="Texture2D" uid="uid://ci2rka7vs3n5q" path="res://menu/sprite/greeter/walking 1.png" id="2_r4q7j"]
 [ext_resource type="Texture2D" uid="uid://dalgoyucfuvwp" path="res://menu/sprite/greeter/walking 2.png" id="3_cdxcp"]
@@ -61,8 +60,7 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="Node" type="Node"]
-script = ExtResource("1_43hs2")
+[node name="JodotTestEntity" type="JodotTestEntity"]
 
 [node name="canvas" type="PanelContainer" parent="."]
 anchors_preset = 15
@@ -118,5 +116,3 @@ position = Vector2(-3, -140.985)
 scale = Vector2(0.54, 0.54)
 texture = ExtResource("14_6fiel")
 script = ExtResource("15_72wix")
-
-[node name="JodotTestEntity" type="JodotTestEntity" parent="."]

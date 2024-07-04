@@ -77,7 +77,7 @@ exit_tree_MyCharacter :: (cast_me: *ExtensionEntity) {}
 
 JodotTestEntity :: struct @jodot {
 
-    #as using parent: Node;
+    #as using parent: Node3D;
     #insert def_extension_entity;
 
     time_accumulator : float = 0.0;
@@ -90,19 +90,25 @@ JodotTestEntity :: struct @jodot {
 ready_JodotTestEntity :: (cast_me: *ExtensionEntity) {
     as_self := cast(*JodotTestEntity) cast_me;
     as_node := cast(*Node) cast_me;
+    as_node3d := cast(*Node3D) cast_me;
     // This is 'tree-climbing', the simplest way to reference other nodes.
+    set_name(as_node, "Sailor");
     rich_text := get_node(as_node, "greeter/RichTextLabel");
     as_self.greeter_text = cast(*RichTextLabel) *rich_text;
     // Try not to abuse this. It can ending up locking you into a strict hierarchy.
     mouse_cursor := load(*S_ResourceLoader, "res://menu/sprite/mouse_cursor.png");
+    set_custom_mouse_cursor(*S_Input, mouse_cursor);
+    vec3 := get_position(as_node3d);
+    // name_check := get_name(as_node);
+    // print_muted(tprint("Position: %", vec3));
     print("Ready from JodotTestEntity!\n");
 }
 
 process_JodotTestEntity :: (cast_me: *ExtensionEntity, delta: float64) {
     as_self := cast(*JodotTestEntity) cast_me;
     as_self.time_accumulator += cast(float) delta;
-    if as_self.time_accumulator > 10.0 print("Greeter's Pocketwatch: %\n", as_self.time_accumulator);
-    handle_input();
+    // if as_self.time_accumulator > 10.0 print("Greeter's Pocketwatch: %\n", as_self.time_accumulator);
+    // handle_input();
 }
 
 handle_input :: () #expand {

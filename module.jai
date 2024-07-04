@@ -9,10 +9,6 @@ Option :: enum u8 {
     SOME :: 1;
 }
 
-ptr_to_val :: (val: $T, ptr: *void) {
-    memcpy(*val, ptr, size_of(T));
-}
-
 print_error :: (msg: string) {
     log_error("\x1b[1;38;5;9mERROR: %\n\x1b[0m", msg);
 }
