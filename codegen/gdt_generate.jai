@@ -56,10 +56,10 @@ GodotAPI :: struct {
         inherits: *string;
         //api_type: *string;
 
-        constants: [] GenericValue;
+        // constants: [] GenericValue;
         enums: [] Enum;
         methods: [] Method;
-        properties: [] GenericValue;
+        // properties: [] GenericValue;
     }
 
     Method :: struct {
@@ -154,7 +154,12 @@ gdt_bindings_codegen :: () {
 
     // == PROCEDURES ==
 
-    // all_classes := godot.builtin_classes + godot.classes;
+    all_classes: [..] GodotAPI.Class;
+
+    // Group all builtin classes and classes together here:
+
+    for godot_api.classes { array_add(*all_classes, it); }
+    for godot_api.builtin_classes { array_add(*all_classes, it); }
 
     // NOTE: this gives us valid native procedures, it's just atrocious and not worth it.
     for class: all_classes {
