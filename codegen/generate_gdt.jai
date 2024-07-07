@@ -161,10 +161,12 @@ gdt_bindings_codegen :: () {
     for godot_api.classes { array_add(*all_classes, it); }
     for godot_api.builtin_classes { array_add(*all_classes, it); }
 
+    // print_muted(tprint("ALL CLASSES COUNT: %", all_classes.count));
+
     // NOTE: this gives us valid native procedures, it's just atrocious and not worth it.
-    for class: all_classes {
+    for class: godot_api.classes {
         for * method: class.methods {
-            if method.is_virtual.* == true continue;
+            if method.is_virtual != null if method.is_virtual.* == true continue;
             if method.name == "remove" method.name = "_remove";
             if method.name == "push_context" method.name = "_push_context";
             print_to_builder(*builder, "% :: (main: *%", method.name, class.name);
@@ -278,10 +280,10 @@ gdt_bindings_codegen :: () {
                 if method.return_value.type.* == "Vector4.Axis" method.return_value.type.* = "Vector4_Axis";
                 if method.return_value.type.* == "Vector4i.Axis" method.return_value.type.* = "Vector4_Axis";
                 if method.return_value.type.* == "Projection.Planes" method.return_value.type.* = "Projection_Planes";
-                if method.return_value.type.* == "String" method.return_value.type.* = "string";
-                if method.return_value.type.* == "[] String" method.return_value.type.* = "[] string";
-                if method.return_value.type.* == "StringName" method.return_value.type.* = "string";
-                if method.return_value.type.* == "[] StringName" method.return_value.type.* = "[] string";
+                if method.return_value.type.* == "String" method.return_value.type.* = "gstring";
+                if method.return_value.type.* == "[] String" method.return_value.type.* = "[] gstring";
+                // if method.return_value.type.* == "StringName" method.return_value.type.* = "string";
+                // if method.return_value.type.* == "[] StringName" method.return_value.type.* = "[] string";
                 if method.return_value.type.* == "*int32_t" method.return_value.type.* = "*s32";
                 if method.return_value.type.* == "**uint8_" method.return_value.type.* = "**u8";
                 if method.return_value.type.* == "*uint8_t" method.return_value.type.* = "*u8";
@@ -289,8 +291,8 @@ gdt_bindings_codegen :: () {
             } else { append(*builder, ")"); }
 
             append(*builder, " { ");
-            if method.return_value print_to_builder(*builder, "call_ret := cast(*%) gdt_call(\"%\", \"%\", %, %, main.p_object", method.return_value.type.*, class.name, method.name, method.hash, method.return_value.type.*);
-            else print_to_builder(*builder, "gdt_call(\"%\", \"%\", %, Nil, main.p_object", class.name, method.name, method.hash);
+            if method.return_value print_to_builder(*builder, "call_ret := cast(*%) sys_call(\"%\", \"%\", %, %, main.p_object", method.return_value.type.*, class.name, method.name, method.hash, method.return_value.type.*);
+            else print_to_builder(*builder, "sys_call(\"%\", \"%\", %, Nil, main.p_object", class.name, method.name, method.hash);
             for method.arguments {
                 if it.default_value != null continue; // @Temp
                 print_to_builder(*builder, ", %", it.name);
@@ -306,6 +308,147 @@ gdt_bindings_codegen :: () {
             }
             print_to_builder(*builder, " }  // %\n", it_index);
         }
+
+        append(*builder, "\n");
+    }
+
+    for * class: godot_api.builtin_classes {
+        // Use this!!
+        // variant_get_ptr_builtin_method();
+        // for * method: class.methods {
+        //     if method.name == "remove" method.name = "_remove";
+        //     if method.name == "push_context" method.name = "_push_context";
+        //     if class.name == "String" class.name = "gstring";
+        //     print_to_builder(*builder, "% :: (main: *%", method.name, class.name);
+        //     for * method.arguments {
+        //         if it.default_value != null continue; // @Temp
+        //         if it.name == "operator" it.name = "_operator";
+        //         if it.name == "enum" it.name = "_enum";
+        //         if it.name == "interface" it.name = "_interface";
+        //         if it.name == "context" it.name = "_context";
+        //         if it.name == "RID" it.name = "rid";
+        //         if it.name == "bool" it.name = "_bool";
+        //         if it.name == "string" it.name = "_string";
+        //         if contains(it.type.*, "enum::") {
+        //             it.type.*.data = * it.type.*[6];
+        //             it.type.*.count -= 6;
+        //         }
+        //         else if contains(it.type.*, "typedarray::") {
+        //             it.type.*.data = * it.type.*[12];
+        //             it.type.*.count -= 12;
+        //             it.type.* = join("[] ", it.type.*);
+        //         }
+        //         else if contains(it.type.*, "bitfield::") {
+        //             it.type.*.data = * it.type.*[10];
+        //             it.type.*.count -= 10;
+        //         }
+        //         if contains(it.type.*, "const") {
+        //             it.type.*.data = * it.type.*[6];
+        //             it.type.*.count -= 6;
+        //         }
+        //         if contains(it.type.*, "**") {
+        //             it.type.*.count -= 3;
+        //             it.type.* = join("*", it.type.*);
+        //         }
+        //         if contains(it.type.*, "**") {
+        //             it.type.*.data = * it.type.*[1];
+        //             it.type.*.count -= 1;
+        //             it.type.* = join("*", it.type.*);
+        //         }                if contains(it.type.*, "*") {
+        //             it.type.*.count -= 1;
+        //             it.type.* = join("*", it.type.*);
+        //         }
+        //         if contains(it.type.*, "ExtensionRay") ||
+        //             contains(it.type.*, "ExtensionShape") ||
+        //             contains(it.type.*, "ExtensionMotion") ||
+        //             contains(it.type.*, "ScriptLanguageExtensionProfilingInfo") continue;
+        //         if it.type.* == "NodePath" it.type.* = "string";
+        //         if it.type.* == "Variant.Type" it.type.* = "Variant_Type";
+        //         if it.type.* == "Vector2.Axis" it.type.* = "Vector2_Axis";
+        //         if it.type.* == "Vector2i.Axis" it.type.* = "Vector2_Axis";
+        //         if it.type.* == "Vector3.Axis" it.type.* = "Vector3_Axis";
+        //         if it.type.* == "Vector3i.Axis" it.type.* = "Vector3_Axis";
+        //         if it.type.* == "Vector4.Axis" it.type.* = "Vector4_Axis";
+        //         if it.type.* == "Vector4i.Axis" it.type.* = "Vector4_Axis";
+        //         if it.type.* == "Projection.Planes" it.type.* = "Projection_Planes";
+        //         if it.type.* == "String" it.type.* = "string";
+        //         if it.type.* == "[] String" it.type.* = "[] string";
+        //         if it.type.* == "StringName" it.type.* = "string";
+        //         if it.type.* == "[] StringName" it.type.* = "[] string";
+        //         if it.type.* == "*int32_t" it.type.* = "*s32";
+        //         if it.type.* == "**uint8_" it.type.* = "**u8";
+        //         if it.type.* == "*uint8_t" it.type.* = "*u8";
+        //         print_to_builder(*builder, ", %: %", it.name, it.type.*);
+        //     }
+
+        //     if method.return_type {
+        //         append(*builder, ") -> ");
+        //         // This is just awful... TODO refactor
+        //         if contains(method.return_type.*, "enum::") {
+        //             method.return_type.*.data = * method.return_type.*[6];
+        //             method.return_type.*.count -= 6;
+        //         }
+        //         else if contains(method.return_type.*, "typedarray::") {
+        //             method.return_type.*.data = * method.return_type.*[12];
+        //             method.return_type.*.count -= 12;
+        //             method.return_type.* = join("[] ", method.return_type.*);
+        //         }
+        //         else if contains(method.return_type.*, "bitfield::") {
+        //             method.return_type.*.data = * method.return_type.*[10];
+        //             method.return_type.*.count -= 10;
+        //         }
+        //         if contains(method.return_type.*, "const") {
+        //             method.return_type.*.data = * method.return_type.*[6];
+        //             method.return_type.*.count -= 6;
+        //         }
+        //         if contains(method.return_type.*, "**") {
+        //             method.return_type.*.count -= 3;
+        //             method.return_type.* = join("*", method.return_type.*);
+        //         }
+        //         if contains(method.return_type.*, "**") {
+        //             method.return_type.*.data = * method.return_type.*[1];
+        //             method.return_type.*.count -= 1;
+        //             method.return_type.* = join("*", method.return_type.*);
+        //         }                if contains(method.return_type.*, "*") {
+        //             method.return_type.*.count -= 1;
+        //             method.return_type.* = join("*", method.return_type.*);
+        //         }
+        //         if contains(method.return_type.*, "ExtensionRay") ||
+        //             contains(method.return_type.*, "ExtensionShape") ||
+        //             contains(method.return_type.*, "ExtensionMotion") ||
+        //             contains(method.return_type.*, "ScriptLanguageExtensionProfilingInfo") continue;
+        //         if method.return_type.* == "Variant.Type" method.return_type.* = "Variant_Type";
+        //         if method.return_type.* == "Vector2.Axis" method.return_type.* = "Vector2_Axis";
+        //         if method.return_type.* == "Vector2i.Axis" method.return_type.* = "Vector2_Axis";
+        //         if method.return_type.* == "Vector3.Axis" method.return_type.* = "Vector3_Axis";
+        //         if method.return_type.* == "Vector3i.Axis" method.return_type.* = "Vector3_Axis";
+        //         if method.return_type.* == "Vector4.Axis" method.return_type.* = "Vector4_Axis";
+        //         if method.return_type.* == "Vector4i.Axis" method.return_type.* = "Vector4_Axis";
+        //         if method.return_type.* == "Projection.Planes" method.return_type.* = "Projection_Planes";
+        //         if method.return_type.* == "String" method.return_type.* = "gstring";
+        //         if method.return_type.* == "[] String" method.return_type.* = "[] gstring";
+        //         // if method.return_type.* == "StringName" method.return_type.* = "string";
+        //         // if method.return_type.* == "[] StringName" method.return_type.* = "[] string";
+        //         if method.return_type.* == "*int32_t" method.return_type.* = "*s32";
+        //         if method.return_type.* == "**uint8_" method.return_type.* = "**u8";
+        //         if method.return_type.* == "*uint8_t" method.return_type.* = "*u8";
+        //         print_to_builder(*builder, "%", method.return_type.*);
+        //     } else { append(*builder, ")"); }
+
+        //     append(*builder, " { ");
+        //     if class.name == "gstring" class.name = "String";
+        //     if method.return_type print_to_builder(*builder, "call_ret := cast(*%) sys_call(\"%\", \"%\", %, %, main", method.return_type.*, class.name, method.name, method.hash, method.return_type.*);
+        //     else print_to_builder(*builder, "sys_call(\"%\", \"%\", %, Nil, main", class.name, method.name, method.hash);
+        //     for method.arguments {
+        //         if it.default_value != null continue; // @Temp
+        //         print_to_builder(*builder, ", %", it.name);
+        //     }
+        //     append(*builder, "); ");
+        //     if method.return_type {
+        //         append(*builder, "return call_ret.*;");
+        //     }
+        //     print_to_builder(*builder, " }  // %\n", it_index);
+        // }
 
         append(*builder, "\n");
     }
@@ -343,9 +486,7 @@ gdt_bindings_codegen :: () {
     print_affirm("OK! generated 'gdt/gdt_bindings.jai'\n");
 }
 
-gdt_visitor :: () {
-    // We should checkr return types of all procedures, and change them to pointers if they match OpaqueClass
-}
+gdt_visitor :: () {}
 
 #run {
 

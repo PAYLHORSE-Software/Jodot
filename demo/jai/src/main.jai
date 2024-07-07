@@ -95,12 +95,13 @@ ready_JodotTestEntity :: (cast_me: *ExtensionEntity) {
     set_name(as_node, "Sailor");
     rich_text := get_node(as_node, "greeter/RichTextLabel");
     as_self.greeter_text = cast(*RichTextLabel) *rich_text;
+    // message := get_text(as_self.greeter_text);
     // Try not to abuse this. It can ending up locking you into a strict hierarchy.
     mouse_cursor := load(*S_ResourceLoader, "res://menu/sprite/mouse_cursor.png");
     set_custom_mouse_cursor(*S_Input, mouse_cursor);
+    set_position(as_node3d, Vector3.{1.0, 1.0, 1.0});
     vec3 := get_position(as_node3d);
-    // name_check := get_name(as_node);
-    // print_muted(tprint("Position: %", vec3));
+    print_muted(tprint("Position: %", vec3));
     print("Ready from JodotTestEntity!\n");
 }
 

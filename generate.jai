@@ -1,5 +1,5 @@
 // sys bindings
-#load "codegen/sys_generate.jai";
+#load "codegen/generate_sys.jai";
 
 // gdt bindings
-#load "codegen/gdt_generate.jai";
+#load "codegen/generate_gdt.jai";
