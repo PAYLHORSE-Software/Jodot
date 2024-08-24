@@ -6,7 +6,7 @@ Nil :: void;
 
 // bool, int and float (float64) match native
 
-gstring :: [4] u8; // ??
+gstring :: #type,distinct [4] u8; // ??
 
 Vector2 :: Math.Vector2;
 
