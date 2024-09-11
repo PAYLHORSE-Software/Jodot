@@ -88,27 +88,45 @@ JodotTestEntity :: struct @jodot {
 }
 
 ready_JodotTestEntity :: (cast_me: *ExtensionEntity) {
+    
     as_self := cast(*JodotTestEntity) cast_me;
     as_node := cast(*Node) cast_me;
     as_node3d := cast(*Node3D) cast_me;
-    // This is 'tree-climbing', the simplest way to reference other nodes.
+    
+    // WORKING!
     set_name(as_node, "Sailor");
+    name := get_name(as_node);
+    print_muted("Name: %", name);
+    
+    // @BORKED crash on getting text: get_node() doesn't work properly, object instance not returned
+    // This is 'tree-climbing', the simplest way to reference other nodes.
     rich_text := get_node(as_node, "greeter/RichTextLabel");
+    // Try not to abuse this. It can ending up locking you into a strict hierarchy.
     as_self.greeter_text = cast(*RichTextLabel) *rich_text;
     // message := get_text(as_self.greeter_text);
-    // Try not to abuse this. It can ending up locking you into a strict hierarchy.
+    // print_muted("Text: %", message);
+    
+    // @BORKED load is successful, but this time resource instance not returned properly
     mouse_cursor := load(*S_ResourceLoader, "res://menu/sprite/mouse_cursor.png");
     set_custom_mouse_cursor(*S_Input, mouse_cursor);
-    set_position(as_node3d, Vector3.{1.0, 1.0, 1.0});
+    
+    // WORKING!
+    set_position(as_node3d, Vector3.{1.0, 1.0, 2.0});
     vec3 := get_position(as_node3d);
     print_muted(tprint("Position: %", vec3));
+    
     print("Ready from JodotTestEntity!\n");
+    print_muted("Wait for it...");
 }
 
 process_JodotTestEntity :: (cast_me: *ExtensionEntity, delta: float64) {
+    
+    // WORKING!
     as_self := cast(*JodotTestEntity) cast_me;
     as_self.time_accumulator += cast(float) delta;
-    // if as_self.time_accumulator > 10.0 print("Greeter's Pocketwatch: %\n", as_self.time_accumulator);
+    if as_self.time_accumulator > 10.0 print_muted("Greeter's Pocketwatch: %", as_self.time_accumulator);
+    
+    // @BORKED: input virtual function not set up properly
     // handle_input();
 }
 

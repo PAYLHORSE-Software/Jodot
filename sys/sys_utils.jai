@@ -5,20 +5,24 @@ Option :: enum u8 {
     SOME :: 1;
 }
 
-print_error :: (msg: string) {
-    log_error("\x1b[1;38;5;9mERROR: %\n\x1b[0m", msg);
+print_error :: (msg: string, args: .. Any) {
+    final_msg := tprint(msg, .. args);
+    log_error("\n\x1b[1;38;5;9mERROR: %\n\x1b[0m", final_msg);
 }
 
-print_affirm :: (msg: string) {
-    log("\x1b[1;38;5;144m%\x1b[0m", msg);
+print_affirm :: (msg: string, args: .. Any) {
+    final_msg := tprint(msg, .. args);
+    log("\x1b[1;38;5;144m%\x1b[0m", final_msg);
 }
 
-print_muted :: (msg: string) {
-    log("\x1b[38;5;246m%\x1b[0m", msg);
+print_muted :: (msg: string, args: .. Any) {
+    final_msg := tprint(msg, .. args);
+    log("\x1b[38;5;246m%\x1b[0m", final_msg);
 }
 
-print_warn :: (msg: string) {
-    log("\x1b[38;5;180m%\x1b[0m", msg);
+print_warn :: (msg: string, args: .. Any) {
+    final_msg := tprint(msg, .. args);
+    log("\x1b[38;5;180m%\x1b[0m", final_msg);
 }
 
 // TODO: debug print gstring and stringname

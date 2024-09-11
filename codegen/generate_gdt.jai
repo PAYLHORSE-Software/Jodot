@@ -282,12 +282,17 @@ gdt_bindings_codegen :: () {
                 if method.return_value.type.* == "Projection.Planes" method.return_value.type.* = "Projection_Planes";
                 if method.return_value.type.* == "String" method.return_value.type.* = "gstring";
                 if method.return_value.type.* == "[] String" method.return_value.type.* = "[] gstring";
+                // if method.return_value.type.* == "String" method.return_value.type.* = "string";
+                // if method.return_value.type.* == "[] String" method.return_value.type.* = "[] string";
                 // if method.return_value.type.* == "StringName" method.return_value.type.* = "string";
                 // if method.return_value.type.* == "[] StringName" method.return_value.type.* = "[] string";
                 if method.return_value.type.* == "*int32_t" method.return_value.type.* = "*s32";
                 if method.return_value.type.* == "**uint8_" method.return_value.type.* = "**u8";
                 if method.return_value.type.* == "*uint8_t" method.return_value.type.* = "*u8";
                 print_to_builder(*builder, "%", method.return_value.type.*);
+		// NOTE: switch back for gstring
+                // if method.return_value.type.* == "string" method.return_value.type.* = "gstring";
+                // if method.return_value.type.* == "[] string" method.return_value.type.* = "[] gstring";
             } else { append(*builder, ")"); }
 
             append(*builder, " { ");

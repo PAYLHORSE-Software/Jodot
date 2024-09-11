@@ -113,7 +113,7 @@ class_create_instance :: (p_class_userdata: *void) -> GDExtensionObjectPtr #c_ca
             #insert user_entity_case;
         }
 
-        // if DEBUG print("++++++ P_OBJECT: % ++++++\n", p_object);
+        if DEBUG print("++++++ P_OBJECT: % ++++++\n", p_object);
         return p_object;
     }
 }

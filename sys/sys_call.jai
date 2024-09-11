@@ -165,6 +165,7 @@ sys_call :: (class_name: string, method_name: string, hash: s64, return_type: $T
           p_gstr := alloc(size_of(gstring),, allocator=temp);
           variant_to_gstring(p_gstr, p_final_var);
           native_str := break_gstring(p_gstr);
+	  // print_muted("[sys_call] Returning string: %", native_str);
           return *native_str;
         case Vector2;
           p_vec2 := alloc(size_of(Vector2),, allocator=temp);
