@@ -524,6 +524,7 @@ GDT_HEADER :: #string DONE
 
 OpaqueClass :: struct {
     p_object: GDExtensionObjectPtr;
+    object_id: GDObjectInstanceID;
     variant: Variant;
 }
 

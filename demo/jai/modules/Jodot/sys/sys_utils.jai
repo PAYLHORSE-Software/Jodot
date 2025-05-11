@@ -47,8 +47,9 @@ make_gstring :: (native_string: string, dst: *gstring) -> *gstring {
 break_gstring :: (src: *gstring) -> string {
     len := string_to_utf8_chars(src, null, 0);
     print_muted(tprint("gstring length: %", len));
-    buffer: [100] u8;
+    buffer := NewArray(len, u8);
     string_to_utf8_chars(src, buffer.data, len);
+    return buffer.(string);
 }
 
 handle_call_error :: (err: GDExtensionCallError) {

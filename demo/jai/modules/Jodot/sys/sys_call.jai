@@ -165,8 +165,9 @@ sys_call :: (class_name: string, method_name: string, hash: s64, return_type: $T
           p_gstr := alloc(size_of(gstring),, allocator=temp);
           variant_to_gstring(p_gstr, p_final_var);
           native_str := break_gstring(p_gstr);
-	  // print_muted("[sys_call] Returning string: %", native_str);
-          return *native_str;
+	  print_muted("[sys_call] Returning gstring: %", native_str);
+          // return *native_str;
+          return p_gstr;
         case Vector2;
           p_vec2 := alloc(size_of(Vector2),, allocator=temp);
           variant_to_Vector2(p_vec2, p_final_var);
@@ -394,12 +395,13 @@ sys_call :: (class_name: string, method_name: string, hash: s64, return_type: $T
         case STRUCT;
           // An Opaque Class
           // print_muted(tprint("STRUCT VARIANT TYPE: %", variant_get_type(p_final_var)));
-          p_obj := alloc(size_of(Object));
-          variant_to_Object(p_obj, p_final_var);
           // instance_id := object_get_instance_id(*p_obj);
           // print_muted(tprint("OBJECT INSTANCE ID: %", instance_id));
           opaque: OpaqueClass;
-          opaque.p_object = p_obj;
+          // opaque.object_id = variant_get_object_instance_id(p_final_var);
+          opaque.object_id = variant_get_object_instance_id(p_final_var);
+          opaque.p_object = object_get_instance_from_id(opaque.object_id);
+        
           return cast(*T) *opaque;
         // --------------------------------
         case ENUM;

@@ -107,7 +107,7 @@ class_create_instance :: (p_class_userdata: *void) -> GDExtensionObjectPtr #c_ca
         extension_entity := cast(*ExtensionEntity) p_class_userdata;
         p_class_name := make_stringname(tprint("%", extension_entity.type), null);
         p_parent_class_name := make_stringname(tprint("%", extension_entity.parent_type), null);
-        p_object := classdb_construct_object(p_parent_class_name);
+        p_object := classdb_construct_object2(p_parent_class_name);
         push_context jodot_ctx {
             print_muted(tprint("** New entity: % **", extension_entity.type));
             #insert user_entity_case;
@@ -152,7 +152,7 @@ register_extension_entities :: () {
 new_gdt_obj :: (gdt_type: $T) -> *void {
     name := to_sring(T);
     p_sn := make_stringname(name, null);
-    p_object := classdb_construct_object(p_sn);
+    p_object := classdb_construct_object2(p_sn);
     object_set_instance(p_object, name, objects_gdt[cursor_gdt]);
     objects_gdt[cursor_gdt].p_object = p_object;
     cursor_gdt += 1;

@@ -2,9 +2,12 @@
 // JODOT ENTITY DECLARATION
 // ------------------------
 
+using Jodot;
+
 // We declare an Extension Entity as a struct, as follows:
 
 // (1) Use the @jodot note in struct declaration.
+#poke_name Jodot MyCharacter;
 MyCharacter :: struct @jodot {
 
     // (2) Designate a parent class from Godot's builtin classes, as 'parent'.
@@ -75,6 +78,7 @@ exit_tree_MyCharacter :: (cast_me: *ExtensionEntity) {}
 
 // Here's the test entity we've used as the root of the demo scene:
 
+#poke_name Jodot JodotTestEntity;
 JodotTestEntity :: struct @jodot {
 
     #as using parent: Node3D;
@@ -89,22 +93,25 @@ JodotTestEntity :: struct @jodot {
 
 ready_JodotTestEntity :: (cast_me: *ExtensionEntity) {
     
-    as_self := cast(*JodotTestEntity) cast_me;
-    as_node := cast(*Node) cast_me;
-    as_node3d := cast(*Node3D) cast_me;
+    as_self := cast_me.(*JodotTestEntity);
+    as_node := cast_me.(*Node);
+    as_node3d := cast_me.(*Node3D);
     
     // WORKING!
-    set_name(as_node, "Sailor");
     name := get_name(as_node);
-    print_muted("Name: %", name);
+    print_muted("Name Before: %", name);
+    set_name(as_node, "Sailor");
+    name = get_name(as_node);
+    print_muted("Name After: %", name);
     
-    // @BORKED crash on getting text: get_node() doesn't work properly, object instance not returned
     // This is 'tree-climbing', the simplest way to reference other nodes.
     rich_text := get_node(as_node, "greeter/RichTextLabel");
     // Try not to abuse this. It can ending up locking you into a strict hierarchy.
-    as_self.greeter_text = cast(*RichTextLabel) *rich_text;
+    as_self.greeter_text = rich_text.(*RichTextLabel);
+    // name = get_name(rich_text);
+    // print_muted("Text Name: %", name);
     // message := get_text(as_self.greeter_text);
-    // print_muted("Text: %", message);
+    set_text(as_self.greeter_text, "[center]GDScript is in another castle.");
     
     // @BORKED load is successful, but this time resource instance not returned properly
     mouse_cursor := load(*S_ResourceLoader, "res://menu/sprite/mouse_cursor.png");
@@ -116,7 +123,7 @@ ready_JodotTestEntity :: (cast_me: *ExtensionEntity) {
     print_muted(tprint("Position: %", vec3));
     
     print("Ready from JodotTestEntity!\n");
-    print_muted("Wait for it...");
+    // print_muted("Wait for it...");
 }
 
 process_JodotTestEntity :: (cast_me: *ExtensionEntity, delta: float64) {
@@ -124,7 +131,7 @@ process_JodotTestEntity :: (cast_me: *ExtensionEntity, delta: float64) {
     // WORKING!
     as_self := cast(*JodotTestEntity) cast_me;
     as_self.time_accumulator += cast(float) delta;
-    if as_self.time_accumulator > 10.0 print_muted("Greeter's Pocketwatch: %", as_self.time_accumulator);
+    // if as_self.time_accumulator > 10.0 print_muted("Greeter's Pocketwatch: %", as_self.time_accumulator);
     
     // @BORKED: input virtual function not set up properly
     // handle_input();
@@ -139,4 +146,4 @@ handle_input :: () #expand {
 }
 
 #import "Basic";
-#import "Jodot";
+Jodot :: #import "Jodot";

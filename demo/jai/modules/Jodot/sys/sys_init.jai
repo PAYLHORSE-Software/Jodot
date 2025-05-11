@@ -27,7 +27,7 @@ object_get_instance_binding: GDExtensionInterfaceObjectGetInstanceBinding;
 classdb_register_extension_class: GDExtensionInterfaceClassdbRegisterExtensionClass3;
 classdb_get_class_tag: GDExtensionInterfaceClassdbGetClassTag;
 classdb_register_extension_class_method: GDExtensionInterfaceClassdbRegisterExtensionClassMethod;
-classdb_construct_object: GDExtensionInterfaceClassdbConstructObject;
+classdb_construct_object2: GDExtensionInterfaceClassdbConstructObject2;
 classdb_get_method_bind: GDExtensionInterfaceClassdbGetMethodBind;
 object_method_bind_call: GDExtensionInterfaceObjectMethodBindCall;
 // object_method_bind_ptrcall: GDExtensionInterfaceObjectMethodBindPtrcall;
@@ -41,6 +41,7 @@ global_get_singleton: GDExtensionInterfaceGlobalGetSingleton;
 get_native_struct_size: GDExtensionInterfaceGetNativeStructSize;
 variant_get_ptr_builtin_method: GDExtensionInterfaceVariantGetPtrBuiltinMethod;
 variant_get_type: GDExtensionInterfaceVariantGetType;
+variant_get_object_instance_id: GDExtensionInterfaceVariantGetObjectInstanceId;
 
 // == VARIANT PROCS ==
 
@@ -249,7 +250,7 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
         string_to_utf8_chars = xx P_GET_PROC_ADDRESS("string_to_utf8_chars");
         // NOTE: STRINGNAMES CAN ONLY BE MADE *AFTER* THIS POINT
         string_name_new_with_utf8_chars = xx P_GET_PROC_ADDRESS("string_name_new_with_utf8_chars");
-        classdb_construct_object = xx P_GET_PROC_ADDRESS("classdb_construct_object");
+        classdb_construct_object2 = xx P_GET_PROC_ADDRESS("classdb_construct_object2");
         object_set_instance = xx P_GET_PROC_ADDRESS("object_set_instance");
         object_get_instance_binding = xx P_GET_PROC_ADDRESS("object_get_instance_binding");
         classdb_register_extension_class = xx P_GET_PROC_ADDRESS("classdb_register_extension_class3");
@@ -267,6 +268,8 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
         get_native_struct_size = xx P_GET_PROC_ADDRESS("get_native_struct_size");
         variant_get_ptr_builtin_method = xx P_GET_PROC_ADDRESS("variant_get_ptr_builtin_method");
         variant_get_type = xx P_GET_PROC_ADDRESS("variant_get_type");
+        
+        variant_get_object_instance_id = xx P_GET_PROC_ADDRESS("variant_get_object_instance_id");
 
         // == VARIANT CONVERSION ==
         for enum_values_as_s64(GDExtensionVariantType) {
