@@ -1,4 +1,4 @@
-sys_call :: (class_name: string, method_name: string, hash: s64, return_type: $T, p_object: GDExtensionObjectPtr, args: .. Any) -> *void {
+sys_call :: (class_name: string, method_name: string, hash: s64, return_type: $T, object_id: GDObjectInstanceID, args: .. Any) -> *void {
 
     // @Speed
 
@@ -151,6 +151,7 @@ sys_call :: (class_name: string, method_name: string, hash: s64, return_type: $T
     p_final_var := alloc(size_of(Variant));
     err: GDExtensionCallError;
     // if DEBUG print("++++++ P_OBJECT: % ++++++\n", p_object);
+    p_object := object_get_instance_from_id(object_id);
     object_method_bind_call(p_method_bind, p_object, cast(*void) arg_variants.data, arg_variants.count, p_final_var, *err);
     handle_call_error(err);
 
@@ -400,7 +401,6 @@ sys_call :: (class_name: string, method_name: string, hash: s64, return_type: $T
           opaque: OpaqueClass;
           // opaque.object_id = variant_get_object_instance_id(p_final_var);
           opaque.object_id = variant_get_object_instance_id(p_final_var);
-          opaque.p_object = object_get_instance_from_id(opaque.object_id);
         
           return cast(*T) *opaque;
         // --------------------------------

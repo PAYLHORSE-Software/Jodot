@@ -155,6 +155,7 @@ new_gdt_obj :: (gdt_type: $T) -> *void {
     p_object := classdb_construct_object2(p_sn);
     object_set_instance(p_object, name, objects_gdt[cursor_gdt]);
     objects_gdt[cursor_gdt].p_object = p_object;
+    objects_gdt[cursor_gdt].object_id = object_get_instance_id(p_object);
     cursor_gdt += 1;
     return *objects_gdt[cursor_gdt];
 }

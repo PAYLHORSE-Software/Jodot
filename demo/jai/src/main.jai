@@ -98,6 +98,8 @@ ready_JodotTestEntity :: (cast_me: *ExtensionEntity) {
     as_node3d := cast_me.(*Node3D);
     
     // WORKING!
+    print_muted("Object Pointer: %", as_node.p_object);
+    print_muted("Object ID: %", as_node.object_id);
     name := get_name(as_node);
     print_muted("Name Before: %", name);
     set_name(as_node, "Sailor");
@@ -110,7 +112,7 @@ ready_JodotTestEntity :: (cast_me: *ExtensionEntity) {
     as_self.greeter_text = rich_text.(*RichTextLabel);
     // name = get_name(rich_text);
     // print_muted("Text Name: %", name);
-    // message := get_text(as_self.greeter_text);
+    message := get_text(as_self.greeter_text);
     set_text(as_self.greeter_text, "[center]GDScript is in another castle.");
     
     // @BORKED load is successful, but this time resource instance not returned properly

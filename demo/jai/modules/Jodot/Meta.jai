@@ -70,6 +70,7 @@ DONE
                         print_to_builder(*case_builder, "case %;", it);
                         print_to_builder(*case_builder, " object_set_instance(p_object, p_class_name, *entities_%[cursor_%]);", it, it);
                         print_to_builder(*case_builder, " entities_%[cursor_%].p_object = p_object;", it, it);
+                        print_to_builder(*case_builder, " entities_%[cursor_%].object_id = object_get_instance_id(p_object);", it, it);
                         print_to_builder(*case_builder, " entities_%[cursor_%].ID = cursor_%;", it, it, it);
                         print_to_builder(*case_builder, " cursor_% += 1;", it);
                     }
