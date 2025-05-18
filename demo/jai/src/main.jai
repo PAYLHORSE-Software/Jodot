@@ -125,20 +125,19 @@ ready_DemoRoot :: (cast_me: *ExtensionEntity) {
     bbcode := "[center]";
     array_copy(*onscreen_message, bbcode.([] u8));
     
-    // TODO find a way to load resources!!
-    // The image is loaded and cached successfuly, but the resource object returned seems to be invalid.
-    // mouse_cursor := load(*S_ResourceLoader, "res://menu/sprite/mouse_cursor.png");
-    // assert(has_cached(*S_ResourceLoader, "res://menu/sprite/mouse_cursor.png"));
+    // Load an image and set it as the mouse cursor
+    // TODO wrapper for ResourceLoader::load
+    mouse_cursor_tex := load(*S_ResourceLoader, "res://menu/sprite/mouse_cursor.png"); // Loading a .png returns CompressedTexture2D
+    assert(has_cached(*S_ResourceLoader, "res://menu/sprite/mouse_cursor.png"));
+
+    mouse_cursor_image := get_image(mouse_cursor_tex.(*Texture2D));
+    // TEMP TODO for some reason, the Image object ID becomes invalid after it's passed into set_custom_mouse_cursor...
+    // Something to do with reference count on Resources I think.
+    // We can circumvent this for now by setting it's object pointer, so that the method call uses that instead.
+    mouse_cursor_image.p_object = object_get_instance_from_id(mouse_cursor_image.object_id);
     
     // Setting custom mouse cursor
-    // set_custom_mouse_cursor(*S_Input, mouse_cursor.*);
-    
-    // Creating and instantiating a TextureRect
-    // img_tex := new_gdt_obj(ImageTexture);
-    // set_image(*img_tex, xx,force mouse_cursor.*);
-    // tex_rect := new_gdt_obj(TextureRect);
-    // set_texture((*tex_rect).(*TextureRect), xx,force img_tex);
-    // add_child(canvas, xx,force tex_rect);
+    set_custom_mouse_cursor(*S_Input, mouse_cursor_image.(*Resource).*);
     
     print("Ready from DemoRoot!\n");
 }
@@ -184,8 +183,6 @@ ScrollingGround :: struct @jodot {
     #as using parent: Sprite2D;
     #insert def_extension_entity;
 
-    shader_mat: ShaderMaterial;
-
     _ready = ready_ScrollingGround;
     _process = process_ScrollingGround;    
 }
@@ -194,16 +191,6 @@ ready_ScrollingGround :: (cast_me: *ExtensionEntity) {
 
     as_self := cast_me.(*ScrollingGround);
     as_canvas_item := cast_me.(*CanvasItem);
-    
-    // shader_mat := load(*S_ResourceLoader, "res://shader/ground_shader_mat.tres", "ShaderMaterial");
-    // shader_mat_name := get_name(shader_mat.(*Resource));
-    // as_self.shader_mat = shader_mat.(*ShaderMaterial).*;
-    // set_material(as_canvas_item, xx,force as_self.shader_mat);
-    
-    // offset_var: Variant;
-    // offset_vec := Vector2.{0.4, 0.0};
-    // variant_from_Vector2(*offset_var, *offset_vec);
-    // set_instance_shader_parameter(as_canvas_item, "offset", offset_var);
 }
 
 process_ScrollingGround :: (cast_me: *ExtensionEntity, delta: float64) {
@@ -216,20 +203,7 @@ process_ScrollingGround :: (cast_me: *ExtensionEntity, delta: float64) {
     offset_var: Variant;
     offset_vec := Vector2.{ground_offset, 0.0};
     variant_from_Vector2(*offset_var, *offset_vec);
-    // set_shader_parameter(*as_self.shader_mat, "offset", offset_var);
-    shader_mat := get_material(as_canvas_item).(*ShaderMaterial);
-    // current_offset := get_shader_parameter(shader_mat, "offset");
-    current_offset := get_instance_shader_parameter(as_canvas_item, "offset");
-    print_muted("Offset variant: %", current_offset);
-    vec: Vector2;
-    // variant_to_Vector2(*vec, *offset_var);
-    variant_to_Vector2(*vec, *current_offset);
-    print_affirm("Offset: %", vec);
-    // set_shader_parameter(shader_mat, "offset", offset_var);
-    print_muted("Offset variant: %", current_offset);
-    // set_shader_parameter(shader_mat, "offset", current_offset);
     set_instance_shader_parameter(as_canvas_item, "offset", offset_var);
-    // assert(false);
 }
 
 #import "Basic";

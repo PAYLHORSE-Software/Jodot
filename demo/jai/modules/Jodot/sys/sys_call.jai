@@ -11,16 +11,15 @@ sys_call :: (class_name: string, method_name: string, hash: s64, return_type: $T
     p_methodname := make_stringname(method_name, null);
     p_method_bind := classdb_get_method_bind(p_classname, p_methodname, hash);
 
-    arg_variants : [..] Variant;
+    arg_variants := NewArray(args.count, *Variant);
 
     // VARIANT ARGUMENTS
     
-    for args {
+    for * args {
         type := (cast(*Type) *it.type).*;
         variant: Variant;
         if type == Variant {
-            variant = (cast(*Variant) it.value_pointer).*;
-            array_add(*arg_variants, variant);
+            arg_variants[it_index] = (cast(*Variant) it.value_pointer);
             continue;
         }
         p_arg_var := New(Variant,, allocator=temp);
@@ -44,13 +43,21 @@ sys_call :: (class_name: string, method_name: string, hash: s64, return_type: $T
               p_val := cast(*int) it.value_pointer;
               variant_from_int(p_arg_var, p_val);
         }
+        // TODO skip if hit in first case
         if type == {
             
+            // @ReturnObjects
+            // TODO add other godot classes that can be return values
+            case Image; #through;
             case Resource; #through;
             case Node;
               p_val := cast(*Node) it.value_pointer;
-              p_object := ifx object.p_object != null then p_val.p_object else object_get_instance_from_id(p_val.object_id);
+              p_object := ifx object.p_object != null then p_val.p_object else {
+                  assert(object.object_id != 0, "Method call on object without constant pointer or ID!");
+                  object_get_instance_from_id(p_val.object_id);
+              }
               print_muted("Creating variant from p_object: %", p_object);
+              assert(p_object != null, "Argument is null object!");
               variant_from_Object(p_arg_var, *p_object);
 
             case gstring;
@@ -156,17 +163,15 @@ sys_call :: (class_name: string, method_name: string, hash: s64, return_type: $T
               p_val := cast(*PackedColorArray) it.value_pointer;
               variant_from_PackedColorArray(p_arg_var, p_val);
         }
-        memcpy(*variant, *p_arg_var, size_of(Variant));
-        array_add(*arg_variants, variant);
+        memcpy(*arg_variants[it_index], *p_arg_var, size_of(*Variant));
     }
     p_ret_var := alloc(size_of(Variant));
     err: GDExtensionCallError;
     p_object := ifx object.p_object != null then object.p_object else {
-        assert(object.object_id != 0);
-        print_warn("OBJECT ID: %", object.object_id);
+        assert(object.object_id != 0, "Method call on object without constant pointer or ID!");
         object_get_instance_from_id(object.object_id);
     }
-    print_muted("Method call on p_object: %", p_object);
+    // print_muted("Method call on p_object: %", p_object);
     assert(p_object != null, "Method call on null object!");
     object_method_bind_call(p_method_bind, p_object, cast(*void) arg_variants.data, arg_variants.count, p_ret_var, *err);
     handle_call_error(err);
@@ -385,50 +390,6 @@ sys_call :: (class_name: string, method_name: string, hash: s64, return_type: $T
           arr_clr: PackedColorArray;
           memcpy(*arr_clr, p_arr_clr, size_of(PackedColorArray));
           return *arr_clr;
-        
-        // NOTE: assuming these types are always returned as reference
-        
-        case Material; #through;
-        case Resource;
-          
-          // var_type := variant_get_type(p_ret_var);
-          // print_muted("p_ret_var type: %", var_type);
-        
-          // opaque: OpaqueClass;
-          opaque := New(OpaqueClass);
-          object_id := variant_get_object_instance_id(p_ret_var);
-          assert(object_id != 0, "Object returned is empty/invalid!");
-          print_warn("OBJECT ID (REF): %", object_id);
-          p_object := object_get_instance_from_id(object_id); 
-        
-          // ref: RefCounted;
-          // ref.object_id = object_id;
-          // ref_count := get_reference_count(*ref);
-          // log("REFERENCE COUNT: %", ref_count);
-          // ok := reference(*ref);
-          // assert(ok);
-          // ref_count = get_reference_count(*ref);
-          // log("REFERENCE COUNT: %", ref_count);
-        
-          // p_object = ref_get_object(p_object);
-        
-          p_stringname := alloc(size_of(StringName),, allocator=temp);
-          object_get_class_name(p_object, P_LIBRARY, p_stringname);
-          class_name := p_stringname.(*StringName).*;
-          print_muted("Return object class: %", class_name);
-
-          assert(sn_equal(class_name, "ShaderMaterial"));
-          print_affirm("It's a hit!!");
-        
-          // opaque.p_object = p_object;
-          opaque.object_id = object_id;
-          // opaque.object_id = object_get_instance_id(p_object);
-          assert(opaque.object_id != 0, "Object unwrapped from returned Resource is empty/invalid!");
-          print_warn("OBJECT ID: %", opaque.object_id);
-
-          // res_name := get_name(opaque.(*Resource));
-
-          return cast(*T) opaque;
     }
 
     // Generic types:
@@ -461,6 +422,17 @@ sys_call :: (class_name: string, method_name: string, hash: s64, return_type: $T
           opaque := New(OpaqueClass);
           // opaque: OpaqueClass;
           opaque.object_id = variant_get_object_instance_id(p_ret_var);
+          assert(opaque.object_id != 0, "Object returned is empty/invalid!");
+        
+          // Check object class
+          // p_stringname := alloc(size_of(StringName),, allocator=temp);
+          // object_get_class_name(p_object, P_LIBRARY, p_stringname);
+          // class_name := p_stringname.(*StringName).*;
+          // print_muted("Return object class: %", class_name);
+
+          // assert(sn_equal(class_name, "ShaderMaterial"));
+          // print_affirm("It's a hit!!");
+        
           return cast(*T) opaque;
         // --------------------------------
         case ENUM;
