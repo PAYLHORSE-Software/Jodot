@@ -95,7 +95,7 @@ GodotAPI :: struct {
 
 fill_godot_api :: () {
 
-    print_muted("Parsing godot JSON...");
+    print_muted("Parsing Extension API JSON...");
     success: bool;
     success, godot_api = json_parse_file("codegen/gdextension/extension_api.json", GodotAPI);
     assert(success);
@@ -103,20 +103,19 @@ fill_godot_api :: () {
     print("JSON parsing successful!\n");
 }
 
-// =========
-//  CODEGEN
-// =========
+// -------
+// Codegen
 
 gdt_bindings_codegen :: () {
 
-    print_muted("Generating gdt reference code...");
+    print_muted("Generating gdt bindings...");
     builder: String_Builder;
     init_string_builder(*builder);
     append(*builder, GDT_HEADER);
 
-    opaque_classes: [..] string;
+    godot_classes: [..] string;
 
-    // == ENUMS ==
+    // Enums
 
     // TODO: do whatever Bindings_Generator does to clean up enums
     for godot_api.global_enums {
@@ -130,13 +129,13 @@ gdt_bindings_codegen :: () {
         else print_to_builder(*builder, "} @bitfield\n");
     }
 
-    // == CLASSES ==
+    // Classes
 
     for * godot_api.classes {
-        array_add(*opaque_classes, it.name);
+        array_add(*godot_classes, it.name);
         if it.name == "Object" it.name = "_Object";
-        if it.enums print_to_builder(*builder, "\n% :: struct {  // %\n\n        #as using base: OpaqueClass;", it.name, it_index);
-        else print_to_builder(*builder, "\n% :: struct { #as using base: OpaqueClass; } // %\n", it.name, it_index);
+        if it.enums print_to_builder(*builder, "\n% :: struct {  // %\n\n        #as using base: GodotClass;", it.name, it_index);
+        else print_to_builder(*builder, "\n% :: struct { #as using base: GodotClass; } // %\n", it.name, it_index);
         for it.enums {
             // A few class enums are bitfields with very large values
             if it.is_bitfield print_to_builder(*builder, "\n\n    % :: enum u64 {\n", it.name);
@@ -150,9 +149,9 @@ gdt_bindings_codegen :: () {
         if it.enums append(*builder, "\n}\n");
     }
 
-    append(*builder, "\n// ====== PROCEDURES ======\n\n");
+    append(*builder, "\n// ------ Procedures ------\n\n");
 
-    // == PROCEDURES ==
+    // Procedures
 
     all_classes: [..] GodotAPI.Class;
 
@@ -163,82 +162,90 @@ gdt_bindings_codegen :: () {
 
     // print_muted(tprint("ALL CLASSES COUNT: %", all_classes.count));
 
-    // NOTE: this gives us valid native procedures, it's just atrocious and not worth it.
     for class: godot_api.classes {
-        if class.name == "ResourceLoader" continue;
         for * method: class.methods {
             if method.is_virtual != null if method.is_virtual.* == true continue;
             if method.name == "remove" method.name = "_remove";
             if method.name == "push_context" method.name = "_push_context";
             print_to_builder(*builder, "% :: (main: *%", method.name, class.name);
-            for * method.arguments {
-                if it.default_value != null continue; // @Temp
-                if it.name == "operator" it.name = "_operator";
-                if it.name == "enum" it.name = "_enum";
-                if it.name == "interface" it.name = "_interface";
-                if it.name == "context" it.name = "_context";
-                if it.name == "RID" it.name = "rid";
-                if it.name == "bool" it.name = "_bool";
-                if it.name == "string" it.name = "_string";
-                if contains(it.type.*, "enum::") {
-                    it.type.*.data = * it.type.*[6];
-                    it.type.*.count -= 6;
+            for * arg: method.arguments {
+                if arg.default_value != null continue; // TEMP
+                if arg.name == "operator" arg.name = "_operator";
+                if arg.name == "enum" arg.name = "_enum";
+                if arg.name == "interface" arg.name = "_interface";
+                if arg.name == "context" arg.name = "_context";
+                if arg.name == "RID" arg.name = "rid";
+                if arg.name == "bool" arg.name = "_bool";
+                if arg.name == "string" arg.name = "_string";
+                
+                // If GodotClass, then expect pointer
+                is_godot_class := false;
+                for godot_classes if arg.type.* == it {
+                    print_to_builder(*builder, ", %: *%", arg.name, arg.type.*);
+                    is_godot_class = true;
+                    break;
                 }
-                else if contains(it.type.*, "typedarray::") {
-                    it.type.*.data = * it.type.*[12];
-                    it.type.*.count -= 12;
-                    it.type.* = join("[] ", it.type.*);
+                if is_godot_class continue;
+                
+                if contains(arg.type.*, "enum::") {
+                    arg.type.*.data = * arg.type.*[6];
+                    arg.type.*.count -= 6;
                 }
-                else if contains(it.type.*, "bitfield::") {
-                    it.type.*.data = * it.type.*[10];
-                    it.type.*.count -= 10;
+                else if contains(arg.type.*, "typedarray::") {
+                    arg.type.*.data = * arg.type.*[12];
+                    arg.type.*.count -= 12;
+                    arg.type.* = join("[] ", arg.type.*);
                 }
-                if contains(it.type.*, "const") {
-                    it.type.*.data = * it.type.*[6];
-                    it.type.*.count -= 6;
+                else if contains(arg.type.*, "bitfield::") {
+                    arg.type.*.data = * arg.type.*[10];
+                    arg.type.*.count -= 10;
                 }
-                if contains(it.type.*, "**") {
-                    it.type.*.count -= 3;
-                    it.type.* = join("*", it.type.*);
+                if contains(arg.type.*, "const") {
+                    arg.type.*.data = * arg.type.*[6];
+                    arg.type.*.count -= 6;
                 }
-                if contains(it.type.*, "**") {
-                    it.type.*.data = * it.type.*[1];
-                    it.type.*.count -= 1;
-                    it.type.* = join("*", it.type.*);
-                }                if contains(it.type.*, "*") {
-                    it.type.*.count -= 1;
-                    it.type.* = join("*", it.type.*);
+                if contains(arg.type.*, "**") {
+                    arg.type.*.count -= 3;
+                    arg.type.* = join("*", arg.type.*);
                 }
-                if contains(it.type.*, "ExtensionRay") ||
-                    contains(it.type.*, "ExtensionShape") ||
-                    contains(it.type.*, "ExtensionMotion") ||
-                    contains(it.type.*, "ScriptLanguageExtensionProfilingInfo") continue;
-                if it.type.* == "NodePath" it.type.* = "string";
-                if it.type.* == "Variant.Type" it.type.* = "Variant_Type";
-                if it.type.* == "Vector2.Axis" it.type.* = "Vector2_Axis";
-                if it.type.* == "Vector2i.Axis" it.type.* = "Vector2_Axis";
-                if it.type.* == "Vector3.Axis" it.type.* = "Vector3_Axis";
-                if it.type.* == "Vector3i.Axis" it.type.* = "Vector3_Axis";
-                if it.type.* == "Vector4.Axis" it.type.* = "Vector4_Axis";
-                if it.type.* == "Vector4i.Axis" it.type.* = "Vector4_Axis";
-                if it.type.* == "Projection.Planes" it.type.* = "Projection_Planes";
-                if it.type.* == "String" it.type.* = "string";
-                if it.type.* == "[] String" it.type.* = "[] string";
-                if it.type.* == "StringName" it.type.* = "string";
-                if it.type.* == "[] StringName" it.type.* = "[] string";
-                if it.type.* == "*int32_t" it.type.* = "*s32";
-                if it.type.* == "**uint8_" it.type.* = "**u8";
-                if it.type.* == "*uint8_t" it.type.* = "*u8";
-                print_to_builder(*builder, ", %: %", it.name, it.type.*);
-                // if it.default_value != null print_to_builder(*builder, " = %", it.default_value);
+                if contains(arg.type.*, "**") {
+                    arg.type.*.data = * arg.type.*[1];
+                    arg.type.*.count -= 1;
+                    arg.type.* = join("*", arg.type.*);
+                }                if contains(arg.type.*, "*") {
+                    arg.type.*.count -= 1;
+                    arg.type.* = join("*", arg.type.*);
+                }
+                if contains(arg.type.*, "ExtensionRay") ||
+                    contains(arg.type.*, "ExtensionShape") ||
+                    contains(arg.type.*, "ExtensionMotion") ||
+                    contains(arg.type.*, "ScriptLanguageExtensionProfilingInfo") continue;
+                if arg.type.* == "NodePath" arg.type.* = "string";
+                if arg.type.* == "Variant.Type" arg.type.* = "Variant_Type";
+                if arg.type.* == "Vector2.Axis" arg.type.* = "Vector2_Axis";
+                if arg.type.* == "Vector2i.Axis" arg.type.* = "Vector2_Axis";
+                if arg.type.* == "Vector3.Axis" arg.type.* = "Vector3_Axis";
+                if arg.type.* == "Vector3i.Axis" arg.type.* = "Vector3_Axis";
+                if arg.type.* == "Vector4.Axis" arg.type.* = "Vector4_Axis";
+                if arg.type.* == "Vector4i.Axis" arg.type.* = "Vector4_Axis";
+                if arg.type.* == "Projection.Planes" arg.type.* = "Projection_Planes";
+                if arg.type.* == "String" arg.type.* = "string";
+                if arg.type.* == "[] String" arg.type.* = "[] string";
+                if arg.type.* == "StringName" arg.type.* = "string";
+                if arg.type.* == "[] StringName" arg.type.* = "[] string";
+                if arg.type.* == "*int32_t" arg.type.* = "*s32";
+                if arg.type.* == "**uint8_" arg.type.* = "**u8";
+                if arg.type.* == "*uint8_t" arg.type.* = "*u8";
+                print_to_builder(*builder, ", %: %", arg.name, arg.type.*);
+                // if arg.default_value != null print_to_builder(*builder, " = %", arg.default_value);
             }
 
             if method.return_value {
-                is_opaque_class := false;
-                for opaque_classes {
-                    if method.return_value.type.* == it is_opaque_class = true;
+                is_godot_class := false;
+                for godot_classes {
+                    if method.return_value.type.* == it is_godot_class = true;
                 }
-                if is_opaque_class append(*builder, ") -> *");
+                if is_godot_class append(*builder, ") -> *");
                 else append(*builder, ") -> ");
                 // This is just awful... TODO refactor
                 if contains(method.return_value.type.*, "enum::") {
@@ -301,16 +308,16 @@ gdt_bindings_codegen :: () {
             if method.return_value print_to_builder(*builder, "call_ret := cast(*%) sys_call(\"%\", \"%\", %, %, main", method.return_value.type.*, class.name, method.name, method.hash, method.return_value.type.*);
             else print_to_builder(*builder, "sys_call(\"%\", \"%\", %, Nil, main", class.name, method.name, method.hash);
             for method.arguments {
-                if it.default_value != null continue; // @Temp
+                if it.default_value != null continue; // TEMP
                 print_to_builder(*builder, ", %", it.name);
             }
             append(*builder, "); ");
             if method.return_value {
-                is_opaque_class := false;
-                for opaque_classes {
-                    if method.return_value.type.* == it is_opaque_class = true;
+                is_godot_class := false;
+                for godot_classes {
+                    if method.return_value.type.* == it is_godot_class = true;
                 }
-                if is_opaque_class append(*builder, "return call_ret;");
+                if is_godot_class append(*builder, "return call_ret;");
                 else print_to_builder(*builder, "return call_ret.*;");
             }
             print_to_builder(*builder, " }  // %\n", it_index);
@@ -320,7 +327,6 @@ gdt_bindings_codegen :: () {
     }
 
     for * class: godot_api.builtin_classes {
-        // Use this!!
         // variant_get_ptr_builtin_method();
         // for * method: class.methods {
         //     if method.name == "remove" method.name = "_remove";
@@ -328,7 +334,7 @@ gdt_bindings_codegen :: () {
         //     if class.name == "String" class.name = "gstring";
         //     print_to_builder(*builder, "% :: (main: *%", method.name, class.name);
         //     for * method.arguments {
-        //         if it.default_value != null continue; // @Temp
+        //         if it.default_value != null continue; // TEMP
         //         if it.name == "operator" it.name = "_operator";
         //         if it.name == "enum" it.name = "_enum";
         //         if it.name == "interface" it.name = "_interface";
@@ -447,7 +453,7 @@ gdt_bindings_codegen :: () {
         //     if method.return_type print_to_builder(*builder, "call_ret := cast(*%) sys_call(\"%\", \"%\", %, %, main", method.return_type.*, class.name, method.name, method.hash, method.return_type.*);
         //     else print_to_builder(*builder, "sys_call(\"%\", \"%\", %, Nil, main", class.name, method.name, method.hash);
         //     for method.arguments {
-        //         if it.default_value != null continue; // @Temp
+        //         if it.default_value != null continue; // TEMP
         //         print_to_builder(*builder, ", %", it.name);
         //     }
         //     append(*builder, "); ");
@@ -460,15 +466,15 @@ gdt_bindings_codegen :: () {
         append(*builder, "\n");
     }
 
-    append(*builder, "// ====== SINGLETONS ======\n\n");
+    append(*builder, "// ------ Singletons ------\n\n");
 
-    // == SINGLETONS ==
+    // Singletons
 
     for godot_api.singletons {
         print_to_builder(*builder, "S_%: %;\n", it.name, it.name);
     }
 
-    // == SIZE/OFFSET ASSERTS ==
+    // Size/offset asserts
 
     append(*builder, "\n#run {\n");
 
@@ -490,7 +496,7 @@ gdt_bindings_codegen :: () {
     append(*builder, GDT_FOOTER);
     code := builder_to_string(*builder);
     write_entire_file("gdt/gdt_bindings.jai", code);
-    print_affirm("OK! generated 'gdt/gdt_bindings.jai'\n");
+    log("OK! generated 'gdt/gdt_bindings.jai'\n");
 }
 
 gdt_visitor :: () {}
@@ -515,20 +521,15 @@ print_muted :: (msg: string) {
     log("\x1b[38;5;246m%\x1b[0m", msg);
 }
 
-print_affirm :: (msg: string) {
-    log("\x1b[1;38;5;144m%\x1b[0m", msg);
-}
-
 GDT_HEADER :: #string DONE
 //  --------------------
-// | JODOT GDT BINDINGS |
+// | Jodot gdt bindings |
 //  --------------------
 
 DONE
 
 GDT_FOOTER :: #string DONE
 
-#scope_file
-
+// #scope_file
 // #import "Hash_Table";
 DONE

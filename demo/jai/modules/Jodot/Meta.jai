@@ -1,14 +1,6 @@
 message_loop :: (DEMO: bool = false) {
 
-    print_muted :: (msg: string) {
-        log("\x1b[38;5;246m%\x1b[0m", msg);
-    }
-
-    print_warn :: (msg: string) {
-        log("\x1b[38;5;180m%\x1b[0m", msg);
-    }
-
-    print_muted("\n==== METAPROGRAM ====\n");
+    log_muted("\n---- Jodot Metaprogram ----\n");
 
     tagged_names : [..] string;
     code: string;
@@ -20,7 +12,7 @@ message_loop :: (DEMO: bool = false) {
     while true {
 
         if !gen_check {
-            print_warn("!! Make sure to run generate.jai! !!");
+            log_warn("!! Make sure to run generate.jai! !!");
             break;
         }
 
@@ -38,7 +30,7 @@ message_loop :: (DEMO: bool = false) {
                 for decl: typechecked.declarations {
                     for note: decl.expression.notes {
                         if equal(note.text, "jodot") {
-                            print_muted(tprint("Found extension entity declaration: %\n", decl.expression.name));
+                            log_glow(tprint("Found extension entity declaration: %\n", decl.expression.name));
                             array_add(*tagged_names, copy_string(decl.expression.name));
                         }
                     }
@@ -79,7 +71,7 @@ DONE
                     print_to_builder(*builder, "user_entity_case :: \"%\";\n", cases);
                     // ----------
                     code := builder_to_string(*builder);
-                    print_muted(tprint("ADDING BUILD STRING: %", code));
+                    log_muted(tprint("ADDING BUILD STRING: %", code));
                     add_build_string(code, jodot_import.workspace, jodot_import);
                     // array_reset(*tagged_names);
                     break;
@@ -92,3 +84,17 @@ DONE
 #import "Compiler";
 #import "String";
 #import "File_Utilities";
+
+#scope_file
+
+log_muted :: (msg: string) {
+    log("\x1b[38;5;246m%\x1b[0m", msg);
+}
+
+log_warn :: (msg: string) {
+    log("\x1b[38;5;180m%\x1b[0m", msg);
+}
+
+log_glow :: (msg: string) {
+    log("\x1b[1;38;5;230m%\x1b[0m", msg);
+}

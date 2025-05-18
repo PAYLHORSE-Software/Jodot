@@ -1,5 +1,5 @@
 //  ---------------------------
-// | CUSTOM CLASS REGISTRATION |
+// | Custom Class Registration |
 //  ---------------------------
 
 // Wrapper struct for extension classes
@@ -32,8 +32,8 @@ class_create_info :: GDExtensionClassCreationInfo3.{
         //     get_rid_func
 };
 
-// ------------------------
-// (NODE) VIRTUAL FUNCTIONS
+// ----------------------
+// Node Virtual Functions
 
 get_virtual_call_data_fn :: (p_class_userdata: *void, p_name: GDExtensionConstStringNamePtr) -> *void #c_call {
     return p_class_userdata;
@@ -46,40 +46,38 @@ call_virtual_with_data_fn :: (p_instance: GDExtensionClassInstancePtr, p_name: G
         instance := cast(*ExtensionEntity) p_instance;
         entity := cast(*ExtensionEntity) p_virtual_call_userdata;
 
-        // print_muted(tprint("VFN STRINGNAME: %", sn_vfn));
-
-        // == READY PROC ==
+        // ready proc
         if sn_equal(sn_vfn, vfn_stringnames[0]) {
             if entity._ready != null {
                 entity._ready(instance);
             }
-        // == PROCESS PROC ==
+        // process proc
         } else if sn_equal(sn_vfn, vfn_stringnames[1]) {
             if entity._process != null {
                 delta: float64;
                 memcpy(*delta, p_args.*, size_of(float64));
                 entity._process(instance, delta);
             }
-        // == PHYSICS PROCESS PROC ==
+        // physics_process proc
         } else if sn_equal(sn_vfn, vfn_stringnames[2]) {
             if entity._physics_process != null {
                 delta: float64;
                 memcpy(*delta, p_args.*, size_of(float64));
                 entity._physics_process(instance, delta);
             }
-        // == INPUT PROC == @Incomplete
+        // input proc
         } else if sn_equal(sn_vfn, vfn_stringnames[3]) {
             if entity._input != null {
                 event: InputEvent;
                 event.p_object = ref_get_object(p_args.*);
                 entity._input(instance, *event);
             }
-        // == ENTER TREE PROC ==
+        // enter_tree proc
         } else if sn_equal(sn_vfn, vfn_stringnames[4]) {
             if entity._enter_tree != null {
                 entity._enter_tree(instance);
             }
-        // == EXIT TREE PROC ==
+        // exit_tree proc
         } else if sn_equal(sn_vfn, vfn_stringnames[5]) {
             if entity._exit_tree != null {
                 entity._exit_tree(instance);
@@ -139,7 +137,7 @@ register_extension_entities :: () {
     }
 }
 
-new_gdt_obj :: ($gdt_type: Type) -> gdt_type {
+new_gdt :: ($gdt_type: Type) -> *gdt_type {
     
     name := tprint("%", gdt_type);
     p_sn := make_stringname(name, null);
@@ -159,5 +157,5 @@ new_gdt_obj :: ($gdt_type: Type) -> gdt_type {
     NOTIFICATION_POSTINITIALIZE :: 0;
     propagate_notification((*object).(*Node), NOTIFICATION_POSTINITIALIZE);
     
-    return object;
+    return *object;
 }

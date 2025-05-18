@@ -1,4 +1,5 @@
-// ==== UTILITY ====
+// ---------
+// Utilities
 
 Option :: enum u8 {
     NONE :: 0;
@@ -34,6 +35,23 @@ make_stringname :: (native_string: string, dst: *StringName) -> *StringName {
     // NOTE: For some reason, godot requires the *exact* pointer it generates here, as opposed to an arbitrary pointer to the StringName value.
     // So we return it, in case we need to capture.
     return p_stringname;
+}
+
+sn_equal :: (a: StringName, b: StringName) -> bool {
+    if a[0] == b[0] &&
+        a[1] == b[1] &&
+        a[2] == b[2] &&
+        a[3] == b[3] return true;
+    else return false;
+}
+
+sn_equal :: (a: StringName, native_string: string) -> bool {
+    b := make_stringname(native_string, null).*;
+    if a[0] == b[0] &&
+        a[1] == b[1] &&
+        a[2] == b[2] &&
+        a[3] == b[3] return true;
+    else return false;
 }
 
 make_gstring :: (native_string: string, dst: *gstring) -> *gstring {

@@ -4,7 +4,7 @@
 // jai generate.jai
 //
 //  --------------------
-// | JODOT SYS BINDINGS |
+// | Jodot sys bindings |
 //  --------------------
 
 

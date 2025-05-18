@@ -1,4 +1,4 @@
-sys_call :: (class_name: string, method_name: string, hash: s64, return_type: $T, object: OpaqueClass, args: .. Any) -> *void {
+sys_call :: (class_name: string, method_name: string, hash: s64, return_type: $T, object: GodotClass, args: .. Any) -> *void {
 
     // @Speed
 
@@ -417,14 +417,14 @@ sys_call :: (class_name: string, method_name: string, hash: s64, return_type: $T
           return *boolean;
         // --------------------------------
         case STRUCT;
-          // @OpaqueClassReturn
+          // @GodotClassReturn
           // NOTE: I can't for the life of me get variant_to_Object to work as intended. Thankfully, we can use variant_get_object_instance_id instead.
-          opaque := New(OpaqueClass);
-          // opaque: OpaqueClass;
+          opaque := New(GodotClass);
+          // opaque: GodotClass;
           opaque.object_id = variant_get_object_instance_id(p_ret_var);
           assert(opaque.object_id != 0, "Object returned is empty/invalid!");
         
-          // Check object class
+          // @CheckObjectClass
           // p_stringname := alloc(size_of(StringName),, allocator=temp);
           // object_get_class_name(p_object, P_LIBRARY, p_stringname);
           // class_name := p_stringname.(*StringName).*;

@@ -1,13 +1,12 @@
-// ------------------------
-// JODOT ENTITY DECLARATION
-// ------------------------
+// -------------------------
+// Guided Entity Declaration
 
 using Jodot;
 
 // We declare an Extension Entity as a struct, as follows:
 
-// (1) Use the @jodot note in struct declaration.
 #poke_name Jodot MyCustomEntity;
+// (1) Use the @jodot note in struct declaration.
 MyCustomEntity :: struct @jodot {
 
     // (2) Designate a parent class from Godot's builtin classes, as 'parent'.
@@ -19,11 +18,10 @@ MyCustomEntity :: struct @jodot {
     #insert def_extension_entity;
 
     // You can now declare fields as you would with any native struct.
-    time_accumulator : float = 0.0;
+    health : float = 0.0;
     character_name : string = "Nameless One";
 
     // (4) Assign to 'virtual function' slots if necessary.
-    // Nodes in Godot operate as independent objects, with their own inner game-loop.
     // These procedures are called automatically on each node in the scene as follows:
     // _enter_tree is called as soon as the node is instantiated into the scene tree
     // _ready is called once the node is fully initialized
@@ -37,10 +35,6 @@ MyCustomEntity :: struct @jodot {
     _physics_process = physics_process_MyCustomEntity;
     _input = input_MyCustomEntity;
     _exit_tree = exit_tree_MyCustomEntity;
-
-    // The way of thinking encouraged by the node system, signals, and
-    // these virtual functions especially can and will bite you in the ass.
-    // Use them sparingly and wisely.
 }
 
 
@@ -55,27 +49,30 @@ ready_MyCustomEntity :: (cast_me: *ExtensionEntity) {
     as_self := cast_me.(*MyCustomEntity);
     as_node := cast_me.(*Node);
 
+    // ExtentionEntity 'inherits' from it's parent GodotClass.
+    // All GodotClass structs are identical, and just an opaque representation of an object instance.
+    
     // Call builtin class methods like so: method(target, args...);
     set_name(as_node, "Sailor");
 
-    // You must cast to the respective type when using a method.
+    // You must cast to the expected GodotClass type when using methods.
     // Otherwise, there may be ambiguity as to which procedure overload to use.
     // set_name(as_self, "Sailor"); // Uncomment this line for an error.
-    // This emulation of class methods is pretty sad and will be improved soon.
 
     // Use the Godot Docs as your reference: https://docs.godotengine.org/en/stable/classes/index.html
     // All methods are available, and should match Godot names and arguments exactly.
-    // NOTE: don't worry about String vs. StringName. Just use native strings.
+    // NOTE: don't worry about String vs. StringName, just use native strings
     // NOTE: currently, arguments with default values are skipped
 }
 
+// Signatures for the rest of the virtual functions:
 process_MyCustomEntity :: (cast_me: *ExtensionEntity, delta: float64) {}
 physics_process_MyCustomEntity :: (cast_me: *ExtensionEntity, delta: float64) {}
 input_MyCustomEntity :: (cast_me: *ExtensionEntity, event: *InputEvent) {}
 exit_tree_MyCustomEntity :: (cast_me: *ExtensionEntity) {}
 
 // ----------
-// DEMO SCENE
+// Demo Scene
 
 // Here's the test entity we've used as the root of the demo scene:
 
@@ -103,9 +100,9 @@ ready_DemoRoot :: (cast_me: *ExtensionEntity) {
     as_node := cast_me.(*Node);
     as_node3d := cast_me.(*Node3D);
     
-    // This is 'tree-climbing', the simplest way to reference other nodes.
+    // Get a reference to a child node
     rich_text := get_node(as_node, "greeter/RichTextLabel");
-    // We can store this reference as a struct field.
+    // We can store this reference as a struct field
     as_self.greeter_text = rich_text.(*RichTextLabel).*;
     
     // Test setting & getting a property (3D position doesn't do anything in this case)
@@ -114,13 +111,12 @@ ready_DemoRoot :: (cast_me: *ExtensionEntity) {
     print_muted(tprint("Position: % should be {1, 1, 2}", vec3));
 
     // Creating and instantiating a Label
-    hint_text := new_gdt_obj(Label);
-    hint_text_as_ctrl := (*hint_text).(*Control);
-    set_text(*hint_text, "Press Esc to exit.");
-    // set_horizontal_alignment(*hint_text, .HORIZONTAL_ALIGNMENT_RIGHT);
-    set_v_size_flags(hint_text_as_ctrl, .SIZE_FILL);
+    // We use new_gdt() to construct GodotClass objects
+    hint_text := new_gdt(Label);
+    set_text(hint_text, "Press Esc to exit.");
+    set_v_size_flags(hint_text.(*Control), .SIZE_FILL);
     canvas := get_node(as_node, "canvas");
-    add_child(canvas, xx,force hint_text);
+    add_child(canvas, hint_text.(*Node));
     
     bbcode := "[center]";
     array_copy(*onscreen_message, bbcode.([] u8));
@@ -137,7 +133,7 @@ ready_DemoRoot :: (cast_me: *ExtensionEntity) {
     mouse_cursor_image.p_object = object_get_instance_from_id(mouse_cursor_image.object_id);
     
     // Setting custom mouse cursor
-    set_custom_mouse_cursor(*S_Input, mouse_cursor_image.(*Resource).*);
+    set_custom_mouse_cursor(*S_Input, mouse_cursor_image.(*Resource));
     
     print("Ready from DemoRoot!\n");
 }
@@ -184,7 +180,7 @@ ScrollingGround :: struct @jodot {
     #insert def_extension_entity;
 
     _ready = ready_ScrollingGround;
-    _process = process_ScrollingGround;    
+    _process = process_ScrollingGround;
 }
 
 ready_ScrollingGround :: (cast_me: *ExtensionEntity) {

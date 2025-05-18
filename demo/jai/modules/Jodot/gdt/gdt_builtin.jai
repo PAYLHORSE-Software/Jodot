@@ -1,12 +1,12 @@
 //  -------------------------
-// | JODOT GDT BUILTIN TYPES |
+// | Jodot gdt builtin types |
 //  -------------------------
 
 Nil :: void;
 
 // bool, int and float (float64) match native
 
-gstring :: #type,distinct [4] u8; // ??
+gstring :: #type,distinct [4] u8;
 
 Vector2 :: Math.Vector2;
 
@@ -112,26 +112,8 @@ Projection_Planes :: enum {
     PLANE_BOTTOM :: 5;
 }
 
-// TODO: should be able to expose these
-StringName :: #type,distinct [4] u8; // ??
-
-sn_equal :: (a: StringName, b: StringName) -> bool {
-    if a[0] == b[0] &&
-        a[1] == b[1] &&
-        a[2] == b[2] &&
-        a[3] == b[3] return true;
-    else return false;
-}
-
-sn_equal :: (a: StringName, native_string: string) -> bool {
-    b := make_stringname(native_string, null).*;
-    if a[0] == b[0] &&
-        a[1] == b[1] &&
-        a[2] == b[2] &&
-        a[3] == b[3] return true;
-    else return false;
-}
-
+// TODO: should be able to expose some of these
+StringName :: #type,distinct [4] u8;
 NodePath :: #type,distinct [4] u8;
 RID :: #type,distinct [8] u8;
 Object :: #type,distinct [4] u8;

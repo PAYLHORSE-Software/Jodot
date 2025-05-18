@@ -1,7 +1,7 @@
 P_GET_PROC_ADDRESS: GDExtensionInterfaceGetProcAddress;
 P_LIBRARY: GDExtensionClassLibraryPtr;
 
-objects_gdt: [1000] OpaqueClass;
+objects_gdt: [1000] GodotClass;
 cursor_gdt: u16;
 
 jodot_ctx: #Context;
@@ -15,7 +15,7 @@ temp_buffer: [1024] u8;
 // [_ready, _process, _physics_process, _input, _enter_tree, _exit_tree]
 vfn_stringnames: [6] StringName;
 
-// == RAW PROCEDURES ==
+// Raw procedures
 
 print_error_with_message: GDExtensionInterfacePrintErrorWithMessage;
 print_warning_with_message: GDExtensionInterfacePrintWarningWithMessage;
@@ -46,7 +46,7 @@ variant_new_copy: GDExtensionInterfaceVariantNewCopy;
 variant_new_nil: GDExtensionInterfaceVariantNewNil;
 ref_get_object: GDExtensionInterfaceRefGetObject;
 
-// == VARIANT PROCS ==
+// Variant conversion
 
 variant_from_Nil: GDExtensionVariantFromTypeConstructorFunc;
 variant_from_bool: GDExtensionVariantFromTypeConstructorFunc;
@@ -223,7 +223,7 @@ get_gstring_length: GDExtensionPtrBuiltInMethod;
 get_object_instance_id: GDExtensionPtrBuiltInMethod;
 
 //  -------------
-// | ENTRY POINT |
+// | Entry Point |
 //  -------------
 
 initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationLevel) #c_call {
@@ -240,10 +240,11 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
     temp_storage.size = size_of(type_of(temp_buffer));
     jodot_ctx.temporary_storage = *temp_storage;
     push_context jodot_ctx {
+        
         // if DEBUG print("The Flat Pool is at % bytes.\n", pool.current_point - pool.memory_base);
         // if DEBUG print_warn(tprint("Temp Storage is at % bytes.\n", temp_storage.current_page_bytes_occupied));
-        print("Hello from secret language!\n");
-        print("Initializing Jodot module...\n");
+        log("Hello from secret language!");
+        log("Initializing Jodot module...");
 
         // Here, we interrogate the godot runtime for pointers.
         get_godot_version: GDExtensionInterfaceGetGodotVersion = xx P_GET_PROC_ADDRESS("get_godot_version");
@@ -255,7 +256,7 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
         print_warning_with_message = xx P_GET_PROC_ADDRESS("print_warning_with_message");
         string_new_with_utf8_chars = xx P_GET_PROC_ADDRESS("string_new_with_utf8_chars");
         string_to_utf8_chars = xx P_GET_PROC_ADDRESS("string_to_utf8_chars");
-        // NOTE: STRINGNAMES CAN ONLY BE MADE *AFTER* THIS POINT
+        // NOTE: StringNames can only be made *after* this point
         string_name_new_with_utf8_chars = xx P_GET_PROC_ADDRESS("string_name_new_with_utf8_chars");
         classdb_construct_object2 = xx P_GET_PROC_ADDRESS("classdb_construct_object2");
         object_set_instance = xx P_GET_PROC_ADDRESS("object_set_instance");
@@ -280,7 +281,7 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
         variant_new_nil = xx P_GET_PROC_ADDRESS("variant_new_nil");
         ref_get_object = xx P_GET_PROC_ADDRESS("ref_get_object");
 
-        // == VARIANT CONVERSION ==
+        // Variant conversion
         for enum_values_as_s64(GDExtensionVariantType) {
             if it == 0 continue;
             if it == 38 break;
@@ -289,15 +290,18 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
             // if DEBUG print_muted(tprint("Variant procs ready for: %", cast(GDExtensionVariantType) it));
         }
 
-        // == STATIC STRINGNAMES ==
+        // Static StringNames
         make_stringname("_ready", *vfn_stringnames[0]);
         make_stringname("_process", *vfn_stringnames[1]);
         make_stringname("_physics_process", *vfn_stringnames[2]);
         make_stringname("_input", *vfn_stringnames[3]);
         make_stringname("_enter_tree", *vfn_stringnames[4]);
         make_stringname("_exit_tree", *vfn_stringnames[5]);
+        
+        // TODO make a table of static StringNames for all GodotClasses
+        // Then we can use object_get_class_name and sn_equal to check obejct classes!
 
-        // == BUILTIN METHODS (as needed) ==
+        // Builtin methods (as needed)
         get_gstring_length = variant_get_ptr_builtin_method(GDExtensionVariantType.STRING, make_stringname("length", null), 3173160232);
 
         assert(get_native_struct_size(make_stringname("AudioFrame", null)) == size_of(AudioFrame));
@@ -315,7 +319,7 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
         // assert(get_native_struct_size(make_stringname("PhysicsServer3DExtensionShapeResult", null)) == size_of(PhysicsServer3DExtensionShapeResult));
         // assert(get_native_struct_size(make_stringname("ScriptLanguageExtensionProfilingInfo", null)) == size_of(ScriptLanguageExtensionProfilingInfo));
 
-        // == ENGINE SINGLETONS ==
+        // Singletons
         // NOTE: list copied over from gdt_bindings
         S_Performance.p_object = global_get_singleton(make_stringname("Performance", null));
         S_TextServerManager.p_object = global_get_singleton(make_stringname("TextServerManager", null));
@@ -341,7 +345,7 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
         S_ResourceUID.p_object = global_get_singleton(make_stringname("ResourceUID", null));
         S_WorkerThreadPool.p_object = global_get_singleton(make_stringname("WorkerThreadPool", null));
         S_ThemeDB.p_object = global_get_singleton(make_stringname("ThemeDB", null));
-        // For some reason, these return as non-existent @Incomplete
+        // For some reason these return as non-existent @Incomplete
         // S_EditorInterface = global_get_singleton(make_stringname("EditorInterface", null));
         // S_JavaClassWrapper = global_get_singleton(make_stringname("JavaClassWrapper", null));
         // S_JavaScriptBridge = global_get_singleton(make_stringname("JavaScriptBridge", null));
@@ -358,8 +362,8 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
 
         #insert user_entity_declaration_list;
         register_extension_entities();
-        print("All systems Jo :)\n");
-        reset_temporary_storage; // STRINGNAMES WIPED
+        log("All systems Jo :)");
+        reset_temporary_storage; // ! StringNames wiped !
         // if DEBUG print_warn(tprint("Temp Storage is at % bytes.\n", temp_storage.current_page_bytes_occupied));
     }
 }

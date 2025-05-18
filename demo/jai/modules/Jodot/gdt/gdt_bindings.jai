@@ -1,5 +1,5 @@
 //  --------------------
-// | JODOT GDT BINDINGS |
+// | Jodot gdt bindings |
 //  --------------------
 
 
@@ -580,7 +580,7 @@ Variant_Operator :: enum s32 {    // 21
 
 AESContext :: struct {  // 0
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Mode :: enum s32 {
         MODE_ECB_ENCRYPT :: 0;
@@ -591,13 +591,13 @@ AESContext :: struct {  // 0
     }
 }
 
-AStar2D :: struct { #as using base: OpaqueClass; } // 1
+AStar2D :: struct { #as using base: GodotClass; } // 1
 
-AStar3D :: struct { #as using base: OpaqueClass; } // 2
+AStar3D :: struct { #as using base: GodotClass; } // 2
 
 AStarGrid2D :: struct {  // 3
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Heuristic :: enum s32 {
         HEURISTIC_EUCLIDEAN :: 0;
@@ -623,21 +623,21 @@ AStarGrid2D :: struct {  // 3
     }
 }
 
-AcceptDialog :: struct { #as using base: OpaqueClass; } // 4
+AcceptDialog :: struct { #as using base: GodotClass; } // 4
 
-AnimatableBody2D :: struct { #as using base: OpaqueClass; } // 5
+AnimatableBody2D :: struct { #as using base: GodotClass; } // 5
 
-AnimatableBody3D :: struct { #as using base: OpaqueClass; } // 6
+AnimatableBody3D :: struct { #as using base: GodotClass; } // 6
 
-AnimatedSprite2D :: struct { #as using base: OpaqueClass; } // 7
+AnimatedSprite2D :: struct { #as using base: GodotClass; } // 7
 
-AnimatedSprite3D :: struct { #as using base: OpaqueClass; } // 8
+AnimatedSprite3D :: struct { #as using base: GodotClass; } // 8
 
-AnimatedTexture :: struct { #as using base: OpaqueClass; } // 9
+AnimatedTexture :: struct { #as using base: GodotClass; } // 9
 
 Animation :: struct {  // 10
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     TrackType :: enum s32 {
         TYPE_VALUE :: 0;
@@ -684,11 +684,11 @@ Animation :: struct {  // 10
     }
 }
 
-AnimationLibrary :: struct { #as using base: OpaqueClass; } // 11
+AnimationLibrary :: struct { #as using base: GodotClass; } // 11
 
 AnimationMixer :: struct {  // 12
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     AnimationCallbackModeProcess :: enum s32 {
         ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS :: 0;
@@ -710,7 +710,7 @@ AnimationMixer :: struct {  // 12
 
 AnimationNode :: struct {  // 13
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     FilterAction :: enum s32 {
         FILTER_IGNORE :: 0;
@@ -720,13 +720,13 @@ AnimationNode :: struct {  // 13
     }
 }
 
-AnimationNodeAdd2 :: struct { #as using base: OpaqueClass; } // 14
+AnimationNodeAdd2 :: struct { #as using base: GodotClass; } // 14
 
-AnimationNodeAdd3 :: struct { #as using base: OpaqueClass; } // 15
+AnimationNodeAdd3 :: struct { #as using base: GodotClass; } // 15
 
 AnimationNodeAnimation :: struct {  // 16
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     PlayMode :: enum s32 {
         PLAY_MODE_FORWARD :: 0;
@@ -734,13 +734,13 @@ AnimationNodeAnimation :: struct {  // 16
     }
 }
 
-AnimationNodeBlend2 :: struct { #as using base: OpaqueClass; } // 17
+AnimationNodeBlend2 :: struct { #as using base: GodotClass; } // 17
 
-AnimationNodeBlend3 :: struct { #as using base: OpaqueClass; } // 18
+AnimationNodeBlend3 :: struct { #as using base: GodotClass; } // 18
 
 AnimationNodeBlendSpace1D :: struct {  // 19
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     BlendMode :: enum s32 {
         BLEND_MODE_INTERPOLATED :: 0;
@@ -751,7 +751,7 @@ AnimationNodeBlendSpace1D :: struct {  // 19
 
 AnimationNodeBlendSpace2D :: struct {  // 20
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     BlendMode :: enum s32 {
         BLEND_MODE_INTERPOLATED :: 0;
@@ -760,13 +760,13 @@ AnimationNodeBlendSpace2D :: struct {  // 20
     }
 }
 
-AnimationNodeBlendTree :: struct { #as using base: OpaqueClass; } // 21
+AnimationNodeBlendTree :: struct { #as using base: GodotClass; } // 21
 
-AnimationNodeExtension :: struct { #as using base: OpaqueClass; } // 22
+AnimationNodeExtension :: struct { #as using base: GodotClass; } // 22
 
 AnimationNodeOneShot :: struct {  // 23
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     OneShotRequest :: enum s32 {
         ONE_SHOT_REQUEST_NONE :: 0;
@@ -781,11 +781,11 @@ AnimationNodeOneShot :: struct {  // 23
     }
 }
 
-AnimationNodeOutput :: struct { #as using base: OpaqueClass; } // 24
+AnimationNodeOutput :: struct { #as using base: GodotClass; } // 24
 
 AnimationNodeStateMachine :: struct {  // 25
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     StateMachineType :: enum s32 {
         STATE_MACHINE_TYPE_ROOT :: 0;
@@ -794,11 +794,11 @@ AnimationNodeStateMachine :: struct {  // 25
     }
 }
 
-AnimationNodeStateMachinePlayback :: struct { #as using base: OpaqueClass; } // 26
+AnimationNodeStateMachinePlayback :: struct { #as using base: GodotClass; } // 26
 
 AnimationNodeStateMachineTransition :: struct {  // 27
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     SwitchMode :: enum s32 {
         SWITCH_MODE_IMMEDIATE :: 0;
@@ -813,19 +813,19 @@ AnimationNodeStateMachineTransition :: struct {  // 27
     }
 }
 
-AnimationNodeSub2 :: struct { #as using base: OpaqueClass; } // 28
+AnimationNodeSub2 :: struct { #as using base: GodotClass; } // 28
 
-AnimationNodeSync :: struct { #as using base: OpaqueClass; } // 29
+AnimationNodeSync :: struct { #as using base: GodotClass; } // 29
 
-AnimationNodeTimeScale :: struct { #as using base: OpaqueClass; } // 30
+AnimationNodeTimeScale :: struct { #as using base: GodotClass; } // 30
 
-AnimationNodeTimeSeek :: struct { #as using base: OpaqueClass; } // 31
+AnimationNodeTimeSeek :: struct { #as using base: GodotClass; } // 31
 
-AnimationNodeTransition :: struct { #as using base: OpaqueClass; } // 32
+AnimationNodeTransition :: struct { #as using base: GodotClass; } // 32
 
 AnimationPlayer :: struct {  // 33
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     AnimationProcessCallback :: enum s32 {
         ANIMATION_PROCESS_PHYSICS :: 0;
@@ -839,11 +839,11 @@ AnimationPlayer :: struct {  // 33
     }
 }
 
-AnimationRootNode :: struct { #as using base: OpaqueClass; } // 34
+AnimationRootNode :: struct { #as using base: GodotClass; } // 34
 
 AnimationTree :: struct {  // 35
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     AnimationProcessCallback :: enum s32 {
         ANIMATION_PROCESS_PHYSICS :: 0;
@@ -854,7 +854,7 @@ AnimationTree :: struct {  // 35
 
 Area2D :: struct {  // 36
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     SpaceOverride :: enum s32 {
         SPACE_OVERRIDE_DISABLED :: 0;
@@ -867,7 +867,7 @@ Area2D :: struct {  // 36
 
 Area3D :: struct {  // 37
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     SpaceOverride :: enum s32 {
         SPACE_OVERRIDE_DISABLED :: 0;
@@ -878,13 +878,13 @@ Area3D :: struct {  // 37
     }
 }
 
-ArrayMesh :: struct { #as using base: OpaqueClass; } // 38
+ArrayMesh :: struct { #as using base: GodotClass; } // 38
 
-ArrayOccluder3D :: struct { #as using base: OpaqueClass; } // 39
+ArrayOccluder3D :: struct { #as using base: GodotClass; } // 39
 
 AspectRatioContainer :: struct {  // 40
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     StretchMode :: enum s32 {
         STRETCH_WIDTH_CONTROLS_HEIGHT :: 0;
@@ -900,29 +900,29 @@ AspectRatioContainer :: struct {  // 40
     }
 }
 
-AtlasTexture :: struct { #as using base: OpaqueClass; } // 41
+AtlasTexture :: struct { #as using base: GodotClass; } // 41
 
-AudioBusLayout :: struct { #as using base: OpaqueClass; } // 42
+AudioBusLayout :: struct { #as using base: GodotClass; } // 42
 
-AudioEffect :: struct { #as using base: OpaqueClass; } // 43
+AudioEffect :: struct { #as using base: GodotClass; } // 43
 
-AudioEffectAmplify :: struct { #as using base: OpaqueClass; } // 44
+AudioEffectAmplify :: struct { #as using base: GodotClass; } // 44
 
-AudioEffectBandLimitFilter :: struct { #as using base: OpaqueClass; } // 45
+AudioEffectBandLimitFilter :: struct { #as using base: GodotClass; } // 45
 
-AudioEffectBandPassFilter :: struct { #as using base: OpaqueClass; } // 46
+AudioEffectBandPassFilter :: struct { #as using base: GodotClass; } // 46
 
-AudioEffectCapture :: struct { #as using base: OpaqueClass; } // 47
+AudioEffectCapture :: struct { #as using base: GodotClass; } // 47
 
-AudioEffectChorus :: struct { #as using base: OpaqueClass; } // 48
+AudioEffectChorus :: struct { #as using base: GodotClass; } // 48
 
-AudioEffectCompressor :: struct { #as using base: OpaqueClass; } // 49
+AudioEffectCompressor :: struct { #as using base: GodotClass; } // 49
 
-AudioEffectDelay :: struct { #as using base: OpaqueClass; } // 50
+AudioEffectDelay :: struct { #as using base: GodotClass; } // 50
 
 AudioEffectDistortion :: struct {  // 51
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Mode :: enum s32 {
         MODE_CLIP :: 0;
@@ -933,17 +933,17 @@ AudioEffectDistortion :: struct {  // 51
     }
 }
 
-AudioEffectEQ :: struct { #as using base: OpaqueClass; } // 52
+AudioEffectEQ :: struct { #as using base: GodotClass; } // 52
 
-AudioEffectEQ10 :: struct { #as using base: OpaqueClass; } // 53
+AudioEffectEQ10 :: struct { #as using base: GodotClass; } // 53
 
-AudioEffectEQ21 :: struct { #as using base: OpaqueClass; } // 54
+AudioEffectEQ21 :: struct { #as using base: GodotClass; } // 54
 
-AudioEffectEQ6 :: struct { #as using base: OpaqueClass; } // 55
+AudioEffectEQ6 :: struct { #as using base: GodotClass; } // 55
 
 AudioEffectFilter :: struct {  // 56
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     FilterDB :: enum s32 {
         FILTER_6DB :: 0;
@@ -953,29 +953,29 @@ AudioEffectFilter :: struct {  // 56
     }
 }
 
-AudioEffectHardLimiter :: struct { #as using base: OpaqueClass; } // 57
+AudioEffectHardLimiter :: struct { #as using base: GodotClass; } // 57
 
-AudioEffectHighPassFilter :: struct { #as using base: OpaqueClass; } // 58
+AudioEffectHighPassFilter :: struct { #as using base: GodotClass; } // 58
 
-AudioEffectHighShelfFilter :: struct { #as using base: OpaqueClass; } // 59
+AudioEffectHighShelfFilter :: struct { #as using base: GodotClass; } // 59
 
-AudioEffectInstance :: struct { #as using base: OpaqueClass; } // 60
+AudioEffectInstance :: struct { #as using base: GodotClass; } // 60
 
-AudioEffectLimiter :: struct { #as using base: OpaqueClass; } // 61
+AudioEffectLimiter :: struct { #as using base: GodotClass; } // 61
 
-AudioEffectLowPassFilter :: struct { #as using base: OpaqueClass; } // 62
+AudioEffectLowPassFilter :: struct { #as using base: GodotClass; } // 62
 
-AudioEffectLowShelfFilter :: struct { #as using base: OpaqueClass; } // 63
+AudioEffectLowShelfFilter :: struct { #as using base: GodotClass; } // 63
 
-AudioEffectNotchFilter :: struct { #as using base: OpaqueClass; } // 64
+AudioEffectNotchFilter :: struct { #as using base: GodotClass; } // 64
 
-AudioEffectPanner :: struct { #as using base: OpaqueClass; } // 65
+AudioEffectPanner :: struct { #as using base: GodotClass; } // 65
 
-AudioEffectPhaser :: struct { #as using base: OpaqueClass; } // 66
+AudioEffectPhaser :: struct { #as using base: GodotClass; } // 66
 
 AudioEffectPitchShift :: struct {  // 67
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     FFTSize :: enum s32 {
         FFT_SIZE_256 :: 0;
@@ -987,13 +987,13 @@ AudioEffectPitchShift :: struct {  // 67
     }
 }
 
-AudioEffectRecord :: struct { #as using base: OpaqueClass; } // 68
+AudioEffectRecord :: struct { #as using base: GodotClass; } // 68
 
-AudioEffectReverb :: struct { #as using base: OpaqueClass; } // 69
+AudioEffectReverb :: struct { #as using base: GodotClass; } // 69
 
 AudioEffectSpectrumAnalyzer :: struct {  // 70
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     FFTSize :: enum s32 {
         FFT_SIZE_256 :: 0;
@@ -1007,7 +1007,7 @@ AudioEffectSpectrumAnalyzer :: struct {  // 70
 
 AudioEffectSpectrumAnalyzerInstance :: struct {  // 71
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     MagnitudeMode :: enum s32 {
         MAGNITUDE_AVERAGE :: 0;
@@ -1015,19 +1015,19 @@ AudioEffectSpectrumAnalyzerInstance :: struct {  // 71
     }
 }
 
-AudioEffectStereoEnhance :: struct { #as using base: OpaqueClass; } // 72
+AudioEffectStereoEnhance :: struct { #as using base: GodotClass; } // 72
 
-AudioListener2D :: struct { #as using base: OpaqueClass; } // 73
+AudioListener2D :: struct { #as using base: GodotClass; } // 73
 
-AudioListener3D :: struct { #as using base: OpaqueClass; } // 74
+AudioListener3D :: struct { #as using base: GodotClass; } // 74
 
-AudioSample :: struct { #as using base: OpaqueClass; } // 75
+AudioSample :: struct { #as using base: GodotClass; } // 75
 
-AudioSamplePlayback :: struct { #as using base: OpaqueClass; } // 76
+AudioSamplePlayback :: struct { #as using base: GodotClass; } // 76
 
 AudioServer :: struct {  // 77
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     SpeakerMode :: enum s32 {
         SPEAKER_MODE_STEREO :: 0;
@@ -1044,11 +1044,11 @@ AudioServer :: struct {  // 77
     }
 }
 
-AudioStream :: struct { #as using base: OpaqueClass; } // 78
+AudioStream :: struct { #as using base: GodotClass; } // 78
 
 AudioStreamGenerator :: struct {  // 79
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     AudioStreamGeneratorMixRate :: enum s32 {
         MIX_RATE_OUTPUT :: 0;
@@ -1058,11 +1058,11 @@ AudioStreamGenerator :: struct {  // 79
     }
 }
 
-AudioStreamGeneratorPlayback :: struct { #as using base: OpaqueClass; } // 80
+AudioStreamGeneratorPlayback :: struct { #as using base: GodotClass; } // 80
 
 AudioStreamInteractive :: struct {  // 81
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     TransitionFromTime :: enum s32 {
         TRANSITION_FROM_TIME_IMMEDIATE :: 0;
@@ -1091,29 +1091,29 @@ AudioStreamInteractive :: struct {  // 81
     }
 }
 
-AudioStreamMP3 :: struct { #as using base: OpaqueClass; } // 82
+AudioStreamMP3 :: struct { #as using base: GodotClass; } // 82
 
-AudioStreamMicrophone :: struct { #as using base: OpaqueClass; } // 83
+AudioStreamMicrophone :: struct { #as using base: GodotClass; } // 83
 
-AudioStreamOggVorbis :: struct { #as using base: OpaqueClass; } // 84
+AudioStreamOggVorbis :: struct { #as using base: GodotClass; } // 84
 
-AudioStreamPlayback :: struct { #as using base: OpaqueClass; } // 85
+AudioStreamPlayback :: struct { #as using base: GodotClass; } // 85
 
-AudioStreamPlaybackInteractive :: struct { #as using base: OpaqueClass; } // 86
+AudioStreamPlaybackInteractive :: struct { #as using base: GodotClass; } // 86
 
-AudioStreamPlaybackOggVorbis :: struct { #as using base: OpaqueClass; } // 87
+AudioStreamPlaybackOggVorbis :: struct { #as using base: GodotClass; } // 87
 
-AudioStreamPlaybackPlaylist :: struct { #as using base: OpaqueClass; } // 88
+AudioStreamPlaybackPlaylist :: struct { #as using base: GodotClass; } // 88
 
-AudioStreamPlaybackPolyphonic :: struct { #as using base: OpaqueClass; } // 89
+AudioStreamPlaybackPolyphonic :: struct { #as using base: GodotClass; } // 89
 
-AudioStreamPlaybackResampled :: struct { #as using base: OpaqueClass; } // 90
+AudioStreamPlaybackResampled :: struct { #as using base: GodotClass; } // 90
 
-AudioStreamPlaybackSynchronized :: struct { #as using base: OpaqueClass; } // 91
+AudioStreamPlaybackSynchronized :: struct { #as using base: GodotClass; } // 91
 
 AudioStreamPlayer :: struct {  // 92
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     MixTarget :: enum s32 {
         MIX_TARGET_STEREO :: 0;
@@ -1122,11 +1122,11 @@ AudioStreamPlayer :: struct {  // 92
     }
 }
 
-AudioStreamPlayer2D :: struct { #as using base: OpaqueClass; } // 93
+AudioStreamPlayer2D :: struct { #as using base: GodotClass; } // 93
 
 AudioStreamPlayer3D :: struct {  // 94
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     AttenuationModel :: enum s32 {
         ATTENUATION_INVERSE_DISTANCE :: 0;
@@ -1142,13 +1142,13 @@ AudioStreamPlayer3D :: struct {  // 94
     }
 }
 
-AudioStreamPlaylist :: struct { #as using base: OpaqueClass; } // 95
+AudioStreamPlaylist :: struct { #as using base: GodotClass; } // 95
 
-AudioStreamPolyphonic :: struct { #as using base: OpaqueClass; } // 96
+AudioStreamPolyphonic :: struct { #as using base: GodotClass; } // 96
 
 AudioStreamRandomizer :: struct {  // 97
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     PlaybackMode :: enum s32 {
         PLAYBACK_RANDOM_NO_REPEATS :: 0;
@@ -1157,11 +1157,11 @@ AudioStreamRandomizer :: struct {  // 97
     }
 }
 
-AudioStreamSynchronized :: struct { #as using base: OpaqueClass; } // 98
+AudioStreamSynchronized :: struct { #as using base: GodotClass; } // 98
 
 AudioStreamWAV :: struct {  // 99
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Format :: enum s32 {
         FORMAT_8_BITS :: 0;
@@ -1180,7 +1180,7 @@ AudioStreamWAV :: struct {  // 99
 
 BackBufferCopy :: struct {  // 100
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     CopyMode :: enum s32 {
         COPY_MODE_DISABLED :: 0;
@@ -1191,7 +1191,7 @@ BackBufferCopy :: struct {  // 100
 
 BaseButton :: struct {  // 101
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     DrawMode :: enum s32 {
         DRAW_NORMAL :: 0;
@@ -1209,7 +1209,7 @@ BaseButton :: struct {  // 101
 
 BaseMaterial3D :: struct {  // 102
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     TextureParam :: enum s32 {
         TEXTURE_ALBEDO :: 0;
@@ -1373,17 +1373,17 @@ BaseMaterial3D :: struct {  // 102
     }
 }
 
-BitMap :: struct { #as using base: OpaqueClass; } // 103
+BitMap :: struct { #as using base: GodotClass; } // 103
 
-Bone2D :: struct { #as using base: OpaqueClass; } // 104
+Bone2D :: struct { #as using base: GodotClass; } // 104
 
-BoneAttachment3D :: struct { #as using base: OpaqueClass; } // 105
+BoneAttachment3D :: struct { #as using base: GodotClass; } // 105
 
-BoneMap :: struct { #as using base: OpaqueClass; } // 106
+BoneMap :: struct { #as using base: GodotClass; } // 106
 
 BoxContainer :: struct {  // 107
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     AlignmentMode :: enum s32 {
         ALIGNMENT_BEGIN :: 0;
@@ -1392,19 +1392,19 @@ BoxContainer :: struct {  // 107
     }
 }
 
-BoxMesh :: struct { #as using base: OpaqueClass; } // 108
+BoxMesh :: struct { #as using base: GodotClass; } // 108
 
-BoxOccluder3D :: struct { #as using base: OpaqueClass; } // 109
+BoxOccluder3D :: struct { #as using base: GodotClass; } // 109
 
-BoxShape3D :: struct { #as using base: OpaqueClass; } // 110
+BoxShape3D :: struct { #as using base: GodotClass; } // 110
 
-Button :: struct { #as using base: OpaqueClass; } // 111
+Button :: struct { #as using base: GodotClass; } // 111
 
-ButtonGroup :: struct { #as using base: OpaqueClass; } // 112
+ButtonGroup :: struct { #as using base: GodotClass; } // 112
 
 CPUParticles2D :: struct {  // 113
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     DrawOrder :: enum s32 {
         DRAW_ORDER_INDEX :: 0;
@@ -1447,7 +1447,7 @@ CPUParticles2D :: struct {  // 113
 
 CPUParticles3D :: struct {  // 114
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     DrawOrder :: enum s32 {
         DRAW_ORDER_INDEX :: 0;
@@ -1490,17 +1490,17 @@ CPUParticles3D :: struct {  // 114
     }
 }
 
-CSGBox3D :: struct { #as using base: OpaqueClass; } // 115
+CSGBox3D :: struct { #as using base: GodotClass; } // 115
 
-CSGCombiner3D :: struct { #as using base: OpaqueClass; } // 116
+CSGCombiner3D :: struct { #as using base: GodotClass; } // 116
 
-CSGCylinder3D :: struct { #as using base: OpaqueClass; } // 117
+CSGCylinder3D :: struct { #as using base: GodotClass; } // 117
 
-CSGMesh3D :: struct { #as using base: OpaqueClass; } // 118
+CSGMesh3D :: struct { #as using base: GodotClass; } // 118
 
 CSGPolygon3D :: struct {  // 119
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Mode :: enum s32 {
         MODE_DEPTH :: 0;
@@ -1520,11 +1520,11 @@ CSGPolygon3D :: struct {  // 119
     }
 }
 
-CSGPrimitive3D :: struct { #as using base: OpaqueClass; } // 120
+CSGPrimitive3D :: struct { #as using base: GodotClass; } // 120
 
 CSGShape3D :: struct {  // 121
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Operation :: enum s32 {
         OPERATION_UNION :: 0;
@@ -1533,15 +1533,15 @@ CSGShape3D :: struct {  // 121
     }
 }
 
-CSGSphere3D :: struct { #as using base: OpaqueClass; } // 122
+CSGSphere3D :: struct { #as using base: GodotClass; } // 122
 
-CSGTorus3D :: struct { #as using base: OpaqueClass; } // 123
+CSGTorus3D :: struct { #as using base: GodotClass; } // 123
 
-CallbackTweener :: struct { #as using base: OpaqueClass; } // 124
+CallbackTweener :: struct { #as using base: GodotClass; } // 124
 
 Camera2D :: struct {  // 125
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     AnchorMode :: enum s32 {
         ANCHOR_MODE_FIXED_TOP_LEFT :: 0;
@@ -1556,7 +1556,7 @@ Camera2D :: struct {  // 125
 
 Camera3D :: struct {  // 126
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ProjectionType :: enum s32 {
         PROJECTION_PERSPECTIVE :: 0;
@@ -1576,15 +1576,15 @@ Camera3D :: struct {  // 126
     }
 }
 
-CameraAttributes :: struct { #as using base: OpaqueClass; } // 127
+CameraAttributes :: struct { #as using base: GodotClass; } // 127
 
-CameraAttributesPhysical :: struct { #as using base: OpaqueClass; } // 128
+CameraAttributesPhysical :: struct { #as using base: GodotClass; } // 128
 
-CameraAttributesPractical :: struct { #as using base: OpaqueClass; } // 129
+CameraAttributesPractical :: struct { #as using base: GodotClass; } // 129
 
 CameraFeed :: struct {  // 130
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     FeedDataType :: enum s32 {
         FEED_NOIMAGE :: 0;
@@ -1603,7 +1603,7 @@ CameraFeed :: struct {  // 130
 
 CameraServer :: struct {  // 131
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     FeedImage :: enum s32 {
         FEED_RGBA_IMAGE :: 0;
@@ -1613,13 +1613,13 @@ CameraServer :: struct {  // 131
     }
 }
 
-CameraTexture :: struct { #as using base: OpaqueClass; } // 132
+CameraTexture :: struct { #as using base: GodotClass; } // 132
 
-CanvasGroup :: struct { #as using base: OpaqueClass; } // 133
+CanvasGroup :: struct { #as using base: GodotClass; } // 133
 
 CanvasItem :: struct {  // 134
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     TextureFilter :: enum s32 {
         TEXTURE_FILTER_PARENT_NODE :: 0;
@@ -1650,7 +1650,7 @@ CanvasItem :: struct {  // 134
 
 CanvasItemMaterial :: struct {  // 135
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     BlendMode :: enum s32 {
         BLEND_MODE_MIX :: 0;
@@ -1667,25 +1667,25 @@ CanvasItemMaterial :: struct {  // 135
     }
 }
 
-CanvasLayer :: struct { #as using base: OpaqueClass; } // 136
+CanvasLayer :: struct { #as using base: GodotClass; } // 136
 
-CanvasModulate :: struct { #as using base: OpaqueClass; } // 137
+CanvasModulate :: struct { #as using base: GodotClass; } // 137
 
-CanvasTexture :: struct { #as using base: OpaqueClass; } // 138
+CanvasTexture :: struct { #as using base: GodotClass; } // 138
 
-CapsuleMesh :: struct { #as using base: OpaqueClass; } // 139
+CapsuleMesh :: struct { #as using base: GodotClass; } // 139
 
-CapsuleShape2D :: struct { #as using base: OpaqueClass; } // 140
+CapsuleShape2D :: struct { #as using base: GodotClass; } // 140
 
-CapsuleShape3D :: struct { #as using base: OpaqueClass; } // 141
+CapsuleShape3D :: struct { #as using base: GodotClass; } // 141
 
-CenterContainer :: struct { #as using base: OpaqueClass; } // 142
+CenterContainer :: struct { #as using base: GodotClass; } // 142
 
-CharFXTransform :: struct { #as using base: OpaqueClass; } // 143
+CharFXTransform :: struct { #as using base: GodotClass; } // 143
 
 CharacterBody2D :: struct {  // 144
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     MotionMode :: enum s32 {
         MOTION_MODE_GROUNDED :: 0;
@@ -1701,7 +1701,7 @@ CharacterBody2D :: struct {  // 144
 
 CharacterBody3D :: struct {  // 145
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     MotionMode :: enum s32 {
         MOTION_MODE_GROUNDED :: 0;
@@ -1715,15 +1715,15 @@ CharacterBody3D :: struct {  // 145
     }
 }
 
-CheckBox :: struct { #as using base: OpaqueClass; } // 146
+CheckBox :: struct { #as using base: GodotClass; } // 146
 
-CheckButton :: struct { #as using base: OpaqueClass; } // 147
+CheckButton :: struct { #as using base: GodotClass; } // 147
 
-CircleShape2D :: struct { #as using base: OpaqueClass; } // 148
+CircleShape2D :: struct { #as using base: GodotClass; } // 148
 
 ClassDB :: struct {  // 149
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     APIType :: enum s32 {
         API_CORE :: 0;
@@ -1736,7 +1736,7 @@ ClassDB :: struct {  // 149
 
 CodeEdit :: struct {  // 150
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     CodeCompletionKind :: enum s32 {
         KIND_CLASS :: 0;
@@ -1759,11 +1759,11 @@ CodeEdit :: struct {  // 150
     }
 }
 
-CodeHighlighter :: struct { #as using base: OpaqueClass; } // 151
+CodeHighlighter :: struct { #as using base: GodotClass; } // 151
 
 CollisionObject2D :: struct {  // 152
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     DisableMode :: enum s32 {
         DISABLE_MODE_REMOVE :: 0;
@@ -1774,7 +1774,7 @@ CollisionObject2D :: struct {  // 152
 
 CollisionObject3D :: struct {  // 153
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     DisableMode :: enum s32 {
         DISABLE_MODE_REMOVE :: 0;
@@ -1785,7 +1785,7 @@ CollisionObject3D :: struct {  // 153
 
 CollisionPolygon2D :: struct {  // 154
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     BuildMode :: enum s32 {
         BUILD_SOLIDS :: 0;
@@ -1793,17 +1793,17 @@ CollisionPolygon2D :: struct {  // 154
     }
 }
 
-CollisionPolygon3D :: struct { #as using base: OpaqueClass; } // 155
+CollisionPolygon3D :: struct { #as using base: GodotClass; } // 155
 
-CollisionShape2D :: struct { #as using base: OpaqueClass; } // 156
+CollisionShape2D :: struct { #as using base: GodotClass; } // 156
 
-CollisionShape3D :: struct { #as using base: OpaqueClass; } // 157
+CollisionShape3D :: struct { #as using base: GodotClass; } // 157
 
-ColorPalette :: struct { #as using base: OpaqueClass; } // 158
+ColorPalette :: struct { #as using base: GodotClass; } // 158
 
 ColorPicker :: struct {  // 159
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ColorModeType :: enum s32 {
         MODE_RGB :: 0;
@@ -1821,15 +1821,15 @@ ColorPicker :: struct {  // 159
     }
 }
 
-ColorPickerButton :: struct { #as using base: OpaqueClass; } // 160
+ColorPickerButton :: struct { #as using base: GodotClass; } // 160
 
-ColorRect :: struct { #as using base: OpaqueClass; } // 161
+ColorRect :: struct { #as using base: GodotClass; } // 161
 
-Compositor :: struct { #as using base: OpaqueClass; } // 162
+Compositor :: struct { #as using base: GodotClass; } // 162
 
 CompositorEffect :: struct {  // 163
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     EffectCallbackType :: enum s32 {
         EFFECT_CALLBACK_TYPE_PRE_OPAQUE :: 0;
@@ -1841,25 +1841,25 @@ CompositorEffect :: struct {  // 163
     }
 }
 
-CompressedCubemap :: struct { #as using base: OpaqueClass; } // 164
+CompressedCubemap :: struct { #as using base: GodotClass; } // 164
 
-CompressedCubemapArray :: struct { #as using base: OpaqueClass; } // 165
+CompressedCubemapArray :: struct { #as using base: GodotClass; } // 165
 
-CompressedTexture2D :: struct { #as using base: OpaqueClass; } // 166
+CompressedTexture2D :: struct { #as using base: GodotClass; } // 166
 
-CompressedTexture2DArray :: struct { #as using base: OpaqueClass; } // 167
+CompressedTexture2DArray :: struct { #as using base: GodotClass; } // 167
 
-CompressedTexture3D :: struct { #as using base: OpaqueClass; } // 168
+CompressedTexture3D :: struct { #as using base: GodotClass; } // 168
 
-CompressedTextureLayered :: struct { #as using base: OpaqueClass; } // 169
+CompressedTextureLayered :: struct { #as using base: GodotClass; } // 169
 
-ConcavePolygonShape2D :: struct { #as using base: OpaqueClass; } // 170
+ConcavePolygonShape2D :: struct { #as using base: GodotClass; } // 170
 
-ConcavePolygonShape3D :: struct { #as using base: OpaqueClass; } // 171
+ConcavePolygonShape3D :: struct { #as using base: GodotClass; } // 171
 
 ConeTwistJoint3D :: struct {  // 172
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Param :: enum s32 {
         PARAM_SWING_SPAN :: 0;
@@ -1871,15 +1871,15 @@ ConeTwistJoint3D :: struct {  // 172
     }
 }
 
-ConfigFile :: struct { #as using base: OpaqueClass; } // 173
+ConfigFile :: struct { #as using base: GodotClass; } // 173
 
-ConfirmationDialog :: struct { #as using base: OpaqueClass; } // 174
+ConfirmationDialog :: struct { #as using base: GodotClass; } // 174
 
-Container :: struct { #as using base: OpaqueClass; } // 175
+Container :: struct { #as using base: GodotClass; } // 175
 
 Control :: struct {  // 176
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     FocusMode :: enum s32 {
         FOCUS_NONE :: 0;
@@ -1977,21 +1977,21 @@ Control :: struct {  // 176
     }
 }
 
-ConvexPolygonShape2D :: struct { #as using base: OpaqueClass; } // 177
+ConvexPolygonShape2D :: struct { #as using base: GodotClass; } // 177
 
-ConvexPolygonShape3D :: struct { #as using base: OpaqueClass; } // 178
+ConvexPolygonShape3D :: struct { #as using base: GodotClass; } // 178
 
-Crypto :: struct { #as using base: OpaqueClass; } // 179
+Crypto :: struct { #as using base: GodotClass; } // 179
 
-CryptoKey :: struct { #as using base: OpaqueClass; } // 180
+CryptoKey :: struct { #as using base: GodotClass; } // 180
 
-Cubemap :: struct { #as using base: OpaqueClass; } // 181
+Cubemap :: struct { #as using base: GodotClass; } // 181
 
-CubemapArray :: struct { #as using base: OpaqueClass; } // 182
+CubemapArray :: struct { #as using base: GodotClass; } // 182
 
 Curve :: struct {  // 183
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     TangentMode :: enum s32 {
         TANGENT_FREE :: 0;
@@ -2000,13 +2000,13 @@ Curve :: struct {  // 183
     }
 }
 
-Curve2D :: struct { #as using base: OpaqueClass; } // 184
+Curve2D :: struct { #as using base: GodotClass; } // 184
 
-Curve3D :: struct { #as using base: OpaqueClass; } // 185
+Curve3D :: struct { #as using base: GodotClass; } // 185
 
 CurveTexture :: struct {  // 186
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     TextureMode :: enum s32 {
         TEXTURE_MODE_RGB :: 0;
@@ -2014,19 +2014,19 @@ CurveTexture :: struct {  // 186
     }
 }
 
-CurveXYZTexture :: struct { #as using base: OpaqueClass; } // 187
+CurveXYZTexture :: struct { #as using base: GodotClass; } // 187
 
-CylinderMesh :: struct { #as using base: OpaqueClass; } // 188
+CylinderMesh :: struct { #as using base: GodotClass; } // 188
 
-CylinderShape3D :: struct { #as using base: OpaqueClass; } // 189
+CylinderShape3D :: struct { #as using base: GodotClass; } // 189
 
-DTLSServer :: struct { #as using base: OpaqueClass; } // 190
+DTLSServer :: struct { #as using base: GodotClass; } // 190
 
-DampedSpringJoint2D :: struct { #as using base: OpaqueClass; } // 191
+DampedSpringJoint2D :: struct { #as using base: GodotClass; } // 191
 
 Decal :: struct {  // 192
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     DecalTexture :: enum s32 {
         TEXTURE_ALBEDO :: 0;
@@ -2037,13 +2037,13 @@ Decal :: struct {  // 192
     }
 }
 
-DirAccess :: struct { #as using base: OpaqueClass; } // 193
+DirAccess :: struct { #as using base: GodotClass; } // 193
 
-DirectionalLight2D :: struct { #as using base: OpaqueClass; } // 194
+DirectionalLight2D :: struct { #as using base: GodotClass; } // 194
 
 DirectionalLight3D :: struct {  // 195
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ShadowMode :: enum s32 {
         SHADOW_ORTHOGONAL :: 0;
@@ -2060,7 +2060,7 @@ DirectionalLight3D :: struct {  // 195
 
 DisplayServer :: struct {  // 196
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Feature :: enum s32 {
         FEATURE_GLOBAL_MENU :: 0;
@@ -2226,7 +2226,7 @@ DisplayServer :: struct {  // 196
 
 ENetConnection :: struct {  // 197
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     CompressionMode :: enum s32 {
         COMPRESS_NONE :: 0;
@@ -2252,11 +2252,11 @@ ENetConnection :: struct {  // 197
     }
 }
 
-ENetMultiplayerPeer :: struct { #as using base: OpaqueClass; } // 198
+ENetMultiplayerPeer :: struct { #as using base: GodotClass; } // 198
 
 ENetPacketPeer :: struct {  // 199
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     PeerState :: enum s32 {
         STATE_DISCONNECTED :: 0;
@@ -2289,11 +2289,11 @@ ENetPacketPeer :: struct {  // 199
     }
 }
 
-EditorCommandPalette :: struct { #as using base: OpaqueClass; } // 200
+EditorCommandPalette :: struct { #as using base: GodotClass; } // 200
 
 EditorContextMenuPlugin :: struct {  // 201
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ContextMenuSlot :: enum s32 {
         CONTEXT_SLOT_SCENE_TREE :: 0;
@@ -2306,13 +2306,13 @@ EditorContextMenuPlugin :: struct {  // 201
     }
 }
 
-EditorDebuggerPlugin :: struct { #as using base: OpaqueClass; } // 202
+EditorDebuggerPlugin :: struct { #as using base: GodotClass; } // 202
 
-EditorDebuggerSession :: struct { #as using base: OpaqueClass; } // 203
+EditorDebuggerSession :: struct { #as using base: GodotClass; } // 203
 
 EditorExportPlatform :: struct {  // 204
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ExportMessageType :: enum s32 {
         EXPORT_MESSAGE_NONE :: 0;
@@ -2330,27 +2330,27 @@ EditorExportPlatform :: struct {  // 204
     } @bitfield
 }
 
-EditorExportPlatformAndroid :: struct { #as using base: OpaqueClass; } // 205
+EditorExportPlatformAndroid :: struct { #as using base: GodotClass; } // 205
 
-EditorExportPlatformExtension :: struct { #as using base: OpaqueClass; } // 206
+EditorExportPlatformExtension :: struct { #as using base: GodotClass; } // 206
 
-EditorExportPlatformIOS :: struct { #as using base: OpaqueClass; } // 207
+EditorExportPlatformIOS :: struct { #as using base: GodotClass; } // 207
 
-EditorExportPlatformLinuxBSD :: struct { #as using base: OpaqueClass; } // 208
+EditorExportPlatformLinuxBSD :: struct { #as using base: GodotClass; } // 208
 
-EditorExportPlatformMacOS :: struct { #as using base: OpaqueClass; } // 209
+EditorExportPlatformMacOS :: struct { #as using base: GodotClass; } // 209
 
-EditorExportPlatformPC :: struct { #as using base: OpaqueClass; } // 210
+EditorExportPlatformPC :: struct { #as using base: GodotClass; } // 210
 
-EditorExportPlatformWeb :: struct { #as using base: OpaqueClass; } // 211
+EditorExportPlatformWeb :: struct { #as using base: GodotClass; } // 211
 
-EditorExportPlatformWindows :: struct { #as using base: OpaqueClass; } // 212
+EditorExportPlatformWindows :: struct { #as using base: GodotClass; } // 212
 
-EditorExportPlugin :: struct { #as using base: OpaqueClass; } // 213
+EditorExportPlugin :: struct { #as using base: GodotClass; } // 213
 
 EditorExportPreset :: struct {  // 214
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ExportFilter :: enum s32 {
         EXPORT_ALL_RESOURCES :: 0;
@@ -2376,7 +2376,7 @@ EditorExportPreset :: struct {  // 214
 
 EditorFeatureProfile :: struct {  // 215
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Feature :: enum s32 {
         FEATURE_3D :: 0;
@@ -2394,7 +2394,7 @@ EditorFeatureProfile :: struct {  // 215
 
 EditorFileDialog :: struct {  // 216
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     FileMode :: enum s32 {
         FILE_MODE_OPEN_FILE :: 0;
@@ -2416,29 +2416,29 @@ EditorFileDialog :: struct {  // 216
     }
 }
 
-EditorFileSystem :: struct { #as using base: OpaqueClass; } // 217
+EditorFileSystem :: struct { #as using base: GodotClass; } // 217
 
-EditorFileSystemDirectory :: struct { #as using base: OpaqueClass; } // 218
+EditorFileSystemDirectory :: struct { #as using base: GodotClass; } // 218
 
-EditorFileSystemImportFormatSupportQuery :: struct { #as using base: OpaqueClass; } // 219
+EditorFileSystemImportFormatSupportQuery :: struct { #as using base: GodotClass; } // 219
 
-EditorImportPlugin :: struct { #as using base: OpaqueClass; } // 220
+EditorImportPlugin :: struct { #as using base: GodotClass; } // 220
 
-EditorInspector :: struct { #as using base: OpaqueClass; } // 221
+EditorInspector :: struct { #as using base: GodotClass; } // 221
 
-EditorInspectorPlugin :: struct { #as using base: OpaqueClass; } // 222
+EditorInspectorPlugin :: struct { #as using base: GodotClass; } // 222
 
-EditorInterface :: struct { #as using base: OpaqueClass; } // 223
+EditorInterface :: struct { #as using base: GodotClass; } // 223
 
-EditorNode3DGizmo :: struct { #as using base: OpaqueClass; } // 224
+EditorNode3DGizmo :: struct { #as using base: GodotClass; } // 224
 
-EditorNode3DGizmoPlugin :: struct { #as using base: OpaqueClass; } // 225
+EditorNode3DGizmoPlugin :: struct { #as using base: GodotClass; } // 225
 
-EditorPaths :: struct { #as using base: OpaqueClass; } // 226
+EditorPaths :: struct { #as using base: GodotClass; } // 226
 
 EditorPlugin :: struct {  // 227
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     CustomControlContainer :: enum s32 {
         CONTAINER_TOOLBAR :: 0;
@@ -2474,33 +2474,33 @@ EditorPlugin :: struct {  // 227
     }
 }
 
-EditorProperty :: struct { #as using base: OpaqueClass; } // 228
+EditorProperty :: struct { #as using base: GodotClass; } // 228
 
-EditorResourceConversionPlugin :: struct { #as using base: OpaqueClass; } // 229
+EditorResourceConversionPlugin :: struct { #as using base: GodotClass; } // 229
 
-EditorResourcePicker :: struct { #as using base: OpaqueClass; } // 230
+EditorResourcePicker :: struct { #as using base: GodotClass; } // 230
 
-EditorResourcePreview :: struct { #as using base: OpaqueClass; } // 231
+EditorResourcePreview :: struct { #as using base: GodotClass; } // 231
 
-EditorResourcePreviewGenerator :: struct { #as using base: OpaqueClass; } // 232
+EditorResourcePreviewGenerator :: struct { #as using base: GodotClass; } // 232
 
-EditorResourceTooltipPlugin :: struct { #as using base: OpaqueClass; } // 233
+EditorResourceTooltipPlugin :: struct { #as using base: GodotClass; } // 233
 
-EditorSceneFormatImporter :: struct { #as using base: OpaqueClass; } // 234
+EditorSceneFormatImporter :: struct { #as using base: GodotClass; } // 234
 
-EditorSceneFormatImporterBlend :: struct { #as using base: OpaqueClass; } // 235
+EditorSceneFormatImporterBlend :: struct { #as using base: GodotClass; } // 235
 
-EditorSceneFormatImporterFBX2GLTF :: struct { #as using base: OpaqueClass; } // 236
+EditorSceneFormatImporterFBX2GLTF :: struct { #as using base: GodotClass; } // 236
 
-EditorSceneFormatImporterGLTF :: struct { #as using base: OpaqueClass; } // 237
+EditorSceneFormatImporterGLTF :: struct { #as using base: GodotClass; } // 237
 
-EditorSceneFormatImporterUFBX :: struct { #as using base: OpaqueClass; } // 238
+EditorSceneFormatImporterUFBX :: struct { #as using base: GodotClass; } // 238
 
-EditorScenePostImport :: struct { #as using base: OpaqueClass; } // 239
+EditorScenePostImport :: struct { #as using base: GodotClass; } // 239
 
 EditorScenePostImportPlugin :: struct {  // 240
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     InternalImportCategory :: enum s32 {
         INTERNAL_IMPORT_CATEGORY_NODE :: 0;
@@ -2514,21 +2514,21 @@ EditorScenePostImportPlugin :: struct {  // 240
     }
 }
 
-EditorScript :: struct { #as using base: OpaqueClass; } // 241
+EditorScript :: struct { #as using base: GodotClass; } // 241
 
-EditorScriptPicker :: struct { #as using base: OpaqueClass; } // 242
+EditorScriptPicker :: struct { #as using base: GodotClass; } // 242
 
-EditorSelection :: struct { #as using base: OpaqueClass; } // 243
+EditorSelection :: struct { #as using base: GodotClass; } // 243
 
-EditorSettings :: struct { #as using base: OpaqueClass; } // 244
+EditorSettings :: struct { #as using base: GodotClass; } // 244
 
-EditorSpinSlider :: struct { #as using base: OpaqueClass; } // 245
+EditorSpinSlider :: struct { #as using base: GodotClass; } // 245
 
-EditorSyntaxHighlighter :: struct { #as using base: OpaqueClass; } // 246
+EditorSyntaxHighlighter :: struct { #as using base: GodotClass; } // 246
 
 EditorToaster :: struct {  // 247
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Severity :: enum s32 {
         SEVERITY_INFO :: 0;
@@ -2537,11 +2537,11 @@ EditorToaster :: struct {  // 247
     }
 }
 
-EditorTranslationParserPlugin :: struct { #as using base: OpaqueClass; } // 248
+EditorTranslationParserPlugin :: struct { #as using base: GodotClass; } // 248
 
 EditorUndoRedoManager :: struct {  // 249
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     SpecialHistory :: enum s32 {
         GLOBAL_HISTORY :: 0;
@@ -2552,7 +2552,7 @@ EditorUndoRedoManager :: struct {  // 249
 
 EditorVCSInterface :: struct {  // 250
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ChangeType :: enum s32 {
         CHANGE_TYPE_NEW :: 0;
@@ -2570,17 +2570,17 @@ EditorVCSInterface :: struct {  // 250
     }
 }
 
-EncodedObjectAsID :: struct { #as using base: OpaqueClass; } // 251
+EncodedObjectAsID :: struct { #as using base: GodotClass; } // 251
 
-Engine :: struct { #as using base: OpaqueClass; } // 252
+Engine :: struct { #as using base: GodotClass; } // 252
 
-EngineDebugger :: struct { #as using base: OpaqueClass; } // 253
+EngineDebugger :: struct { #as using base: GodotClass; } // 253
 
-EngineProfiler :: struct { #as using base: OpaqueClass; } // 254
+EngineProfiler :: struct { #as using base: GodotClass; } // 254
 
 Environment :: struct {  // 255
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     BGMode :: enum s32 {
         BG_CLEAR_COLOR :: 0;
@@ -2633,17 +2633,17 @@ Environment :: struct {  // 255
     }
 }
 
-Expression :: struct { #as using base: OpaqueClass; } // 256
+Expression :: struct { #as using base: GodotClass; } // 256
 
-ExternalTexture :: struct { #as using base: OpaqueClass; } // 257
+ExternalTexture :: struct { #as using base: GodotClass; } // 257
 
-FBXDocument :: struct { #as using base: OpaqueClass; } // 258
+FBXDocument :: struct { #as using base: GodotClass; } // 258
 
-FBXState :: struct { #as using base: OpaqueClass; } // 259
+FBXState :: struct { #as using base: GodotClass; } // 259
 
 FastNoiseLite :: struct {  // 260
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     NoiseType :: enum s32 {
         TYPE_VALUE :: 5;
@@ -2693,7 +2693,7 @@ FastNoiseLite :: struct {  // 260
 
 FileAccess :: struct {  // 261
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ModeFlags :: enum s32 {
         READ :: 1;
@@ -2728,7 +2728,7 @@ FileAccess :: struct {  // 261
 
 FileDialog :: struct {  // 262
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     FileMode :: enum s32 {
         FILE_MODE_OPEN_FILE :: 0;
@@ -2745,11 +2745,11 @@ FileDialog :: struct {  // 262
     }
 }
 
-FileSystemDock :: struct { #as using base: OpaqueClass; } // 263
+FileSystemDock :: struct { #as using base: GodotClass; } // 263
 
 FlowContainer :: struct {  // 264
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     AlignmentMode :: enum s32 {
         ALIGNMENT_BEGIN :: 0;
@@ -2765,21 +2765,21 @@ FlowContainer :: struct {  // 264
     }
 }
 
-FogMaterial :: struct { #as using base: OpaqueClass; } // 265
+FogMaterial :: struct { #as using base: GodotClass; } // 265
 
-FogVolume :: struct { #as using base: OpaqueClass; } // 266
+FogVolume :: struct { #as using base: GodotClass; } // 266
 
-Font :: struct { #as using base: OpaqueClass; } // 267
+Font :: struct { #as using base: GodotClass; } // 267
 
-FontFile :: struct { #as using base: OpaqueClass; } // 268
+FontFile :: struct { #as using base: GodotClass; } // 268
 
-FontVariation :: struct { #as using base: OpaqueClass; } // 269
+FontVariation :: struct { #as using base: GodotClass; } // 269
 
-FramebufferCacheRD :: struct { #as using base: OpaqueClass; } // 270
+FramebufferCacheRD :: struct { #as using base: GodotClass; } // 270
 
 GDExtension :: struct {  // 271
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     InitializationLevel :: enum s32 {
         INITIALIZATION_LEVEL_CORE :: 0;
@@ -2791,7 +2791,7 @@ GDExtension :: struct {  // 271
 
 GDExtensionManager :: struct {  // 272
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     LoadStatus :: enum s32 {
         LOAD_STATUS_OK :: 0;
@@ -2802,13 +2802,13 @@ GDExtensionManager :: struct {  // 272
     }
 }
 
-GDScript :: struct { #as using base: OpaqueClass; } // 273
+GDScript :: struct { #as using base: GodotClass; } // 273
 
-GDScriptSyntaxHighlighter :: struct { #as using base: OpaqueClass; } // 274
+GDScriptSyntaxHighlighter :: struct { #as using base: GodotClass; } // 274
 
 GLTFAccessor :: struct {  // 275
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     GLTFAccessorType :: enum s32 {
         TYPE_SCALAR :: 0;
@@ -2836,15 +2836,15 @@ GLTFAccessor :: struct {  // 275
     }
 }
 
-GLTFAnimation :: struct { #as using base: OpaqueClass; } // 276
+GLTFAnimation :: struct { #as using base: GodotClass; } // 276
 
-GLTFBufferView :: struct { #as using base: OpaqueClass; } // 277
+GLTFBufferView :: struct { #as using base: GodotClass; } // 277
 
-GLTFCamera :: struct { #as using base: OpaqueClass; } // 278
+GLTFCamera :: struct { #as using base: GodotClass; } // 278
 
 GLTFDocument :: struct {  // 279
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     RootNodeMode :: enum s32 {
         ROOT_NODE_MODE_SINGLE_ROOT :: 0;
@@ -2853,19 +2853,19 @@ GLTFDocument :: struct {  // 279
     }
 }
 
-GLTFDocumentExtension :: struct { #as using base: OpaqueClass; } // 280
+GLTFDocumentExtension :: struct { #as using base: GodotClass; } // 280
 
-GLTFDocumentExtensionConvertImporterMesh :: struct { #as using base: OpaqueClass; } // 281
+GLTFDocumentExtensionConvertImporterMesh :: struct { #as using base: GodotClass; } // 281
 
-GLTFLight :: struct { #as using base: OpaqueClass; } // 282
+GLTFLight :: struct { #as using base: GodotClass; } // 282
 
-GLTFMesh :: struct { #as using base: OpaqueClass; } // 283
+GLTFMesh :: struct { #as using base: GodotClass; } // 283
 
-GLTFNode :: struct { #as using base: OpaqueClass; } // 284
+GLTFNode :: struct { #as using base: GodotClass; } // 284
 
 GLTFObjectModelProperty :: struct {  // 285
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     GLTFObjectModelType :: enum s32 {
         GLTF_OBJECT_MODEL_TYPE_UNKNOWN :: 0;
@@ -2882,25 +2882,25 @@ GLTFObjectModelProperty :: struct {  // 285
     }
 }
 
-GLTFPhysicsBody :: struct { #as using base: OpaqueClass; } // 286
+GLTFPhysicsBody :: struct { #as using base: GodotClass; } // 286
 
-GLTFPhysicsShape :: struct { #as using base: OpaqueClass; } // 287
+GLTFPhysicsShape :: struct { #as using base: GodotClass; } // 287
 
-GLTFSkeleton :: struct { #as using base: OpaqueClass; } // 288
+GLTFSkeleton :: struct { #as using base: GodotClass; } // 288
 
-GLTFSkin :: struct { #as using base: OpaqueClass; } // 289
+GLTFSkin :: struct { #as using base: GodotClass; } // 289
 
-GLTFSpecGloss :: struct { #as using base: OpaqueClass; } // 290
+GLTFSpecGloss :: struct { #as using base: GodotClass; } // 290
 
-GLTFState :: struct { #as using base: OpaqueClass; } // 291
+GLTFState :: struct { #as using base: GodotClass; } // 291
 
-GLTFTexture :: struct { #as using base: OpaqueClass; } // 292
+GLTFTexture :: struct { #as using base: GodotClass; } // 292
 
-GLTFTextureSampler :: struct { #as using base: OpaqueClass; } // 293
+GLTFTextureSampler :: struct { #as using base: GodotClass; } // 293
 
 GPUParticles2D :: struct {  // 294
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     DrawOrder :: enum s32 {
         DRAW_ORDER_INDEX :: 0;
@@ -2919,7 +2919,7 @@ GPUParticles2D :: struct {  // 294
 
 GPUParticles3D :: struct {  // 295
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     DrawOrder :: enum s32 {
         DRAW_ORDER_INDEX :: 0;
@@ -2944,21 +2944,21 @@ GPUParticles3D :: struct {  // 295
     }
 }
 
-GPUParticlesAttractor3D :: struct { #as using base: OpaqueClass; } // 296
+GPUParticlesAttractor3D :: struct { #as using base: GodotClass; } // 296
 
-GPUParticlesAttractorBox3D :: struct { #as using base: OpaqueClass; } // 297
+GPUParticlesAttractorBox3D :: struct { #as using base: GodotClass; } // 297
 
-GPUParticlesAttractorSphere3D :: struct { #as using base: OpaqueClass; } // 298
+GPUParticlesAttractorSphere3D :: struct { #as using base: GodotClass; } // 298
 
-GPUParticlesAttractorVectorField3D :: struct { #as using base: OpaqueClass; } // 299
+GPUParticlesAttractorVectorField3D :: struct { #as using base: GodotClass; } // 299
 
-GPUParticlesCollision3D :: struct { #as using base: OpaqueClass; } // 300
+GPUParticlesCollision3D :: struct { #as using base: GodotClass; } // 300
 
-GPUParticlesCollisionBox3D :: struct { #as using base: OpaqueClass; } // 301
+GPUParticlesCollisionBox3D :: struct { #as using base: GodotClass; } // 301
 
 GPUParticlesCollisionHeightField3D :: struct {  // 302
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Resolution :: enum s32 {
         RESOLUTION_256 :: 0;
@@ -2978,7 +2978,7 @@ GPUParticlesCollisionHeightField3D :: struct {  // 302
 
 GPUParticlesCollisionSDF3D :: struct {  // 303
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Resolution :: enum s32 {
         RESOLUTION_16 :: 0;
@@ -2991,11 +2991,11 @@ GPUParticlesCollisionSDF3D :: struct {  // 303
     }
 }
 
-GPUParticlesCollisionSphere3D :: struct { #as using base: OpaqueClass; } // 304
+GPUParticlesCollisionSphere3D :: struct { #as using base: GodotClass; } // 304
 
 Generic6DOFJoint3D :: struct {  // 305
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Param :: enum s32 {
         PARAM_LINEAR_LOWER_LIMIT :: 0;
@@ -3036,7 +3036,7 @@ Generic6DOFJoint3D :: struct {  // 305
 
 Geometry2D :: struct {  // 306
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     PolyBooleanOperation :: enum s32 {
         OPERATION_UNION :: 0;
@@ -3060,11 +3060,11 @@ Geometry2D :: struct {  // 306
     }
 }
 
-Geometry3D :: struct { #as using base: OpaqueClass; } // 307
+Geometry3D :: struct { #as using base: GodotClass; } // 307
 
 GeometryInstance3D :: struct {  // 308
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ShadowCastingSetting :: enum s32 {
         SHADOW_CASTING_SETTING_OFF :: 0;
@@ -3096,7 +3096,7 @@ GeometryInstance3D :: struct {  // 308
 
 Gradient :: struct {  // 309
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     InterpolationMode :: enum s32 {
         GRADIENT_INTERPOLATE_LINEAR :: 0;
@@ -3111,11 +3111,11 @@ Gradient :: struct {  // 309
     }
 }
 
-GradientTexture1D :: struct { #as using base: OpaqueClass; } // 310
+GradientTexture1D :: struct { #as using base: GodotClass; } // 310
 
 GradientTexture2D :: struct {  // 311
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Fill :: enum s32 {
         FILL_LINEAR :: 0;
@@ -3132,7 +3132,7 @@ GradientTexture2D :: struct {  // 311
 
 GraphEdit :: struct {  // 312
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     PanningScheme :: enum s32 {
         SCROLL_ZOOMS :: 0;
@@ -3145,37 +3145,37 @@ GraphEdit :: struct {  // 312
     }
 }
 
-GraphElement :: struct { #as using base: OpaqueClass; } // 313
+GraphElement :: struct { #as using base: GodotClass; } // 313
 
-GraphFrame :: struct { #as using base: OpaqueClass; } // 314
+GraphFrame :: struct { #as using base: GodotClass; } // 314
 
-GraphNode :: struct { #as using base: OpaqueClass; } // 315
+GraphNode :: struct { #as using base: GodotClass; } // 315
 
-GridContainer :: struct { #as using base: OpaqueClass; } // 316
+GridContainer :: struct { #as using base: GodotClass; } // 316
 
-GridMap :: struct { #as using base: OpaqueClass; } // 317
+GridMap :: struct { #as using base: GodotClass; } // 317
 
-GridMapEditorPlugin :: struct { #as using base: OpaqueClass; } // 318
+GridMapEditorPlugin :: struct { #as using base: GodotClass; } // 318
 
-GrooveJoint2D :: struct { #as using base: OpaqueClass; } // 319
+GrooveJoint2D :: struct { #as using base: GodotClass; } // 319
 
-HBoxContainer :: struct { #as using base: OpaqueClass; } // 320
+HBoxContainer :: struct { #as using base: GodotClass; } // 320
 
-HFlowContainer :: struct { #as using base: OpaqueClass; } // 321
+HFlowContainer :: struct { #as using base: GodotClass; } // 321
 
-HMACContext :: struct { #as using base: OpaqueClass; } // 322
+HMACContext :: struct { #as using base: GodotClass; } // 322
 
-HScrollBar :: struct { #as using base: OpaqueClass; } // 323
+HScrollBar :: struct { #as using base: GodotClass; } // 323
 
-HSeparator :: struct { #as using base: OpaqueClass; } // 324
+HSeparator :: struct { #as using base: GodotClass; } // 324
 
-HSlider :: struct { #as using base: OpaqueClass; } // 325
+HSlider :: struct { #as using base: GodotClass; } // 325
 
-HSplitContainer :: struct { #as using base: OpaqueClass; } // 326
+HSplitContainer :: struct { #as using base: GodotClass; } // 326
 
 HTTPClient :: struct {  // 327
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Method :: enum s32 {
         METHOD_GET :: 0;
@@ -3270,7 +3270,7 @@ HTTPClient :: struct {  // 327
 
 HTTPRequest :: struct {  // 328
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Result :: enum s32 {
         RESULT_SUCCESS :: 0;
@@ -3292,7 +3292,7 @@ HTTPRequest :: struct {  // 328
 
 HashingContext :: struct {  // 329
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     HashType :: enum s32 {
         HASH_MD5 :: 0;
@@ -3301,11 +3301,11 @@ HashingContext :: struct {  // 329
     }
 }
 
-HeightMapShape3D :: struct { #as using base: OpaqueClass; } // 330
+HeightMapShape3D :: struct { #as using base: GodotClass; } // 330
 
 HingeJoint3D :: struct {  // 331
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Param :: enum s32 {
         PARAM_BIAS :: 0;
@@ -3328,7 +3328,7 @@ HingeJoint3D :: struct {  // 331
 
 IP :: struct {  // 332
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ResolverStatus :: enum s32 {
         RESOLVER_STATUS_NONE :: 0;
@@ -3347,7 +3347,7 @@ IP :: struct {  // 332
 
 Image :: struct {  // 333
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Format :: enum s32 {
         FORMAT_L8 :: 0;
@@ -3438,7 +3438,7 @@ Image :: struct {  // 333
 
 ImageFormatLoader :: struct {  // 334
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     LoaderFlags :: enum u64 {
         FLAG_NONE :: 0;
@@ -3447,23 +3447,23 @@ ImageFormatLoader :: struct {  // 334
     } @bitfield
 }
 
-ImageFormatLoaderExtension :: struct { #as using base: OpaqueClass; } // 335
+ImageFormatLoaderExtension :: struct { #as using base: GodotClass; } // 335
 
-ImageTexture :: struct { #as using base: OpaqueClass; } // 336
+ImageTexture :: struct { #as using base: GodotClass; } // 336
 
-ImageTexture3D :: struct { #as using base: OpaqueClass; } // 337
+ImageTexture3D :: struct { #as using base: GodotClass; } // 337
 
-ImageTextureLayered :: struct { #as using base: OpaqueClass; } // 338
+ImageTextureLayered :: struct { #as using base: GodotClass; } // 338
 
-ImmediateMesh :: struct { #as using base: OpaqueClass; } // 339
+ImmediateMesh :: struct { #as using base: GodotClass; } // 339
 
-ImporterMesh :: struct { #as using base: OpaqueClass; } // 340
+ImporterMesh :: struct { #as using base: GodotClass; } // 340
 
-ImporterMeshInstance3D :: struct { #as using base: OpaqueClass; } // 341
+ImporterMeshInstance3D :: struct { #as using base: GodotClass; } // 341
 
 Input :: struct {  // 342
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     MouseMode :: enum s32 {
         MOUSE_MODE_VISIBLE :: 0;
@@ -3495,49 +3495,49 @@ Input :: struct {  // 342
     }
 }
 
-InputEvent :: struct { #as using base: OpaqueClass; } // 343
+InputEvent :: struct { #as using base: GodotClass; } // 343
 
-InputEventAction :: struct { #as using base: OpaqueClass; } // 344
+InputEventAction :: struct { #as using base: GodotClass; } // 344
 
-InputEventFromWindow :: struct { #as using base: OpaqueClass; } // 345
+InputEventFromWindow :: struct { #as using base: GodotClass; } // 345
 
-InputEventGesture :: struct { #as using base: OpaqueClass; } // 346
+InputEventGesture :: struct { #as using base: GodotClass; } // 346
 
-InputEventJoypadButton :: struct { #as using base: OpaqueClass; } // 347
+InputEventJoypadButton :: struct { #as using base: GodotClass; } // 347
 
-InputEventJoypadMotion :: struct { #as using base: OpaqueClass; } // 348
+InputEventJoypadMotion :: struct { #as using base: GodotClass; } // 348
 
-InputEventKey :: struct { #as using base: OpaqueClass; } // 349
+InputEventKey :: struct { #as using base: GodotClass; } // 349
 
-InputEventMIDI :: struct { #as using base: OpaqueClass; } // 350
+InputEventMIDI :: struct { #as using base: GodotClass; } // 350
 
-InputEventMagnifyGesture :: struct { #as using base: OpaqueClass; } // 351
+InputEventMagnifyGesture :: struct { #as using base: GodotClass; } // 351
 
-InputEventMouse :: struct { #as using base: OpaqueClass; } // 352
+InputEventMouse :: struct { #as using base: GodotClass; } // 352
 
-InputEventMouseButton :: struct { #as using base: OpaqueClass; } // 353
+InputEventMouseButton :: struct { #as using base: GodotClass; } // 353
 
-InputEventMouseMotion :: struct { #as using base: OpaqueClass; } // 354
+InputEventMouseMotion :: struct { #as using base: GodotClass; } // 354
 
-InputEventPanGesture :: struct { #as using base: OpaqueClass; } // 355
+InputEventPanGesture :: struct { #as using base: GodotClass; } // 355
 
-InputEventScreenDrag :: struct { #as using base: OpaqueClass; } // 356
+InputEventScreenDrag :: struct { #as using base: GodotClass; } // 356
 
-InputEventScreenTouch :: struct { #as using base: OpaqueClass; } // 357
+InputEventScreenTouch :: struct { #as using base: GodotClass; } // 357
 
-InputEventShortcut :: struct { #as using base: OpaqueClass; } // 358
+InputEventShortcut :: struct { #as using base: GodotClass; } // 358
 
-InputEventWithModifiers :: struct { #as using base: OpaqueClass; } // 359
+InputEventWithModifiers :: struct { #as using base: GodotClass; } // 359
 
-InputMap :: struct { #as using base: OpaqueClass; } // 360
+InputMap :: struct { #as using base: GodotClass; } // 360
 
-InstancePlaceholder :: struct { #as using base: OpaqueClass; } // 361
+InstancePlaceholder :: struct { #as using base: GodotClass; } // 361
 
-IntervalTweener :: struct { #as using base: OpaqueClass; } // 362
+IntervalTweener :: struct { #as using base: GodotClass; } // 362
 
 ItemList :: struct {  // 363
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     IconMode :: enum s32 {
         ICON_MODE_TOP :: 0;
@@ -3551,13 +3551,13 @@ ItemList :: struct {  // 363
     }
 }
 
-JNISingleton :: struct { #as using base: OpaqueClass; } // 364
+JNISingleton :: struct { #as using base: GodotClass; } // 364
 
-JSON :: struct { #as using base: OpaqueClass; } // 365
+JSON :: struct { #as using base: GodotClass; } // 365
 
 JSONRPC :: struct {  // 366
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ErrorCode :: enum s32 {
         PARSE_ERROR :: -32700;
@@ -3568,29 +3568,29 @@ JSONRPC :: struct {  // 366
     }
 }
 
-JavaClass :: struct { #as using base: OpaqueClass; } // 367
+JavaClass :: struct { #as using base: GodotClass; } // 367
 
-JavaClassWrapper :: struct { #as using base: OpaqueClass; } // 368
+JavaClassWrapper :: struct { #as using base: GodotClass; } // 368
 
-JavaObject :: struct { #as using base: OpaqueClass; } // 369
+JavaObject :: struct { #as using base: GodotClass; } // 369
 
-JavaScriptBridge :: struct { #as using base: OpaqueClass; } // 370
+JavaScriptBridge :: struct { #as using base: GodotClass; } // 370
 
-JavaScriptObject :: struct { #as using base: OpaqueClass; } // 371
+JavaScriptObject :: struct { #as using base: GodotClass; } // 371
 
-Joint2D :: struct { #as using base: OpaqueClass; } // 372
+Joint2D :: struct { #as using base: GodotClass; } // 372
 
-Joint3D :: struct { #as using base: OpaqueClass; } // 373
+Joint3D :: struct { #as using base: GodotClass; } // 373
 
-KinematicCollision2D :: struct { #as using base: OpaqueClass; } // 374
+KinematicCollision2D :: struct { #as using base: GodotClass; } // 374
 
-KinematicCollision3D :: struct { #as using base: OpaqueClass; } // 375
+KinematicCollision3D :: struct { #as using base: GodotClass; } // 375
 
-Label :: struct { #as using base: OpaqueClass; } // 376
+Label :: struct { #as using base: GodotClass; } // 376
 
 Label3D :: struct {  // 377
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     DrawFlags :: enum s32 {
         FLAG_SHADED :: 0;
@@ -3608,11 +3608,11 @@ Label3D :: struct {  // 377
     }
 }
 
-LabelSettings :: struct { #as using base: OpaqueClass; } // 378
+LabelSettings :: struct { #as using base: GodotClass; } // 378
 
 Light2D :: struct {  // 379
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ShadowFilter :: enum s32 {
         SHADOW_FILTER_NONE :: 0;
@@ -3629,7 +3629,7 @@ Light2D :: struct {  // 379
 
 Light3D :: struct {  // 380
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Param :: enum s32 {
         PARAM_ENERGY :: 0;
@@ -3663,11 +3663,11 @@ Light3D :: struct {  // 380
     }
 }
 
-LightOccluder2D :: struct { #as using base: OpaqueClass; } // 381
+LightOccluder2D :: struct { #as using base: GodotClass; } // 381
 
 LightmapGI :: struct {  // 382
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     BakeQuality :: enum s32 {
         BAKE_QUALITY_LOW :: 0;
@@ -3709,7 +3709,7 @@ LightmapGI :: struct {  // 382
 
 LightmapGIData :: struct {  // 383
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ShadowmaskMode :: enum s32 {
         SHADOWMASK_MODE_NONE :: 0;
@@ -3718,15 +3718,15 @@ LightmapGIData :: struct {  // 383
     }
 }
 
-LightmapProbe :: struct { #as using base: OpaqueClass; } // 384
+LightmapProbe :: struct { #as using base: GodotClass; } // 384
 
-Lightmapper :: struct { #as using base: OpaqueClass; } // 385
+Lightmapper :: struct { #as using base: GodotClass; } // 385
 
-LightmapperRD :: struct { #as using base: OpaqueClass; } // 386
+LightmapperRD :: struct { #as using base: GodotClass; } // 386
 
 Line2D :: struct {  // 387
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     LineJointMode :: enum s32 {
         LINE_JOINT_SHARP :: 0;
@@ -3749,7 +3749,7 @@ Line2D :: struct {  // 387
 
 LineEdit :: struct {  // 388
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     MenuItems :: enum s32 {
         MENU_CUT :: 0;
@@ -3800,7 +3800,7 @@ LineEdit :: struct {  // 388
 
 LinkButton :: struct {  // 389
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     UnderlineMode :: enum s32 {
         UNDERLINE_MODE_ALWAYS :: 0;
@@ -3811,7 +3811,7 @@ LinkButton :: struct {  // 389
 
 LookAtModifier3D :: struct {  // 390
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     OriginFrom :: enum s32 {
         ORIGIN_FROM_SELF :: 0;
@@ -3820,25 +3820,25 @@ LookAtModifier3D :: struct {  // 390
     }
 }
 
-MainLoop :: struct { #as using base: OpaqueClass; } // 391
+MainLoop :: struct { #as using base: GodotClass; } // 391
 
-MarginContainer :: struct { #as using base: OpaqueClass; } // 392
+MarginContainer :: struct { #as using base: GodotClass; } // 392
 
-Marker2D :: struct { #as using base: OpaqueClass; } // 393
+Marker2D :: struct { #as using base: GodotClass; } // 393
 
-Marker3D :: struct { #as using base: OpaqueClass; } // 394
+Marker3D :: struct { #as using base: GodotClass; } // 394
 
-Marshalls :: struct { #as using base: OpaqueClass; } // 395
+Marshalls :: struct { #as using base: GodotClass; } // 395
 
-Material :: struct { #as using base: OpaqueClass; } // 396
+Material :: struct { #as using base: GodotClass; } // 396
 
-MenuBar :: struct { #as using base: OpaqueClass; } // 397
+MenuBar :: struct { #as using base: GodotClass; } // 397
 
-MenuButton :: struct { #as using base: OpaqueClass; } // 398
+MenuButton :: struct { #as using base: GodotClass; } // 398
 
 Mesh :: struct {  // 399
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     PrimitiveType :: enum s32 {
         PRIMITIVE_POINTS :: 0;
@@ -3915,7 +3915,7 @@ Mesh :: struct {  // 399
 
 MeshConvexDecompositionSettings :: struct {  // 400
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Mode :: enum s32 {
         CONVEX_DECOMPOSITION_MODE_VOXEL :: 0;
@@ -3923,29 +3923,29 @@ MeshConvexDecompositionSettings :: struct {  // 400
     }
 }
 
-MeshDataTool :: struct { #as using base: OpaqueClass; } // 401
+MeshDataTool :: struct { #as using base: GodotClass; } // 401
 
-MeshInstance2D :: struct { #as using base: OpaqueClass; } // 402
+MeshInstance2D :: struct { #as using base: GodotClass; } // 402
 
-MeshInstance3D :: struct { #as using base: OpaqueClass; } // 403
+MeshInstance3D :: struct { #as using base: GodotClass; } // 403
 
-MeshLibrary :: struct { #as using base: OpaqueClass; } // 404
+MeshLibrary :: struct { #as using base: GodotClass; } // 404
 
-MeshTexture :: struct { #as using base: OpaqueClass; } // 405
+MeshTexture :: struct { #as using base: GodotClass; } // 405
 
-MethodTweener :: struct { #as using base: OpaqueClass; } // 406
+MethodTweener :: struct { #as using base: GodotClass; } // 406
 
-MissingNode :: struct { #as using base: OpaqueClass; } // 407
+MissingNode :: struct { #as using base: GodotClass; } // 407
 
-MissingResource :: struct { #as using base: OpaqueClass; } // 408
+MissingResource :: struct { #as using base: GodotClass; } // 408
 
-MobileVRInterface :: struct { #as using base: OpaqueClass; } // 409
+MobileVRInterface :: struct { #as using base: GodotClass; } // 409
 
-MovieWriter :: struct { #as using base: OpaqueClass; } // 410
+MovieWriter :: struct { #as using base: GodotClass; } // 410
 
 MultiMesh :: struct {  // 411
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     TransformFormat :: enum s32 {
         TRANSFORM_2D :: 0;
@@ -3958,13 +3958,13 @@ MultiMesh :: struct {  // 411
     }
 }
 
-MultiMeshInstance2D :: struct { #as using base: OpaqueClass; } // 412
+MultiMeshInstance2D :: struct { #as using base: GodotClass; } // 412
 
-MultiMeshInstance3D :: struct { #as using base: OpaqueClass; } // 413
+MultiMeshInstance3D :: struct { #as using base: GodotClass; } // 413
 
 MultiplayerAPI :: struct {  // 414
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     RPCMode :: enum s32 {
         RPC_MODE_DISABLED :: 0;
@@ -3973,11 +3973,11 @@ MultiplayerAPI :: struct {  // 414
     }
 }
 
-MultiplayerAPIExtension :: struct { #as using base: OpaqueClass; } // 415
+MultiplayerAPIExtension :: struct { #as using base: GodotClass; } // 415
 
 MultiplayerPeer :: struct {  // 416
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ConnectionStatus :: enum s32 {
         CONNECTION_DISCONNECTED :: 0;
@@ -3992,13 +3992,13 @@ MultiplayerPeer :: struct {  // 416
     }
 }
 
-MultiplayerPeerExtension :: struct { #as using base: OpaqueClass; } // 417
+MultiplayerPeerExtension :: struct { #as using base: GodotClass; } // 417
 
-MultiplayerSpawner :: struct { #as using base: OpaqueClass; } // 418
+MultiplayerSpawner :: struct { #as using base: GodotClass; } // 418
 
 MultiplayerSynchronizer :: struct {  // 419
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     VisibilityUpdateMode :: enum s32 {
         VISIBILITY_PROCESS_IDLE :: 0;
@@ -4007,11 +4007,11 @@ MultiplayerSynchronizer :: struct {  // 419
     }
 }
 
-Mutex :: struct { #as using base: OpaqueClass; } // 420
+Mutex :: struct { #as using base: GodotClass; } // 420
 
 NativeMenu :: struct {  // 421
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Feature :: enum s32 {
         FEATURE_GLOBAL_MENU :: 0;
@@ -4031,17 +4031,17 @@ NativeMenu :: struct {  // 421
     }
 }
 
-NavigationAgent2D :: struct { #as using base: OpaqueClass; } // 422
+NavigationAgent2D :: struct { #as using base: GodotClass; } // 422
 
-NavigationAgent3D :: struct { #as using base: OpaqueClass; } // 423
+NavigationAgent3D :: struct { #as using base: GodotClass; } // 423
 
-NavigationLink2D :: struct { #as using base: OpaqueClass; } // 424
+NavigationLink2D :: struct { #as using base: GodotClass; } // 424
 
-NavigationLink3D :: struct { #as using base: OpaqueClass; } // 425
+NavigationLink3D :: struct { #as using base: GodotClass; } // 425
 
 NavigationMesh :: struct {  // 426
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     SamplePartitionType :: enum s32 {
         SAMPLE_PARTITION_WATERSHED :: 0;
@@ -4065,19 +4065,19 @@ NavigationMesh :: struct {  // 426
     }
 }
 
-NavigationMeshGenerator :: struct { #as using base: OpaqueClass; } // 427
+NavigationMeshGenerator :: struct { #as using base: GodotClass; } // 427
 
-NavigationMeshSourceGeometryData2D :: struct { #as using base: OpaqueClass; } // 428
+NavigationMeshSourceGeometryData2D :: struct { #as using base: GodotClass; } // 428
 
-NavigationMeshSourceGeometryData3D :: struct { #as using base: OpaqueClass; } // 429
+NavigationMeshSourceGeometryData3D :: struct { #as using base: GodotClass; } // 429
 
-NavigationObstacle2D :: struct { #as using base: OpaqueClass; } // 430
+NavigationObstacle2D :: struct { #as using base: GodotClass; } // 430
 
-NavigationObstacle3D :: struct { #as using base: OpaqueClass; } // 431
+NavigationObstacle3D :: struct { #as using base: GodotClass; } // 431
 
 NavigationPathQueryParameters2D :: struct {  // 432
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     PathfindingAlgorithm :: enum s32 {
         PATHFINDING_ALGORITHM_ASTAR :: 0;
@@ -4100,7 +4100,7 @@ NavigationPathQueryParameters2D :: struct {  // 432
 
 NavigationPathQueryParameters3D :: struct {  // 433
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     PathfindingAlgorithm :: enum s32 {
         PATHFINDING_ALGORITHM_ASTAR :: 0;
@@ -4123,7 +4123,7 @@ NavigationPathQueryParameters3D :: struct {  // 433
 
 NavigationPathQueryResult2D :: struct {  // 434
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     PathSegmentType :: enum s32 {
         PATH_SEGMENT_TYPE_REGION :: 0;
@@ -4133,7 +4133,7 @@ NavigationPathQueryResult2D :: struct {  // 434
 
 NavigationPathQueryResult3D :: struct {  // 435
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     PathSegmentType :: enum s32 {
         PATH_SEGMENT_TYPE_REGION :: 0;
@@ -4143,7 +4143,7 @@ NavigationPathQueryResult3D :: struct {  // 435
 
 NavigationPolygon :: struct {  // 436
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     SamplePartitionType :: enum s32 {
         SAMPLE_PARTITION_CONVEX_PARTITION :: 0;
@@ -4166,15 +4166,15 @@ NavigationPolygon :: struct {  // 436
     }
 }
 
-NavigationRegion2D :: struct { #as using base: OpaqueClass; } // 437
+NavigationRegion2D :: struct { #as using base: GodotClass; } // 437
 
-NavigationRegion3D :: struct { #as using base: OpaqueClass; } // 438
+NavigationRegion3D :: struct { #as using base: GodotClass; } // 438
 
-NavigationServer2D :: struct { #as using base: OpaqueClass; } // 439
+NavigationServer2D :: struct { #as using base: GodotClass; } // 439
 
 NavigationServer3D :: struct {  // 440
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ProcessInfo :: enum s32 {
         INFO_ACTIVE_MAPS :: 0;
@@ -4192,7 +4192,7 @@ NavigationServer3D :: struct {  // 440
 
 NinePatchRect :: struct {  // 441
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     AxisStretchMode :: enum s32 {
         AXIS_STRETCH_MODE_STRETCH :: 0;
@@ -4203,7 +4203,7 @@ NinePatchRect :: struct {  // 441
 
 Node :: struct {  // 442
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ProcessMode :: enum s32 {
         PROCESS_MODE_INHERIT :: 0;
@@ -4251,11 +4251,11 @@ Node :: struct {  // 442
     }
 }
 
-Node2D :: struct { #as using base: OpaqueClass; } // 443
+Node2D :: struct { #as using base: GodotClass; } // 443
 
 Node3D :: struct {  // 444
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     RotationEditMode :: enum s32 {
         ROTATION_EDIT_MODE_EULER :: 0;
@@ -4264,19 +4264,19 @@ Node3D :: struct {  // 444
     }
 }
 
-Node3DGizmo :: struct { #as using base: OpaqueClass; } // 445
+Node3DGizmo :: struct { #as using base: GodotClass; } // 445
 
-Noise :: struct { #as using base: OpaqueClass; } // 446
+Noise :: struct { #as using base: GodotClass; } // 446
 
-NoiseTexture2D :: struct { #as using base: OpaqueClass; } // 447
+NoiseTexture2D :: struct { #as using base: GodotClass; } // 447
 
-NoiseTexture3D :: struct { #as using base: OpaqueClass; } // 448
+NoiseTexture3D :: struct { #as using base: GodotClass; } // 448
 
-ORMMaterial3D :: struct { #as using base: OpaqueClass; } // 449
+ORMMaterial3D :: struct { #as using base: GodotClass; } // 449
 
 OS :: struct {  // 450
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     RenderingDriver :: enum s32 {
         RENDERING_DRIVER_VULKAN :: 0;
@@ -4307,7 +4307,7 @@ OS :: struct {  // 450
 
 _Object :: struct {  // 451
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ConnectFlags :: enum s32 {
         CONNECT_DEFERRED :: 1;
@@ -4317,13 +4317,13 @@ _Object :: struct {  // 451
     }
 }
 
-Occluder3D :: struct { #as using base: OpaqueClass; } // 452
+Occluder3D :: struct { #as using base: GodotClass; } // 452
 
-OccluderInstance3D :: struct { #as using base: OpaqueClass; } // 453
+OccluderInstance3D :: struct { #as using base: GodotClass; } // 453
 
 OccluderPolygon2D :: struct {  // 454
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     CullMode :: enum s32 {
         CULL_DISABLED :: 0;
@@ -4332,15 +4332,15 @@ OccluderPolygon2D :: struct {  // 454
     }
 }
 
-OfflineMultiplayerPeer :: struct { #as using base: OpaqueClass; } // 455
+OfflineMultiplayerPeer :: struct { #as using base: GodotClass; } // 455
 
-OggPacketSequence :: struct { #as using base: OpaqueClass; } // 456
+OggPacketSequence :: struct { #as using base: GodotClass; } // 456
 
-OggPacketSequencePlayback :: struct { #as using base: OpaqueClass; } // 457
+OggPacketSequencePlayback :: struct { #as using base: GodotClass; } // 457
 
 OmniLight3D :: struct {  // 458
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ShadowMode :: enum s32 {
         SHADOW_DUAL_PARABOLOID :: 0;
@@ -4350,7 +4350,7 @@ OmniLight3D :: struct {  // 458
 
 OpenXRAPIExtension :: struct {  // 459
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     OpenXRAlphaBlendModeSupport :: enum s32 {
         OPENXR_ALPHA_BLEND_MODE_SUPPORT_NONE :: 0;
@@ -4361,7 +4361,7 @@ OpenXRAPIExtension :: struct {  // 459
 
 OpenXRAction :: struct {  // 460
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ActionType :: enum s32 {
         OPENXR_ACTION_BOOL :: 0;
@@ -4371,33 +4371,33 @@ OpenXRAction :: struct {  // 460
     }
 }
 
-OpenXRActionBindingModifier :: struct { #as using base: OpaqueClass; } // 461
+OpenXRActionBindingModifier :: struct { #as using base: GodotClass; } // 461
 
-OpenXRActionMap :: struct { #as using base: OpaqueClass; } // 462
+OpenXRActionMap :: struct { #as using base: GodotClass; } // 462
 
-OpenXRActionSet :: struct { #as using base: OpaqueClass; } // 463
+OpenXRActionSet :: struct { #as using base: GodotClass; } // 463
 
-OpenXRAnalogThresholdModifier :: struct { #as using base: OpaqueClass; } // 464
+OpenXRAnalogThresholdModifier :: struct { #as using base: GodotClass; } // 464
 
-OpenXRBindingModifier :: struct { #as using base: OpaqueClass; } // 465
+OpenXRBindingModifier :: struct { #as using base: GodotClass; } // 465
 
-OpenXRBindingModifierEditor :: struct { #as using base: OpaqueClass; } // 466
+OpenXRBindingModifierEditor :: struct { #as using base: GodotClass; } // 466
 
-OpenXRCompositionLayer :: struct { #as using base: OpaqueClass; } // 467
+OpenXRCompositionLayer :: struct { #as using base: GodotClass; } // 467
 
-OpenXRCompositionLayerCylinder :: struct { #as using base: OpaqueClass; } // 468
+OpenXRCompositionLayerCylinder :: struct { #as using base: GodotClass; } // 468
 
-OpenXRCompositionLayerEquirect :: struct { #as using base: OpaqueClass; } // 469
+OpenXRCompositionLayerEquirect :: struct { #as using base: GodotClass; } // 469
 
-OpenXRCompositionLayerQuad :: struct { #as using base: OpaqueClass; } // 470
+OpenXRCompositionLayerQuad :: struct { #as using base: GodotClass; } // 470
 
-OpenXRDpadBindingModifier :: struct { #as using base: OpaqueClass; } // 471
+OpenXRDpadBindingModifier :: struct { #as using base: GodotClass; } // 471
 
-OpenXRExtensionWrapperExtension :: struct { #as using base: OpaqueClass; } // 472
+OpenXRExtensionWrapperExtension :: struct { #as using base: GodotClass; } // 472
 
 OpenXRHand :: struct {  // 473
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Hands :: enum s32 {
         HAND_LEFT :: 0;
@@ -4424,25 +4424,25 @@ OpenXRHand :: struct {  // 473
     }
 }
 
-OpenXRHapticBase :: struct { #as using base: OpaqueClass; } // 474
+OpenXRHapticBase :: struct { #as using base: GodotClass; } // 474
 
-OpenXRHapticVibration :: struct { #as using base: OpaqueClass; } // 475
+OpenXRHapticVibration :: struct { #as using base: GodotClass; } // 475
 
-OpenXRIPBinding :: struct { #as using base: OpaqueClass; } // 476
+OpenXRIPBinding :: struct { #as using base: GodotClass; } // 476
 
-OpenXRIPBindingModifier :: struct { #as using base: OpaqueClass; } // 477
+OpenXRIPBindingModifier :: struct { #as using base: GodotClass; } // 477
 
-OpenXRInteractionProfile :: struct { #as using base: OpaqueClass; } // 478
+OpenXRInteractionProfile :: struct { #as using base: GodotClass; } // 478
 
-OpenXRInteractionProfileEditor :: struct { #as using base: OpaqueClass; } // 479
+OpenXRInteractionProfileEditor :: struct { #as using base: GodotClass; } // 479
 
-OpenXRInteractionProfileEditorBase :: struct { #as using base: OpaqueClass; } // 480
+OpenXRInteractionProfileEditorBase :: struct { #as using base: GodotClass; } // 480
 
-OpenXRInteractionProfileMetadata :: struct { #as using base: OpaqueClass; } // 481
+OpenXRInteractionProfileMetadata :: struct { #as using base: GodotClass; } // 481
 
 OpenXRInterface :: struct {  // 482
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Hand :: enum s32 {
         HAND_LEFT :: 0;
@@ -4504,21 +4504,21 @@ OpenXRInterface :: struct {  // 482
     } @bitfield
 }
 
-OpenXRVisibilityMask :: struct { #as using base: OpaqueClass; } // 483
+OpenXRVisibilityMask :: struct { #as using base: GodotClass; } // 483
 
-OptimizedTranslation :: struct { #as using base: OpaqueClass; } // 484
+OptimizedTranslation :: struct { #as using base: GodotClass; } // 484
 
-OptionButton :: struct { #as using base: OpaqueClass; } // 485
+OptionButton :: struct { #as using base: GodotClass; } // 485
 
-PCKPacker :: struct { #as using base: OpaqueClass; } // 486
+PCKPacker :: struct { #as using base: GodotClass; } // 486
 
-PackedDataContainer :: struct { #as using base: OpaqueClass; } // 487
+PackedDataContainer :: struct { #as using base: GodotClass; } // 487
 
-PackedDataContainerRef :: struct { #as using base: OpaqueClass; } // 488
+PackedDataContainerRef :: struct { #as using base: GodotClass; } // 488
 
 PackedScene :: struct {  // 489
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     GenEditState :: enum s32 {
         GEN_EDIT_STATE_DISABLED :: 0;
@@ -4528,11 +4528,11 @@ PackedScene :: struct {  // 489
     }
 }
 
-PacketPeer :: struct { #as using base: OpaqueClass; } // 490
+PacketPeer :: struct { #as using base: GodotClass; } // 490
 
 PacketPeerDTLS :: struct {  // 491
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Status :: enum s32 {
         STATUS_DISCONNECTED :: 0;
@@ -4543,27 +4543,27 @@ PacketPeerDTLS :: struct {  // 491
     }
 }
 
-PacketPeerExtension :: struct { #as using base: OpaqueClass; } // 492
+PacketPeerExtension :: struct { #as using base: GodotClass; } // 492
 
-PacketPeerStream :: struct { #as using base: OpaqueClass; } // 493
+PacketPeerStream :: struct { #as using base: GodotClass; } // 493
 
-PacketPeerUDP :: struct { #as using base: OpaqueClass; } // 494
+PacketPeerUDP :: struct { #as using base: GodotClass; } // 494
 
-Panel :: struct { #as using base: OpaqueClass; } // 495
+Panel :: struct { #as using base: GodotClass; } // 495
 
-PanelContainer :: struct { #as using base: OpaqueClass; } // 496
+PanelContainer :: struct { #as using base: GodotClass; } // 496
 
-PanoramaSkyMaterial :: struct { #as using base: OpaqueClass; } // 497
+PanoramaSkyMaterial :: struct { #as using base: GodotClass; } // 497
 
-Parallax2D :: struct { #as using base: OpaqueClass; } // 498
+Parallax2D :: struct { #as using base: GodotClass; } // 498
 
-ParallaxBackground :: struct { #as using base: OpaqueClass; } // 499
+ParallaxBackground :: struct { #as using base: GodotClass; } // 499
 
-ParallaxLayer :: struct { #as using base: OpaqueClass; } // 500
+ParallaxLayer :: struct { #as using base: GodotClass; } // 500
 
 ParticleProcessMaterial :: struct {  // 501
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Parameter :: enum s32 {
         PARAM_INITIAL_LINEAR_VELOCITY :: 0;
@@ -4623,15 +4623,15 @@ ParticleProcessMaterial :: struct {  // 501
     }
 }
 
-Path2D :: struct { #as using base: OpaqueClass; } // 502
+Path2D :: struct { #as using base: GodotClass; } // 502
 
-Path3D :: struct { #as using base: OpaqueClass; } // 503
+Path3D :: struct { #as using base: GodotClass; } // 503
 
-PathFollow2D :: struct { #as using base: OpaqueClass; } // 504
+PathFollow2D :: struct { #as using base: GodotClass; } // 504
 
 PathFollow3D :: struct {  // 505
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     RotationMode :: enum s32 {
         ROTATION_NONE :: 0;
@@ -4644,7 +4644,7 @@ PathFollow3D :: struct {  // 505
 
 Performance :: struct {  // 506
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Monitor :: enum s32 {
         TIME_FPS :: 0;
@@ -4690,11 +4690,11 @@ Performance :: struct {  // 506
     }
 }
 
-PhysicalBone2D :: struct { #as using base: OpaqueClass; } // 507
+PhysicalBone2D :: struct { #as using base: GodotClass; } // 507
 
 PhysicalBone3D :: struct {  // 508
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     DampMode :: enum s32 {
         DAMP_MODE_COMBINE :: 0;
@@ -4711,43 +4711,43 @@ PhysicalBone3D :: struct {  // 508
     }
 }
 
-PhysicalBoneSimulator3D :: struct { #as using base: OpaqueClass; } // 509
+PhysicalBoneSimulator3D :: struct { #as using base: GodotClass; } // 509
 
-PhysicalSkyMaterial :: struct { #as using base: OpaqueClass; } // 510
+PhysicalSkyMaterial :: struct { #as using base: GodotClass; } // 510
 
-PhysicsBody2D :: struct { #as using base: OpaqueClass; } // 511
+PhysicsBody2D :: struct { #as using base: GodotClass; } // 511
 
-PhysicsBody3D :: struct { #as using base: OpaqueClass; } // 512
+PhysicsBody3D :: struct { #as using base: GodotClass; } // 512
 
-PhysicsDirectBodyState2D :: struct { #as using base: OpaqueClass; } // 513
+PhysicsDirectBodyState2D :: struct { #as using base: GodotClass; } // 513
 
-PhysicsDirectBodyState2DExtension :: struct { #as using base: OpaqueClass; } // 514
+PhysicsDirectBodyState2DExtension :: struct { #as using base: GodotClass; } // 514
 
-PhysicsDirectBodyState3D :: struct { #as using base: OpaqueClass; } // 515
+PhysicsDirectBodyState3D :: struct { #as using base: GodotClass; } // 515
 
-PhysicsDirectBodyState3DExtension :: struct { #as using base: OpaqueClass; } // 516
+PhysicsDirectBodyState3DExtension :: struct { #as using base: GodotClass; } // 516
 
-PhysicsDirectSpaceState2D :: struct { #as using base: OpaqueClass; } // 517
+PhysicsDirectSpaceState2D :: struct { #as using base: GodotClass; } // 517
 
-PhysicsDirectSpaceState2DExtension :: struct { #as using base: OpaqueClass; } // 518
+PhysicsDirectSpaceState2DExtension :: struct { #as using base: GodotClass; } // 518
 
-PhysicsDirectSpaceState3D :: struct { #as using base: OpaqueClass; } // 519
+PhysicsDirectSpaceState3D :: struct { #as using base: GodotClass; } // 519
 
-PhysicsDirectSpaceState3DExtension :: struct { #as using base: OpaqueClass; } // 520
+PhysicsDirectSpaceState3DExtension :: struct { #as using base: GodotClass; } // 520
 
-PhysicsMaterial :: struct { #as using base: OpaqueClass; } // 521
+PhysicsMaterial :: struct { #as using base: GodotClass; } // 521
 
-PhysicsPointQueryParameters2D :: struct { #as using base: OpaqueClass; } // 522
+PhysicsPointQueryParameters2D :: struct { #as using base: GodotClass; } // 522
 
-PhysicsPointQueryParameters3D :: struct { #as using base: OpaqueClass; } // 523
+PhysicsPointQueryParameters3D :: struct { #as using base: GodotClass; } // 523
 
-PhysicsRayQueryParameters2D :: struct { #as using base: OpaqueClass; } // 524
+PhysicsRayQueryParameters2D :: struct { #as using base: GodotClass; } // 524
 
-PhysicsRayQueryParameters3D :: struct { #as using base: OpaqueClass; } // 525
+PhysicsRayQueryParameters3D :: struct { #as using base: GodotClass; } // 525
 
 PhysicsServer2D :: struct {  // 526
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     SpaceParameter :: enum s32 {
         SPACE_PARAM_CONTACT_RECYCLE_RADIUS :: 0;
@@ -4877,13 +4877,13 @@ PhysicsServer2D :: struct {  // 526
     }
 }
 
-PhysicsServer2DExtension :: struct { #as using base: OpaqueClass; } // 527
+PhysicsServer2DExtension :: struct { #as using base: GodotClass; } // 527
 
-PhysicsServer2DManager :: struct { #as using base: OpaqueClass; } // 528
+PhysicsServer2DManager :: struct { #as using base: GodotClass; } // 528
 
 PhysicsServer3D :: struct {  // 529
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     JointType :: enum s32 {
         JOINT_TYPE_PIN :: 0;
@@ -5091,29 +5091,29 @@ PhysicsServer3D :: struct {  // 529
     }
 }
 
-PhysicsServer3DExtension :: struct { #as using base: OpaqueClass; } // 530
+PhysicsServer3DExtension :: struct { #as using base: GodotClass; } // 530
 
-PhysicsServer3DManager :: struct { #as using base: OpaqueClass; } // 531
+PhysicsServer3DManager :: struct { #as using base: GodotClass; } // 531
 
-PhysicsServer3DRenderingServerHandler :: struct { #as using base: OpaqueClass; } // 532
+PhysicsServer3DRenderingServerHandler :: struct { #as using base: GodotClass; } // 532
 
-PhysicsShapeQueryParameters2D :: struct { #as using base: OpaqueClass; } // 533
+PhysicsShapeQueryParameters2D :: struct { #as using base: GodotClass; } // 533
 
-PhysicsShapeQueryParameters3D :: struct { #as using base: OpaqueClass; } // 534
+PhysicsShapeQueryParameters3D :: struct { #as using base: GodotClass; } // 534
 
-PhysicsTestMotionParameters2D :: struct { #as using base: OpaqueClass; } // 535
+PhysicsTestMotionParameters2D :: struct { #as using base: GodotClass; } // 535
 
-PhysicsTestMotionParameters3D :: struct { #as using base: OpaqueClass; } // 536
+PhysicsTestMotionParameters3D :: struct { #as using base: GodotClass; } // 536
 
-PhysicsTestMotionResult2D :: struct { #as using base: OpaqueClass; } // 537
+PhysicsTestMotionResult2D :: struct { #as using base: GodotClass; } // 537
 
-PhysicsTestMotionResult3D :: struct { #as using base: OpaqueClass; } // 538
+PhysicsTestMotionResult3D :: struct { #as using base: GodotClass; } // 538
 
-PinJoint2D :: struct { #as using base: OpaqueClass; } // 539
+PinJoint2D :: struct { #as using base: GodotClass; } // 539
 
 PinJoint3D :: struct {  // 540
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Param :: enum s32 {
         PARAM_BIAS :: 0;
@@ -5122,25 +5122,25 @@ PinJoint3D :: struct {  // 540
     }
 }
 
-PlaceholderCubemap :: struct { #as using base: OpaqueClass; } // 541
+PlaceholderCubemap :: struct { #as using base: GodotClass; } // 541
 
-PlaceholderCubemapArray :: struct { #as using base: OpaqueClass; } // 542
+PlaceholderCubemapArray :: struct { #as using base: GodotClass; } // 542
 
-PlaceholderMaterial :: struct { #as using base: OpaqueClass; } // 543
+PlaceholderMaterial :: struct { #as using base: GodotClass; } // 543
 
-PlaceholderMesh :: struct { #as using base: OpaqueClass; } // 544
+PlaceholderMesh :: struct { #as using base: GodotClass; } // 544
 
-PlaceholderTexture2D :: struct { #as using base: OpaqueClass; } // 545
+PlaceholderTexture2D :: struct { #as using base: GodotClass; } // 545
 
-PlaceholderTexture2DArray :: struct { #as using base: OpaqueClass; } // 546
+PlaceholderTexture2DArray :: struct { #as using base: GodotClass; } // 546
 
-PlaceholderTexture3D :: struct { #as using base: OpaqueClass; } // 547
+PlaceholderTexture3D :: struct { #as using base: GodotClass; } // 547
 
-PlaceholderTextureLayered :: struct { #as using base: OpaqueClass; } // 548
+PlaceholderTextureLayered :: struct { #as using base: GodotClass; } // 548
 
 PlaneMesh :: struct {  // 549
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Orientation :: enum s32 {
         FACE_X :: 0;
@@ -5149,25 +5149,25 @@ PlaneMesh :: struct {  // 549
     }
 }
 
-PointLight2D :: struct { #as using base: OpaqueClass; } // 550
+PointLight2D :: struct { #as using base: GodotClass; } // 550
 
-PointMesh :: struct { #as using base: OpaqueClass; } // 551
+PointMesh :: struct { #as using base: GodotClass; } // 551
 
-Polygon2D :: struct { #as using base: OpaqueClass; } // 552
+Polygon2D :: struct { #as using base: GodotClass; } // 552
 
-PolygonOccluder3D :: struct { #as using base: OpaqueClass; } // 553
+PolygonOccluder3D :: struct { #as using base: GodotClass; } // 553
 
-PolygonPathFinder :: struct { #as using base: OpaqueClass; } // 554
+PolygonPathFinder :: struct { #as using base: GodotClass; } // 554
 
-Popup :: struct { #as using base: OpaqueClass; } // 555
+Popup :: struct { #as using base: GodotClass; } // 555
 
-PopupMenu :: struct { #as using base: OpaqueClass; } // 556
+PopupMenu :: struct { #as using base: GodotClass; } // 556
 
-PopupPanel :: struct { #as using base: OpaqueClass; } // 557
+PopupPanel :: struct { #as using base: GodotClass; } // 557
 
 PortableCompressedTexture2D :: struct {  // 558
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     CompressionMode :: enum s32 {
         COMPRESSION_MODE_LOSSLESS :: 0;
@@ -5179,15 +5179,15 @@ PortableCompressedTexture2D :: struct {  // 558
     }
 }
 
-PrimitiveMesh :: struct { #as using base: OpaqueClass; } // 559
+PrimitiveMesh :: struct { #as using base: GodotClass; } // 559
 
-PrismMesh :: struct { #as using base: OpaqueClass; } // 560
+PrismMesh :: struct { #as using base: GodotClass; } // 560
 
-ProceduralSkyMaterial :: struct { #as using base: OpaqueClass; } // 561
+ProceduralSkyMaterial :: struct { #as using base: GodotClass; } // 561
 
 ProgressBar :: struct {  // 562
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     FillMode :: enum s32 {
         FILL_BEGIN_TO_END :: 0;
@@ -5197,63 +5197,63 @@ ProgressBar :: struct {  // 562
     }
 }
 
-ProjectSettings :: struct { #as using base: OpaqueClass; } // 563
+ProjectSettings :: struct { #as using base: GodotClass; } // 563
 
-PropertyTweener :: struct { #as using base: OpaqueClass; } // 564
+PropertyTweener :: struct { #as using base: GodotClass; } // 564
 
-QuadMesh :: struct { #as using base: OpaqueClass; } // 565
+QuadMesh :: struct { #as using base: GodotClass; } // 565
 
-QuadOccluder3D :: struct { #as using base: OpaqueClass; } // 566
+QuadOccluder3D :: struct { #as using base: GodotClass; } // 566
 
-RDAttachmentFormat :: struct { #as using base: OpaqueClass; } // 567
+RDAttachmentFormat :: struct { #as using base: GodotClass; } // 567
 
-RDFramebufferPass :: struct { #as using base: OpaqueClass; } // 568
+RDFramebufferPass :: struct { #as using base: GodotClass; } // 568
 
-RDPipelineColorBlendState :: struct { #as using base: OpaqueClass; } // 569
+RDPipelineColorBlendState :: struct { #as using base: GodotClass; } // 569
 
-RDPipelineColorBlendStateAttachment :: struct { #as using base: OpaqueClass; } // 570
+RDPipelineColorBlendStateAttachment :: struct { #as using base: GodotClass; } // 570
 
-RDPipelineDepthStencilState :: struct { #as using base: OpaqueClass; } // 571
+RDPipelineDepthStencilState :: struct { #as using base: GodotClass; } // 571
 
-RDPipelineMultisampleState :: struct { #as using base: OpaqueClass; } // 572
+RDPipelineMultisampleState :: struct { #as using base: GodotClass; } // 572
 
-RDPipelineRasterizationState :: struct { #as using base: OpaqueClass; } // 573
+RDPipelineRasterizationState :: struct { #as using base: GodotClass; } // 573
 
-RDPipelineSpecializationConstant :: struct { #as using base: OpaqueClass; } // 574
+RDPipelineSpecializationConstant :: struct { #as using base: GodotClass; } // 574
 
-RDSamplerState :: struct { #as using base: OpaqueClass; } // 575
+RDSamplerState :: struct { #as using base: GodotClass; } // 575
 
-RDShaderFile :: struct { #as using base: OpaqueClass; } // 576
+RDShaderFile :: struct { #as using base: GodotClass; } // 576
 
-RDShaderSPIRV :: struct { #as using base: OpaqueClass; } // 577
+RDShaderSPIRV :: struct { #as using base: GodotClass; } // 577
 
-RDShaderSource :: struct { #as using base: OpaqueClass; } // 578
+RDShaderSource :: struct { #as using base: GodotClass; } // 578
 
-RDTextureFormat :: struct { #as using base: OpaqueClass; } // 579
+RDTextureFormat :: struct { #as using base: GodotClass; } // 579
 
-RDTextureView :: struct { #as using base: OpaqueClass; } // 580
+RDTextureView :: struct { #as using base: GodotClass; } // 580
 
-RDUniform :: struct { #as using base: OpaqueClass; } // 581
+RDUniform :: struct { #as using base: GodotClass; } // 581
 
-RDVertexAttribute :: struct { #as using base: OpaqueClass; } // 582
+RDVertexAttribute :: struct { #as using base: GodotClass; } // 582
 
-RandomNumberGenerator :: struct { #as using base: OpaqueClass; } // 583
+RandomNumberGenerator :: struct { #as using base: GodotClass; } // 583
 
-Range :: struct { #as using base: OpaqueClass; } // 584
+Range :: struct { #as using base: GodotClass; } // 584
 
-RayCast2D :: struct { #as using base: OpaqueClass; } // 585
+RayCast2D :: struct { #as using base: GodotClass; } // 585
 
-RayCast3D :: struct { #as using base: OpaqueClass; } // 586
+RayCast3D :: struct { #as using base: GodotClass; } // 586
 
-RectangleShape2D :: struct { #as using base: OpaqueClass; } // 587
+RectangleShape2D :: struct { #as using base: GodotClass; } // 587
 
-RefCounted :: struct { #as using base: OpaqueClass; } // 588
+RefCounted :: struct { #as using base: GodotClass; } // 588
 
-ReferenceRect :: struct { #as using base: OpaqueClass; } // 589
+ReferenceRect :: struct { #as using base: GodotClass; } // 589
 
 ReflectionProbe :: struct {  // 590
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     UpdateMode :: enum s32 {
         UPDATE_ONCE :: 0;
@@ -5267,37 +5267,37 @@ ReflectionProbe :: struct {  // 590
     }
 }
 
-RegEx :: struct { #as using base: OpaqueClass; } // 591
+RegEx :: struct { #as using base: GodotClass; } // 591
 
-RegExMatch :: struct { #as using base: OpaqueClass; } // 592
+RegExMatch :: struct { #as using base: GodotClass; } // 592
 
-RemoteTransform2D :: struct { #as using base: OpaqueClass; } // 593
+RemoteTransform2D :: struct { #as using base: GodotClass; } // 593
 
-RemoteTransform3D :: struct { #as using base: OpaqueClass; } // 594
+RemoteTransform3D :: struct { #as using base: GodotClass; } // 594
 
-RenderData :: struct { #as using base: OpaqueClass; } // 595
+RenderData :: struct { #as using base: GodotClass; } // 595
 
-RenderDataExtension :: struct { #as using base: OpaqueClass; } // 596
+RenderDataExtension :: struct { #as using base: GodotClass; } // 596
 
-RenderDataRD :: struct { #as using base: OpaqueClass; } // 597
+RenderDataRD :: struct { #as using base: GodotClass; } // 597
 
-RenderSceneBuffers :: struct { #as using base: OpaqueClass; } // 598
+RenderSceneBuffers :: struct { #as using base: GodotClass; } // 598
 
-RenderSceneBuffersConfiguration :: struct { #as using base: OpaqueClass; } // 599
+RenderSceneBuffersConfiguration :: struct { #as using base: GodotClass; } // 599
 
-RenderSceneBuffersExtension :: struct { #as using base: OpaqueClass; } // 600
+RenderSceneBuffersExtension :: struct { #as using base: GodotClass; } // 600
 
-RenderSceneBuffersRD :: struct { #as using base: OpaqueClass; } // 601
+RenderSceneBuffersRD :: struct { #as using base: GodotClass; } // 601
 
-RenderSceneData :: struct { #as using base: OpaqueClass; } // 602
+RenderSceneData :: struct { #as using base: GodotClass; } // 602
 
-RenderSceneDataExtension :: struct { #as using base: OpaqueClass; } // 603
+RenderSceneDataExtension :: struct { #as using base: GodotClass; } // 603
 
-RenderSceneDataRD :: struct { #as using base: OpaqueClass; } // 604
+RenderSceneDataRD :: struct { #as using base: GodotClass; } // 604
 
 RenderingDevice :: struct {  // 605
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     DeviceType :: enum s32 {
         DEVICE_TYPE_OTHER :: 0;
@@ -5950,7 +5950,7 @@ RenderingDevice :: struct {  // 605
 
 RenderingServer :: struct {  // 606
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     TextureType :: enum s32 {
         TEXTURE_TYPE_2D :: 0;
@@ -6674,11 +6674,11 @@ RenderingServer :: struct {  // 606
     }
 }
 
-Resource :: struct { #as using base: OpaqueClass; } // 607
+Resource :: struct { #as using base: GodotClass; } // 607
 
 ResourceFormatLoader :: struct {  // 608
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     CacheMode :: enum s32 {
         CACHE_MODE_IGNORE :: 0;
@@ -6689,11 +6689,11 @@ ResourceFormatLoader :: struct {  // 608
     }
 }
 
-ResourceFormatSaver :: struct { #as using base: OpaqueClass; } // 609
+ResourceFormatSaver :: struct { #as using base: GodotClass; } // 609
 
 ResourceImporter :: struct {  // 610
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ImportOrder :: enum s32 {
         IMPORT_ORDER_DEFAULT :: 0;
@@ -6701,39 +6701,39 @@ ResourceImporter :: struct {  // 610
     }
 }
 
-ResourceImporterBMFont :: struct { #as using base: OpaqueClass; } // 611
+ResourceImporterBMFont :: struct { #as using base: GodotClass; } // 611
 
-ResourceImporterBitMap :: struct { #as using base: OpaqueClass; } // 612
+ResourceImporterBitMap :: struct { #as using base: GodotClass; } // 612
 
-ResourceImporterCSVTranslation :: struct { #as using base: OpaqueClass; } // 613
+ResourceImporterCSVTranslation :: struct { #as using base: GodotClass; } // 613
 
-ResourceImporterDynamicFont :: struct { #as using base: OpaqueClass; } // 614
+ResourceImporterDynamicFont :: struct { #as using base: GodotClass; } // 614
 
-ResourceImporterImage :: struct { #as using base: OpaqueClass; } // 615
+ResourceImporterImage :: struct { #as using base: GodotClass; } // 615
 
-ResourceImporterImageFont :: struct { #as using base: OpaqueClass; } // 616
+ResourceImporterImageFont :: struct { #as using base: GodotClass; } // 616
 
-ResourceImporterLayeredTexture :: struct { #as using base: OpaqueClass; } // 617
+ResourceImporterLayeredTexture :: struct { #as using base: GodotClass; } // 617
 
-ResourceImporterMP3 :: struct { #as using base: OpaqueClass; } // 618
+ResourceImporterMP3 :: struct { #as using base: GodotClass; } // 618
 
-ResourceImporterOBJ :: struct { #as using base: OpaqueClass; } // 619
+ResourceImporterOBJ :: struct { #as using base: GodotClass; } // 619
 
-ResourceImporterOggVorbis :: struct { #as using base: OpaqueClass; } // 620
+ResourceImporterOggVorbis :: struct { #as using base: GodotClass; } // 620
 
-ResourceImporterScene :: struct { #as using base: OpaqueClass; } // 621
+ResourceImporterScene :: struct { #as using base: GodotClass; } // 621
 
-ResourceImporterShaderFile :: struct { #as using base: OpaqueClass; } // 622
+ResourceImporterShaderFile :: struct { #as using base: GodotClass; } // 622
 
-ResourceImporterTexture :: struct { #as using base: OpaqueClass; } // 623
+ResourceImporterTexture :: struct { #as using base: GodotClass; } // 623
 
-ResourceImporterTextureAtlas :: struct { #as using base: OpaqueClass; } // 624
+ResourceImporterTextureAtlas :: struct { #as using base: GodotClass; } // 624
 
-ResourceImporterWAV :: struct { #as using base: OpaqueClass; } // 625
+ResourceImporterWAV :: struct { #as using base: GodotClass; } // 625
 
 ResourceLoader :: struct {  // 626
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ThreadLoadStatus :: enum s32 {
         THREAD_LOAD_INVALID_RESOURCE :: 0;
@@ -6751,11 +6751,11 @@ ResourceLoader :: struct {  // 626
     }
 }
 
-ResourcePreloader :: struct { #as using base: OpaqueClass; } // 627
+ResourcePreloader :: struct { #as using base: GodotClass; } // 627
 
 ResourceSaver :: struct {  // 628
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     SaverFlags :: enum u64 {
         FLAG_NONE :: 0;
@@ -6769,11 +6769,11 @@ ResourceSaver :: struct {  // 628
     } @bitfield
 }
 
-ResourceUID :: struct { #as using base: OpaqueClass; } // 629
+ResourceUID :: struct { #as using base: GodotClass; } // 629
 
 RetargetModifier3D :: struct {  // 630
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     TransformFlag :: enum u64 {
         TRANSFORM_FLAG_POSITION :: 1;
@@ -6785,7 +6785,7 @@ RetargetModifier3D :: struct {  // 630
 
 RibbonTrailMesh :: struct {  // 631
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Shape :: enum s32 {
         SHAPE_FLAT :: 0;
@@ -6793,11 +6793,11 @@ RibbonTrailMesh :: struct {  // 631
     }
 }
 
-RichTextEffect :: struct { #as using base: OpaqueClass; } // 632
+RichTextEffect :: struct { #as using base: GodotClass; } // 632
 
 RichTextLabel :: struct {  // 633
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ListType :: enum s32 {
         LIST_NUMBERS :: 0;
@@ -6832,7 +6832,7 @@ RichTextLabel :: struct {  // 633
 
 RigidBody2D :: struct {  // 634
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     FreezeMode :: enum s32 {
         FREEZE_MODE_STATIC :: 0;
@@ -6858,7 +6858,7 @@ RigidBody2D :: struct {  // 634
 
 RigidBody3D :: struct {  // 635
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     FreezeMode :: enum s32 {
         FREEZE_MODE_STATIC :: 0;
@@ -6876,13 +6876,13 @@ RigidBody3D :: struct {  // 635
     }
 }
 
-RootMotionView :: struct { #as using base: OpaqueClass; } // 636
+RootMotionView :: struct { #as using base: GodotClass; } // 636
 
-SceneMultiplayer :: struct { #as using base: OpaqueClass; } // 637
+SceneMultiplayer :: struct { #as using base: GodotClass; } // 637
 
 SceneReplicationConfig :: struct {  // 638
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ReplicationMode :: enum s32 {
         REPLICATION_MODE_NEVER :: 0;
@@ -6893,7 +6893,7 @@ SceneReplicationConfig :: struct {  // 638
 
 SceneState :: struct {  // 639
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     GenEditState :: enum s32 {
         GEN_EDIT_STATE_DISABLED :: 0;
@@ -6905,7 +6905,7 @@ SceneState :: struct {  // 639
 
 SceneTree :: struct {  // 640
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     GroupCallFlags :: enum s32 {
         GROUP_CALL_DEFAULT :: 0;
@@ -6915,21 +6915,21 @@ SceneTree :: struct {  // 640
     }
 }
 
-SceneTreeTimer :: struct { #as using base: OpaqueClass; } // 641
+SceneTreeTimer :: struct { #as using base: GodotClass; } // 641
 
-Script :: struct { #as using base: OpaqueClass; } // 642
+Script :: struct { #as using base: GodotClass; } // 642
 
-ScriptCreateDialog :: struct { #as using base: OpaqueClass; } // 643
+ScriptCreateDialog :: struct { #as using base: GodotClass; } // 643
 
-ScriptEditor :: struct { #as using base: OpaqueClass; } // 644
+ScriptEditor :: struct { #as using base: GodotClass; } // 644
 
-ScriptEditorBase :: struct { #as using base: OpaqueClass; } // 645
+ScriptEditorBase :: struct { #as using base: GodotClass; } // 645
 
-ScriptExtension :: struct { #as using base: OpaqueClass; } // 646
+ScriptExtension :: struct { #as using base: GodotClass; } // 646
 
 ScriptLanguage :: struct {  // 647
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ScriptNameCasing :: enum s32 {
         SCRIPT_NAME_CASING_AUTO :: 0;
@@ -6941,7 +6941,7 @@ ScriptLanguage :: struct {  // 647
 
 ScriptLanguageExtension :: struct {  // 648
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     LookupResultType :: enum s32 {
         LOOKUP_RESULT_SCRIPT_LOCATION :: 0;
@@ -6980,11 +6980,11 @@ ScriptLanguageExtension :: struct {  // 648
     }
 }
 
-ScrollBar :: struct { #as using base: OpaqueClass; } // 649
+ScrollBar :: struct { #as using base: GodotClass; } // 649
 
 ScrollContainer :: struct {  // 650
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ScrollMode :: enum s32 {
         SCROLL_MODE_DISABLED :: 0;
@@ -6995,19 +6995,19 @@ ScrollContainer :: struct {  // 650
     }
 }
 
-SegmentShape2D :: struct { #as using base: OpaqueClass; } // 651
+SegmentShape2D :: struct { #as using base: GodotClass; } // 651
 
-Semaphore :: struct { #as using base: OpaqueClass; } // 652
+Semaphore :: struct { #as using base: GodotClass; } // 652
 
-SeparationRayShape2D :: struct { #as using base: OpaqueClass; } // 653
+SeparationRayShape2D :: struct { #as using base: GodotClass; } // 653
 
-SeparationRayShape3D :: struct { #as using base: OpaqueClass; } // 654
+SeparationRayShape3D :: struct { #as using base: GodotClass; } // 654
 
-Separator :: struct { #as using base: OpaqueClass; } // 655
+Separator :: struct { #as using base: GodotClass; } // 655
 
 Shader :: struct {  // 656
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Mode :: enum s32 {
         MODE_SPATIAL :: 0;
@@ -7018,29 +7018,29 @@ Shader :: struct {  // 656
     }
 }
 
-ShaderGlobalsOverride :: struct { #as using base: OpaqueClass; } // 657
+ShaderGlobalsOverride :: struct { #as using base: GodotClass; } // 657
 
-ShaderInclude :: struct { #as using base: OpaqueClass; } // 658
+ShaderInclude :: struct { #as using base: GodotClass; } // 658
 
-ShaderIncludeDB :: struct { #as using base: OpaqueClass; } // 659
+ShaderIncludeDB :: struct { #as using base: GodotClass; } // 659
 
-ShaderMaterial :: struct { #as using base: OpaqueClass; } // 660
+ShaderMaterial :: struct { #as using base: GodotClass; } // 660
 
-Shape2D :: struct { #as using base: OpaqueClass; } // 661
+Shape2D :: struct { #as using base: GodotClass; } // 661
 
-Shape3D :: struct { #as using base: OpaqueClass; } // 662
+Shape3D :: struct { #as using base: GodotClass; } // 662
 
-ShapeCast2D :: struct { #as using base: OpaqueClass; } // 663
+ShapeCast2D :: struct { #as using base: GodotClass; } // 663
 
-ShapeCast3D :: struct { #as using base: OpaqueClass; } // 664
+ShapeCast3D :: struct { #as using base: GodotClass; } // 664
 
-Shortcut :: struct { #as using base: OpaqueClass; } // 665
+Shortcut :: struct { #as using base: GodotClass; } // 665
 
-Skeleton2D :: struct { #as using base: OpaqueClass; } // 666
+Skeleton2D :: struct { #as using base: GodotClass; } // 666
 
 Skeleton3D :: struct {  // 667
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ModifierCallbackModeProcess :: enum s32 {
         MODIFIER_CALLBACK_MODE_PROCESS_PHYSICS :: 0;
@@ -7048,29 +7048,29 @@ Skeleton3D :: struct {  // 667
     }
 }
 
-SkeletonIK3D :: struct { #as using base: OpaqueClass; } // 668
+SkeletonIK3D :: struct { #as using base: GodotClass; } // 668
 
-SkeletonModification2D :: struct { #as using base: OpaqueClass; } // 669
+SkeletonModification2D :: struct { #as using base: GodotClass; } // 669
 
-SkeletonModification2DCCDIK :: struct { #as using base: OpaqueClass; } // 670
+SkeletonModification2DCCDIK :: struct { #as using base: GodotClass; } // 670
 
-SkeletonModification2DFABRIK :: struct { #as using base: OpaqueClass; } // 671
+SkeletonModification2DFABRIK :: struct { #as using base: GodotClass; } // 671
 
-SkeletonModification2DJiggle :: struct { #as using base: OpaqueClass; } // 672
+SkeletonModification2DJiggle :: struct { #as using base: GodotClass; } // 672
 
-SkeletonModification2DLookAt :: struct { #as using base: OpaqueClass; } // 673
+SkeletonModification2DLookAt :: struct { #as using base: GodotClass; } // 673
 
-SkeletonModification2DPhysicalBones :: struct { #as using base: OpaqueClass; } // 674
+SkeletonModification2DPhysicalBones :: struct { #as using base: GodotClass; } // 674
 
-SkeletonModification2DStackHolder :: struct { #as using base: OpaqueClass; } // 675
+SkeletonModification2DStackHolder :: struct { #as using base: GodotClass; } // 675
 
-SkeletonModification2DTwoBoneIK :: struct { #as using base: OpaqueClass; } // 676
+SkeletonModification2DTwoBoneIK :: struct { #as using base: GodotClass; } // 676
 
-SkeletonModificationStack2D :: struct { #as using base: OpaqueClass; } // 677
+SkeletonModificationStack2D :: struct { #as using base: GodotClass; } // 677
 
 SkeletonModifier3D :: struct {  // 678
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     BoneAxis :: enum s32 {
         BONE_AXIS_PLUS_X :: 0;
@@ -7084,7 +7084,7 @@ SkeletonModifier3D :: struct {  // 678
 
 SkeletonProfile :: struct {  // 679
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     TailDirection :: enum s32 {
         TAIL_DIRECTION_AVERAGE_CHILDREN :: 0;
@@ -7093,15 +7093,15 @@ SkeletonProfile :: struct {  // 679
     }
 }
 
-SkeletonProfileHumanoid :: struct { #as using base: OpaqueClass; } // 680
+SkeletonProfileHumanoid :: struct { #as using base: GodotClass; } // 680
 
-Skin :: struct { #as using base: OpaqueClass; } // 681
+Skin :: struct { #as using base: GodotClass; } // 681
 
-SkinReference :: struct { #as using base: OpaqueClass; } // 682
+SkinReference :: struct { #as using base: GodotClass; } // 682
 
 Sky :: struct {  // 683
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     RadianceSize :: enum s32 {
         RADIANCE_SIZE_32 :: 0;
@@ -7122,11 +7122,11 @@ Sky :: struct {  // 683
     }
 }
 
-Slider :: struct { #as using base: OpaqueClass; } // 684
+Slider :: struct { #as using base: GodotClass; } // 684
 
 SliderJoint3D :: struct {  // 685
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Param :: enum s32 {
         PARAM_LINEAR_LIMIT_UPPER :: 0;
@@ -7157,7 +7157,7 @@ SliderJoint3D :: struct {  // 685
 
 SoftBody3D :: struct {  // 686
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     DisableMode :: enum s32 {
         DISABLE_MODE_REMOVE :: 0;
@@ -7165,17 +7165,17 @@ SoftBody3D :: struct {  // 686
     }
 }
 
-SphereMesh :: struct { #as using base: OpaqueClass; } // 687
+SphereMesh :: struct { #as using base: GodotClass; } // 687
 
-SphereOccluder3D :: struct { #as using base: OpaqueClass; } // 688
+SphereOccluder3D :: struct { #as using base: GodotClass; } // 688
 
-SphereShape3D :: struct { #as using base: OpaqueClass; } // 689
+SphereShape3D :: struct { #as using base: GodotClass; } // 689
 
-SpinBox :: struct { #as using base: OpaqueClass; } // 690
+SpinBox :: struct { #as using base: GodotClass; } // 690
 
 SplitContainer :: struct {  // 691
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     DraggerVisibility :: enum s32 {
         DRAGGER_VISIBLE :: 0;
@@ -7184,21 +7184,21 @@ SplitContainer :: struct {  // 691
     }
 }
 
-SpotLight3D :: struct { #as using base: OpaqueClass; } // 692
+SpotLight3D :: struct { #as using base: GodotClass; } // 692
 
-SpringArm3D :: struct { #as using base: OpaqueClass; } // 693
+SpringArm3D :: struct { #as using base: GodotClass; } // 693
 
-SpringBoneCollision3D :: struct { #as using base: OpaqueClass; } // 694
+SpringBoneCollision3D :: struct { #as using base: GodotClass; } // 694
 
-SpringBoneCollisionCapsule3D :: struct { #as using base: OpaqueClass; } // 695
+SpringBoneCollisionCapsule3D :: struct { #as using base: GodotClass; } // 695
 
-SpringBoneCollisionPlane3D :: struct { #as using base: OpaqueClass; } // 696
+SpringBoneCollisionPlane3D :: struct { #as using base: GodotClass; } // 696
 
-SpringBoneCollisionSphere3D :: struct { #as using base: OpaqueClass; } // 697
+SpringBoneCollisionSphere3D :: struct { #as using base: GodotClass; } // 697
 
 SpringBoneSimulator3D :: struct {  // 698
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     BoneDirection :: enum s32 {
         BONE_DIRECTION_PLUS_X :: 0;
@@ -7224,13 +7224,13 @@ SpringBoneSimulator3D :: struct {  // 698
     }
 }
 
-Sprite2D :: struct { #as using base: OpaqueClass; } // 699
+Sprite2D :: struct { #as using base: GodotClass; } // 699
 
-Sprite3D :: struct { #as using base: OpaqueClass; } // 700
+Sprite3D :: struct { #as using base: GodotClass; } // 700
 
 SpriteBase3D :: struct {  // 701
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     DrawFlags :: enum s32 {
         FLAG_TRANSPARENT :: 0;
@@ -7249,27 +7249,27 @@ SpriteBase3D :: struct {  // 701
     }
 }
 
-SpriteFrames :: struct { #as using base: OpaqueClass; } // 702
+SpriteFrames :: struct { #as using base: GodotClass; } // 702
 
-StandardMaterial3D :: struct { #as using base: OpaqueClass; } // 703
+StandardMaterial3D :: struct { #as using base: GodotClass; } // 703
 
-StaticBody2D :: struct { #as using base: OpaqueClass; } // 704
+StaticBody2D :: struct { #as using base: GodotClass; } // 704
 
-StaticBody3D :: struct { #as using base: OpaqueClass; } // 705
+StaticBody3D :: struct { #as using base: GodotClass; } // 705
 
-StatusIndicator :: struct { #as using base: OpaqueClass; } // 706
+StatusIndicator :: struct { #as using base: GodotClass; } // 706
 
-StreamPeer :: struct { #as using base: OpaqueClass; } // 707
+StreamPeer :: struct { #as using base: GodotClass; } // 707
 
-StreamPeerBuffer :: struct { #as using base: OpaqueClass; } // 708
+StreamPeerBuffer :: struct { #as using base: GodotClass; } // 708
 
-StreamPeerExtension :: struct { #as using base: OpaqueClass; } // 709
+StreamPeerExtension :: struct { #as using base: GodotClass; } // 709
 
-StreamPeerGZIP :: struct { #as using base: OpaqueClass; } // 710
+StreamPeerGZIP :: struct { #as using base: GodotClass; } // 710
 
 StreamPeerTCP :: struct {  // 711
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Status :: enum s32 {
         STATUS_NONE :: 0;
@@ -7281,7 +7281,7 @@ StreamPeerTCP :: struct {  // 711
 
 StreamPeerTLS :: struct {  // 712
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Status :: enum s32 {
         STATUS_DISCONNECTED :: 0;
@@ -7292,17 +7292,17 @@ StreamPeerTLS :: struct {  // 712
     }
 }
 
-StyleBox :: struct { #as using base: OpaqueClass; } // 713
+StyleBox :: struct { #as using base: GodotClass; } // 713
 
-StyleBoxEmpty :: struct { #as using base: OpaqueClass; } // 714
+StyleBoxEmpty :: struct { #as using base: GodotClass; } // 714
 
-StyleBoxFlat :: struct { #as using base: OpaqueClass; } // 715
+StyleBoxFlat :: struct { #as using base: GodotClass; } // 715
 
-StyleBoxLine :: struct { #as using base: OpaqueClass; } // 716
+StyleBoxLine :: struct { #as using base: GodotClass; } // 716
 
 StyleBoxTexture :: struct {  // 717
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     AxisStretchMode :: enum s32 {
         AXIS_STRETCH_MODE_STRETCH :: 0;
@@ -7313,7 +7313,7 @@ StyleBoxTexture :: struct {  // 717
 
 SubViewport :: struct {  // 718
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ClearMode :: enum s32 {
         CLEAR_MODE_ALWAYS :: 0;
@@ -7330,13 +7330,13 @@ SubViewport :: struct {  // 718
     }
 }
 
-SubViewportContainer :: struct { #as using base: OpaqueClass; } // 719
+SubViewportContainer :: struct { #as using base: GodotClass; } // 719
 
-SubtweenTweener :: struct { #as using base: OpaqueClass; } // 720
+SubtweenTweener :: struct { #as using base: GodotClass; } // 720
 
 SurfaceTool :: struct {  // 721
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     CustomFormat :: enum s32 {
         CUSTOM_RGBA8_UNORM :: 0;
@@ -7356,17 +7356,17 @@ SurfaceTool :: struct {  // 721
     }
 }
 
-SyntaxHighlighter :: struct { #as using base: OpaqueClass; } // 722
+SyntaxHighlighter :: struct { #as using base: GodotClass; } // 722
 
-SystemFont :: struct { #as using base: OpaqueClass; } // 723
+SystemFont :: struct { #as using base: GodotClass; } // 723
 
-TCPServer :: struct { #as using base: OpaqueClass; } // 724
+TCPServer :: struct { #as using base: GodotClass; } // 724
 
-TLSOptions :: struct { #as using base: OpaqueClass; } // 725
+TLSOptions :: struct { #as using base: GodotClass; } // 725
 
 TabBar :: struct {  // 726
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     AlignmentMode :: enum s32 {
         ALIGNMENT_LEFT :: 0;
@@ -7385,7 +7385,7 @@ TabBar :: struct {  // 726
 
 TabContainer :: struct {  // 727
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     TabPosition :: enum s32 {
         POSITION_TOP :: 0;
@@ -7396,7 +7396,7 @@ TabContainer :: struct {  // 727
 
 TextEdit :: struct {  // 728
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     MenuItems :: enum s32 {
         MENU_CUT :: 0;
@@ -7471,15 +7471,15 @@ TextEdit :: struct {  // 728
     }
 }
 
-TextLine :: struct { #as using base: OpaqueClass; } // 729
+TextLine :: struct { #as using base: GodotClass; } // 729
 
-TextMesh :: struct { #as using base: OpaqueClass; } // 730
+TextMesh :: struct { #as using base: GodotClass; } // 730
 
-TextParagraph :: struct { #as using base: OpaqueClass; } // 731
+TextParagraph :: struct { #as using base: GodotClass; } // 731
 
 TextServer :: struct {  // 732
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     FontAntialiasing :: enum s32 {
         FONT_ANTIALIASING_NONE :: 0;
@@ -7649,31 +7649,31 @@ TextServer :: struct {  // 732
     }
 }
 
-TextServerAdvanced :: struct { #as using base: OpaqueClass; } // 733
+TextServerAdvanced :: struct { #as using base: GodotClass; } // 733
 
-TextServerDummy :: struct { #as using base: OpaqueClass; } // 734
+TextServerDummy :: struct { #as using base: GodotClass; } // 734
 
-TextServerExtension :: struct { #as using base: OpaqueClass; } // 735
+TextServerExtension :: struct { #as using base: GodotClass; } // 735
 
-TextServerManager :: struct { #as using base: OpaqueClass; } // 736
+TextServerManager :: struct { #as using base: GodotClass; } // 736
 
-Texture :: struct { #as using base: OpaqueClass; } // 737
+Texture :: struct { #as using base: GodotClass; } // 737
 
-Texture2D :: struct { #as using base: OpaqueClass; } // 738
+Texture2D :: struct { #as using base: GodotClass; } // 738
 
-Texture2DArray :: struct { #as using base: OpaqueClass; } // 739
+Texture2DArray :: struct { #as using base: GodotClass; } // 739
 
-Texture2DArrayRD :: struct { #as using base: OpaqueClass; } // 740
+Texture2DArrayRD :: struct { #as using base: GodotClass; } // 740
 
-Texture2DRD :: struct { #as using base: OpaqueClass; } // 741
+Texture2DRD :: struct { #as using base: GodotClass; } // 741
 
-Texture3D :: struct { #as using base: OpaqueClass; } // 742
+Texture3D :: struct { #as using base: GodotClass; } // 742
 
-Texture3DRD :: struct { #as using base: OpaqueClass; } // 743
+Texture3DRD :: struct { #as using base: GodotClass; } // 743
 
 TextureButton :: struct {  // 744
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     StretchMode :: enum s32 {
         STRETCH_SCALE :: 0;
@@ -7686,13 +7686,13 @@ TextureButton :: struct {  // 744
     }
 }
 
-TextureCubemapArrayRD :: struct { #as using base: OpaqueClass; } // 745
+TextureCubemapArrayRD :: struct { #as using base: GodotClass; } // 745
 
-TextureCubemapRD :: struct { #as using base: OpaqueClass; } // 746
+TextureCubemapRD :: struct { #as using base: GodotClass; } // 746
 
 TextureLayered :: struct {  // 747
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     LayeredType :: enum s32 {
         LAYERED_TYPE_2D_ARRAY :: 0;
@@ -7701,11 +7701,11 @@ TextureLayered :: struct {  // 747
     }
 }
 
-TextureLayeredRD :: struct { #as using base: OpaqueClass; } // 748
+TextureLayeredRD :: struct { #as using base: GodotClass; } // 748
 
 TextureProgressBar :: struct {  // 749
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     FillMode :: enum s32 {
         FILL_LEFT_TO_RIGHT :: 0;
@@ -7722,7 +7722,7 @@ TextureProgressBar :: struct {  // 749
 
 TextureRect :: struct {  // 750
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ExpandMode :: enum s32 {
         EXPAND_KEEP_SIZE :: 0;
@@ -7746,7 +7746,7 @@ TextureRect :: struct {  // 750
 
 Theme :: struct {  // 751
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     DataType :: enum s32 {
         DATA_TYPE_COLOR :: 0;
@@ -7759,11 +7759,11 @@ Theme :: struct {  // 751
     }
 }
 
-ThemeDB :: struct { #as using base: OpaqueClass; } // 752
+ThemeDB :: struct { #as using base: GodotClass; } // 752
 
 Thread :: struct {  // 753
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Priority :: enum s32 {
         PRIORITY_LOW :: 0;
@@ -7772,11 +7772,11 @@ Thread :: struct {  // 753
     }
 }
 
-TileData :: struct { #as using base: OpaqueClass; } // 754
+TileData :: struct { #as using base: GodotClass; } // 754
 
 TileMap :: struct {  // 755
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     VisibilityMode :: enum s32 {
         VISIBILITY_MODE_DEFAULT :: 0;
@@ -7787,7 +7787,7 @@ TileMap :: struct {  // 755
 
 TileMapLayer :: struct {  // 756
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     DebugVisibilityMode :: enum s32 {
         DEBUG_VISIBILITY_MODE_DEFAULT :: 0;
@@ -7796,11 +7796,11 @@ TileMapLayer :: struct {  // 756
     }
 }
 
-TileMapPattern :: struct { #as using base: OpaqueClass; } // 757
+TileMapPattern :: struct { #as using base: GodotClass; } // 757
 
 TileSet :: struct {  // 758
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     TileShape :: enum s32 {
         TILE_SHAPE_SQUARE :: 0;
@@ -7851,7 +7851,7 @@ TileSet :: struct {  // 758
 
 TileSetAtlasSource :: struct {  // 759
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     TileAnimationMode :: enum s32 {
         TILE_ANIMATION_MODE_DEFAULT :: 0;
@@ -7860,13 +7860,13 @@ TileSetAtlasSource :: struct {  // 759
     }
 }
 
-TileSetScenesCollectionSource :: struct { #as using base: OpaqueClass; } // 760
+TileSetScenesCollectionSource :: struct { #as using base: GodotClass; } // 760
 
-TileSetSource :: struct { #as using base: OpaqueClass; } // 761
+TileSetSource :: struct { #as using base: GodotClass; } // 761
 
 Time :: struct {  // 762
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Month :: enum s32 {
         MONTH_JANUARY :: 1;
@@ -7896,7 +7896,7 @@ Time :: struct {  // 762
 
 Timer :: struct {  // 763
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     TimerProcessCallback :: enum s32 {
         TIMER_PROCESS_PHYSICS :: 0;
@@ -7904,11 +7904,11 @@ Timer :: struct {  // 763
     }
 }
 
-TorusMesh :: struct { #as using base: OpaqueClass; } // 764
+TorusMesh :: struct { #as using base: GodotClass; } // 764
 
 TouchScreenButton :: struct {  // 765
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     VisibilityMode :: enum s32 {
         VISIBILITY_ALWAYS :: 0;
@@ -7916,15 +7916,15 @@ TouchScreenButton :: struct {  // 765
     }
 }
 
-Translation :: struct { #as using base: OpaqueClass; } // 766
+Translation :: struct { #as using base: GodotClass; } // 766
 
-TranslationDomain :: struct { #as using base: OpaqueClass; } // 767
+TranslationDomain :: struct { #as using base: GodotClass; } // 767
 
-TranslationServer :: struct { #as using base: OpaqueClass; } // 768
+TranslationServer :: struct { #as using base: GodotClass; } // 768
 
 Tree :: struct {  // 769
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     SelectMode :: enum s32 {
         SELECT_SINGLE :: 0;
@@ -7941,7 +7941,7 @@ Tree :: struct {  // 769
 
 TreeItem :: struct {  // 770
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     TreeCellMode :: enum s32 {
         CELL_MODE_STRING :: 0;
@@ -7952,13 +7952,13 @@ TreeItem :: struct {  // 770
     }
 }
 
-TriangleMesh :: struct { #as using base: OpaqueClass; } // 771
+TriangleMesh :: struct { #as using base: GodotClass; } // 771
 
-TubeTrailMesh :: struct { #as using base: OpaqueClass; } // 772
+TubeTrailMesh :: struct { #as using base: GodotClass; } // 772
 
 Tween :: struct {  // 773
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     TweenProcessMode :: enum s32 {
         TWEEN_PROCESS_PHYSICS :: 0;
@@ -7994,13 +7994,13 @@ Tween :: struct {  // 773
     }
 }
 
-Tweener :: struct { #as using base: OpaqueClass; } // 774
+Tweener :: struct { #as using base: GodotClass; } // 774
 
-UDPServer :: struct { #as using base: OpaqueClass; } // 775
+UDPServer :: struct { #as using base: GodotClass; } // 775
 
 UPNP :: struct {  // 776
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     UPNPResult :: enum s32 {
         UPNP_RESULT_SUCCESS :: 0;
@@ -8037,7 +8037,7 @@ UPNP :: struct {  // 776
 
 UPNPDevice :: struct {  // 777
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     IGDStatus :: enum s32 {
         IGD_STATUS_OK :: 0;
@@ -8055,7 +8055,7 @@ UPNPDevice :: struct {  // 777
 
 UndoRedo :: struct {  // 778
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     MergeMode :: enum s32 {
         MERGE_DISABLE :: 0;
@@ -8064,35 +8064,35 @@ UndoRedo :: struct {  // 778
     }
 }
 
-UniformSetCacheRD :: struct { #as using base: OpaqueClass; } // 779
+UniformSetCacheRD :: struct { #as using base: GodotClass; } // 779
 
-VBoxContainer :: struct { #as using base: OpaqueClass; } // 780
+VBoxContainer :: struct { #as using base: GodotClass; } // 780
 
-VFlowContainer :: struct { #as using base: OpaqueClass; } // 781
+VFlowContainer :: struct { #as using base: GodotClass; } // 781
 
-VScrollBar :: struct { #as using base: OpaqueClass; } // 782
+VScrollBar :: struct { #as using base: GodotClass; } // 782
 
-VSeparator :: struct { #as using base: OpaqueClass; } // 783
+VSeparator :: struct { #as using base: GodotClass; } // 783
 
-VSlider :: struct { #as using base: OpaqueClass; } // 784
+VSlider :: struct { #as using base: GodotClass; } // 784
 
-VSplitContainer :: struct { #as using base: OpaqueClass; } // 785
+VSplitContainer :: struct { #as using base: GodotClass; } // 785
 
-VehicleBody3D :: struct { #as using base: OpaqueClass; } // 786
+VehicleBody3D :: struct { #as using base: GodotClass; } // 786
 
-VehicleWheel3D :: struct { #as using base: OpaqueClass; } // 787
+VehicleWheel3D :: struct { #as using base: GodotClass; } // 787
 
-VideoStream :: struct { #as using base: OpaqueClass; } // 788
+VideoStream :: struct { #as using base: GodotClass; } // 788
 
-VideoStreamPlayback :: struct { #as using base: OpaqueClass; } // 789
+VideoStreamPlayback :: struct { #as using base: GodotClass; } // 789
 
-VideoStreamPlayer :: struct { #as using base: OpaqueClass; } // 790
+VideoStreamPlayer :: struct { #as using base: GodotClass; } // 790
 
-VideoStreamTheora :: struct { #as using base: OpaqueClass; } // 791
+VideoStreamTheora :: struct { #as using base: GodotClass; } // 791
 
 Viewport :: struct {  // 792
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     PositionalShadowAtlasQuadrantSubdiv :: enum s32 {
         SHADOW_ATLAS_QUADRANT_SUBDIV_DISABLED :: 0;
@@ -8226,11 +8226,11 @@ Viewport :: struct {  // 792
     }
 }
 
-ViewportTexture :: struct { #as using base: OpaqueClass; } // 793
+ViewportTexture :: struct { #as using base: GodotClass; } // 793
 
 VisibleOnScreenEnabler2D :: struct {  // 794
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     EnableMode :: enum s32 {
         ENABLE_MODE_INHERIT :: 0;
@@ -8241,7 +8241,7 @@ VisibleOnScreenEnabler2D :: struct {  // 794
 
 VisibleOnScreenEnabler3D :: struct {  // 795
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     EnableMode :: enum s32 {
         ENABLE_MODE_INHERIT :: 0;
@@ -8250,15 +8250,15 @@ VisibleOnScreenEnabler3D :: struct {  // 795
     }
 }
 
-VisibleOnScreenNotifier2D :: struct { #as using base: OpaqueClass; } // 796
+VisibleOnScreenNotifier2D :: struct { #as using base: GodotClass; } // 796
 
-VisibleOnScreenNotifier3D :: struct { #as using base: OpaqueClass; } // 797
+VisibleOnScreenNotifier3D :: struct { #as using base: GodotClass; } // 797
 
-VisualInstance3D :: struct { #as using base: OpaqueClass; } // 798
+VisualInstance3D :: struct { #as using base: GodotClass; } // 798
 
 VisualShader :: struct {  // 799
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Type :: enum s32 {
         TYPE_VERTEX :: 0;
@@ -8295,7 +8295,7 @@ VisualShader :: struct {  // 799
 
 VisualShaderNode :: struct {  // 800
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     PortType :: enum s32 {
         PORT_TYPE_SCALAR :: 0;
@@ -8313,7 +8313,7 @@ VisualShaderNode :: struct {  // 800
 
 VisualShaderNodeBillboard :: struct {  // 801
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     BillboardType :: enum s32 {
         BILLBOARD_TYPE_DISABLED :: 0;
@@ -8324,13 +8324,13 @@ VisualShaderNodeBillboard :: struct {  // 801
     }
 }
 
-VisualShaderNodeBooleanConstant :: struct { #as using base: OpaqueClass; } // 802
+VisualShaderNodeBooleanConstant :: struct { #as using base: GodotClass; } // 802
 
-VisualShaderNodeBooleanParameter :: struct { #as using base: OpaqueClass; } // 803
+VisualShaderNodeBooleanParameter :: struct { #as using base: GodotClass; } // 803
 
 VisualShaderNodeClamp :: struct {  // 804
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     OpType :: enum s32 {
         OP_TYPE_FLOAT :: 0;
@@ -8343,11 +8343,11 @@ VisualShaderNodeClamp :: struct {  // 804
     }
 }
 
-VisualShaderNodeColorConstant :: struct { #as using base: OpaqueClass; } // 805
+VisualShaderNodeColorConstant :: struct { #as using base: GodotClass; } // 805
 
 VisualShaderNodeColorFunc :: struct {  // 806
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Function :: enum s32 {
         FUNC_GRAYSCALE :: 0;
@@ -8362,7 +8362,7 @@ VisualShaderNodeColorFunc :: struct {  // 806
 
 VisualShaderNodeColorOp :: struct {  // 807
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Operator :: enum s32 {
         OP_SCREEN :: 0;
@@ -8378,13 +8378,13 @@ VisualShaderNodeColorOp :: struct {  // 807
     }
 }
 
-VisualShaderNodeColorParameter :: struct { #as using base: OpaqueClass; } // 808
+VisualShaderNodeColorParameter :: struct { #as using base: GodotClass; } // 808
 
-VisualShaderNodeComment :: struct { #as using base: OpaqueClass; } // 809
+VisualShaderNodeComment :: struct { #as using base: GodotClass; } // 809
 
 VisualShaderNodeCompare :: struct {  // 810
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ComparisonType :: enum s32 {
         CTYPE_SCALAR :: 0;
@@ -8415,11 +8415,11 @@ VisualShaderNodeCompare :: struct {  // 810
     }
 }
 
-VisualShaderNodeConstant :: struct { #as using base: OpaqueClass; } // 811
+VisualShaderNodeConstant :: struct { #as using base: GodotClass; } // 811
 
 VisualShaderNodeCubemap :: struct {  // 812
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Source :: enum s32 {
         SOURCE_TEXTURE :: 0;
@@ -8435,17 +8435,17 @@ VisualShaderNodeCubemap :: struct {  // 812
     }
 }
 
-VisualShaderNodeCubemapParameter :: struct { #as using base: OpaqueClass; } // 813
+VisualShaderNodeCubemapParameter :: struct { #as using base: GodotClass; } // 813
 
-VisualShaderNodeCurveTexture :: struct { #as using base: OpaqueClass; } // 814
+VisualShaderNodeCurveTexture :: struct { #as using base: GodotClass; } // 814
 
-VisualShaderNodeCurveXYZTexture :: struct { #as using base: OpaqueClass; } // 815
+VisualShaderNodeCurveXYZTexture :: struct { #as using base: GodotClass; } // 815
 
-VisualShaderNodeCustom :: struct { #as using base: OpaqueClass; } // 816
+VisualShaderNodeCustom :: struct { #as using base: GodotClass; } // 816
 
 VisualShaderNodeDerivativeFunc :: struct {  // 817
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     OpType :: enum s32 {
         OP_TYPE_SCALAR :: 0;
@@ -8470,21 +8470,21 @@ VisualShaderNodeDerivativeFunc :: struct {  // 817
     }
 }
 
-VisualShaderNodeDeterminant :: struct { #as using base: OpaqueClass; } // 818
+VisualShaderNodeDeterminant :: struct { #as using base: GodotClass; } // 818
 
-VisualShaderNodeDistanceFade :: struct { #as using base: OpaqueClass; } // 819
+VisualShaderNodeDistanceFade :: struct { #as using base: GodotClass; } // 819
 
-VisualShaderNodeDotProduct :: struct { #as using base: OpaqueClass; } // 820
+VisualShaderNodeDotProduct :: struct { #as using base: GodotClass; } // 820
 
-VisualShaderNodeExpression :: struct { #as using base: OpaqueClass; } // 821
+VisualShaderNodeExpression :: struct { #as using base: GodotClass; } // 821
 
-VisualShaderNodeFaceForward :: struct { #as using base: OpaqueClass; } // 822
+VisualShaderNodeFaceForward :: struct { #as using base: GodotClass; } // 822
 
-VisualShaderNodeFloatConstant :: struct { #as using base: OpaqueClass; } // 823
+VisualShaderNodeFloatConstant :: struct { #as using base: GodotClass; } // 823
 
 VisualShaderNodeFloatFunc :: struct {  // 824
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Function :: enum s32 {
         FUNC_SIN :: 0;
@@ -8525,7 +8525,7 @@ VisualShaderNodeFloatFunc :: struct {  // 824
 
 VisualShaderNodeFloatOp :: struct {  // 825
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Operator :: enum s32 {
         OP_ADD :: 0;
@@ -8544,7 +8544,7 @@ VisualShaderNodeFloatOp :: struct {  // 825
 
 VisualShaderNodeFloatParameter :: struct {  // 826
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Hint :: enum s32 {
         HINT_NONE :: 0;
@@ -8554,23 +8554,23 @@ VisualShaderNodeFloatParameter :: struct {  // 826
     }
 }
 
-VisualShaderNodeFrame :: struct { #as using base: OpaqueClass; } // 827
+VisualShaderNodeFrame :: struct { #as using base: GodotClass; } // 827
 
-VisualShaderNodeFresnel :: struct { #as using base: OpaqueClass; } // 828
+VisualShaderNodeFresnel :: struct { #as using base: GodotClass; } // 828
 
-VisualShaderNodeGlobalExpression :: struct { #as using base: OpaqueClass; } // 829
+VisualShaderNodeGlobalExpression :: struct { #as using base: GodotClass; } // 829
 
-VisualShaderNodeGroupBase :: struct { #as using base: OpaqueClass; } // 830
+VisualShaderNodeGroupBase :: struct { #as using base: GodotClass; } // 830
 
-VisualShaderNodeIf :: struct { #as using base: OpaqueClass; } // 831
+VisualShaderNodeIf :: struct { #as using base: GodotClass; } // 831
 
-VisualShaderNodeInput :: struct { #as using base: OpaqueClass; } // 832
+VisualShaderNodeInput :: struct { #as using base: GodotClass; } // 832
 
-VisualShaderNodeIntConstant :: struct { #as using base: OpaqueClass; } // 833
+VisualShaderNodeIntConstant :: struct { #as using base: GodotClass; } // 833
 
 VisualShaderNodeIntFunc :: struct {  // 834
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Function :: enum s32 {
         FUNC_ABS :: 0;
@@ -8583,7 +8583,7 @@ VisualShaderNodeIntFunc :: struct {  // 834
 
 VisualShaderNodeIntOp :: struct {  // 835
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Operator :: enum s32 {
         OP_ADD :: 0;
@@ -8604,7 +8604,7 @@ VisualShaderNodeIntOp :: struct {  // 835
 
 VisualShaderNodeIntParameter :: struct {  // 836
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Hint :: enum s32 {
         HINT_NONE :: 0;
@@ -8617,7 +8617,7 @@ VisualShaderNodeIntParameter :: struct {  // 836
 
 VisualShaderNodeIs :: struct {  // 837
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Function :: enum s32 {
         FUNC_IS_INF :: 0;
@@ -8626,11 +8626,11 @@ VisualShaderNodeIs :: struct {  // 837
     }
 }
 
-VisualShaderNodeLinearSceneDepth :: struct { #as using base: OpaqueClass; } // 838
+VisualShaderNodeLinearSceneDepth :: struct { #as using base: GodotClass; } // 838
 
 VisualShaderNodeMix :: struct {  // 839
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     OpType :: enum s32 {
         OP_TYPE_SCALAR :: 0;
@@ -8646,7 +8646,7 @@ VisualShaderNodeMix :: struct {  // 839
 
 VisualShaderNodeMultiplyAdd :: struct {  // 840
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     OpType :: enum s32 {
         OP_TYPE_SCALAR :: 0;
@@ -8657,13 +8657,13 @@ VisualShaderNodeMultiplyAdd :: struct {  // 840
     }
 }
 
-VisualShaderNodeOuterProduct :: struct { #as using base: OpaqueClass; } // 841
+VisualShaderNodeOuterProduct :: struct { #as using base: GodotClass; } // 841
 
-VisualShaderNodeOutput :: struct { #as using base: OpaqueClass; } // 842
+VisualShaderNodeOutput :: struct { #as using base: GodotClass; } // 842
 
 VisualShaderNodeParameter :: struct {  // 843
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Qualifier :: enum s32 {
         QUAL_NONE :: 0;
@@ -8673,11 +8673,11 @@ VisualShaderNodeParameter :: struct {  // 843
     }
 }
 
-VisualShaderNodeParameterRef :: struct { #as using base: OpaqueClass; } // 844
+VisualShaderNodeParameterRef :: struct { #as using base: GodotClass; } // 844
 
 VisualShaderNodeParticleAccelerator :: struct {  // 845
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Mode :: enum s32 {
         MODE_LINEAR :: 0;
@@ -8687,13 +8687,13 @@ VisualShaderNodeParticleAccelerator :: struct {  // 845
     }
 }
 
-VisualShaderNodeParticleBoxEmitter :: struct { #as using base: OpaqueClass; } // 846
+VisualShaderNodeParticleBoxEmitter :: struct { #as using base: GodotClass; } // 846
 
-VisualShaderNodeParticleConeVelocity :: struct { #as using base: OpaqueClass; } // 847
+VisualShaderNodeParticleConeVelocity :: struct { #as using base: GodotClass; } // 847
 
 VisualShaderNodeParticleEmit :: struct {  // 848
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     EmitFlags :: enum s32 {
         EMIT_FLAG_POSITION :: 1;
@@ -8704,17 +8704,17 @@ VisualShaderNodeParticleEmit :: struct {  // 848
     }
 }
 
-VisualShaderNodeParticleEmitter :: struct { #as using base: OpaqueClass; } // 849
+VisualShaderNodeParticleEmitter :: struct { #as using base: GodotClass; } // 849
 
-VisualShaderNodeParticleMeshEmitter :: struct { #as using base: OpaqueClass; } // 850
+VisualShaderNodeParticleMeshEmitter :: struct { #as using base: GodotClass; } // 850
 
-VisualShaderNodeParticleMultiplyByAxisAngle :: struct { #as using base: OpaqueClass; } // 851
+VisualShaderNodeParticleMultiplyByAxisAngle :: struct { #as using base: GodotClass; } // 851
 
-VisualShaderNodeParticleOutput :: struct { #as using base: OpaqueClass; } // 852
+VisualShaderNodeParticleOutput :: struct { #as using base: GodotClass; } // 852
 
 VisualShaderNodeParticleRandomness :: struct {  // 853
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     OpType :: enum s32 {
         OP_TYPE_SCALAR :: 0;
@@ -8725,17 +8725,17 @@ VisualShaderNodeParticleRandomness :: struct {  // 853
     }
 }
 
-VisualShaderNodeParticleRingEmitter :: struct { #as using base: OpaqueClass; } // 854
+VisualShaderNodeParticleRingEmitter :: struct { #as using base: GodotClass; } // 854
 
-VisualShaderNodeParticleSphereEmitter :: struct { #as using base: OpaqueClass; } // 855
+VisualShaderNodeParticleSphereEmitter :: struct { #as using base: GodotClass; } // 855
 
-VisualShaderNodeProximityFade :: struct { #as using base: OpaqueClass; } // 856
+VisualShaderNodeProximityFade :: struct { #as using base: GodotClass; } // 856
 
-VisualShaderNodeRandomRange :: struct { #as using base: OpaqueClass; } // 857
+VisualShaderNodeRandomRange :: struct { #as using base: GodotClass; } // 857
 
 VisualShaderNodeRemap :: struct {  // 858
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     OpType :: enum s32 {
         OP_TYPE_SCALAR :: 0;
@@ -8749,19 +8749,19 @@ VisualShaderNodeRemap :: struct {  // 858
     }
 }
 
-VisualShaderNodeReroute :: struct { #as using base: OpaqueClass; } // 859
+VisualShaderNodeReroute :: struct { #as using base: GodotClass; } // 859
 
-VisualShaderNodeResizableBase :: struct { #as using base: OpaqueClass; } // 860
+VisualShaderNodeResizableBase :: struct { #as using base: GodotClass; } // 860
 
-VisualShaderNodeRotationByAxis :: struct { #as using base: OpaqueClass; } // 861
+VisualShaderNodeRotationByAxis :: struct { #as using base: GodotClass; } // 861
 
-VisualShaderNodeSDFRaymarch :: struct { #as using base: OpaqueClass; } // 862
+VisualShaderNodeSDFRaymarch :: struct { #as using base: GodotClass; } // 862
 
-VisualShaderNodeSDFToScreenUV :: struct { #as using base: OpaqueClass; } // 863
+VisualShaderNodeSDFToScreenUV :: struct { #as using base: GodotClass; } // 863
 
 VisualShaderNodeSample3D :: struct {  // 864
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Source :: enum s32 {
         SOURCE_TEXTURE :: 0;
@@ -8770,13 +8770,13 @@ VisualShaderNodeSample3D :: struct {  // 864
     }
 }
 
-VisualShaderNodeScreenNormalWorldSpace :: struct { #as using base: OpaqueClass; } // 865
+VisualShaderNodeScreenNormalWorldSpace :: struct { #as using base: GodotClass; } // 865
 
-VisualShaderNodeScreenUVToSDF :: struct { #as using base: OpaqueClass; } // 866
+VisualShaderNodeScreenUVToSDF :: struct { #as using base: GodotClass; } // 866
 
 VisualShaderNodeSmoothStep :: struct {  // 867
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     OpType :: enum s32 {
         OP_TYPE_SCALAR :: 0;
@@ -8792,7 +8792,7 @@ VisualShaderNodeSmoothStep :: struct {  // 867
 
 VisualShaderNodeStep :: struct {  // 868
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     OpType :: enum s32 {
         OP_TYPE_SCALAR :: 0;
@@ -8808,7 +8808,7 @@ VisualShaderNodeStep :: struct {  // 868
 
 VisualShaderNodeSwitch :: struct {  // 869
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     OpType :: enum s32 {
         OP_TYPE_FLOAT :: 0;
@@ -8825,7 +8825,7 @@ VisualShaderNodeSwitch :: struct {  // 869
 
 VisualShaderNodeTexture :: struct {  // 870
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Source :: enum s32 {
         SOURCE_TEXTURE :: 0;
@@ -8847,19 +8847,19 @@ VisualShaderNodeTexture :: struct {  // 870
     }
 }
 
-VisualShaderNodeTexture2DArray :: struct { #as using base: OpaqueClass; } // 871
+VisualShaderNodeTexture2DArray :: struct { #as using base: GodotClass; } // 871
 
-VisualShaderNodeTexture2DArrayParameter :: struct { #as using base: OpaqueClass; } // 872
+VisualShaderNodeTexture2DArrayParameter :: struct { #as using base: GodotClass; } // 872
 
-VisualShaderNodeTexture2DParameter :: struct { #as using base: OpaqueClass; } // 873
+VisualShaderNodeTexture2DParameter :: struct { #as using base: GodotClass; } // 873
 
-VisualShaderNodeTexture3D :: struct { #as using base: OpaqueClass; } // 874
+VisualShaderNodeTexture3D :: struct { #as using base: GodotClass; } // 874
 
-VisualShaderNodeTexture3DParameter :: struct { #as using base: OpaqueClass; } // 875
+VisualShaderNodeTexture3DParameter :: struct { #as using base: GodotClass; } // 875
 
 VisualShaderNodeTextureParameter :: struct {  // 876
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     TextureType :: enum s32 {
         TYPE_DATA :: 0;
@@ -8903,21 +8903,21 @@ VisualShaderNodeTextureParameter :: struct {  // 876
     }
 }
 
-VisualShaderNodeTextureParameterTriplanar :: struct { #as using base: OpaqueClass; } // 877
+VisualShaderNodeTextureParameterTriplanar :: struct { #as using base: GodotClass; } // 877
 
-VisualShaderNodeTextureSDF :: struct { #as using base: OpaqueClass; } // 878
+VisualShaderNodeTextureSDF :: struct { #as using base: GodotClass; } // 878
 
-VisualShaderNodeTextureSDFNormal :: struct { #as using base: OpaqueClass; } // 879
+VisualShaderNodeTextureSDFNormal :: struct { #as using base: GodotClass; } // 879
 
-VisualShaderNodeTransformCompose :: struct { #as using base: OpaqueClass; } // 880
+VisualShaderNodeTransformCompose :: struct { #as using base: GodotClass; } // 880
 
-VisualShaderNodeTransformConstant :: struct { #as using base: OpaqueClass; } // 881
+VisualShaderNodeTransformConstant :: struct { #as using base: GodotClass; } // 881
 
-VisualShaderNodeTransformDecompose :: struct { #as using base: OpaqueClass; } // 882
+VisualShaderNodeTransformDecompose :: struct { #as using base: GodotClass; } // 882
 
 VisualShaderNodeTransformFunc :: struct {  // 883
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Function :: enum s32 {
         FUNC_INVERSE :: 0;
@@ -8928,7 +8928,7 @@ VisualShaderNodeTransformFunc :: struct {  // 883
 
 VisualShaderNodeTransformOp :: struct {  // 884
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Operator :: enum s32 {
         OP_AxB :: 0;
@@ -8944,11 +8944,11 @@ VisualShaderNodeTransformOp :: struct {  // 884
     }
 }
 
-VisualShaderNodeTransformParameter :: struct { #as using base: OpaqueClass; } // 885
+VisualShaderNodeTransformParameter :: struct { #as using base: GodotClass; } // 885
 
 VisualShaderNodeTransformVecMult :: struct {  // 886
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Operator :: enum s32 {
         OP_AxB :: 0;
@@ -8959,11 +8959,11 @@ VisualShaderNodeTransformVecMult :: struct {  // 886
     }
 }
 
-VisualShaderNodeUIntConstant :: struct { #as using base: OpaqueClass; } // 887
+VisualShaderNodeUIntConstant :: struct { #as using base: GodotClass; } // 887
 
 VisualShaderNodeUIntFunc :: struct {  // 888
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Function :: enum s32 {
         FUNC_NEGATE :: 0;
@@ -8974,7 +8974,7 @@ VisualShaderNodeUIntFunc :: struct {  // 888
 
 VisualShaderNodeUIntOp :: struct {  // 889
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Operator :: enum s32 {
         OP_ADD :: 0;
@@ -8993,11 +8993,11 @@ VisualShaderNodeUIntOp :: struct {  // 889
     }
 }
 
-VisualShaderNodeUIntParameter :: struct { #as using base: OpaqueClass; } // 890
+VisualShaderNodeUIntParameter :: struct { #as using base: GodotClass; } // 890
 
 VisualShaderNodeUVFunc :: struct {  // 891
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Function :: enum s32 {
         FUNC_PANNING :: 0;
@@ -9006,29 +9006,29 @@ VisualShaderNodeUVFunc :: struct {  // 891
     }
 }
 
-VisualShaderNodeUVPolarCoord :: struct { #as using base: OpaqueClass; } // 892
+VisualShaderNodeUVPolarCoord :: struct { #as using base: GodotClass; } // 892
 
-VisualShaderNodeVarying :: struct { #as using base: OpaqueClass; } // 893
+VisualShaderNodeVarying :: struct { #as using base: GodotClass; } // 893
 
-VisualShaderNodeVaryingGetter :: struct { #as using base: OpaqueClass; } // 894
+VisualShaderNodeVaryingGetter :: struct { #as using base: GodotClass; } // 894
 
-VisualShaderNodeVaryingSetter :: struct { #as using base: OpaqueClass; } // 895
+VisualShaderNodeVaryingSetter :: struct { #as using base: GodotClass; } // 895
 
-VisualShaderNodeVec2Constant :: struct { #as using base: OpaqueClass; } // 896
+VisualShaderNodeVec2Constant :: struct { #as using base: GodotClass; } // 896
 
-VisualShaderNodeVec2Parameter :: struct { #as using base: OpaqueClass; } // 897
+VisualShaderNodeVec2Parameter :: struct { #as using base: GodotClass; } // 897
 
-VisualShaderNodeVec3Constant :: struct { #as using base: OpaqueClass; } // 898
+VisualShaderNodeVec3Constant :: struct { #as using base: GodotClass; } // 898
 
-VisualShaderNodeVec3Parameter :: struct { #as using base: OpaqueClass; } // 899
+VisualShaderNodeVec3Parameter :: struct { #as using base: GodotClass; } // 899
 
-VisualShaderNodeVec4Constant :: struct { #as using base: OpaqueClass; } // 900
+VisualShaderNodeVec4Constant :: struct { #as using base: GodotClass; } // 900
 
-VisualShaderNodeVec4Parameter :: struct { #as using base: OpaqueClass; } // 901
+VisualShaderNodeVec4Parameter :: struct { #as using base: GodotClass; } // 901
 
 VisualShaderNodeVectorBase :: struct {  // 902
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     OpType :: enum s32 {
         OP_TYPE_VECTOR_2D :: 0;
@@ -9038,15 +9038,15 @@ VisualShaderNodeVectorBase :: struct {  // 902
     }
 }
 
-VisualShaderNodeVectorCompose :: struct { #as using base: OpaqueClass; } // 903
+VisualShaderNodeVectorCompose :: struct { #as using base: GodotClass; } // 903
 
-VisualShaderNodeVectorDecompose :: struct { #as using base: OpaqueClass; } // 904
+VisualShaderNodeVectorDecompose :: struct { #as using base: GodotClass; } // 904
 
-VisualShaderNodeVectorDistance :: struct { #as using base: OpaqueClass; } // 905
+VisualShaderNodeVectorDistance :: struct { #as using base: GodotClass; } // 905
 
 VisualShaderNodeVectorFunc :: struct {  // 906
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Function :: enum s32 {
         FUNC_NORMALIZE :: 0;
@@ -9086,11 +9086,11 @@ VisualShaderNodeVectorFunc :: struct {  // 906
     }
 }
 
-VisualShaderNodeVectorLen :: struct { #as using base: OpaqueClass; } // 907
+VisualShaderNodeVectorLen :: struct { #as using base: GodotClass; } // 907
 
 VisualShaderNodeVectorOp :: struct {  // 908
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Operator :: enum s32 {
         OP_ADD :: 0;
@@ -9109,13 +9109,13 @@ VisualShaderNodeVectorOp :: struct {  // 908
     }
 }
 
-VisualShaderNodeVectorRefract :: struct { #as using base: OpaqueClass; } // 909
+VisualShaderNodeVectorRefract :: struct { #as using base: GodotClass; } // 909
 
-VisualShaderNodeWorldPositionFromDepth :: struct { #as using base: OpaqueClass; } // 910
+VisualShaderNodeWorldPositionFromDepth :: struct { #as using base: GodotClass; } // 910
 
 VoxelGI :: struct {  // 911
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Subdiv :: enum s32 {
         SUBDIV_64 :: 0;
@@ -9126,13 +9126,13 @@ VoxelGI :: struct {  // 911
     }
 }
 
-VoxelGIData :: struct { #as using base: OpaqueClass; } // 912
+VoxelGIData :: struct { #as using base: GodotClass; } // 912
 
-WeakRef :: struct { #as using base: OpaqueClass; } // 913
+WeakRef :: struct { #as using base: GodotClass; } // 913
 
 WebRTCDataChannel :: struct {  // 914
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     WriteMode :: enum s32 {
         WRITE_MODE_TEXT :: 0;
@@ -9147,13 +9147,13 @@ WebRTCDataChannel :: struct {  // 914
     }
 }
 
-WebRTCDataChannelExtension :: struct { #as using base: OpaqueClass; } // 915
+WebRTCDataChannelExtension :: struct { #as using base: GodotClass; } // 915
 
-WebRTCMultiplayerPeer :: struct { #as using base: OpaqueClass; } // 916
+WebRTCMultiplayerPeer :: struct { #as using base: GodotClass; } // 916
 
 WebRTCPeerConnection :: struct {  // 917
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ConnectionState :: enum s32 {
         STATE_NEW :: 0;
@@ -9180,13 +9180,13 @@ WebRTCPeerConnection :: struct {  // 917
     }
 }
 
-WebRTCPeerConnectionExtension :: struct { #as using base: OpaqueClass; } // 918
+WebRTCPeerConnectionExtension :: struct { #as using base: GodotClass; } // 918
 
-WebSocketMultiplayerPeer :: struct { #as using base: OpaqueClass; } // 919
+WebSocketMultiplayerPeer :: struct { #as using base: GodotClass; } // 919
 
 WebSocketPeer :: struct {  // 920
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     WriteMode :: enum s32 {
         WRITE_MODE_TEXT :: 0;
@@ -9203,7 +9203,7 @@ WebSocketPeer :: struct {  // 920
 
 WebXRInterface :: struct {  // 921
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     TargetRayMode :: enum s32 {
         TARGET_RAY_MODE_UNKNOWN :: 0;
@@ -9215,7 +9215,7 @@ WebXRInterface :: struct {  // 921
 
 Window :: struct {  // 922
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Mode :: enum s32 {
         MODE_WINDOWED :: 0;
@@ -9278,23 +9278,23 @@ Window :: struct {  // 922
     }
 }
 
-WorkerThreadPool :: struct { #as using base: OpaqueClass; } // 923
+WorkerThreadPool :: struct { #as using base: GodotClass; } // 923
 
-World2D :: struct { #as using base: OpaqueClass; } // 924
+World2D :: struct { #as using base: GodotClass; } // 924
 
-World3D :: struct { #as using base: OpaqueClass; } // 925
+World3D :: struct { #as using base: GodotClass; } // 925
 
-WorldBoundaryShape2D :: struct { #as using base: OpaqueClass; } // 926
+WorldBoundaryShape2D :: struct { #as using base: GodotClass; } // 926
 
-WorldBoundaryShape3D :: struct { #as using base: OpaqueClass; } // 927
+WorldBoundaryShape3D :: struct { #as using base: GodotClass; } // 927
 
-WorldEnvironment :: struct { #as using base: OpaqueClass; } // 928
+WorldEnvironment :: struct { #as using base: GodotClass; } // 928
 
-X509Certificate :: struct { #as using base: OpaqueClass; } // 929
+X509Certificate :: struct { #as using base: GodotClass; } // 929
 
 XMLParser :: struct {  // 930
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     NodeType :: enum s32 {
         NODE_NONE :: 0;
@@ -9307,11 +9307,11 @@ XMLParser :: struct {  // 930
     }
 }
 
-XRAnchor3D :: struct { #as using base: OpaqueClass; } // 931
+XRAnchor3D :: struct { #as using base: GodotClass; } // 931
 
 XRBodyModifier3D :: struct {  // 932
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     BodyUpdate :: enum u64 {
         BODY_UPDATE_UPPER_BODY :: 1;
@@ -9328,7 +9328,7 @@ XRBodyModifier3D :: struct {  // 932
 
 XRBodyTracker :: struct {  // 933
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     BodyFlags :: enum u64 {
         BODY_FLAG_UPPER_BODY_SUPPORTED :: 1;
@@ -9424,17 +9424,17 @@ XRBodyTracker :: struct {  // 933
     } @bitfield
 }
 
-XRCamera3D :: struct { #as using base: OpaqueClass; } // 934
+XRCamera3D :: struct { #as using base: GodotClass; } // 934
 
-XRController3D :: struct { #as using base: OpaqueClass; } // 935
+XRController3D :: struct { #as using base: GodotClass; } // 935
 
-XRControllerTracker :: struct { #as using base: OpaqueClass; } // 936
+XRControllerTracker :: struct { #as using base: GodotClass; } // 936
 
-XRFaceModifier3D :: struct { #as using base: OpaqueClass; } // 937
+XRFaceModifier3D :: struct { #as using base: GodotClass; } // 937
 
 XRFaceTracker :: struct {  // 938
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     BlendShapeEntry :: enum s32 {
         FT_EYE_LOOK_OUT_RIGHT :: 0;
@@ -9586,7 +9586,7 @@ XRFaceTracker :: struct {  // 938
 
 XRHandModifier3D :: struct {  // 939
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     BoneUpdate :: enum s32 {
         BONE_UPDATE_FULL :: 0;
@@ -9597,7 +9597,7 @@ XRHandModifier3D :: struct {  // 939
 
 XRHandTracker :: struct {  // 940
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     HandTrackingSource :: enum s32 {
         HAND_TRACKING_SOURCE_UNKNOWN :: 0;
@@ -9649,7 +9649,7 @@ XRHandTracker :: struct {  // 940
 
 XRInterface :: struct {  // 941
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     Capabilities :: enum s32 {
         XR_NONE :: 0;
@@ -9684,15 +9684,15 @@ XRInterface :: struct {  // 941
     }
 }
 
-XRInterfaceExtension :: struct { #as using base: OpaqueClass; } // 942
+XRInterfaceExtension :: struct { #as using base: GodotClass; } // 942
 
-XRNode3D :: struct { #as using base: OpaqueClass; } // 943
+XRNode3D :: struct { #as using base: GodotClass; } // 943
 
-XROrigin3D :: struct { #as using base: OpaqueClass; } // 944
+XROrigin3D :: struct { #as using base: GodotClass; } // 944
 
 XRPose :: struct {  // 945
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     TrackingConfidence :: enum s32 {
         XR_TRACKING_CONFIDENCE_NONE :: 0;
@@ -9703,7 +9703,7 @@ XRPose :: struct {  // 945
 
 XRPositionalTracker :: struct {  // 946
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     TrackerHand :: enum s32 {
         TRACKER_HAND_UNKNOWN :: 0;
@@ -9715,7 +9715,7 @@ XRPositionalTracker :: struct {  // 946
 
 XRServer :: struct {  // 947
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     TrackerType :: enum s32 {
         TRACKER_HEAD :: 1;
@@ -9737,13 +9737,13 @@ XRServer :: struct {  // 947
     }
 }
 
-XRTracker :: struct { #as using base: OpaqueClass; } // 948
+XRTracker :: struct { #as using base: GodotClass; } // 948
 
-XRVRS :: struct { #as using base: OpaqueClass; } // 949
+XRVRS :: struct { #as using base: GodotClass; } // 949
 
 ZIPPacker :: struct {  // 950
 
-        #as using base: OpaqueClass;
+        #as using base: GodotClass;
 
     ZipAppend :: enum s32 {
         APPEND_CREATE :: 0;
@@ -9752,9 +9752,9 @@ ZIPPacker :: struct {  // 950
     }
 }
 
-ZIPReader :: struct { #as using base: OpaqueClass; } // 951
+ZIPReader :: struct { #as using base: GodotClass; } // 951
 
-// ====== PROCEDURES ======
+// ------ Procedures ------
 
 start :: (main: *AESContext, mode: AESContext.Mode, key: PackedByteArray) -> Error { call_ret := cast(*Error) sys_call("AESContext", "start", 3122411423, Error, main, mode, key); return call_ret.*; }  // 0
 update :: (main: *AESContext, src: PackedByteArray) -> PackedByteArray { call_ret := cast(*PackedByteArray) sys_call("AESContext", "update", 527836100, PackedByteArray, main, src); return call_ret.*; }  // 1
@@ -9851,8 +9851,8 @@ set_close_on_escape :: (main: *AcceptDialog, enabled: bool) { sys_call("AcceptDi
 get_close_on_escape :: (main: *AcceptDialog) -> bool { call_ret := cast(*bool) sys_call("AcceptDialog", "get_close_on_escape", 36873697, bool, main); return call_ret.*; }  // 5
 add_button :: (main: *AcceptDialog, text: string) -> *Button { call_ret := cast(*Button) sys_call("AcceptDialog", "add_button", 3328440682, Button, main, text); return call_ret; }  // 6
 add_cancel_button :: (main: *AcceptDialog, name: string) -> *Button { call_ret := cast(*Button) sys_call("AcceptDialog", "add_cancel_button", 242045556, Button, main, name); return call_ret; }  // 7
-remove_button :: (main: *AcceptDialog, button: Button) { sys_call("AcceptDialog", "remove_button", 2068354942, Nil, main, button);  }  // 8
-register_text_enter :: (main: *AcceptDialog, line_edit: LineEdit) { sys_call("AcceptDialog", "register_text_enter", 3714008017, Nil, main, line_edit);  }  // 9
+remove_button :: (main: *AcceptDialog, button: *Button) { sys_call("AcceptDialog", "remove_button", 2068354942, Nil, main, button);  }  // 8
+register_text_enter :: (main: *AcceptDialog, line_edit: *LineEdit) { sys_call("AcceptDialog", "register_text_enter", 3714008017, Nil, main, line_edit);  }  // 9
 set_text :: (main: *AcceptDialog, text: string) { sys_call("AcceptDialog", "set_text", 83702148, Nil, main, text);  }  // 10
 get_text :: (main: *AcceptDialog) -> gstring { call_ret := cast(*gstring) sys_call("AcceptDialog", "get_text", 201670096, gstring, main); return call_ret.*; }  // 11
 set_autowrap :: (main: *AcceptDialog, autowrap: bool) { sys_call("AcceptDialog", "set_autowrap", 2586408642, Nil, main, autowrap);  }  // 12
@@ -9866,7 +9866,7 @@ is_sync_to_physics_enabled :: (main: *AnimatableBody2D) -> bool { call_ret := ca
 set_sync_to_physics :: (main: *AnimatableBody3D, enable: bool) { sys_call("AnimatableBody3D", "set_sync_to_physics", 2586408642, Nil, main, enable);  }  // 0
 is_sync_to_physics_enabled :: (main: *AnimatableBody3D) -> bool { call_ret := cast(*bool) sys_call("AnimatableBody3D", "is_sync_to_physics_enabled", 36873697, bool, main); return call_ret.*; }  // 1
 
-set_sprite_frames :: (main: *AnimatedSprite2D, sprite_frames: SpriteFrames) { sys_call("AnimatedSprite2D", "set_sprite_frames", 905781144, Nil, main, sprite_frames);  }  // 0
+set_sprite_frames :: (main: *AnimatedSprite2D, sprite_frames: *SpriteFrames) { sys_call("AnimatedSprite2D", "set_sprite_frames", 905781144, Nil, main, sprite_frames);  }  // 0
 get_sprite_frames :: (main: *AnimatedSprite2D) -> *SpriteFrames { call_ret := cast(*SpriteFrames) sys_call("AnimatedSprite2D", "get_sprite_frames", 3804851214, SpriteFrames, main); return call_ret; }  // 1
 set_animation :: (main: *AnimatedSprite2D, name: string) { sys_call("AnimatedSprite2D", "set_animation", 3304788590, Nil, main, name);  }  // 2
 get_animation :: (main: *AnimatedSprite2D) -> StringName { call_ret := cast(*StringName) sys_call("AnimatedSprite2D", "get_animation", 2002593661, StringName, main); return call_ret.*; }  // 3
@@ -9894,7 +9894,7 @@ set_speed_scale :: (main: *AnimatedSprite2D, speed_scale: float) { sys_call("Ani
 get_speed_scale :: (main: *AnimatedSprite2D) -> float { call_ret := cast(*float) sys_call("AnimatedSprite2D", "get_speed_scale", 1740695150, float, main); return call_ret.*; }  // 25
 get_playing_speed :: (main: *AnimatedSprite2D) -> float { call_ret := cast(*float) sys_call("AnimatedSprite2D", "get_playing_speed", 1740695150, float, main); return call_ret.*; }  // 26
 
-set_sprite_frames :: (main: *AnimatedSprite3D, sprite_frames: SpriteFrames) { sys_call("AnimatedSprite3D", "set_sprite_frames", 905781144, Nil, main, sprite_frames);  }  // 0
+set_sprite_frames :: (main: *AnimatedSprite3D, sprite_frames: *SpriteFrames) { sys_call("AnimatedSprite3D", "set_sprite_frames", 905781144, Nil, main, sprite_frames);  }  // 0
 get_sprite_frames :: (main: *AnimatedSprite3D) -> *SpriteFrames { call_ret := cast(*SpriteFrames) sys_call("AnimatedSprite3D", "get_sprite_frames", 3804851214, SpriteFrames, main); return call_ret; }  // 1
 set_animation :: (main: *AnimatedSprite3D, name: string) { sys_call("AnimatedSprite3D", "set_animation", 3304788590, Nil, main, name);  }  // 2
 get_animation :: (main: *AnimatedSprite3D) -> StringName { call_ret := cast(*StringName) sys_call("AnimatedSprite3D", "get_animation", 2002593661, StringName, main); return call_ret.*; }  // 3
@@ -9924,7 +9924,7 @@ set_one_shot :: (main: *AnimatedTexture, one_shot: bool) { sys_call("AnimatedTex
 get_one_shot :: (main: *AnimatedTexture) -> bool { call_ret := cast(*bool) sys_call("AnimatedTexture", "get_one_shot", 36873697, bool, main); return call_ret.*; }  // 7
 set_speed_scale :: (main: *AnimatedTexture, scale: float) { sys_call("AnimatedTexture", "set_speed_scale", 373806689, Nil, main, scale);  }  // 8
 get_speed_scale :: (main: *AnimatedTexture) -> float { call_ret := cast(*float) sys_call("AnimatedTexture", "get_speed_scale", 1740695150, float, main); return call_ret.*; }  // 9
-set_frame_texture :: (main: *AnimatedTexture, frame: int, texture: Texture2D) { sys_call("AnimatedTexture", "set_frame_texture", 666127730, Nil, main, frame, texture);  }  // 10
+set_frame_texture :: (main: *AnimatedTexture, frame: int, texture: *Texture2D) { sys_call("AnimatedTexture", "set_frame_texture", 666127730, Nil, main, frame, texture);  }  // 10
 get_frame_texture :: (main: *AnimatedTexture, frame: int) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("AnimatedTexture", "get_frame_texture", 3536238170, Texture2D, main, frame); return call_ret; }  // 11
 set_frame_duration :: (main: *AnimatedTexture, frame: int, duration: float) { sys_call("AnimatedTexture", "set_frame_duration", 1602489585, Nil, main, frame, duration);  }  // 12
 get_frame_duration :: (main: *AnimatedTexture, frame: int) -> float { call_ret := cast(*float) sys_call("AnimatedTexture", "get_frame_duration", 2339986948, float, main, frame); return call_ret.*; }  // 13
@@ -9981,8 +9981,8 @@ bezier_track_get_key_value :: (main: *Animation, track_idx: int, key_idx: int) -
 bezier_track_get_key_in_handle :: (main: *Animation, track_idx: int, key_idx: int) -> Vector2 { call_ret := cast(*Vector2) sys_call("Animation", "bezier_track_get_key_in_handle", 3016396712, Vector2, main, track_idx, key_idx); return call_ret.*; }  // 49
 bezier_track_get_key_out_handle :: (main: *Animation, track_idx: int, key_idx: int) -> Vector2 { call_ret := cast(*Vector2) sys_call("Animation", "bezier_track_get_key_out_handle", 3016396712, Vector2, main, track_idx, key_idx); return call_ret.*; }  // 50
 bezier_track_interpolate :: (main: *Animation, track_idx: int, time: float) -> float { call_ret := cast(*float) sys_call("Animation", "bezier_track_interpolate", 1900462983, float, main, track_idx, time); return call_ret.*; }  // 51
-audio_track_insert_key :: (main: *Animation, track_idx: int, time: float, stream: Resource) -> int { call_ret := cast(*int) sys_call("Animation", "audio_track_insert_key", 4021027286, int, main, track_idx, time, stream); return call_ret.*; }  // 52
-audio_track_set_key_stream :: (main: *Animation, track_idx: int, key_idx: int, stream: Resource) { sys_call("Animation", "audio_track_set_key_stream", 3886397084, Nil, main, track_idx, key_idx, stream);  }  // 53
+audio_track_insert_key :: (main: *Animation, track_idx: int, time: float, stream: *Resource) -> int { call_ret := cast(*int) sys_call("Animation", "audio_track_insert_key", 4021027286, int, main, track_idx, time, stream); return call_ret.*; }  // 52
+audio_track_set_key_stream :: (main: *Animation, track_idx: int, key_idx: int, stream: *Resource) { sys_call("Animation", "audio_track_set_key_stream", 3886397084, Nil, main, track_idx, key_idx, stream);  }  // 53
 audio_track_set_key_start_offset :: (main: *Animation, track_idx: int, key_idx: int, offset: float) { sys_call("Animation", "audio_track_set_key_start_offset", 3506521499, Nil, main, track_idx, key_idx, offset);  }  // 54
 audio_track_set_key_end_offset :: (main: *Animation, track_idx: int, key_idx: int, offset: float) { sys_call("Animation", "audio_track_set_key_end_offset", 3506521499, Nil, main, track_idx, key_idx, offset);  }  // 55
 audio_track_get_key_stream :: (main: *Animation, track_idx: int, key_idx: int) -> *Resource { call_ret := cast(*Resource) sys_call("Animation", "audio_track_get_key_stream", 635277205, Resource, main, track_idx, key_idx); return call_ret; }  // 56
@@ -10010,12 +10010,12 @@ get_loop_mode :: (main: *Animation) -> Animation.LoopMode { call_ret := cast(*An
 set_step :: (main: *Animation, size_sec: float) { sys_call("Animation", "set_step", 373806689, Nil, main, size_sec);  }  // 78
 get_step :: (main: *Animation) -> float { call_ret := cast(*float) sys_call("Animation", "get_step", 1740695150, float, main); return call_ret.*; }  // 79
 clear :: (main: *Animation) { sys_call("Animation", "clear", 3218959716, Nil, main);  }  // 80
-copy_track :: (main: *Animation, track_idx: int, to_animation: Animation) { sys_call("Animation", "copy_track", 148001024, Nil, main, track_idx, to_animation);  }  // 81
+copy_track :: (main: *Animation, track_idx: int, to_animation: *Animation) { sys_call("Animation", "copy_track", 148001024, Nil, main, track_idx, to_animation);  }  // 81
 optimize :: (main: *Animation) { sys_call("Animation", "optimize", 3303583852, Nil, main);  }  // 82
 compress :: (main: *Animation) { sys_call("Animation", "compress", 3608408117, Nil, main);  }  // 83
 is_capture_included :: (main: *Animation) -> bool { call_ret := cast(*bool) sys_call("Animation", "is_capture_included", 36873697, bool, main); return call_ret.*; }  // 84
 
-add_animation :: (main: *AnimationLibrary, name: string, animation: Animation) -> Error { call_ret := cast(*Error) sys_call("AnimationLibrary", "add_animation", 1811855551, Error, main, name, animation); return call_ret.*; }  // 0
+add_animation :: (main: *AnimationLibrary, name: string, animation: *Animation) -> Error { call_ret := cast(*Error) sys_call("AnimationLibrary", "add_animation", 1811855551, Error, main, name, animation); return call_ret.*; }  // 0
 remove_animation :: (main: *AnimationLibrary, name: string) { sys_call("AnimationLibrary", "remove_animation", 3304788590, Nil, main, name);  }  // 1
 rename_animation :: (main: *AnimationLibrary, name: string, newname: string) { sys_call("AnimationLibrary", "rename_animation", 3740211285, Nil, main, name, newname);  }  // 2
 has_animation :: (main: *AnimationLibrary, name: string) -> bool { call_ret := cast(*bool) sys_call("AnimationLibrary", "has_animation", 2619796661, bool, main, name); return call_ret.*; }  // 3
@@ -10023,7 +10023,7 @@ get_animation :: (main: *AnimationLibrary, name: string) -> *Animation { call_re
 get_animation_list :: (main: *AnimationLibrary) -> [] StringName { call_ret := cast(*[] StringName) sys_call("AnimationLibrary", "get_animation_list", 3995934104, [] StringName, main); return call_ret.*; }  // 5
 get_animation_list_size :: (main: *AnimationLibrary) -> int { call_ret := cast(*int) sys_call("AnimationLibrary", "get_animation_list_size", 3905245786, int, main); return call_ret.*; }  // 6
 
-add_animation_library :: (main: *AnimationMixer, name: string, library: AnimationLibrary) -> Error { call_ret := cast(*Error) sys_call("AnimationMixer", "add_animation_library", 618909818, Error, main, name, library); return call_ret.*; }  // 1
+add_animation_library :: (main: *AnimationMixer, name: string, library: *AnimationLibrary) -> Error { call_ret := cast(*Error) sys_call("AnimationMixer", "add_animation_library", 618909818, Error, main, name, library); return call_ret.*; }  // 1
 remove_animation_library :: (main: *AnimationMixer, name: string) { sys_call("AnimationMixer", "remove_animation_library", 3304788590, Nil, main, name);  }  // 2
 rename_animation_library :: (main: *AnimationMixer, name: string, newname: string) { sys_call("AnimationMixer", "rename_animation_library", 3740211285, Nil, main, name, newname);  }  // 3
 has_animation_library :: (main: *AnimationMixer, name: string) -> bool { call_ret := cast(*bool) sys_call("AnimationMixer", "has_animation_library", 2619796661, bool, main, name); return call_ret.*; }  // 4
@@ -10061,8 +10061,8 @@ advance :: (main: *AnimationMixer, delta: float) { sys_call("AnimationMixer", "a
 capture :: (main: *AnimationMixer, name: string, duration: float) { sys_call("AnimationMixer", "capture", 1333632127, Nil, main, name, duration);  }  // 36
 set_reset_on_save_enabled :: (main: *AnimationMixer, enabled: bool) { sys_call("AnimationMixer", "set_reset_on_save_enabled", 2586408642, Nil, main, enabled);  }  // 37
 is_reset_on_save_enabled :: (main: *AnimationMixer) -> bool { call_ret := cast(*bool) sys_call("AnimationMixer", "is_reset_on_save_enabled", 36873697, bool, main); return call_ret.*; }  // 38
-find_animation :: (main: *AnimationMixer, animation: Animation) -> StringName { call_ret := cast(*StringName) sys_call("AnimationMixer", "find_animation", 1559484580, StringName, main, animation); return call_ret.*; }  // 39
-find_animation_library :: (main: *AnimationMixer, animation: Animation) -> StringName { call_ret := cast(*StringName) sys_call("AnimationMixer", "find_animation_library", 1559484580, StringName, main, animation); return call_ret.*; }  // 40
+find_animation :: (main: *AnimationMixer, animation: *Animation) -> StringName { call_ret := cast(*StringName) sys_call("AnimationMixer", "find_animation", 1559484580, StringName, main, animation); return call_ret.*; }  // 39
+find_animation_library :: (main: *AnimationMixer, animation: *Animation) -> StringName { call_ret := cast(*StringName) sys_call("AnimationMixer", "find_animation_library", 1559484580, StringName, main, animation); return call_ret.*; }  // 40
 
 add_input :: (main: *AnimationNode, name: string) -> bool { call_ret := cast(*bool) sys_call("AnimationNode", "add_input", 2323990056, bool, main, name); return call_ret.*; }  // 8
 remove_input :: (main: *AnimationNode, index: int) { sys_call("AnimationNode", "remove_input", 1286410249, Nil, main, index);  }  // 9
@@ -10077,7 +10077,7 @@ is_filter_enabled :: (main: *AnimationNode) -> bool { call_ret := cast(*bool) sy
 get_processing_animation_tree_instance_id :: (main: *AnimationNode) -> int { call_ret := cast(*int) sys_call("AnimationNode", "get_processing_animation_tree_instance_id", 3905245786, int, main); return call_ret.*; }  // 18
 is_process_testing :: (main: *AnimationNode) -> bool { call_ret := cast(*bool) sys_call("AnimationNode", "is_process_testing", 36873697, bool, main); return call_ret.*; }  // 19
 blend_animation :: (main: *AnimationNode, animation: string, time: float, delta: float, seeked: bool, is_external_seeking: bool, blend: float) { sys_call("AnimationNode", "blend_animation", 1630801826, Nil, main, animation, time, delta, seeked, is_external_seeking, blend);  }  // 20
-blend_node :: (main: *AnimationNode, name: string, node: AnimationNode, time: float, seek: bool, is_external_seeking: bool, blend: float) -> float { call_ret := cast(*float) sys_call("AnimationNode", "blend_node", 1746075988, float, main, name, node, time, seek, is_external_seeking, blend); return call_ret.*; }  // 21
+blend_node :: (main: *AnimationNode, name: string, node: *AnimationNode, time: float, seek: bool, is_external_seeking: bool, blend: float) -> float { call_ret := cast(*float) sys_call("AnimationNode", "blend_node", 1746075988, float, main, name, node, time, seek, is_external_seeking, blend); return call_ret.*; }  // 21
 blend_input :: (main: *AnimationNode, input_index: int, time: float, seek: bool, is_external_seeking: bool, blend: float) -> float { call_ret := cast(*float) sys_call("AnimationNode", "blend_input", 1361527350, float, main, input_index, time, seek, is_external_seeking, blend); return call_ret.*; }  // 22
 set_parameter :: (main: *AnimationNode, name: string, value: Variant) { sys_call("AnimationNode", "set_parameter", 3776071444, Nil, main, name, value);  }  // 23
 get_parameter :: (main: *AnimationNode, name: string) -> Variant { call_ret := cast(*Variant) sys_call("AnimationNode", "get_parameter", 2760726917, Variant, main, name); return call_ret.*; }  // 24
@@ -10103,10 +10103,10 @@ get_loop_mode :: (main: *AnimationNodeAnimation) -> Animation.LoopMode { call_re
 
 
 
-add_blend_point :: (main: *AnimationNodeBlendSpace1D, node: AnimationRootNode, pos: float) { sys_call("AnimationNodeBlendSpace1D", "add_blend_point", 285050433, Nil, main, node, pos);  }  // 0
+add_blend_point :: (main: *AnimationNodeBlendSpace1D, node: *AnimationRootNode, pos: float) { sys_call("AnimationNodeBlendSpace1D", "add_blend_point", 285050433, Nil, main, node, pos);  }  // 0
 set_blend_point_position :: (main: *AnimationNodeBlendSpace1D, point: int, pos: float) { sys_call("AnimationNodeBlendSpace1D", "set_blend_point_position", 1602489585, Nil, main, point, pos);  }  // 1
 get_blend_point_position :: (main: *AnimationNodeBlendSpace1D, point: int) -> float { call_ret := cast(*float) sys_call("AnimationNodeBlendSpace1D", "get_blend_point_position", 2339986948, float, main, point); return call_ret.*; }  // 2
-set_blend_point_node :: (main: *AnimationNodeBlendSpace1D, point: int, node: AnimationRootNode) { sys_call("AnimationNodeBlendSpace1D", "set_blend_point_node", 4240341528, Nil, main, point, node);  }  // 3
+set_blend_point_node :: (main: *AnimationNodeBlendSpace1D, point: int, node: *AnimationRootNode) { sys_call("AnimationNodeBlendSpace1D", "set_blend_point_node", 4240341528, Nil, main, point, node);  }  // 3
 get_blend_point_node :: (main: *AnimationNodeBlendSpace1D, point: int) -> *AnimationRootNode { call_ret := cast(*AnimationRootNode) sys_call("AnimationNodeBlendSpace1D", "get_blend_point_node", 665599029, AnimationRootNode, main, point); return call_ret; }  // 4
 remove_blend_point :: (main: *AnimationNodeBlendSpace1D, point: int) { sys_call("AnimationNodeBlendSpace1D", "remove_blend_point", 1286410249, Nil, main, point);  }  // 5
 get_blend_point_count :: (main: *AnimationNodeBlendSpace1D) -> int { call_ret := cast(*int) sys_call("AnimationNodeBlendSpace1D", "get_blend_point_count", 3905245786, int, main); return call_ret.*; }  // 6
@@ -10123,10 +10123,10 @@ get_blend_mode :: (main: *AnimationNodeBlendSpace1D) -> AnimationNodeBlendSpace1
 set_use_sync :: (main: *AnimationNodeBlendSpace1D, enable: bool) { sys_call("AnimationNodeBlendSpace1D", "set_use_sync", 2586408642, Nil, main, enable);  }  // 17
 is_using_sync :: (main: *AnimationNodeBlendSpace1D) -> bool { call_ret := cast(*bool) sys_call("AnimationNodeBlendSpace1D", "is_using_sync", 36873697, bool, main); return call_ret.*; }  // 18
 
-add_blend_point :: (main: *AnimationNodeBlendSpace2D, node: AnimationRootNode, pos: Vector2) { sys_call("AnimationNodeBlendSpace2D", "add_blend_point", 402261981, Nil, main, node, pos);  }  // 0
+add_blend_point :: (main: *AnimationNodeBlendSpace2D, node: *AnimationRootNode, pos: Vector2) { sys_call("AnimationNodeBlendSpace2D", "add_blend_point", 402261981, Nil, main, node, pos);  }  // 0
 set_blend_point_position :: (main: *AnimationNodeBlendSpace2D, point: int, pos: Vector2) { sys_call("AnimationNodeBlendSpace2D", "set_blend_point_position", 163021252, Nil, main, point, pos);  }  // 1
 get_blend_point_position :: (main: *AnimationNodeBlendSpace2D, point: int) -> Vector2 { call_ret := cast(*Vector2) sys_call("AnimationNodeBlendSpace2D", "get_blend_point_position", 2299179447, Vector2, main, point); return call_ret.*; }  // 2
-set_blend_point_node :: (main: *AnimationNodeBlendSpace2D, point: int, node: AnimationRootNode) { sys_call("AnimationNodeBlendSpace2D", "set_blend_point_node", 4240341528, Nil, main, point, node);  }  // 3
+set_blend_point_node :: (main: *AnimationNodeBlendSpace2D, point: int, node: *AnimationRootNode) { sys_call("AnimationNodeBlendSpace2D", "set_blend_point_node", 4240341528, Nil, main, point, node);  }  // 3
 get_blend_point_node :: (main: *AnimationNodeBlendSpace2D, point: int) -> *AnimationRootNode { call_ret := cast(*AnimationRootNode) sys_call("AnimationNodeBlendSpace2D", "get_blend_point_node", 665599029, AnimationRootNode, main, point); return call_ret; }  // 4
 remove_blend_point :: (main: *AnimationNodeBlendSpace2D, point: int) { sys_call("AnimationNodeBlendSpace2D", "remove_blend_point", 1286410249, Nil, main, point);  }  // 5
 get_blend_point_count :: (main: *AnimationNodeBlendSpace2D) -> int { call_ret := cast(*int) sys_call("AnimationNodeBlendSpace2D", "get_blend_point_count", 3905245786, int, main); return call_ret.*; }  // 6
@@ -10151,7 +10151,7 @@ get_blend_mode :: (main: *AnimationNodeBlendSpace2D) -> AnimationNodeBlendSpace2
 set_use_sync :: (main: *AnimationNodeBlendSpace2D, enable: bool) { sys_call("AnimationNodeBlendSpace2D", "set_use_sync", 2586408642, Nil, main, enable);  }  // 25
 is_using_sync :: (main: *AnimationNodeBlendSpace2D) -> bool { call_ret := cast(*bool) sys_call("AnimationNodeBlendSpace2D", "is_using_sync", 36873697, bool, main); return call_ret.*; }  // 26
 
-add_node :: (main: *AnimationNodeBlendTree, name: string, node: AnimationNode) { sys_call("AnimationNodeBlendTree", "add_node", 1980270704, Nil, main, name, node);  }  // 0
+add_node :: (main: *AnimationNodeBlendTree, name: string, node: *AnimationNode) { sys_call("AnimationNodeBlendTree", "add_node", 1980270704, Nil, main, name, node);  }  // 0
 get_node :: (main: *AnimationNodeBlendTree, name: string) -> *AnimationNode { call_ret := cast(*AnimationNode) sys_call("AnimationNodeBlendTree", "get_node", 625644256, AnimationNode, main, name); return call_ret; }  // 1
 remove_node :: (main: *AnimationNodeBlendTree, name: string) { sys_call("AnimationNodeBlendTree", "remove_node", 3304788590, Nil, main, name);  }  // 2
 rename_node :: (main: *AnimationNodeBlendTree, name: string, new_name: string) { sys_call("AnimationNodeBlendTree", "rename_node", 3740211285, Nil, main, name, new_name);  }  // 3
@@ -10168,11 +10168,11 @@ get_remaining_time :: (main: *AnimationNodeExtension, node_info: PackedFloat32Ar
 
 set_fadein_time :: (main: *AnimationNodeOneShot, time: float) { sys_call("AnimationNodeOneShot", "set_fadein_time", 373806689, Nil, main, time);  }  // 0
 get_fadein_time :: (main: *AnimationNodeOneShot) -> float { call_ret := cast(*float) sys_call("AnimationNodeOneShot", "get_fadein_time", 1740695150, float, main); return call_ret.*; }  // 1
-set_fadein_curve :: (main: *AnimationNodeOneShot, curve: Curve) { sys_call("AnimationNodeOneShot", "set_fadein_curve", 270443179, Nil, main, curve);  }  // 2
+set_fadein_curve :: (main: *AnimationNodeOneShot, curve: *Curve) { sys_call("AnimationNodeOneShot", "set_fadein_curve", 270443179, Nil, main, curve);  }  // 2
 get_fadein_curve :: (main: *AnimationNodeOneShot) -> *Curve { call_ret := cast(*Curve) sys_call("AnimationNodeOneShot", "get_fadein_curve", 2460114913, Curve, main); return call_ret; }  // 3
 set_fadeout_time :: (main: *AnimationNodeOneShot, time: float) { sys_call("AnimationNodeOneShot", "set_fadeout_time", 373806689, Nil, main, time);  }  // 4
 get_fadeout_time :: (main: *AnimationNodeOneShot) -> float { call_ret := cast(*float) sys_call("AnimationNodeOneShot", "get_fadeout_time", 1740695150, float, main); return call_ret.*; }  // 5
-set_fadeout_curve :: (main: *AnimationNodeOneShot, curve: Curve) { sys_call("AnimationNodeOneShot", "set_fadeout_curve", 270443179, Nil, main, curve);  }  // 6
+set_fadeout_curve :: (main: *AnimationNodeOneShot, curve: *Curve) { sys_call("AnimationNodeOneShot", "set_fadeout_curve", 270443179, Nil, main, curve);  }  // 6
 get_fadeout_curve :: (main: *AnimationNodeOneShot) -> *Curve { call_ret := cast(*Curve) sys_call("AnimationNodeOneShot", "get_fadeout_curve", 2460114913, Curve, main); return call_ret; }  // 7
 set_break_loop_at_end :: (main: *AnimationNodeOneShot, enable: bool) { sys_call("AnimationNodeOneShot", "set_break_loop_at_end", 2586408642, Nil, main, enable);  }  // 8
 is_loop_broken_at_end :: (main: *AnimationNodeOneShot) -> bool { call_ret := cast(*bool) sys_call("AnimationNodeOneShot", "is_loop_broken_at_end", 36873697, bool, main); return call_ret.*; }  // 9
@@ -10186,17 +10186,17 @@ set_mix_mode :: (main: *AnimationNodeOneShot, mode: AnimationNodeOneShot.MixMode
 get_mix_mode :: (main: *AnimationNodeOneShot) -> AnimationNodeOneShot.MixMode { call_ret := cast(*AnimationNodeOneShot.MixMode) sys_call("AnimationNodeOneShot", "get_mix_mode", 3076550526, AnimationNodeOneShot.MixMode, main); return call_ret.*; }  // 17
 
 
-add_node :: (main: *AnimationNodeStateMachine, name: string, node: AnimationNode) { sys_call("AnimationNodeStateMachine", "add_node", 1980270704, Nil, main, name, node);  }  // 0
-replace_node :: (main: *AnimationNodeStateMachine, name: string, node: AnimationNode) { sys_call("AnimationNodeStateMachine", "replace_node", 2559412862, Nil, main, name, node);  }  // 1
+add_node :: (main: *AnimationNodeStateMachine, name: string, node: *AnimationNode) { sys_call("AnimationNodeStateMachine", "add_node", 1980270704, Nil, main, name, node);  }  // 0
+replace_node :: (main: *AnimationNodeStateMachine, name: string, node: *AnimationNode) { sys_call("AnimationNodeStateMachine", "replace_node", 2559412862, Nil, main, name, node);  }  // 1
 get_node :: (main: *AnimationNodeStateMachine, name: string) -> *AnimationNode { call_ret := cast(*AnimationNode) sys_call("AnimationNodeStateMachine", "get_node", 625644256, AnimationNode, main, name); return call_ret; }  // 2
 remove_node :: (main: *AnimationNodeStateMachine, name: string) { sys_call("AnimationNodeStateMachine", "remove_node", 3304788590, Nil, main, name);  }  // 3
 rename_node :: (main: *AnimationNodeStateMachine, name: string, new_name: string) { sys_call("AnimationNodeStateMachine", "rename_node", 3740211285, Nil, main, name, new_name);  }  // 4
 has_node :: (main: *AnimationNodeStateMachine, name: string) -> bool { call_ret := cast(*bool) sys_call("AnimationNodeStateMachine", "has_node", 2619796661, bool, main, name); return call_ret.*; }  // 5
-get_node_name :: (main: *AnimationNodeStateMachine, node: AnimationNode) -> StringName { call_ret := cast(*StringName) sys_call("AnimationNodeStateMachine", "get_node_name", 739213945, StringName, main, node); return call_ret.*; }  // 6
+get_node_name :: (main: *AnimationNodeStateMachine, node: *AnimationNode) -> StringName { call_ret := cast(*StringName) sys_call("AnimationNodeStateMachine", "get_node_name", 739213945, StringName, main, node); return call_ret.*; }  // 6
 set_node_position :: (main: *AnimationNodeStateMachine, name: string, position: Vector2) { sys_call("AnimationNodeStateMachine", "set_node_position", 1999414630, Nil, main, name, position);  }  // 7
 get_node_position :: (main: *AnimationNodeStateMachine, name: string) -> Vector2 { call_ret := cast(*Vector2) sys_call("AnimationNodeStateMachine", "get_node_position", 3100822709, Vector2, main, name); return call_ret.*; }  // 8
 has_transition :: (main: *AnimationNodeStateMachine, from: string, to: string) -> bool { call_ret := cast(*bool) sys_call("AnimationNodeStateMachine", "has_transition", 471820014, bool, main, from, to); return call_ret.*; }  // 9
-add_transition :: (main: *AnimationNodeStateMachine, from: string, to: string, transition: AnimationNodeStateMachineTransition) { sys_call("AnimationNodeStateMachine", "add_transition", 795486887, Nil, main, from, to, transition);  }  // 10
+add_transition :: (main: *AnimationNodeStateMachine, from: string, to: string, transition: *AnimationNodeStateMachineTransition) { sys_call("AnimationNodeStateMachine", "add_transition", 795486887, Nil, main, from, to, transition);  }  // 10
 get_transition :: (main: *AnimationNodeStateMachine, idx: int) -> *AnimationNodeStateMachineTransition { call_ret := cast(*AnimationNodeStateMachineTransition) sys_call("AnimationNodeStateMachine", "get_transition", 4192381260, AnimationNodeStateMachineTransition, main, idx); return call_ret; }  // 11
 get_transition_from :: (main: *AnimationNodeStateMachine, idx: int) -> StringName { call_ret := cast(*StringName) sys_call("AnimationNodeStateMachine", "get_transition_from", 659327637, StringName, main, idx); return call_ret.*; }  // 12
 get_transition_to :: (main: *AnimationNodeStateMachine, idx: int) -> StringName { call_ret := cast(*StringName) sys_call("AnimationNodeStateMachine", "get_transition_to", 659327637, StringName, main, idx); return call_ret.*; }  // 13
@@ -10231,7 +10231,7 @@ set_advance_condition :: (main: *AnimationNodeStateMachineTransition, name: stri
 get_advance_condition :: (main: *AnimationNodeStateMachineTransition) -> StringName { call_ret := cast(*StringName) sys_call("AnimationNodeStateMachineTransition", "get_advance_condition", 2002593661, StringName, main); return call_ret.*; }  // 5
 set_xfade_time :: (main: *AnimationNodeStateMachineTransition, secs: float) { sys_call("AnimationNodeStateMachineTransition", "set_xfade_time", 373806689, Nil, main, secs);  }  // 6
 get_xfade_time :: (main: *AnimationNodeStateMachineTransition) -> float { call_ret := cast(*float) sys_call("AnimationNodeStateMachineTransition", "get_xfade_time", 1740695150, float, main); return call_ret.*; }  // 7
-set_xfade_curve :: (main: *AnimationNodeStateMachineTransition, curve: Curve) { sys_call("AnimationNodeStateMachineTransition", "set_xfade_curve", 270443179, Nil, main, curve);  }  // 8
+set_xfade_curve :: (main: *AnimationNodeStateMachineTransition, curve: *Curve) { sys_call("AnimationNodeStateMachineTransition", "set_xfade_curve", 270443179, Nil, main, curve);  }  // 8
 get_xfade_curve :: (main: *AnimationNodeStateMachineTransition) -> *Curve { call_ret := cast(*Curve) sys_call("AnimationNodeStateMachineTransition", "get_xfade_curve", 2460114913, Curve, main); return call_ret; }  // 9
 set_break_loop_at_end :: (main: *AnimationNodeStateMachineTransition, enable: bool) { sys_call("AnimationNodeStateMachineTransition", "set_break_loop_at_end", 2586408642, Nil, main, enable);  }  // 10
 is_loop_broken_at_end :: (main: *AnimationNodeStateMachineTransition) -> bool { call_ret := cast(*bool) sys_call("AnimationNodeStateMachineTransition", "is_loop_broken_at_end", 36873697, bool, main); return call_ret.*; }  // 11
@@ -10259,7 +10259,7 @@ set_input_reset :: (main: *AnimationNodeTransition, input: int, enable: bool) { 
 is_input_reset :: (main: *AnimationNodeTransition, input: int) -> bool { call_ret := cast(*bool) sys_call("AnimationNodeTransition", "is_input_reset", 1116898809, bool, main, input); return call_ret.*; }  // 6
 set_xfade_time :: (main: *AnimationNodeTransition, time: float) { sys_call("AnimationNodeTransition", "set_xfade_time", 373806689, Nil, main, time);  }  // 7
 get_xfade_time :: (main: *AnimationNodeTransition) -> float { call_ret := cast(*float) sys_call("AnimationNodeTransition", "get_xfade_time", 1740695150, float, main); return call_ret.*; }  // 8
-set_xfade_curve :: (main: *AnimationNodeTransition, curve: Curve) { sys_call("AnimationNodeTransition", "set_xfade_curve", 270443179, Nil, main, curve);  }  // 9
+set_xfade_curve :: (main: *AnimationNodeTransition, curve: *Curve) { sys_call("AnimationNodeTransition", "set_xfade_curve", 270443179, Nil, main, curve);  }  // 9
 get_xfade_curve :: (main: *AnimationNodeTransition) -> *Curve { call_ret := cast(*Curve) sys_call("AnimationNodeTransition", "get_xfade_curve", 2460114913, Curve, main); return call_ret; }  // 10
 set_allow_transition_to_self :: (main: *AnimationNodeTransition, enable: bool) { sys_call("AnimationNodeTransition", "set_allow_transition_to_self", 2586408642, Nil, main, enable);  }  // 11
 is_allow_transition_to_self :: (main: *AnimationNodeTransition) -> bool { call_ret := cast(*bool) sys_call("AnimationNodeTransition", "is_allow_transition_to_self", 36873697, bool, main); return call_ret.*; }  // 12
@@ -10319,7 +10319,7 @@ set_root :: (main: *AnimationPlayer, path: string) { sys_call("AnimationPlayer",
 get_root :: (main: *AnimationPlayer) -> NodePath { call_ret := cast(*NodePath) sys_call("AnimationPlayer", "get_root", 4075236667, NodePath, main); return call_ret.*; }  // 52
 
 
-set_tree_root :: (main: *AnimationTree, animation_node: AnimationRootNode) { sys_call("AnimationTree", "set_tree_root", 2581683800, Nil, main, animation_node);  }  // 0
+set_tree_root :: (main: *AnimationTree, animation_node: *AnimationRootNode) { sys_call("AnimationTree", "set_tree_root", 2581683800, Nil, main, animation_node);  }  // 0
 get_tree_root :: (main: *AnimationTree) -> *AnimationRootNode { call_ret := cast(*AnimationRootNode) sys_call("AnimationTree", "get_tree_root", 4110384712, AnimationRootNode, main); return call_ret; }  // 1
 set_advance_expression_base_node :: (main: *AnimationTree, path: string) { sys_call("AnimationTree", "set_advance_expression_base_node", 1348162250, Nil, main, path);  }  // 2
 get_advance_expression_base_node :: (main: *AnimationTree) -> NodePath { call_ret := cast(*NodePath) sys_call("AnimationTree", "get_advance_expression_base_node", 4075236667, NodePath, main); return call_ret.*; }  // 3
@@ -10358,8 +10358,8 @@ get_overlapping_bodies :: (main: *Area2D) -> [] Node2D { call_ret := cast(*[] No
 get_overlapping_areas :: (main: *Area2D) -> [] Area2D { call_ret := cast(*[] Area2D) sys_call("Area2D", "get_overlapping_areas", 3995934104, [] Area2D, main); return call_ret.*; }  // 27
 has_overlapping_bodies :: (main: *Area2D) -> bool { call_ret := cast(*bool) sys_call("Area2D", "has_overlapping_bodies", 36873697, bool, main); return call_ret.*; }  // 28
 has_overlapping_areas :: (main: *Area2D) -> bool { call_ret := cast(*bool) sys_call("Area2D", "has_overlapping_areas", 36873697, bool, main); return call_ret.*; }  // 29
-overlaps_body :: (main: *Area2D, body: Node) -> bool { call_ret := cast(*bool) sys_call("Area2D", "overlaps_body", 3093956946, bool, main, body); return call_ret.*; }  // 30
-overlaps_area :: (main: *Area2D, area: Node) -> bool { call_ret := cast(*bool) sys_call("Area2D", "overlaps_area", 3093956946, bool, main, area); return call_ret.*; }  // 31
+overlaps_body :: (main: *Area2D, body: *Node) -> bool { call_ret := cast(*bool) sys_call("Area2D", "overlaps_body", 3093956946, bool, main, body); return call_ret.*; }  // 30
+overlaps_area :: (main: *Area2D, area: *Node) -> bool { call_ret := cast(*bool) sys_call("Area2D", "overlaps_area", 3093956946, bool, main, area); return call_ret.*; }  // 31
 set_audio_bus_name :: (main: *Area2D, name: string) { sys_call("Area2D", "set_audio_bus_name", 3304788590, Nil, main, name);  }  // 32
 get_audio_bus_name :: (main: *Area2D) -> StringName { call_ret := cast(*StringName) sys_call("Area2D", "get_audio_bus_name", 2002593661, StringName, main); return call_ret.*; }  // 33
 set_audio_bus_override :: (main: *Area2D, enable: bool) { sys_call("Area2D", "set_audio_bus_override", 2586408642, Nil, main, enable);  }  // 34
@@ -10401,8 +10401,8 @@ get_overlapping_bodies :: (main: *Area3D) -> [] Node3D { call_ret := cast(*[] No
 get_overlapping_areas :: (main: *Area3D) -> [] Area3D { call_ret := cast(*[] Area3D) sys_call("Area3D", "get_overlapping_areas", 3995934104, [] Area3D, main); return call_ret.*; }  // 33
 has_overlapping_bodies :: (main: *Area3D) -> bool { call_ret := cast(*bool) sys_call("Area3D", "has_overlapping_bodies", 36873697, bool, main); return call_ret.*; }  // 34
 has_overlapping_areas :: (main: *Area3D) -> bool { call_ret := cast(*bool) sys_call("Area3D", "has_overlapping_areas", 36873697, bool, main); return call_ret.*; }  // 35
-overlaps_body :: (main: *Area3D, body: Node) -> bool { call_ret := cast(*bool) sys_call("Area3D", "overlaps_body", 3093956946, bool, main, body); return call_ret.*; }  // 36
-overlaps_area :: (main: *Area3D, area: Node) -> bool { call_ret := cast(*bool) sys_call("Area3D", "overlaps_area", 3093956946, bool, main, area); return call_ret.*; }  // 37
+overlaps_body :: (main: *Area3D, body: *Node) -> bool { call_ret := cast(*bool) sys_call("Area3D", "overlaps_body", 3093956946, bool, main, body); return call_ret.*; }  // 36
+overlaps_area :: (main: *Area3D, area: *Node) -> bool { call_ret := cast(*bool) sys_call("Area3D", "overlaps_area", 3093956946, bool, main, area); return call_ret.*; }  // 37
 set_audio_bus_override :: (main: *Area3D, enable: bool) { sys_call("Area3D", "set_audio_bus_override", 2586408642, Nil, main, enable);  }  // 38
 is_overriding_audio_bus :: (main: *Area3D) -> bool { call_ret := cast(*bool) sys_call("Area3D", "is_overriding_audio_bus", 36873697, bool, main); return call_ret.*; }  // 39
 set_audio_bus_name :: (main: *Area3D, name: string) { sys_call("Area3D", "set_audio_bus_name", 3304788590, Nil, main, name);  }  // 40
@@ -10440,7 +10440,7 @@ regen_normal_maps :: (main: *ArrayMesh) { sys_call("ArrayMesh", "regen_normal_ma
 lightmap_unwrap :: (main: *ArrayMesh, transform: Transform3D, texel_size: float) -> Error { call_ret := cast(*Error) sys_call("ArrayMesh", "lightmap_unwrap", 1476641071, Error, main, transform, texel_size); return call_ret.*; }  // 21
 set_custom_aabb :: (main: *ArrayMesh, aabb: AABB) { sys_call("ArrayMesh", "set_custom_aabb", 259215842, Nil, main, aabb);  }  // 22
 get_custom_aabb :: (main: *ArrayMesh) -> AABB { call_ret := cast(*AABB) sys_call("ArrayMesh", "get_custom_aabb", 1068685055, AABB, main); return call_ret.*; }  // 23
-set_shadow_mesh :: (main: *ArrayMesh, mesh: ArrayMesh) { sys_call("ArrayMesh", "set_shadow_mesh", 3377897901, Nil, main, mesh);  }  // 24
+set_shadow_mesh :: (main: *ArrayMesh, mesh: *ArrayMesh) { sys_call("ArrayMesh", "set_shadow_mesh", 3377897901, Nil, main, mesh);  }  // 24
 get_shadow_mesh :: (main: *ArrayMesh) -> *ArrayMesh { call_ret := cast(*ArrayMesh) sys_call("ArrayMesh", "get_shadow_mesh", 3206942465, ArrayMesh, main); return call_ret; }  // 25
 
 set_arrays :: (main: *ArrayOccluder3D, vertices: PackedVector3Array, indices: PackedInt32Array) { sys_call("ArrayOccluder3D", "set_arrays", 3233972621, Nil, main, vertices, indices);  }  // 0
@@ -10456,7 +10456,7 @@ get_alignment_horizontal :: (main: *AspectRatioContainer) -> AspectRatioContaine
 set_alignment_vertical :: (main: *AspectRatioContainer, alignment_vertical: AspectRatioContainer.AlignmentMode) { sys_call("AspectRatioContainer", "set_alignment_vertical", 2147829016, Nil, main, alignment_vertical);  }  // 6
 get_alignment_vertical :: (main: *AspectRatioContainer) -> AspectRatioContainer.AlignmentMode { call_ret := cast(*AspectRatioContainer.AlignmentMode) sys_call("AspectRatioContainer", "get_alignment_vertical", 3838875429, AspectRatioContainer.AlignmentMode, main); return call_ret.*; }  // 7
 
-set_atlas :: (main: *AtlasTexture, atlas: Texture2D) { sys_call("AtlasTexture", "set_atlas", 4051416890, Nil, main, atlas);  }  // 0
+set_atlas :: (main: *AtlasTexture, atlas: *Texture2D) { sys_call("AtlasTexture", "set_atlas", 4051416890, Nil, main, atlas);  }  // 0
 get_atlas :: (main: *AtlasTexture) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("AtlasTexture", "get_atlas", 3635182373, Texture2D, main); return call_ret; }  // 1
 set_region :: (main: *AtlasTexture, region: Rect2) { sys_call("AtlasTexture", "set_region", 2046264180, Nil, main, region);  }  // 2
 get_region :: (main: *AtlasTexture) -> Rect2 { call_ret := cast(*Rect2) sys_call("AtlasTexture", "get_region", 1639390495, Rect2, main); return call_ret.*; }  // 3
@@ -10686,7 +10686,7 @@ set_bus_mute :: (main: *AudioServer, bus_idx: int, enable: bool) { sys_call("Aud
 is_bus_mute :: (main: *AudioServer, bus_idx: int) -> bool { call_ret := cast(*bool) sys_call("AudioServer", "is_bus_mute", 1116898809, bool, main, bus_idx); return call_ret.*; }  // 18
 set_bus_bypass_effects :: (main: *AudioServer, bus_idx: int, enable: bool) { sys_call("AudioServer", "set_bus_bypass_effects", 300928843, Nil, main, bus_idx, enable);  }  // 19
 is_bus_bypassing_effects :: (main: *AudioServer, bus_idx: int) -> bool { call_ret := cast(*bool) sys_call("AudioServer", "is_bus_bypassing_effects", 1116898809, bool, main, bus_idx); return call_ret.*; }  // 20
-add_bus_effect :: (main: *AudioServer, bus_idx: int, effect: AudioEffect) { sys_call("AudioServer", "add_bus_effect", 4068819785, Nil, main, bus_idx, effect);  }  // 21
+add_bus_effect :: (main: *AudioServer, bus_idx: int, effect: *AudioEffect) { sys_call("AudioServer", "add_bus_effect", 4068819785, Nil, main, bus_idx, effect);  }  // 21
 remove_bus_effect :: (main: *AudioServer, bus_idx: int, effect_idx: int) { sys_call("AudioServer", "remove_bus_effect", 3937882851, Nil, main, bus_idx, effect_idx);  }  // 22
 get_bus_effect_count :: (main: *AudioServer, bus_idx: int) -> int { call_ret := cast(*int) sys_call("AudioServer", "get_bus_effect_count", 3744713108, int, main, bus_idx); return call_ret.*; }  // 23
 get_bus_effect :: (main: *AudioServer, bus_idx: int, effect_idx: int) -> *AudioEffect { call_ret := cast(*AudioEffect) sys_call("AudioServer", "get_bus_effect", 726064442, AudioEffect, main, bus_idx, effect_idx); return call_ret; }  // 24
@@ -10713,11 +10713,11 @@ get_output_latency :: (main: *AudioServer) -> float { call_ret := cast(*float) s
 get_input_device_list :: (main: *AudioServer) -> PackedStringArray { call_ret := cast(*PackedStringArray) sys_call("AudioServer", "get_input_device_list", 2981934095, PackedStringArray, main); return call_ret.*; }  // 45
 get_input_device :: (main: *AudioServer) -> gstring { call_ret := cast(*gstring) sys_call("AudioServer", "get_input_device", 2841200299, gstring, main); return call_ret.*; }  // 46
 set_input_device :: (main: *AudioServer, name: string) { sys_call("AudioServer", "set_input_device", 83702148, Nil, main, name);  }  // 47
-set_bus_layout :: (main: *AudioServer, bus_layout: AudioBusLayout) { sys_call("AudioServer", "set_bus_layout", 3319058824, Nil, main, bus_layout);  }  // 48
+set_bus_layout :: (main: *AudioServer, bus_layout: *AudioBusLayout) { sys_call("AudioServer", "set_bus_layout", 3319058824, Nil, main, bus_layout);  }  // 48
 generate_bus_layout :: (main: *AudioServer) -> *AudioBusLayout { call_ret := cast(*AudioBusLayout) sys_call("AudioServer", "generate_bus_layout", 3769973890, AudioBusLayout, main); return call_ret; }  // 49
 set_enable_tagging_used_audio_streams :: (main: *AudioServer, enable: bool) { sys_call("AudioServer", "set_enable_tagging_used_audio_streams", 2586408642, Nil, main, enable);  }  // 50
-is_stream_registered_as_sample :: (main: *AudioServer, stream: AudioStream) -> bool { call_ret := cast(*bool) sys_call("AudioServer", "is_stream_registered_as_sample", 500225754, bool, main, stream); return call_ret.*; }  // 51
-register_stream_as_sample :: (main: *AudioServer, stream: AudioStream) { sys_call("AudioServer", "register_stream_as_sample", 2210767741, Nil, main, stream);  }  // 52
+is_stream_registered_as_sample :: (main: *AudioServer, stream: *AudioStream) -> bool { call_ret := cast(*bool) sys_call("AudioServer", "is_stream_registered_as_sample", 500225754, bool, main, stream); return call_ret.*; }  // 51
+register_stream_as_sample :: (main: *AudioServer, stream: *AudioStream) { sys_call("AudioServer", "register_stream_as_sample", 2210767741, Nil, main, stream);  }  // 52
 
 get_length :: (main: *AudioStream) -> float { call_ret := cast(*float) sys_call("AudioStream", "get_length", 1740695150, float, main); return call_ret.*; }  // 9
 is_monophonic :: (main: *AudioStream) -> bool { call_ret := cast(*bool) sys_call("AudioStream", "is_monophonic", 36873697, bool, main); return call_ret.*; }  // 10
@@ -10746,7 +10746,7 @@ set_initial_clip :: (main: *AudioStreamInteractive, clip_index: int) { sys_call(
 get_initial_clip :: (main: *AudioStreamInteractive) -> int { call_ret := cast(*int) sys_call("AudioStreamInteractive", "get_initial_clip", 3905245786, int, main); return call_ret.*; }  // 3
 set_clip_name :: (main: *AudioStreamInteractive, clip_index: int, name: string) { sys_call("AudioStreamInteractive", "set_clip_name", 3780747571, Nil, main, clip_index, name);  }  // 4
 get_clip_name :: (main: *AudioStreamInteractive, clip_index: int) -> StringName { call_ret := cast(*StringName) sys_call("AudioStreamInteractive", "get_clip_name", 659327637, StringName, main, clip_index); return call_ret.*; }  // 5
-set_clip_stream :: (main: *AudioStreamInteractive, clip_index: int, stream: AudioStream) { sys_call("AudioStreamInteractive", "set_clip_stream", 111075094, Nil, main, clip_index, stream);  }  // 6
+set_clip_stream :: (main: *AudioStreamInteractive, clip_index: int, stream: *AudioStream) { sys_call("AudioStreamInteractive", "set_clip_stream", 111075094, Nil, main, clip_index, stream);  }  // 6
 get_clip_stream :: (main: *AudioStreamInteractive, clip_index: int) -> *AudioStream { call_ret := cast(*AudioStream) sys_call("AudioStreamInteractive", "get_clip_stream", 2739380747, AudioStream, main, clip_index); return call_ret; }  // 7
 set_clip_auto_advance :: (main: *AudioStreamInteractive, clip_index: int, mode: AudioStreamInteractive.AutoAdvanceMode) { sys_call("AudioStreamInteractive", "set_clip_auto_advance", 57217598, Nil, main, clip_index, mode);  }  // 8
 get_clip_auto_advance :: (main: *AudioStreamInteractive, clip_index: int) -> AudioStreamInteractive.AutoAdvanceMode { call_ret := cast(*AudioStreamInteractive.AutoAdvanceMode) sys_call("AudioStreamInteractive", "get_clip_auto_advance", 1778634807, AudioStreamInteractive.AutoAdvanceMode, main, clip_index); return call_ret.*; }  // 9
@@ -10782,7 +10782,7 @@ get_bar_beats :: (main: *AudioStreamMP3) -> int { call_ret := cast(*int) sys_cal
 
 load_from_buffer :: (main: *AudioStreamOggVorbis, stream_data: PackedByteArray) -> *AudioStreamOggVorbis { call_ret := cast(*AudioStreamOggVorbis) sys_call("AudioStreamOggVorbis", "load_from_buffer", 354904730, AudioStreamOggVorbis, main, stream_data); return call_ret; }  // 0
 load_from_file :: (main: *AudioStreamOggVorbis, path: string) -> *AudioStreamOggVorbis { call_ret := cast(*AudioStreamOggVorbis) sys_call("AudioStreamOggVorbis", "load_from_file", 797568536, AudioStreamOggVorbis, main, path); return call_ret; }  // 1
-set_packet_sequence :: (main: *AudioStreamOggVorbis, packet_sequence: OggPacketSequence) { sys_call("AudioStreamOggVorbis", "set_packet_sequence", 438882457, Nil, main, packet_sequence);  }  // 2
+set_packet_sequence :: (main: *AudioStreamOggVorbis, packet_sequence: *OggPacketSequence) { sys_call("AudioStreamOggVorbis", "set_packet_sequence", 438882457, Nil, main, packet_sequence);  }  // 2
 get_packet_sequence :: (main: *AudioStreamOggVorbis) -> *OggPacketSequence { call_ret := cast(*OggPacketSequence) sys_call("AudioStreamOggVorbis", "get_packet_sequence", 2801636033, OggPacketSequence, main); return call_ret; }  // 3
 set_loop :: (main: *AudioStreamOggVorbis, enable: bool) { sys_call("AudioStreamOggVorbis", "set_loop", 2586408642, Nil, main, enable);  }  // 4
 has_loop :: (main: *AudioStreamOggVorbis) -> bool { call_ret := cast(*bool) sys_call("AudioStreamOggVorbis", "has_loop", 36873697, bool, main); return call_ret.*; }  // 5
@@ -10795,7 +10795,7 @@ get_beat_count :: (main: *AudioStreamOggVorbis) -> int { call_ret := cast(*int) 
 set_bar_beats :: (main: *AudioStreamOggVorbis, count: int) { sys_call("AudioStreamOggVorbis", "set_bar_beats", 1286410249, Nil, main, count);  }  // 12
 get_bar_beats :: (main: *AudioStreamOggVorbis) -> int { call_ret := cast(*int) sys_call("AudioStreamOggVorbis", "get_bar_beats", 3905245786, int, main); return call_ret.*; }  // 13
 
-set_sample_playback :: (main: *AudioStreamPlayback, playback_sample: AudioSamplePlayback) { sys_call("AudioStreamPlayback", "set_sample_playback", 3195455091, Nil, main, playback_sample);  }  // 10
+set_sample_playback :: (main: *AudioStreamPlayback, playback_sample: *AudioSamplePlayback) { sys_call("AudioStreamPlayback", "set_sample_playback", 3195455091, Nil, main, playback_sample);  }  // 10
 get_sample_playback :: (main: *AudioStreamPlayback) -> *AudioSamplePlayback { call_ret := cast(*AudioSamplePlayback) sys_call("AudioStreamPlayback", "get_sample_playback", 3482738536, AudioSamplePlayback, main); return call_ret; }  // 11
 mix_audio :: (main: *AudioStreamPlayback, rate_scale: float, frames: int) -> PackedVector2Array { call_ret := cast(*PackedVector2Array) sys_call("AudioStreamPlayback", "mix_audio", 3341291446, PackedVector2Array, main, rate_scale, frames); return call_ret.*; }  // 12
 start :: (main: *AudioStreamPlayback) { sys_call("AudioStreamPlayback", "start", 1958160172, Nil, main);  }  // 13
@@ -10811,7 +10811,7 @@ get_current_clip_index :: (main: *AudioStreamPlaybackInteractive) -> int { call_
 
 
 
-play_stream :: (main: *AudioStreamPlaybackPolyphonic, stream: AudioStream) -> int { call_ret := cast(*int) sys_call("AudioStreamPlaybackPolyphonic", "play_stream", 1846744803, int, main, stream); return call_ret.*; }  // 0
+play_stream :: (main: *AudioStreamPlaybackPolyphonic, stream: *AudioStream) -> int { call_ret := cast(*int) sys_call("AudioStreamPlaybackPolyphonic", "play_stream", 1846744803, int, main, stream); return call_ret.*; }  // 0
 set_stream_volume :: (main: *AudioStreamPlaybackPolyphonic, stream: int, volume_db: float) { sys_call("AudioStreamPlaybackPolyphonic", "set_stream_volume", 1602489585, Nil, main, stream, volume_db);  }  // 1
 set_stream_pitch_scale :: (main: *AudioStreamPlaybackPolyphonic, stream: int, pitch_scale: float) { sys_call("AudioStreamPlaybackPolyphonic", "set_stream_pitch_scale", 1602489585, Nil, main, stream, pitch_scale);  }  // 2
 is_stream_playing :: (main: *AudioStreamPlaybackPolyphonic, stream: int) -> bool { call_ret := cast(*bool) sys_call("AudioStreamPlaybackPolyphonic", "is_stream_playing", 1116898809, bool, main, stream); return call_ret.*; }  // 3
@@ -10820,7 +10820,7 @@ stop_stream :: (main: *AudioStreamPlaybackPolyphonic, stream: int) { sys_call("A
 begin_resample :: (main: *AudioStreamPlaybackResampled) { sys_call("AudioStreamPlaybackResampled", "begin_resample", 3218959716, Nil, main);  }  // 2
 
 
-set_stream :: (main: *AudioStreamPlayer, stream: AudioStream) { sys_call("AudioStreamPlayer", "set_stream", 2210767741, Nil, main, stream);  }  // 0
+set_stream :: (main: *AudioStreamPlayer, stream: *AudioStream) { sys_call("AudioStreamPlayer", "set_stream", 2210767741, Nil, main, stream);  }  // 0
 get_stream :: (main: *AudioStreamPlayer) -> *AudioStream { call_ret := cast(*AudioStream) sys_call("AudioStreamPlayer", "get_stream", 160907539, AudioStream, main); return call_ret; }  // 1
 set_volume_db :: (main: *AudioStreamPlayer, volume_db: float) { sys_call("AudioStreamPlayer", "set_volume_db", 373806689, Nil, main, volume_db);  }  // 2
 get_volume_db :: (main: *AudioStreamPlayer) -> float { call_ret := cast(*float) sys_call("AudioStreamPlayer", "get_volume_db", 1740695150, float, main); return call_ret.*; }  // 3
@@ -10849,7 +10849,7 @@ get_stream_playback :: (main: *AudioStreamPlayer) -> *AudioStreamPlayback { call
 set_playback_type :: (main: *AudioStreamPlayer, playback_type: AudioServer.PlaybackType) { sys_call("AudioStreamPlayer", "set_playback_type", 725473817, Nil, main, playback_type);  }  // 26
 get_playback_type :: (main: *AudioStreamPlayer) -> AudioServer.PlaybackType { call_ret := cast(*AudioServer.PlaybackType) sys_call("AudioStreamPlayer", "get_playback_type", 4011264623, AudioServer.PlaybackType, main); return call_ret.*; }  // 27
 
-set_stream :: (main: *AudioStreamPlayer2D, stream: AudioStream) { sys_call("AudioStreamPlayer2D", "set_stream", 2210767741, Nil, main, stream);  }  // 0
+set_stream :: (main: *AudioStreamPlayer2D, stream: *AudioStream) { sys_call("AudioStreamPlayer2D", "set_stream", 2210767741, Nil, main, stream);  }  // 0
 get_stream :: (main: *AudioStreamPlayer2D) -> *AudioStream { call_ret := cast(*AudioStream) sys_call("AudioStreamPlayer2D", "get_stream", 160907539, AudioStream, main); return call_ret; }  // 1
 set_volume_db :: (main: *AudioStreamPlayer2D, volume_db: float) { sys_call("AudioStreamPlayer2D", "set_volume_db", 373806689, Nil, main, volume_db);  }  // 2
 get_volume_db :: (main: *AudioStreamPlayer2D) -> float { call_ret := cast(*float) sys_call("AudioStreamPlayer2D", "get_volume_db", 1740695150, float, main); return call_ret.*; }  // 3
@@ -10884,7 +10884,7 @@ get_stream_playback :: (main: *AudioStreamPlayer2D) -> *AudioStreamPlayback { ca
 set_playback_type :: (main: *AudioStreamPlayer2D, playback_type: AudioServer.PlaybackType) { sys_call("AudioStreamPlayer2D", "set_playback_type", 725473817, Nil, main, playback_type);  }  // 32
 get_playback_type :: (main: *AudioStreamPlayer2D) -> AudioServer.PlaybackType { call_ret := cast(*AudioServer.PlaybackType) sys_call("AudioStreamPlayer2D", "get_playback_type", 4011264623, AudioServer.PlaybackType, main); return call_ret.*; }  // 33
 
-set_stream :: (main: *AudioStreamPlayer3D, stream: AudioStream) { sys_call("AudioStreamPlayer3D", "set_stream", 2210767741, Nil, main, stream);  }  // 0
+set_stream :: (main: *AudioStreamPlayer3D, stream: *AudioStream) { sys_call("AudioStreamPlayer3D", "set_stream", 2210767741, Nil, main, stream);  }  // 0
 get_stream :: (main: *AudioStreamPlayer3D) -> *AudioStream { call_ret := cast(*AudioStream) sys_call("AudioStreamPlayer3D", "get_stream", 160907539, AudioStream, main); return call_ret; }  // 1
 set_volume_db :: (main: *AudioStreamPlayer3D, volume_db: float) { sys_call("AudioStreamPlayer3D", "set_volume_db", 373806689, Nil, main, volume_db);  }  // 2
 get_volume_db :: (main: *AudioStreamPlayer3D) -> float { call_ret := cast(*float) sys_call("AudioStreamPlayer3D", "get_volume_db", 1740695150, float, main); return call_ret.*; }  // 3
@@ -10938,7 +10938,7 @@ get_playback_type :: (main: *AudioStreamPlayer3D) -> AudioServer.PlaybackType { 
 set_stream_count :: (main: *AudioStreamPlaylist, stream_count: int) { sys_call("AudioStreamPlaylist", "set_stream_count", 1286410249, Nil, main, stream_count);  }  // 0
 get_stream_count :: (main: *AudioStreamPlaylist) -> int { call_ret := cast(*int) sys_call("AudioStreamPlaylist", "get_stream_count", 3905245786, int, main); return call_ret.*; }  // 1
 get_bpm :: (main: *AudioStreamPlaylist) -> float { call_ret := cast(*float) sys_call("AudioStreamPlaylist", "get_bpm", 1740695150, float, main); return call_ret.*; }  // 2
-set_list_stream :: (main: *AudioStreamPlaylist, stream_index: int, audio_stream: AudioStream) { sys_call("AudioStreamPlaylist", "set_list_stream", 111075094, Nil, main, stream_index, audio_stream);  }  // 3
+set_list_stream :: (main: *AudioStreamPlaylist, stream_index: int, audio_stream: *AudioStream) { sys_call("AudioStreamPlaylist", "set_list_stream", 111075094, Nil, main, stream_index, audio_stream);  }  // 3
 get_list_stream :: (main: *AudioStreamPlaylist, stream_index: int) -> *AudioStream { call_ret := cast(*AudioStream) sys_call("AudioStreamPlaylist", "get_list_stream", 2739380747, AudioStream, main, stream_index); return call_ret; }  // 4
 set_shuffle :: (main: *AudioStreamPlaylist, shuffle: bool) { sys_call("AudioStreamPlaylist", "set_shuffle", 2586408642, Nil, main, shuffle);  }  // 5
 get_shuffle :: (main: *AudioStreamPlaylist) -> bool { call_ret := cast(*bool) sys_call("AudioStreamPlaylist", "get_shuffle", 36873697, bool, main); return call_ret.*; }  // 6
@@ -10950,10 +10950,10 @@ has_loop :: (main: *AudioStreamPlaylist) -> bool { call_ret := cast(*bool) sys_c
 set_polyphony :: (main: *AudioStreamPolyphonic, voices: int) { sys_call("AudioStreamPolyphonic", "set_polyphony", 1286410249, Nil, main, voices);  }  // 0
 get_polyphony :: (main: *AudioStreamPolyphonic) -> int { call_ret := cast(*int) sys_call("AudioStreamPolyphonic", "get_polyphony", 3905245786, int, main); return call_ret.*; }  // 1
 
-add_stream :: (main: *AudioStreamRandomizer, index: int, stream: AudioStream) { sys_call("AudioStreamRandomizer", "add_stream", 1892018854, Nil, main, index, stream);  }  // 0
+add_stream :: (main: *AudioStreamRandomizer, index: int, stream: *AudioStream) { sys_call("AudioStreamRandomizer", "add_stream", 1892018854, Nil, main, index, stream);  }  // 0
 move_stream :: (main: *AudioStreamRandomizer, index_from: int, index_to: int) { sys_call("AudioStreamRandomizer", "move_stream", 3937882851, Nil, main, index_from, index_to);  }  // 1
 remove_stream :: (main: *AudioStreamRandomizer, index: int) { sys_call("AudioStreamRandomizer", "remove_stream", 1286410249, Nil, main, index);  }  // 2
-set_stream :: (main: *AudioStreamRandomizer, index: int, stream: AudioStream) { sys_call("AudioStreamRandomizer", "set_stream", 111075094, Nil, main, index, stream);  }  // 3
+set_stream :: (main: *AudioStreamRandomizer, index: int, stream: *AudioStream) { sys_call("AudioStreamRandomizer", "set_stream", 111075094, Nil, main, index, stream);  }  // 3
 get_stream :: (main: *AudioStreamRandomizer, index: int) -> *AudioStream { call_ret := cast(*AudioStream) sys_call("AudioStreamRandomizer", "get_stream", 2739380747, AudioStream, main, index); return call_ret; }  // 4
 set_stream_probability_weight :: (main: *AudioStreamRandomizer, index: int, weight: float) { sys_call("AudioStreamRandomizer", "set_stream_probability_weight", 1602489585, Nil, main, index, weight);  }  // 5
 get_stream_probability_weight :: (main: *AudioStreamRandomizer, index: int) -> float { call_ret := cast(*float) sys_call("AudioStreamRandomizer", "get_stream_probability_weight", 2339986948, float, main, index); return call_ret.*; }  // 6
@@ -10968,7 +10968,7 @@ get_playback_mode :: (main: *AudioStreamRandomizer) -> AudioStreamRandomizer.Pla
 
 set_stream_count :: (main: *AudioStreamSynchronized, stream_count: int) { sys_call("AudioStreamSynchronized", "set_stream_count", 1286410249, Nil, main, stream_count);  }  // 0
 get_stream_count :: (main: *AudioStreamSynchronized) -> int { call_ret := cast(*int) sys_call("AudioStreamSynchronized", "get_stream_count", 3905245786, int, main); return call_ret.*; }  // 1
-set_sync_stream :: (main: *AudioStreamSynchronized, stream_index: int, audio_stream: AudioStream) { sys_call("AudioStreamSynchronized", "set_sync_stream", 111075094, Nil, main, stream_index, audio_stream);  }  // 2
+set_sync_stream :: (main: *AudioStreamSynchronized, stream_index: int, audio_stream: *AudioStream) { sys_call("AudioStreamSynchronized", "set_sync_stream", 111075094, Nil, main, stream_index, audio_stream);  }  // 2
 get_sync_stream :: (main: *AudioStreamSynchronized, stream_index: int) -> *AudioStream { call_ret := cast(*AudioStream) sys_call("AudioStreamSynchronized", "get_sync_stream", 2739380747, AudioStream, main, stream_index); return call_ret; }  // 3
 set_sync_stream_volume :: (main: *AudioStreamSynchronized, stream_index: int, volume_db: float) { sys_call("AudioStreamSynchronized", "set_sync_stream_volume", 1602489585, Nil, main, stream_index, volume_db);  }  // 4
 get_sync_stream_volume :: (main: *AudioStreamSynchronized, stream_index: int) -> float { call_ret := cast(*float) sys_call("AudioStreamSynchronized", "get_sync_stream_volume", 2339986948, float, main, stream_index); return call_ret.*; }  // 5
@@ -11015,9 +11015,9 @@ set_keep_pressed_outside :: (main: *BaseButton, enabled: bool) { sys_call("BaseB
 is_keep_pressed_outside :: (main: *BaseButton) -> bool { call_ret := cast(*bool) sys_call("BaseButton", "is_keep_pressed_outside", 36873697, bool, main); return call_ret.*; }  // 18
 set_shortcut_feedback :: (main: *BaseButton, enabled: bool) { sys_call("BaseButton", "set_shortcut_feedback", 2586408642, Nil, main, enabled);  }  // 19
 is_shortcut_feedback :: (main: *BaseButton) -> bool { call_ret := cast(*bool) sys_call("BaseButton", "is_shortcut_feedback", 36873697, bool, main); return call_ret.*; }  // 20
-set_shortcut :: (main: *BaseButton, shortcut: Shortcut) { sys_call("BaseButton", "set_shortcut", 857163497, Nil, main, shortcut);  }  // 21
+set_shortcut :: (main: *BaseButton, shortcut: *Shortcut) { sys_call("BaseButton", "set_shortcut", 857163497, Nil, main, shortcut);  }  // 21
 get_shortcut :: (main: *BaseButton) -> *Shortcut { call_ret := cast(*Shortcut) sys_call("BaseButton", "get_shortcut", 3415666916, Shortcut, main); return call_ret; }  // 22
-set_button_group :: (main: *BaseButton, button_group: ButtonGroup) { sys_call("BaseButton", "set_button_group", 1794463739, Nil, main, button_group);  }  // 23
+set_button_group :: (main: *BaseButton, button_group: *ButtonGroup) { sys_call("BaseButton", "set_button_group", 1794463739, Nil, main, button_group);  }  // 23
 get_button_group :: (main: *BaseButton) -> *ButtonGroup { call_ret := cast(*ButtonGroup) sys_call("BaseButton", "get_button_group", 281644053, ButtonGroup, main); return call_ret; }  // 24
 
 set_albedo :: (main: *BaseMaterial3D, albedo: Color) { sys_call("BaseMaterial3D", "set_albedo", 2920490490, Nil, main, albedo);  }  // 0
@@ -11088,7 +11088,7 @@ set_texture_filter :: (main: *BaseMaterial3D, mode: BaseMaterial3D.TextureFilter
 get_texture_filter :: (main: *BaseMaterial3D) -> BaseMaterial3D.TextureFilter { call_ret := cast(*BaseMaterial3D.TextureFilter) sys_call("BaseMaterial3D", "get_texture_filter", 3289213076, BaseMaterial3D.TextureFilter, main); return call_ret.*; }  // 65
 set_feature :: (main: *BaseMaterial3D, feature: BaseMaterial3D.Feature, enable: bool) { sys_call("BaseMaterial3D", "set_feature", 2819288693, Nil, main, feature, enable);  }  // 66
 get_feature :: (main: *BaseMaterial3D, feature: BaseMaterial3D.Feature) -> bool { call_ret := cast(*bool) sys_call("BaseMaterial3D", "get_feature", 1965241794, bool, main, feature); return call_ret.*; }  // 67
-set_texture :: (main: *BaseMaterial3D, param: BaseMaterial3D.TextureParam, texture: Texture2D) { sys_call("BaseMaterial3D", "set_texture", 464208135, Nil, main, param, texture);  }  // 68
+set_texture :: (main: *BaseMaterial3D, param: BaseMaterial3D.TextureParam, texture: *Texture2D) { sys_call("BaseMaterial3D", "set_texture", 464208135, Nil, main, param, texture);  }  // 68
 get_texture :: (main: *BaseMaterial3D, param: BaseMaterial3D.TextureParam) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("BaseMaterial3D", "get_texture", 329605813, Texture2D, main, param); return call_ret; }  // 69
 set_detail_blend_mode :: (main: *BaseMaterial3D, detail_blend_mode: BaseMaterial3D.BlendMode) { sys_call("BaseMaterial3D", "set_detail_blend_mode", 2830186259, Nil, main, detail_blend_mode);  }  // 70
 get_detail_blend_mode :: (main: *BaseMaterial3D) -> BaseMaterial3D.BlendMode { call_ret := cast(*BaseMaterial3D.BlendMode) sys_call("BaseMaterial3D", "get_detail_blend_mode", 4022690962, BaseMaterial3D.BlendMode, main); return call_ret.*; }  // 71
@@ -11158,7 +11158,7 @@ set_distance_fade_min_distance :: (main: *BaseMaterial3D, distance: float) { sys
 get_distance_fade_min_distance :: (main: *BaseMaterial3D) -> float { call_ret := cast(*float) sys_call("BaseMaterial3D", "get_distance_fade_min_distance", 1740695150, float, main); return call_ret.*; }  // 135
 
 create :: (main: *BitMap, size: Vector2i) { sys_call("BitMap", "create", 1130785943, Nil, main, size);  }  // 0
-create_from_image_alpha :: (main: *BitMap, image: Image) { sys_call("BitMap", "create_from_image_alpha", 106271684, Nil, main, image);  }  // 1
+create_from_image_alpha :: (main: *BitMap, image: *Image) { sys_call("BitMap", "create_from_image_alpha", 106271684, Nil, main, image);  }  // 1
 set_bitv :: (main: *BitMap, position: Vector2i, bit: bool) { sys_call("BitMap", "set_bitv", 4153096796, Nil, main, position, bit);  }  // 2
 set_bit :: (main: *BitMap, x: int, y: int, bit: bool) { sys_call("BitMap", "set_bit", 1383440665, Nil, main, x, y, bit);  }  // 3
 get_bitv :: (main: *BitMap, position: Vector2i) -> bool { call_ret := cast(*bool) sys_call("BitMap", "get_bitv", 3900751641, bool, main, position); return call_ret.*; }  // 4
@@ -11197,7 +11197,7 @@ set_external_skeleton :: (main: *BoneAttachment3D, external_skeleton: string) { 
 get_external_skeleton :: (main: *BoneAttachment3D) -> NodePath { call_ret := cast(*NodePath) sys_call("BoneAttachment3D", "get_external_skeleton", 4075236667, NodePath, main); return call_ret.*; }  // 11
 
 get_profile :: (main: *BoneMap) -> *SkeletonProfile { call_ret := cast(*SkeletonProfile) sys_call("BoneMap", "get_profile", 4291782652, SkeletonProfile, main); return call_ret; }  // 0
-set_profile :: (main: *BoneMap, profile: SkeletonProfile) { sys_call("BoneMap", "set_profile", 3870374136, Nil, main, profile);  }  // 1
+set_profile :: (main: *BoneMap, profile: *SkeletonProfile) { sys_call("BoneMap", "set_profile", 3870374136, Nil, main, profile);  }  // 1
 get_skeleton_bone_name :: (main: *BoneMap, profile_bone_name: string) -> StringName { call_ret := cast(*StringName) sys_call("BoneMap", "get_skeleton_bone_name", 1965194235, StringName, main, profile_bone_name); return call_ret.*; }  // 2
 set_skeleton_bone_name :: (main: *BoneMap, profile_bone_name: string, skeleton_bone_name: string) { sys_call("BoneMap", "set_skeleton_bone_name", 3740211285, Nil, main, profile_bone_name, skeleton_bone_name);  }  // 3
 find_profile_bone_name :: (main: *BoneMap, skeleton_bone_name: string) -> StringName { call_ret := cast(*StringName) sys_call("BoneMap", "find_profile_bone_name", 1965194235, StringName, main, skeleton_bone_name); return call_ret.*; }  // 4
@@ -11233,7 +11233,7 @@ set_text_direction :: (main: *Button, direction: Control.TextDirection) { sys_ca
 get_text_direction :: (main: *Button) -> Control.TextDirection { call_ret := cast(*Control.TextDirection) sys_call("Button", "get_text_direction", 797257663, Control.TextDirection, main); return call_ret.*; }  // 7
 set_language :: (main: *Button, language: string) { sys_call("Button", "set_language", 83702148, Nil, main, language);  }  // 8
 get_language :: (main: *Button) -> gstring { call_ret := cast(*gstring) sys_call("Button", "get_language", 201670096, gstring, main); return call_ret.*; }  // 9
-set_button_icon :: (main: *Button, texture: Texture2D) { sys_call("Button", "set_button_icon", 4051416890, Nil, main, texture);  }  // 10
+set_button_icon :: (main: *Button, texture: *Texture2D) { sys_call("Button", "set_button_icon", 4051416890, Nil, main, texture);  }  // 10
 get_button_icon :: (main: *Button) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("Button", "get_button_icon", 3635182373, Texture2D, main); return call_ret; }  // 11
 set_flat :: (main: *Button, enabled: bool) { sys_call("Button", "set_flat", 2586408642, Nil, main, enabled);  }  // 12
 is_flat :: (main: *Button) -> bool { call_ret := cast(*bool) sys_call("Button", "is_flat", 36873697, bool, main); return call_ret.*; }  // 13
@@ -11284,7 +11284,7 @@ set_seed :: (main: *CPUParticles2D, seed: int) { sys_call("CPUParticles2D", "set
 get_seed :: (main: *CPUParticles2D) -> int { call_ret := cast(*int) sys_call("CPUParticles2D", "get_seed", 3905245786, int, main); return call_ret.*; }  // 28
 set_draw_order :: (main: *CPUParticles2D, order: CPUParticles2D.DrawOrder) { sys_call("CPUParticles2D", "set_draw_order", 4183193490, Nil, main, order);  }  // 29
 get_draw_order :: (main: *CPUParticles2D) -> CPUParticles2D.DrawOrder { call_ret := cast(*CPUParticles2D.DrawOrder) sys_call("CPUParticles2D", "get_draw_order", 1668655735, CPUParticles2D.DrawOrder, main); return call_ret.*; }  // 30
-set_texture :: (main: *CPUParticles2D, texture: Texture2D) { sys_call("CPUParticles2D", "set_texture", 4051416890, Nil, main, texture);  }  // 31
+set_texture :: (main: *CPUParticles2D, texture: *Texture2D) { sys_call("CPUParticles2D", "set_texture", 4051416890, Nil, main, texture);  }  // 31
 get_texture :: (main: *CPUParticles2D) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("CPUParticles2D", "get_texture", 3635182373, Texture2D, main); return call_ret; }  // 32
 restart :: (main: *CPUParticles2D) { sys_call("CPUParticles2D", "restart", 107499316, Nil, main);  }  // 33
 set_direction :: (main: *CPUParticles2D, direction: Vector2) { sys_call("CPUParticles2D", "set_direction", 743155724, Nil, main, direction);  }  // 34
@@ -11295,13 +11295,13 @@ set_param_min :: (main: *CPUParticles2D, param: CPUParticles2D.Parameter, value:
 get_param_min :: (main: *CPUParticles2D, param: CPUParticles2D.Parameter) -> float { call_ret := cast(*float) sys_call("CPUParticles2D", "get_param_min", 2038050600, float, main, param); return call_ret.*; }  // 39
 set_param_max :: (main: *CPUParticles2D, param: CPUParticles2D.Parameter, value: float) { sys_call("CPUParticles2D", "set_param_max", 3320615296, Nil, main, param, value);  }  // 40
 get_param_max :: (main: *CPUParticles2D, param: CPUParticles2D.Parameter) -> float { call_ret := cast(*float) sys_call("CPUParticles2D", "get_param_max", 2038050600, float, main, param); return call_ret.*; }  // 41
-set_param_curve :: (main: *CPUParticles2D, param: CPUParticles2D.Parameter, curve: Curve) { sys_call("CPUParticles2D", "set_param_curve", 2959350143, Nil, main, param, curve);  }  // 42
+set_param_curve :: (main: *CPUParticles2D, param: CPUParticles2D.Parameter, curve: *Curve) { sys_call("CPUParticles2D", "set_param_curve", 2959350143, Nil, main, param, curve);  }  // 42
 get_param_curve :: (main: *CPUParticles2D, param: CPUParticles2D.Parameter) -> *Curve { call_ret := cast(*Curve) sys_call("CPUParticles2D", "get_param_curve", 2603158474, Curve, main, param); return call_ret; }  // 43
 set_color :: (main: *CPUParticles2D, color: Color) { sys_call("CPUParticles2D", "set_color", 2920490490, Nil, main, color);  }  // 44
 get_color :: (main: *CPUParticles2D) -> Color { call_ret := cast(*Color) sys_call("CPUParticles2D", "get_color", 3444240500, Color, main); return call_ret.*; }  // 45
-set_color_ramp :: (main: *CPUParticles2D, ramp: Gradient) { sys_call("CPUParticles2D", "set_color_ramp", 2756054477, Nil, main, ramp);  }  // 46
+set_color_ramp :: (main: *CPUParticles2D, ramp: *Gradient) { sys_call("CPUParticles2D", "set_color_ramp", 2756054477, Nil, main, ramp);  }  // 46
 get_color_ramp :: (main: *CPUParticles2D) -> *Gradient { call_ret := cast(*Gradient) sys_call("CPUParticles2D", "get_color_ramp", 132272999, Gradient, main); return call_ret; }  // 47
-set_color_initial_ramp :: (main: *CPUParticles2D, ramp: Gradient) { sys_call("CPUParticles2D", "set_color_initial_ramp", 2756054477, Nil, main, ramp);  }  // 48
+set_color_initial_ramp :: (main: *CPUParticles2D, ramp: *Gradient) { sys_call("CPUParticles2D", "set_color_initial_ramp", 2756054477, Nil, main, ramp);  }  // 48
 get_color_initial_ramp :: (main: *CPUParticles2D) -> *Gradient { call_ret := cast(*Gradient) sys_call("CPUParticles2D", "get_color_initial_ramp", 132272999, Gradient, main); return call_ret; }  // 49
 set_particle_flag :: (main: *CPUParticles2D, particle_flag: CPUParticles2D.ParticleFlags, enable: bool) { sys_call("CPUParticles2D", "set_particle_flag", 4178137949, Nil, main, particle_flag, enable);  }  // 50
 get_particle_flag :: (main: *CPUParticles2D, particle_flag: CPUParticles2D.ParticleFlags) -> bool { call_ret := cast(*bool) sys_call("CPUParticles2D", "get_particle_flag", 2829976507, bool, main, particle_flag); return call_ret.*; }  // 51
@@ -11322,10 +11322,10 @@ set_gravity :: (main: *CPUParticles2D, accel_vec: Vector2) { sys_call("CPUPartic
 get_split_scale :: (main: *CPUParticles2D) -> bool { call_ret := cast(*bool) sys_call("CPUParticles2D", "get_split_scale", 2240911060, bool, main); return call_ret.*; }  // 66
 set_split_scale :: (main: *CPUParticles2D, split_scale: bool) { sys_call("CPUParticles2D", "set_split_scale", 2586408642, Nil, main, split_scale);  }  // 67
 get_scale_curve_x :: (main: *CPUParticles2D) -> *Curve { call_ret := cast(*Curve) sys_call("CPUParticles2D", "get_scale_curve_x", 2460114913, Curve, main); return call_ret; }  // 68
-set_scale_curve_x :: (main: *CPUParticles2D, scale_curve: Curve) { sys_call("CPUParticles2D", "set_scale_curve_x", 270443179, Nil, main, scale_curve);  }  // 69
+set_scale_curve_x :: (main: *CPUParticles2D, scale_curve: *Curve) { sys_call("CPUParticles2D", "set_scale_curve_x", 270443179, Nil, main, scale_curve);  }  // 69
 get_scale_curve_y :: (main: *CPUParticles2D) -> *Curve { call_ret := cast(*Curve) sys_call("CPUParticles2D", "get_scale_curve_y", 2460114913, Curve, main); return call_ret; }  // 70
-set_scale_curve_y :: (main: *CPUParticles2D, scale_curve: Curve) { sys_call("CPUParticles2D", "set_scale_curve_y", 270443179, Nil, main, scale_curve);  }  // 71
-convert_from_particles :: (main: *CPUParticles2D, particles: Node) { sys_call("CPUParticles2D", "convert_from_particles", 1078189570, Nil, main, particles);  }  // 72
+set_scale_curve_y :: (main: *CPUParticles2D, scale_curve: *Curve) { sys_call("CPUParticles2D", "set_scale_curve_y", 270443179, Nil, main, scale_curve);  }  // 71
+convert_from_particles :: (main: *CPUParticles2D, particles: *Node) { sys_call("CPUParticles2D", "convert_from_particles", 1078189570, Nil, main, particles);  }  // 72
 
 set_emitting :: (main: *CPUParticles3D, emitting: bool) { sys_call("CPUParticles3D", "set_emitting", 2586408642, Nil, main, emitting);  }  // 0
 set_amount :: (main: *CPUParticles3D, amount: int) { sys_call("CPUParticles3D", "set_amount", 1286410249, Nil, main, amount);  }  // 1
@@ -11355,7 +11355,7 @@ get_fractional_delta :: (main: *CPUParticles3D) -> bool { call_ret := cast(*bool
 get_speed_scale :: (main: *CPUParticles3D) -> float { call_ret := cast(*float) sys_call("CPUParticles3D", "get_speed_scale", 1740695150, float, main); return call_ret.*; }  // 25
 set_draw_order :: (main: *CPUParticles3D, order: CPUParticles3D.DrawOrder) { sys_call("CPUParticles3D", "set_draw_order", 1427401774, Nil, main, order);  }  // 26
 get_draw_order :: (main: *CPUParticles3D) -> CPUParticles3D.DrawOrder { call_ret := cast(*CPUParticles3D.DrawOrder) sys_call("CPUParticles3D", "get_draw_order", 1321900776, CPUParticles3D.DrawOrder, main); return call_ret.*; }  // 27
-set_mesh :: (main: *CPUParticles3D, mesh: Mesh) { sys_call("CPUParticles3D", "set_mesh", 194775623, Nil, main, mesh);  }  // 28
+set_mesh :: (main: *CPUParticles3D, mesh: *Mesh) { sys_call("CPUParticles3D", "set_mesh", 194775623, Nil, main, mesh);  }  // 28
 get_mesh :: (main: *CPUParticles3D) -> *Mesh { call_ret := cast(*Mesh) sys_call("CPUParticles3D", "get_mesh", 1808005922, Mesh, main); return call_ret; }  // 29
 set_use_fixed_seed :: (main: *CPUParticles3D, use_fixed_seed: bool) { sys_call("CPUParticles3D", "set_use_fixed_seed", 2586408642, Nil, main, use_fixed_seed);  }  // 30
 get_use_fixed_seed :: (main: *CPUParticles3D) -> bool { call_ret := cast(*bool) sys_call("CPUParticles3D", "get_use_fixed_seed", 36873697, bool, main); return call_ret.*; }  // 31
@@ -11374,13 +11374,13 @@ set_param_min :: (main: *CPUParticles3D, param: CPUParticles3D.Parameter, value:
 get_param_min :: (main: *CPUParticles3D, param: CPUParticles3D.Parameter) -> float { call_ret := cast(*float) sys_call("CPUParticles3D", "get_param_min", 597646162, float, main, param); return call_ret.*; }  // 44
 set_param_max :: (main: *CPUParticles3D, param: CPUParticles3D.Parameter, value: float) { sys_call("CPUParticles3D", "set_param_max", 557936109, Nil, main, param, value);  }  // 45
 get_param_max :: (main: *CPUParticles3D, param: CPUParticles3D.Parameter) -> float { call_ret := cast(*float) sys_call("CPUParticles3D", "get_param_max", 597646162, float, main, param); return call_ret.*; }  // 46
-set_param_curve :: (main: *CPUParticles3D, param: CPUParticles3D.Parameter, curve: Curve) { sys_call("CPUParticles3D", "set_param_curve", 4044142537, Nil, main, param, curve);  }  // 47
+set_param_curve :: (main: *CPUParticles3D, param: CPUParticles3D.Parameter, curve: *Curve) { sys_call("CPUParticles3D", "set_param_curve", 4044142537, Nil, main, param, curve);  }  // 47
 get_param_curve :: (main: *CPUParticles3D, param: CPUParticles3D.Parameter) -> *Curve { call_ret := cast(*Curve) sys_call("CPUParticles3D", "get_param_curve", 4132790277, Curve, main, param); return call_ret; }  // 48
 set_color :: (main: *CPUParticles3D, color: Color) { sys_call("CPUParticles3D", "set_color", 2920490490, Nil, main, color);  }  // 49
 get_color :: (main: *CPUParticles3D) -> Color { call_ret := cast(*Color) sys_call("CPUParticles3D", "get_color", 3444240500, Color, main); return call_ret.*; }  // 50
-set_color_ramp :: (main: *CPUParticles3D, ramp: Gradient) { sys_call("CPUParticles3D", "set_color_ramp", 2756054477, Nil, main, ramp);  }  // 51
+set_color_ramp :: (main: *CPUParticles3D, ramp: *Gradient) { sys_call("CPUParticles3D", "set_color_ramp", 2756054477, Nil, main, ramp);  }  // 51
 get_color_ramp :: (main: *CPUParticles3D) -> *Gradient { call_ret := cast(*Gradient) sys_call("CPUParticles3D", "get_color_ramp", 132272999, Gradient, main); return call_ret; }  // 52
-set_color_initial_ramp :: (main: *CPUParticles3D, ramp: Gradient) { sys_call("CPUParticles3D", "set_color_initial_ramp", 2756054477, Nil, main, ramp);  }  // 53
+set_color_initial_ramp :: (main: *CPUParticles3D, ramp: *Gradient) { sys_call("CPUParticles3D", "set_color_initial_ramp", 2756054477, Nil, main, ramp);  }  // 53
 get_color_initial_ramp :: (main: *CPUParticles3D) -> *Gradient { call_ret := cast(*Gradient) sys_call("CPUParticles3D", "get_color_initial_ramp", 132272999, Gradient, main); return call_ret; }  // 54
 set_particle_flag :: (main: *CPUParticles3D, particle_flag: CPUParticles3D.ParticleFlags, enable: bool) { sys_call("CPUParticles3D", "set_particle_flag", 3515406498, Nil, main, particle_flag, enable);  }  // 55
 get_particle_flag :: (main: *CPUParticles3D, particle_flag: CPUParticles3D.ParticleFlags) -> bool { call_ret := cast(*bool) sys_call("CPUParticles3D", "get_particle_flag", 2845201987, bool, main, particle_flag); return call_ret.*; }  // 56
@@ -11411,16 +11411,16 @@ set_gravity :: (main: *CPUParticles3D, accel_vec: Vector3) { sys_call("CPUPartic
 get_split_scale :: (main: *CPUParticles3D) -> bool { call_ret := cast(*bool) sys_call("CPUParticles3D", "get_split_scale", 2240911060, bool, main); return call_ret.*; }  // 81
 set_split_scale :: (main: *CPUParticles3D, split_scale: bool) { sys_call("CPUParticles3D", "set_split_scale", 2586408642, Nil, main, split_scale);  }  // 82
 get_scale_curve_x :: (main: *CPUParticles3D) -> *Curve { call_ret := cast(*Curve) sys_call("CPUParticles3D", "get_scale_curve_x", 2460114913, Curve, main); return call_ret; }  // 83
-set_scale_curve_x :: (main: *CPUParticles3D, scale_curve: Curve) { sys_call("CPUParticles3D", "set_scale_curve_x", 270443179, Nil, main, scale_curve);  }  // 84
+set_scale_curve_x :: (main: *CPUParticles3D, scale_curve: *Curve) { sys_call("CPUParticles3D", "set_scale_curve_x", 270443179, Nil, main, scale_curve);  }  // 84
 get_scale_curve_y :: (main: *CPUParticles3D) -> *Curve { call_ret := cast(*Curve) sys_call("CPUParticles3D", "get_scale_curve_y", 2460114913, Curve, main); return call_ret; }  // 85
-set_scale_curve_y :: (main: *CPUParticles3D, scale_curve: Curve) { sys_call("CPUParticles3D", "set_scale_curve_y", 270443179, Nil, main, scale_curve);  }  // 86
+set_scale_curve_y :: (main: *CPUParticles3D, scale_curve: *Curve) { sys_call("CPUParticles3D", "set_scale_curve_y", 270443179, Nil, main, scale_curve);  }  // 86
 get_scale_curve_z :: (main: *CPUParticles3D) -> *Curve { call_ret := cast(*Curve) sys_call("CPUParticles3D", "get_scale_curve_z", 2460114913, Curve, main); return call_ret; }  // 87
-set_scale_curve_z :: (main: *CPUParticles3D, scale_curve: Curve) { sys_call("CPUParticles3D", "set_scale_curve_z", 270443179, Nil, main, scale_curve);  }  // 88
-convert_from_particles :: (main: *CPUParticles3D, particles: Node) { sys_call("CPUParticles3D", "convert_from_particles", 1078189570, Nil, main, particles);  }  // 89
+set_scale_curve_z :: (main: *CPUParticles3D, scale_curve: *Curve) { sys_call("CPUParticles3D", "set_scale_curve_z", 270443179, Nil, main, scale_curve);  }  // 88
+convert_from_particles :: (main: *CPUParticles3D, particles: *Node) { sys_call("CPUParticles3D", "convert_from_particles", 1078189570, Nil, main, particles);  }  // 89
 
 set_size :: (main: *CSGBox3D, size: Vector3) { sys_call("CSGBox3D", "set_size", 3460891852, Nil, main, size);  }  // 0
 get_size :: (main: *CSGBox3D) -> Vector3 { call_ret := cast(*Vector3) sys_call("CSGBox3D", "get_size", 3360562783, Vector3, main); return call_ret.*; }  // 1
-set_material :: (main: *CSGBox3D, material: Material) { sys_call("CSGBox3D", "set_material", 2757459619, Nil, main, material);  }  // 2
+set_material :: (main: *CSGBox3D, material: *Material) { sys_call("CSGBox3D", "set_material", 2757459619, Nil, main, material);  }  // 2
 get_material :: (main: *CSGBox3D) -> *Material { call_ret := cast(*Material) sys_call("CSGBox3D", "get_material", 5934680, Material, main); return call_ret; }  // 3
 
 
@@ -11432,14 +11432,14 @@ set_sides :: (main: *CSGCylinder3D, sides: int) { sys_call("CSGCylinder3D", "set
 get_sides :: (main: *CSGCylinder3D) -> int { call_ret := cast(*int) sys_call("CSGCylinder3D", "get_sides", 3905245786, int, main); return call_ret.*; }  // 5
 set_cone :: (main: *CSGCylinder3D, cone: bool) { sys_call("CSGCylinder3D", "set_cone", 2586408642, Nil, main, cone);  }  // 6
 is_cone :: (main: *CSGCylinder3D) -> bool { call_ret := cast(*bool) sys_call("CSGCylinder3D", "is_cone", 36873697, bool, main); return call_ret.*; }  // 7
-set_material :: (main: *CSGCylinder3D, material: Material) { sys_call("CSGCylinder3D", "set_material", 2757459619, Nil, main, material);  }  // 8
+set_material :: (main: *CSGCylinder3D, material: *Material) { sys_call("CSGCylinder3D", "set_material", 2757459619, Nil, main, material);  }  // 8
 get_material :: (main: *CSGCylinder3D) -> *Material { call_ret := cast(*Material) sys_call("CSGCylinder3D", "get_material", 5934680, Material, main); return call_ret; }  // 9
 set_smooth_faces :: (main: *CSGCylinder3D, smooth_faces: bool) { sys_call("CSGCylinder3D", "set_smooth_faces", 2586408642, Nil, main, smooth_faces);  }  // 10
 get_smooth_faces :: (main: *CSGCylinder3D) -> bool { call_ret := cast(*bool) sys_call("CSGCylinder3D", "get_smooth_faces", 36873697, bool, main); return call_ret.*; }  // 11
 
-set_mesh :: (main: *CSGMesh3D, mesh: Mesh) { sys_call("CSGMesh3D", "set_mesh", 194775623, Nil, main, mesh);  }  // 0
+set_mesh :: (main: *CSGMesh3D, mesh: *Mesh) { sys_call("CSGMesh3D", "set_mesh", 194775623, Nil, main, mesh);  }  // 0
 get_mesh :: (main: *CSGMesh3D) -> *Mesh { call_ret := cast(*Mesh) sys_call("CSGMesh3D", "get_mesh", 4081188045, Mesh, main); return call_ret; }  // 1
-set_material :: (main: *CSGMesh3D, material: Material) { sys_call("CSGMesh3D", "set_material", 2757459619, Nil, main, material);  }  // 2
+set_material :: (main: *CSGMesh3D, material: *Material) { sys_call("CSGMesh3D", "set_material", 2757459619, Nil, main, material);  }  // 2
 get_material :: (main: *CSGMesh3D) -> *Material { call_ret := cast(*Material) sys_call("CSGMesh3D", "get_material", 5934680, Material, main); return call_ret; }  // 3
 
 set_polygon :: (main: *CSGPolygon3D, polygon: PackedVector2Array) { sys_call("CSGPolygon3D", "set_polygon", 1509147220, Nil, main, polygon);  }  // 0
@@ -11472,7 +11472,7 @@ set_path_u_distance :: (main: *CSGPolygon3D, distance: float) { sys_call("CSGPol
 get_path_u_distance :: (main: *CSGPolygon3D) -> float { call_ret := cast(*float) sys_call("CSGPolygon3D", "get_path_u_distance", 1740695150, float, main); return call_ret.*; }  // 27
 set_path_joined :: (main: *CSGPolygon3D, enable: bool) { sys_call("CSGPolygon3D", "set_path_joined", 2586408642, Nil, main, enable);  }  // 28
 is_path_joined :: (main: *CSGPolygon3D) -> bool { call_ret := cast(*bool) sys_call("CSGPolygon3D", "is_path_joined", 36873697, bool, main); return call_ret.*; }  // 29
-set_material :: (main: *CSGPolygon3D, material: Material) { sys_call("CSGPolygon3D", "set_material", 2757459619, Nil, main, material);  }  // 30
+set_material :: (main: *CSGPolygon3D, material: *Material) { sys_call("CSGPolygon3D", "set_material", 2757459619, Nil, main, material);  }  // 30
 get_material :: (main: *CSGPolygon3D) -> *Material { call_ret := cast(*Material) sys_call("CSGPolygon3D", "get_material", 5934680, Material, main); return call_ret; }  // 31
 set_smooth_faces :: (main: *CSGPolygon3D, smooth_faces: bool) { sys_call("CSGPolygon3D", "set_smooth_faces", 2586408642, Nil, main, smooth_faces);  }  // 32
 get_smooth_faces :: (main: *CSGPolygon3D) -> bool { call_ret := cast(*bool) sys_call("CSGPolygon3D", "get_smooth_faces", 36873697, bool, main); return call_ret.*; }  // 33
@@ -11511,7 +11511,7 @@ set_rings :: (main: *CSGSphere3D, rings: int) { sys_call("CSGSphere3D", "set_rin
 get_rings :: (main: *CSGSphere3D) -> int { call_ret := cast(*int) sys_call("CSGSphere3D", "get_rings", 3905245786, int, main); return call_ret.*; }  // 5
 set_smooth_faces :: (main: *CSGSphere3D, smooth_faces: bool) { sys_call("CSGSphere3D", "set_smooth_faces", 2586408642, Nil, main, smooth_faces);  }  // 6
 get_smooth_faces :: (main: *CSGSphere3D) -> bool { call_ret := cast(*bool) sys_call("CSGSphere3D", "get_smooth_faces", 36873697, bool, main); return call_ret.*; }  // 7
-set_material :: (main: *CSGSphere3D, material: Material) { sys_call("CSGSphere3D", "set_material", 2757459619, Nil, main, material);  }  // 8
+set_material :: (main: *CSGSphere3D, material: *Material) { sys_call("CSGSphere3D", "set_material", 2757459619, Nil, main, material);  }  // 8
 get_material :: (main: *CSGSphere3D) -> *Material { call_ret := cast(*Material) sys_call("CSGSphere3D", "get_material", 5934680, Material, main); return call_ret; }  // 9
 
 set_inner_radius :: (main: *CSGTorus3D, radius: float) { sys_call("CSGTorus3D", "set_inner_radius", 373806689, Nil, main, radius);  }  // 0
@@ -11522,7 +11522,7 @@ set_sides :: (main: *CSGTorus3D, sides: int) { sys_call("CSGTorus3D", "set_sides
 get_sides :: (main: *CSGTorus3D) -> int { call_ret := cast(*int) sys_call("CSGTorus3D", "get_sides", 3905245786, int, main); return call_ret.*; }  // 5
 set_ring_sides :: (main: *CSGTorus3D, sides: int) { sys_call("CSGTorus3D", "set_ring_sides", 1286410249, Nil, main, sides);  }  // 6
 get_ring_sides :: (main: *CSGTorus3D) -> int { call_ret := cast(*int) sys_call("CSGTorus3D", "get_ring_sides", 3905245786, int, main); return call_ret.*; }  // 7
-set_material :: (main: *CSGTorus3D, material: Material) { sys_call("CSGTorus3D", "set_material", 2757459619, Nil, main, material);  }  // 8
+set_material :: (main: *CSGTorus3D, material: *Material) { sys_call("CSGTorus3D", "set_material", 2757459619, Nil, main, material);  }  // 8
 get_material :: (main: *CSGTorus3D) -> *Material { call_ret := cast(*Material) sys_call("CSGTorus3D", "get_material", 5934680, Material, main); return call_ret; }  // 9
 set_smooth_faces :: (main: *CSGTorus3D, smooth_faces: bool) { sys_call("CSGTorus3D", "set_smooth_faces", 2586408642, Nil, main, smooth_faces);  }  // 10
 get_smooth_faces :: (main: *CSGTorus3D) -> bool { call_ret := cast(*bool) sys_call("CSGTorus3D", "get_smooth_faces", 36873697, bool, main); return call_ret.*; }  // 11
@@ -11559,7 +11559,7 @@ get_target_position :: (main: *Camera2D) -> Vector2 { call_ret := cast(*Vector2)
 get_screen_center_position :: (main: *Camera2D) -> Vector2 { call_ret := cast(*Vector2) sys_call("Camera2D", "get_screen_center_position", 3341600327, Vector2, main); return call_ret.*; }  // 27
 set_zoom :: (main: *Camera2D, zoom: Vector2) { sys_call("Camera2D", "set_zoom", 743155724, Nil, main, zoom);  }  // 28
 get_zoom :: (main: *Camera2D) -> Vector2 { call_ret := cast(*Vector2) sys_call("Camera2D", "get_zoom", 3341600327, Vector2, main); return call_ret.*; }  // 29
-set_custom_viewport :: (main: *Camera2D, viewport: Node) { sys_call("Camera2D", "set_custom_viewport", 1078189570, Nil, main, viewport);  }  // 30
+set_custom_viewport :: (main: *Camera2D, viewport: *Node) { sys_call("Camera2D", "set_custom_viewport", 1078189570, Nil, main, viewport);  }  // 30
 get_custom_viewport :: (main: *Camera2D) -> *Node { call_ret := cast(*Node) sys_call("Camera2D", "get_custom_viewport", 3160264692, Node, main); return call_ret; }  // 31
 set_position_smoothing_speed :: (main: *Camera2D, position_smoothing_speed: float) { sys_call("Camera2D", "set_position_smoothing_speed", 373806689, Nil, main, position_smoothing_speed);  }  // 32
 get_position_smoothing_speed :: (main: *Camera2D) -> float { call_ret := cast(*float) sys_call("Camera2D", "get_position_smoothing_speed", 1740695150, float, main); return call_ret.*; }  // 33
@@ -11612,11 +11612,11 @@ set_v_offset :: (main: *Camera3D, offset: float) { sys_call("Camera3D", "set_v_o
 get_v_offset :: (main: *Camera3D) -> float { call_ret := cast(*float) sys_call("Camera3D", "get_v_offset", 1740695150, float, main); return call_ret.*; }  // 30
 set_cull_mask :: (main: *Camera3D, mask: int) { sys_call("Camera3D", "set_cull_mask", 1286410249, Nil, main, mask);  }  // 31
 get_cull_mask :: (main: *Camera3D) -> int { call_ret := cast(*int) sys_call("Camera3D", "get_cull_mask", 3905245786, int, main); return call_ret.*; }  // 32
-set_environment :: (main: *Camera3D, env: Environment) { sys_call("Camera3D", "set_environment", 4143518816, Nil, main, env);  }  // 33
+set_environment :: (main: *Camera3D, env: *Environment) { sys_call("Camera3D", "set_environment", 4143518816, Nil, main, env);  }  // 33
 get_environment :: (main: *Camera3D) -> *Environment { call_ret := cast(*Environment) sys_call("Camera3D", "get_environment", 3082064660, Environment, main); return call_ret; }  // 34
-set_attributes :: (main: *Camera3D, env: CameraAttributes) { sys_call("Camera3D", "set_attributes", 2817810567, Nil, main, env);  }  // 35
+set_attributes :: (main: *Camera3D, env: *CameraAttributes) { sys_call("Camera3D", "set_attributes", 2817810567, Nil, main, env);  }  // 35
 get_attributes :: (main: *Camera3D) -> *CameraAttributes { call_ret := cast(*CameraAttributes) sys_call("Camera3D", "get_attributes", 3921283215, CameraAttributes, main); return call_ret; }  // 36
-set_compositor :: (main: *Camera3D, compositor: Compositor) { sys_call("Camera3D", "set_compositor", 1586754307, Nil, main, compositor);  }  // 37
+set_compositor :: (main: *Camera3D, compositor: *Compositor) { sys_call("Camera3D", "set_compositor", 1586754307, Nil, main, compositor);  }  // 37
 get_compositor :: (main: *Camera3D) -> *Compositor { call_ret := cast(*Compositor) sys_call("Camera3D", "get_compositor", 3647707413, Compositor, main); return call_ret; }  // 38
 set_keep_aspect_mode :: (main: *Camera3D, mode: Camera3D.KeepAspect) { sys_call("Camera3D", "set_keep_aspect_mode", 1740651252, Nil, main, mode);  }  // 39
 get_keep_aspect_mode :: (main: *Camera3D) -> Camera3D.KeepAspect { call_ret := cast(*Camera3D.KeepAspect) sys_call("Camera3D", "get_keep_aspect_mode", 2790278316, Camera3D.KeepAspect, main); return call_ret.*; }  // 40
@@ -11686,8 +11686,8 @@ get_position :: (main: *CameraFeed) -> CameraFeed.FeedPosition { call_ret := cas
 set_position :: (main: *CameraFeed, position: CameraFeed.FeedPosition) { sys_call("CameraFeed", "set_position", 611162623, Nil, main, position);  }  // 8
 get_transform :: (main: *CameraFeed) -> Transform2D { call_ret := cast(*Transform2D) sys_call("CameraFeed", "get_transform", 3814499831, Transform2D, main); return call_ret.*; }  // 9
 set_transform :: (main: *CameraFeed, transform: Transform2D) { sys_call("CameraFeed", "set_transform", 2761652528, Nil, main, transform);  }  // 10
-set_rgb_image :: (main: *CameraFeed, rgb_image: Image) { sys_call("CameraFeed", "set_rgb_image", 532598488, Nil, main, rgb_image);  }  // 11
-set_ycbcr_image :: (main: *CameraFeed, ycbcr_image: Image) { sys_call("CameraFeed", "set_ycbcr_image", 532598488, Nil, main, ycbcr_image);  }  // 12
+set_rgb_image :: (main: *CameraFeed, rgb_image: *Image) { sys_call("CameraFeed", "set_rgb_image", 532598488, Nil, main, rgb_image);  }  // 11
+set_ycbcr_image :: (main: *CameraFeed, ycbcr_image: *Image) { sys_call("CameraFeed", "set_ycbcr_image", 532598488, Nil, main, ycbcr_image);  }  // 12
 set_external :: (main: *CameraFeed, width: int, height: int) { sys_call("CameraFeed", "set_external", 3937882851, Nil, main, width, height);  }  // 13
 get_texture_tex_id :: (main: *CameraFeed, feed_image_type: CameraServer.FeedImage) -> int { call_ret := cast(*int) sys_call("CameraFeed", "get_texture_tex_id", 1135699418, int, main, feed_image_type); return call_ret.*; }  // 14
 get_datatype :: (main: *CameraFeed) -> CameraFeed.FeedDataType { call_ret := cast(*CameraFeed.FeedDataType) sys_call("CameraFeed", "get_datatype", 1477782850, CameraFeed.FeedDataType, main); return call_ret.*; }  // 15
@@ -11697,8 +11697,8 @@ set_format :: (main: *CameraFeed, index: int, parameters: Dictionary) -> bool { 
 get_feed :: (main: *CameraServer, index: int) -> *CameraFeed { call_ret := cast(*CameraFeed) sys_call("CameraServer", "get_feed", 361927068, CameraFeed, main, index); return call_ret; }  // 0
 get_feed_count :: (main: *CameraServer) -> int { call_ret := cast(*int) sys_call("CameraServer", "get_feed_count", 2455072627, int, main); return call_ret.*; }  // 1
 feeds :: (main: *CameraServer) -> [] CameraFeed { call_ret := cast(*[] CameraFeed) sys_call("CameraServer", "feeds", 2915620761, [] CameraFeed, main); return call_ret.*; }  // 2
-add_feed :: (main: *CameraServer, feed: CameraFeed) { sys_call("CameraServer", "add_feed", 3204782488, Nil, main, feed);  }  // 3
-remove_feed :: (main: *CameraServer, feed: CameraFeed) { sys_call("CameraServer", "remove_feed", 3204782488, Nil, main, feed);  }  // 4
+add_feed :: (main: *CameraServer, feed: *CameraFeed) { sys_call("CameraServer", "add_feed", 3204782488, Nil, main, feed);  }  // 3
+remove_feed :: (main: *CameraServer, feed: *CameraFeed) { sys_call("CameraServer", "remove_feed", 3204782488, Nil, main, feed);  }  // 4
 
 set_camera_feed_id :: (main: *CameraTexture, feed_id: int) { sys_call("CameraTexture", "set_camera_feed_id", 1286410249, Nil, main, feed_id);  }  // 0
 get_camera_feed_id :: (main: *CameraTexture) -> int { call_ret := cast(*int) sys_call("CameraTexture", "get_camera_feed_id", 3905245786, int, main); return call_ret.*; }  // 1
@@ -11747,23 +11747,23 @@ draw_multiline :: (main: *CanvasItem, points: PackedVector2Array, color: Color) 
 draw_multiline_colors :: (main: *CanvasItem, points: PackedVector2Array, colors: PackedColorArray) { sys_call("CanvasItem", "draw_multiline_colors", 2311979562, Nil, main, points, colors);  }  // 31
 draw_rect :: (main: *CanvasItem, rect: Rect2, color: Color) { sys_call("CanvasItem", "draw_rect", 2773573813, Nil, main, rect, color);  }  // 32
 draw_circle :: (main: *CanvasItem, position: Vector2, radius: float, color: Color) { sys_call("CanvasItem", "draw_circle", 3153026596, Nil, main, position, radius, color);  }  // 33
-draw_texture :: (main: *CanvasItem, texture: Texture2D, position: Vector2) { sys_call("CanvasItem", "draw_texture", 520200117, Nil, main, texture, position);  }  // 34
-draw_texture_rect :: (main: *CanvasItem, texture: Texture2D, rect: Rect2, tile: bool) { sys_call("CanvasItem", "draw_texture_rect", 3832805018, Nil, main, texture, rect, tile);  }  // 35
-draw_texture_rect_region :: (main: *CanvasItem, texture: Texture2D, rect: Rect2, src_rect: Rect2) { sys_call("CanvasItem", "draw_texture_rect_region", 3883821411, Nil, main, texture, rect, src_rect);  }  // 36
-draw_msdf_texture_rect_region :: (main: *CanvasItem, texture: Texture2D, rect: Rect2, src_rect: Rect2) { sys_call("CanvasItem", "draw_msdf_texture_rect_region", 4219163252, Nil, main, texture, rect, src_rect);  }  // 37
-draw_lcd_texture_rect_region :: (main: *CanvasItem, texture: Texture2D, rect: Rect2, src_rect: Rect2) { sys_call("CanvasItem", "draw_lcd_texture_rect_region", 3212350954, Nil, main, texture, rect, src_rect);  }  // 38
-draw_style_box :: (main: *CanvasItem, style_box: StyleBox, rect: Rect2) { sys_call("CanvasItem", "draw_style_box", 388176283, Nil, main, style_box, rect);  }  // 39
+draw_texture :: (main: *CanvasItem, texture: *Texture2D, position: Vector2) { sys_call("CanvasItem", "draw_texture", 520200117, Nil, main, texture, position);  }  // 34
+draw_texture_rect :: (main: *CanvasItem, texture: *Texture2D, rect: Rect2, tile: bool) { sys_call("CanvasItem", "draw_texture_rect", 3832805018, Nil, main, texture, rect, tile);  }  // 35
+draw_texture_rect_region :: (main: *CanvasItem, texture: *Texture2D, rect: Rect2, src_rect: Rect2) { sys_call("CanvasItem", "draw_texture_rect_region", 3883821411, Nil, main, texture, rect, src_rect);  }  // 36
+draw_msdf_texture_rect_region :: (main: *CanvasItem, texture: *Texture2D, rect: Rect2, src_rect: Rect2) { sys_call("CanvasItem", "draw_msdf_texture_rect_region", 4219163252, Nil, main, texture, rect, src_rect);  }  // 37
+draw_lcd_texture_rect_region :: (main: *CanvasItem, texture: *Texture2D, rect: Rect2, src_rect: Rect2) { sys_call("CanvasItem", "draw_lcd_texture_rect_region", 3212350954, Nil, main, texture, rect, src_rect);  }  // 38
+draw_style_box :: (main: *CanvasItem, style_box: *StyleBox, rect: Rect2) { sys_call("CanvasItem", "draw_style_box", 388176283, Nil, main, style_box, rect);  }  // 39
 draw_primitive :: (main: *CanvasItem, points: PackedVector2Array, colors: PackedColorArray, uvs: PackedVector2Array) { sys_call("CanvasItem", "draw_primitive", 3288481815, Nil, main, points, colors, uvs);  }  // 40
 draw_polygon :: (main: *CanvasItem, points: PackedVector2Array, colors: PackedColorArray) { sys_call("CanvasItem", "draw_polygon", 974537912, Nil, main, points, colors);  }  // 41
 draw_colored_polygon :: (main: *CanvasItem, points: PackedVector2Array, color: Color) { sys_call("CanvasItem", "draw_colored_polygon", 15245644, Nil, main, points, color);  }  // 42
-draw_string :: (main: *CanvasItem, font: Font, pos: Vector2, text: string) { sys_call("CanvasItem", "draw_string", 728290553, Nil, main, font, pos, text);  }  // 43
-draw_multiline_string :: (main: *CanvasItem, font: Font, pos: Vector2, text: string) { sys_call("CanvasItem", "draw_multiline_string", 1927038192, Nil, main, font, pos, text);  }  // 44
-draw_string_outline :: (main: *CanvasItem, font: Font, pos: Vector2, text: string) { sys_call("CanvasItem", "draw_string_outline", 340562381, Nil, main, font, pos, text);  }  // 45
-draw_multiline_string_outline :: (main: *CanvasItem, font: Font, pos: Vector2, text: string) { sys_call("CanvasItem", "draw_multiline_string_outline", 1912318525, Nil, main, font, pos, text);  }  // 46
-draw_char :: (main: *CanvasItem, font: Font, pos: Vector2, char: string) { sys_call("CanvasItem", "draw_char", 3339793283, Nil, main, font, pos, char);  }  // 47
-draw_char_outline :: (main: *CanvasItem, font: Font, pos: Vector2, char: string) { sys_call("CanvasItem", "draw_char_outline", 3302344391, Nil, main, font, pos, char);  }  // 48
-draw_mesh :: (main: *CanvasItem, mesh: Mesh, texture: Texture2D) { sys_call("CanvasItem", "draw_mesh", 153818295, Nil, main, mesh, texture);  }  // 49
-draw_multimesh :: (main: *CanvasItem, multimesh: MultiMesh, texture: Texture2D) { sys_call("CanvasItem", "draw_multimesh", 937992368, Nil, main, multimesh, texture);  }  // 50
+draw_string :: (main: *CanvasItem, font: *Font, pos: Vector2, text: string) { sys_call("CanvasItem", "draw_string", 728290553, Nil, main, font, pos, text);  }  // 43
+draw_multiline_string :: (main: *CanvasItem, font: *Font, pos: Vector2, text: string) { sys_call("CanvasItem", "draw_multiline_string", 1927038192, Nil, main, font, pos, text);  }  // 44
+draw_string_outline :: (main: *CanvasItem, font: *Font, pos: Vector2, text: string) { sys_call("CanvasItem", "draw_string_outline", 340562381, Nil, main, font, pos, text);  }  // 45
+draw_multiline_string_outline :: (main: *CanvasItem, font: *Font, pos: Vector2, text: string) { sys_call("CanvasItem", "draw_multiline_string_outline", 1912318525, Nil, main, font, pos, text);  }  // 46
+draw_char :: (main: *CanvasItem, font: *Font, pos: Vector2, char: string) { sys_call("CanvasItem", "draw_char", 3339793283, Nil, main, font, pos, char);  }  // 47
+draw_char_outline :: (main: *CanvasItem, font: *Font, pos: Vector2, char: string) { sys_call("CanvasItem", "draw_char_outline", 3302344391, Nil, main, font, pos, char);  }  // 48
+draw_mesh :: (main: *CanvasItem, mesh: *Mesh, texture: *Texture2D) { sys_call("CanvasItem", "draw_mesh", 153818295, Nil, main, mesh, texture);  }  // 49
+draw_multimesh :: (main: *CanvasItem, multimesh: *MultiMesh, texture: *Texture2D) { sys_call("CanvasItem", "draw_multimesh", 937992368, Nil, main, multimesh, texture);  }  // 50
 draw_set_transform :: (main: *CanvasItem, position: Vector2) { sys_call("CanvasItem", "draw_set_transform", 288975085, Nil, main, position);  }  // 51
 draw_set_transform_matrix :: (main: *CanvasItem, xform: Transform2D) { sys_call("CanvasItem", "draw_set_transform_matrix", 2761652528, Nil, main, xform);  }  // 52
 draw_animation_slice :: (main: *CanvasItem, animation_length: float, slice_begin: float, slice_end: float) { sys_call("CanvasItem", "draw_animation_slice", 3112831842, Nil, main, animation_length, slice_begin, slice_end);  }  // 53
@@ -11780,7 +11780,7 @@ get_global_mouse_position :: (main: *CanvasItem) -> Vector2 { call_ret := cast(*
 get_canvas :: (main: *CanvasItem) -> RID { call_ret := cast(*RID) sys_call("CanvasItem", "get_canvas", 2944877500, RID, main); return call_ret.*; }  // 64
 get_canvas_layer_node :: (main: *CanvasItem) -> *CanvasLayer { call_ret := cast(*CanvasLayer) sys_call("CanvasItem", "get_canvas_layer_node", 2602762519, CanvasLayer, main); return call_ret; }  // 65
 get_world_2d :: (main: *CanvasItem) -> *World2D { call_ret := cast(*World2D) sys_call("CanvasItem", "get_world_2d", 2339128592, World2D, main); return call_ret; }  // 66
-set_material :: (main: *CanvasItem, material: Material) { sys_call("CanvasItem", "set_material", 2757459619, Nil, main, material);  }  // 67
+set_material :: (main: *CanvasItem, material: *Material) { sys_call("CanvasItem", "set_material", 2757459619, Nil, main, material);  }  // 67
 get_material :: (main: *CanvasItem) -> *Material { call_ret := cast(*Material) sys_call("CanvasItem", "get_material", 5934680, Material, main); return call_ret; }  // 68
 set_instance_shader_parameter :: (main: *CanvasItem, name: string, value: Variant) { sys_call("CanvasItem", "set_instance_shader_parameter", 3776071444, Nil, main, name, value);  }  // 69
 get_instance_shader_parameter :: (main: *CanvasItem, name: string) -> Variant { call_ret := cast(*Variant) sys_call("CanvasItem", "get_instance_shader_parameter", 2760726917, Variant, main, name); return call_ret.*; }  // 70
@@ -11792,7 +11792,7 @@ set_notify_transform :: (main: *CanvasItem, enable: bool) { sys_call("CanvasItem
 is_transform_notification_enabled :: (main: *CanvasItem) -> bool { call_ret := cast(*bool) sys_call("CanvasItem", "is_transform_notification_enabled", 36873697, bool, main); return call_ret.*; }  // 76
 force_update_transform :: (main: *CanvasItem) { sys_call("CanvasItem", "force_update_transform", 3218959716, Nil, main);  }  // 77
 make_canvas_position_local :: (main: *CanvasItem, viewport_point: Vector2) -> Vector2 { call_ret := cast(*Vector2) sys_call("CanvasItem", "make_canvas_position_local", 2656412154, Vector2, main, viewport_point); return call_ret.*; }  // 78
-make_input_local :: (main: *CanvasItem, event: InputEvent) -> *InputEvent { call_ret := cast(*InputEvent) sys_call("CanvasItem", "make_input_local", 811130057, InputEvent, main, event); return call_ret; }  // 79
+make_input_local :: (main: *CanvasItem, event: *InputEvent) -> *InputEvent { call_ret := cast(*InputEvent) sys_call("CanvasItem", "make_input_local", 811130057, InputEvent, main, event); return call_ret; }  // 79
 set_visibility_layer :: (main: *CanvasItem, layer: int) { sys_call("CanvasItem", "set_visibility_layer", 1286410249, Nil, main, layer);  }  // 80
 get_visibility_layer :: (main: *CanvasItem) -> int { call_ret := cast(*int) sys_call("CanvasItem", "get_visibility_layer", 3905245786, int, main); return call_ret.*; }  // 81
 set_visibility_layer_bit :: (main: *CanvasItem, layer: int, enabled: bool) { sys_call("CanvasItem", "set_visibility_layer_bit", 300928843, Nil, main, layer, enabled);  }  // 82
@@ -11836,18 +11836,18 @@ set_follow_viewport :: (main: *CanvasLayer, enable: bool) { sys_call("CanvasLaye
 is_following_viewport :: (main: *CanvasLayer) -> bool { call_ret := cast(*bool) sys_call("CanvasLayer", "is_following_viewport", 36873697, bool, main); return call_ret.*; }  // 16
 set_follow_viewport_scale :: (main: *CanvasLayer, scale: float) { sys_call("CanvasLayer", "set_follow_viewport_scale", 373806689, Nil, main, scale);  }  // 17
 get_follow_viewport_scale :: (main: *CanvasLayer) -> float { call_ret := cast(*float) sys_call("CanvasLayer", "get_follow_viewport_scale", 1740695150, float, main); return call_ret.*; }  // 18
-set_custom_viewport :: (main: *CanvasLayer, viewport: Node) { sys_call("CanvasLayer", "set_custom_viewport", 1078189570, Nil, main, viewport);  }  // 19
+set_custom_viewport :: (main: *CanvasLayer, viewport: *Node) { sys_call("CanvasLayer", "set_custom_viewport", 1078189570, Nil, main, viewport);  }  // 19
 get_custom_viewport :: (main: *CanvasLayer) -> *Node { call_ret := cast(*Node) sys_call("CanvasLayer", "get_custom_viewport", 3160264692, Node, main); return call_ret; }  // 20
 get_canvas :: (main: *CanvasLayer) -> RID { call_ret := cast(*RID) sys_call("CanvasLayer", "get_canvas", 2944877500, RID, main); return call_ret.*; }  // 21
 
 set_color :: (main: *CanvasModulate, color: Color) { sys_call("CanvasModulate", "set_color", 2920490490, Nil, main, color);  }  // 0
 get_color :: (main: *CanvasModulate) -> Color { call_ret := cast(*Color) sys_call("CanvasModulate", "get_color", 3444240500, Color, main); return call_ret.*; }  // 1
 
-set_diffuse_texture :: (main: *CanvasTexture, texture: Texture2D) { sys_call("CanvasTexture", "set_diffuse_texture", 4051416890, Nil, main, texture);  }  // 0
+set_diffuse_texture :: (main: *CanvasTexture, texture: *Texture2D) { sys_call("CanvasTexture", "set_diffuse_texture", 4051416890, Nil, main, texture);  }  // 0
 get_diffuse_texture :: (main: *CanvasTexture) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("CanvasTexture", "get_diffuse_texture", 3635182373, Texture2D, main); return call_ret; }  // 1
-set_normal_texture :: (main: *CanvasTexture, texture: Texture2D) { sys_call("CanvasTexture", "set_normal_texture", 4051416890, Nil, main, texture);  }  // 2
+set_normal_texture :: (main: *CanvasTexture, texture: *Texture2D) { sys_call("CanvasTexture", "set_normal_texture", 4051416890, Nil, main, texture);  }  // 2
 get_normal_texture :: (main: *CanvasTexture) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("CanvasTexture", "get_normal_texture", 3635182373, Texture2D, main); return call_ret; }  // 3
-set_specular_texture :: (main: *CanvasTexture, texture: Texture2D) { sys_call("CanvasTexture", "set_specular_texture", 4051416890, Nil, main, texture);  }  // 4
+set_specular_texture :: (main: *CanvasTexture, texture: *Texture2D) { sys_call("CanvasTexture", "set_specular_texture", 4051416890, Nil, main, texture);  }  // 4
 get_specular_texture :: (main: *CanvasTexture) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("CanvasTexture", "get_specular_texture", 3635182373, Texture2D, main); return call_ret; }  // 5
 set_specular_color :: (main: *CanvasTexture, color: Color) { sys_call("CanvasTexture", "set_specular_color", 2920490490, Nil, main, color);  }  // 6
 get_specular_color :: (main: *CanvasTexture) -> Color { call_ret := cast(*Color) sys_call("CanvasTexture", "get_specular_color", 3444240500, Color, main); return call_ret.*; }  // 7
@@ -12025,8 +12025,8 @@ class_get_signal_list :: (main: *ClassDB, class: string) -> [] Dictionary { call
 class_get_property_list :: (main: *ClassDB, class: string) -> [] Dictionary { call_ret := cast(*[] Dictionary) sys_call("ClassDB", "class_get_property_list", 3504980660, [] Dictionary, main, class); return call_ret.*; }  // 11
 class_get_property_getter :: (main: *ClassDB, class: string, property: string) -> StringName { call_ret := cast(*StringName) sys_call("ClassDB", "class_get_property_getter", 3770832642, StringName, main, class, property); return call_ret.*; }  // 12
 class_get_property_setter :: (main: *ClassDB, class: string, property: string) -> StringName { call_ret := cast(*StringName) sys_call("ClassDB", "class_get_property_setter", 3770832642, StringName, main, class, property); return call_ret.*; }  // 13
-class_get_property :: (main: *ClassDB, object: Object, property: string) -> Variant { call_ret := cast(*Variant) sys_call("ClassDB", "class_get_property", 2498641674, Variant, main, object, property); return call_ret.*; }  // 14
-class_set_property :: (main: *ClassDB, object: Object, property: string, value: Variant) -> Error { call_ret := cast(*Error) sys_call("ClassDB", "class_set_property", 1690314931, Error, main, object, property, value); return call_ret.*; }  // 15
+class_get_property :: (main: *ClassDB, object: *Object, property: string) -> Variant { call_ret := cast(*Variant) sys_call("ClassDB", "class_get_property", 2498641674, Variant, main, object, property); return call_ret.*; }  // 14
+class_set_property :: (main: *ClassDB, object: *Object, property: string, value: Variant) -> Error { call_ret := cast(*Error) sys_call("ClassDB", "class_set_property", 1690314931, Error, main, object, property, value); return call_ret.*; }  // 15
 class_get_property_default_value :: (main: *ClassDB, class: string, property: string) -> Variant { call_ret := cast(*Variant) sys_call("ClassDB", "class_get_property_default_value", 2718203076, Variant, main, class, property); return call_ret.*; }  // 16
 class_has_method :: (main: *ClassDB, class: string, method: string) -> bool { call_ret := cast(*bool) sys_call("ClassDB", "class_has_method", 3860701026, bool, main, class, method); return call_ret.*; }  // 17
 class_get_method_argument_count :: (main: *ClassDB, class: string, method: string) -> int { call_ret := cast(*int) sys_call("ClassDB", "class_get_method_argument_count", 3885694822, int, main, class, method); return call_ret.*; }  // 18
@@ -12198,7 +12198,7 @@ set_disable_mode :: (main: *CollisionObject2D, mode: CollisionObject2D.DisableMo
 get_disable_mode :: (main: *CollisionObject2D) -> CollisionObject2D.DisableMode { call_ret := cast(*CollisionObject2D.DisableMode) sys_call("CollisionObject2D", "get_disable_mode", 3172846349, CollisionObject2D.DisableMode, main); return call_ret.*; }  // 17
 set_pickable :: (main: *CollisionObject2D, enabled: bool) { sys_call("CollisionObject2D", "set_pickable", 2586408642, Nil, main, enabled);  }  // 18
 is_pickable :: (main: *CollisionObject2D) -> bool { call_ret := cast(*bool) sys_call("CollisionObject2D", "is_pickable", 36873697, bool, main); return call_ret.*; }  // 19
-create_shape_owner :: (main: *CollisionObject2D, owner: Object) -> int { call_ret := cast(*int) sys_call("CollisionObject2D", "create_shape_owner", 3429307534, int, main, owner); return call_ret.*; }  // 20
+create_shape_owner :: (main: *CollisionObject2D, owner: *Object) -> int { call_ret := cast(*int) sys_call("CollisionObject2D", "create_shape_owner", 3429307534, int, main, owner); return call_ret.*; }  // 20
 remove_shape_owner :: (main: *CollisionObject2D, owner_id: int) { sys_call("CollisionObject2D", "remove_shape_owner", 1286410249, Nil, main, owner_id);  }  // 21
 get_shape_owners :: (main: *CollisionObject2D) -> PackedInt32Array { call_ret := cast(*PackedInt32Array) sys_call("CollisionObject2D", "get_shape_owners", 969006518, PackedInt32Array, main); return call_ret.*; }  // 22
 shape_owner_set_transform :: (main: *CollisionObject2D, owner_id: int, transform: Transform2D) { sys_call("CollisionObject2D", "shape_owner_set_transform", 30160968, Nil, main, owner_id, transform);  }  // 23
@@ -12210,7 +12210,7 @@ shape_owner_set_one_way_collision :: (main: *CollisionObject2D, owner_id: int, e
 is_shape_owner_one_way_collision_enabled :: (main: *CollisionObject2D, owner_id: int) -> bool { call_ret := cast(*bool) sys_call("CollisionObject2D", "is_shape_owner_one_way_collision_enabled", 1116898809, bool, main, owner_id); return call_ret.*; }  // 29
 shape_owner_set_one_way_collision_margin :: (main: *CollisionObject2D, owner_id: int, margin: float) { sys_call("CollisionObject2D", "shape_owner_set_one_way_collision_margin", 1602489585, Nil, main, owner_id, margin);  }  // 30
 get_shape_owner_one_way_collision_margin :: (main: *CollisionObject2D, owner_id: int) -> float { call_ret := cast(*float) sys_call("CollisionObject2D", "get_shape_owner_one_way_collision_margin", 2339986948, float, main, owner_id); return call_ret.*; }  // 31
-shape_owner_add_shape :: (main: *CollisionObject2D, owner_id: int, shape: Shape2D) { sys_call("CollisionObject2D", "shape_owner_add_shape", 2077425081, Nil, main, owner_id, shape);  }  // 32
+shape_owner_add_shape :: (main: *CollisionObject2D, owner_id: int, shape: *Shape2D) { sys_call("CollisionObject2D", "shape_owner_add_shape", 2077425081, Nil, main, owner_id, shape);  }  // 32
 shape_owner_get_shape_count :: (main: *CollisionObject2D, owner_id: int) -> int { call_ret := cast(*int) sys_call("CollisionObject2D", "shape_owner_get_shape_count", 923996154, int, main, owner_id); return call_ret.*; }  // 33
 shape_owner_get_shape :: (main: *CollisionObject2D, owner_id: int, shape_id: int) -> *Shape2D { call_ret := cast(*Shape2D) sys_call("CollisionObject2D", "shape_owner_get_shape", 3106725749, Shape2D, main, owner_id, shape_id); return call_ret; }  // 34
 shape_owner_get_shape_index :: (main: *CollisionObject2D, owner_id: int, shape_id: int) -> int { call_ret := cast(*int) sys_call("CollisionObject2D", "shape_owner_get_shape_index", 3175239445, int, main, owner_id, shape_id); return call_ret.*; }  // 35
@@ -12235,7 +12235,7 @@ is_ray_pickable :: (main: *CollisionObject3D) -> bool { call_ret := cast(*bool) 
 set_capture_input_on_drag :: (main: *CollisionObject3D, enable: bool) { sys_call("CollisionObject3D", "set_capture_input_on_drag", 2586408642, Nil, main, enable);  }  // 17
 get_capture_input_on_drag :: (main: *CollisionObject3D) -> bool { call_ret := cast(*bool) sys_call("CollisionObject3D", "get_capture_input_on_drag", 36873697, bool, main); return call_ret.*; }  // 18
 get_rid :: (main: *CollisionObject3D) -> RID { call_ret := cast(*RID) sys_call("CollisionObject3D", "get_rid", 2944877500, RID, main); return call_ret.*; }  // 19
-create_shape_owner :: (main: *CollisionObject3D, owner: Object) -> int { call_ret := cast(*int) sys_call("CollisionObject3D", "create_shape_owner", 3429307534, int, main, owner); return call_ret.*; }  // 20
+create_shape_owner :: (main: *CollisionObject3D, owner: *Object) -> int { call_ret := cast(*int) sys_call("CollisionObject3D", "create_shape_owner", 3429307534, int, main, owner); return call_ret.*; }  // 20
 remove_shape_owner :: (main: *CollisionObject3D, owner_id: int) { sys_call("CollisionObject3D", "remove_shape_owner", 1286410249, Nil, main, owner_id);  }  // 21
 get_shape_owners :: (main: *CollisionObject3D) -> PackedInt32Array { call_ret := cast(*PackedInt32Array) sys_call("CollisionObject3D", "get_shape_owners", 969006518, PackedInt32Array, main); return call_ret.*; }  // 22
 shape_owner_set_transform :: (main: *CollisionObject3D, owner_id: int, transform: Transform3D) { sys_call("CollisionObject3D", "shape_owner_set_transform", 3616898986, Nil, main, owner_id, transform);  }  // 23
@@ -12243,7 +12243,7 @@ shape_owner_get_transform :: (main: *CollisionObject3D, owner_id: int) -> Transf
 shape_owner_get_owner :: (main: *CollisionObject3D, owner_id: int) -> *Object { call_ret := cast(*Object) sys_call("CollisionObject3D", "shape_owner_get_owner", 3332903315, Object, main, owner_id); return call_ret; }  // 25
 shape_owner_set_disabled :: (main: *CollisionObject3D, owner_id: int, disabled: bool) { sys_call("CollisionObject3D", "shape_owner_set_disabled", 300928843, Nil, main, owner_id, disabled);  }  // 26
 is_shape_owner_disabled :: (main: *CollisionObject3D, owner_id: int) -> bool { call_ret := cast(*bool) sys_call("CollisionObject3D", "is_shape_owner_disabled", 1116898809, bool, main, owner_id); return call_ret.*; }  // 27
-shape_owner_add_shape :: (main: *CollisionObject3D, owner_id: int, shape: Shape3D) { sys_call("CollisionObject3D", "shape_owner_add_shape", 2566676345, Nil, main, owner_id, shape);  }  // 28
+shape_owner_add_shape :: (main: *CollisionObject3D, owner_id: int, shape: *Shape3D) { sys_call("CollisionObject3D", "shape_owner_add_shape", 2566676345, Nil, main, owner_id, shape);  }  // 28
 shape_owner_get_shape_count :: (main: *CollisionObject3D, owner_id: int) -> int { call_ret := cast(*int) sys_call("CollisionObject3D", "shape_owner_get_shape_count", 923996154, int, main, owner_id); return call_ret.*; }  // 29
 shape_owner_get_shape :: (main: *CollisionObject3D, owner_id: int, shape_id: int) -> *Shape3D { call_ret := cast(*Shape3D) sys_call("CollisionObject3D", "shape_owner_get_shape", 4015519174, Shape3D, main, owner_id, shape_id); return call_ret; }  // 30
 shape_owner_get_shape_index :: (main: *CollisionObject3D, owner_id: int, shape_id: int) -> int { call_ret := cast(*int) sys_call("CollisionObject3D", "shape_owner_get_shape_index", 3175239445, int, main, owner_id, shape_id); return call_ret.*; }  // 31
@@ -12275,7 +12275,7 @@ get_enable_debug_fill :: (main: *CollisionPolygon3D) -> bool { call_ret := cast(
 set_margin :: (main: *CollisionPolygon3D, margin: float) { sys_call("CollisionPolygon3D", "set_margin", 373806689, Nil, main, margin);  }  // 10
 get_margin :: (main: *CollisionPolygon3D) -> float { call_ret := cast(*float) sys_call("CollisionPolygon3D", "get_margin", 1740695150, float, main); return call_ret.*; }  // 11
 
-set_shape :: (main: *CollisionShape2D, shape: Shape2D) { sys_call("CollisionShape2D", "set_shape", 771364740, Nil, main, shape);  }  // 0
+set_shape :: (main: *CollisionShape2D, shape: *Shape2D) { sys_call("CollisionShape2D", "set_shape", 771364740, Nil, main, shape);  }  // 0
 get_shape :: (main: *CollisionShape2D) -> *Shape2D { call_ret := cast(*Shape2D) sys_call("CollisionShape2D", "get_shape", 522005891, Shape2D, main); return call_ret; }  // 1
 set_disabled :: (main: *CollisionShape2D, disabled: bool) { sys_call("CollisionShape2D", "set_disabled", 2586408642, Nil, main, disabled);  }  // 2
 is_disabled :: (main: *CollisionShape2D) -> bool { call_ret := cast(*bool) sys_call("CollisionShape2D", "is_disabled", 36873697, bool, main); return call_ret.*; }  // 3
@@ -12286,8 +12286,8 @@ get_one_way_collision_margin :: (main: *CollisionShape2D) -> float { call_ret :=
 set_debug_color :: (main: *CollisionShape2D, color: Color) { sys_call("CollisionShape2D", "set_debug_color", 2920490490, Nil, main, color);  }  // 8
 get_debug_color :: (main: *CollisionShape2D) -> Color { call_ret := cast(*Color) sys_call("CollisionShape2D", "get_debug_color", 3444240500, Color, main); return call_ret.*; }  // 9
 
-resource_changed :: (main: *CollisionShape3D, resource: Resource) { sys_call("CollisionShape3D", "resource_changed", 968641751, Nil, main, resource);  }  // 0
-set_shape :: (main: *CollisionShape3D, shape: Shape3D) { sys_call("CollisionShape3D", "set_shape", 1549710052, Nil, main, shape);  }  // 1
+resource_changed :: (main: *CollisionShape3D, resource: *Resource) { sys_call("CollisionShape3D", "resource_changed", 968641751, Nil, main, resource);  }  // 0
+set_shape :: (main: *CollisionShape3D, shape: *Shape3D) { sys_call("CollisionShape3D", "set_shape", 1549710052, Nil, main, shape);  }  // 1
 get_shape :: (main: *CollisionShape3D) -> *Shape3D { call_ret := cast(*Shape3D) sys_call("CollisionShape3D", "get_shape", 3214262478, Shape3D, main); return call_ret; }  // 2
 set_disabled :: (main: *CollisionShape3D, enable: bool) { sys_call("CollisionShape3D", "set_disabled", 2586408642, Nil, main, enable);  }  // 3
 is_disabled :: (main: *CollisionShape3D) -> bool { call_ret := cast(*bool) sys_call("CollisionShape3D", "is_disabled", 36873697, bool, main); return call_ret.*; }  // 4
@@ -12403,7 +12403,7 @@ set_cancel_button_text :: (main: *ConfirmationDialog, text: string) { sys_call("
 get_cancel_button_text :: (main: *ConfirmationDialog) -> gstring { call_ret := cast(*gstring) sys_call("ConfirmationDialog", "get_cancel_button_text", 201670096, gstring, main); return call_ret.*; }  // 2
 
 queue_sort :: (main: *Container) { sys_call("Container", "queue_sort", 3218959716, Nil, main);  }  // 2
-fit_child_in_rect :: (main: *Container, child: Control, rect: Rect2) { sys_call("Container", "fit_child_in_rect", 1993438598, Nil, main, child, rect);  }  // 3
+fit_child_in_rect :: (main: *Container, child: *Control, rect: Rect2) { sys_call("Container", "fit_child_in_rect", 1993438598, Nil, main, child, rect);  }  // 3
 
 accept_event :: (main: *Control) { sys_call("Control", "accept_event", 3218959716, Nil, main);  }  // 9
 get_minimum_size :: (main: *Control) -> Vector2 { call_ret := cast(*Vector2) sys_call("Control", "get_minimum_size", 3341600327, Vector2, main); return call_ret.*; }  // 10
@@ -12455,15 +12455,15 @@ set_stretch_ratio :: (main: *Control, ratio: float) { sys_call("Control", "set_s
 get_stretch_ratio :: (main: *Control) -> float { call_ret := cast(*float) sys_call("Control", "get_stretch_ratio", 1740695150, float, main); return call_ret.*; }  // 56
 set_v_size_flags :: (main: *Control, flags: Control.SizeFlags) { sys_call("Control", "set_v_size_flags", 394851643, Nil, main, flags);  }  // 57
 get_v_size_flags :: (main: *Control) -> Control.SizeFlags { call_ret := cast(*Control.SizeFlags) sys_call("Control", "get_v_size_flags", 3781367401, Control.SizeFlags, main); return call_ret.*; }  // 58
-set_theme :: (main: *Control, theme: Theme) { sys_call("Control", "set_theme", 2326690814, Nil, main, theme);  }  // 59
+set_theme :: (main: *Control, theme: *Theme) { sys_call("Control", "set_theme", 2326690814, Nil, main, theme);  }  // 59
 get_theme :: (main: *Control) -> *Theme { call_ret := cast(*Theme) sys_call("Control", "get_theme", 3846893731, Theme, main); return call_ret; }  // 60
 set_theme_type_variation :: (main: *Control, theme_type: string) { sys_call("Control", "set_theme_type_variation", 3304788590, Nil, main, theme_type);  }  // 61
 get_theme_type_variation :: (main: *Control) -> StringName { call_ret := cast(*StringName) sys_call("Control", "get_theme_type_variation", 2002593661, StringName, main); return call_ret.*; }  // 62
 begin_bulk_theme_override :: (main: *Control) { sys_call("Control", "begin_bulk_theme_override", 3218959716, Nil, main);  }  // 63
 end_bulk_theme_override :: (main: *Control) { sys_call("Control", "end_bulk_theme_override", 3218959716, Nil, main);  }  // 64
-add_theme_icon_override :: (main: *Control, name: string, texture: Texture2D) { sys_call("Control", "add_theme_icon_override", 1373065600, Nil, main, name, texture);  }  // 65
-add_theme_stylebox_override :: (main: *Control, name: string, stylebox: StyleBox) { sys_call("Control", "add_theme_stylebox_override", 4188838905, Nil, main, name, stylebox);  }  // 66
-add_theme_font_override :: (main: *Control, name: string, font: Font) { sys_call("Control", "add_theme_font_override", 3518018674, Nil, main, name, font);  }  // 67
+add_theme_icon_override :: (main: *Control, name: string, texture: *Texture2D) { sys_call("Control", "add_theme_icon_override", 1373065600, Nil, main, name, texture);  }  // 65
+add_theme_stylebox_override :: (main: *Control, name: string, stylebox: *StyleBox) { sys_call("Control", "add_theme_stylebox_override", 4188838905, Nil, main, name, stylebox);  }  // 66
+add_theme_font_override :: (main: *Control, name: string, font: *Font) { sys_call("Control", "add_theme_font_override", 3518018674, Nil, main, name, font);  }  // 67
 add_theme_font_size_override :: (main: *Control, name: string, font_size: int) { sys_call("Control", "add_theme_font_size_override", 2415702435, Nil, main, name, font_size);  }  // 68
 add_theme_color_override :: (main: *Control, name: string, color: Color) { sys_call("Control", "add_theme_color_override", 4260178595, Nil, main, name, color);  }  // 69
 add_theme_constant_override :: (main: *Control, name: string, constant: int) { sys_call("Control", "add_theme_constant_override", 2415702435, Nil, main, name, constant);  }  // 70
@@ -12513,7 +12513,7 @@ set_focus_next :: (main: *Control, next: string) { sys_call("Control", "set_focu
 get_focus_next :: (main: *Control) -> NodePath { call_ret := cast(*NodePath) sys_call("Control", "get_focus_next", 4075236667, NodePath, main); return call_ret.*; }  // 114
 set_focus_previous :: (main: *Control, previous: string) { sys_call("Control", "set_focus_previous", 1348162250, Nil, main, previous);  }  // 115
 get_focus_previous :: (main: *Control) -> NodePath { call_ret := cast(*NodePath) sys_call("Control", "get_focus_previous", 4075236667, NodePath, main); return call_ret.*; }  // 116
-force_drag :: (main: *Control, data: Variant, preview: Control) { sys_call("Control", "force_drag", 3191844692, Nil, main, data, preview);  }  // 117
+force_drag :: (main: *Control, data: Variant, preview: *Control) { sys_call("Control", "force_drag", 3191844692, Nil, main, data, preview);  }  // 117
 set_mouse_filter :: (main: *Control, filter: Control.MouseFilter) { sys_call("Control", "set_mouse_filter", 3891156122, Nil, main, filter);  }  // 118
 get_mouse_filter :: (main: *Control) -> Control.MouseFilter { call_ret := cast(*Control.MouseFilter) sys_call("Control", "get_mouse_filter", 1572545674, Control.MouseFilter, main); return call_ret.*; }  // 119
 set_force_pass_scroll_events :: (main: *Control, force_pass_scroll_events: bool) { sys_call("Control", "set_force_pass_scroll_events", 2586408642, Nil, main, force_pass_scroll_events);  }  // 120
@@ -12522,10 +12522,10 @@ set_clip_contents :: (main: *Control, enable: bool) { sys_call("Control", "set_c
 is_clipping_contents :: (main: *Control) -> bool { call_ret := cast(*bool) sys_call("Control", "is_clipping_contents", 2240911060, bool, main); return call_ret.*; }  // 123
 grab_click_focus :: (main: *Control) { sys_call("Control", "grab_click_focus", 3218959716, Nil, main);  }  // 124
 set_drag_forwarding :: (main: *Control, drag_func: Callable, can_drop_func: Callable, drop_func: Callable) { sys_call("Control", "set_drag_forwarding", 1076571380, Nil, main, drag_func, can_drop_func, drop_func);  }  // 125
-set_drag_preview :: (main: *Control, control: Control) { sys_call("Control", "set_drag_preview", 1496901182, Nil, main, control);  }  // 126
+set_drag_preview :: (main: *Control, control: *Control) { sys_call("Control", "set_drag_preview", 1496901182, Nil, main, control);  }  // 126
 is_drag_successful :: (main: *Control) -> bool { call_ret := cast(*bool) sys_call("Control", "is_drag_successful", 36873697, bool, main); return call_ret.*; }  // 127
 warp_mouse :: (main: *Control, position: Vector2) { sys_call("Control", "warp_mouse", 743155724, Nil, main, position);  }  // 128
-set_shortcut_context :: (main: *Control, node: Node) { sys_call("Control", "set_shortcut_context", 1078189570, Nil, main, node);  }  // 129
+set_shortcut_context :: (main: *Control, node: *Node) { sys_call("Control", "set_shortcut_context", 1078189570, Nil, main, node);  }  // 129
 get_shortcut_context :: (main: *Control) -> *Node { call_ret := cast(*Node) sys_call("Control", "get_shortcut_context", 3160264692, Node, main); return call_ret; }  // 130
 update_minimum_size :: (main: *Control) { sys_call("Control", "update_minimum_size", 3218959716, Nil, main);  }  // 131
 set_layout_direction :: (main: *Control, direction: Control.LayoutDirection) { sys_call("Control", "set_layout_direction", 3310692370, Nil, main, direction);  }  // 132
@@ -12545,11 +12545,11 @@ get_points :: (main: *ConvexPolygonShape3D) -> PackedVector3Array { call_ret := 
 
 generate_random_bytes :: (main: *Crypto, size: int) -> PackedByteArray { call_ret := cast(*PackedByteArray) sys_call("Crypto", "generate_random_bytes", 47165747, PackedByteArray, main, size); return call_ret.*; }  // 0
 generate_rsa :: (main: *Crypto, size: int) -> *CryptoKey { call_ret := cast(*CryptoKey) sys_call("Crypto", "generate_rsa", 1237515462, CryptoKey, main, size); return call_ret; }  // 1
-generate_self_signed_certificate :: (main: *Crypto, key: CryptoKey) -> *X509Certificate { call_ret := cast(*X509Certificate) sys_call("Crypto", "generate_self_signed_certificate", 492266173, X509Certificate, main, key); return call_ret; }  // 2
-sign :: (main: *Crypto, hash_type: HashingContext.HashType, hash: PackedByteArray, key: CryptoKey) -> PackedByteArray { call_ret := cast(*PackedByteArray) sys_call("Crypto", "sign", 1673662703, PackedByteArray, main, hash_type, hash, key); return call_ret.*; }  // 3
-verify :: (main: *Crypto, hash_type: HashingContext.HashType, hash: PackedByteArray, signature: PackedByteArray, key: CryptoKey) -> bool { call_ret := cast(*bool) sys_call("Crypto", "verify", 2805902225, bool, main, hash_type, hash, signature, key); return call_ret.*; }  // 4
-encrypt :: (main: *Crypto, key: CryptoKey, plaintext: PackedByteArray) -> PackedByteArray { call_ret := cast(*PackedByteArray) sys_call("Crypto", "encrypt", 2361793670, PackedByteArray, main, key, plaintext); return call_ret.*; }  // 5
-decrypt :: (main: *Crypto, key: CryptoKey, ciphertext: PackedByteArray) -> PackedByteArray { call_ret := cast(*PackedByteArray) sys_call("Crypto", "decrypt", 2361793670, PackedByteArray, main, key, ciphertext); return call_ret.*; }  // 6
+generate_self_signed_certificate :: (main: *Crypto, key: *CryptoKey) -> *X509Certificate { call_ret := cast(*X509Certificate) sys_call("Crypto", "generate_self_signed_certificate", 492266173, X509Certificate, main, key); return call_ret; }  // 2
+sign :: (main: *Crypto, hash_type: HashingContext.HashType, hash: PackedByteArray, key: *CryptoKey) -> PackedByteArray { call_ret := cast(*PackedByteArray) sys_call("Crypto", "sign", 1673662703, PackedByteArray, main, hash_type, hash, key); return call_ret.*; }  // 3
+verify :: (main: *Crypto, hash_type: HashingContext.HashType, hash: PackedByteArray, signature: PackedByteArray, key: *CryptoKey) -> bool { call_ret := cast(*bool) sys_call("Crypto", "verify", 2805902225, bool, main, hash_type, hash, signature, key); return call_ret.*; }  // 4
+encrypt :: (main: *Crypto, key: *CryptoKey, plaintext: PackedByteArray) -> PackedByteArray { call_ret := cast(*PackedByteArray) sys_call("Crypto", "encrypt", 2361793670, PackedByteArray, main, key, plaintext); return call_ret.*; }  // 5
+decrypt :: (main: *Crypto, key: *CryptoKey, ciphertext: PackedByteArray) -> PackedByteArray { call_ret := cast(*PackedByteArray) sys_call("Crypto", "decrypt", 2361793670, PackedByteArray, main, key, ciphertext); return call_ret.*; }  // 6
 hmac_digest :: (main: *Crypto, hash_type: HashingContext.HashType, key: PackedByteArray, msg: PackedByteArray) -> PackedByteArray { call_ret := cast(*PackedByteArray) sys_call("Crypto", "hmac_digest", 2368951203, PackedByteArray, main, hash_type, key, msg); return call_ret.*; }  // 7
 constant_time_compare :: (main: *Crypto, trusted: PackedByteArray, received: PackedByteArray) -> bool { call_ret := cast(*bool) sys_call("Crypto", "constant_time_compare", 1024142237, bool, main, trusted, received); return call_ret.*; }  // 8
 
@@ -12654,17 +12654,17 @@ tessellate :: (main: *Curve3D) -> PackedVector3Array { call_ret := cast(*PackedV
 tessellate_even_length :: (main: *Curve3D) -> PackedVector3Array { call_ret := cast(*PackedVector3Array) sys_call("Curve3D", "tessellate_even_length", 133237049, PackedVector3Array, main); return call_ret.*; }  // 31
 
 set_width :: (main: *CurveTexture, width: int) { sys_call("CurveTexture", "set_width", 1286410249, Nil, main, width);  }  // 0
-set_curve :: (main: *CurveTexture, curve: Curve) { sys_call("CurveTexture", "set_curve", 270443179, Nil, main, curve);  }  // 1
+set_curve :: (main: *CurveTexture, curve: *Curve) { sys_call("CurveTexture", "set_curve", 270443179, Nil, main, curve);  }  // 1
 get_curve :: (main: *CurveTexture) -> *Curve { call_ret := cast(*Curve) sys_call("CurveTexture", "get_curve", 2460114913, Curve, main); return call_ret; }  // 2
 set_texture_mode :: (main: *CurveTexture, texture_mode: CurveTexture.TextureMode) { sys_call("CurveTexture", "set_texture_mode", 1321955367, Nil, main, texture_mode);  }  // 3
 get_texture_mode :: (main: *CurveTexture) -> CurveTexture.TextureMode { call_ret := cast(*CurveTexture.TextureMode) sys_call("CurveTexture", "get_texture_mode", 715756376, CurveTexture.TextureMode, main); return call_ret.*; }  // 4
 
 set_width :: (main: *CurveXYZTexture, width: int) { sys_call("CurveXYZTexture", "set_width", 1286410249, Nil, main, width);  }  // 0
-set_curve_x :: (main: *CurveXYZTexture, curve: Curve) { sys_call("CurveXYZTexture", "set_curve_x", 270443179, Nil, main, curve);  }  // 1
+set_curve_x :: (main: *CurveXYZTexture, curve: *Curve) { sys_call("CurveXYZTexture", "set_curve_x", 270443179, Nil, main, curve);  }  // 1
 get_curve_x :: (main: *CurveXYZTexture) -> *Curve { call_ret := cast(*Curve) sys_call("CurveXYZTexture", "get_curve_x", 2460114913, Curve, main); return call_ret; }  // 2
-set_curve_y :: (main: *CurveXYZTexture, curve: Curve) { sys_call("CurveXYZTexture", "set_curve_y", 270443179, Nil, main, curve);  }  // 3
+set_curve_y :: (main: *CurveXYZTexture, curve: *Curve) { sys_call("CurveXYZTexture", "set_curve_y", 270443179, Nil, main, curve);  }  // 3
 get_curve_y :: (main: *CurveXYZTexture) -> *Curve { call_ret := cast(*Curve) sys_call("CurveXYZTexture", "get_curve_y", 2460114913, Curve, main); return call_ret; }  // 4
-set_curve_z :: (main: *CurveXYZTexture, curve: Curve) { sys_call("CurveXYZTexture", "set_curve_z", 270443179, Nil, main, curve);  }  // 5
+set_curve_z :: (main: *CurveXYZTexture, curve: *Curve) { sys_call("CurveXYZTexture", "set_curve_z", 270443179, Nil, main, curve);  }  // 5
 get_curve_z :: (main: *CurveXYZTexture) -> *Curve { call_ret := cast(*Curve) sys_call("CurveXYZTexture", "get_curve_z", 2460114913, Curve, main); return call_ret; }  // 6
 
 set_top_radius :: (main: *CylinderMesh, radius: float) { sys_call("CylinderMesh", "set_top_radius", 373806689, Nil, main, radius);  }  // 0
@@ -12687,8 +12687,8 @@ get_radius :: (main: *CylinderShape3D) -> float { call_ret := cast(*float) sys_c
 set_height :: (main: *CylinderShape3D, height: float) { sys_call("CylinderShape3D", "set_height", 373806689, Nil, main, height);  }  // 2
 get_height :: (main: *CylinderShape3D) -> float { call_ret := cast(*float) sys_call("CylinderShape3D", "get_height", 1740695150, float, main); return call_ret.*; }  // 3
 
-setup :: (main: *DTLSServer, server_options: TLSOptions) -> Error { call_ret := cast(*Error) sys_call("DTLSServer", "setup", 1262296096, Error, main, server_options); return call_ret.*; }  // 0
-take_connection :: (main: *DTLSServer, udp_peer: PacketPeerUDP) -> *PacketPeerDTLS { call_ret := cast(*PacketPeerDTLS) sys_call("DTLSServer", "take_connection", 3946580474, PacketPeerDTLS, main, udp_peer); return call_ret; }  // 1
+setup :: (main: *DTLSServer, server_options: *TLSOptions) -> Error { call_ret := cast(*Error) sys_call("DTLSServer", "setup", 1262296096, Error, main, server_options); return call_ret.*; }  // 0
+take_connection :: (main: *DTLSServer, udp_peer: *PacketPeerUDP) -> *PacketPeerDTLS { call_ret := cast(*PacketPeerDTLS) sys_call("DTLSServer", "take_connection", 3946580474, PacketPeerDTLS, main, udp_peer); return call_ret; }  // 1
 
 set_length :: (main: *DampedSpringJoint2D, length: float) { sys_call("DampedSpringJoint2D", "set_length", 373806689, Nil, main, length);  }  // 0
 get_length :: (main: *DampedSpringJoint2D) -> float { call_ret := cast(*float) sys_call("DampedSpringJoint2D", "get_length", 1740695150, float, main); return call_ret.*; }  // 1
@@ -12701,7 +12701,7 @@ get_damping :: (main: *DampedSpringJoint2D) -> float { call_ret := cast(*float) 
 
 set_size :: (main: *Decal, size: Vector3) { sys_call("Decal", "set_size", 3460891852, Nil, main, size);  }  // 0
 get_size :: (main: *Decal) -> Vector3 { call_ret := cast(*Vector3) sys_call("Decal", "get_size", 3360562783, Vector3, main); return call_ret.*; }  // 1
-set_texture :: (main: *Decal, type: Decal.DecalTexture, texture: Texture2D) { sys_call("Decal", "set_texture", 2086764391, Nil, main, type, texture);  }  // 2
+set_texture :: (main: *Decal, type: Decal.DecalTexture, texture: *Texture2D) { sys_call("Decal", "set_texture", 2086764391, Nil, main, type, texture);  }  // 2
 get_texture :: (main: *Decal, type: Decal.DecalTexture) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("Decal", "get_texture", 3244119503, Texture2D, main, type); return call_ret; }  // 3
 set_emission_energy :: (main: *Decal, energy: float) { sys_call("Decal", "set_emission_energy", 373806689, Nil, main, energy);  }  // 4
 get_emission_energy :: (main: *Decal) -> float { call_ret := cast(*float) sys_call("Decal", "get_emission_energy", 1740695150, float, main); return call_ret.*; }  // 5
@@ -12781,10 +12781,10 @@ global_menu_set_popup_callbacks :: (main: *DisplayServer, menu_root: string, ope
 global_menu_add_submenu_item :: (main: *DisplayServer, menu_root: string, label: string, submenu: string) -> int { call_ret := cast(*int) sys_call("DisplayServer", "global_menu_add_submenu_item", 2828985934, int, main, menu_root, label, submenu); return call_ret.*; }  // 4
 global_menu_add_item :: (main: *DisplayServer, menu_root: string, label: string) -> int { call_ret := cast(*int) sys_call("DisplayServer", "global_menu_add_item", 3616842746, int, main, menu_root, label); return call_ret.*; }  // 5
 global_menu_add_check_item :: (main: *DisplayServer, menu_root: string, label: string) -> int { call_ret := cast(*int) sys_call("DisplayServer", "global_menu_add_check_item", 3616842746, int, main, menu_root, label); return call_ret.*; }  // 6
-global_menu_add_icon_item :: (main: *DisplayServer, menu_root: string, icon: Texture2D, label: string) -> int { call_ret := cast(*int) sys_call("DisplayServer", "global_menu_add_icon_item", 3867083847, int, main, menu_root, icon, label); return call_ret.*; }  // 7
-global_menu_add_icon_check_item :: (main: *DisplayServer, menu_root: string, icon: Texture2D, label: string) -> int { call_ret := cast(*int) sys_call("DisplayServer", "global_menu_add_icon_check_item", 3867083847, int, main, menu_root, icon, label); return call_ret.*; }  // 8
+global_menu_add_icon_item :: (main: *DisplayServer, menu_root: string, icon: *Texture2D, label: string) -> int { call_ret := cast(*int) sys_call("DisplayServer", "global_menu_add_icon_item", 3867083847, int, main, menu_root, icon, label); return call_ret.*; }  // 7
+global_menu_add_icon_check_item :: (main: *DisplayServer, menu_root: string, icon: *Texture2D, label: string) -> int { call_ret := cast(*int) sys_call("DisplayServer", "global_menu_add_icon_check_item", 3867083847, int, main, menu_root, icon, label); return call_ret.*; }  // 8
 global_menu_add_radio_check_item :: (main: *DisplayServer, menu_root: string, label: string) -> int { call_ret := cast(*int) sys_call("DisplayServer", "global_menu_add_radio_check_item", 3616842746, int, main, menu_root, label); return call_ret.*; }  // 9
-global_menu_add_icon_radio_check_item :: (main: *DisplayServer, menu_root: string, icon: Texture2D, label: string) -> int { call_ret := cast(*int) sys_call("DisplayServer", "global_menu_add_icon_radio_check_item", 3867083847, int, main, menu_root, icon, label); return call_ret.*; }  // 10
+global_menu_add_icon_radio_check_item :: (main: *DisplayServer, menu_root: string, icon: *Texture2D, label: string) -> int { call_ret := cast(*int) sys_call("DisplayServer", "global_menu_add_icon_radio_check_item", 3867083847, int, main, menu_root, icon, label); return call_ret.*; }  // 10
 global_menu_add_multistate_item :: (main: *DisplayServer, menu_root: string, label: string, max_states: int, default_state: int) -> int { call_ret := cast(*int) sys_call("DisplayServer", "global_menu_add_multistate_item", 3297554655, int, main, menu_root, label, max_states, default_state); return call_ret.*; }  // 11
 global_menu_add_separator :: (main: *DisplayServer, menu_root: string) -> int { call_ret := cast(*int) sys_call("DisplayServer", "global_menu_add_separator", 3214812433, int, main, menu_root); return call_ret.*; }  // 12
 global_menu_get_item_index_from_text :: (main: *DisplayServer, menu_root: string, text: string) -> int { call_ret := cast(*int) sys_call("DisplayServer", "global_menu_get_item_index_from_text", 2878152881, int, main, menu_root, text); return call_ret.*; }  // 13
@@ -12820,7 +12820,7 @@ global_menu_set_item_hidden :: (main: *DisplayServer, menu_root: string, idx: in
 global_menu_set_item_tooltip :: (main: *DisplayServer, menu_root: string, idx: int, tooltip: string) { sys_call("DisplayServer", "global_menu_set_item_tooltip", 965966136, Nil, main, menu_root, idx, tooltip);  }  // 43
 global_menu_set_item_state :: (main: *DisplayServer, menu_root: string, idx: int, state: int) { sys_call("DisplayServer", "global_menu_set_item_state", 3474840532, Nil, main, menu_root, idx, state);  }  // 44
 global_menu_set_item_max_states :: (main: *DisplayServer, menu_root: string, idx: int, max_states: int) { sys_call("DisplayServer", "global_menu_set_item_max_states", 3474840532, Nil, main, menu_root, idx, max_states);  }  // 45
-global_menu_set_item_icon :: (main: *DisplayServer, menu_root: string, idx: int, icon: Texture2D) { sys_call("DisplayServer", "global_menu_set_item_icon", 3201338066, Nil, main, menu_root, idx, icon);  }  // 46
+global_menu_set_item_icon :: (main: *DisplayServer, menu_root: string, idx: int, icon: *Texture2D) { sys_call("DisplayServer", "global_menu_set_item_icon", 3201338066, Nil, main, menu_root, idx, icon);  }  // 46
 global_menu_set_item_indentation_level :: (main: *DisplayServer, menu_root: string, idx: int, level: int) { sys_call("DisplayServer", "global_menu_set_item_indentation_level", 3474840532, Nil, main, menu_root, idx, level);  }  // 47
 global_menu_get_item_count :: (main: *DisplayServer, menu_root: string) -> int { call_ret := cast(*int) sys_call("DisplayServer", "global_menu_get_item_count", 1321353865, int, main, menu_root); return call_ret.*; }  // 48
 global_menu_remove_item :: (main: *DisplayServer, menu_root: string, idx: int) { sys_call("DisplayServer", "global_menu_remove_item", 2956805083, Nil, main, menu_root, idx);  }  // 49
@@ -12929,7 +12929,7 @@ virtual_keyboard_get_height :: (main: *DisplayServer) -> int { call_ret := cast(
 has_hardware_keyboard :: (main: *DisplayServer) -> bool { call_ret := cast(*bool) sys_call("DisplayServer", "has_hardware_keyboard", 36873697, bool, main); return call_ret.*; }  // 152
 cursor_set_shape :: (main: *DisplayServer, shape: DisplayServer.CursorShape) { sys_call("DisplayServer", "cursor_set_shape", 2026291549, Nil, main, shape);  }  // 153
 cursor_get_shape :: (main: *DisplayServer) -> DisplayServer.CursorShape { call_ret := cast(*DisplayServer.CursorShape) sys_call("DisplayServer", "cursor_get_shape", 1087724927, DisplayServer.CursorShape, main); return call_ret.*; }  // 154
-cursor_set_custom_image :: (main: *DisplayServer, cursor: Resource) { sys_call("DisplayServer", "cursor_set_custom_image", 1816663697, Nil, main, cursor);  }  // 155
+cursor_set_custom_image :: (main: *DisplayServer, cursor: *Resource) { sys_call("DisplayServer", "cursor_set_custom_image", 1816663697, Nil, main, cursor);  }  // 155
 get_swap_cancel_ok :: (main: *DisplayServer) -> bool { call_ret := cast(*bool) sys_call("DisplayServer", "get_swap_cancel_ok", 2240911060, bool, main); return call_ret.*; }  // 156
 enable_for_stealing_focus :: (main: *DisplayServer, process_id: int) { sys_call("DisplayServer", "enable_for_stealing_focus", 1286410249, Nil, main, process_id);  }  // 157
 dialog_show :: (main: *DisplayServer, title: string, description: string, buttons: PackedStringArray, callback: Callable) -> Error { call_ret := cast(*Error) sys_call("DisplayServer", "dialog_show", 4115553226, Error, main, title, description, buttons, callback); return call_ret.*; }  // 158
@@ -12948,9 +12948,9 @@ show_emoji_and_symbol_picker :: (main: *DisplayServer) { sys_call("DisplayServer
 process_events :: (main: *DisplayServer) { sys_call("DisplayServer", "process_events", 3218959716, Nil, main);  }  // 171
 force_process_and_drop_events :: (main: *DisplayServer) { sys_call("DisplayServer", "force_process_and_drop_events", 3218959716, Nil, main);  }  // 172
 set_native_icon :: (main: *DisplayServer, filename: string) { sys_call("DisplayServer", "set_native_icon", 83702148, Nil, main, filename);  }  // 173
-set_icon :: (main: *DisplayServer, image: Image) { sys_call("DisplayServer", "set_icon", 532598488, Nil, main, image);  }  // 174
-create_status_indicator :: (main: *DisplayServer, icon: Texture2D, tooltip: string, callback: Callable) -> int { call_ret := cast(*int) sys_call("DisplayServer", "create_status_indicator", 1904285171, int, main, icon, tooltip, callback); return call_ret.*; }  // 175
-status_indicator_set_icon :: (main: *DisplayServer, id: int, icon: Texture2D) { sys_call("DisplayServer", "status_indicator_set_icon", 666127730, Nil, main, id, icon);  }  // 176
+set_icon :: (main: *DisplayServer, image: *Image) { sys_call("DisplayServer", "set_icon", 532598488, Nil, main, image);  }  // 174
+create_status_indicator :: (main: *DisplayServer, icon: *Texture2D, tooltip: string, callback: Callable) -> int { call_ret := cast(*int) sys_call("DisplayServer", "create_status_indicator", 1904285171, int, main, icon, tooltip, callback); return call_ret.*; }  // 175
+status_indicator_set_icon :: (main: *DisplayServer, id: int, icon: *Texture2D) { sys_call("DisplayServer", "status_indicator_set_icon", 666127730, Nil, main, id, icon);  }  // 176
 status_indicator_set_tooltip :: (main: *DisplayServer, id: int, tooltip: string) { sys_call("DisplayServer", "status_indicator_set_tooltip", 501894301, Nil, main, id, tooltip);  }  // 177
 status_indicator_set_menu :: (main: *DisplayServer, id: int, menu_rid: RID) { sys_call("DisplayServer", "status_indicator_set_menu", 4040184819, Nil, main, id, menu_rid);  }  // 178
 status_indicator_set_callback :: (main: *DisplayServer, id: int, callback: Callable) { sys_call("DisplayServer", "status_indicator_set_callback", 957362965, Nil, main, id, callback);  }  // 179
@@ -12961,8 +12961,8 @@ tablet_get_driver_name :: (main: *DisplayServer, idx: int) -> gstring { call_ret
 tablet_get_current_driver :: (main: *DisplayServer) -> gstring { call_ret := cast(*gstring) sys_call("DisplayServer", "tablet_get_current_driver", 201670096, gstring, main); return call_ret.*; }  // 184
 tablet_set_current_driver :: (main: *DisplayServer, name: string) { sys_call("DisplayServer", "tablet_set_current_driver", 83702148, Nil, main, name);  }  // 185
 is_window_transparency_available :: (main: *DisplayServer) -> bool { call_ret := cast(*bool) sys_call("DisplayServer", "is_window_transparency_available", 36873697, bool, main); return call_ret.*; }  // 186
-register_additional_output :: (main: *DisplayServer, object: Object) { sys_call("DisplayServer", "register_additional_output", 3975164845, Nil, main, object);  }  // 187
-unregister_additional_output :: (main: *DisplayServer, object: Object) { sys_call("DisplayServer", "unregister_additional_output", 3975164845, Nil, main, object);  }  // 188
+register_additional_output :: (main: *DisplayServer, object: *Object) { sys_call("DisplayServer", "register_additional_output", 3975164845, Nil, main, object);  }  // 187
+unregister_additional_output :: (main: *DisplayServer, object: *Object) { sys_call("DisplayServer", "unregister_additional_output", 3975164845, Nil, main, object);  }  // 188
 has_additional_outputs :: (main: *DisplayServer) -> bool { call_ret := cast(*bool) sys_call("DisplayServer", "has_additional_outputs", 36873697, bool, main); return call_ret.*; }  // 189
 
 create_host_bound :: (main: *ENetConnection, bind_address: string, bind_port: int) -> Error { call_ret := cast(*Error) sys_call("ENetConnection", "create_host_bound", 1515002313, Error, main, bind_address, bind_port); return call_ret.*; }  // 0
@@ -12975,7 +12975,7 @@ bandwidth_limit :: (main: *ENetConnection) { sys_call("ENetConnection", "bandwid
 channel_limit :: (main: *ENetConnection, limit: int) { sys_call("ENetConnection", "channel_limit", 1286410249, Nil, main, limit);  }  // 7
 broadcast :: (main: *ENetConnection, channel: int, packet: PackedByteArray, flags: int) { sys_call("ENetConnection", "broadcast", 2772371345, Nil, main, channel, packet, flags);  }  // 8
 compress :: (main: *ENetConnection, mode: ENetConnection.CompressionMode) { sys_call("ENetConnection", "compress", 2660215187, Nil, main, mode);  }  // 9
-dtls_server_setup :: (main: *ENetConnection, server_options: TLSOptions) -> Error { call_ret := cast(*Error) sys_call("ENetConnection", "dtls_server_setup", 1262296096, Error, main, server_options); return call_ret.*; }  // 10
+dtls_server_setup :: (main: *ENetConnection, server_options: *TLSOptions) -> Error { call_ret := cast(*Error) sys_call("ENetConnection", "dtls_server_setup", 1262296096, Error, main, server_options); return call_ret.*; }  // 10
 dtls_client_setup :: (main: *ENetConnection, hostname: string) -> Error { call_ret := cast(*Error) sys_call("ENetConnection", "dtls_client_setup", 1966198364, Error, main, hostname); return call_ret.*; }  // 11
 refuse_new_connections :: (main: *ENetConnection, refuse: bool) { sys_call("ENetConnection", "refuse_new_connections", 2586408642, Nil, main, refuse);  }  // 12
 pop_statistic :: (main: *ENetConnection, statistic: ENetConnection.HostStatistic) -> float { call_ret := cast(*float) sys_call("ENetConnection", "pop_statistic", 2166904170, float, main, statistic); return call_ret.*; }  // 13
@@ -12987,7 +12987,7 @@ socket_send :: (main: *ENetConnection, destination_address: string, destination_
 create_server :: (main: *ENetMultiplayerPeer, port: int) -> Error { call_ret := cast(*Error) sys_call("ENetMultiplayerPeer", "create_server", 2917761309, Error, main, port); return call_ret.*; }  // 0
 create_client :: (main: *ENetMultiplayerPeer, address: string, port: int) -> Error { call_ret := cast(*Error) sys_call("ENetMultiplayerPeer", "create_client", 2327163476, Error, main, address, port); return call_ret.*; }  // 1
 create_mesh :: (main: *ENetMultiplayerPeer, unique_id: int) -> Error { call_ret := cast(*Error) sys_call("ENetMultiplayerPeer", "create_mesh", 844576869, Error, main, unique_id); return call_ret.*; }  // 2
-add_mesh_peer :: (main: *ENetMultiplayerPeer, peer_id: int, host: ENetConnection) -> Error { call_ret := cast(*Error) sys_call("ENetMultiplayerPeer", "add_mesh_peer", 1293458335, Error, main, peer_id, host); return call_ret.*; }  // 3
+add_mesh_peer :: (main: *ENetMultiplayerPeer, peer_id: int, host: *ENetConnection) -> Error { call_ret := cast(*Error) sys_call("ENetMultiplayerPeer", "add_mesh_peer", 1293458335, Error, main, peer_id, host); return call_ret.*; }  // 3
 set_bind_ip :: (main: *ENetMultiplayerPeer, ip: string) { sys_call("ENetMultiplayerPeer", "set_bind_ip", 83702148, Nil, main, ip);  }  // 4
 get_host :: (main: *ENetMultiplayerPeer) -> *ENetConnection { call_ret := cast(*ENetConnection) sys_call("ENetMultiplayerPeer", "get_host", 4103238886, ENetConnection, main); return call_ret; }  // 5
 get_peer :: (main: *ENetMultiplayerPeer, id: int) -> *ENetPacketPeer { call_ret := cast(*ENetPacketPeer) sys_call("ENetMultiplayerPeer", "get_peer", 3793311544, ENetPacketPeer, main, id); return call_ret; }  // 6
@@ -13012,10 +13012,10 @@ is_active :: (main: *ENetPacketPeer) -> bool { call_ret := cast(*bool) sys_call(
 add_command :: (main: *EditorCommandPalette, command_name: string, key_name: string, binded_callable: Callable) { sys_call("EditorCommandPalette", "add_command", 864043298, Nil, main, command_name, key_name, binded_callable);  }  // 0
 remove_command :: (main: *EditorCommandPalette, key_name: string) { sys_call("EditorCommandPalette", "remove_command", 83702148, Nil, main, key_name);  }  // 1
 
-add_menu_shortcut :: (main: *EditorContextMenuPlugin, shortcut: Shortcut, callback: Callable) { sys_call("EditorContextMenuPlugin", "add_menu_shortcut", 851596305, Nil, main, shortcut, callback);  }  // 1
+add_menu_shortcut :: (main: *EditorContextMenuPlugin, shortcut: *Shortcut, callback: Callable) { sys_call("EditorContextMenuPlugin", "add_menu_shortcut", 851596305, Nil, main, shortcut, callback);  }  // 1
 add_context_menu_item :: (main: *EditorContextMenuPlugin, name: string, callback: Callable) { sys_call("EditorContextMenuPlugin", "add_context_menu_item", 2748336951, Nil, main, name, callback);  }  // 2
-add_context_menu_item_from_shortcut :: (main: *EditorContextMenuPlugin, name: string, shortcut: Shortcut) { sys_call("EditorContextMenuPlugin", "add_context_menu_item_from_shortcut", 3799546916, Nil, main, name, shortcut);  }  // 3
-add_context_submenu_item :: (main: *EditorContextMenuPlugin, name: string, menu: PopupMenu) { sys_call("EditorContextMenuPlugin", "add_context_submenu_item", 1994674995, Nil, main, name, menu);  }  // 4
+add_context_menu_item_from_shortcut :: (main: *EditorContextMenuPlugin, name: string, shortcut: *Shortcut) { sys_call("EditorContextMenuPlugin", "add_context_menu_item_from_shortcut", 3799546916, Nil, main, name, shortcut);  }  // 3
+add_context_submenu_item :: (main: *EditorContextMenuPlugin, name: string, menu: *PopupMenu) { sys_call("EditorContextMenuPlugin", "add_context_submenu_item", 1994674995, Nil, main, name, menu);  }  // 4
 
 get_session :: (main: *EditorDebuggerPlugin, id: int) -> *EditorDebuggerSession { call_ret := cast(*EditorDebuggerSession) sys_call("EditorDebuggerPlugin", "get_session", 3061968499, EditorDebuggerSession, main, id); return call_ret; }  // 6
 get_sessions :: (main: *EditorDebuggerPlugin) -> Array { call_ret := cast(*Array) sys_call("EditorDebuggerPlugin", "get_sessions", 2915620761, Array, main); return call_ret.*; }  // 7
@@ -13025,25 +13025,25 @@ toggle_profiler :: (main: *EditorDebuggerSession, profiler: string, enable: bool
 is_breaked :: (main: *EditorDebuggerSession) -> bool { call_ret := cast(*bool) sys_call("EditorDebuggerSession", "is_breaked", 2240911060, bool, main); return call_ret.*; }  // 2
 is_debuggable :: (main: *EditorDebuggerSession) -> bool { call_ret := cast(*bool) sys_call("EditorDebuggerSession", "is_debuggable", 2240911060, bool, main); return call_ret.*; }  // 3
 is_active :: (main: *EditorDebuggerSession) -> bool { call_ret := cast(*bool) sys_call("EditorDebuggerSession", "is_active", 2240911060, bool, main); return call_ret.*; }  // 4
-add_session_tab :: (main: *EditorDebuggerSession, control: Control) { sys_call("EditorDebuggerSession", "add_session_tab", 1496901182, Nil, main, control);  }  // 5
-remove_session_tab :: (main: *EditorDebuggerSession, control: Control) { sys_call("EditorDebuggerSession", "remove_session_tab", 1496901182, Nil, main, control);  }  // 6
+add_session_tab :: (main: *EditorDebuggerSession, control: *Control) { sys_call("EditorDebuggerSession", "add_session_tab", 1496901182, Nil, main, control);  }  // 5
+remove_session_tab :: (main: *EditorDebuggerSession, control: *Control) { sys_call("EditorDebuggerSession", "remove_session_tab", 1496901182, Nil, main, control);  }  // 6
 set_breakpoint :: (main: *EditorDebuggerSession, path: string, line: int, enabled: bool) { sys_call("EditorDebuggerSession", "set_breakpoint", 4108344793, Nil, main, path, line, enabled);  }  // 7
 
 get_os_name :: (main: *EditorExportPlatform) -> gstring { call_ret := cast(*gstring) sys_call("EditorExportPlatform", "get_os_name", 201670096, gstring, main); return call_ret.*; }  // 0
 create_preset :: (main: *EditorExportPlatform) -> *EditorExportPreset { call_ret := cast(*EditorExportPreset) sys_call("EditorExportPlatform", "create_preset", 2572397818, EditorExportPreset, main); return call_ret; }  // 1
 find_export_template :: (main: *EditorExportPlatform, template_file_name: string) -> Dictionary { call_ret := cast(*Dictionary) sys_call("EditorExportPlatform", "find_export_template", 2248993622, Dictionary, main, template_file_name); return call_ret.*; }  // 2
 get_current_presets :: (main: *EditorExportPlatform) -> Array { call_ret := cast(*Array) sys_call("EditorExportPlatform", "get_current_presets", 3995934104, Array, main); return call_ret.*; }  // 3
-save_pack :: (main: *EditorExportPlatform, preset: EditorExportPreset, debug: bool, path: string) -> Dictionary { call_ret := cast(*Dictionary) sys_call("EditorExportPlatform", "save_pack", 3420080977, Dictionary, main, preset, debug, path); return call_ret.*; }  // 4
-save_zip :: (main: *EditorExportPlatform, preset: EditorExportPreset, debug: bool, path: string) -> Dictionary { call_ret := cast(*Dictionary) sys_call("EditorExportPlatform", "save_zip", 1485052307, Dictionary, main, preset, debug, path); return call_ret.*; }  // 5
-save_pack_patch :: (main: *EditorExportPlatform, preset: EditorExportPreset, debug: bool, path: string) -> Dictionary { call_ret := cast(*Dictionary) sys_call("EditorExportPlatform", "save_pack_patch", 1485052307, Dictionary, main, preset, debug, path); return call_ret.*; }  // 6
-save_zip_patch :: (main: *EditorExportPlatform, preset: EditorExportPreset, debug: bool, path: string) -> Dictionary { call_ret := cast(*Dictionary) sys_call("EditorExportPlatform", "save_zip_patch", 1485052307, Dictionary, main, preset, debug, path); return call_ret.*; }  // 7
+save_pack :: (main: *EditorExportPlatform, preset: *EditorExportPreset, debug: bool, path: string) -> Dictionary { call_ret := cast(*Dictionary) sys_call("EditorExportPlatform", "save_pack", 3420080977, Dictionary, main, preset, debug, path); return call_ret.*; }  // 4
+save_zip :: (main: *EditorExportPlatform, preset: *EditorExportPreset, debug: bool, path: string) -> Dictionary { call_ret := cast(*Dictionary) sys_call("EditorExportPlatform", "save_zip", 1485052307, Dictionary, main, preset, debug, path); return call_ret.*; }  // 5
+save_pack_patch :: (main: *EditorExportPlatform, preset: *EditorExportPreset, debug: bool, path: string) -> Dictionary { call_ret := cast(*Dictionary) sys_call("EditorExportPlatform", "save_pack_patch", 1485052307, Dictionary, main, preset, debug, path); return call_ret.*; }  // 6
+save_zip_patch :: (main: *EditorExportPlatform, preset: *EditorExportPreset, debug: bool, path: string) -> Dictionary { call_ret := cast(*Dictionary) sys_call("EditorExportPlatform", "save_zip_patch", 1485052307, Dictionary, main, preset, debug, path); return call_ret.*; }  // 7
 gen_export_flags :: (main: *EditorExportPlatform, flags: EditorExportPlatform.DebugFlags) -> PackedStringArray { call_ret := cast(*PackedStringArray) sys_call("EditorExportPlatform", "gen_export_flags", 2976483270, PackedStringArray, main, flags); return call_ret.*; }  // 8
-export_project_files :: (main: *EditorExportPlatform, preset: EditorExportPreset, debug: bool, save_cb: Callable) -> Error { call_ret := cast(*Error) sys_call("EditorExportPlatform", "export_project_files", 1063735070, Error, main, preset, debug, save_cb); return call_ret.*; }  // 9
-export_project :: (main: *EditorExportPlatform, preset: EditorExportPreset, debug: bool, path: string) -> Error { call_ret := cast(*Error) sys_call("EditorExportPlatform", "export_project", 3879521245, Error, main, preset, debug, path); return call_ret.*; }  // 10
-export_pack :: (main: *EditorExportPlatform, preset: EditorExportPreset, debug: bool, path: string) -> Error { call_ret := cast(*Error) sys_call("EditorExportPlatform", "export_pack", 3879521245, Error, main, preset, debug, path); return call_ret.*; }  // 11
-export_zip :: (main: *EditorExportPlatform, preset: EditorExportPreset, debug: bool, path: string) -> Error { call_ret := cast(*Error) sys_call("EditorExportPlatform", "export_zip", 3879521245, Error, main, preset, debug, path); return call_ret.*; }  // 12
-export_pack_patch :: (main: *EditorExportPlatform, preset: EditorExportPreset, debug: bool, path: string) -> Error { call_ret := cast(*Error) sys_call("EditorExportPlatform", "export_pack_patch", 608021658, Error, main, preset, debug, path); return call_ret.*; }  // 13
-export_zip_patch :: (main: *EditorExportPlatform, preset: EditorExportPreset, debug: bool, path: string) -> Error { call_ret := cast(*Error) sys_call("EditorExportPlatform", "export_zip_patch", 608021658, Error, main, preset, debug, path); return call_ret.*; }  // 14
+export_project_files :: (main: *EditorExportPlatform, preset: *EditorExportPreset, debug: bool, save_cb: Callable) -> Error { call_ret := cast(*Error) sys_call("EditorExportPlatform", "export_project_files", 1063735070, Error, main, preset, debug, save_cb); return call_ret.*; }  // 9
+export_project :: (main: *EditorExportPlatform, preset: *EditorExportPreset, debug: bool, path: string) -> Error { call_ret := cast(*Error) sys_call("EditorExportPlatform", "export_project", 3879521245, Error, main, preset, debug, path); return call_ret.*; }  // 10
+export_pack :: (main: *EditorExportPlatform, preset: *EditorExportPreset, debug: bool, path: string) -> Error { call_ret := cast(*Error) sys_call("EditorExportPlatform", "export_pack", 3879521245, Error, main, preset, debug, path); return call_ret.*; }  // 11
+export_zip :: (main: *EditorExportPlatform, preset: *EditorExportPreset, debug: bool, path: string) -> Error { call_ret := cast(*Error) sys_call("EditorExportPlatform", "export_zip", 3879521245, Error, main, preset, debug, path); return call_ret.*; }  // 12
+export_pack_patch :: (main: *EditorExportPlatform, preset: *EditorExportPreset, debug: bool, path: string) -> Error { call_ret := cast(*Error) sys_call("EditorExportPlatform", "export_pack_patch", 608021658, Error, main, preset, debug, path); return call_ret.*; }  // 13
+export_zip_patch :: (main: *EditorExportPlatform, preset: *EditorExportPreset, debug: bool, path: string) -> Error { call_ret := cast(*Error) sys_call("EditorExportPlatform", "export_zip_patch", 608021658, Error, main, preset, debug, path); return call_ret.*; }  // 14
 clear_messages :: (main: *EditorExportPlatform) { sys_call("EditorExportPlatform", "clear_messages", 3218959716, Nil, main);  }  // 15
 add_message :: (main: *EditorExportPlatform, type: EditorExportPlatform.ExportMessageType, category: string, message: string) { sys_call("EditorExportPlatform", "add_message", 782767225, Nil, main, type, category, message);  }  // 16
 get_message_count :: (main: *EditorExportPlatform) -> int { call_ret := cast(*int) sys_call("EditorExportPlatform", "get_message_count", 3905245786, int, main); return call_ret.*; }  // 17
@@ -13054,7 +13054,7 @@ get_worst_message_type :: (main: *EditorExportPlatform) -> EditorExportPlatform.
 ssh_run_on_remote :: (main: *EditorExportPlatform, host: string, port: string, ssh_arg: PackedStringArray, cmd_args: string) -> Error { call_ret := cast(*Error) sys_call("EditorExportPlatform", "ssh_run_on_remote", 3163734797, Error, main, host, port, ssh_arg, cmd_args); return call_ret.*; }  // 22
 ssh_run_on_remote_no_wait :: (main: *EditorExportPlatform, host: string, port: string, ssh_args: PackedStringArray, cmd_args: string) -> int { call_ret := cast(*int) sys_call("EditorExportPlatform", "ssh_run_on_remote_no_wait", 3606362233, int, main, host, port, ssh_args, cmd_args); return call_ret.*; }  // 23
 ssh_push_to_remote :: (main: *EditorExportPlatform, host: string, port: string, scp_args: PackedStringArray, src_file: string, dst_file: string) -> Error { call_ret := cast(*Error) sys_call("EditorExportPlatform", "ssh_push_to_remote", 218756989, Error, main, host, port, scp_args, src_file, dst_file); return call_ret.*; }  // 24
-get_internal_export_files :: (main: *EditorExportPlatform, preset: EditorExportPreset, debug: bool) -> Dictionary { call_ret := cast(*Dictionary) sys_call("EditorExportPlatform", "get_internal_export_files", 89550086, Dictionary, main, preset, debug); return call_ret.*; }  // 25
+get_internal_export_files :: (main: *EditorExportPlatform, preset: *EditorExportPreset, debug: bool) -> Dictionary { call_ret := cast(*Dictionary) sys_call("EditorExportPlatform", "get_internal_export_files", 89550086, Dictionary, main, preset, debug); return call_ret.*; }  // 25
 get_forced_export_files :: (main: *EditorExportPlatform) -> PackedStringArray { call_ret := cast(*PackedStringArray) sys_call("EditorExportPlatform", "get_forced_export_files", 2981934095, PackedStringArray, main); return call_ret.*; }  // 26
 
 
@@ -13156,7 +13156,7 @@ set_display_mode :: (main: *EditorFileDialog, mode: EditorFileDialog.DisplayMode
 get_display_mode :: (main: *EditorFileDialog) -> EditorFileDialog.DisplayMode { call_ret := cast(*EditorFileDialog.DisplayMode) sys_call("EditorFileDialog", "get_display_mode", 3517174669, EditorFileDialog.DisplayMode, main); return call_ret.*; }  // 32
 set_disable_overwrite_warning :: (main: *EditorFileDialog, disable: bool) { sys_call("EditorFileDialog", "set_disable_overwrite_warning", 2586408642, Nil, main, disable);  }  // 33
 is_overwrite_warning_disabled :: (main: *EditorFileDialog) -> bool { call_ret := cast(*bool) sys_call("EditorFileDialog", "is_overwrite_warning_disabled", 36873697, bool, main); return call_ret.*; }  // 34
-add_side_menu :: (main: *EditorFileDialog, menu: Control) { sys_call("EditorFileDialog", "add_side_menu", 402368861, Nil, main, menu);  }  // 35
+add_side_menu :: (main: *EditorFileDialog, menu: *Control) { sys_call("EditorFileDialog", "add_side_menu", 402368861, Nil, main, menu);  }  // 35
 popup_file_dialog :: (main: *EditorFileDialog) { sys_call("EditorFileDialog", "popup_file_dialog", 3218959716, Nil, main);  }  // 36
 invalidate :: (main: *EditorFileDialog) { sys_call("EditorFileDialog", "invalidate", 3218959716, Nil, main);  }  // 37
 
@@ -13188,14 +13188,14 @@ find_dir_index :: (main: *EditorFileSystemDirectory, name: string) -> int { call
 
 append_import_external_resource :: (main: *EditorImportPlugin, path: string) -> Error { call_ret := cast(*Error) sys_call("EditorImportPlugin", "append_import_external_resource", 320493106, Error, main, path); return call_ret.*; }  // 14
 
-edit :: (main: *EditorInspector, object: Object) { sys_call("EditorInspector", "edit", 3975164845, Nil, main, object);  }  // 0
+edit :: (main: *EditorInspector, object: *Object) { sys_call("EditorInspector", "edit", 3975164845, Nil, main, object);  }  // 0
 get_selected_path :: (main: *EditorInspector) -> gstring { call_ret := cast(*gstring) sys_call("EditorInspector", "get_selected_path", 201670096, gstring, main); return call_ret.*; }  // 1
 get_edited_object :: (main: *EditorInspector) -> *Object { call_ret := cast(*Object) sys_call("EditorInspector", "get_edited_object", 2050059866, Object, main); return call_ret; }  // 2
-instantiate_property_editor :: (main: *EditorInspector, object: Object, type: Variant_Type, path: string, hint: PropertyHint, hint_text: string, usage: int) -> *EditorProperty { call_ret := cast(*EditorProperty) sys_call("EditorInspector", "instantiate_property_editor", 1429914152, EditorProperty, main, object, type, path, hint, hint_text, usage); return call_ret; }  // 3
+instantiate_property_editor :: (main: *EditorInspector, object: *Object, type: Variant_Type, path: string, hint: PropertyHint, hint_text: string, usage: int) -> *EditorProperty { call_ret := cast(*EditorProperty) sys_call("EditorInspector", "instantiate_property_editor", 1429914152, EditorProperty, main, object, type, path, hint, hint_text, usage); return call_ret; }  // 3
 
-add_custom_control :: (main: *EditorInspectorPlugin, control: Control) { sys_call("EditorInspectorPlugin", "add_custom_control", 1496901182, Nil, main, control);  }  // 6
-add_property_editor :: (main: *EditorInspectorPlugin, property: string, editor: Control) { sys_call("EditorInspectorPlugin", "add_property_editor", 2042698479, Nil, main, property, editor);  }  // 7
-add_property_editor_for_multiple_properties :: (main: *EditorInspectorPlugin, label: string, properties: PackedStringArray, editor: Control) { sys_call("EditorInspectorPlugin", "add_property_editor_for_multiple_properties", 788598683, Nil, main, label, properties, editor);  }  // 8
+add_custom_control :: (main: *EditorInspectorPlugin, control: *Control) { sys_call("EditorInspectorPlugin", "add_custom_control", 1496901182, Nil, main, control);  }  // 6
+add_property_editor :: (main: *EditorInspectorPlugin, property: string, editor: *Control) { sys_call("EditorInspectorPlugin", "add_property_editor", 2042698479, Nil, main, property, editor);  }  // 7
+add_property_editor_for_multiple_properties :: (main: *EditorInspectorPlugin, label: string, properties: PackedStringArray, editor: *Control) { sys_call("EditorInspectorPlugin", "add_property_editor_for_multiple_properties", 788598683, Nil, main, label, properties, editor);  }  // 8
 
 restart_editor :: (main: *EditorInterface) { sys_call("EditorInterface", "restart_editor", 3216645846, Nil, main);  }  // 0
 get_command_palette :: (main: *EditorInterface) -> *EditorCommandPalette { call_ret := cast(*EditorCommandPalette) sys_call("EditorInterface", "get_command_palette", 2471163807, EditorCommandPalette, main); return call_ret; }  // 1
@@ -13220,15 +13220,15 @@ set_distraction_free_mode :: (main: *EditorInterface, enter: bool) { sys_call("E
 is_distraction_free_mode_enabled :: (main: *EditorInterface) -> bool { call_ret := cast(*bool) sys_call("EditorInterface", "is_distraction_free_mode_enabled", 36873697, bool, main); return call_ret.*; }  // 20
 is_multi_window_enabled :: (main: *EditorInterface) -> bool { call_ret := cast(*bool) sys_call("EditorInterface", "is_multi_window_enabled", 36873697, bool, main); return call_ret.*; }  // 21
 get_editor_scale :: (main: *EditorInterface) -> float { call_ret := cast(*float) sys_call("EditorInterface", "get_editor_scale", 1740695150, float, main); return call_ret.*; }  // 22
-popup_dialog :: (main: *EditorInterface, dialog: Window) { sys_call("EditorInterface", "popup_dialog", 2015770942, Nil, main, dialog);  }  // 23
-popup_dialog_centered :: (main: *EditorInterface, dialog: Window) { sys_call("EditorInterface", "popup_dialog_centered", 346557367, Nil, main, dialog);  }  // 24
-popup_dialog_centered_ratio :: (main: *EditorInterface, dialog: Window) { sys_call("EditorInterface", "popup_dialog_centered_ratio", 2093669136, Nil, main, dialog);  }  // 25
-popup_dialog_centered_clamped :: (main: *EditorInterface, dialog: Window) { sys_call("EditorInterface", "popup_dialog_centered_clamped", 3763385571, Nil, main, dialog);  }  // 26
+popup_dialog :: (main: *EditorInterface, dialog: *Window) { sys_call("EditorInterface", "popup_dialog", 2015770942, Nil, main, dialog);  }  // 23
+popup_dialog_centered :: (main: *EditorInterface, dialog: *Window) { sys_call("EditorInterface", "popup_dialog_centered", 346557367, Nil, main, dialog);  }  // 24
+popup_dialog_centered_ratio :: (main: *EditorInterface, dialog: *Window) { sys_call("EditorInterface", "popup_dialog_centered_ratio", 2093669136, Nil, main, dialog);  }  // 25
+popup_dialog_centered_clamped :: (main: *EditorInterface, dialog: *Window) { sys_call("EditorInterface", "popup_dialog_centered_clamped", 3763385571, Nil, main, dialog);  }  // 26
 get_current_feature_profile :: (main: *EditorInterface) -> gstring { call_ret := cast(*gstring) sys_call("EditorInterface", "get_current_feature_profile", 201670096, gstring, main); return call_ret.*; }  // 27
 set_current_feature_profile :: (main: *EditorInterface, profile_name: string) { sys_call("EditorInterface", "set_current_feature_profile", 83702148, Nil, main, profile_name);  }  // 28
 popup_node_selector :: (main: *EditorInterface, callback: Callable) { sys_call("EditorInterface", "popup_node_selector", 2444591477, Nil, main, callback);  }  // 29
-popup_property_selector :: (main: *EditorInterface, object: Object, callback: Callable) { sys_call("EditorInterface", "popup_property_selector", 2955609011, Nil, main, object, callback);  }  // 30
-popup_method_selector :: (main: *EditorInterface, object: Object, callback: Callable) { sys_call("EditorInterface", "popup_method_selector", 3585505226, Nil, main, object, callback);  }  // 31
+popup_property_selector :: (main: *EditorInterface, object: *Object, callback: Callable) { sys_call("EditorInterface", "popup_property_selector", 2955609011, Nil, main, object, callback);  }  // 30
+popup_method_selector :: (main: *EditorInterface, object: *Object, callback: Callable) { sys_call("EditorInterface", "popup_method_selector", 3585505226, Nil, main, object, callback);  }  // 31
 popup_quick_open :: (main: *EditorInterface, callback: Callable) { sys_call("EditorInterface", "popup_quick_open", 2271411043, Nil, main, callback);  }  // 32
 popup_create_dialog :: (main: *EditorInterface, callback: Callable) { sys_call("EditorInterface", "popup_create_dialog", 495277124, Nil, main, callback);  }  // 33
 get_file_system_dock :: (main: *EditorInterface) -> *FileSystemDock { call_ret := cast(*FileSystemDock) sys_call("EditorInterface", "get_file_system_dock", 3751012327, FileSystemDock, main); return call_ret; }  // 34
@@ -13237,10 +13237,10 @@ get_selected_paths :: (main: *EditorInterface) -> PackedStringArray { call_ret :
 get_current_path :: (main: *EditorInterface) -> gstring { call_ret := cast(*gstring) sys_call("EditorInterface", "get_current_path", 201670096, gstring, main); return call_ret.*; }  // 37
 get_current_directory :: (main: *EditorInterface) -> gstring { call_ret := cast(*gstring) sys_call("EditorInterface", "get_current_directory", 201670096, gstring, main); return call_ret.*; }  // 38
 get_inspector :: (main: *EditorInterface) -> *EditorInspector { call_ret := cast(*EditorInspector) sys_call("EditorInterface", "get_inspector", 3517113938, EditorInspector, main); return call_ret; }  // 39
-inspect_object :: (main: *EditorInterface, object: Object) { sys_call("EditorInterface", "inspect_object", 127962172, Nil, main, object);  }  // 40
-edit_resource :: (main: *EditorInterface, resource: Resource) { sys_call("EditorInterface", "edit_resource", 968641751, Nil, main, resource);  }  // 41
-edit_node :: (main: *EditorInterface, node: Node) { sys_call("EditorInterface", "edit_node", 1078189570, Nil, main, node);  }  // 42
-edit_script :: (main: *EditorInterface, script: Script) { sys_call("EditorInterface", "edit_script", 219829402, Nil, main, script);  }  // 43
+inspect_object :: (main: *EditorInterface, object: *Object) { sys_call("EditorInterface", "inspect_object", 127962172, Nil, main, object);  }  // 40
+edit_resource :: (main: *EditorInterface, resource: *Resource) { sys_call("EditorInterface", "edit_resource", 968641751, Nil, main, resource);  }  // 41
+edit_node :: (main: *EditorInterface, node: *Node) { sys_call("EditorInterface", "edit_node", 1078189570, Nil, main, node);  }  // 42
+edit_script :: (main: *EditorInterface, script: *Script) { sys_call("EditorInterface", "edit_script", 219829402, Nil, main, script);  }  // 43
 open_scene_from_path :: (main: *EditorInterface, scene_filepath: string) { sys_call("EditorInterface", "open_scene_from_path", 1168363258, Nil, main, scene_filepath);  }  // 44
 reload_scene_from_path :: (main: *EditorInterface, scene_filepath: string) { sys_call("EditorInterface", "reload_scene_from_path", 83702148, Nil, main, scene_filepath);  }  // 45
 get_open_scenes :: (main: *EditorInterface) -> PackedStringArray { call_ret := cast(*PackedStringArray) sys_call("EditorInterface", "get_open_scenes", 1139954409, PackedStringArray, main); return call_ret.*; }  // 46
@@ -13258,13 +13258,13 @@ get_playing_scene :: (main: *EditorInterface) -> gstring { call_ret := cast(*gst
 set_movie_maker_enabled :: (main: *EditorInterface, enabled: bool) { sys_call("EditorInterface", "set_movie_maker_enabled", 2586408642, Nil, main, enabled);  }  // 58
 is_movie_maker_enabled :: (main: *EditorInterface) -> bool { call_ret := cast(*bool) sys_call("EditorInterface", "is_movie_maker_enabled", 36873697, bool, main); return call_ret.*; }  // 59
 
-add_lines :: (main: *EditorNode3DGizmo, lines: PackedVector3Array, material: Material) { sys_call("EditorNode3DGizmo", "add_lines", 2910971437, Nil, main, lines, material);  }  // 12
-add_mesh :: (main: *EditorNode3DGizmo, mesh: Mesh) { sys_call("EditorNode3DGizmo", "add_mesh", 1579955111, Nil, main, mesh);  }  // 13
+add_lines :: (main: *EditorNode3DGizmo, lines: PackedVector3Array, material: *Material) { sys_call("EditorNode3DGizmo", "add_lines", 2910971437, Nil, main, lines, material);  }  // 12
+add_mesh :: (main: *EditorNode3DGizmo, mesh: *Mesh) { sys_call("EditorNode3DGizmo", "add_mesh", 1579955111, Nil, main, mesh);  }  // 13
 add_collision_segments :: (main: *EditorNode3DGizmo, segments: PackedVector3Array) { sys_call("EditorNode3DGizmo", "add_collision_segments", 334873810, Nil, main, segments);  }  // 14
-add_collision_triangles :: (main: *EditorNode3DGizmo, triangles: TriangleMesh) { sys_call("EditorNode3DGizmo", "add_collision_triangles", 54901064, Nil, main, triangles);  }  // 15
-add_unscaled_billboard :: (main: *EditorNode3DGizmo, material: Material) { sys_call("EditorNode3DGizmo", "add_unscaled_billboard", 520007164, Nil, main, material);  }  // 16
-add_handles :: (main: *EditorNode3DGizmo, handles: PackedVector3Array, material: Material, ids: PackedInt32Array) { sys_call("EditorNode3DGizmo", "add_handles", 2254560097, Nil, main, handles, material, ids);  }  // 17
-set_node_3d :: (main: *EditorNode3DGizmo, node: Node) { sys_call("EditorNode3DGizmo", "set_node_3d", 1078189570, Nil, main, node);  }  // 18
+add_collision_triangles :: (main: *EditorNode3DGizmo, triangles: *TriangleMesh) { sys_call("EditorNode3DGizmo", "add_collision_triangles", 54901064, Nil, main, triangles);  }  // 15
+add_unscaled_billboard :: (main: *EditorNode3DGizmo, material: *Material) { sys_call("EditorNode3DGizmo", "add_unscaled_billboard", 520007164, Nil, main, material);  }  // 16
+add_handles :: (main: *EditorNode3DGizmo, handles: PackedVector3Array, material: *Material, ids: PackedInt32Array) { sys_call("EditorNode3DGizmo", "add_handles", 2254560097, Nil, main, handles, material, ids);  }  // 17
+set_node_3d :: (main: *EditorNode3DGizmo, node: *Node) { sys_call("EditorNode3DGizmo", "set_node_3d", 1078189570, Nil, main, node);  }  // 18
 get_node_3d :: (main: *EditorNode3DGizmo) -> *Node3D { call_ret := cast(*Node3D) sys_call("EditorNode3DGizmo", "get_node_3d", 151077316, Node3D, main); return call_ret; }  // 19
 get_plugin :: (main: *EditorNode3DGizmo) -> *EditorNode3DGizmoPlugin { call_ret := cast(*EditorNode3DGizmoPlugin) sys_call("EditorNode3DGizmo", "get_plugin", 4250544552, EditorNode3DGizmoPlugin, main); return call_ret; }  // 20
 clear :: (main: *EditorNode3DGizmo) { sys_call("EditorNode3DGizmo", "clear", 3218959716, Nil, main);  }  // 21
@@ -13273,9 +13273,9 @@ is_subgizmo_selected :: (main: *EditorNode3DGizmo, id: int) -> bool { call_ret :
 get_subgizmo_selection :: (main: *EditorNode3DGizmo) -> PackedInt32Array { call_ret := cast(*PackedInt32Array) sys_call("EditorNode3DGizmo", "get_subgizmo_selection", 1930428628, PackedInt32Array, main); return call_ret.*; }  // 24
 
 create_material :: (main: *EditorNode3DGizmoPlugin, name: string, color: Color) { sys_call("EditorNode3DGizmoPlugin", "create_material", 3486012546, Nil, main, name, color);  }  // 18
-create_icon_material :: (main: *EditorNode3DGizmoPlugin, name: string, texture: Texture2D) { sys_call("EditorNode3DGizmoPlugin", "create_icon_material", 3804976916, Nil, main, name, texture);  }  // 19
+create_icon_material :: (main: *EditorNode3DGizmoPlugin, name: string, texture: *Texture2D) { sys_call("EditorNode3DGizmoPlugin", "create_icon_material", 3804976916, Nil, main, name, texture);  }  // 19
 create_handle_material :: (main: *EditorNode3DGizmoPlugin, name: string) { sys_call("EditorNode3DGizmoPlugin", "create_handle_material", 2486475223, Nil, main, name);  }  // 20
-add_material :: (main: *EditorNode3DGizmoPlugin, name: string, material: StandardMaterial3D) { sys_call("EditorNode3DGizmoPlugin", "add_material", 1374068695, Nil, main, name, material);  }  // 21
+add_material :: (main: *EditorNode3DGizmoPlugin, name: string, material: *StandardMaterial3D) { sys_call("EditorNode3DGizmoPlugin", "add_material", 1374068695, Nil, main, name, material);  }  // 21
 get_material :: (main: *EditorNode3DGizmoPlugin, name: string) -> *StandardMaterial3D { call_ret := cast(*StandardMaterial3D) sys_call("EditorNode3DGizmoPlugin", "get_material", 974464017, StandardMaterial3D, main, name); return call_ret; }  // 22
 
 get_data_dir :: (main: *EditorPaths) -> gstring { call_ret := cast(*gstring) sys_call("EditorPaths", "get_data_dir", 201670096, gstring, main); return call_ret.*; }  // 0
@@ -13285,54 +13285,54 @@ is_self_contained :: (main: *EditorPaths) -> bool { call_ret := cast(*bool) sys_
 get_self_contained_file :: (main: *EditorPaths) -> gstring { call_ret := cast(*gstring) sys_call("EditorPaths", "get_self_contained_file", 201670096, gstring, main); return call_ret.*; }  // 4
 get_project_settings_dir :: (main: *EditorPaths) -> gstring { call_ret := cast(*gstring) sys_call("EditorPaths", "get_project_settings_dir", 201670096, gstring, main); return call_ret.*; }  // 5
 
-add_control_to_container :: (main: *EditorPlugin, container: EditorPlugin.CustomControlContainer, control: Control) { sys_call("EditorPlugin", "add_control_to_container", 3092750152, Nil, main, container, control);  }  // 24
-add_control_to_bottom_panel :: (main: *EditorPlugin, control: Control, title: string) -> *Button { call_ret := cast(*Button) sys_call("EditorPlugin", "add_control_to_bottom_panel", 111032269, Button, main, control, title); return call_ret; }  // 25
-add_control_to_dock :: (main: *EditorPlugin, slot: EditorPlugin.DockSlot, control: Control) { sys_call("EditorPlugin", "add_control_to_dock", 2994930786, Nil, main, slot, control);  }  // 26
-remove_control_from_docks :: (main: *EditorPlugin, control: Control) { sys_call("EditorPlugin", "remove_control_from_docks", 1496901182, Nil, main, control);  }  // 27
-remove_control_from_bottom_panel :: (main: *EditorPlugin, control: Control) { sys_call("EditorPlugin", "remove_control_from_bottom_panel", 1496901182, Nil, main, control);  }  // 28
-remove_control_from_container :: (main: *EditorPlugin, container: EditorPlugin.CustomControlContainer, control: Control) { sys_call("EditorPlugin", "remove_control_from_container", 3092750152, Nil, main, container, control);  }  // 29
-set_dock_tab_icon :: (main: *EditorPlugin, control: Control, icon: Texture2D) { sys_call("EditorPlugin", "set_dock_tab_icon", 3450529724, Nil, main, control, icon);  }  // 30
+add_control_to_container :: (main: *EditorPlugin, container: EditorPlugin.CustomControlContainer, control: *Control) { sys_call("EditorPlugin", "add_control_to_container", 3092750152, Nil, main, container, control);  }  // 24
+add_control_to_bottom_panel :: (main: *EditorPlugin, control: *Control, title: string) -> *Button { call_ret := cast(*Button) sys_call("EditorPlugin", "add_control_to_bottom_panel", 111032269, Button, main, control, title); return call_ret; }  // 25
+add_control_to_dock :: (main: *EditorPlugin, slot: EditorPlugin.DockSlot, control: *Control) { sys_call("EditorPlugin", "add_control_to_dock", 2994930786, Nil, main, slot, control);  }  // 26
+remove_control_from_docks :: (main: *EditorPlugin, control: *Control) { sys_call("EditorPlugin", "remove_control_from_docks", 1496901182, Nil, main, control);  }  // 27
+remove_control_from_bottom_panel :: (main: *EditorPlugin, control: *Control) { sys_call("EditorPlugin", "remove_control_from_bottom_panel", 1496901182, Nil, main, control);  }  // 28
+remove_control_from_container :: (main: *EditorPlugin, container: EditorPlugin.CustomControlContainer, control: *Control) { sys_call("EditorPlugin", "remove_control_from_container", 3092750152, Nil, main, container, control);  }  // 29
+set_dock_tab_icon :: (main: *EditorPlugin, control: *Control, icon: *Texture2D) { sys_call("EditorPlugin", "set_dock_tab_icon", 3450529724, Nil, main, control, icon);  }  // 30
 add_tool_menu_item :: (main: *EditorPlugin, name: string, callable: Callable) { sys_call("EditorPlugin", "add_tool_menu_item", 2137474292, Nil, main, name, callable);  }  // 31
-add_tool_submenu_item :: (main: *EditorPlugin, name: string, submenu: PopupMenu) { sys_call("EditorPlugin", "add_tool_submenu_item", 1019428915, Nil, main, name, submenu);  }  // 32
+add_tool_submenu_item :: (main: *EditorPlugin, name: string, submenu: *PopupMenu) { sys_call("EditorPlugin", "add_tool_submenu_item", 1019428915, Nil, main, name, submenu);  }  // 32
 remove_tool_menu_item :: (main: *EditorPlugin, name: string) { sys_call("EditorPlugin", "remove_tool_menu_item", 83702148, Nil, main, name);  }  // 33
 get_export_as_menu :: (main: *EditorPlugin) -> *PopupMenu { call_ret := cast(*PopupMenu) sys_call("EditorPlugin", "get_export_as_menu", 1775878644, PopupMenu, main); return call_ret; }  // 34
-add_custom_type :: (main: *EditorPlugin, type: string, base: string, script: Script, icon: Texture2D) { sys_call("EditorPlugin", "add_custom_type", 1986814599, Nil, main, type, base, script, icon);  }  // 35
+add_custom_type :: (main: *EditorPlugin, type: string, base: string, script: *Script, icon: *Texture2D) { sys_call("EditorPlugin", "add_custom_type", 1986814599, Nil, main, type, base, script, icon);  }  // 35
 remove_custom_type :: (main: *EditorPlugin, type: string) { sys_call("EditorPlugin", "remove_custom_type", 83702148, Nil, main, type);  }  // 36
 add_autoload_singleton :: (main: *EditorPlugin, name: string, path: string) { sys_call("EditorPlugin", "add_autoload_singleton", 3186203200, Nil, main, name, path);  }  // 37
 remove_autoload_singleton :: (main: *EditorPlugin, name: string) { sys_call("EditorPlugin", "remove_autoload_singleton", 83702148, Nil, main, name);  }  // 38
 update_overlays :: (main: *EditorPlugin) -> int { call_ret := cast(*int) sys_call("EditorPlugin", "update_overlays", 3905245786, int, main); return call_ret.*; }  // 39
-make_bottom_panel_item_visible :: (main: *EditorPlugin, item: Control) { sys_call("EditorPlugin", "make_bottom_panel_item_visible", 1496901182, Nil, main, item);  }  // 40
+make_bottom_panel_item_visible :: (main: *EditorPlugin, item: *Control) { sys_call("EditorPlugin", "make_bottom_panel_item_visible", 1496901182, Nil, main, item);  }  // 40
 hide_bottom_panel :: (main: *EditorPlugin) { sys_call("EditorPlugin", "hide_bottom_panel", 3218959716, Nil, main);  }  // 41
 get_undo_redo :: (main: *EditorPlugin) -> *EditorUndoRedoManager { call_ret := cast(*EditorUndoRedoManager) sys_call("EditorPlugin", "get_undo_redo", 773492341, EditorUndoRedoManager, main); return call_ret; }  // 42
 add_undo_redo_inspector_hook_callback :: (main: *EditorPlugin, callable: Callable) { sys_call("EditorPlugin", "add_undo_redo_inspector_hook_callback", 1611583062, Nil, main, callable);  }  // 43
 remove_undo_redo_inspector_hook_callback :: (main: *EditorPlugin, callable: Callable) { sys_call("EditorPlugin", "remove_undo_redo_inspector_hook_callback", 1611583062, Nil, main, callable);  }  // 44
 queue_save_layout :: (main: *EditorPlugin) { sys_call("EditorPlugin", "queue_save_layout", 3218959716, Nil, main);  }  // 45
-add_translation_parser_plugin :: (main: *EditorPlugin, parser: EditorTranslationParserPlugin) { sys_call("EditorPlugin", "add_translation_parser_plugin", 3116463128, Nil, main, parser);  }  // 46
-remove_translation_parser_plugin :: (main: *EditorPlugin, parser: EditorTranslationParserPlugin) { sys_call("EditorPlugin", "remove_translation_parser_plugin", 3116463128, Nil, main, parser);  }  // 47
-add_import_plugin :: (main: *EditorPlugin, importer: EditorImportPlugin) { sys_call("EditorPlugin", "add_import_plugin", 3113975762, Nil, main, importer);  }  // 48
-remove_import_plugin :: (main: *EditorPlugin, importer: EditorImportPlugin) { sys_call("EditorPlugin", "remove_import_plugin", 2312482773, Nil, main, importer);  }  // 49
-add_scene_format_importer_plugin :: (main: *EditorPlugin, scene_format_importer: EditorSceneFormatImporter) { sys_call("EditorPlugin", "add_scene_format_importer_plugin", 2764104752, Nil, main, scene_format_importer);  }  // 50
-remove_scene_format_importer_plugin :: (main: *EditorPlugin, scene_format_importer: EditorSceneFormatImporter) { sys_call("EditorPlugin", "remove_scene_format_importer_plugin", 2637776123, Nil, main, scene_format_importer);  }  // 51
-add_scene_post_import_plugin :: (main: *EditorPlugin, scene_import_plugin: EditorScenePostImportPlugin) { sys_call("EditorPlugin", "add_scene_post_import_plugin", 3492436322, Nil, main, scene_import_plugin);  }  // 52
-remove_scene_post_import_plugin :: (main: *EditorPlugin, scene_import_plugin: EditorScenePostImportPlugin) { sys_call("EditorPlugin", "remove_scene_post_import_plugin", 3045178206, Nil, main, scene_import_plugin);  }  // 53
-add_export_plugin :: (main: *EditorPlugin, plugin: EditorExportPlugin) { sys_call("EditorPlugin", "add_export_plugin", 4095952207, Nil, main, plugin);  }  // 54
-remove_export_plugin :: (main: *EditorPlugin, plugin: EditorExportPlugin) { sys_call("EditorPlugin", "remove_export_plugin", 4095952207, Nil, main, plugin);  }  // 55
-add_export_platform :: (main: *EditorPlugin, platform: EditorExportPlatform) { sys_call("EditorPlugin", "add_export_platform", 3431312373, Nil, main, platform);  }  // 56
-remove_export_platform :: (main: *EditorPlugin, platform: EditorExportPlatform) { sys_call("EditorPlugin", "remove_export_platform", 3431312373, Nil, main, platform);  }  // 57
-add_node_3d_gizmo_plugin :: (main: *EditorPlugin, plugin: EditorNode3DGizmoPlugin) { sys_call("EditorPlugin", "add_node_3d_gizmo_plugin", 1541015022, Nil, main, plugin);  }  // 58
-remove_node_3d_gizmo_plugin :: (main: *EditorPlugin, plugin: EditorNode3DGizmoPlugin) { sys_call("EditorPlugin", "remove_node_3d_gizmo_plugin", 1541015022, Nil, main, plugin);  }  // 59
-add_inspector_plugin :: (main: *EditorPlugin, plugin: EditorInspectorPlugin) { sys_call("EditorPlugin", "add_inspector_plugin", 546395733, Nil, main, plugin);  }  // 60
-remove_inspector_plugin :: (main: *EditorPlugin, plugin: EditorInspectorPlugin) { sys_call("EditorPlugin", "remove_inspector_plugin", 546395733, Nil, main, plugin);  }  // 61
-add_resource_conversion_plugin :: (main: *EditorPlugin, plugin: EditorResourceConversionPlugin) { sys_call("EditorPlugin", "add_resource_conversion_plugin", 2124849111, Nil, main, plugin);  }  // 62
-remove_resource_conversion_plugin :: (main: *EditorPlugin, plugin: EditorResourceConversionPlugin) { sys_call("EditorPlugin", "remove_resource_conversion_plugin", 2124849111, Nil, main, plugin);  }  // 63
+add_translation_parser_plugin :: (main: *EditorPlugin, parser: *EditorTranslationParserPlugin) { sys_call("EditorPlugin", "add_translation_parser_plugin", 3116463128, Nil, main, parser);  }  // 46
+remove_translation_parser_plugin :: (main: *EditorPlugin, parser: *EditorTranslationParserPlugin) { sys_call("EditorPlugin", "remove_translation_parser_plugin", 3116463128, Nil, main, parser);  }  // 47
+add_import_plugin :: (main: *EditorPlugin, importer: *EditorImportPlugin) { sys_call("EditorPlugin", "add_import_plugin", 3113975762, Nil, main, importer);  }  // 48
+remove_import_plugin :: (main: *EditorPlugin, importer: *EditorImportPlugin) { sys_call("EditorPlugin", "remove_import_plugin", 2312482773, Nil, main, importer);  }  // 49
+add_scene_format_importer_plugin :: (main: *EditorPlugin, scene_format_importer: *EditorSceneFormatImporter) { sys_call("EditorPlugin", "add_scene_format_importer_plugin", 2764104752, Nil, main, scene_format_importer);  }  // 50
+remove_scene_format_importer_plugin :: (main: *EditorPlugin, scene_format_importer: *EditorSceneFormatImporter) { sys_call("EditorPlugin", "remove_scene_format_importer_plugin", 2637776123, Nil, main, scene_format_importer);  }  // 51
+add_scene_post_import_plugin :: (main: *EditorPlugin, scene_import_plugin: *EditorScenePostImportPlugin) { sys_call("EditorPlugin", "add_scene_post_import_plugin", 3492436322, Nil, main, scene_import_plugin);  }  // 52
+remove_scene_post_import_plugin :: (main: *EditorPlugin, scene_import_plugin: *EditorScenePostImportPlugin) { sys_call("EditorPlugin", "remove_scene_post_import_plugin", 3045178206, Nil, main, scene_import_plugin);  }  // 53
+add_export_plugin :: (main: *EditorPlugin, plugin: *EditorExportPlugin) { sys_call("EditorPlugin", "add_export_plugin", 4095952207, Nil, main, plugin);  }  // 54
+remove_export_plugin :: (main: *EditorPlugin, plugin: *EditorExportPlugin) { sys_call("EditorPlugin", "remove_export_plugin", 4095952207, Nil, main, plugin);  }  // 55
+add_export_platform :: (main: *EditorPlugin, platform: *EditorExportPlatform) { sys_call("EditorPlugin", "add_export_platform", 3431312373, Nil, main, platform);  }  // 56
+remove_export_platform :: (main: *EditorPlugin, platform: *EditorExportPlatform) { sys_call("EditorPlugin", "remove_export_platform", 3431312373, Nil, main, platform);  }  // 57
+add_node_3d_gizmo_plugin :: (main: *EditorPlugin, plugin: *EditorNode3DGizmoPlugin) { sys_call("EditorPlugin", "add_node_3d_gizmo_plugin", 1541015022, Nil, main, plugin);  }  // 58
+remove_node_3d_gizmo_plugin :: (main: *EditorPlugin, plugin: *EditorNode3DGizmoPlugin) { sys_call("EditorPlugin", "remove_node_3d_gizmo_plugin", 1541015022, Nil, main, plugin);  }  // 59
+add_inspector_plugin :: (main: *EditorPlugin, plugin: *EditorInspectorPlugin) { sys_call("EditorPlugin", "add_inspector_plugin", 546395733, Nil, main, plugin);  }  // 60
+remove_inspector_plugin :: (main: *EditorPlugin, plugin: *EditorInspectorPlugin) { sys_call("EditorPlugin", "remove_inspector_plugin", 546395733, Nil, main, plugin);  }  // 61
+add_resource_conversion_plugin :: (main: *EditorPlugin, plugin: *EditorResourceConversionPlugin) { sys_call("EditorPlugin", "add_resource_conversion_plugin", 2124849111, Nil, main, plugin);  }  // 62
+remove_resource_conversion_plugin :: (main: *EditorPlugin, plugin: *EditorResourceConversionPlugin) { sys_call("EditorPlugin", "remove_resource_conversion_plugin", 2124849111, Nil, main, plugin);  }  // 63
 set_input_event_forwarding_always_enabled :: (main: *EditorPlugin) { sys_call("EditorPlugin", "set_input_event_forwarding_always_enabled", 3218959716, Nil, main);  }  // 64
 set_force_draw_over_forwarding_enabled :: (main: *EditorPlugin) { sys_call("EditorPlugin", "set_force_draw_over_forwarding_enabled", 3218959716, Nil, main);  }  // 65
-add_context_menu_plugin :: (main: *EditorPlugin, slot: EditorContextMenuPlugin.ContextMenuSlot, plugin: EditorContextMenuPlugin) { sys_call("EditorPlugin", "add_context_menu_plugin", 1904221872, Nil, main, slot, plugin);  }  // 66
-remove_context_menu_plugin :: (main: *EditorPlugin, plugin: EditorContextMenuPlugin) { sys_call("EditorPlugin", "remove_context_menu_plugin", 2281511854, Nil, main, plugin);  }  // 67
+add_context_menu_plugin :: (main: *EditorPlugin, slot: EditorContextMenuPlugin.ContextMenuSlot, plugin: *EditorContextMenuPlugin) { sys_call("EditorPlugin", "add_context_menu_plugin", 1904221872, Nil, main, slot, plugin);  }  // 66
+remove_context_menu_plugin :: (main: *EditorPlugin, plugin: *EditorContextMenuPlugin) { sys_call("EditorPlugin", "remove_context_menu_plugin", 2281511854, Nil, main, plugin);  }  // 67
 get_editor_interface :: (main: *EditorPlugin) -> *EditorInterface { call_ret := cast(*EditorInterface) sys_call("EditorPlugin", "get_editor_interface", 4223731786, EditorInterface, main); return call_ret; }  // 68
 get_script_create_dialog :: (main: *EditorPlugin) -> *ScriptCreateDialog { call_ret := cast(*ScriptCreateDialog) sys_call("EditorPlugin", "get_script_create_dialog", 3121871482, ScriptCreateDialog, main); return call_ret; }  // 69
-add_debugger_plugin :: (main: *EditorPlugin, script: EditorDebuggerPlugin) { sys_call("EditorPlugin", "add_debugger_plugin", 3749880309, Nil, main, script);  }  // 70
-remove_debugger_plugin :: (main: *EditorPlugin, script: EditorDebuggerPlugin) { sys_call("EditorPlugin", "remove_debugger_plugin", 3749880309, Nil, main, script);  }  // 71
+add_debugger_plugin :: (main: *EditorPlugin, script: *EditorDebuggerPlugin) { sys_call("EditorPlugin", "add_debugger_plugin", 3749880309, Nil, main, script);  }  // 70
+remove_debugger_plugin :: (main: *EditorPlugin, script: *EditorDebuggerPlugin) { sys_call("EditorPlugin", "remove_debugger_plugin", 3749880309, Nil, main, script);  }  // 71
 get_plugin_version :: (main: *EditorPlugin) -> gstring { call_ret := cast(*gstring) sys_call("EditorPlugin", "get_plugin_version", 201670096, gstring, main); return call_ret.*; }  // 72
 
 set_label :: (main: *EditorProperty, text: string) { sys_call("EditorProperty", "set_label", 83702148, Nil, main, text);  }  // 2
@@ -13356,8 +13356,8 @@ is_deletable :: (main: *EditorProperty) -> bool { call_ret := cast(*bool) sys_ca
 get_edited_property :: (main: *EditorProperty) -> StringName { call_ret := cast(*StringName) sys_call("EditorProperty", "get_edited_property", 2002593661, StringName, main); return call_ret.*; }  // 20
 get_edited_object :: (main: *EditorProperty) -> *Object { call_ret := cast(*Object) sys_call("EditorProperty", "get_edited_object", 2050059866, Object, main); return call_ret; }  // 21
 update_property :: (main: *EditorProperty) { sys_call("EditorProperty", "update_property", 3218959716, Nil, main);  }  // 22
-add_focusable :: (main: *EditorProperty, control: Control) { sys_call("EditorProperty", "add_focusable", 1496901182, Nil, main, control);  }  // 23
-set_bottom_editor :: (main: *EditorProperty, editor: Control) { sys_call("EditorProperty", "set_bottom_editor", 1496901182, Nil, main, editor);  }  // 24
+add_focusable :: (main: *EditorProperty, control: *Control) { sys_call("EditorProperty", "add_focusable", 1496901182, Nil, main, control);  }  // 23
+set_bottom_editor :: (main: *EditorProperty, editor: *Control) { sys_call("EditorProperty", "set_bottom_editor", 1496901182, Nil, main, editor);  }  // 24
 set_selectable :: (main: *EditorProperty, selectable: bool) { sys_call("EditorProperty", "set_selectable", 2586408642, Nil, main, selectable);  }  // 25
 is_selectable :: (main: *EditorProperty) -> bool { call_ret := cast(*bool) sys_call("EditorProperty", "is_selectable", 36873697, bool, main); return call_ret.*; }  // 26
 set_use_folding :: (main: *EditorProperty, use_folding: bool) { sys_call("EditorProperty", "set_use_folding", 2586408642, Nil, main, use_folding);  }  // 27
@@ -13367,15 +13367,15 @@ get_name_split_ratio :: (main: *EditorProperty) -> float { call_ret := cast(*flo
 deselect :: (main: *EditorProperty) { sys_call("EditorProperty", "deselect", 3218959716, Nil, main);  }  // 31
 is_selected :: (main: *EditorProperty) -> bool { call_ret := cast(*bool) sys_call("EditorProperty", "is_selected", 36873697, bool, main); return call_ret.*; }  // 32
 select :: (main: *EditorProperty) { sys_call("EditorProperty", "select", 1025054187, Nil, main);  }  // 33
-set_object_and_property :: (main: *EditorProperty, object: Object, property: string) { sys_call("EditorProperty", "set_object_and_property", 4157606280, Nil, main, object, property);  }  // 34
-set_label_reference :: (main: *EditorProperty, control: Control) { sys_call("EditorProperty", "set_label_reference", 1496901182, Nil, main, control);  }  // 35
+set_object_and_property :: (main: *EditorProperty, object: *Object, property: string) { sys_call("EditorProperty", "set_object_and_property", 4157606280, Nil, main, object, property);  }  // 34
+set_label_reference :: (main: *EditorProperty, control: *Control) { sys_call("EditorProperty", "set_label_reference", 1496901182, Nil, main, control);  }  // 35
 emit_changed :: (main: *EditorProperty, property: string, value: Variant) { sys_call("EditorProperty", "emit_changed", 1822500399, Nil, main, property, value);  }  // 36
 
 
 set_base_type :: (main: *EditorResourcePicker, base_type: string) { sys_call("EditorResourcePicker", "set_base_type", 83702148, Nil, main, base_type);  }  // 2
 get_base_type :: (main: *EditorResourcePicker) -> gstring { call_ret := cast(*gstring) sys_call("EditorResourcePicker", "get_base_type", 201670096, gstring, main); return call_ret.*; }  // 3
 get_allowed_types :: (main: *EditorResourcePicker) -> PackedStringArray { call_ret := cast(*PackedStringArray) sys_call("EditorResourcePicker", "get_allowed_types", 1139954409, PackedStringArray, main); return call_ret.*; }  // 4
-set_edited_resource :: (main: *EditorResourcePicker, resource: Resource) { sys_call("EditorResourcePicker", "set_edited_resource", 968641751, Nil, main, resource);  }  // 5
+set_edited_resource :: (main: *EditorResourcePicker, resource: *Resource) { sys_call("EditorResourcePicker", "set_edited_resource", 968641751, Nil, main, resource);  }  // 5
 get_edited_resource :: (main: *EditorResourcePicker) -> *Resource { call_ret := cast(*Resource) sys_call("EditorResourcePicker", "get_edited_resource", 2674603643, Resource, main); return call_ret; }  // 6
 set_toggle_mode :: (main: *EditorResourcePicker, enable: bool) { sys_call("EditorResourcePicker", "set_toggle_mode", 2586408642, Nil, main, enable);  }  // 7
 is_toggle_mode :: (main: *EditorResourcePicker) -> bool { call_ret := cast(*bool) sys_call("EditorResourcePicker", "is_toggle_mode", 36873697, bool, main); return call_ret.*; }  // 8
@@ -13383,14 +13383,14 @@ set_toggle_pressed :: (main: *EditorResourcePicker, pressed: bool) { sys_call("E
 set_editable :: (main: *EditorResourcePicker, enable: bool) { sys_call("EditorResourcePicker", "set_editable", 2586408642, Nil, main, enable);  }  // 10
 is_editable :: (main: *EditorResourcePicker) -> bool { call_ret := cast(*bool) sys_call("EditorResourcePicker", "is_editable", 36873697, bool, main); return call_ret.*; }  // 11
 
-queue_resource_preview :: (main: *EditorResourcePreview, path: string, receiver: Object, receiver_func: string, userdata: Variant) { sys_call("EditorResourcePreview", "queue_resource_preview", 233177534, Nil, main, path, receiver, receiver_func, userdata);  }  // 0
-queue_edited_resource_preview :: (main: *EditorResourcePreview, resource: Resource, receiver: Object, receiver_func: string, userdata: Variant) { sys_call("EditorResourcePreview", "queue_edited_resource_preview", 1608376650, Nil, main, resource, receiver, receiver_func, userdata);  }  // 1
-add_preview_generator :: (main: *EditorResourcePreview, generator: EditorResourcePreviewGenerator) { sys_call("EditorResourcePreview", "add_preview_generator", 332288124, Nil, main, generator);  }  // 2
-remove_preview_generator :: (main: *EditorResourcePreview, generator: EditorResourcePreviewGenerator) { sys_call("EditorResourcePreview", "remove_preview_generator", 332288124, Nil, main, generator);  }  // 3
+queue_resource_preview :: (main: *EditorResourcePreview, path: string, receiver: *Object, receiver_func: string, userdata: Variant) { sys_call("EditorResourcePreview", "queue_resource_preview", 233177534, Nil, main, path, receiver, receiver_func, userdata);  }  // 0
+queue_edited_resource_preview :: (main: *EditorResourcePreview, resource: *Resource, receiver: *Object, receiver_func: string, userdata: Variant) { sys_call("EditorResourcePreview", "queue_edited_resource_preview", 1608376650, Nil, main, resource, receiver, receiver_func, userdata);  }  // 1
+add_preview_generator :: (main: *EditorResourcePreview, generator: *EditorResourcePreviewGenerator) { sys_call("EditorResourcePreview", "add_preview_generator", 332288124, Nil, main, generator);  }  // 2
+remove_preview_generator :: (main: *EditorResourcePreview, generator: *EditorResourcePreviewGenerator) { sys_call("EditorResourcePreview", "remove_preview_generator", 332288124, Nil, main, generator);  }  // 3
 check_for_invalidation :: (main: *EditorResourcePreview, path: string) { sys_call("EditorResourcePreview", "check_for_invalidation", 83702148, Nil, main, path);  }  // 4
 
 
-request_thumbnail :: (main: *EditorResourceTooltipPlugin, path: string, control: TextureRect) { sys_call("EditorResourceTooltipPlugin", "request_thumbnail", 3245519720, Nil, main, path, control);  }  // 2
+request_thumbnail :: (main: *EditorResourceTooltipPlugin, path: string, control: *TextureRect) { sys_call("EditorResourceTooltipPlugin", "request_thumbnail", 3245519720, Nil, main, path, control);  }  // 2
 
 add_import_option :: (main: *EditorSceneFormatImporter, name: string, value: Variant) { sys_call("EditorSceneFormatImporter", "add_import_option", 402577236, Nil, main, name, value);  }  // 4
 add_import_option_advanced :: (main: *EditorSceneFormatImporter, type: Variant_Type, name: string, default_value: Variant) { sys_call("EditorSceneFormatImporter", "add_import_option_advanced", 3674075649, Nil, main, type, name, default_value);  }  // 5
@@ -13405,16 +13405,16 @@ get_option_value :: (main: *EditorScenePostImportPlugin, name: string) -> Varian
 add_import_option :: (main: *EditorScenePostImportPlugin, name: string, value: Variant) { sys_call("EditorScenePostImportPlugin", "add_import_option", 402577236, Nil, main, name, value);  }  // 9
 add_import_option_advanced :: (main: *EditorScenePostImportPlugin, type: Variant_Type, name: string, default_value: Variant) { sys_call("EditorScenePostImportPlugin", "add_import_option_advanced", 3674075649, Nil, main, type, name, default_value);  }  // 10
 
-add_root_node :: (main: *EditorScript, node: Node) { sys_call("EditorScript", "add_root_node", 1078189570, Nil, main, node);  }  // 1
+add_root_node :: (main: *EditorScript, node: *Node) { sys_call("EditorScript", "add_root_node", 1078189570, Nil, main, node);  }  // 1
 get_scene :: (main: *EditorScript) -> *Node { call_ret := cast(*Node) sys_call("EditorScript", "get_scene", 3160264692, Node, main); return call_ret; }  // 2
 get_editor_interface :: (main: *EditorScript) -> *EditorInterface { call_ret := cast(*EditorInterface) sys_call("EditorScript", "get_editor_interface", 1976662476, EditorInterface, main); return call_ret; }  // 3
 
-set_script_owner :: (main: *EditorScriptPicker, owner_node: Node) { sys_call("EditorScriptPicker", "set_script_owner", 1078189570, Nil, main, owner_node);  }  // 0
+set_script_owner :: (main: *EditorScriptPicker, owner_node: *Node) { sys_call("EditorScriptPicker", "set_script_owner", 1078189570, Nil, main, owner_node);  }  // 0
 get_script_owner :: (main: *EditorScriptPicker) -> *Node { call_ret := cast(*Node) sys_call("EditorScriptPicker", "get_script_owner", 3160264692, Node, main); return call_ret; }  // 1
 
 clear :: (main: *EditorSelection) { sys_call("EditorSelection", "clear", 3218959716, Nil, main);  }  // 0
-add_node :: (main: *EditorSelection, node: Node) { sys_call("EditorSelection", "add_node", 1078189570, Nil, main, node);  }  // 1
-remove_node :: (main: *EditorSelection, node: Node) { sys_call("EditorSelection", "remove_node", 1078189570, Nil, main, node);  }  // 2
+add_node :: (main: *EditorSelection, node: *Node) { sys_call("EditorSelection", "add_node", 1078189570, Nil, main, node);  }  // 1
+remove_node :: (main: *EditorSelection, node: *Node) { sys_call("EditorSelection", "remove_node", 1078189570, Nil, main, node);  }  // 2
 get_selected_nodes :: (main: *EditorSelection) -> [] Node { call_ret := cast(*[] Node) sys_call("EditorSelection", "get_selected_nodes", 2915620761, [] Node, main); return call_ret.*; }  // 3
 get_transformable_selected_nodes :: (main: *EditorSelection) -> [] Node { call_ret := cast(*[] Node) sys_call("EditorSelection", "get_transformable_selected_nodes", 2915620761, [] Node, main); return call_ret.*; }  // 4
 
@@ -13456,13 +13456,13 @@ create_action :: (main: *EditorUndoRedoManager, name: string) { sys_call("Editor
 commit_action :: (main: *EditorUndoRedoManager) { sys_call("EditorUndoRedoManager", "commit_action", 3216645846, Nil, main);  }  // 1
 is_committing_action :: (main: *EditorUndoRedoManager) -> bool { call_ret := cast(*bool) sys_call("EditorUndoRedoManager", "is_committing_action", 36873697, bool, main); return call_ret.*; }  // 2
 force_fixed_history :: (main: *EditorUndoRedoManager) { sys_call("EditorUndoRedoManager", "force_fixed_history", 3218959716, Nil, main);  }  // 3
-add_do_method :: (main: *EditorUndoRedoManager, object: Object, method: string) { sys_call("EditorUndoRedoManager", "add_do_method", 1517810467, Nil, main, object, method);  }  // 4
-add_undo_method :: (main: *EditorUndoRedoManager, object: Object, method: string) { sys_call("EditorUndoRedoManager", "add_undo_method", 1517810467, Nil, main, object, method);  }  // 5
-add_do_property :: (main: *EditorUndoRedoManager, object: Object, property: string, value: Variant) { sys_call("EditorUndoRedoManager", "add_do_property", 1017172818, Nil, main, object, property, value);  }  // 6
-add_undo_property :: (main: *EditorUndoRedoManager, object: Object, property: string, value: Variant) { sys_call("EditorUndoRedoManager", "add_undo_property", 1017172818, Nil, main, object, property, value);  }  // 7
-add_do_reference :: (main: *EditorUndoRedoManager, object: Object) { sys_call("EditorUndoRedoManager", "add_do_reference", 3975164845, Nil, main, object);  }  // 8
-add_undo_reference :: (main: *EditorUndoRedoManager, object: Object) { sys_call("EditorUndoRedoManager", "add_undo_reference", 3975164845, Nil, main, object);  }  // 9
-get_object_history_id :: (main: *EditorUndoRedoManager, object: Object) -> int { call_ret := cast(*int) sys_call("EditorUndoRedoManager", "get_object_history_id", 1107568780, int, main, object); return call_ret.*; }  // 10
+add_do_method :: (main: *EditorUndoRedoManager, object: *Object, method: string) { sys_call("EditorUndoRedoManager", "add_do_method", 1517810467, Nil, main, object, method);  }  // 4
+add_undo_method :: (main: *EditorUndoRedoManager, object: *Object, method: string) { sys_call("EditorUndoRedoManager", "add_undo_method", 1517810467, Nil, main, object, method);  }  // 5
+add_do_property :: (main: *EditorUndoRedoManager, object: *Object, property: string, value: Variant) { sys_call("EditorUndoRedoManager", "add_do_property", 1017172818, Nil, main, object, property, value);  }  // 6
+add_undo_property :: (main: *EditorUndoRedoManager, object: *Object, property: string, value: Variant) { sys_call("EditorUndoRedoManager", "add_undo_property", 1017172818, Nil, main, object, property, value);  }  // 7
+add_do_reference :: (main: *EditorUndoRedoManager, object: *Object) { sys_call("EditorUndoRedoManager", "add_do_reference", 3975164845, Nil, main, object);  }  // 8
+add_undo_reference :: (main: *EditorUndoRedoManager, object: *Object) { sys_call("EditorUndoRedoManager", "add_undo_reference", 3975164845, Nil, main, object);  }  // 9
+get_object_history_id :: (main: *EditorUndoRedoManager, object: *Object) -> int { call_ret := cast(*int) sys_call("EditorUndoRedoManager", "get_object_history_id", 1107568780, int, main, object); return call_ret.*; }  // 10
 get_history_undo_redo :: (main: *EditorUndoRedoManager, id: int) -> *UndoRedo { call_ret := cast(*UndoRedo) sys_call("EditorUndoRedoManager", "get_history_undo_redo", 2417974513, UndoRedo, main, id); return call_ret; }  // 11
 clear_history :: (main: *EditorUndoRedoManager) { sys_call("EditorUndoRedoManager", "clear_history", 2020603371, Nil, main);  }  // 12
 
@@ -13504,11 +13504,11 @@ get_architecture_name :: (main: *Engine) -> gstring { call_ret := cast(*gstring)
 is_in_physics_frame :: (main: *Engine) -> bool { call_ret := cast(*bool) sys_call("Engine", "is_in_physics_frame", 36873697, bool, main); return call_ret.*; }  // 23
 has_singleton :: (main: *Engine, name: string) -> bool { call_ret := cast(*bool) sys_call("Engine", "has_singleton", 2619796661, bool, main, name); return call_ret.*; }  // 24
 get_singleton :: (main: *Engine, name: string) -> *Object { call_ret := cast(*Object) sys_call("Engine", "get_singleton", 1371597918, Object, main, name); return call_ret; }  // 25
-register_singleton :: (main: *Engine, name: string, instance: Object) { sys_call("Engine", "register_singleton", 965313290, Nil, main, name, instance);  }  // 26
+register_singleton :: (main: *Engine, name: string, instance: *Object) { sys_call("Engine", "register_singleton", 965313290, Nil, main, name, instance);  }  // 26
 unregister_singleton :: (main: *Engine, name: string) { sys_call("Engine", "unregister_singleton", 3304788590, Nil, main, name);  }  // 27
 get_singleton_list :: (main: *Engine) -> PackedStringArray { call_ret := cast(*PackedStringArray) sys_call("Engine", "get_singleton_list", 1139954409, PackedStringArray, main); return call_ret.*; }  // 28
-register_script_language :: (main: *Engine, language: ScriptLanguage) -> Error { call_ret := cast(*Error) sys_call("Engine", "register_script_language", 1850254898, Error, main, language); return call_ret.*; }  // 29
-unregister_script_language :: (main: *Engine, language: ScriptLanguage) -> Error { call_ret := cast(*Error) sys_call("Engine", "unregister_script_language", 1850254898, Error, main, language); return call_ret.*; }  // 30
+register_script_language :: (main: *Engine, language: *ScriptLanguage) -> Error { call_ret := cast(*Error) sys_call("Engine", "register_script_language", 1850254898, Error, main, language); return call_ret.*; }  // 29
+unregister_script_language :: (main: *Engine, language: *ScriptLanguage) -> Error { call_ret := cast(*Error) sys_call("Engine", "unregister_script_language", 1850254898, Error, main, language); return call_ret.*; }  // 30
 get_script_language_count :: (main: *Engine) -> int { call_ret := cast(*int) sys_call("Engine", "get_script_language_count", 2455072627, int, main); return call_ret.*; }  // 31
 get_script_language :: (main: *Engine, index: int) -> *ScriptLanguage { call_ret := cast(*ScriptLanguage) sys_call("Engine", "get_script_language", 2151255799, ScriptLanguage, main, index); return call_ret; }  // 32
 is_editor_hint :: (main: *Engine) -> bool { call_ret := cast(*bool) sys_call("Engine", "is_editor_hint", 36873697, bool, main); return call_ret.*; }  // 33
@@ -13520,7 +13520,7 @@ set_print_error_messages :: (main: *Engine, enabled: bool) { sys_call("Engine", 
 is_printing_error_messages :: (main: *Engine) -> bool { call_ret := cast(*bool) sys_call("Engine", "is_printing_error_messages", 36873697, bool, main); return call_ret.*; }  // 39
 
 is_active :: (main: *EngineDebugger) -> bool { call_ret := cast(*bool) sys_call("EngineDebugger", "is_active", 2240911060, bool, main); return call_ret.*; }  // 0
-register_profiler :: (main: *EngineDebugger, name: string, profiler: EngineProfiler) { sys_call("EngineDebugger", "register_profiler", 3651669560, Nil, main, name, profiler);  }  // 1
+register_profiler :: (main: *EngineDebugger, name: string, profiler: *EngineProfiler) { sys_call("EngineDebugger", "register_profiler", 3651669560, Nil, main, name, profiler);  }  // 1
 unregister_profiler :: (main: *EngineDebugger, name: string) { sys_call("EngineDebugger", "unregister_profiler", 3304788590, Nil, main, name);  }  // 2
 is_profiling :: (main: *EngineDebugger, name: string) -> bool { call_ret := cast(*bool) sys_call("EngineDebugger", "is_profiling", 2041966384, bool, main, name); return call_ret.*; }  // 3
 has_profiler :: (main: *EngineDebugger, name: string) -> bool { call_ret := cast(*bool) sys_call("EngineDebugger", "has_profiler", 2041966384, bool, main, name); return call_ret.*; }  // 4
@@ -13532,7 +13532,7 @@ has_capture :: (main: *EngineDebugger, name: string) -> bool { call_ret := cast(
 line_poll :: (main: *EngineDebugger) { sys_call("EngineDebugger", "line_poll", 3218959716, Nil, main);  }  // 10
 send_message :: (main: *EngineDebugger, message: string, data: Array) { sys_call("EngineDebugger", "send_message", 1209351045, Nil, main, message, data);  }  // 11
 debug :: (main: *EngineDebugger) { sys_call("EngineDebugger", "debug", 2751962654, Nil, main);  }  // 12
-script_debug :: (main: *EngineDebugger, language: ScriptLanguage) { sys_call("EngineDebugger", "script_debug", 2442343672, Nil, main, language);  }  // 13
+script_debug :: (main: *EngineDebugger, language: *ScriptLanguage) { sys_call("EngineDebugger", "script_debug", 2442343672, Nil, main, language);  }  // 13
 set_lines_left :: (main: *EngineDebugger, lines: int) { sys_call("EngineDebugger", "set_lines_left", 1286410249, Nil, main, lines);  }  // 14
 get_lines_left :: (main: *EngineDebugger) -> int { call_ret := cast(*int) sys_call("EngineDebugger", "get_lines_left", 3905245786, int, main); return call_ret.*; }  // 15
 set_depth :: (main: *EngineDebugger, depth: int) { sys_call("EngineDebugger", "set_depth", 1286410249, Nil, main, depth);  }  // 16
@@ -13546,7 +13546,7 @@ clear_breakpoints :: (main: *EngineDebugger) { sys_call("EngineDebugger", "clear
 
 set_background :: (main: *Environment, mode: Environment.BGMode) { sys_call("Environment", "set_background", 4071623990, Nil, main, mode);  }  // 0
 get_background :: (main: *Environment) -> Environment.BGMode { call_ret := cast(*Environment.BGMode) sys_call("Environment", "get_background", 1843210413, Environment.BGMode, main); return call_ret.*; }  // 1
-set_sky :: (main: *Environment, sky: Sky) { sys_call("Environment", "set_sky", 3336722921, Nil, main, sky);  }  // 2
+set_sky :: (main: *Environment, sky: *Sky) { sys_call("Environment", "set_sky", 3336722921, Nil, main, sky);  }  // 2
 get_sky :: (main: *Environment) -> *Sky { call_ret := cast(*Sky) sys_call("Environment", "get_sky", 1177136966, Sky, main); return call_ret; }  // 3
 set_sky_custom_fov :: (main: *Environment, scale: float) { sys_call("Environment", "set_sky_custom_fov", 373806689, Nil, main, scale);  }  // 4
 get_sky_custom_fov :: (main: *Environment) -> float { call_ret := cast(*float) sys_call("Environment", "get_sky_custom_fov", 1740695150, float, main); return call_ret.*; }  // 5
@@ -13664,7 +13664,7 @@ set_glow_hdr_luminance_cap :: (main: *Environment, amount: float) { sys_call("En
 get_glow_hdr_luminance_cap :: (main: *Environment) -> float { call_ret := cast(*float) sys_call("Environment", "get_glow_hdr_luminance_cap", 1740695150, float, main); return call_ret.*; }  // 117
 set_glow_map_strength :: (main: *Environment, strength: float) { sys_call("Environment", "set_glow_map_strength", 373806689, Nil, main, strength);  }  // 118
 get_glow_map_strength :: (main: *Environment) -> float { call_ret := cast(*float) sys_call("Environment", "get_glow_map_strength", 1740695150, float, main); return call_ret.*; }  // 119
-set_glow_map :: (main: *Environment, mode: Texture) { sys_call("Environment", "set_glow_map", 1790811099, Nil, main, mode);  }  // 120
+set_glow_map :: (main: *Environment, mode: *Texture) { sys_call("Environment", "set_glow_map", 1790811099, Nil, main, mode);  }  // 120
 get_glow_map :: (main: *Environment) -> *Texture { call_ret := cast(*Texture) sys_call("Environment", "get_glow_map", 4037048985, Texture, main); return call_ret; }  // 121
 set_fog_enabled :: (main: *Environment, enabled: bool) { sys_call("Environment", "set_fog_enabled", 2586408642, Nil, main, enabled);  }  // 122
 is_fog_enabled :: (main: *Environment) -> bool { call_ret := cast(*bool) sys_call("Environment", "is_fog_enabled", 36873697, bool, main); return call_ret.*; }  // 123
@@ -13726,7 +13726,7 @@ set_adjustment_contrast :: (main: *Environment, contrast: float) { sys_call("Env
 get_adjustment_contrast :: (main: *Environment) -> float { call_ret := cast(*float) sys_call("Environment", "get_adjustment_contrast", 1740695150, float, main); return call_ret.*; }  // 179
 set_adjustment_saturation :: (main: *Environment, saturation: float) { sys_call("Environment", "set_adjustment_saturation", 373806689, Nil, main, saturation);  }  // 180
 get_adjustment_saturation :: (main: *Environment) -> float { call_ret := cast(*float) sys_call("Environment", "get_adjustment_saturation", 1740695150, float, main); return call_ret.*; }  // 181
-set_adjustment_color_correction :: (main: *Environment, color_correction: Texture) { sys_call("Environment", "set_adjustment_color_correction", 1790811099, Nil, main, color_correction);  }  // 182
+set_adjustment_color_correction :: (main: *Environment, color_correction: *Texture) { sys_call("Environment", "set_adjustment_color_correction", 1790811099, Nil, main, color_correction);  }  // 182
 get_adjustment_color_correction :: (main: *Environment) -> *Texture { call_ret := cast(*Texture) sys_call("Environment", "get_adjustment_color_correction", 4037048985, Texture, main); return call_ret; }  // 183
 
 parse :: (main: *Expression, expression: string) -> Error { call_ret := cast(*Error) sys_call("Expression", "parse", 3069722906, Error, main, expression); return call_ret.*; }  // 0
@@ -13887,8 +13887,8 @@ deselect_all :: (main: *FileDialog) { sys_call("FileDialog", "deselect_all", 321
 invalidate :: (main: *FileDialog) { sys_call("FileDialog", "invalidate", 3218959716, Nil, main);  }  // 38
 
 navigate_to_path :: (main: *FileSystemDock, path: string) { sys_call("FileSystemDock", "navigate_to_path", 83702148, Nil, main, path);  }  // 0
-add_resource_tooltip_plugin :: (main: *FileSystemDock, plugin: EditorResourceTooltipPlugin) { sys_call("FileSystemDock", "add_resource_tooltip_plugin", 2258356838, Nil, main, plugin);  }  // 1
-remove_resource_tooltip_plugin :: (main: *FileSystemDock, plugin: EditorResourceTooltipPlugin) { sys_call("FileSystemDock", "remove_resource_tooltip_plugin", 2258356838, Nil, main, plugin);  }  // 2
+add_resource_tooltip_plugin :: (main: *FileSystemDock, plugin: *EditorResourceTooltipPlugin) { sys_call("FileSystemDock", "add_resource_tooltip_plugin", 2258356838, Nil, main, plugin);  }  // 1
+remove_resource_tooltip_plugin :: (main: *FileSystemDock, plugin: *EditorResourceTooltipPlugin) { sys_call("FileSystemDock", "remove_resource_tooltip_plugin", 2258356838, Nil, main, plugin);  }  // 2
 
 get_line_count :: (main: *FlowContainer) -> int { call_ret := cast(*int) sys_call("FlowContainer", "get_line_count", 3905245786, int, main); return call_ret.*; }  // 0
 set_alignment :: (main: *FlowContainer, alignment: FlowContainer.AlignmentMode) { sys_call("FlowContainer", "set_alignment", 575250951, Nil, main, alignment);  }  // 1
@@ -13910,14 +13910,14 @@ set_height_falloff :: (main: *FogMaterial, height_falloff: float) { sys_call("Fo
 get_height_falloff :: (main: *FogMaterial) -> float { call_ret := cast(*float) sys_call("FogMaterial", "get_height_falloff", 1740695150, float, main); return call_ret.*; }  // 7
 set_edge_fade :: (main: *FogMaterial, edge_fade: float) { sys_call("FogMaterial", "set_edge_fade", 373806689, Nil, main, edge_fade);  }  // 8
 get_edge_fade :: (main: *FogMaterial) -> float { call_ret := cast(*float) sys_call("FogMaterial", "get_edge_fade", 1740695150, float, main); return call_ret.*; }  // 9
-set_density_texture :: (main: *FogMaterial, density_texture: Texture3D) { sys_call("FogMaterial", "set_density_texture", 1188404210, Nil, main, density_texture);  }  // 10
+set_density_texture :: (main: *FogMaterial, density_texture: *Texture3D) { sys_call("FogMaterial", "set_density_texture", 1188404210, Nil, main, density_texture);  }  // 10
 get_density_texture :: (main: *FogMaterial) -> *Texture3D { call_ret := cast(*Texture3D) sys_call("FogMaterial", "get_density_texture", 373985333, Texture3D, main); return call_ret; }  // 11
 
 set_size :: (main: *FogVolume, size: Vector3) { sys_call("FogVolume", "set_size", 3460891852, Nil, main, size);  }  // 0
 get_size :: (main: *FogVolume) -> Vector3 { call_ret := cast(*Vector3) sys_call("FogVolume", "get_size", 3360562783, Vector3, main); return call_ret.*; }  // 1
 set_shape :: (main: *FogVolume, shape: RenderingServer.FogVolumeShape) { sys_call("FogVolume", "set_shape", 1416323362, Nil, main, shape);  }  // 2
 get_shape :: (main: *FogVolume) -> RenderingServer.FogVolumeShape { call_ret := cast(*RenderingServer.FogVolumeShape) sys_call("FogVolume", "get_shape", 3920334604, RenderingServer.FogVolumeShape, main); return call_ret.*; }  // 3
-set_material :: (main: *FogVolume, material: Material) { sys_call("FogVolume", "set_material", 2757459619, Nil, main, material);  }  // 4
+set_material :: (main: *FogVolume, material: *Material) { sys_call("FogVolume", "set_material", 2757459619, Nil, main, material);  }  // 4
 get_material :: (main: *FogVolume) -> *Material { call_ret := cast(*Material) sys_call("FogVolume", "get_material", 5934680, Material, main); return call_ret; }  // 5
 
 set_fallbacks :: (main: *Font, fallbacks: [] Font) { sys_call("Font", "set_fallbacks", 381264803, Nil, main, fallbacks);  }  // 0
@@ -14023,7 +14023,7 @@ get_cache_scale :: (main: *FontFile, cache_index: int, size: int) -> float { cal
 get_texture_count :: (main: *FontFile, cache_index: int, size: Vector2i) -> int { call_ret := cast(*int) sys_call("FontFile", "get_texture_count", 1987661582, int, main, cache_index, size); return call_ret.*; }  // 65
 clear_textures :: (main: *FontFile, cache_index: int, size: Vector2i) { sys_call("FontFile", "clear_textures", 2311374912, Nil, main, cache_index, size);  }  // 66
 remove_texture :: (main: *FontFile, cache_index: int, size: Vector2i, texture_index: int) { sys_call("FontFile", "remove_texture", 2328951467, Nil, main, cache_index, size, texture_index);  }  // 67
-set_texture_image :: (main: *FontFile, cache_index: int, size: Vector2i, texture_index: int, image: Image) { sys_call("FontFile", "set_texture_image", 4157974066, Nil, main, cache_index, size, texture_index, image);  }  // 68
+set_texture_image :: (main: *FontFile, cache_index: int, size: Vector2i, texture_index: int, image: *Image) { sys_call("FontFile", "set_texture_image", 4157974066, Nil, main, cache_index, size, texture_index, image);  }  // 68
 get_texture_image :: (main: *FontFile, cache_index: int, size: Vector2i, texture_index: int) -> *Image { call_ret := cast(*Image) sys_call("FontFile", "get_texture_image", 3878418953, Image, main, cache_index, size, texture_index); return call_ret; }  // 69
 set_texture_offsets :: (main: *FontFile, cache_index: int, size: Vector2i, texture_index: int, offset: PackedInt32Array) { sys_call("FontFile", "set_texture_offsets", 2849993437, Nil, main, cache_index, size, texture_index, offset);  }  // 70
 get_texture_offsets :: (main: *FontFile, cache_index: int, size: Vector2i, texture_index: int) -> PackedInt32Array { call_ret := cast(*PackedInt32Array) sys_call("FontFile", "get_texture_offsets", 3703444828, PackedInt32Array, main, cache_index, size, texture_index); return call_ret.*; }  // 71
@@ -14060,7 +14060,7 @@ get_opentype_feature_overrides :: (main: *FontFile) -> Dictionary { call_ret := 
 get_glyph_index :: (main: *FontFile, size: int, char: int, variation_selector: int) -> int { call_ret := cast(*int) sys_call("FontFile", "get_glyph_index", 864943070, int, main, size, char, variation_selector); return call_ret.*; }  // 102
 get_char_from_glyph_index :: (main: *FontFile, size: int, glyph_index: int) -> int { call_ret := cast(*int) sys_call("FontFile", "get_char_from_glyph_index", 3175239445, int, main, size, glyph_index); return call_ret.*; }  // 103
 
-set_base_font :: (main: *FontVariation, font: Font) { sys_call("FontVariation", "set_base_font", 1262170328, Nil, main, font);  }  // 0
+set_base_font :: (main: *FontVariation, font: *Font) { sys_call("FontVariation", "set_base_font", 1262170328, Nil, main, font);  }  // 0
 get_base_font :: (main: *FontVariation) -> *Font { call_ret := cast(*Font) sys_call("FontVariation", "get_base_font", 3229501585, Font, main); return call_ret; }  // 1
 set_variation_opentype :: (main: *FontVariation, coords: Dictionary) { sys_call("FontVariation", "set_variation_opentype", 4155329257, Nil, main, coords);  }  // 2
 get_variation_opentype :: (main: *FontVariation) -> Dictionary { call_ret := cast(*Dictionary) sys_call("FontVariation", "get_variation_opentype", 3102165223, Dictionary, main); return call_ret.*; }  // 3
@@ -14128,7 +14128,7 @@ set_loop :: (main: *GLTFAnimation, loop: bool) { sys_call("GLTFAnimation", "set_
 get_additional_data :: (main: *GLTFAnimation, extension_name: string) -> Variant { call_ret := cast(*Variant) sys_call("GLTFAnimation", "get_additional_data", 2138907829, Variant, main, extension_name); return call_ret.*; }  // 4
 set_additional_data :: (main: *GLTFAnimation, extension_name: string, additional_data: Variant) { sys_call("GLTFAnimation", "set_additional_data", 3776071444, Nil, main, extension_name, additional_data);  }  // 5
 
-load_buffer_view_data :: (main: *GLTFBufferView, state: GLTFState) -> PackedByteArray { call_ret := cast(*PackedByteArray) sys_call("GLTFBufferView", "load_buffer_view_data", 3945446907, PackedByteArray, main, state); return call_ret.*; }  // 0
+load_buffer_view_data :: (main: *GLTFBufferView, state: *GLTFState) -> PackedByteArray { call_ret := cast(*PackedByteArray) sys_call("GLTFBufferView", "load_buffer_view_data", 3945446907, PackedByteArray, main, state); return call_ret.*; }  // 0
 get_buffer :: (main: *GLTFBufferView) -> int { call_ret := cast(*int) sys_call("GLTFBufferView", "get_buffer", 3905245786, int, main); return call_ret.*; }  // 1
 set_buffer :: (main: *GLTFBufferView, buffer: int) { sys_call("GLTFBufferView", "set_buffer", 1286410249, Nil, main, buffer);  }  // 2
 get_byte_offset :: (main: *GLTFBufferView) -> int { call_ret := cast(*int) sys_call("GLTFBufferView", "get_byte_offset", 3905245786, int, main); return call_ret.*; }  // 3
@@ -14142,7 +14142,7 @@ set_indices :: (main: *GLTFBufferView, indices: bool) { sys_call("GLTFBufferView
 get_vertex_attributes :: (main: *GLTFBufferView) -> bool { call_ret := cast(*bool) sys_call("GLTFBufferView", "get_vertex_attributes", 36873697, bool, main); return call_ret.*; }  // 11
 set_vertex_attributes :: (main: *GLTFBufferView, is_attributes: bool) { sys_call("GLTFBufferView", "set_vertex_attributes", 2586408642, Nil, main, is_attributes);  }  // 12
 
-from_node :: (main: *GLTFCamera, camera_node: Camera3D) -> *GLTFCamera { call_ret := cast(*GLTFCamera) sys_call("GLTFCamera", "from_node", 237784, GLTFCamera, main, camera_node); return call_ret; }  // 0
+from_node :: (main: *GLTFCamera, camera_node: *Camera3D) -> *GLTFCamera { call_ret := cast(*GLTFCamera) sys_call("GLTFCamera", "from_node", 237784, GLTFCamera, main, camera_node); return call_ret; }  // 0
 to_node :: (main: *GLTFCamera) -> *Camera3D { call_ret := cast(*Camera3D) sys_call("GLTFCamera", "to_node", 2285090890, Camera3D, main); return call_ret; }  // 1
 from_dictionary :: (main: *GLTFCamera, dictionary: Dictionary) -> *GLTFCamera { call_ret := cast(*GLTFCamera) sys_call("GLTFCamera", "from_dictionary", 2495512509, GLTFCamera, main, dictionary); return call_ret; }  // 2
 to_dictionary :: (main: *GLTFCamera) -> Dictionary { call_ret := cast(*Dictionary) sys_call("GLTFCamera", "to_dictionary", 3102165223, Dictionary, main); return call_ret.*; }  // 3
@@ -14163,21 +14163,21 @@ set_lossy_quality :: (main: *GLTFDocument, lossy_quality: float) { sys_call("GLT
 get_lossy_quality :: (main: *GLTFDocument) -> float { call_ret := cast(*float) sys_call("GLTFDocument", "get_lossy_quality", 1740695150, float, main); return call_ret.*; }  // 3
 set_root_node_mode :: (main: *GLTFDocument, root_node_mode: GLTFDocument.RootNodeMode) { sys_call("GLTFDocument", "set_root_node_mode", 463633402, Nil, main, root_node_mode);  }  // 4
 get_root_node_mode :: (main: *GLTFDocument) -> GLTFDocument.RootNodeMode { call_ret := cast(*GLTFDocument.RootNodeMode) sys_call("GLTFDocument", "get_root_node_mode", 948057992, GLTFDocument.RootNodeMode, main); return call_ret.*; }  // 5
-append_from_file :: (main: *GLTFDocument, path: string, state: GLTFState) -> Error { call_ret := cast(*Error) sys_call("GLTFDocument", "append_from_file", 866380864, Error, main, path, state); return call_ret.*; }  // 6
-append_from_buffer :: (main: *GLTFDocument, bytes: PackedByteArray, base_path: string, state: GLTFState) -> Error { call_ret := cast(*Error) sys_call("GLTFDocument", "append_from_buffer", 1616081266, Error, main, bytes, base_path, state); return call_ret.*; }  // 7
-append_from_scene :: (main: *GLTFDocument, node: Node, state: GLTFState) -> Error { call_ret := cast(*Error) sys_call("GLTFDocument", "append_from_scene", 1622574258, Error, main, node, state); return call_ret.*; }  // 8
-generate_scene :: (main: *GLTFDocument, state: GLTFState) -> *Node { call_ret := cast(*Node) sys_call("GLTFDocument", "generate_scene", 596118388, Node, main, state); return call_ret; }  // 9
-generate_buffer :: (main: *GLTFDocument, state: GLTFState) -> PackedByteArray { call_ret := cast(*PackedByteArray) sys_call("GLTFDocument", "generate_buffer", 741783455, PackedByteArray, main, state); return call_ret.*; }  // 10
-write_to_filesystem :: (main: *GLTFDocument, state: GLTFState, path: string) -> Error { call_ret := cast(*Error) sys_call("GLTFDocument", "write_to_filesystem", 1784551478, Error, main, state, path); return call_ret.*; }  // 11
-import_object_model_property :: (main: *GLTFDocument, state: GLTFState, json_pointer: string) -> *GLTFObjectModelProperty { call_ret := cast(*GLTFObjectModelProperty) sys_call("GLTFDocument", "import_object_model_property", 1206708632, GLTFObjectModelProperty, main, state, json_pointer); return call_ret; }  // 12
-export_object_model_property :: (main: *GLTFDocument, state: GLTFState, node_path: string, godot_node: Node, gltf_node_index: int) -> *GLTFObjectModelProperty { call_ret := cast(*GLTFObjectModelProperty) sys_call("GLTFDocument", "export_object_model_property", 314209806, GLTFObjectModelProperty, main, state, node_path, godot_node, gltf_node_index); return call_ret; }  // 13
-register_gltf_document_extension :: (main: *GLTFDocument, extension: GLTFDocumentExtension) { sys_call("GLTFDocument", "register_gltf_document_extension", 3752678331, Nil, main, extension);  }  // 14
-unregister_gltf_document_extension :: (main: *GLTFDocument, extension: GLTFDocumentExtension) { sys_call("GLTFDocument", "unregister_gltf_document_extension", 2684415758, Nil, main, extension);  }  // 15
+append_from_file :: (main: *GLTFDocument, path: string, state: *GLTFState) -> Error { call_ret := cast(*Error) sys_call("GLTFDocument", "append_from_file", 866380864, Error, main, path, state); return call_ret.*; }  // 6
+append_from_buffer :: (main: *GLTFDocument, bytes: PackedByteArray, base_path: string, state: *GLTFState) -> Error { call_ret := cast(*Error) sys_call("GLTFDocument", "append_from_buffer", 1616081266, Error, main, bytes, base_path, state); return call_ret.*; }  // 7
+append_from_scene :: (main: *GLTFDocument, node: *Node, state: *GLTFState) -> Error { call_ret := cast(*Error) sys_call("GLTFDocument", "append_from_scene", 1622574258, Error, main, node, state); return call_ret.*; }  // 8
+generate_scene :: (main: *GLTFDocument, state: *GLTFState) -> *Node { call_ret := cast(*Node) sys_call("GLTFDocument", "generate_scene", 596118388, Node, main, state); return call_ret; }  // 9
+generate_buffer :: (main: *GLTFDocument, state: *GLTFState) -> PackedByteArray { call_ret := cast(*PackedByteArray) sys_call("GLTFDocument", "generate_buffer", 741783455, PackedByteArray, main, state); return call_ret.*; }  // 10
+write_to_filesystem :: (main: *GLTFDocument, state: *GLTFState, path: string) -> Error { call_ret := cast(*Error) sys_call("GLTFDocument", "write_to_filesystem", 1784551478, Error, main, state, path); return call_ret.*; }  // 11
+import_object_model_property :: (main: *GLTFDocument, state: *GLTFState, json_pointer: string) -> *GLTFObjectModelProperty { call_ret := cast(*GLTFObjectModelProperty) sys_call("GLTFDocument", "import_object_model_property", 1206708632, GLTFObjectModelProperty, main, state, json_pointer); return call_ret; }  // 12
+export_object_model_property :: (main: *GLTFDocument, state: *GLTFState, node_path: string, godot_node: *Node, gltf_node_index: int) -> *GLTFObjectModelProperty { call_ret := cast(*GLTFObjectModelProperty) sys_call("GLTFDocument", "export_object_model_property", 314209806, GLTFObjectModelProperty, main, state, node_path, godot_node, gltf_node_index); return call_ret; }  // 13
+register_gltf_document_extension :: (main: *GLTFDocument, extension: *GLTFDocumentExtension) { sys_call("GLTFDocument", "register_gltf_document_extension", 3752678331, Nil, main, extension);  }  // 14
+unregister_gltf_document_extension :: (main: *GLTFDocument, extension: *GLTFDocumentExtension) { sys_call("GLTFDocument", "unregister_gltf_document_extension", 2684415758, Nil, main, extension);  }  // 15
 get_supported_gltf_extensions :: (main: *GLTFDocument) -> PackedStringArray { call_ret := cast(*PackedStringArray) sys_call("GLTFDocument", "get_supported_gltf_extensions", 2981934095, PackedStringArray, main); return call_ret.*; }  // 16
 
 
 
-from_node :: (main: *GLTFLight, light_node: Light3D) -> *GLTFLight { call_ret := cast(*GLTFLight) sys_call("GLTFLight", "from_node", 3907677874, GLTFLight, main, light_node); return call_ret; }  // 0
+from_node :: (main: *GLTFLight, light_node: *Light3D) -> *GLTFLight { call_ret := cast(*GLTFLight) sys_call("GLTFLight", "from_node", 3907677874, GLTFLight, main, light_node); return call_ret; }  // 0
 to_node :: (main: *GLTFLight) -> *Light3D { call_ret := cast(*Light3D) sys_call("GLTFLight", "to_node", 2040811672, Light3D, main); return call_ret; }  // 1
 from_dictionary :: (main: *GLTFLight, dictionary: Dictionary) -> *GLTFLight { call_ret := cast(*GLTFLight) sys_call("GLTFLight", "from_dictionary", 4057087208, GLTFLight, main, dictionary); return call_ret; }  // 2
 to_dictionary :: (main: *GLTFLight) -> Dictionary { call_ret := cast(*Dictionary) sys_call("GLTFLight", "to_dictionary", 3102165223, Dictionary, main); return call_ret.*; }  // 3
@@ -14199,7 +14199,7 @@ set_additional_data :: (main: *GLTFLight, extension_name: string, additional_dat
 get_original_name :: (main: *GLTFMesh) -> gstring { call_ret := cast(*gstring) sys_call("GLTFMesh", "get_original_name", 2841200299, gstring, main); return call_ret.*; }  // 0
 set_original_name :: (main: *GLTFMesh, original_name: string) { sys_call("GLTFMesh", "set_original_name", 83702148, Nil, main, original_name);  }  // 1
 get_mesh :: (main: *GLTFMesh) -> *ImporterMesh { call_ret := cast(*ImporterMesh) sys_call("GLTFMesh", "get_mesh", 3754628756, ImporterMesh, main); return call_ret; }  // 2
-set_mesh :: (main: *GLTFMesh, mesh: ImporterMesh) { sys_call("GLTFMesh", "set_mesh", 2255166972, Nil, main, mesh);  }  // 3
+set_mesh :: (main: *GLTFMesh, mesh: *ImporterMesh) { sys_call("GLTFMesh", "set_mesh", 2255166972, Nil, main, mesh);  }  // 3
 get_blend_weights :: (main: *GLTFMesh) -> PackedFloat32Array { call_ret := cast(*PackedFloat32Array) sys_call("GLTFMesh", "get_blend_weights", 2445143706, PackedFloat32Array, main); return call_ret.*; }  // 4
 set_blend_weights :: (main: *GLTFMesh, blend_weights: PackedFloat32Array) { sys_call("GLTFMesh", "set_blend_weights", 2899603908, Nil, main, blend_weights);  }  // 5
 get_instance_materials :: (main: *GLTFMesh) -> [] Material { call_ret := cast(*[] Material) sys_call("GLTFMesh", "get_instance_materials", 2915620761, [] Material, main); return call_ret.*; }  // 6
@@ -14236,15 +14236,15 @@ get_light :: (main: *GLTFNode) -> int { call_ret := cast(*int) sys_call("GLTFNod
 set_light :: (main: *GLTFNode, light: int) { sys_call("GLTFNode", "set_light", 1286410249, Nil, main, light);  }  // 26
 get_additional_data :: (main: *GLTFNode, extension_name: string) -> Variant { call_ret := cast(*Variant) sys_call("GLTFNode", "get_additional_data", 2138907829, Variant, main, extension_name); return call_ret.*; }  // 27
 set_additional_data :: (main: *GLTFNode, extension_name: string, additional_data: Variant) { sys_call("GLTFNode", "set_additional_data", 3776071444, Nil, main, extension_name, additional_data);  }  // 28
-get_scene_node_path :: (main: *GLTFNode, gltf_state: GLTFState) -> NodePath { call_ret := cast(*NodePath) sys_call("GLTFNode", "get_scene_node_path", 573359477, NodePath, main, gltf_state); return call_ret.*; }  // 29
+get_scene_node_path :: (main: *GLTFNode, gltf_state: *GLTFState) -> NodePath { call_ret := cast(*NodePath) sys_call("GLTFNode", "get_scene_node_path", 573359477, NodePath, main, gltf_state); return call_ret.*; }  // 29
 
 append_node_path :: (main: *GLTFObjectModelProperty, node_path: string) { sys_call("GLTFObjectModelProperty", "append_node_path", 1348162250, Nil, main, node_path);  }  // 0
 append_path_to_property :: (main: *GLTFObjectModelProperty, node_path: string, prop_name: string) { sys_call("GLTFObjectModelProperty", "append_path_to_property", 1331931644, Nil, main, node_path, prop_name);  }  // 1
 get_accessor_type :: (main: *GLTFObjectModelProperty) -> GLTFAccessor.GLTFAccessorType { call_ret := cast(*GLTFAccessor.GLTFAccessorType) sys_call("GLTFObjectModelProperty", "get_accessor_type", 1998183368, GLTFAccessor.GLTFAccessorType, main); return call_ret.*; }  // 2
 get_gltf_to_godot_expression :: (main: *GLTFObjectModelProperty) -> *Expression { call_ret := cast(*Expression) sys_call("GLTFObjectModelProperty", "get_gltf_to_godot_expression", 2240072449, Expression, main); return call_ret; }  // 3
-set_gltf_to_godot_expression :: (main: *GLTFObjectModelProperty, gltf_to_godot_expr: Expression) { sys_call("GLTFObjectModelProperty", "set_gltf_to_godot_expression", 1815845073, Nil, main, gltf_to_godot_expr);  }  // 4
+set_gltf_to_godot_expression :: (main: *GLTFObjectModelProperty, gltf_to_godot_expr: *Expression) { sys_call("GLTFObjectModelProperty", "set_gltf_to_godot_expression", 1815845073, Nil, main, gltf_to_godot_expr);  }  // 4
 get_godot_to_gltf_expression :: (main: *GLTFObjectModelProperty) -> *Expression { call_ret := cast(*Expression) sys_call("GLTFObjectModelProperty", "get_godot_to_gltf_expression", 2240072449, Expression, main); return call_ret; }  // 5
-set_godot_to_gltf_expression :: (main: *GLTFObjectModelProperty, godot_to_gltf_expr: Expression) { sys_call("GLTFObjectModelProperty", "set_godot_to_gltf_expression", 1815845073, Nil, main, godot_to_gltf_expr);  }  // 6
+set_godot_to_gltf_expression :: (main: *GLTFObjectModelProperty, godot_to_gltf_expr: *Expression) { sys_call("GLTFObjectModelProperty", "set_godot_to_gltf_expression", 1815845073, Nil, main, godot_to_gltf_expr);  }  // 6
 get_node_paths :: (main: *GLTFObjectModelProperty) -> [] NodePath { call_ret := cast(*[] NodePath) sys_call("GLTFObjectModelProperty", "get_node_paths", 3995934104, [] NodePath, main); return call_ret.*; }  // 7
 has_node_paths :: (main: *GLTFObjectModelProperty) -> bool { call_ret := cast(*bool) sys_call("GLTFObjectModelProperty", "has_node_paths", 36873697, bool, main); return call_ret.*; }  // 8
 set_node_paths :: (main: *GLTFObjectModelProperty, node_paths: [] NodePath) { sys_call("GLTFObjectModelProperty", "set_node_paths", 381264803, Nil, main, node_paths);  }  // 9
@@ -14257,7 +14257,7 @@ get_variant_type :: (main: *GLTFObjectModelProperty) -> Variant_Type { call_ret 
 set_variant_type :: (main: *GLTFObjectModelProperty, variant_type: Variant_Type) { sys_call("GLTFObjectModelProperty", "set_variant_type", 2887708385, Nil, main, variant_type);  }  // 16
 set_types :: (main: *GLTFObjectModelProperty, variant_type: Variant_Type, obj_model_type: GLTFObjectModelProperty.GLTFObjectModelType) { sys_call("GLTFObjectModelProperty", "set_types", 4150728237, Nil, main, variant_type, obj_model_type);  }  // 17
 
-from_node :: (main: *GLTFPhysicsBody, body_node: CollisionObject3D) -> *GLTFPhysicsBody { call_ret := cast(*GLTFPhysicsBody) sys_call("GLTFPhysicsBody", "from_node", 420544174, GLTFPhysicsBody, main, body_node); return call_ret; }  // 0
+from_node :: (main: *GLTFPhysicsBody, body_node: *CollisionObject3D) -> *GLTFPhysicsBody { call_ret := cast(*GLTFPhysicsBody) sys_call("GLTFPhysicsBody", "from_node", 420544174, GLTFPhysicsBody, main, body_node); return call_ret; }  // 0
 to_node :: (main: *GLTFPhysicsBody) -> *CollisionObject3D { call_ret := cast(*CollisionObject3D) sys_call("GLTFPhysicsBody", "to_node", 3224013656, CollisionObject3D, main); return call_ret; }  // 1
 from_dictionary :: (main: *GLTFPhysicsBody, dictionary: Dictionary) -> *GLTFPhysicsBody { call_ret := cast(*GLTFPhysicsBody) sys_call("GLTFPhysicsBody", "from_dictionary", 1177544336, GLTFPhysicsBody, main, dictionary); return call_ret; }  // 2
 to_dictionary :: (main: *GLTFPhysicsBody) -> Dictionary { call_ret := cast(*Dictionary) sys_call("GLTFPhysicsBody", "to_dictionary", 3102165223, Dictionary, main); return call_ret.*; }  // 3
@@ -14278,9 +14278,9 @@ set_inertia_orientation :: (main: *GLTFPhysicsBody, inertia_orientation: Quatern
 get_inertia_tensor :: (main: *GLTFPhysicsBody) -> Basis { call_ret := cast(*Basis) sys_call("GLTFPhysicsBody", "get_inertia_tensor", 2716978435, Basis, main); return call_ret.*; }  // 18
 set_inertia_tensor :: (main: *GLTFPhysicsBody, inertia_tensor: Basis) { sys_call("GLTFPhysicsBody", "set_inertia_tensor", 1055510324, Nil, main, inertia_tensor);  }  // 19
 
-from_node :: (main: *GLTFPhysicsShape, shape_node: CollisionShape3D) -> *GLTFPhysicsShape { call_ret := cast(*GLTFPhysicsShape) sys_call("GLTFPhysicsShape", "from_node", 3613751275, GLTFPhysicsShape, main, shape_node); return call_ret; }  // 0
+from_node :: (main: *GLTFPhysicsShape, shape_node: *CollisionShape3D) -> *GLTFPhysicsShape { call_ret := cast(*GLTFPhysicsShape) sys_call("GLTFPhysicsShape", "from_node", 3613751275, GLTFPhysicsShape, main, shape_node); return call_ret; }  // 0
 to_node :: (main: *GLTFPhysicsShape) -> *CollisionShape3D { call_ret := cast(*CollisionShape3D) sys_call("GLTFPhysicsShape", "to_node", 563689933, CollisionShape3D, main); return call_ret; }  // 1
-from_resource :: (main: *GLTFPhysicsShape, shape_resource: Shape3D) -> *GLTFPhysicsShape { call_ret := cast(*GLTFPhysicsShape) sys_call("GLTFPhysicsShape", "from_resource", 3845569786, GLTFPhysicsShape, main, shape_resource); return call_ret; }  // 2
+from_resource :: (main: *GLTFPhysicsShape, shape_resource: *Shape3D) -> *GLTFPhysicsShape { call_ret := cast(*GLTFPhysicsShape) sys_call("GLTFPhysicsShape", "from_resource", 3845569786, GLTFPhysicsShape, main, shape_resource); return call_ret; }  // 2
 to_resource :: (main: *GLTFPhysicsShape) -> *Shape3D { call_ret := cast(*Shape3D) sys_call("GLTFPhysicsShape", "to_resource", 1913542110, Shape3D, main); return call_ret; }  // 3
 from_dictionary :: (main: *GLTFPhysicsShape, dictionary: Dictionary) -> *GLTFPhysicsShape { call_ret := cast(*GLTFPhysicsShape) sys_call("GLTFPhysicsShape", "from_dictionary", 2390691823, GLTFPhysicsShape, main, dictionary); return call_ret; }  // 4
 to_dictionary :: (main: *GLTFPhysicsShape) -> Dictionary { call_ret := cast(*Dictionary) sys_call("GLTFPhysicsShape", "to_dictionary", 3102165223, Dictionary, main); return call_ret.*; }  // 5
@@ -14297,7 +14297,7 @@ set_is_trigger :: (main: *GLTFPhysicsShape, is_trigger: bool) { sys_call("GLTFPh
 get_mesh_index :: (main: *GLTFPhysicsShape) -> int { call_ret := cast(*int) sys_call("GLTFPhysicsShape", "get_mesh_index", 3905245786, int, main); return call_ret.*; }  // 16
 set_mesh_index :: (main: *GLTFPhysicsShape, mesh_index: int) { sys_call("GLTFPhysicsShape", "set_mesh_index", 1286410249, Nil, main, mesh_index);  }  // 17
 get_importer_mesh :: (main: *GLTFPhysicsShape) -> *ImporterMesh { call_ret := cast(*ImporterMesh) sys_call("GLTFPhysicsShape", "get_importer_mesh", 3161779525, ImporterMesh, main); return call_ret; }  // 18
-set_importer_mesh :: (main: *GLTFPhysicsShape, importer_mesh: ImporterMesh) { sys_call("GLTFPhysicsShape", "set_importer_mesh", 2255166972, Nil, main, importer_mesh);  }  // 19
+set_importer_mesh :: (main: *GLTFPhysicsShape, importer_mesh: *ImporterMesh) { sys_call("GLTFPhysicsShape", "set_importer_mesh", 2255166972, Nil, main, importer_mesh);  }  // 19
 
 get_joints :: (main: *GLTFSkeleton) -> PackedInt32Array { call_ret := cast(*PackedInt32Array) sys_call("GLTFSkeleton", "get_joints", 969006518, PackedInt32Array, main); return call_ret.*; }  // 0
 set_joints :: (main: *GLTFSkeleton, joints: PackedInt32Array) { sys_call("GLTFSkeleton", "set_joints", 3614634198, Nil, main, joints);  }  // 1
@@ -14330,10 +14330,10 @@ set_joint_i_to_bone_i :: (main: *GLTFSkin, joint_i_to_bone_i: Dictionary) { sys_
 get_joint_i_to_name :: (main: *GLTFSkin) -> Dictionary { call_ret := cast(*Dictionary) sys_call("GLTFSkin", "get_joint_i_to_name", 2382534195, Dictionary, main); return call_ret.*; }  // 16
 set_joint_i_to_name :: (main: *GLTFSkin, joint_i_to_name: Dictionary) { sys_call("GLTFSkin", "set_joint_i_to_name", 4155329257, Nil, main, joint_i_to_name);  }  // 17
 get_godot_skin :: (main: *GLTFSkin) -> *Skin { call_ret := cast(*Skin) sys_call("GLTFSkin", "get_godot_skin", 1032037385, Skin, main); return call_ret; }  // 18
-set_godot_skin :: (main: *GLTFSkin, godot_skin: Skin) { sys_call("GLTFSkin", "set_godot_skin", 3971435618, Nil, main, godot_skin);  }  // 19
+set_godot_skin :: (main: *GLTFSkin, godot_skin: *Skin) { sys_call("GLTFSkin", "set_godot_skin", 3971435618, Nil, main, godot_skin);  }  // 19
 
 get_diffuse_img :: (main: *GLTFSpecGloss) -> *Image { call_ret := cast(*Image) sys_call("GLTFSpecGloss", "get_diffuse_img", 564927088, Image, main); return call_ret; }  // 0
-set_diffuse_img :: (main: *GLTFSpecGloss, diffuse_img: Image) { sys_call("GLTFSpecGloss", "set_diffuse_img", 532598488, Nil, main, diffuse_img);  }  // 1
+set_diffuse_img :: (main: *GLTFSpecGloss, diffuse_img: *Image) { sys_call("GLTFSpecGloss", "set_diffuse_img", 532598488, Nil, main, diffuse_img);  }  // 1
 get_diffuse_factor :: (main: *GLTFSpecGloss) -> Color { call_ret := cast(*Color) sys_call("GLTFSpecGloss", "get_diffuse_factor", 3200896285, Color, main); return call_ret.*; }  // 2
 set_diffuse_factor :: (main: *GLTFSpecGloss, diffuse_factor: Color) { sys_call("GLTFSpecGloss", "set_diffuse_factor", 2920490490, Nil, main, diffuse_factor);  }  // 3
 get_gloss_factor :: (main: *GLTFSpecGloss) -> float { call_ret := cast(*float) sys_call("GLTFSpecGloss", "get_gloss_factor", 191475506, float, main); return call_ret.*; }  // 4
@@ -14341,11 +14341,11 @@ set_gloss_factor :: (main: *GLTFSpecGloss, gloss_factor: float) { sys_call("GLTF
 get_specular_factor :: (main: *GLTFSpecGloss) -> Color { call_ret := cast(*Color) sys_call("GLTFSpecGloss", "get_specular_factor", 3200896285, Color, main); return call_ret.*; }  // 6
 set_specular_factor :: (main: *GLTFSpecGloss, specular_factor: Color) { sys_call("GLTFSpecGloss", "set_specular_factor", 2920490490, Nil, main, specular_factor);  }  // 7
 get_spec_gloss_img :: (main: *GLTFSpecGloss) -> *Image { call_ret := cast(*Image) sys_call("GLTFSpecGloss", "get_spec_gloss_img", 564927088, Image, main); return call_ret; }  // 8
-set_spec_gloss_img :: (main: *GLTFSpecGloss, spec_gloss_img: Image) { sys_call("GLTFSpecGloss", "set_spec_gloss_img", 532598488, Nil, main, spec_gloss_img);  }  // 9
+set_spec_gloss_img :: (main: *GLTFSpecGloss, spec_gloss_img: *Image) { sys_call("GLTFSpecGloss", "set_spec_gloss_img", 532598488, Nil, main, spec_gloss_img);  }  // 9
 
 add_used_extension :: (main: *GLTFState, extension_name: string, required: bool) { sys_call("GLTFState", "add_used_extension", 2678287736, Nil, main, extension_name, required);  }  // 0
 append_data_to_buffers :: (main: *GLTFState, data: PackedByteArray, deduplication: bool) -> int { call_ret := cast(*int) sys_call("GLTFState", "append_data_to_buffers", 1460416665, int, main, data, deduplication); return call_ret.*; }  // 1
-append_gltf_node :: (main: *GLTFState, gltf_node: GLTFNode, godot_scene_node: Node, parent_node_index: int) -> int { call_ret := cast(*int) sys_call("GLTFState", "append_gltf_node", 3562288551, int, main, gltf_node, godot_scene_node, parent_node_index); return call_ret.*; }  // 2
+append_gltf_node :: (main: *GLTFState, gltf_node: *GLTFNode, godot_scene_node: *Node, parent_node_index: int) -> int { call_ret := cast(*int) sys_call("GLTFState", "append_gltf_node", 3562288551, int, main, gltf_node, godot_scene_node, parent_node_index); return call_ret.*; }  // 2
 get_json :: (main: *GLTFState) -> Dictionary { call_ret := cast(*Dictionary) sys_call("GLTFState", "get_json", 2382534195, Dictionary, main); return call_ret.*; }  // 3
 set_json :: (main: *GLTFState, json: Dictionary) { sys_call("GLTFState", "set_json", 4155329257, Nil, main, json);  }  // 4
 get_major_version :: (main: *GLTFState) -> int { call_ret := cast(*int) sys_call("GLTFState", "get_major_version", 2455072627, int, main); return call_ret.*; }  // 5
@@ -14405,7 +14405,7 @@ set_import_as_skeleton_bones :: (main: *GLTFState, import_as_skeleton_bones: boo
 get_animations :: (main: *GLTFState) -> [] GLTFAnimation { call_ret := cast(*[] GLTFAnimation) sys_call("GLTFState", "get_animations", 2915620761, [] GLTFAnimation, main); return call_ret.*; }  // 59
 set_animations :: (main: *GLTFState, animations: [] GLTFAnimation) { sys_call("GLTFState", "set_animations", 381264803, Nil, main, animations);  }  // 60
 get_scene_node :: (main: *GLTFState, idx: int) -> *Node { call_ret := cast(*Node) sys_call("GLTFState", "get_scene_node", 4253421667, Node, main, idx); return call_ret; }  // 61
-get_node_index :: (main: *GLTFState, scene_node: Node) -> int { call_ret := cast(*int) sys_call("GLTFState", "get_node_index", 1205807060, int, main, scene_node); return call_ret.*; }  // 62
+get_node_index :: (main: *GLTFState, scene_node: *Node) -> int { call_ret := cast(*int) sys_call("GLTFState", "get_node_index", 1205807060, int, main, scene_node); return call_ret.*; }  // 62
 get_additional_data :: (main: *GLTFState, extension_name: string) -> Variant { call_ret := cast(*Variant) sys_call("GLTFState", "get_additional_data", 2138907829, Variant, main, extension_name); return call_ret.*; }  // 63
 set_additional_data :: (main: *GLTFState, extension_name: string, additional_data: Variant) { sys_call("GLTFState", "set_additional_data", 3776071444, Nil, main, extension_name, additional_data);  }  // 64
 get_handle_binary_image :: (main: *GLTFState) -> int { call_ret := cast(*int) sys_call("GLTFState", "get_handle_binary_image", 2455072627, int, main); return call_ret.*; }  // 65
@@ -14439,7 +14439,7 @@ set_use_local_coordinates :: (main: *GPUParticles2D, enable: bool) { sys_call("G
 set_fixed_fps :: (main: *GPUParticles2D, fps: int) { sys_call("GPUParticles2D", "set_fixed_fps", 1286410249, Nil, main, fps);  }  // 9
 set_fractional_delta :: (main: *GPUParticles2D, enable: bool) { sys_call("GPUParticles2D", "set_fractional_delta", 2586408642, Nil, main, enable);  }  // 10
 set_interpolate :: (main: *GPUParticles2D, enable: bool) { sys_call("GPUParticles2D", "set_interpolate", 2586408642, Nil, main, enable);  }  // 11
-set_process_material :: (main: *GPUParticles2D, material: Material) { sys_call("GPUParticles2D", "set_process_material", 2757459619, Nil, main, material);  }  // 12
+set_process_material :: (main: *GPUParticles2D, material: *Material) { sys_call("GPUParticles2D", "set_process_material", 2757459619, Nil, main, material);  }  // 12
 set_speed_scale :: (main: *GPUParticles2D, scale: float) { sys_call("GPUParticles2D", "set_speed_scale", 373806689, Nil, main, scale);  }  // 13
 set_collision_base_size :: (main: *GPUParticles2D, size: float) { sys_call("GPUParticles2D", "set_collision_base_size", 373806689, Nil, main, size);  }  // 14
 set_interp_to_end :: (main: *GPUParticles2D, interp: float) { sys_call("GPUParticles2D", "set_interp_to_end", 373806689, Nil, main, interp);  }  // 15
@@ -14462,7 +14462,7 @@ get_collision_base_size :: (main: *GPUParticles2D) -> float { call_ret := cast(*
 get_interp_to_end :: (main: *GPUParticles2D) -> float { call_ret := cast(*float) sys_call("GPUParticles2D", "get_interp_to_end", 1740695150, float, main); return call_ret.*; }  // 32
 set_draw_order :: (main: *GPUParticles2D, order: GPUParticles2D.DrawOrder) { sys_call("GPUParticles2D", "set_draw_order", 1939677959, Nil, main, order);  }  // 33
 get_draw_order :: (main: *GPUParticles2D) -> GPUParticles2D.DrawOrder { call_ret := cast(*GPUParticles2D.DrawOrder) sys_call("GPUParticles2D", "get_draw_order", 941479095, GPUParticles2D.DrawOrder, main); return call_ret.*; }  // 34
-set_texture :: (main: *GPUParticles2D, texture: Texture2D) { sys_call("GPUParticles2D", "set_texture", 4051416890, Nil, main, texture);  }  // 35
+set_texture :: (main: *GPUParticles2D, texture: *Texture2D) { sys_call("GPUParticles2D", "set_texture", 4051416890, Nil, main, texture);  }  // 35
 get_texture :: (main: *GPUParticles2D) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("GPUParticles2D", "get_texture", 3635182373, Texture2D, main); return call_ret; }  // 36
 capture_rect :: (main: *GPUParticles2D) -> Rect2 { call_ret := cast(*Rect2) sys_call("GPUParticles2D", "capture_rect", 1639390495, Rect2, main); return call_ret.*; }  // 37
 restart :: (main: *GPUParticles2D) { sys_call("GPUParticles2D", "restart", 107499316, Nil, main);  }  // 38
@@ -14477,7 +14477,7 @@ set_trail_sections :: (main: *GPUParticles2D, sections: int) { sys_call("GPUPart
 get_trail_sections :: (main: *GPUParticles2D) -> int { call_ret := cast(*int) sys_call("GPUParticles2D", "get_trail_sections", 3905245786, int, main); return call_ret.*; }  // 47
 set_trail_section_subdivisions :: (main: *GPUParticles2D, subdivisions: int) { sys_call("GPUParticles2D", "set_trail_section_subdivisions", 1286410249, Nil, main, subdivisions);  }  // 48
 get_trail_section_subdivisions :: (main: *GPUParticles2D) -> int { call_ret := cast(*int) sys_call("GPUParticles2D", "get_trail_section_subdivisions", 3905245786, int, main); return call_ret.*; }  // 49
-convert_from_particles :: (main: *GPUParticles2D, particles: Node) { sys_call("GPUParticles2D", "convert_from_particles", 1078189570, Nil, main, particles);  }  // 50
+convert_from_particles :: (main: *GPUParticles2D, particles: *Node) { sys_call("GPUParticles2D", "convert_from_particles", 1078189570, Nil, main, particles);  }  // 50
 set_amount_ratio :: (main: *GPUParticles2D, ratio: float) { sys_call("GPUParticles2D", "set_amount_ratio", 373806689, Nil, main, ratio);  }  // 51
 get_amount_ratio :: (main: *GPUParticles2D) -> float { call_ret := cast(*float) sys_call("GPUParticles2D", "get_amount_ratio", 1740695150, float, main); return call_ret.*; }  // 52
 set_use_fixed_seed :: (main: *GPUParticles2D, use_fixed_seed: bool) { sys_call("GPUParticles2D", "set_use_fixed_seed", 2586408642, Nil, main, use_fixed_seed);  }  // 53
@@ -14497,7 +14497,7 @@ set_use_local_coordinates :: (main: *GPUParticles3D, enable: bool) { sys_call("G
 set_fixed_fps :: (main: *GPUParticles3D, fps: int) { sys_call("GPUParticles3D", "set_fixed_fps", 1286410249, Nil, main, fps);  }  // 9
 set_fractional_delta :: (main: *GPUParticles3D, enable: bool) { sys_call("GPUParticles3D", "set_fractional_delta", 2586408642, Nil, main, enable);  }  // 10
 set_interpolate :: (main: *GPUParticles3D, enable: bool) { sys_call("GPUParticles3D", "set_interpolate", 2586408642, Nil, main, enable);  }  // 11
-set_process_material :: (main: *GPUParticles3D, material: Material) { sys_call("GPUParticles3D", "set_process_material", 2757459619, Nil, main, material);  }  // 12
+set_process_material :: (main: *GPUParticles3D, material: *Material) { sys_call("GPUParticles3D", "set_process_material", 2757459619, Nil, main, material);  }  // 12
 set_speed_scale :: (main: *GPUParticles3D, scale: float) { sys_call("GPUParticles3D", "set_speed_scale", 373806689, Nil, main, scale);  }  // 13
 set_collision_base_size :: (main: *GPUParticles3D, size: float) { sys_call("GPUParticles3D", "set_collision_base_size", 373806689, Nil, main, size);  }  // 14
 set_interp_to_end :: (main: *GPUParticles3D, interp: float) { sys_call("GPUParticles3D", "set_interp_to_end", 373806689, Nil, main, interp);  }  // 15
@@ -14524,10 +14524,10 @@ get_seed :: (main: *GPUParticles3D) -> int { call_ret := cast(*int) sys_call("GP
 set_draw_order :: (main: *GPUParticles3D, order: GPUParticles3D.DrawOrder) { sys_call("GPUParticles3D", "set_draw_order", 1208074815, Nil, main, order);  }  // 36
 get_draw_order :: (main: *GPUParticles3D) -> GPUParticles3D.DrawOrder { call_ret := cast(*GPUParticles3D.DrawOrder) sys_call("GPUParticles3D", "get_draw_order", 3770381780, GPUParticles3D.DrawOrder, main); return call_ret.*; }  // 37
 set_draw_passes :: (main: *GPUParticles3D, passes: int) { sys_call("GPUParticles3D", "set_draw_passes", 1286410249, Nil, main, passes);  }  // 38
-set_draw_pass_mesh :: (main: *GPUParticles3D, pass: int, mesh: Mesh) { sys_call("GPUParticles3D", "set_draw_pass_mesh", 969122797, Nil, main, pass, mesh);  }  // 39
+set_draw_pass_mesh :: (main: *GPUParticles3D, pass: int, mesh: *Mesh) { sys_call("GPUParticles3D", "set_draw_pass_mesh", 969122797, Nil, main, pass, mesh);  }  // 39
 get_draw_passes :: (main: *GPUParticles3D) -> int { call_ret := cast(*int) sys_call("GPUParticles3D", "get_draw_passes", 3905245786, int, main); return call_ret.*; }  // 40
 get_draw_pass_mesh :: (main: *GPUParticles3D, pass: int) -> *Mesh { call_ret := cast(*Mesh) sys_call("GPUParticles3D", "get_draw_pass_mesh", 1576363275, Mesh, main, pass); return call_ret; }  // 41
-set_skin :: (main: *GPUParticles3D, skin: Skin) { sys_call("GPUParticles3D", "set_skin", 3971435618, Nil, main, skin);  }  // 42
+set_skin :: (main: *GPUParticles3D, skin: *Skin) { sys_call("GPUParticles3D", "set_skin", 3971435618, Nil, main, skin);  }  // 42
 get_skin :: (main: *GPUParticles3D) -> *Skin { call_ret := cast(*Skin) sys_call("GPUParticles3D", "get_skin", 2074563878, Skin, main); return call_ret; }  // 43
 restart :: (main: *GPUParticles3D) { sys_call("GPUParticles3D", "restart", 107499316, Nil, main);  }  // 44
 capture_aabb :: (main: *GPUParticles3D) -> AABB { call_ret := cast(*AABB) sys_call("GPUParticles3D", "capture_aabb", 1068685055, AABB, main); return call_ret.*; }  // 45
@@ -14540,7 +14540,7 @@ is_trail_enabled :: (main: *GPUParticles3D) -> bool { call_ret := cast(*bool) sy
 get_trail_lifetime :: (main: *GPUParticles3D) -> float { call_ret := cast(*float) sys_call("GPUParticles3D", "get_trail_lifetime", 1740695150, float, main); return call_ret.*; }  // 52
 set_transform_align :: (main: *GPUParticles3D, align: GPUParticles3D.TransformAlign) { sys_call("GPUParticles3D", "set_transform_align", 3892425954, Nil, main, align);  }  // 53
 get_transform_align :: (main: *GPUParticles3D) -> GPUParticles3D.TransformAlign { call_ret := cast(*GPUParticles3D.TransformAlign) sys_call("GPUParticles3D", "get_transform_align", 2100992166, GPUParticles3D.TransformAlign, main); return call_ret.*; }  // 54
-convert_from_particles :: (main: *GPUParticles3D, particles: Node) { sys_call("GPUParticles3D", "convert_from_particles", 1078189570, Nil, main, particles);  }  // 55
+convert_from_particles :: (main: *GPUParticles3D, particles: *Node) { sys_call("GPUParticles3D", "convert_from_particles", 1078189570, Nil, main, particles);  }  // 55
 set_amount_ratio :: (main: *GPUParticles3D, ratio: float) { sys_call("GPUParticles3D", "set_amount_ratio", 373806689, Nil, main, ratio);  }  // 56
 get_amount_ratio :: (main: *GPUParticles3D) -> float { call_ret := cast(*float) sys_call("GPUParticles3D", "get_amount_ratio", 1740695150, float, main); return call_ret.*; }  // 57
 request_particles_process :: (main: *GPUParticles3D, process_time: float) { sys_call("GPUParticles3D", "request_particles_process", 373806689, Nil, main, process_time);  }  // 58
@@ -14562,7 +14562,7 @@ get_radius :: (main: *GPUParticlesAttractorSphere3D) -> float { call_ret := cast
 
 set_size :: (main: *GPUParticlesAttractorVectorField3D, size: Vector3) { sys_call("GPUParticlesAttractorVectorField3D", "set_size", 3460891852, Nil, main, size);  }  // 0
 get_size :: (main: *GPUParticlesAttractorVectorField3D) -> Vector3 { call_ret := cast(*Vector3) sys_call("GPUParticlesAttractorVectorField3D", "get_size", 3360562783, Vector3, main); return call_ret.*; }  // 1
-set_texture :: (main: *GPUParticlesAttractorVectorField3D, texture: Texture3D) { sys_call("GPUParticlesAttractorVectorField3D", "set_texture", 1188404210, Nil, main, texture);  }  // 2
+set_texture :: (main: *GPUParticlesAttractorVectorField3D, texture: *Texture3D) { sys_call("GPUParticlesAttractorVectorField3D", "set_texture", 1188404210, Nil, main, texture);  }  // 2
 get_texture :: (main: *GPUParticlesAttractorVectorField3D) -> *Texture3D { call_ret := cast(*Texture3D) sys_call("GPUParticlesAttractorVectorField3D", "get_texture", 373985333, Texture3D, main); return call_ret; }  // 3
 
 set_cull_mask :: (main: *GPUParticlesCollision3D, mask: int) { sys_call("GPUParticlesCollision3D", "set_cull_mask", 1286410249, Nil, main, mask);  }  // 0
@@ -14588,7 +14588,7 @@ set_size :: (main: *GPUParticlesCollisionSDF3D, size: Vector3) { sys_call("GPUPa
 get_size :: (main: *GPUParticlesCollisionSDF3D) -> Vector3 { call_ret := cast(*Vector3) sys_call("GPUParticlesCollisionSDF3D", "get_size", 3360562783, Vector3, main); return call_ret.*; }  // 1
 set_resolution :: (main: *GPUParticlesCollisionSDF3D, resolution: GPUParticlesCollisionSDF3D.Resolution) { sys_call("GPUParticlesCollisionSDF3D", "set_resolution", 1155629297, Nil, main, resolution);  }  // 2
 get_resolution :: (main: *GPUParticlesCollisionSDF3D) -> GPUParticlesCollisionSDF3D.Resolution { call_ret := cast(*GPUParticlesCollisionSDF3D.Resolution) sys_call("GPUParticlesCollisionSDF3D", "get_resolution", 2919555867, GPUParticlesCollisionSDF3D.Resolution, main); return call_ret.*; }  // 3
-set_texture :: (main: *GPUParticlesCollisionSDF3D, texture: Texture3D) { sys_call("GPUParticlesCollisionSDF3D", "set_texture", 1188404210, Nil, main, texture);  }  // 4
+set_texture :: (main: *GPUParticlesCollisionSDF3D, texture: *Texture3D) { sys_call("GPUParticlesCollisionSDF3D", "set_texture", 1188404210, Nil, main, texture);  }  // 4
 get_texture :: (main: *GPUParticlesCollisionSDF3D) -> *Texture3D { call_ret := cast(*Texture3D) sys_call("GPUParticlesCollisionSDF3D", "get_texture", 373985333, Texture3D, main); return call_ret; }  // 5
 set_thickness :: (main: *GPUParticlesCollisionSDF3D, thickness: float) { sys_call("GPUParticlesCollisionSDF3D", "set_thickness", 373806689, Nil, main, thickness);  }  // 6
 get_thickness :: (main: *GPUParticlesCollisionSDF3D) -> float { call_ret := cast(*float) sys_call("GPUParticlesCollisionSDF3D", "get_thickness", 1740695150, float, main); return call_ret.*; }  // 7
@@ -14654,9 +14654,9 @@ segment_intersects_convex :: (main: *Geometry3D, from: Vector3, to: Vector3, pla
 clip_polygon :: (main: *Geometry3D, points: PackedVector3Array, plane: Plane) -> PackedVector3Array { call_ret := cast(*PackedVector3Array) sys_call("Geometry3D", "clip_polygon", 2603188319, PackedVector3Array, main, points, plane); return call_ret.*; }  // 13
 tetrahedralize_delaunay :: (main: *Geometry3D, points: PackedVector3Array) -> PackedInt32Array { call_ret := cast(*PackedInt32Array) sys_call("Geometry3D", "tetrahedralize_delaunay", 1230191221, PackedInt32Array, main, points); return call_ret.*; }  // 14
 
-set_material_override :: (main: *GeometryInstance3D, material: Material) { sys_call("GeometryInstance3D", "set_material_override", 2757459619, Nil, main, material);  }  // 0
+set_material_override :: (main: *GeometryInstance3D, material: *Material) { sys_call("GeometryInstance3D", "set_material_override", 2757459619, Nil, main, material);  }  // 0
 get_material_override :: (main: *GeometryInstance3D) -> *Material { call_ret := cast(*Material) sys_call("GeometryInstance3D", "get_material_override", 5934680, Material, main); return call_ret; }  // 1
-set_material_overlay :: (main: *GeometryInstance3D, material: Material) { sys_call("GeometryInstance3D", "set_material_overlay", 2757459619, Nil, main, material);  }  // 2
+set_material_overlay :: (main: *GeometryInstance3D, material: *Material) { sys_call("GeometryInstance3D", "set_material_overlay", 2757459619, Nil, main, material);  }  // 2
 get_material_overlay :: (main: *GeometryInstance3D) -> *Material { call_ret := cast(*Material) sys_call("GeometryInstance3D", "get_material_overlay", 5934680, Material, main); return call_ret; }  // 3
 set_cast_shadows_setting :: (main: *GeometryInstance3D, shadow_casting_setting: GeometryInstance3D.ShadowCastingSetting) { sys_call("GeometryInstance3D", "set_cast_shadows_setting", 856677339, Nil, main, shadow_casting_setting);  }  // 4
 get_cast_shadows_setting :: (main: *GeometryInstance3D) -> GeometryInstance3D.ShadowCastingSetting { call_ret := cast(*GeometryInstance3D.ShadowCastingSetting) sys_call("GeometryInstance3D", "get_cast_shadows_setting", 3383019359, GeometryInstance3D.ShadowCastingSetting, main); return call_ret.*; }  // 5
@@ -14707,13 +14707,13 @@ get_interpolation_mode :: (main: *Gradient) -> Gradient.InterpolationMode { call
 set_interpolation_color_space :: (main: *Gradient, interpolation_color_space: Gradient.ColorSpace) { sys_call("Gradient", "set_interpolation_color_space", 3685995981, Nil, main, interpolation_color_space);  }  // 15
 get_interpolation_color_space :: (main: *Gradient) -> Gradient.ColorSpace { call_ret := cast(*Gradient.ColorSpace) sys_call("Gradient", "get_interpolation_color_space", 1538296000, Gradient.ColorSpace, main); return call_ret.*; }  // 16
 
-set_gradient :: (main: *GradientTexture1D, gradient: Gradient) { sys_call("GradientTexture1D", "set_gradient", 2756054477, Nil, main, gradient);  }  // 0
+set_gradient :: (main: *GradientTexture1D, gradient: *Gradient) { sys_call("GradientTexture1D", "set_gradient", 2756054477, Nil, main, gradient);  }  // 0
 get_gradient :: (main: *GradientTexture1D) -> *Gradient { call_ret := cast(*Gradient) sys_call("GradientTexture1D", "get_gradient", 132272999, Gradient, main); return call_ret; }  // 1
 set_width :: (main: *GradientTexture1D, width: int) { sys_call("GradientTexture1D", "set_width", 1286410249, Nil, main, width);  }  // 2
 set_use_hdr :: (main: *GradientTexture1D, enabled: bool) { sys_call("GradientTexture1D", "set_use_hdr", 2586408642, Nil, main, enabled);  }  // 3
 is_using_hdr :: (main: *GradientTexture1D) -> bool { call_ret := cast(*bool) sys_call("GradientTexture1D", "is_using_hdr", 36873697, bool, main); return call_ret.*; }  // 4
 
-set_gradient :: (main: *GradientTexture2D, gradient: Gradient) { sys_call("GradientTexture2D", "set_gradient", 2756054477, Nil, main, gradient);  }  // 0
+set_gradient :: (main: *GradientTexture2D, gradient: *Gradient) { sys_call("GradientTexture2D", "set_gradient", 2756054477, Nil, main, gradient);  }  // 0
 get_gradient :: (main: *GradientTexture2D) -> *Gradient { call_ret := cast(*Gradient) sys_call("GradientTexture2D", "get_gradient", 132272999, Gradient, main); return call_ret; }  // 1
 set_width :: (main: *GradientTexture2D, width: int) { sys_call("GradientTexture2D", "set_width", 1286410249, Nil, main, width);  }  // 2
 set_height :: (main: *GradientTexture2D, height: int) { sys_call("GradientTexture2D", "set_height", 1286410249, Nil, main, height);  }  // 3
@@ -14799,7 +14799,7 @@ set_right_disconnects :: (main: *GraphEdit, enable: bool) { sys_call("GraphEdit"
 is_right_disconnects_enabled :: (main: *GraphEdit) -> bool { call_ret := cast(*bool) sys_call("GraphEdit", "is_right_disconnects_enabled", 36873697, bool, main); return call_ret.*; }  // 72
 get_menu_hbox :: (main: *GraphEdit) -> *HBoxContainer { call_ret := cast(*HBoxContainer) sys_call("GraphEdit", "get_menu_hbox", 3590609951, HBoxContainer, main); return call_ret; }  // 73
 arrange_nodes :: (main: *GraphEdit) { sys_call("GraphEdit", "arrange_nodes", 3218959716, Nil, main);  }  // 74
-set_selected :: (main: *GraphEdit, node: Node) { sys_call("GraphEdit", "set_selected", 1078189570, Nil, main, node);  }  // 75
+set_selected :: (main: *GraphEdit, node: *Node) { sys_call("GraphEdit", "set_selected", 1078189570, Nil, main, node);  }  // 75
 
 set_resizable :: (main: *GraphElement, resizable: bool) { sys_call("GraphElement", "set_resizable", 2586408642, Nil, main, resizable);  }  // 0
 is_resizable :: (main: *GraphElement) -> bool { call_ret := cast(*bool) sys_call("GraphElement", "is_resizable", 36873697, bool, main); return call_ret.*; }  // 1
@@ -14838,7 +14838,7 @@ set_slot_type_left :: (main: *GraphNode, slot_index: int, type: int) { sys_call(
 get_slot_type_left :: (main: *GraphNode, slot_index: int) -> int { call_ret := cast(*int) sys_call("GraphNode", "get_slot_type_left", 923996154, int, main, slot_index); return call_ret.*; }  // 10
 set_slot_color_left :: (main: *GraphNode, slot_index: int, color: Color) { sys_call("GraphNode", "set_slot_color_left", 2878471219, Nil, main, slot_index, color);  }  // 11
 get_slot_color_left :: (main: *GraphNode, slot_index: int) -> Color { call_ret := cast(*Color) sys_call("GraphNode", "get_slot_color_left", 3457211756, Color, main, slot_index); return call_ret.*; }  // 12
-set_slot_custom_icon_left :: (main: *GraphNode, slot_index: int, custom_icon: Texture2D) { sys_call("GraphNode", "set_slot_custom_icon_left", 666127730, Nil, main, slot_index, custom_icon);  }  // 13
+set_slot_custom_icon_left :: (main: *GraphNode, slot_index: int, custom_icon: *Texture2D) { sys_call("GraphNode", "set_slot_custom_icon_left", 666127730, Nil, main, slot_index, custom_icon);  }  // 13
 get_slot_custom_icon_left :: (main: *GraphNode, slot_index: int) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("GraphNode", "get_slot_custom_icon_left", 3536238170, Texture2D, main, slot_index); return call_ret; }  // 14
 is_slot_enabled_right :: (main: *GraphNode, slot_index: int) -> bool { call_ret := cast(*bool) sys_call("GraphNode", "is_slot_enabled_right", 1116898809, bool, main, slot_index); return call_ret.*; }  // 15
 set_slot_enabled_right :: (main: *GraphNode, slot_index: int, enable: bool) { sys_call("GraphNode", "set_slot_enabled_right", 300928843, Nil, main, slot_index, enable);  }  // 16
@@ -14846,7 +14846,7 @@ set_slot_type_right :: (main: *GraphNode, slot_index: int, type: int) { sys_call
 get_slot_type_right :: (main: *GraphNode, slot_index: int) -> int { call_ret := cast(*int) sys_call("GraphNode", "get_slot_type_right", 923996154, int, main, slot_index); return call_ret.*; }  // 18
 set_slot_color_right :: (main: *GraphNode, slot_index: int, color: Color) { sys_call("GraphNode", "set_slot_color_right", 2878471219, Nil, main, slot_index, color);  }  // 19
 get_slot_color_right :: (main: *GraphNode, slot_index: int) -> Color { call_ret := cast(*Color) sys_call("GraphNode", "get_slot_color_right", 3457211756, Color, main, slot_index); return call_ret.*; }  // 20
-set_slot_custom_icon_right :: (main: *GraphNode, slot_index: int, custom_icon: Texture2D) { sys_call("GraphNode", "set_slot_custom_icon_right", 666127730, Nil, main, slot_index, custom_icon);  }  // 21
+set_slot_custom_icon_right :: (main: *GraphNode, slot_index: int, custom_icon: *Texture2D) { sys_call("GraphNode", "set_slot_custom_icon_right", 666127730, Nil, main, slot_index, custom_icon);  }  // 21
 get_slot_custom_icon_right :: (main: *GraphNode, slot_index: int) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("GraphNode", "get_slot_custom_icon_right", 3536238170, Texture2D, main, slot_index); return call_ret; }  // 22
 is_slot_draw_stylebox :: (main: *GraphNode, slot_index: int) -> bool { call_ret := cast(*bool) sys_call("GraphNode", "is_slot_draw_stylebox", 1116898809, bool, main, slot_index); return call_ret.*; }  // 23
 set_slot_draw_stylebox :: (main: *GraphNode, slot_index: int, enable: bool) { sys_call("GraphNode", "set_slot_draw_stylebox", 300928843, Nil, main, slot_index, enable);  }  // 24
@@ -14876,13 +14876,13 @@ set_collision_layer_value :: (main: *GridMap, layer_number: int, value: bool) { 
 get_collision_layer_value :: (main: *GridMap, layer_number: int) -> bool { call_ret := cast(*bool) sys_call("GridMap", "get_collision_layer_value", 1116898809, bool, main, layer_number); return call_ret.*; }  // 7
 set_collision_priority :: (main: *GridMap, priority: float) { sys_call("GridMap", "set_collision_priority", 373806689, Nil, main, priority);  }  // 8
 get_collision_priority :: (main: *GridMap) -> float { call_ret := cast(*float) sys_call("GridMap", "get_collision_priority", 1740695150, float, main); return call_ret.*; }  // 9
-set_physics_material :: (main: *GridMap, material: PhysicsMaterial) { sys_call("GridMap", "set_physics_material", 1784508650, Nil, main, material);  }  // 10
+set_physics_material :: (main: *GridMap, material: *PhysicsMaterial) { sys_call("GridMap", "set_physics_material", 1784508650, Nil, main, material);  }  // 10
 get_physics_material :: (main: *GridMap) -> *PhysicsMaterial { call_ret := cast(*PhysicsMaterial) sys_call("GridMap", "get_physics_material", 2521850424, PhysicsMaterial, main); return call_ret; }  // 11
 set_bake_navigation :: (main: *GridMap, bake_navigation: bool) { sys_call("GridMap", "set_bake_navigation", 2586408642, Nil, main, bake_navigation);  }  // 12
 is_baking_navigation :: (main: *GridMap) -> bool { call_ret := cast(*bool) sys_call("GridMap", "is_baking_navigation", 2240911060, bool, main); return call_ret.*; }  // 13
 set_navigation_map :: (main: *GridMap, navigation_map: RID) { sys_call("GridMap", "set_navigation_map", 2722037293, Nil, main, navigation_map);  }  // 14
 get_navigation_map :: (main: *GridMap) -> RID { call_ret := cast(*RID) sys_call("GridMap", "get_navigation_map", 2944877500, RID, main); return call_ret.*; }  // 15
-set_mesh_library :: (main: *GridMap, mesh_library: MeshLibrary) { sys_call("GridMap", "set_mesh_library", 1488083439, Nil, main, mesh_library);  }  // 16
+set_mesh_library :: (main: *GridMap, mesh_library: *MeshLibrary) { sys_call("GridMap", "set_mesh_library", 1488083439, Nil, main, mesh_library);  }  // 16
 get_mesh_library :: (main: *GridMap) -> *MeshLibrary { call_ret := cast(*MeshLibrary) sys_call("GridMap", "get_mesh_library", 3350993772, MeshLibrary, main); return call_ret; }  // 17
 set_cell_size :: (main: *GridMap, size: Vector3) { sys_call("GridMap", "set_cell_size", 3460891852, Nil, main, size);  }  // 18
 get_cell_size :: (main: *GridMap) -> Vector3 { call_ret := cast(*Vector3) sys_call("GridMap", "get_cell_size", 3360562783, Vector3, main); return call_ret.*; }  // 19
@@ -14898,7 +14898,7 @@ get_basis_with_orthogonal_index :: (main: *GridMap, index: int) -> Basis { call_
 get_orthogonal_index_from_basis :: (main: *GridMap, basis: Basis) -> int { call_ret := cast(*int) sys_call("GridMap", "get_orthogonal_index_from_basis", 4210359952, int, main, basis); return call_ret.*; }  // 29
 local_to_map :: (main: *GridMap, local_position: Vector3) -> Vector3i { call_ret := cast(*Vector3i) sys_call("GridMap", "local_to_map", 1257687843, Vector3i, main, local_position); return call_ret.*; }  // 30
 map_to_local :: (main: *GridMap, map_position: Vector3i) -> Vector3 { call_ret := cast(*Vector3) sys_call("GridMap", "map_to_local", 1088329196, Vector3, main, map_position); return call_ret.*; }  // 31
-resource_changed :: (main: *GridMap, resource: Resource) { sys_call("GridMap", "resource_changed", 968641751, Nil, main, resource);  }  // 32
+resource_changed :: (main: *GridMap, resource: *Resource) { sys_call("GridMap", "resource_changed", 968641751, Nil, main, resource);  }  // 32
 set_center_x :: (main: *GridMap, enable: bool) { sys_call("GridMap", "set_center_x", 2586408642, Nil, main, enable);  }  // 33
 get_center_x :: (main: *GridMap) -> bool { call_ret := cast(*bool) sys_call("GridMap", "get_center_x", 36873697, bool, main); return call_ret.*; }  // 34
 set_center_y :: (main: *GridMap, enable: bool) { sys_call("GridMap", "set_center_y", 2586408642, Nil, main, enable);  }  // 35
@@ -14939,7 +14939,7 @@ finish :: (main: *HMACContext) -> PackedByteArray { call_ret := cast(*PackedByte
 
 
 connect_to_host :: (main: *HTTPClient, host: string) -> Error { call_ret := cast(*Error) sys_call("HTTPClient", "connect_to_host", 504540374, Error, main, host); return call_ret.*; }  // 0
-set_connection :: (main: *HTTPClient, connection: StreamPeer) { sys_call("HTTPClient", "set_connection", 3281897016, Nil, main, connection);  }  // 1
+set_connection :: (main: *HTTPClient, connection: *StreamPeer) { sys_call("HTTPClient", "set_connection", 3281897016, Nil, main, connection);  }  // 1
 get_connection :: (main: *HTTPClient) -> *StreamPeer { call_ret := cast(*StreamPeer) sys_call("HTTPClient", "get_connection", 2741655269, StreamPeer, main); return call_ret; }  // 2
 request_raw :: (main: *HTTPClient, method: HTTPClient.Method, url: string, headers: PackedStringArray, body: PackedByteArray) -> Error { call_ret := cast(*Error) sys_call("HTTPClient", "request_raw", 540161961, Error, main, method, url, headers, body); return call_ret.*; }  // 3
 request :: (main: *HTTPClient, method: HTTPClient.Method, url: string, headers: PackedStringArray) -> Error { call_ret := cast(*Error) sys_call("HTTPClient", "request", 3778990155, Error, main, method, url, headers); return call_ret.*; }  // 4
@@ -14964,7 +14964,7 @@ query_string_from_dict :: (main: *HTTPClient, fields: Dictionary) -> gstring { c
 request :: (main: *HTTPRequest, url: string) -> Error { call_ret := cast(*Error) sys_call("HTTPRequest", "request", 3215244323, Error, main, url); return call_ret.*; }  // 0
 request_raw :: (main: *HTTPRequest, url: string) -> Error { call_ret := cast(*Error) sys_call("HTTPRequest", "request_raw", 2714829993, Error, main, url); return call_ret.*; }  // 1
 cancel_request :: (main: *HTTPRequest) { sys_call("HTTPRequest", "cancel_request", 3218959716, Nil, main);  }  // 2
-set_tls_options :: (main: *HTTPRequest, client_options: TLSOptions) { sys_call("HTTPRequest", "set_tls_options", 2210231844, Nil, main, client_options);  }  // 3
+set_tls_options :: (main: *HTTPRequest, client_options: *TLSOptions) { sys_call("HTTPRequest", "set_tls_options", 2210231844, Nil, main, client_options);  }  // 3
 get_http_client_status :: (main: *HTTPRequest) -> HTTPClient.Status { call_ret := cast(*HTTPClient.Status) sys_call("HTTPRequest", "get_http_client_status", 1426656811, HTTPClient.Status, main); return call_ret.*; }  // 4
 set_use_threads :: (main: *HTTPRequest, enable: bool) { sys_call("HTTPRequest", "set_use_threads", 2586408642, Nil, main, enable);  }  // 5
 is_using_threads :: (main: *HTTPRequest) -> bool { call_ret := cast(*bool) sys_call("HTTPRequest", "is_using_threads", 36873697, bool, main); return call_ret.*; }  // 6
@@ -14997,7 +14997,7 @@ set_map_data :: (main: *HeightMapShape3D, data: PackedFloat32Array) { sys_call("
 get_map_data :: (main: *HeightMapShape3D) -> PackedFloat32Array { call_ret := cast(*PackedFloat32Array) sys_call("HeightMapShape3D", "get_map_data", 675695659, PackedFloat32Array, main); return call_ret.*; }  // 5
 get_min_height :: (main: *HeightMapShape3D) -> float { call_ret := cast(*float) sys_call("HeightMapShape3D", "get_min_height", 1740695150, float, main); return call_ret.*; }  // 6
 get_max_height :: (main: *HeightMapShape3D) -> float { call_ret := cast(*float) sys_call("HeightMapShape3D", "get_max_height", 1740695150, float, main); return call_ret.*; }  // 7
-update_map_data_from_image :: (main: *HeightMapShape3D, image: Image, height_min: float, height_max: float) { sys_call("HeightMapShape3D", "update_map_data_from_image", 2636652979, Nil, main, image, height_min, height_max);  }  // 8
+update_map_data_from_image :: (main: *HeightMapShape3D, image: *Image, height_min: float, height_max: float) { sys_call("HeightMapShape3D", "update_map_data_from_image", 2636652979, Nil, main, image, height_min, height_max);  }  // 8
 
 set_param :: (main: *HingeJoint3D, param: HingeJoint3D.Param, value: float) { sys_call("HingeJoint3D", "set_param", 3082977519, Nil, main, param, value);  }  // 0
 get_param :: (main: *HingeJoint3D, param: HingeJoint3D.Param) -> float { call_ret := cast(*float) sys_call("HingeJoint3D", "get_param", 4066002676, float, main, param); return call_ret.*; }  // 1
@@ -15064,16 +15064,16 @@ linear_to_srgb :: (main: *Image) { sys_call("Image", "linear_to_srgb", 321895971
 normal_map_to_xy :: (main: *Image) { sys_call("Image", "normal_map_to_xy", 3218959716, Nil, main);  }  // 46
 rgbe_to_srgb :: (main: *Image) -> *Image { call_ret := cast(*Image) sys_call("Image", "rgbe_to_srgb", 564927088, Image, main); return call_ret; }  // 47
 bump_map_to_normal_map :: (main: *Image) { sys_call("Image", "bump_map_to_normal_map", 3423495036, Nil, main);  }  // 48
-compute_image_metrics :: (main: *Image, compared_image: Image, use_luma: bool) -> Dictionary { call_ret := cast(*Dictionary) sys_call("Image", "compute_image_metrics", 3080961247, Dictionary, main, compared_image, use_luma); return call_ret.*; }  // 49
-blit_rect :: (main: *Image, src: Image, src_rect: Rect2i, dst: Vector2i) { sys_call("Image", "blit_rect", 2903928755, Nil, main, src, src_rect, dst);  }  // 50
-blit_rect_mask :: (main: *Image, src: Image, mask: Image, src_rect: Rect2i, dst: Vector2i) { sys_call("Image", "blit_rect_mask", 3383581145, Nil, main, src, mask, src_rect, dst);  }  // 51
-blend_rect :: (main: *Image, src: Image, src_rect: Rect2i, dst: Vector2i) { sys_call("Image", "blend_rect", 2903928755, Nil, main, src, src_rect, dst);  }  // 52
-blend_rect_mask :: (main: *Image, src: Image, mask: Image, src_rect: Rect2i, dst: Vector2i) { sys_call("Image", "blend_rect_mask", 3383581145, Nil, main, src, mask, src_rect, dst);  }  // 53
+compute_image_metrics :: (main: *Image, compared_image: *Image, use_luma: bool) -> Dictionary { call_ret := cast(*Dictionary) sys_call("Image", "compute_image_metrics", 3080961247, Dictionary, main, compared_image, use_luma); return call_ret.*; }  // 49
+blit_rect :: (main: *Image, src: *Image, src_rect: Rect2i, dst: Vector2i) { sys_call("Image", "blit_rect", 2903928755, Nil, main, src, src_rect, dst);  }  // 50
+blit_rect_mask :: (main: *Image, src: *Image, mask: *Image, src_rect: Rect2i, dst: Vector2i) { sys_call("Image", "blit_rect_mask", 3383581145, Nil, main, src, mask, src_rect, dst);  }  // 51
+blend_rect :: (main: *Image, src: *Image, src_rect: Rect2i, dst: Vector2i) { sys_call("Image", "blend_rect", 2903928755, Nil, main, src, src_rect, dst);  }  // 52
+blend_rect_mask :: (main: *Image, src: *Image, mask: *Image, src_rect: Rect2i, dst: Vector2i) { sys_call("Image", "blend_rect_mask", 3383581145, Nil, main, src, mask, src_rect, dst);  }  // 53
 fill :: (main: *Image, color: Color) { sys_call("Image", "fill", 2920490490, Nil, main, color);  }  // 54
 fill_rect :: (main: *Image, rect: Rect2i, color: Color) { sys_call("Image", "fill_rect", 514693913, Nil, main, rect, color);  }  // 55
 get_used_rect :: (main: *Image) -> Rect2i { call_ret := cast(*Rect2i) sys_call("Image", "get_used_rect", 410525958, Rect2i, main); return call_ret.*; }  // 56
 get_region :: (main: *Image, region: Rect2i) -> *Image { call_ret := cast(*Image) sys_call("Image", "get_region", 2601441065, Image, main, region); return call_ret; }  // 57
-copy_from :: (main: *Image, src: Image) { sys_call("Image", "copy_from", 532598488, Nil, main, src);  }  // 58
+copy_from :: (main: *Image, src: *Image) { sys_call("Image", "copy_from", 532598488, Nil, main, src);  }  // 58
 get_pixelv :: (main: *Image, point: Vector2i) -> Color { call_ret := cast(*Color) sys_call("Image", "get_pixelv", 1532707496, Color, main, point); return call_ret.*; }  // 59
 get_pixel :: (main: *Image, x: int, y: int) -> Color { call_ret := cast(*Color) sys_call("Image", "get_pixel", 2165839948, Color, main, x, y); return call_ret.*; }  // 60
 set_pixelv :: (main: *Image, point: Vector2i, color: Color) { sys_call("Image", "set_pixelv", 287851464, Nil, main, point, color);  }  // 61
@@ -15092,17 +15092,17 @@ load_svg_from_string :: (main: *Image, svg_str: string) -> Error { call_ret := c
 add_format_loader :: (main: *ImageFormatLoaderExtension) { sys_call("ImageFormatLoaderExtension", "add_format_loader", 3218959716, Nil, main);  }  // 2
 remove_format_loader :: (main: *ImageFormatLoaderExtension) { sys_call("ImageFormatLoaderExtension", "remove_format_loader", 3218959716, Nil, main);  }  // 3
 
-create_from_image :: (main: *ImageTexture, image: Image) -> *ImageTexture { call_ret := cast(*ImageTexture) sys_call("ImageTexture", "create_from_image", 2775144163, ImageTexture, main, image); return call_ret; }  // 0
+create_from_image :: (main: *ImageTexture, image: *Image) -> *ImageTexture { call_ret := cast(*ImageTexture) sys_call("ImageTexture", "create_from_image", 2775144163, ImageTexture, main, image); return call_ret; }  // 0
 get_format :: (main: *ImageTexture) -> Image.Format { call_ret := cast(*Image.Format) sys_call("ImageTexture", "get_format", 3847873762, Image.Format, main); return call_ret.*; }  // 1
-set_image :: (main: *ImageTexture, image: Image) { sys_call("ImageTexture", "set_image", 532598488, Nil, main, image);  }  // 2
-update :: (main: *ImageTexture, image: Image) { sys_call("ImageTexture", "update", 532598488, Nil, main, image);  }  // 3
+set_image :: (main: *ImageTexture, image: *Image) { sys_call("ImageTexture", "set_image", 532598488, Nil, main, image);  }  // 2
+update :: (main: *ImageTexture, image: *Image) { sys_call("ImageTexture", "update", 532598488, Nil, main, image);  }  // 3
 set_size_override :: (main: *ImageTexture, size: Vector2i) { sys_call("ImageTexture", "set_size_override", 1130785943, Nil, main, size);  }  // 4
 
 create :: (main: *ImageTexture3D, format: Image.Format, width: int, height: int, depth: int, use_mipmaps: bool, data: [] Image) -> Error { call_ret := cast(*Error) sys_call("ImageTexture3D", "create", 1130379827, Error, main, format, width, height, depth, use_mipmaps, data); return call_ret.*; }  // 0
 update :: (main: *ImageTexture3D, data: [] Image) { sys_call("ImageTexture3D", "update", 381264803, Nil, main, data);  }  // 1
 
 create_from_images :: (main: *ImageTextureLayered, images: [] Image) -> Error { call_ret := cast(*Error) sys_call("ImageTextureLayered", "create_from_images", 2785773503, Error, main, images); return call_ret.*; }  // 0
-update_layer :: (main: *ImageTextureLayered, image: Image, layer: int) { sys_call("ImageTextureLayered", "update_layer", 3331733361, Nil, main, image, layer);  }  // 1
+update_layer :: (main: *ImageTextureLayered, image: *Image, layer: int) { sys_call("ImageTextureLayered", "update_layer", 3331733361, Nil, main, image, layer);  }  // 1
 
 surface_begin :: (main: *ImmediateMesh, primitive: Mesh.PrimitiveType) { sys_call("ImmediateMesh", "surface_begin", 2794442543, Nil, main, primitive);  }  // 0
 surface_set_color :: (main: *ImmediateMesh, color: Color) { sys_call("ImmediateMesh", "surface_set_color", 2920490490, Nil, main, color);  }  // 1
@@ -15132,16 +15132,16 @@ get_surface_lod_indices :: (main: *ImporterMesh, surface_idx: int, lod_idx: int)
 get_surface_material :: (main: *ImporterMesh, surface_idx: int) -> *Material { call_ret := cast(*Material) sys_call("ImporterMesh", "get_surface_material", 2897466400, Material, main, surface_idx); return call_ret; }  // 14
 get_surface_format :: (main: *ImporterMesh, surface_idx: int) -> int { call_ret := cast(*int) sys_call("ImporterMesh", "get_surface_format", 923996154, int, main, surface_idx); return call_ret.*; }  // 15
 set_surface_name :: (main: *ImporterMesh, surface_idx: int, name: string) { sys_call("ImporterMesh", "set_surface_name", 501894301, Nil, main, surface_idx, name);  }  // 16
-set_surface_material :: (main: *ImporterMesh, surface_idx: int, material: Material) { sys_call("ImporterMesh", "set_surface_material", 3671737478, Nil, main, surface_idx, material);  }  // 17
+set_surface_material :: (main: *ImporterMesh, surface_idx: int, material: *Material) { sys_call("ImporterMesh", "set_surface_material", 3671737478, Nil, main, surface_idx, material);  }  // 17
 generate_lods :: (main: *ImporterMesh, normal_merge_angle: float, normal_split_angle: float, bone_transform_array: Array) { sys_call("ImporterMesh", "generate_lods", 2491878677, Nil, main, normal_merge_angle, normal_split_angle, bone_transform_array);  }  // 18
 get_mesh :: (main: *ImporterMesh) -> *ArrayMesh { call_ret := cast(*ArrayMesh) sys_call("ImporterMesh", "get_mesh", 1457573577, ArrayMesh, main); return call_ret; }  // 19
 clear :: (main: *ImporterMesh) { sys_call("ImporterMesh", "clear", 3218959716, Nil, main);  }  // 20
 set_lightmap_size_hint :: (main: *ImporterMesh, size: Vector2i) { sys_call("ImporterMesh", "set_lightmap_size_hint", 1130785943, Nil, main, size);  }  // 21
 get_lightmap_size_hint :: (main: *ImporterMesh) -> Vector2i { call_ret := cast(*Vector2i) sys_call("ImporterMesh", "get_lightmap_size_hint", 3690982128, Vector2i, main); return call_ret.*; }  // 22
 
-set_mesh :: (main: *ImporterMeshInstance3D, mesh: ImporterMesh) { sys_call("ImporterMeshInstance3D", "set_mesh", 2255166972, Nil, main, mesh);  }  // 0
+set_mesh :: (main: *ImporterMeshInstance3D, mesh: *ImporterMesh) { sys_call("ImporterMeshInstance3D", "set_mesh", 2255166972, Nil, main, mesh);  }  // 0
 get_mesh :: (main: *ImporterMeshInstance3D) -> *ImporterMesh { call_ret := cast(*ImporterMesh) sys_call("ImporterMeshInstance3D", "get_mesh", 3161779525, ImporterMesh, main); return call_ret; }  // 1
-set_skin :: (main: *ImporterMeshInstance3D, skin: Skin) { sys_call("ImporterMeshInstance3D", "set_skin", 3971435618, Nil, main, skin);  }  // 2
+set_skin :: (main: *ImporterMeshInstance3D, skin: *Skin) { sys_call("ImporterMeshInstance3D", "set_skin", 3971435618, Nil, main, skin);  }  // 2
 get_skin :: (main: *ImporterMeshInstance3D) -> *Skin { call_ret := cast(*Skin) sys_call("ImporterMeshInstance3D", "get_skin", 2074563878, Skin, main); return call_ret; }  // 3
 set_skeleton_path :: (main: *ImporterMeshInstance3D, skeleton_path: string) { sys_call("ImporterMeshInstance3D", "set_skeleton_path", 1348162250, Nil, main, skeleton_path);  }  // 4
 get_skeleton_path :: (main: *ImporterMeshInstance3D) -> NodePath { call_ret := cast(*NodePath) sys_call("ImporterMeshInstance3D", "get_skeleton_path", 4075236667, NodePath, main); return call_ret.*; }  // 5
@@ -15205,8 +15205,8 @@ action_press :: (main: *Input, action: string) { sys_call("Input", "action_press
 action_release :: (main: *Input, action: string) { sys_call("Input", "action_release", 3304788590, Nil, main, action);  }  // 42
 set_default_cursor_shape :: (main: *Input) { sys_call("Input", "set_default_cursor_shape", 2124816902, Nil, main);  }  // 43
 get_current_cursor_shape :: (main: *Input) -> Input.CursorShape { call_ret := cast(*Input.CursorShape) sys_call("Input", "get_current_cursor_shape", 3455658929, Input.CursorShape, main); return call_ret.*; }  // 44
-set_custom_mouse_cursor :: (main: *Input, image: Resource) { sys_call("Input", "set_custom_mouse_cursor", 703945977, Nil, main, image);  }  // 45
-parse_input_event :: (main: *Input, event: InputEvent) { sys_call("Input", "parse_input_event", 3754044979, Nil, main, event);  }  // 46
+set_custom_mouse_cursor :: (main: *Input, image: *Resource) { sys_call("Input", "set_custom_mouse_cursor", 703945977, Nil, main, image);  }  // 45
+parse_input_event :: (main: *Input, event: *InputEvent) { sys_call("Input", "parse_input_event", 3754044979, Nil, main, event);  }  // 46
 set_use_accumulated_input :: (main: *Input, enable: bool) { sys_call("Input", "set_use_accumulated_input", 2586408642, Nil, main, enable);  }  // 47
 is_using_accumulated_input :: (main: *Input) -> bool { call_ret := cast(*bool) sys_call("Input", "is_using_accumulated_input", 2240911060, bool, main); return call_ret.*; }  // 48
 flush_buffered_events :: (main: *Input) { sys_call("Input", "flush_buffered_events", 3218959716, Nil, main);  }  // 49
@@ -15226,9 +15226,9 @@ is_pressed :: (main: *InputEvent) -> bool { call_ret := cast(*bool) sys_call("In
 is_released :: (main: *InputEvent) -> bool { call_ret := cast(*bool) sys_call("InputEvent", "is_released", 36873697, bool, main); return call_ret.*; }  // 8
 is_echo :: (main: *InputEvent) -> bool { call_ret := cast(*bool) sys_call("InputEvent", "is_echo", 36873697, bool, main); return call_ret.*; }  // 9
 as_text :: (main: *InputEvent) -> gstring { call_ret := cast(*gstring) sys_call("InputEvent", "as_text", 201670096, gstring, main); return call_ret.*; }  // 10
-is_match :: (main: *InputEvent, event: InputEvent) -> bool { call_ret := cast(*bool) sys_call("InputEvent", "is_match", 1754951977, bool, main, event); return call_ret.*; }  // 11
+is_match :: (main: *InputEvent, event: *InputEvent) -> bool { call_ret := cast(*bool) sys_call("InputEvent", "is_match", 1754951977, bool, main, event); return call_ret.*; }  // 11
 is_action_type :: (main: *InputEvent) -> bool { call_ret := cast(*bool) sys_call("InputEvent", "is_action_type", 36873697, bool, main); return call_ret.*; }  // 12
-accumulate :: (main: *InputEvent, with_event: InputEvent) -> bool { call_ret := cast(*bool) sys_call("InputEvent", "accumulate", 1062211774, bool, main, with_event); return call_ret.*; }  // 13
+accumulate :: (main: *InputEvent, with_event: *InputEvent) -> bool { call_ret := cast(*bool) sys_call("InputEvent", "accumulate", 1062211774, bool, main, with_event); return call_ret.*; }  // 13
 xformed_by :: (main: *InputEvent, xform: Transform2D) -> *InputEvent { call_ret := cast(*InputEvent) sys_call("InputEvent", "xformed_by", 1282766827, InputEvent, main, xform); return call_ret; }  // 14
 
 set_action :: (main: *InputEventAction, action: string) { sys_call("InputEventAction", "set_action", 3304788590, Nil, main, action);  }  // 0
@@ -15358,7 +15358,7 @@ set_canceled :: (main: *InputEventScreenTouch, canceled: bool) { sys_call("Input
 set_double_tap :: (main: *InputEventScreenTouch, double_tap: bool) { sys_call("InputEventScreenTouch", "set_double_tap", 2586408642, Nil, main, double_tap);  }  // 6
 is_double_tap :: (main: *InputEventScreenTouch) -> bool { call_ret := cast(*bool) sys_call("InputEventScreenTouch", "is_double_tap", 36873697, bool, main); return call_ret.*; }  // 7
 
-set_shortcut :: (main: *InputEventShortcut, shortcut: Shortcut) { sys_call("InputEventShortcut", "set_shortcut", 857163497, Nil, main, shortcut);  }  // 0
+set_shortcut :: (main: *InputEventShortcut, shortcut: *Shortcut) { sys_call("InputEventShortcut", "set_shortcut", 857163497, Nil, main, shortcut);  }  // 0
 get_shortcut :: (main: *InputEventShortcut) -> *Shortcut { call_ret := cast(*Shortcut) sys_call("InputEventShortcut", "get_shortcut", 3766804753, Shortcut, main); return call_ret; }  // 1
 
 set_command_or_control_autoremap :: (main: *InputEventWithModifiers, enable: bool) { sys_call("InputEventWithModifiers", "set_command_or_control_autoremap", 2586408642, Nil, main, enable);  }  // 0
@@ -15380,12 +15380,12 @@ add_action :: (main: *InputMap, action: string) { sys_call("InputMap", "add_acti
 erase_action :: (main: *InputMap, action: string) { sys_call("InputMap", "erase_action", 3304788590, Nil, main, action);  }  // 3
 action_set_deadzone :: (main: *InputMap, action: string, deadzone: float) { sys_call("InputMap", "action_set_deadzone", 4135858297, Nil, main, action, deadzone);  }  // 4
 action_get_deadzone :: (main: *InputMap, action: string) -> float { call_ret := cast(*float) sys_call("InputMap", "action_get_deadzone", 1391627649, float, main, action); return call_ret.*; }  // 5
-action_add_event :: (main: *InputMap, action: string, event: InputEvent) { sys_call("InputMap", "action_add_event", 518302593, Nil, main, action, event);  }  // 6
-action_has_event :: (main: *InputMap, action: string, event: InputEvent) -> bool { call_ret := cast(*bool) sys_call("InputMap", "action_has_event", 1185871985, bool, main, action, event); return call_ret.*; }  // 7
-action_erase_event :: (main: *InputMap, action: string, event: InputEvent) { sys_call("InputMap", "action_erase_event", 518302593, Nil, main, action, event);  }  // 8
+action_add_event :: (main: *InputMap, action: string, event: *InputEvent) { sys_call("InputMap", "action_add_event", 518302593, Nil, main, action, event);  }  // 6
+action_has_event :: (main: *InputMap, action: string, event: *InputEvent) -> bool { call_ret := cast(*bool) sys_call("InputMap", "action_has_event", 1185871985, bool, main, action, event); return call_ret.*; }  // 7
+action_erase_event :: (main: *InputMap, action: string, event: *InputEvent) { sys_call("InputMap", "action_erase_event", 518302593, Nil, main, action, event);  }  // 8
 action_erase_events :: (main: *InputMap, action: string) { sys_call("InputMap", "action_erase_events", 3304788590, Nil, main, action);  }  // 9
 action_get_events :: (main: *InputMap, action: string) -> [] InputEvent { call_ret := cast(*[] InputEvent) sys_call("InputMap", "action_get_events", 689397652, [] InputEvent, main, action); return call_ret.*; }  // 10
-event_is_action :: (main: *InputMap, event: InputEvent, action: string) -> bool { call_ret := cast(*bool) sys_call("InputMap", "event_is_action", 3193353650, bool, main, event, action); return call_ret.*; }  // 11
+event_is_action :: (main: *InputMap, event: *InputEvent, action: string) -> bool { call_ret := cast(*bool) sys_call("InputMap", "event_is_action", 3193353650, bool, main, event, action); return call_ret.*; }  // 11
 load_from_project_settings :: (main: *InputMap) { sys_call("InputMap", "load_from_project_settings", 3218959716, Nil, main);  }  // 12
 
 get_stored_values :: (main: *InstancePlaceholder) -> Dictionary { call_ret := cast(*Dictionary) sys_call("InstancePlaceholder", "get_stored_values", 2230153369, Dictionary, main); return call_ret.*; }  // 0
@@ -15394,10 +15394,10 @@ get_instance_path :: (main: *InstancePlaceholder) -> gstring { call_ret := cast(
 
 
 add_item :: (main: *ItemList, text: string) -> int { call_ret := cast(*int) sys_call("ItemList", "add_item", 359861678, int, main, text); return call_ret.*; }  // 0
-add_icon_item :: (main: *ItemList, icon: Texture2D) -> int { call_ret := cast(*int) sys_call("ItemList", "add_icon_item", 4256579627, int, main, icon); return call_ret.*; }  // 1
+add_icon_item :: (main: *ItemList, icon: *Texture2D) -> int { call_ret := cast(*int) sys_call("ItemList", "add_icon_item", 4256579627, int, main, icon); return call_ret.*; }  // 1
 set_item_text :: (main: *ItemList, idx: int, text: string) { sys_call("ItemList", "set_item_text", 501894301, Nil, main, idx, text);  }  // 2
 get_item_text :: (main: *ItemList, idx: int) -> gstring { call_ret := cast(*gstring) sys_call("ItemList", "get_item_text", 844755477, gstring, main, idx); return call_ret.*; }  // 3
-set_item_icon :: (main: *ItemList, idx: int, icon: Texture2D) { sys_call("ItemList", "set_item_icon", 666127730, Nil, main, idx, icon);  }  // 4
+set_item_icon :: (main: *ItemList, idx: int, icon: *Texture2D) { sys_call("ItemList", "set_item_icon", 666127730, Nil, main, idx, icon);  }  // 4
 get_item_icon :: (main: *ItemList, idx: int) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("ItemList", "get_item_icon", 3536238170, Texture2D, main, idx); return call_ret; }  // 5
 set_item_text_direction :: (main: *ItemList, idx: int, direction: Control.TextDirection) { sys_call("ItemList", "set_item_text_direction", 1707680378, Nil, main, idx, direction);  }  // 6
 get_item_text_direction :: (main: *ItemList, idx: int) -> Control.TextDirection { call_ret := cast(*Control.TextDirection) sys_call("ItemList", "get_item_text_direction", 4235602388, Control.TextDirection, main, idx); return call_ret.*; }  // 7
@@ -15486,7 +15486,7 @@ get_error_message :: (main: *JSON) -> gstring { call_ret := cast(*gstring) sys_c
 from_native :: (main: *JSON, variant: Variant) -> Variant { call_ret := cast(*Variant) sys_call("JSON", "from_native", 2963479484, Variant, main, variant); return call_ret.*; }  // 8
 to_native :: (main: *JSON, json: Variant) -> Variant { call_ret := cast(*Variant) sys_call("JSON", "to_native", 2963479484, Variant, main, json); return call_ret.*; }  // 9
 
-set_scope :: (main: *JSONRPC, scope: string, target: Object) { sys_call("JSONRPC", "set_scope", 2572618360, Nil, main, scope, target);  }  // 0
+set_scope :: (main: *JSONRPC, scope: string, target: *Object) { sys_call("JSONRPC", "set_scope", 2572618360, Nil, main, scope, target);  }  // 0
 process_action :: (main: *JSONRPC, action: Variant) -> Variant { call_ret := cast(*Variant) sys_call("JSONRPC", "process_action", 2963479484, Variant, main, action); return call_ret.*; }  // 1
 process_string :: (main: *JSONRPC, action: string) -> gstring { call_ret := cast(*gstring) sys_call("JSONRPC", "process_string", 1703090593, gstring, main, action); return call_ret.*; }  // 2
 make_request :: (main: *JSONRPC, method: string, params: Variant, id: Variant) -> Dictionary { call_ret := cast(*Dictionary) sys_call("JSONRPC", "make_request", 3423508980, Dictionary, main, method, params, id); return call_ret.*; }  // 3
@@ -15506,8 +15506,8 @@ get_java_class :: (main: *JavaObject) -> *JavaClass { call_ret := cast(*JavaClas
 eval :: (main: *JavaScriptBridge, code: string) -> Variant { call_ret := cast(*Variant) sys_call("JavaScriptBridge", "eval", 218087648, Variant, main, code); return call_ret.*; }  // 0
 get_interface :: (main: *JavaScriptBridge, _interface: string) -> *JavaScriptObject { call_ret := cast(*JavaScriptObject) sys_call("JavaScriptBridge", "get_interface", 1355533281, JavaScriptObject, main, _interface); return call_ret; }  // 1
 create_callback :: (main: *JavaScriptBridge, callable: Callable) -> *JavaScriptObject { call_ret := cast(*JavaScriptObject) sys_call("JavaScriptBridge", "create_callback", 422818440, JavaScriptObject, main, callable); return call_ret; }  // 2
-is_js_buffer :: (main: *JavaScriptBridge, javascript_object: JavaScriptObject) -> bool { call_ret := cast(*bool) sys_call("JavaScriptBridge", "is_js_buffer", 821968997, bool, main, javascript_object); return call_ret.*; }  // 3
-js_buffer_to_packed_byte_array :: (main: *JavaScriptBridge, javascript_buffer: JavaScriptObject) -> PackedByteArray { call_ret := cast(*PackedByteArray) sys_call("JavaScriptBridge", "js_buffer_to_packed_byte_array", 64409880, PackedByteArray, main, javascript_buffer); return call_ret.*; }  // 4
+is_js_buffer :: (main: *JavaScriptBridge, javascript_object: *JavaScriptObject) -> bool { call_ret := cast(*bool) sys_call("JavaScriptBridge", "is_js_buffer", 821968997, bool, main, javascript_object); return call_ret.*; }  // 3
+js_buffer_to_packed_byte_array :: (main: *JavaScriptBridge, javascript_buffer: *JavaScriptObject) -> PackedByteArray { call_ret := cast(*PackedByteArray) sys_call("JavaScriptBridge", "js_buffer_to_packed_byte_array", 64409880, PackedByteArray, main, javascript_buffer); return call_ret.*; }  // 4
 create_object :: (main: *JavaScriptBridge, object: string) -> Variant { call_ret := cast(*Variant) sys_call("JavaScriptBridge", "create_object", 3093893586, Variant, main, object); return call_ret.*; }  // 5
 download_buffer :: (main: *JavaScriptBridge, buffer: PackedByteArray, name: string) { sys_call("JavaScriptBridge", "download_buffer", 3352272093, Nil, main, buffer, name);  }  // 6
 pwa_needs_update :: (main: *JavaScriptBridge) -> bool { call_ret := cast(*bool) sys_call("JavaScriptBridge", "pwa_needs_update", 36873697, bool, main); return call_ret.*; }  // 7
@@ -15570,7 +15570,7 @@ set_vertical_alignment :: (main: *Label, alignment: VerticalAlignment) { sys_cal
 get_vertical_alignment :: (main: *Label) -> VerticalAlignment { call_ret := cast(*VerticalAlignment) sys_call("Label", "get_vertical_alignment", 3274884059, VerticalAlignment, main); return call_ret.*; }  // 3
 set_text :: (main: *Label, text: string) { sys_call("Label", "set_text", 83702148, Nil, main, text);  }  // 4
 get_text :: (main: *Label) -> gstring { call_ret := cast(*gstring) sys_call("Label", "get_text", 201670096, gstring, main); return call_ret.*; }  // 5
-set_label_settings :: (main: *Label, settings: LabelSettings) { sys_call("Label", "set_label_settings", 1030653839, Nil, main, settings);  }  // 6
+set_label_settings :: (main: *Label, settings: *LabelSettings) { sys_call("Label", "set_label_settings", 1030653839, Nil, main, settings);  }  // 6
 get_label_settings :: (main: *Label) -> *LabelSettings { call_ret := cast(*LabelSettings) sys_call("Label", "get_label_settings", 826676056, LabelSettings, main); return call_ret; }  // 7
 set_text_direction :: (main: *Label, direction: Control.TextDirection) { sys_call("Label", "set_text_direction", 119160795, Nil, main, direction);  }  // 8
 get_text_direction :: (main: *Label) -> Control.TextDirection { call_ret := cast(*Control.TextDirection) sys_call("Label", "get_text_direction", 797257663, Control.TextDirection, main); return call_ret.*; }  // 9
@@ -15636,7 +15636,7 @@ set_render_priority :: (main: *Label3D, priority: int) { sys_call("Label3D", "se
 get_render_priority :: (main: *Label3D) -> int { call_ret := cast(*int) sys_call("Label3D", "get_render_priority", 3905245786, int, main); return call_ret.*; }  // 21
 set_outline_render_priority :: (main: *Label3D, priority: int) { sys_call("Label3D", "set_outline_render_priority", 1286410249, Nil, main, priority);  }  // 22
 get_outline_render_priority :: (main: *Label3D) -> int { call_ret := cast(*int) sys_call("Label3D", "get_outline_render_priority", 3905245786, int, main); return call_ret.*; }  // 23
-set_font :: (main: *Label3D, font: Font) { sys_call("Label3D", "set_font", 1262170328, Nil, main, font);  }  // 24
+set_font :: (main: *Label3D, font: *Font) { sys_call("Label3D", "set_font", 1262170328, Nil, main, font);  }  // 24
 get_font :: (main: *Label3D) -> *Font { call_ret := cast(*Font) sys_call("Label3D", "get_font", 3229501585, Font, main); return call_ret; }  // 25
 set_font_size :: (main: *Label3D, size: int) { sys_call("Label3D", "set_font_size", 1286410249, Nil, main, size);  }  // 26
 get_font_size :: (main: *Label3D) -> int { call_ret := cast(*int) sys_call("Label3D", "get_font_size", 3905245786, int, main); return call_ret.*; }  // 27
@@ -15676,7 +15676,7 @@ set_line_spacing :: (main: *LabelSettings, spacing: float) { sys_call("LabelSett
 get_line_spacing :: (main: *LabelSettings) -> float { call_ret := cast(*float) sys_call("LabelSettings", "get_line_spacing", 1740695150, float, main); return call_ret.*; }  // 1
 set_paragraph_spacing :: (main: *LabelSettings, spacing: float) { sys_call("LabelSettings", "set_paragraph_spacing", 373806689, Nil, main, spacing);  }  // 2
 get_paragraph_spacing :: (main: *LabelSettings) -> float { call_ret := cast(*float) sys_call("LabelSettings", "get_paragraph_spacing", 1740695150, float, main); return call_ret.*; }  // 3
-set_font :: (main: *LabelSettings, font: Font) { sys_call("LabelSettings", "set_font", 1262170328, Nil, main, font);  }  // 4
+set_font :: (main: *LabelSettings, font: *Font) { sys_call("LabelSettings", "set_font", 1262170328, Nil, main, font);  }  // 4
 get_font :: (main: *LabelSettings) -> *Font { call_ret := cast(*Font) sys_call("LabelSettings", "get_font", 3229501585, Font, main); return call_ret; }  // 5
 set_font_size :: (main: *LabelSettings, size: int) { sys_call("LabelSettings", "set_font_size", 1286410249, Nil, main, size);  }  // 6
 get_font_size :: (main: *LabelSettings) -> int { call_ret := cast(*int) sys_call("LabelSettings", "get_font_size", 3905245786, int, main); return call_ret.*; }  // 7
@@ -15752,20 +15752,20 @@ set_shadow_caster_mask :: (main: *Light3D, caster_mask: int) { sys_call("Light3D
 get_shadow_caster_mask :: (main: *Light3D) -> int { call_ret := cast(*int) sys_call("Light3D", "get_shadow_caster_mask", 3905245786, int, main); return call_ret.*; }  // 23
 set_bake_mode :: (main: *Light3D, bake_mode: Light3D.BakeMode) { sys_call("Light3D", "set_bake_mode", 37739303, Nil, main, bake_mode);  }  // 24
 get_bake_mode :: (main: *Light3D) -> Light3D.BakeMode { call_ret := cast(*Light3D.BakeMode) sys_call("Light3D", "get_bake_mode", 371737608, Light3D.BakeMode, main); return call_ret.*; }  // 25
-set_projector :: (main: *Light3D, projector: Texture2D) { sys_call("Light3D", "set_projector", 4051416890, Nil, main, projector);  }  // 26
+set_projector :: (main: *Light3D, projector: *Texture2D) { sys_call("Light3D", "set_projector", 4051416890, Nil, main, projector);  }  // 26
 get_projector :: (main: *Light3D) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("Light3D", "get_projector", 3635182373, Texture2D, main); return call_ret; }  // 27
 set_temperature :: (main: *Light3D, temperature: float) { sys_call("Light3D", "set_temperature", 373806689, Nil, main, temperature);  }  // 28
 get_temperature :: (main: *Light3D) -> float { call_ret := cast(*float) sys_call("Light3D", "get_temperature", 1740695150, float, main); return call_ret.*; }  // 29
 get_correlated_color :: (main: *Light3D) -> Color { call_ret := cast(*Color) sys_call("Light3D", "get_correlated_color", 3444240500, Color, main); return call_ret.*; }  // 30
 
-set_occluder_polygon :: (main: *LightOccluder2D, polygon: OccluderPolygon2D) { sys_call("LightOccluder2D", "set_occluder_polygon", 3258315893, Nil, main, polygon);  }  // 0
+set_occluder_polygon :: (main: *LightOccluder2D, polygon: *OccluderPolygon2D) { sys_call("LightOccluder2D", "set_occluder_polygon", 3258315893, Nil, main, polygon);  }  // 0
 get_occluder_polygon :: (main: *LightOccluder2D) -> *OccluderPolygon2D { call_ret := cast(*OccluderPolygon2D) sys_call("LightOccluder2D", "get_occluder_polygon", 3962317075, OccluderPolygon2D, main); return call_ret; }  // 1
 set_occluder_light_mask :: (main: *LightOccluder2D, mask: int) { sys_call("LightOccluder2D", "set_occluder_light_mask", 1286410249, Nil, main, mask);  }  // 2
 get_occluder_light_mask :: (main: *LightOccluder2D) -> int { call_ret := cast(*int) sys_call("LightOccluder2D", "get_occluder_light_mask", 3905245786, int, main); return call_ret.*; }  // 3
 set_as_sdf_collision :: (main: *LightOccluder2D, enable: bool) { sys_call("LightOccluder2D", "set_as_sdf_collision", 2586408642, Nil, main, enable);  }  // 4
 is_set_as_sdf_collision :: (main: *LightOccluder2D) -> bool { call_ret := cast(*bool) sys_call("LightOccluder2D", "is_set_as_sdf_collision", 36873697, bool, main); return call_ret.*; }  // 5
 
-set_light_data :: (main: *LightmapGI, data: LightmapGIData) { sys_call("LightmapGI", "set_light_data", 1790597277, Nil, main, data);  }  // 0
+set_light_data :: (main: *LightmapGI, data: *LightmapGIData) { sys_call("LightmapGI", "set_light_data", 1790597277, Nil, main, data);  }  // 0
 get_light_data :: (main: *LightmapGI) -> *LightmapGIData { call_ret := cast(*LightmapGIData) sys_call("LightmapGI", "get_light_data", 290354153, LightmapGIData, main); return call_ret; }  // 1
 set_bake_quality :: (main: *LightmapGI, bake_quality: LightmapGI.BakeQuality) { sys_call("LightmapGI", "set_bake_quality", 1192215803, Nil, main, bake_quality);  }  // 2
 get_bake_quality :: (main: *LightmapGI) -> LightmapGI.BakeQuality { call_ret := cast(*LightmapGI.BakeQuality) sys_call("LightmapGI", "get_bake_quality", 688832735, LightmapGI.BakeQuality, main); return call_ret.*; }  // 3
@@ -15779,7 +15779,7 @@ set_bias :: (main: *LightmapGI, bias: float) { sys_call("LightmapGI", "set_bias"
 get_bias :: (main: *LightmapGI) -> float { call_ret := cast(*float) sys_call("LightmapGI", "get_bias", 1740695150, float, main); return call_ret.*; }  // 11
 set_environment_mode :: (main: *LightmapGI, mode: LightmapGI.EnvironmentMode) { sys_call("LightmapGI", "set_environment_mode", 2282650285, Nil, main, mode);  }  // 12
 get_environment_mode :: (main: *LightmapGI) -> LightmapGI.EnvironmentMode { call_ret := cast(*LightmapGI.EnvironmentMode) sys_call("LightmapGI", "get_environment_mode", 4128646479, LightmapGI.EnvironmentMode, main); return call_ret.*; }  // 13
-set_environment_custom_sky :: (main: *LightmapGI, sky: Sky) { sys_call("LightmapGI", "set_environment_custom_sky", 3336722921, Nil, main, sky);  }  // 14
+set_environment_custom_sky :: (main: *LightmapGI, sky: *Sky) { sys_call("LightmapGI", "set_environment_custom_sky", 3336722921, Nil, main, sky);  }  // 14
 get_environment_custom_sky :: (main: *LightmapGI) -> *Sky { call_ret := cast(*Sky) sys_call("LightmapGI", "get_environment_custom_sky", 1177136966, Sky, main); return call_ret; }  // 15
 set_environment_custom_color :: (main: *LightmapGI, color: Color) { sys_call("LightmapGI", "set_environment_custom_color", 2920490490, Nil, main, color);  }  // 16
 get_environment_custom_color :: (main: *LightmapGI) -> Color { call_ret := cast(*Color) sys_call("LightmapGI", "get_environment_custom_color", 3444240500, Color, main); return call_ret.*; }  // 17
@@ -15807,7 +15807,7 @@ set_shadowmask_mode :: (main: *LightmapGI, mode: LightmapGIData.ShadowmaskMode) 
 get_shadowmask_mode :: (main: *LightmapGI) -> LightmapGIData.ShadowmaskMode { call_ret := cast(*LightmapGIData.ShadowmaskMode) sys_call("LightmapGI", "get_shadowmask_mode", 785478560, LightmapGIData.ShadowmaskMode, main); return call_ret.*; }  // 39
 set_use_texture_for_bounces :: (main: *LightmapGI, use_texture_for_bounces: bool) { sys_call("LightmapGI", "set_use_texture_for_bounces", 2586408642, Nil, main, use_texture_for_bounces);  }  // 40
 is_using_texture_for_bounces :: (main: *LightmapGI) -> bool { call_ret := cast(*bool) sys_call("LightmapGI", "is_using_texture_for_bounces", 36873697, bool, main); return call_ret.*; }  // 41
-set_camera_attributes :: (main: *LightmapGI, camera_attributes: CameraAttributes) { sys_call("LightmapGI", "set_camera_attributes", 2817810567, Nil, main, camera_attributes);  }  // 42
+set_camera_attributes :: (main: *LightmapGI, camera_attributes: *CameraAttributes) { sys_call("LightmapGI", "set_camera_attributes", 2817810567, Nil, main, camera_attributes);  }  // 42
 get_camera_attributes :: (main: *LightmapGI) -> *CameraAttributes { call_ret := cast(*CameraAttributes) sys_call("LightmapGI", "get_camera_attributes", 3921283215, CameraAttributes, main); return call_ret; }  // 43
 
 set_lightmap_textures :: (main: *LightmapGIData, light_textures: [] TextureLayered) { sys_call("LightmapGIData", "set_lightmap_textures", 381264803, Nil, main, light_textures);  }  // 0
@@ -15820,7 +15820,7 @@ add_user :: (main: *LightmapGIData, path: string, uv_scale: Rect2, slice_index: 
 get_user_count :: (main: *LightmapGIData) -> int { call_ret := cast(*int) sys_call("LightmapGIData", "get_user_count", 3905245786, int, main); return call_ret.*; }  // 7
 get_user_path :: (main: *LightmapGIData, user_idx: int) -> NodePath { call_ret := cast(*NodePath) sys_call("LightmapGIData", "get_user_path", 408788394, NodePath, main, user_idx); return call_ret.*; }  // 8
 clear_users :: (main: *LightmapGIData) { sys_call("LightmapGIData", "clear_users", 3218959716, Nil, main);  }  // 9
-set_light_texture :: (main: *LightmapGIData, light_texture: TextureLayered) { sys_call("LightmapGIData", "set_light_texture", 1278366092, Nil, main, light_texture);  }  // 10
+set_light_texture :: (main: *LightmapGIData, light_texture: *TextureLayered) { sys_call("LightmapGIData", "set_light_texture", 1278366092, Nil, main, light_texture);  }  // 10
 get_light_texture :: (main: *LightmapGIData) -> *TextureLayered { call_ret := cast(*TextureLayered) sys_call("LightmapGIData", "get_light_texture", 3984243839, TextureLayered, main); return call_ret; }  // 11
 
 
@@ -15838,13 +15838,13 @@ set_closed :: (main: *Line2D, closed: bool) { sys_call("Line2D", "set_closed", 2
 is_closed :: (main: *Line2D) -> bool { call_ret := cast(*bool) sys_call("Line2D", "is_closed", 36873697, bool, main); return call_ret.*; }  // 9
 set_width :: (main: *Line2D, width: float) { sys_call("Line2D", "set_width", 373806689, Nil, main, width);  }  // 10
 get_width :: (main: *Line2D) -> float { call_ret := cast(*float) sys_call("Line2D", "get_width", 1740695150, float, main); return call_ret.*; }  // 11
-set_curve :: (main: *Line2D, curve: Curve) { sys_call("Line2D", "set_curve", 270443179, Nil, main, curve);  }  // 12
+set_curve :: (main: *Line2D, curve: *Curve) { sys_call("Line2D", "set_curve", 270443179, Nil, main, curve);  }  // 12
 get_curve :: (main: *Line2D) -> *Curve { call_ret := cast(*Curve) sys_call("Line2D", "get_curve", 2460114913, Curve, main); return call_ret; }  // 13
 set_default_color :: (main: *Line2D, color: Color) { sys_call("Line2D", "set_default_color", 2920490490, Nil, main, color);  }  // 14
 get_default_color :: (main: *Line2D) -> Color { call_ret := cast(*Color) sys_call("Line2D", "get_default_color", 3444240500, Color, main); return call_ret.*; }  // 15
-set_gradient :: (main: *Line2D, color: Gradient) { sys_call("Line2D", "set_gradient", 2756054477, Nil, main, color);  }  // 16
+set_gradient :: (main: *Line2D, color: *Gradient) { sys_call("Line2D", "set_gradient", 2756054477, Nil, main, color);  }  // 16
 get_gradient :: (main: *Line2D) -> *Gradient { call_ret := cast(*Gradient) sys_call("Line2D", "get_gradient", 132272999, Gradient, main); return call_ret; }  // 17
-set_texture :: (main: *Line2D, texture: Texture2D) { sys_call("Line2D", "set_texture", 4051416890, Nil, main, texture);  }  // 18
+set_texture :: (main: *Line2D, texture: *Texture2D) { sys_call("Line2D", "set_texture", 4051416890, Nil, main, texture);  }  // 18
 get_texture :: (main: *Line2D) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("Line2D", "get_texture", 3635182373, Texture2D, main); return call_ret; }  // 19
 set_texture_mode :: (main: *Line2D, mode: Line2D.LineTextureMode) { sys_call("Line2D", "set_texture_mode", 1952559516, Nil, main, mode);  }  // 20
 get_texture_mode :: (main: *Line2D) -> Line2D.LineTextureMode { call_ret := cast(*Line2D.LineTextureMode) sys_call("Line2D", "get_texture_mode", 2341040722, Line2D.LineTextureMode, main); return call_ret.*; }  // 21
@@ -15942,7 +15942,7 @@ set_deselect_on_focus_loss_enabled :: (main: *LineEdit, enable: bool) { sys_call
 is_deselect_on_focus_loss_enabled :: (main: *LineEdit) -> bool { call_ret := cast(*bool) sys_call("LineEdit", "is_deselect_on_focus_loss_enabled", 36873697, bool, main); return call_ret.*; }  // 78
 set_drag_and_drop_selection_enabled :: (main: *LineEdit, enable: bool) { sys_call("LineEdit", "set_drag_and_drop_selection_enabled", 2586408642, Nil, main, enable);  }  // 79
 is_drag_and_drop_selection_enabled :: (main: *LineEdit) -> bool { call_ret := cast(*bool) sys_call("LineEdit", "is_drag_and_drop_selection_enabled", 36873697, bool, main); return call_ret.*; }  // 80
-set_right_icon :: (main: *LineEdit, icon: Texture2D) { sys_call("LineEdit", "set_right_icon", 4051416890, Nil, main, icon);  }  // 81
+set_right_icon :: (main: *LineEdit, icon: *Texture2D) { sys_call("LineEdit", "set_right_icon", 4051416890, Nil, main, icon);  }  // 81
 get_right_icon :: (main: *LineEdit) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("LineEdit", "get_right_icon", 255860311, Texture2D, main); return call_ret; }  // 82
 set_flat :: (main: *LineEdit, enabled: bool) { sys_call("LineEdit", "set_flat", 2586408642, Nil, main, enabled);  }  // 83
 is_flat :: (main: *LineEdit) -> bool { call_ret := cast(*bool) sys_call("LineEdit", "is_flat", 36873697, bool, main); return call_ret.*; }  // 84
@@ -16041,7 +16041,7 @@ base64_to_raw :: (main: *Marshalls, base64_str: string) -> PackedByteArray { cal
 utf8_to_base64 :: (main: *Marshalls, utf8_str: string) -> gstring { call_ret := cast(*gstring) sys_call("Marshalls", "utf8_to_base64", 1703090593, gstring, main, utf8_str); return call_ret.*; }  // 4
 base64_to_utf8 :: (main: *Marshalls, base64_str: string) -> gstring { call_ret := cast(*gstring) sys_call("Marshalls", "base64_to_utf8", 1703090593, gstring, main, base64_str); return call_ret.*; }  // 5
 
-set_next_pass :: (main: *Material, next_pass: Material) { sys_call("Material", "set_next_pass", 2757459619, Nil, main, next_pass);  }  // 4
+set_next_pass :: (main: *Material, next_pass: *Material) { sys_call("Material", "set_next_pass", 2757459619, Nil, main, next_pass);  }  // 4
 get_next_pass :: (main: *Material) -> *Material { call_ret := cast(*Material) sys_call("Material", "get_next_pass", 5934680, Material, main); return call_ret; }  // 5
 set_render_priority :: (main: *Material, priority: int) { sys_call("Material", "set_render_priority", 1286410249, Nil, main, priority);  }  // 6
 get_render_priority :: (main: *Material) -> int { call_ret := cast(*int) sys_call("Material", "get_render_priority", 3905245786, int, main); return call_ret.*; }  // 7
@@ -16088,7 +16088,7 @@ get_faces :: (main: *Mesh) -> PackedVector3Array { call_ret := cast(*PackedVecto
 get_surface_count :: (main: *Mesh) -> int { call_ret := cast(*int) sys_call("Mesh", "get_surface_count", 3905245786, int, main); return call_ret.*; }  // 18
 surface_get_arrays :: (main: *Mesh, surf_idx: int) -> Array { call_ret := cast(*Array) sys_call("Mesh", "surface_get_arrays", 663333327, Array, main, surf_idx); return call_ret.*; }  // 19
 surface_get_blend_shape_arrays :: (main: *Mesh, surf_idx: int) -> [] Array { call_ret := cast(*[] Array) sys_call("Mesh", "surface_get_blend_shape_arrays", 663333327, [] Array, main, surf_idx); return call_ret.*; }  // 20
-surface_set_material :: (main: *Mesh, surf_idx: int, material: Material) { sys_call("Mesh", "surface_set_material", 3671737478, Nil, main, surf_idx, material);  }  // 21
+surface_set_material :: (main: *Mesh, surf_idx: int, material: *Material) { sys_call("Mesh", "surface_set_material", 3671737478, Nil, main, surf_idx, material);  }  // 21
 surface_get_material :: (main: *Mesh, surf_idx: int) -> *Material { call_ret := cast(*Material) sys_call("Mesh", "surface_get_material", 2897466400, Material, main, surf_idx); return call_ret; }  // 22
 create_placeholder :: (main: *Mesh) -> *Resource { call_ret := cast(*Resource) sys_call("Mesh", "create_placeholder", 121922552, Resource, main); return call_ret; }  // 23
 create_trimesh_shape :: (main: *Mesh) -> *ConcavePolygonShape3D { call_ret := cast(*ConcavePolygonShape3D) sys_call("Mesh", "create_trimesh_shape", 4160111210, ConcavePolygonShape3D, main); return call_ret; }  // 24
@@ -16124,8 +16124,8 @@ set_project_hull_vertices :: (main: *MeshConvexDecompositionSettings, project_hu
 get_project_hull_vertices :: (main: *MeshConvexDecompositionSettings) -> bool { call_ret := cast(*bool) sys_call("MeshConvexDecompositionSettings", "get_project_hull_vertices", 36873697, bool, main); return call_ret.*; }  // 25
 
 clear :: (main: *MeshDataTool) { sys_call("MeshDataTool", "clear", 3218959716, Nil, main);  }  // 0
-create_from_surface :: (main: *MeshDataTool, mesh: ArrayMesh, surface: int) -> Error { call_ret := cast(*Error) sys_call("MeshDataTool", "create_from_surface", 2727020678, Error, main, mesh, surface); return call_ret.*; }  // 1
-commit_to_surface :: (main: *MeshDataTool, mesh: ArrayMesh) -> Error { call_ret := cast(*Error) sys_call("MeshDataTool", "commit_to_surface", 2021686445, Error, main, mesh); return call_ret.*; }  // 2
+create_from_surface :: (main: *MeshDataTool, mesh: *ArrayMesh, surface: int) -> Error { call_ret := cast(*Error) sys_call("MeshDataTool", "create_from_surface", 2727020678, Error, main, mesh, surface); return call_ret.*; }  // 1
+commit_to_surface :: (main: *MeshDataTool, mesh: *ArrayMesh) -> Error { call_ret := cast(*Error) sys_call("MeshDataTool", "commit_to_surface", 2021686445, Error, main, mesh); return call_ret.*; }  // 2
 get_format :: (main: *MeshDataTool) -> int { call_ret := cast(*int) sys_call("MeshDataTool", "get_format", 3905245786, int, main); return call_ret.*; }  // 3
 get_vertex_count :: (main: *MeshDataTool) -> int { call_ret := cast(*int) sys_call("MeshDataTool", "get_vertex_count", 3905245786, int, main); return call_ret.*; }  // 4
 get_edge_count :: (main: *MeshDataTool) -> int { call_ret := cast(*int) sys_call("MeshDataTool", "get_edge_count", 3905245786, int, main); return call_ret.*; }  // 5
@@ -16159,23 +16159,23 @@ get_face_edge :: (main: *MeshDataTool, idx: int, edge: int) -> int { call_ret :=
 set_face_meta :: (main: *MeshDataTool, idx: int, meta: Variant) { sys_call("MeshDataTool", "set_face_meta", 2152698145, Nil, main, idx, meta);  }  // 33
 get_face_meta :: (main: *MeshDataTool, idx: int) -> Variant { call_ret := cast(*Variant) sys_call("MeshDataTool", "get_face_meta", 4227898402, Variant, main, idx); return call_ret.*; }  // 34
 get_face_normal :: (main: *MeshDataTool, idx: int) -> Vector3 { call_ret := cast(*Vector3) sys_call("MeshDataTool", "get_face_normal", 711720468, Vector3, main, idx); return call_ret.*; }  // 35
-set_material :: (main: *MeshDataTool, material: Material) { sys_call("MeshDataTool", "set_material", 2757459619, Nil, main, material);  }  // 36
+set_material :: (main: *MeshDataTool, material: *Material) { sys_call("MeshDataTool", "set_material", 2757459619, Nil, main, material);  }  // 36
 get_material :: (main: *MeshDataTool) -> *Material { call_ret := cast(*Material) sys_call("MeshDataTool", "get_material", 5934680, Material, main); return call_ret; }  // 37
 
-set_mesh :: (main: *MeshInstance2D, mesh: Mesh) { sys_call("MeshInstance2D", "set_mesh", 194775623, Nil, main, mesh);  }  // 0
+set_mesh :: (main: *MeshInstance2D, mesh: *Mesh) { sys_call("MeshInstance2D", "set_mesh", 194775623, Nil, main, mesh);  }  // 0
 get_mesh :: (main: *MeshInstance2D) -> *Mesh { call_ret := cast(*Mesh) sys_call("MeshInstance2D", "get_mesh", 1808005922, Mesh, main); return call_ret; }  // 1
-set_texture :: (main: *MeshInstance2D, texture: Texture2D) { sys_call("MeshInstance2D", "set_texture", 4051416890, Nil, main, texture);  }  // 2
+set_texture :: (main: *MeshInstance2D, texture: *Texture2D) { sys_call("MeshInstance2D", "set_texture", 4051416890, Nil, main, texture);  }  // 2
 get_texture :: (main: *MeshInstance2D) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("MeshInstance2D", "get_texture", 3635182373, Texture2D, main); return call_ret; }  // 3
 
-set_mesh :: (main: *MeshInstance3D, mesh: Mesh) { sys_call("MeshInstance3D", "set_mesh", 194775623, Nil, main, mesh);  }  // 0
+set_mesh :: (main: *MeshInstance3D, mesh: *Mesh) { sys_call("MeshInstance3D", "set_mesh", 194775623, Nil, main, mesh);  }  // 0
 get_mesh :: (main: *MeshInstance3D) -> *Mesh { call_ret := cast(*Mesh) sys_call("MeshInstance3D", "get_mesh", 1808005922, Mesh, main); return call_ret; }  // 1
 set_skeleton_path :: (main: *MeshInstance3D, skeleton_path: string) { sys_call("MeshInstance3D", "set_skeleton_path", 1348162250, Nil, main, skeleton_path);  }  // 2
 get_skeleton_path :: (main: *MeshInstance3D) -> NodePath { call_ret := cast(*NodePath) sys_call("MeshInstance3D", "get_skeleton_path", 277076166, NodePath, main); return call_ret.*; }  // 3
-set_skin :: (main: *MeshInstance3D, skin: Skin) { sys_call("MeshInstance3D", "set_skin", 3971435618, Nil, main, skin);  }  // 4
+set_skin :: (main: *MeshInstance3D, skin: *Skin) { sys_call("MeshInstance3D", "set_skin", 3971435618, Nil, main, skin);  }  // 4
 get_skin :: (main: *MeshInstance3D) -> *Skin { call_ret := cast(*Skin) sys_call("MeshInstance3D", "get_skin", 2074563878, Skin, main); return call_ret; }  // 5
 get_skin_reference :: (main: *MeshInstance3D) -> *SkinReference { call_ret := cast(*SkinReference) sys_call("MeshInstance3D", "get_skin_reference", 2060603409, SkinReference, main); return call_ret; }  // 6
 get_surface_override_material_count :: (main: *MeshInstance3D) -> int { call_ret := cast(*int) sys_call("MeshInstance3D", "get_surface_override_material_count", 3905245786, int, main); return call_ret.*; }  // 7
-set_surface_override_material :: (main: *MeshInstance3D, surface: int, material: Material) { sys_call("MeshInstance3D", "set_surface_override_material", 3671737478, Nil, main, surface, material);  }  // 8
+set_surface_override_material :: (main: *MeshInstance3D, surface: int, material: *Material) { sys_call("MeshInstance3D", "set_surface_override_material", 3671737478, Nil, main, surface, material);  }  // 8
 get_surface_override_material :: (main: *MeshInstance3D, surface: int) -> *Material { call_ret := cast(*Material) sys_call("MeshInstance3D", "get_surface_override_material", 2897466400, Material, main, surface); return call_ret; }  // 9
 get_active_material :: (main: *MeshInstance3D, surface: int) -> *Material { call_ret := cast(*Material) sys_call("MeshInstance3D", "get_active_material", 2897466400, Material, main, surface); return call_ret; }  // 10
 create_trimesh_collision :: (main: *MeshInstance3D) { sys_call("MeshInstance3D", "create_trimesh_collision", 3218959716, Nil, main);  }  // 11
@@ -16191,14 +16191,14 @@ bake_mesh_from_current_skeleton_pose :: (main: *MeshInstance3D) -> *ArrayMesh { 
 
 create_item :: (main: *MeshLibrary, id: int) { sys_call("MeshLibrary", "create_item", 1286410249, Nil, main, id);  }  // 0
 set_item_name :: (main: *MeshLibrary, id: int, name: string) { sys_call("MeshLibrary", "set_item_name", 501894301, Nil, main, id, name);  }  // 1
-set_item_mesh :: (main: *MeshLibrary, id: int, mesh: Mesh) { sys_call("MeshLibrary", "set_item_mesh", 969122797, Nil, main, id, mesh);  }  // 2
+set_item_mesh :: (main: *MeshLibrary, id: int, mesh: *Mesh) { sys_call("MeshLibrary", "set_item_mesh", 969122797, Nil, main, id, mesh);  }  // 2
 set_item_mesh_transform :: (main: *MeshLibrary, id: int, mesh_transform: Transform3D) { sys_call("MeshLibrary", "set_item_mesh_transform", 3616898986, Nil, main, id, mesh_transform);  }  // 3
 set_item_mesh_cast_shadow :: (main: *MeshLibrary, id: int, shadow_casting_setting: RenderingServer.ShadowCastingSetting) { sys_call("MeshLibrary", "set_item_mesh_cast_shadow", 3923400443, Nil, main, id, shadow_casting_setting);  }  // 4
-set_item_navigation_mesh :: (main: *MeshLibrary, id: int, navigation_mesh: NavigationMesh) { sys_call("MeshLibrary", "set_item_navigation_mesh", 3483353960, Nil, main, id, navigation_mesh);  }  // 5
+set_item_navigation_mesh :: (main: *MeshLibrary, id: int, navigation_mesh: *NavigationMesh) { sys_call("MeshLibrary", "set_item_navigation_mesh", 3483353960, Nil, main, id, navigation_mesh);  }  // 5
 set_item_navigation_mesh_transform :: (main: *MeshLibrary, id: int, navigation_mesh: Transform3D) { sys_call("MeshLibrary", "set_item_navigation_mesh_transform", 3616898986, Nil, main, id, navigation_mesh);  }  // 6
 set_item_navigation_layers :: (main: *MeshLibrary, id: int, navigation_layers: int) { sys_call("MeshLibrary", "set_item_navigation_layers", 3937882851, Nil, main, id, navigation_layers);  }  // 7
 set_item_shapes :: (main: *MeshLibrary, id: int, shapes: Array) { sys_call("MeshLibrary", "set_item_shapes", 537221740, Nil, main, id, shapes);  }  // 8
-set_item_preview :: (main: *MeshLibrary, id: int, texture: Texture2D) { sys_call("MeshLibrary", "set_item_preview", 666127730, Nil, main, id, texture);  }  // 9
+set_item_preview :: (main: *MeshLibrary, id: int, texture: *Texture2D) { sys_call("MeshLibrary", "set_item_preview", 666127730, Nil, main, id, texture);  }  // 9
 get_item_name :: (main: *MeshLibrary, id: int) -> gstring { call_ret := cast(*gstring) sys_call("MeshLibrary", "get_item_name", 844755477, gstring, main, id); return call_ret.*; }  // 10
 get_item_mesh :: (main: *MeshLibrary, id: int) -> *Mesh { call_ret := cast(*Mesh) sys_call("MeshLibrary", "get_item_mesh", 1576363275, Mesh, main, id); return call_ret; }  // 11
 get_item_mesh_transform :: (main: *MeshLibrary, id: int) -> Transform3D { call_ret := cast(*Transform3D) sys_call("MeshLibrary", "get_item_mesh_transform", 1965739696, Transform3D, main, id); return call_ret.*; }  // 12
@@ -16214,11 +16214,11 @@ clear :: (main: *MeshLibrary) { sys_call("MeshLibrary", "clear", 3218959716, Nil
 get_item_list :: (main: *MeshLibrary) -> PackedInt32Array { call_ret := cast(*PackedInt32Array) sys_call("MeshLibrary", "get_item_list", 1930428628, PackedInt32Array, main); return call_ret.*; }  // 22
 get_last_unused_item_id :: (main: *MeshLibrary) -> int { call_ret := cast(*int) sys_call("MeshLibrary", "get_last_unused_item_id", 3905245786, int, main); return call_ret.*; }  // 23
 
-set_mesh :: (main: *MeshTexture, mesh: Mesh) { sys_call("MeshTexture", "set_mesh", 194775623, Nil, main, mesh);  }  // 0
+set_mesh :: (main: *MeshTexture, mesh: *Mesh) { sys_call("MeshTexture", "set_mesh", 194775623, Nil, main, mesh);  }  // 0
 get_mesh :: (main: *MeshTexture) -> *Mesh { call_ret := cast(*Mesh) sys_call("MeshTexture", "get_mesh", 1808005922, Mesh, main); return call_ret; }  // 1
 set_image_size :: (main: *MeshTexture, size: Vector2) { sys_call("MeshTexture", "set_image_size", 743155724, Nil, main, size);  }  // 2
 get_image_size :: (main: *MeshTexture) -> Vector2 { call_ret := cast(*Vector2) sys_call("MeshTexture", "get_image_size", 3341600327, Vector2, main); return call_ret.*; }  // 3
-set_base_texture :: (main: *MeshTexture, texture: Texture2D) { sys_call("MeshTexture", "set_base_texture", 4051416890, Nil, main, texture);  }  // 4
+set_base_texture :: (main: *MeshTexture, texture: *Texture2D) { sys_call("MeshTexture", "set_base_texture", 4051416890, Nil, main, texture);  }  // 4
 get_base_texture :: (main: *MeshTexture) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("MeshTexture", "get_base_texture", 3635182373, Texture2D, main); return call_ret; }  // 5
 
 set_delay :: (main: *MethodTweener, delay: float) -> *MethodTweener { call_ret := cast(*MethodTweener) sys_call("MethodTweener", "set_delay", 266477812, MethodTweener, main, delay); return call_ret; }  // 0
@@ -16258,9 +16258,9 @@ set_vrs_min_radius :: (main: *MobileVRInterface, radius: float) { sys_call("Mobi
 get_vrs_strength :: (main: *MobileVRInterface) -> float { call_ret := cast(*float) sys_call("MobileVRInterface", "get_vrs_strength", 1740695150, float, main); return call_ret.*; }  // 18
 set_vrs_strength :: (main: *MobileVRInterface, strength: float) { sys_call("MobileVRInterface", "set_vrs_strength", 373806689, Nil, main, strength);  }  // 19
 
-add_writer :: (main: *MovieWriter, writer: MovieWriter) { sys_call("MovieWriter", "add_writer", 4023702871, Nil, main, writer);  }  // 6
+add_writer :: (main: *MovieWriter, writer: *MovieWriter) { sys_call("MovieWriter", "add_writer", 4023702871, Nil, main, writer);  }  // 6
 
-set_mesh :: (main: *MultiMesh, mesh: Mesh) { sys_call("MultiMesh", "set_mesh", 194775623, Nil, main, mesh);  }  // 0
+set_mesh :: (main: *MultiMesh, mesh: *Mesh) { sys_call("MultiMesh", "set_mesh", 194775623, Nil, main, mesh);  }  // 0
 get_mesh :: (main: *MultiMesh) -> *Mesh { call_ret := cast(*Mesh) sys_call("MultiMesh", "get_mesh", 1808005922, Mesh, main); return call_ret; }  // 1
 set_use_colors :: (main: *MultiMesh, enable: bool) { sys_call("MultiMesh", "set_use_colors", 2586408642, Nil, main, enable);  }  // 2
 is_using_colors :: (main: *MultiMesh) -> bool { call_ret := cast(*bool) sys_call("MultiMesh", "is_using_colors", 36873697, bool, main); return call_ret.*; }  // 3
@@ -16290,24 +16290,24 @@ get_buffer :: (main: *MultiMesh) -> PackedFloat32Array { call_ret := cast(*Packe
 set_buffer :: (main: *MultiMesh, buffer: PackedFloat32Array) { sys_call("MultiMesh", "set_buffer", 2899603908, Nil, main, buffer);  }  // 27
 set_buffer_interpolated :: (main: *MultiMesh, buffer_curr: PackedFloat32Array, buffer_prev: PackedFloat32Array) { sys_call("MultiMesh", "set_buffer_interpolated", 3514430332, Nil, main, buffer_curr, buffer_prev);  }  // 28
 
-set_multimesh :: (main: *MultiMeshInstance2D, multimesh: MultiMesh) { sys_call("MultiMeshInstance2D", "set_multimesh", 2246127404, Nil, main, multimesh);  }  // 0
+set_multimesh :: (main: *MultiMeshInstance2D, multimesh: *MultiMesh) { sys_call("MultiMeshInstance2D", "set_multimesh", 2246127404, Nil, main, multimesh);  }  // 0
 get_multimesh :: (main: *MultiMeshInstance2D) -> *MultiMesh { call_ret := cast(*MultiMesh) sys_call("MultiMeshInstance2D", "get_multimesh", 1385450523, MultiMesh, main); return call_ret; }  // 1
-set_texture :: (main: *MultiMeshInstance2D, texture: Texture2D) { sys_call("MultiMeshInstance2D", "set_texture", 4051416890, Nil, main, texture);  }  // 2
+set_texture :: (main: *MultiMeshInstance2D, texture: *Texture2D) { sys_call("MultiMeshInstance2D", "set_texture", 4051416890, Nil, main, texture);  }  // 2
 get_texture :: (main: *MultiMeshInstance2D) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("MultiMeshInstance2D", "get_texture", 3635182373, Texture2D, main); return call_ret; }  // 3
 
-set_multimesh :: (main: *MultiMeshInstance3D, multimesh: MultiMesh) { sys_call("MultiMeshInstance3D", "set_multimesh", 2246127404, Nil, main, multimesh);  }  // 0
+set_multimesh :: (main: *MultiMeshInstance3D, multimesh: *MultiMesh) { sys_call("MultiMeshInstance3D", "set_multimesh", 2246127404, Nil, main, multimesh);  }  // 0
 get_multimesh :: (main: *MultiMeshInstance3D) -> *MultiMesh { call_ret := cast(*MultiMesh) sys_call("MultiMeshInstance3D", "get_multimesh", 1385450523, MultiMesh, main); return call_ret; }  // 1
 
 has_multiplayer_peer :: (main: *MultiplayerAPI) -> bool { call_ret := cast(*bool) sys_call("MultiplayerAPI", "has_multiplayer_peer", 2240911060, bool, main); return call_ret.*; }  // 0
 get_multiplayer_peer :: (main: *MultiplayerAPI) -> *MultiplayerPeer { call_ret := cast(*MultiplayerPeer) sys_call("MultiplayerAPI", "get_multiplayer_peer", 3223692825, MultiplayerPeer, main); return call_ret; }  // 1
-set_multiplayer_peer :: (main: *MultiplayerAPI, peer: MultiplayerPeer) { sys_call("MultiplayerAPI", "set_multiplayer_peer", 3694835298, Nil, main, peer);  }  // 2
+set_multiplayer_peer :: (main: *MultiplayerAPI, peer: *MultiplayerPeer) { sys_call("MultiplayerAPI", "set_multiplayer_peer", 3694835298, Nil, main, peer);  }  // 2
 get_unique_id :: (main: *MultiplayerAPI) -> int { call_ret := cast(*int) sys_call("MultiplayerAPI", "get_unique_id", 2455072627, int, main); return call_ret.*; }  // 3
 is_server :: (main: *MultiplayerAPI) -> bool { call_ret := cast(*bool) sys_call("MultiplayerAPI", "is_server", 2240911060, bool, main); return call_ret.*; }  // 4
 get_remote_sender_id :: (main: *MultiplayerAPI) -> int { call_ret := cast(*int) sys_call("MultiplayerAPI", "get_remote_sender_id", 2455072627, int, main); return call_ret.*; }  // 5
 poll :: (main: *MultiplayerAPI) -> Error { call_ret := cast(*Error) sys_call("MultiplayerAPI", "poll", 166280745, Error, main); return call_ret.*; }  // 6
-rpc :: (main: *MultiplayerAPI, peer: int, object: Object, method: string) -> Error { call_ret := cast(*Error) sys_call("MultiplayerAPI", "rpc", 2077486355, Error, main, peer, object, method); return call_ret.*; }  // 7
-object_configuration_add :: (main: *MultiplayerAPI, object: Object, configuration: Variant) -> Error { call_ret := cast(*Error) sys_call("MultiplayerAPI", "object_configuration_add", 1171879464, Error, main, object, configuration); return call_ret.*; }  // 8
-object_configuration_remove :: (main: *MultiplayerAPI, object: Object, configuration: Variant) -> Error { call_ret := cast(*Error) sys_call("MultiplayerAPI", "object_configuration_remove", 1171879464, Error, main, object, configuration); return call_ret.*; }  // 9
+rpc :: (main: *MultiplayerAPI, peer: int, object: *Object, method: string) -> Error { call_ret := cast(*Error) sys_call("MultiplayerAPI", "rpc", 2077486355, Error, main, peer, object, method); return call_ret.*; }  // 7
+object_configuration_add :: (main: *MultiplayerAPI, object: *Object, configuration: Variant) -> Error { call_ret := cast(*Error) sys_call("MultiplayerAPI", "object_configuration_add", 1171879464, Error, main, object, configuration); return call_ret.*; }  // 8
+object_configuration_remove :: (main: *MultiplayerAPI, object: *Object, configuration: Variant) -> Error { call_ret := cast(*Error) sys_call("MultiplayerAPI", "object_configuration_remove", 1171879464, Error, main, object, configuration); return call_ret.*; }  // 9
 get_peers :: (main: *MultiplayerAPI) -> PackedInt32Array { call_ret := cast(*PackedInt32Array) sys_call("MultiplayerAPI", "get_peers", 969006518, PackedInt32Array, main); return call_ret.*; }  // 10
 set_default_interface :: (main: *MultiplayerAPI, interface_name: string) { sys_call("MultiplayerAPI", "set_default_interface", 3304788590, Nil, main, interface_name);  }  // 11
 get_default_interface :: (main: *MultiplayerAPI) -> StringName { call_ret := cast(*StringName) sys_call("MultiplayerAPI", "get_default_interface", 2737447660, StringName, main); return call_ret.*; }  // 12
@@ -16351,7 +16351,7 @@ set_replication_interval :: (main: *MultiplayerSynchronizer, milliseconds: float
 get_replication_interval :: (main: *MultiplayerSynchronizer) -> float { call_ret := cast(*float) sys_call("MultiplayerSynchronizer", "get_replication_interval", 1740695150, float, main); return call_ret.*; }  // 3
 set_delta_interval :: (main: *MultiplayerSynchronizer, milliseconds: float) { sys_call("MultiplayerSynchronizer", "set_delta_interval", 373806689, Nil, main, milliseconds);  }  // 4
 get_delta_interval :: (main: *MultiplayerSynchronizer) -> float { call_ret := cast(*float) sys_call("MultiplayerSynchronizer", "get_delta_interval", 1740695150, float, main); return call_ret.*; }  // 5
-set_replication_config :: (main: *MultiplayerSynchronizer, config: SceneReplicationConfig) { sys_call("MultiplayerSynchronizer", "set_replication_config", 3889206742, Nil, main, config);  }  // 6
+set_replication_config :: (main: *MultiplayerSynchronizer, config: *SceneReplicationConfig) { sys_call("MultiplayerSynchronizer", "set_replication_config", 3889206742, Nil, main, config);  }  // 6
 get_replication_config :: (main: *MultiplayerSynchronizer) -> *SceneReplicationConfig { call_ret := cast(*SceneReplicationConfig) sys_call("MultiplayerSynchronizer", "get_replication_config", 3200254614, SceneReplicationConfig, main); return call_ret; }  // 7
 set_visibility_update_mode :: (main: *MultiplayerSynchronizer, mode: MultiplayerSynchronizer.VisibilityUpdateMode) { sys_call("MultiplayerSynchronizer", "set_visibility_update_mode", 3494860300, Nil, main, mode);  }  // 8
 get_visibility_update_mode :: (main: *MultiplayerSynchronizer) -> MultiplayerSynchronizer.VisibilityUpdateMode { call_ret := cast(*MultiplayerSynchronizer.VisibilityUpdateMode) sys_call("MultiplayerSynchronizer", "get_visibility_update_mode", 3352241418, MultiplayerSynchronizer.VisibilityUpdateMode, main); return call_ret.*; }  // 9
@@ -16387,10 +16387,10 @@ is_opened :: (main: *NativeMenu, rid: RID) -> bool { call_ret := cast(*bool) sys
 add_submenu_item :: (main: *NativeMenu, rid: RID, label: string, submenu_rid: RID) -> int { call_ret := cast(*int) sys_call("NativeMenu", "add_submenu_item", 1002030223, int, main, rid, label, submenu_rid); return call_ret.*; }  // 17
 add_item :: (main: *NativeMenu, rid: RID, label: string) -> int { call_ret := cast(*int) sys_call("NativeMenu", "add_item", 980552939, int, main, rid, label); return call_ret.*; }  // 18
 add_check_item :: (main: *NativeMenu, rid: RID, label: string) -> int { call_ret := cast(*int) sys_call("NativeMenu", "add_check_item", 980552939, int, main, rid, label); return call_ret.*; }  // 19
-add_icon_item :: (main: *NativeMenu, rid: RID, icon: Texture2D, label: string) -> int { call_ret := cast(*int) sys_call("NativeMenu", "add_icon_item", 1372188274, int, main, rid, icon, label); return call_ret.*; }  // 20
-add_icon_check_item :: (main: *NativeMenu, rid: RID, icon: Texture2D, label: string) -> int { call_ret := cast(*int) sys_call("NativeMenu", "add_icon_check_item", 1372188274, int, main, rid, icon, label); return call_ret.*; }  // 21
+add_icon_item :: (main: *NativeMenu, rid: RID, icon: *Texture2D, label: string) -> int { call_ret := cast(*int) sys_call("NativeMenu", "add_icon_item", 1372188274, int, main, rid, icon, label); return call_ret.*; }  // 20
+add_icon_check_item :: (main: *NativeMenu, rid: RID, icon: *Texture2D, label: string) -> int { call_ret := cast(*int) sys_call("NativeMenu", "add_icon_check_item", 1372188274, int, main, rid, icon, label); return call_ret.*; }  // 21
 add_radio_check_item :: (main: *NativeMenu, rid: RID, label: string) -> int { call_ret := cast(*int) sys_call("NativeMenu", "add_radio_check_item", 980552939, int, main, rid, label); return call_ret.*; }  // 22
-add_icon_radio_check_item :: (main: *NativeMenu, rid: RID, icon: Texture2D, label: string) -> int { call_ret := cast(*int) sys_call("NativeMenu", "add_icon_radio_check_item", 1372188274, int, main, rid, icon, label); return call_ret.*; }  // 23
+add_icon_radio_check_item :: (main: *NativeMenu, rid: RID, icon: *Texture2D, label: string) -> int { call_ret := cast(*int) sys_call("NativeMenu", "add_icon_radio_check_item", 1372188274, int, main, rid, icon, label); return call_ret.*; }  // 23
 add_multistate_item :: (main: *NativeMenu, rid: RID, label: string, max_states: int, default_state: int) -> int { call_ret := cast(*int) sys_call("NativeMenu", "add_multistate_item", 2674635658, int, main, rid, label, max_states, default_state); return call_ret.*; }  // 24
 add_separator :: (main: *NativeMenu, rid: RID) -> int { call_ret := cast(*int) sys_call("NativeMenu", "add_separator", 448810126, int, main, rid); return call_ret.*; }  // 25
 find_item_index_with_text :: (main: *NativeMenu, rid: RID, text: string) -> int { call_ret := cast(*int) sys_call("NativeMenu", "find_item_index_with_text", 1362438794, int, main, rid, text); return call_ret.*; }  // 26
@@ -16427,7 +16427,7 @@ set_item_hidden :: (main: *NativeMenu, rid: RID, idx: int, hidden: bool) { sys_c
 set_item_tooltip :: (main: *NativeMenu, rid: RID, idx: int, tooltip: string) { sys_call("NativeMenu", "set_item_tooltip", 4153150897, Nil, main, rid, idx, tooltip);  }  // 57
 set_item_state :: (main: *NativeMenu, rid: RID, idx: int, state: int) { sys_call("NativeMenu", "set_item_state", 4288446313, Nil, main, rid, idx, state);  }  // 58
 set_item_max_states :: (main: *NativeMenu, rid: RID, idx: int, max_states: int) { sys_call("NativeMenu", "set_item_max_states", 4288446313, Nil, main, rid, idx, max_states);  }  // 59
-set_item_icon :: (main: *NativeMenu, rid: RID, idx: int, icon: Texture2D) { sys_call("NativeMenu", "set_item_icon", 1388763257, Nil, main, rid, idx, icon);  }  // 60
+set_item_icon :: (main: *NativeMenu, rid: RID, idx: int, icon: *Texture2D) { sys_call("NativeMenu", "set_item_icon", 1388763257, Nil, main, rid, idx, icon);  }  // 60
 set_item_indentation_level :: (main: *NativeMenu, rid: RID, idx: int, level: int) { sys_call("NativeMenu", "set_item_indentation_level", 4288446313, Nil, main, rid, idx, level);  }  // 61
 get_item_count :: (main: *NativeMenu, rid: RID) -> int { call_ret := cast(*int) sys_call("NativeMenu", "get_item_count", 2198884583, int, main, rid); return call_ret.*; }  // 62
 is_system_menu :: (main: *NativeMenu, rid: RID) -> bool { call_ret := cast(*bool) sys_call("NativeMenu", "is_system_menu", 4155700596, bool, main, rid); return call_ret.*; }  // 63
@@ -16688,13 +16688,13 @@ add_polygon :: (main: *NavigationMesh, polygon: PackedInt32Array) { sys_call("Na
 get_polygon_count :: (main: *NavigationMesh) -> int { call_ret := cast(*int) sys_call("NavigationMesh", "get_polygon_count", 3905245786, int, main); return call_ret.*; }  // 53
 get_polygon :: (main: *NavigationMesh, idx: int) -> PackedInt32Array { call_ret := cast(*PackedInt32Array) sys_call("NavigationMesh", "get_polygon", 3668444399, PackedInt32Array, main, idx); return call_ret.*; }  // 54
 clear_polygons :: (main: *NavigationMesh) { sys_call("NavigationMesh", "clear_polygons", 3218959716, Nil, main);  }  // 55
-create_from_mesh :: (main: *NavigationMesh, mesh: Mesh) { sys_call("NavigationMesh", "create_from_mesh", 194775623, Nil, main, mesh);  }  // 56
+create_from_mesh :: (main: *NavigationMesh, mesh: *Mesh) { sys_call("NavigationMesh", "create_from_mesh", 194775623, Nil, main, mesh);  }  // 56
 clear :: (main: *NavigationMesh) { sys_call("NavigationMesh", "clear", 3218959716, Nil, main);  }  // 57
 
-bake :: (main: *NavigationMeshGenerator, navigation_mesh: NavigationMesh, root_node: Node) { sys_call("NavigationMeshGenerator", "bake", 1401173477, Nil, main, navigation_mesh, root_node);  }  // 0
-clear :: (main: *NavigationMeshGenerator, navigation_mesh: NavigationMesh) { sys_call("NavigationMeshGenerator", "clear", 2923361153, Nil, main, navigation_mesh);  }  // 1
-parse_source_geometry_data :: (main: *NavigationMeshGenerator, navigation_mesh: NavigationMesh, source_geometry_data: NavigationMeshSourceGeometryData3D, root_node: Node) { sys_call("NavigationMeshGenerator", "parse_source_geometry_data", 3172802542, Nil, main, navigation_mesh, source_geometry_data, root_node);  }  // 2
-bake_from_source_geometry_data :: (main: *NavigationMeshGenerator, navigation_mesh: NavigationMesh, source_geometry_data: NavigationMeshSourceGeometryData3D) { sys_call("NavigationMeshGenerator", "bake_from_source_geometry_data", 1286748856, Nil, main, navigation_mesh, source_geometry_data);  }  // 3
+bake :: (main: *NavigationMeshGenerator, navigation_mesh: *NavigationMesh, root_node: *Node) { sys_call("NavigationMeshGenerator", "bake", 1401173477, Nil, main, navigation_mesh, root_node);  }  // 0
+clear :: (main: *NavigationMeshGenerator, navigation_mesh: *NavigationMesh) { sys_call("NavigationMeshGenerator", "clear", 2923361153, Nil, main, navigation_mesh);  }  // 1
+parse_source_geometry_data :: (main: *NavigationMeshGenerator, navigation_mesh: *NavigationMesh, source_geometry_data: *NavigationMeshSourceGeometryData3D, root_node: *Node) { sys_call("NavigationMeshGenerator", "parse_source_geometry_data", 3172802542, Nil, main, navigation_mesh, source_geometry_data, root_node);  }  // 2
+bake_from_source_geometry_data :: (main: *NavigationMeshGenerator, navigation_mesh: *NavigationMesh, source_geometry_data: *NavigationMeshSourceGeometryData3D) { sys_call("NavigationMeshGenerator", "bake_from_source_geometry_data", 1286748856, Nil, main, navigation_mesh, source_geometry_data);  }  // 3
 
 clear :: (main: *NavigationMeshSourceGeometryData2D) { sys_call("NavigationMeshSourceGeometryData2D", "clear", 3218959716, Nil, main);  }  // 0
 has_data :: (main: *NavigationMeshSourceGeometryData2D) -> bool { call_ret := cast(*bool) sys_call("NavigationMeshSourceGeometryData2D", "has_data", 2240911060, bool, main); return call_ret.*; }  // 1
@@ -16706,7 +16706,7 @@ append_traversable_outlines :: (main: *NavigationMeshSourceGeometryData2D, trave
 append_obstruction_outlines :: (main: *NavigationMeshSourceGeometryData2D, obstruction_outlines: [] PackedVector2Array) { sys_call("NavigationMeshSourceGeometryData2D", "append_obstruction_outlines", 381264803, Nil, main, obstruction_outlines);  }  // 7
 add_traversable_outline :: (main: *NavigationMeshSourceGeometryData2D, shape_outline: PackedVector2Array) { sys_call("NavigationMeshSourceGeometryData2D", "add_traversable_outline", 1509147220, Nil, main, shape_outline);  }  // 8
 add_obstruction_outline :: (main: *NavigationMeshSourceGeometryData2D, shape_outline: PackedVector2Array) { sys_call("NavigationMeshSourceGeometryData2D", "add_obstruction_outline", 1509147220, Nil, main, shape_outline);  }  // 9
-merge :: (main: *NavigationMeshSourceGeometryData2D, other_geometry: NavigationMeshSourceGeometryData2D) { sys_call("NavigationMeshSourceGeometryData2D", "merge", 742424872, Nil, main, other_geometry);  }  // 10
+merge :: (main: *NavigationMeshSourceGeometryData2D, other_geometry: *NavigationMeshSourceGeometryData2D) { sys_call("NavigationMeshSourceGeometryData2D", "merge", 742424872, Nil, main, other_geometry);  }  // 10
 add_projected_obstruction :: (main: *NavigationMeshSourceGeometryData2D, vertices: PackedVector2Array, carve: bool) { sys_call("NavigationMeshSourceGeometryData2D", "add_projected_obstruction", 3882407395, Nil, main, vertices, carve);  }  // 11
 clear_projected_obstructions :: (main: *NavigationMeshSourceGeometryData2D) { sys_call("NavigationMeshSourceGeometryData2D", "clear_projected_obstructions", 3218959716, Nil, main);  }  // 12
 set_projected_obstructions :: (main: *NavigationMeshSourceGeometryData2D, projected_obstructions: Array) { sys_call("NavigationMeshSourceGeometryData2D", "set_projected_obstructions", 381264803, Nil, main, projected_obstructions);  }  // 13
@@ -16720,10 +16720,10 @@ get_indices :: (main: *NavigationMeshSourceGeometryData3D) -> PackedInt32Array {
 append_arrays :: (main: *NavigationMeshSourceGeometryData3D, vertices: PackedFloat32Array, indices: PackedInt32Array) { sys_call("NavigationMeshSourceGeometryData3D", "append_arrays", 3117535015, Nil, main, vertices, indices);  }  // 4
 clear :: (main: *NavigationMeshSourceGeometryData3D) { sys_call("NavigationMeshSourceGeometryData3D", "clear", 3218959716, Nil, main);  }  // 5
 has_data :: (main: *NavigationMeshSourceGeometryData3D) -> bool { call_ret := cast(*bool) sys_call("NavigationMeshSourceGeometryData3D", "has_data", 2240911060, bool, main); return call_ret.*; }  // 6
-add_mesh :: (main: *NavigationMeshSourceGeometryData3D, mesh: Mesh, xform: Transform3D) { sys_call("NavigationMeshSourceGeometryData3D", "add_mesh", 975462459, Nil, main, mesh, xform);  }  // 7
+add_mesh :: (main: *NavigationMeshSourceGeometryData3D, mesh: *Mesh, xform: Transform3D) { sys_call("NavigationMeshSourceGeometryData3D", "add_mesh", 975462459, Nil, main, mesh, xform);  }  // 7
 add_mesh_array :: (main: *NavigationMeshSourceGeometryData3D, mesh_array: Array, xform: Transform3D) { sys_call("NavigationMeshSourceGeometryData3D", "add_mesh_array", 4235710913, Nil, main, mesh_array, xform);  }  // 8
 add_faces :: (main: *NavigationMeshSourceGeometryData3D, faces: PackedVector3Array, xform: Transform3D) { sys_call("NavigationMeshSourceGeometryData3D", "add_faces", 1440358797, Nil, main, faces, xform);  }  // 9
-merge :: (main: *NavigationMeshSourceGeometryData3D, other_geometry: NavigationMeshSourceGeometryData3D) { sys_call("NavigationMeshSourceGeometryData3D", "merge", 655828145, Nil, main, other_geometry);  }  // 10
+merge :: (main: *NavigationMeshSourceGeometryData3D, other_geometry: *NavigationMeshSourceGeometryData3D) { sys_call("NavigationMeshSourceGeometryData3D", "merge", 655828145, Nil, main, other_geometry);  }  // 10
 add_projected_obstruction :: (main: *NavigationMeshSourceGeometryData3D, vertices: PackedVector3Array, elevation: float, height: float, carve: bool) { sys_call("NavigationMeshSourceGeometryData3D", "add_projected_obstruction", 3351846707, Nil, main, vertices, elevation, height, carve);  }  // 11
 clear_projected_obstructions :: (main: *NavigationMeshSourceGeometryData3D) { sys_call("NavigationMeshSourceGeometryData3D", "clear_projected_obstructions", 3218959716, Nil, main);  }  // 12
 set_projected_obstructions :: (main: *NavigationMeshSourceGeometryData3D, projected_obstructions: Array) { sys_call("NavigationMeshSourceGeometryData3D", "set_projected_obstructions", 381264803, Nil, main, projected_obstructions);  }  // 13
@@ -16872,7 +16872,7 @@ get_baking_rect_offset :: (main: *NavigationPolygon) -> Vector2 { call_ret := ca
 clear :: (main: *NavigationPolygon) { sys_call("NavigationPolygon", "clear", 3218959716, Nil, main);  }  // 37
 
 get_rid :: (main: *NavigationRegion2D) -> RID { call_ret := cast(*RID) sys_call("NavigationRegion2D", "get_rid", 2944877500, RID, main); return call_ret.*; }  // 0
-set_navigation_polygon :: (main: *NavigationRegion2D, navigation_polygon: NavigationPolygon) { sys_call("NavigationRegion2D", "set_navigation_polygon", 1515040758, Nil, main, navigation_polygon);  }  // 1
+set_navigation_polygon :: (main: *NavigationRegion2D, navigation_polygon: *NavigationPolygon) { sys_call("NavigationRegion2D", "set_navigation_polygon", 1515040758, Nil, main, navigation_polygon);  }  // 1
 get_navigation_polygon :: (main: *NavigationRegion2D) -> *NavigationPolygon { call_ret := cast(*NavigationPolygon) sys_call("NavigationRegion2D", "get_navigation_polygon", 1046532237, NavigationPolygon, main); return call_ret; }  // 2
 set_enabled :: (main: *NavigationRegion2D, enabled: bool) { sys_call("NavigationRegion2D", "set_enabled", 2586408642, Nil, main, enabled);  }  // 3
 is_enabled :: (main: *NavigationRegion2D) -> bool { call_ret := cast(*bool) sys_call("NavigationRegion2D", "is_enabled", 36873697, bool, main); return call_ret.*; }  // 4
@@ -16894,7 +16894,7 @@ is_baking :: (main: *NavigationRegion2D) -> bool { call_ret := cast(*bool) sys_c
 get_bounds :: (main: *NavigationRegion2D) -> Rect2 { call_ret := cast(*Rect2) sys_call("NavigationRegion2D", "get_bounds", 1639390495, Rect2, main); return call_ret.*; }  // 20
 
 get_rid :: (main: *NavigationRegion3D) -> RID { call_ret := cast(*RID) sys_call("NavigationRegion3D", "get_rid", 2944877500, RID, main); return call_ret.*; }  // 0
-set_navigation_mesh :: (main: *NavigationRegion3D, navigation_mesh: NavigationMesh) { sys_call("NavigationRegion3D", "set_navigation_mesh", 2923361153, Nil, main, navigation_mesh);  }  // 1
+set_navigation_mesh :: (main: *NavigationRegion3D, navigation_mesh: *NavigationMesh) { sys_call("NavigationRegion3D", "set_navigation_mesh", 2923361153, Nil, main, navigation_mesh);  }  // 1
 get_navigation_mesh :: (main: *NavigationRegion3D) -> *NavigationMesh { call_ret := cast(*NavigationMesh) sys_call("NavigationRegion3D", "get_navigation_mesh", 1468720886, NavigationMesh, main); return call_ret; }  // 2
 set_enabled :: (main: *NavigationRegion3D, enabled: bool) { sys_call("NavigationRegion3D", "set_enabled", 2586408642, Nil, main, enabled);  }  // 3
 is_enabled :: (main: *NavigationRegion3D) -> bool { call_ret := cast(*bool) sys_call("NavigationRegion3D", "is_enabled", 36873697, bool, main); return call_ret.*; }  // 4
@@ -16939,7 +16939,7 @@ map_get_iteration_id :: (main: *NavigationServer2D, map: RID) -> int { call_ret 
 map_set_use_async_iterations :: (main: *NavigationServer2D, map: RID, enabled: bool) { sys_call("NavigationServer2D", "map_set_use_async_iterations", 1265174801, Nil, main, map, enabled);  }  // 21
 map_get_use_async_iterations :: (main: *NavigationServer2D, map: RID) -> bool { call_ret := cast(*bool) sys_call("NavigationServer2D", "map_get_use_async_iterations", 4155700596, bool, main, map); return call_ret.*; }  // 22
 map_get_random_point :: (main: *NavigationServer2D, map: RID, navigation_layers: int, uniformly: bool) -> Vector2 { call_ret := cast(*Vector2) sys_call("NavigationServer2D", "map_get_random_point", 3271000763, Vector2, main, map, navigation_layers, uniformly); return call_ret.*; }  // 23
-query_path :: (main: *NavigationServer2D, parameters: NavigationPathQueryParameters2D, result: NavigationPathQueryResult2D) { sys_call("NavigationServer2D", "query_path", 1254915886, Nil, main, parameters, result);  }  // 24
+query_path :: (main: *NavigationServer2D, parameters: *NavigationPathQueryParameters2D, result: *NavigationPathQueryResult2D) { sys_call("NavigationServer2D", "query_path", 1254915886, Nil, main, parameters, result);  }  // 24
 region_create :: (main: *NavigationServer2D) -> RID { call_ret := cast(*RID) sys_call("NavigationServer2D", "region_create", 529393457, RID, main); return call_ret.*; }  // 25
 region_set_enabled :: (main: *NavigationServer2D, region: RID, enabled: bool) { sys_call("NavigationServer2D", "region_set_enabled", 1265174801, Nil, main, region, enabled);  }  // 26
 region_get_enabled :: (main: *NavigationServer2D, region: RID) -> bool { call_ret := cast(*bool) sys_call("NavigationServer2D", "region_get_enabled", 4155700596, bool, main, region); return call_ret.*; }  // 27
@@ -16958,7 +16958,7 @@ region_set_navigation_layers :: (main: *NavigationServer2D, region: RID, navigat
 region_get_navigation_layers :: (main: *NavigationServer2D, region: RID) -> int { call_ret := cast(*int) sys_call("NavigationServer2D", "region_get_navigation_layers", 2198884583, int, main, region); return call_ret.*; }  // 40
 region_set_transform :: (main: *NavigationServer2D, region: RID, transform: Transform2D) { sys_call("NavigationServer2D", "region_set_transform", 1246044741, Nil, main, region, transform);  }  // 41
 region_get_transform :: (main: *NavigationServer2D, region: RID) -> Transform2D { call_ret := cast(*Transform2D) sys_call("NavigationServer2D", "region_get_transform", 213527486, Transform2D, main, region); return call_ret.*; }  // 42
-region_set_navigation_polygon :: (main: *NavigationServer2D, region: RID, navigation_polygon: NavigationPolygon) { sys_call("NavigationServer2D", "region_set_navigation_polygon", 3633623451, Nil, main, region, navigation_polygon);  }  // 43
+region_set_navigation_polygon :: (main: *NavigationServer2D, region: RID, navigation_polygon: *NavigationPolygon) { sys_call("NavigationServer2D", "region_set_navigation_polygon", 3633623451, Nil, main, region, navigation_polygon);  }  // 43
 region_get_connections_count :: (main: *NavigationServer2D, region: RID) -> int { call_ret := cast(*int) sys_call("NavigationServer2D", "region_get_connections_count", 2198884583, int, main, region); return call_ret.*; }  // 44
 region_get_connection_pathway_start :: (main: *NavigationServer2D, region: RID, connection: int) -> Vector2 { call_ret := cast(*Vector2) sys_call("NavigationServer2D", "region_get_connection_pathway_start", 2546185844, Vector2, main, region, connection); return call_ret.*; }  // 45
 region_get_connection_pathway_end :: (main: *NavigationServer2D, region: RID, connection: int) -> Vector2 { call_ret := cast(*Vector2) sys_call("NavigationServer2D", "region_get_connection_pathway_end", 2546185844, Vector2, main, region, connection); return call_ret.*; }  // 46
@@ -17034,10 +17034,10 @@ obstacle_set_vertices :: (main: *NavigationServer2D, obstacle: RID, vertices: Pa
 obstacle_get_vertices :: (main: *NavigationServer2D, obstacle: RID) -> PackedVector2Array { call_ret := cast(*PackedVector2Array) sys_call("NavigationServer2D", "obstacle_get_vertices", 2222557395, PackedVector2Array, main, obstacle); return call_ret.*; }  // 116
 obstacle_set_avoidance_layers :: (main: *NavigationServer2D, obstacle: RID, layers: int) { sys_call("NavigationServer2D", "obstacle_set_avoidance_layers", 3411492887, Nil, main, obstacle, layers);  }  // 117
 obstacle_get_avoidance_layers :: (main: *NavigationServer2D, obstacle: RID) -> int { call_ret := cast(*int) sys_call("NavigationServer2D", "obstacle_get_avoidance_layers", 2198884583, int, main, obstacle); return call_ret.*; }  // 118
-parse_source_geometry_data :: (main: *NavigationServer2D, navigation_polygon: NavigationPolygon, source_geometry_data: NavigationMeshSourceGeometryData2D, root_node: Node) { sys_call("NavigationServer2D", "parse_source_geometry_data", 1766905497, Nil, main, navigation_polygon, source_geometry_data, root_node);  }  // 119
-bake_from_source_geometry_data :: (main: *NavigationServer2D, navigation_polygon: NavigationPolygon, source_geometry_data: NavigationMeshSourceGeometryData2D) { sys_call("NavigationServer2D", "bake_from_source_geometry_data", 2179660022, Nil, main, navigation_polygon, source_geometry_data);  }  // 120
-bake_from_source_geometry_data_async :: (main: *NavigationServer2D, navigation_polygon: NavigationPolygon, source_geometry_data: NavigationMeshSourceGeometryData2D) { sys_call("NavigationServer2D", "bake_from_source_geometry_data_async", 2179660022, Nil, main, navigation_polygon, source_geometry_data);  }  // 121
-is_baking_navigation_polygon :: (main: *NavigationServer2D, navigation_polygon: NavigationPolygon) -> bool { call_ret := cast(*bool) sys_call("NavigationServer2D", "is_baking_navigation_polygon", 3729405808, bool, main, navigation_polygon); return call_ret.*; }  // 122
+parse_source_geometry_data :: (main: *NavigationServer2D, navigation_polygon: *NavigationPolygon, source_geometry_data: *NavigationMeshSourceGeometryData2D, root_node: *Node) { sys_call("NavigationServer2D", "parse_source_geometry_data", 1766905497, Nil, main, navigation_polygon, source_geometry_data, root_node);  }  // 119
+bake_from_source_geometry_data :: (main: *NavigationServer2D, navigation_polygon: *NavigationPolygon, source_geometry_data: *NavigationMeshSourceGeometryData2D) { sys_call("NavigationServer2D", "bake_from_source_geometry_data", 2179660022, Nil, main, navigation_polygon, source_geometry_data);  }  // 120
+bake_from_source_geometry_data_async :: (main: *NavigationServer2D, navigation_polygon: *NavigationPolygon, source_geometry_data: *NavigationMeshSourceGeometryData2D) { sys_call("NavigationServer2D", "bake_from_source_geometry_data_async", 2179660022, Nil, main, navigation_polygon, source_geometry_data);  }  // 121
+is_baking_navigation_polygon :: (main: *NavigationServer2D, navigation_polygon: *NavigationPolygon) -> bool { call_ret := cast(*bool) sys_call("NavigationServer2D", "is_baking_navigation_polygon", 3729405808, bool, main, navigation_polygon); return call_ret.*; }  // 122
 source_geometry_parser_create :: (main: *NavigationServer2D) -> RID { call_ret := cast(*RID) sys_call("NavigationServer2D", "source_geometry_parser_create", 529393457, RID, main); return call_ret.*; }  // 123
 source_geometry_parser_set_callback :: (main: *NavigationServer2D, parser: RID, callback: Callable) { sys_call("NavigationServer2D", "source_geometry_parser_set_callback", 3379118538, Nil, main, parser, callback);  }  // 124
 simplify_path :: (main: *NavigationServer2D, path: PackedVector2Array, epsilon: float) -> PackedVector2Array { call_ret := cast(*PackedVector2Array) sys_call("NavigationServer2D", "simplify_path", 2457191505, PackedVector2Array, main, path, epsilon); return call_ret.*; }  // 125
@@ -17077,7 +17077,7 @@ map_get_iteration_id :: (main: *NavigationServer3D, map: RID) -> int { call_ret 
 map_set_use_async_iterations :: (main: *NavigationServer3D, map: RID, enabled: bool) { sys_call("NavigationServer3D", "map_set_use_async_iterations", 1265174801, Nil, main, map, enabled);  }  // 29
 map_get_use_async_iterations :: (main: *NavigationServer3D, map: RID) -> bool { call_ret := cast(*bool) sys_call("NavigationServer3D", "map_get_use_async_iterations", 4155700596, bool, main, map); return call_ret.*; }  // 30
 map_get_random_point :: (main: *NavigationServer3D, map: RID, navigation_layers: int, uniformly: bool) -> Vector3 { call_ret := cast(*Vector3) sys_call("NavigationServer3D", "map_get_random_point", 722801526, Vector3, main, map, navigation_layers, uniformly); return call_ret.*; }  // 31
-query_path :: (main: *NavigationServer3D, parameters: NavigationPathQueryParameters3D, result: NavigationPathQueryResult3D) { sys_call("NavigationServer3D", "query_path", 2146930868, Nil, main, parameters, result);  }  // 32
+query_path :: (main: *NavigationServer3D, parameters: *NavigationPathQueryParameters3D, result: *NavigationPathQueryResult3D) { sys_call("NavigationServer3D", "query_path", 2146930868, Nil, main, parameters, result);  }  // 32
 region_create :: (main: *NavigationServer3D) -> RID { call_ret := cast(*RID) sys_call("NavigationServer3D", "region_create", 529393457, RID, main); return call_ret.*; }  // 33
 region_set_enabled :: (main: *NavigationServer3D, region: RID, enabled: bool) { sys_call("NavigationServer3D", "region_set_enabled", 1265174801, Nil, main, region, enabled);  }  // 34
 region_get_enabled :: (main: *NavigationServer3D, region: RID) -> bool { call_ret := cast(*bool) sys_call("NavigationServer3D", "region_get_enabled", 4155700596, bool, main, region); return call_ret.*; }  // 35
@@ -17096,8 +17096,8 @@ region_set_navigation_layers :: (main: *NavigationServer3D, region: RID, navigat
 region_get_navigation_layers :: (main: *NavigationServer3D, region: RID) -> int { call_ret := cast(*int) sys_call("NavigationServer3D", "region_get_navigation_layers", 2198884583, int, main, region); return call_ret.*; }  // 48
 region_set_transform :: (main: *NavigationServer3D, region: RID, transform: Transform3D) { sys_call("NavigationServer3D", "region_set_transform", 3935195649, Nil, main, region, transform);  }  // 49
 region_get_transform :: (main: *NavigationServer3D, region: RID) -> Transform3D { call_ret := cast(*Transform3D) sys_call("NavigationServer3D", "region_get_transform", 1128465797, Transform3D, main, region); return call_ret.*; }  // 50
-region_set_navigation_mesh :: (main: *NavigationServer3D, region: RID, navigation_mesh: NavigationMesh) { sys_call("NavigationServer3D", "region_set_navigation_mesh", 2764952978, Nil, main, region, navigation_mesh);  }  // 51
-region_bake_navigation_mesh :: (main: *NavigationServer3D, navigation_mesh: NavigationMesh, root_node: Node) { sys_call("NavigationServer3D", "region_bake_navigation_mesh", 1401173477, Nil, main, navigation_mesh, root_node);  }  // 52
+region_set_navigation_mesh :: (main: *NavigationServer3D, region: RID, navigation_mesh: *NavigationMesh) { sys_call("NavigationServer3D", "region_set_navigation_mesh", 2764952978, Nil, main, region, navigation_mesh);  }  // 51
+region_bake_navigation_mesh :: (main: *NavigationServer3D, navigation_mesh: *NavigationMesh, root_node: *Node) { sys_call("NavigationServer3D", "region_bake_navigation_mesh", 1401173477, Nil, main, navigation_mesh, root_node);  }  // 52
 region_get_connections_count :: (main: *NavigationServer3D, region: RID) -> int { call_ret := cast(*int) sys_call("NavigationServer3D", "region_get_connections_count", 2198884583, int, main, region); return call_ret.*; }  // 53
 region_get_connection_pathway_start :: (main: *NavigationServer3D, region: RID, connection: int) -> Vector3 { call_ret := cast(*Vector3) sys_call("NavigationServer3D", "region_get_connection_pathway_start", 3440143363, Vector3, main, region, connection); return call_ret.*; }  // 54
 region_get_connection_pathway_end :: (main: *NavigationServer3D, region: RID, connection: int) -> Vector3 { call_ret := cast(*Vector3) sys_call("NavigationServer3D", "region_get_connection_pathway_end", 3440143363, Vector3, main, region, connection); return call_ret.*; }  // 55
@@ -17183,10 +17183,10 @@ obstacle_set_vertices :: (main: *NavigationServer3D, obstacle: RID, vertices: Pa
 obstacle_get_vertices :: (main: *NavigationServer3D, obstacle: RID) -> PackedVector3Array { call_ret := cast(*PackedVector3Array) sys_call("NavigationServer3D", "obstacle_get_vertices", 808965560, PackedVector3Array, main, obstacle); return call_ret.*; }  // 135
 obstacle_set_avoidance_layers :: (main: *NavigationServer3D, obstacle: RID, layers: int) { sys_call("NavigationServer3D", "obstacle_set_avoidance_layers", 3411492887, Nil, main, obstacle, layers);  }  // 136
 obstacle_get_avoidance_layers :: (main: *NavigationServer3D, obstacle: RID) -> int { call_ret := cast(*int) sys_call("NavigationServer3D", "obstacle_get_avoidance_layers", 2198884583, int, main, obstacle); return call_ret.*; }  // 137
-parse_source_geometry_data :: (main: *NavigationServer3D, navigation_mesh: NavigationMesh, source_geometry_data: NavigationMeshSourceGeometryData3D, root_node: Node) { sys_call("NavigationServer3D", "parse_source_geometry_data", 3172802542, Nil, main, navigation_mesh, source_geometry_data, root_node);  }  // 138
-bake_from_source_geometry_data :: (main: *NavigationServer3D, navigation_mesh: NavigationMesh, source_geometry_data: NavigationMeshSourceGeometryData3D) { sys_call("NavigationServer3D", "bake_from_source_geometry_data", 1286748856, Nil, main, navigation_mesh, source_geometry_data);  }  // 139
-bake_from_source_geometry_data_async :: (main: *NavigationServer3D, navigation_mesh: NavigationMesh, source_geometry_data: NavigationMeshSourceGeometryData3D) { sys_call("NavigationServer3D", "bake_from_source_geometry_data_async", 1286748856, Nil, main, navigation_mesh, source_geometry_data);  }  // 140
-is_baking_navigation_mesh :: (main: *NavigationServer3D, navigation_mesh: NavigationMesh) -> bool { call_ret := cast(*bool) sys_call("NavigationServer3D", "is_baking_navigation_mesh", 3142026141, bool, main, navigation_mesh); return call_ret.*; }  // 141
+parse_source_geometry_data :: (main: *NavigationServer3D, navigation_mesh: *NavigationMesh, source_geometry_data: *NavigationMeshSourceGeometryData3D, root_node: *Node) { sys_call("NavigationServer3D", "parse_source_geometry_data", 3172802542, Nil, main, navigation_mesh, source_geometry_data, root_node);  }  // 138
+bake_from_source_geometry_data :: (main: *NavigationServer3D, navigation_mesh: *NavigationMesh, source_geometry_data: *NavigationMeshSourceGeometryData3D) { sys_call("NavigationServer3D", "bake_from_source_geometry_data", 1286748856, Nil, main, navigation_mesh, source_geometry_data);  }  // 139
+bake_from_source_geometry_data_async :: (main: *NavigationServer3D, navigation_mesh: *NavigationMesh, source_geometry_data: *NavigationMeshSourceGeometryData3D) { sys_call("NavigationServer3D", "bake_from_source_geometry_data_async", 1286748856, Nil, main, navigation_mesh, source_geometry_data);  }  // 140
+is_baking_navigation_mesh :: (main: *NavigationServer3D, navigation_mesh: *NavigationMesh) -> bool { call_ret := cast(*bool) sys_call("NavigationServer3D", "is_baking_navigation_mesh", 3142026141, bool, main, navigation_mesh); return call_ret.*; }  // 141
 source_geometry_parser_create :: (main: *NavigationServer3D) -> RID { call_ret := cast(*RID) sys_call("NavigationServer3D", "source_geometry_parser_create", 529393457, RID, main); return call_ret.*; }  // 142
 source_geometry_parser_set_callback :: (main: *NavigationServer3D, parser: RID, callback: Callable) { sys_call("NavigationServer3D", "source_geometry_parser_set_callback", 3379118538, Nil, main, parser, callback);  }  // 143
 simplify_path :: (main: *NavigationServer3D, path: PackedVector3Array, epsilon: float) -> PackedVector3Array { call_ret := cast(*PackedVector3Array) sys_call("NavigationServer3D", "simplify_path", 2344122170, PackedVector3Array, main, path, epsilon); return call_ret.*; }  // 144
@@ -17196,7 +17196,7 @@ set_debug_enabled :: (main: *NavigationServer3D, enabled: bool) { sys_call("Navi
 get_debug_enabled :: (main: *NavigationServer3D) -> bool { call_ret := cast(*bool) sys_call("NavigationServer3D", "get_debug_enabled", 36873697, bool, main); return call_ret.*; }  // 148
 get_process_info :: (main: *NavigationServer3D, process_info: NavigationServer3D.ProcessInfo) -> int { call_ret := cast(*int) sys_call("NavigationServer3D", "get_process_info", 1938440894, int, main, process_info); return call_ret.*; }  // 149
 
-set_texture :: (main: *NinePatchRect, texture: Texture2D) { sys_call("NinePatchRect", "set_texture", 4051416890, Nil, main, texture);  }  // 0
+set_texture :: (main: *NinePatchRect, texture: *Texture2D) { sys_call("NinePatchRect", "set_texture", 4051416890, Nil, main, texture);  }  // 0
 get_texture :: (main: *NinePatchRect) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("NinePatchRect", "get_texture", 3635182373, Texture2D, main); return call_ret; }  // 1
 set_patch_margin :: (main: *NinePatchRect, margin: Side, value: int) { sys_call("NinePatchRect", "set_patch_margin", 437707142, Nil, main, margin, value);  }  // 2
 get_patch_margin :: (main: *NinePatchRect, margin: Side) -> int { call_ret := cast(*int) sys_call("NinePatchRect", "get_patch_margin", 1983885014, int, main, margin); return call_ret.*; }  // 3
@@ -17210,12 +17210,12 @@ set_v_axis_stretch_mode :: (main: *NinePatchRect, mode: NinePatchRect.AxisStretc
 get_v_axis_stretch_mode :: (main: *NinePatchRect) -> NinePatchRect.AxisStretchMode { call_ret := cast(*NinePatchRect.AxisStretchMode) sys_call("NinePatchRect", "get_v_axis_stretch_mode", 3317113799, NinePatchRect.AxisStretchMode, main); return call_ret.*; }  // 11
 
 print_orphan_nodes :: (main: *Node) { sys_call("Node", "print_orphan_nodes", 3218959716, Nil, main);  }  // 10
-add_sibling :: (main: *Node, sibling: Node) { sys_call("Node", "add_sibling", 2570952461, Nil, main, sibling);  }  // 11
+add_sibling :: (main: *Node, sibling: *Node) { sys_call("Node", "add_sibling", 2570952461, Nil, main, sibling);  }  // 11
 set_name :: (main: *Node, name: string) { sys_call("Node", "set_name", 83702148, Nil, main, name);  }  // 12
 get_name :: (main: *Node) -> StringName { call_ret := cast(*StringName) sys_call("Node", "get_name", 2002593661, StringName, main); return call_ret.*; }  // 13
-add_child :: (main: *Node, node: Node) { sys_call("Node", "add_child", 3863233950, Nil, main, node);  }  // 14
-remove_child :: (main: *Node, node: Node) { sys_call("Node", "remove_child", 1078189570, Nil, main, node);  }  // 15
-reparent :: (main: *Node, new_parent: Node) { sys_call("Node", "reparent", 3685795103, Nil, main, new_parent);  }  // 16
+add_child :: (main: *Node, node: *Node) { sys_call("Node", "add_child", 3863233950, Nil, main, node);  }  // 14
+remove_child :: (main: *Node, node: *Node) { sys_call("Node", "remove_child", 1078189570, Nil, main, node);  }  // 15
+reparent :: (main: *Node, new_parent: *Node) { sys_call("Node", "reparent", 3685795103, Nil, main, new_parent);  }  // 16
 get_child_count :: (main: *Node) -> int { call_ret := cast(*int) sys_call("Node", "get_child_count", 894402480, int, main); return call_ret.*; }  // 17
 get_children :: (main: *Node) -> [] Node { call_ret := cast(*[] Node) sys_call("Node", "get_children", 873284517, [] Node, main); return call_ret.*; }  // 18
 get_child :: (main: *Node, idx: int) -> *Node { call_ret := cast(*Node) sys_call("Node", "get_child", 541253412, Node, main, idx); return call_ret; }  // 19
@@ -17230,16 +17230,16 @@ has_node_and_resource :: (main: *Node, path: string) -> bool { call_ret := cast(
 get_node_and_resource :: (main: *Node, path: string) -> Array { call_ret := cast(*Array) sys_call("Node", "get_node_and_resource", 502563882, Array, main, path); return call_ret.*; }  // 28
 is_inside_tree :: (main: *Node) -> bool { call_ret := cast(*bool) sys_call("Node", "is_inside_tree", 36873697, bool, main); return call_ret.*; }  // 29
 is_part_of_edited_scene :: (main: *Node) -> bool { call_ret := cast(*bool) sys_call("Node", "is_part_of_edited_scene", 36873697, bool, main); return call_ret.*; }  // 30
-is_ancestor_of :: (main: *Node, node: Node) -> bool { call_ret := cast(*bool) sys_call("Node", "is_ancestor_of", 3093956946, bool, main, node); return call_ret.*; }  // 31
-is_greater_than :: (main: *Node, node: Node) -> bool { call_ret := cast(*bool) sys_call("Node", "is_greater_than", 3093956946, bool, main, node); return call_ret.*; }  // 32
+is_ancestor_of :: (main: *Node, node: *Node) -> bool { call_ret := cast(*bool) sys_call("Node", "is_ancestor_of", 3093956946, bool, main, node); return call_ret.*; }  // 31
+is_greater_than :: (main: *Node, node: *Node) -> bool { call_ret := cast(*bool) sys_call("Node", "is_greater_than", 3093956946, bool, main, node); return call_ret.*; }  // 32
 get_path :: (main: *Node) -> NodePath { call_ret := cast(*NodePath) sys_call("Node", "get_path", 4075236667, NodePath, main); return call_ret.*; }  // 33
-get_path_to :: (main: *Node, node: Node) -> NodePath { call_ret := cast(*NodePath) sys_call("Node", "get_path_to", 498846349, NodePath, main, node); return call_ret.*; }  // 34
+get_path_to :: (main: *Node, node: *Node) -> NodePath { call_ret := cast(*NodePath) sys_call("Node", "get_path_to", 498846349, NodePath, main, node); return call_ret.*; }  // 34
 add_to_group :: (main: *Node, group: string) { sys_call("Node", "add_to_group", 3683006648, Nil, main, group);  }  // 35
 remove_from_group :: (main: *Node, group: string) { sys_call("Node", "remove_from_group", 3304788590, Nil, main, group);  }  // 36
 is_in_group :: (main: *Node, group: string) -> bool { call_ret := cast(*bool) sys_call("Node", "is_in_group", 2619796661, bool, main, group); return call_ret.*; }  // 37
-move_child :: (main: *Node, child_node: Node, to_index: int) { sys_call("Node", "move_child", 3315886247, Nil, main, child_node, to_index);  }  // 38
+move_child :: (main: *Node, child_node: *Node, to_index: int) { sys_call("Node", "move_child", 3315886247, Nil, main, child_node, to_index);  }  // 38
 get_groups :: (main: *Node) -> [] StringName { call_ret := cast(*[] StringName) sys_call("Node", "get_groups", 3995934104, [] StringName, main); return call_ret.*; }  // 39
-set_owner :: (main: *Node, owner: Node) { sys_call("Node", "set_owner", 1078189570, Nil, main, owner);  }  // 40
+set_owner :: (main: *Node, owner: *Node) { sys_call("Node", "set_owner", 1078189570, Nil, main, owner);  }  // 40
 get_owner :: (main: *Node) -> *Node { call_ret := cast(*Node) sys_call("Node", "get_owner", 3160264692, Node, main); return call_ret; }  // 41
 get_index :: (main: *Node) -> int { call_ret := cast(*int) sys_call("Node", "get_index", 894402480, int, main); return call_ret.*; }  // 42
 print_tree :: (main: *Node) { sys_call("Node", "print_tree", 3218959716, Nil, main);  }  // 43
@@ -17296,11 +17296,11 @@ get_last_exclusive_window :: (main: *Node) -> *Window { call_ret := cast(*Window
 get_tree :: (main: *Node) -> *SceneTree { call_ret := cast(*SceneTree) sys_call("Node", "get_tree", 2958820483, SceneTree, main); return call_ret; }  // 94
 create_tween :: (main: *Node) -> *Tween { call_ret := cast(*Tween) sys_call("Node", "create_tween", 3426978995, Tween, main); return call_ret; }  // 95
 duplicate :: (main: *Node) -> *Node { call_ret := cast(*Node) sys_call("Node", "duplicate", 3511555459, Node, main); return call_ret; }  // 96
-replace_by :: (main: *Node, node: Node) { sys_call("Node", "replace_by", 2570952461, Nil, main, node);  }  // 97
+replace_by :: (main: *Node, node: *Node) { sys_call("Node", "replace_by", 2570952461, Nil, main, node);  }  // 97
 set_scene_instance_load_placeholder :: (main: *Node, load_placeholder: bool) { sys_call("Node", "set_scene_instance_load_placeholder", 2586408642, Nil, main, load_placeholder);  }  // 98
 get_scene_instance_load_placeholder :: (main: *Node) -> bool { call_ret := cast(*bool) sys_call("Node", "get_scene_instance_load_placeholder", 36873697, bool, main); return call_ret.*; }  // 99
-set_editable_instance :: (main: *Node, node: Node, is_editable: bool) { sys_call("Node", "set_editable_instance", 2731852923, Nil, main, node, is_editable);  }  // 100
-is_editable_instance :: (main: *Node, node: Node) -> bool { call_ret := cast(*bool) sys_call("Node", "is_editable_instance", 3093956946, bool, main, node); return call_ret.*; }  // 101
+set_editable_instance :: (main: *Node, node: *Node, is_editable: bool) { sys_call("Node", "set_editable_instance", 2731852923, Nil, main, node, is_editable);  }  // 100
+is_editable_instance :: (main: *Node, node: *Node) -> bool { call_ret := cast(*bool) sys_call("Node", "is_editable_instance", 3093956946, bool, main, node); return call_ret.*; }  // 101
 get_viewport :: (main: *Node) -> *Viewport { call_ret := cast(*Viewport) sys_call("Node", "get_viewport", 3596683776, Viewport, main); return call_ret; }  // 102
 queue_free :: (main: *Node) { sys_call("Node", "queue_free", 3218959716, Nil, main);  }  // 103
 request_ready :: (main: *Node) { sys_call("Node", "request_ready", 3218959716, Nil, main);  }  // 104
@@ -17359,7 +17359,7 @@ look_at :: (main: *Node2D, point: Vector2) { sys_call("Node2D", "look_at", 74315
 get_angle_to :: (main: *Node2D, point: Vector2) -> float { call_ret := cast(*float) sys_call("Node2D", "get_angle_to", 2276447920, float, main, point); return call_ret.*; }  // 29
 to_local :: (main: *Node2D, global_point: Vector2) -> Vector2 { call_ret := cast(*Vector2) sys_call("Node2D", "to_local", 2656412154, Vector2, main, global_point); return call_ret.*; }  // 30
 to_global :: (main: *Node2D, local_point: Vector2) -> Vector2 { call_ret := cast(*Vector2) sys_call("Node2D", "to_global", 2656412154, Vector2, main, local_point); return call_ret.*; }  // 31
-get_relative_transform_to_parent :: (main: *Node2D, parent: Node) -> Transform2D { call_ret := cast(*Transform2D) sys_call("Node2D", "get_relative_transform_to_parent", 904556875, Transform2D, main, parent); return call_ret.*; }  // 32
+get_relative_transform_to_parent :: (main: *Node2D, parent: *Node) -> Transform2D { call_ret := cast(*Transform2D) sys_call("Node2D", "get_relative_transform_to_parent", 904556875, Transform2D, main, parent); return call_ret.*; }  // 32
 
 set_transform :: (main: *Node3D, local: Transform3D) { sys_call("Node3D", "set_transform", 2952846383, Nil, main, local);  }  // 0
 get_transform :: (main: *Node3D) -> Transform3D { call_ret := cast(*Transform3D) sys_call("Node3D", "get_transform", 3229777777, Transform3D, main); return call_ret.*; }  // 1
@@ -17401,10 +17401,10 @@ force_update_transform :: (main: *Node3D) { sys_call("Node3D", "force_update_tra
 set_visibility_parent :: (main: *Node3D, path: string) { sys_call("Node3D", "set_visibility_parent", 1348162250, Nil, main, path);  }  // 37
 get_visibility_parent :: (main: *Node3D) -> NodePath { call_ret := cast(*NodePath) sys_call("Node3D", "get_visibility_parent", 4075236667, NodePath, main); return call_ret.*; }  // 38
 update_gizmos :: (main: *Node3D) { sys_call("Node3D", "update_gizmos", 3218959716, Nil, main);  }  // 39
-add_gizmo :: (main: *Node3D, gizmo: Node3DGizmo) { sys_call("Node3D", "add_gizmo", 1544533845, Nil, main, gizmo);  }  // 40
+add_gizmo :: (main: *Node3D, gizmo: *Node3DGizmo) { sys_call("Node3D", "add_gizmo", 1544533845, Nil, main, gizmo);  }  // 40
 get_gizmos :: (main: *Node3D) -> [] Node3DGizmo { call_ret := cast(*[] Node3DGizmo) sys_call("Node3D", "get_gizmos", 3995934104, [] Node3DGizmo, main); return call_ret.*; }  // 41
 clear_gizmos :: (main: *Node3D) { sys_call("Node3D", "clear_gizmos", 3218959716, Nil, main);  }  // 42
-set_subgizmo_selection :: (main: *Node3D, gizmo: Node3DGizmo, id: int, transform: Transform3D) { sys_call("Node3D", "set_subgizmo_selection", 3317607635, Nil, main, gizmo, id, transform);  }  // 43
+set_subgizmo_selection :: (main: *Node3D, gizmo: *Node3DGizmo, id: int, transform: Transform3D) { sys_call("Node3D", "set_subgizmo_selection", 3317607635, Nil, main, gizmo, id, transform);  }  // 43
 clear_subgizmo_selection :: (main: *Node3D) { sys_call("Node3D", "clear_subgizmo_selection", 3218959716, Nil, main);  }  // 44
 set_visible :: (main: *Node3D, visible: bool) { sys_call("Node3D", "set_visible", 2586408642, Nil, main, visible);  }  // 45
 is_visible :: (main: *Node3D) -> bool { call_ret := cast(*bool) sys_call("Node3D", "is_visible", 36873697, bool, main); return call_ret.*; }  // 46
@@ -17462,9 +17462,9 @@ set_bump_strength :: (main: *NoiseTexture2D, bump_strength: float) { sys_call("N
 get_bump_strength :: (main: *NoiseTexture2D) -> float { call_ret := cast(*float) sys_call("NoiseTexture2D", "get_bump_strength", 191475506, float, main); return call_ret.*; }  // 15
 set_normalize :: (main: *NoiseTexture2D, normalize: bool) { sys_call("NoiseTexture2D", "set_normalize", 2586408642, Nil, main, normalize);  }  // 16
 is_normalized :: (main: *NoiseTexture2D) -> bool { call_ret := cast(*bool) sys_call("NoiseTexture2D", "is_normalized", 36873697, bool, main); return call_ret.*; }  // 17
-set_color_ramp :: (main: *NoiseTexture2D, gradient: Gradient) { sys_call("NoiseTexture2D", "set_color_ramp", 2756054477, Nil, main, gradient);  }  // 18
+set_color_ramp :: (main: *NoiseTexture2D, gradient: *Gradient) { sys_call("NoiseTexture2D", "set_color_ramp", 2756054477, Nil, main, gradient);  }  // 18
 get_color_ramp :: (main: *NoiseTexture2D) -> *Gradient { call_ret := cast(*Gradient) sys_call("NoiseTexture2D", "get_color_ramp", 132272999, Gradient, main); return call_ret; }  // 19
-set_noise :: (main: *NoiseTexture2D, noise: Noise) { sys_call("NoiseTexture2D", "set_noise", 4135492439, Nil, main, noise);  }  // 20
+set_noise :: (main: *NoiseTexture2D, noise: *Noise) { sys_call("NoiseTexture2D", "set_noise", 4135492439, Nil, main, noise);  }  // 20
 get_noise :: (main: *NoiseTexture2D) -> *Noise { call_ret := cast(*Noise) sys_call("NoiseTexture2D", "get_noise", 185851837, Noise, main); return call_ret; }  // 21
 
 set_width :: (main: *NoiseTexture3D, width: int) { sys_call("NoiseTexture3D", "set_width", 1286410249, Nil, main, width);  }  // 0
@@ -17478,9 +17478,9 @@ set_seamless_blend_skirt :: (main: *NoiseTexture3D, seamless_blend_skirt: float)
 get_seamless_blend_skirt :: (main: *NoiseTexture3D) -> float { call_ret := cast(*float) sys_call("NoiseTexture3D", "get_seamless_blend_skirt", 191475506, float, main); return call_ret.*; }  // 8
 set_normalize :: (main: *NoiseTexture3D, normalize: bool) { sys_call("NoiseTexture3D", "set_normalize", 2586408642, Nil, main, normalize);  }  // 9
 is_normalized :: (main: *NoiseTexture3D) -> bool { call_ret := cast(*bool) sys_call("NoiseTexture3D", "is_normalized", 36873697, bool, main); return call_ret.*; }  // 10
-set_color_ramp :: (main: *NoiseTexture3D, gradient: Gradient) { sys_call("NoiseTexture3D", "set_color_ramp", 2756054477, Nil, main, gradient);  }  // 11
+set_color_ramp :: (main: *NoiseTexture3D, gradient: *Gradient) { sys_call("NoiseTexture3D", "set_color_ramp", 2756054477, Nil, main, gradient);  }  // 11
 get_color_ramp :: (main: *NoiseTexture3D) -> *Gradient { call_ret := cast(*Gradient) sys_call("NoiseTexture3D", "get_color_ramp", 132272999, Gradient, main); return call_ret; }  // 12
-set_noise :: (main: *NoiseTexture3D, noise: Noise) { sys_call("NoiseTexture3D", "set_noise", 4135492439, Nil, main, noise);  }  // 13
+set_noise :: (main: *NoiseTexture3D, noise: *Noise) { sys_call("NoiseTexture3D", "set_noise", 4135492439, Nil, main, noise);  }  // 13
 get_noise :: (main: *NoiseTexture3D) -> *Noise { call_ret := cast(*Noise) sys_call("NoiseTexture3D", "get_noise", 185851837, Noise, main); return call_ret; }  // 14
 
 
@@ -17624,7 +17624,7 @@ set_bake_mask_value :: (main: *OccluderInstance3D, layer_number: int, value: boo
 get_bake_mask_value :: (main: *OccluderInstance3D, layer_number: int) -> bool { call_ret := cast(*bool) sys_call("OccluderInstance3D", "get_bake_mask_value", 1116898809, bool, main, layer_number); return call_ret.*; }  // 3
 set_bake_simplification_distance :: (main: *OccluderInstance3D, simplification_distance: float) { sys_call("OccluderInstance3D", "set_bake_simplification_distance", 373806689, Nil, main, simplification_distance);  }  // 4
 get_bake_simplification_distance :: (main: *OccluderInstance3D) -> float { call_ret := cast(*float) sys_call("OccluderInstance3D", "get_bake_simplification_distance", 1740695150, float, main); return call_ret.*; }  // 5
-set_occluder :: (main: *OccluderInstance3D, occluder: Occluder3D) { sys_call("OccluderInstance3D", "set_occluder", 1664878165, Nil, main, occluder);  }  // 6
+set_occluder :: (main: *OccluderInstance3D, occluder: *Occluder3D) { sys_call("OccluderInstance3D", "set_occluder", 1664878165, Nil, main, occluder);  }  // 6
 get_occluder :: (main: *OccluderInstance3D) -> *Occluder3D { call_ret := cast(*Occluder3D) sys_call("OccluderInstance3D", "get_occluder", 1696836198, Occluder3D, main); return call_ret; }  // 7
 
 set_closed :: (main: *OccluderPolygon2D, closed: bool) { sys_call("OccluderPolygon2D", "set_closed", 2586408642, Nil, main, closed);  }  // 0
@@ -17669,10 +17669,10 @@ can_render :: (main: *OpenXRAPIExtension) -> bool { call_ret := cast(*bool) sys_
 find_action :: (main: *OpenXRAPIExtension, name: string, action_set: RID) -> RID { call_ret := cast(*RID) sys_call("OpenXRAPIExtension", "find_action", 4106179378, RID, main, name, action_set); return call_ret.*; }  // 19
 action_get_handle :: (main: *OpenXRAPIExtension, action: RID) -> int { call_ret := cast(*int) sys_call("OpenXRAPIExtension", "action_get_handle", 3917799429, int, main, action); return call_ret.*; }  // 20
 get_hand_tracker :: (main: *OpenXRAPIExtension, hand_index: int) -> int { call_ret := cast(*int) sys_call("OpenXRAPIExtension", "get_hand_tracker", 3744713108, int, main, hand_index); return call_ret.*; }  // 21
-register_composition_layer_provider :: (main: *OpenXRAPIExtension, extension: OpenXRExtensionWrapperExtension) { sys_call("OpenXRAPIExtension", "register_composition_layer_provider", 1997997368, Nil, main, extension);  }  // 22
-unregister_composition_layer_provider :: (main: *OpenXRAPIExtension, extension: OpenXRExtensionWrapperExtension) { sys_call("OpenXRAPIExtension", "unregister_composition_layer_provider", 1997997368, Nil, main, extension);  }  // 23
-register_projection_views_extension :: (main: *OpenXRAPIExtension, extension: OpenXRExtensionWrapperExtension) { sys_call("OpenXRAPIExtension", "register_projection_views_extension", 1997997368, Nil, main, extension);  }  // 24
-unregister_projection_views_extension :: (main: *OpenXRAPIExtension, extension: OpenXRExtensionWrapperExtension) { sys_call("OpenXRAPIExtension", "unregister_projection_views_extension", 1997997368, Nil, main, extension);  }  // 25
+register_composition_layer_provider :: (main: *OpenXRAPIExtension, extension: *OpenXRExtensionWrapperExtension) { sys_call("OpenXRAPIExtension", "register_composition_layer_provider", 1997997368, Nil, main, extension);  }  // 22
+unregister_composition_layer_provider :: (main: *OpenXRAPIExtension, extension: *OpenXRExtensionWrapperExtension) { sys_call("OpenXRAPIExtension", "unregister_composition_layer_provider", 1997997368, Nil, main, extension);  }  // 23
+register_projection_views_extension :: (main: *OpenXRAPIExtension, extension: *OpenXRExtensionWrapperExtension) { sys_call("OpenXRAPIExtension", "register_projection_views_extension", 1997997368, Nil, main, extension);  }  // 24
+unregister_projection_views_extension :: (main: *OpenXRAPIExtension, extension: *OpenXRExtensionWrapperExtension) { sys_call("OpenXRAPIExtension", "unregister_projection_views_extension", 1997997368, Nil, main, extension);  }  // 25
 get_render_state_z_near :: (main: *OpenXRAPIExtension) -> float { call_ret := cast(*float) sys_call("OpenXRAPIExtension", "get_render_state_z_near", 191475506, float, main); return call_ret.*; }  // 26
 get_render_state_z_far :: (main: *OpenXRAPIExtension) -> float { call_ret := cast(*float) sys_call("OpenXRAPIExtension", "get_render_state_z_far", 191475506, float, main); return call_ret.*; }  // 27
 set_velocity_texture :: (main: *OpenXRAPIExtension, render_target: RID) { sys_call("OpenXRAPIExtension", "set_velocity_texture", 2722037293, Nil, main, render_target);  }  // 28
@@ -17703,15 +17703,15 @@ get_action_sets :: (main: *OpenXRActionMap) -> Array { call_ret := cast(*Array) 
 get_action_set_count :: (main: *OpenXRActionMap) -> int { call_ret := cast(*int) sys_call("OpenXRActionMap", "get_action_set_count", 3905245786, int, main); return call_ret.*; }  // 2
 find_action_set :: (main: *OpenXRActionMap, name: string) -> *OpenXRActionSet { call_ret := cast(*OpenXRActionSet) sys_call("OpenXRActionMap", "find_action_set", 1888809267, OpenXRActionSet, main, name); return call_ret; }  // 3
 get_action_set :: (main: *OpenXRActionMap, idx: int) -> *OpenXRActionSet { call_ret := cast(*OpenXRActionSet) sys_call("OpenXRActionMap", "get_action_set", 1789580336, OpenXRActionSet, main, idx); return call_ret; }  // 4
-add_action_set :: (main: *OpenXRActionMap, action_set: OpenXRActionSet) { sys_call("OpenXRActionMap", "add_action_set", 2093310581, Nil, main, action_set);  }  // 5
-remove_action_set :: (main: *OpenXRActionMap, action_set: OpenXRActionSet) { sys_call("OpenXRActionMap", "remove_action_set", 2093310581, Nil, main, action_set);  }  // 6
+add_action_set :: (main: *OpenXRActionMap, action_set: *OpenXRActionSet) { sys_call("OpenXRActionMap", "add_action_set", 2093310581, Nil, main, action_set);  }  // 5
+remove_action_set :: (main: *OpenXRActionMap, action_set: *OpenXRActionSet) { sys_call("OpenXRActionMap", "remove_action_set", 2093310581, Nil, main, action_set);  }  // 6
 set_interaction_profiles :: (main: *OpenXRActionMap, interaction_profiles: Array) { sys_call("OpenXRActionMap", "set_interaction_profiles", 381264803, Nil, main, interaction_profiles);  }  // 7
 get_interaction_profiles :: (main: *OpenXRActionMap) -> Array { call_ret := cast(*Array) sys_call("OpenXRActionMap", "get_interaction_profiles", 3995934104, Array, main); return call_ret.*; }  // 8
 get_interaction_profile_count :: (main: *OpenXRActionMap) -> int { call_ret := cast(*int) sys_call("OpenXRActionMap", "get_interaction_profile_count", 3905245786, int, main); return call_ret.*; }  // 9
 find_interaction_profile :: (main: *OpenXRActionMap, name: string) -> *OpenXRInteractionProfile { call_ret := cast(*OpenXRInteractionProfile) sys_call("OpenXRActionMap", "find_interaction_profile", 3095875538, OpenXRInteractionProfile, main, name); return call_ret; }  // 10
 get_interaction_profile :: (main: *OpenXRActionMap, idx: int) -> *OpenXRInteractionProfile { call_ret := cast(*OpenXRInteractionProfile) sys_call("OpenXRActionMap", "get_interaction_profile", 2546151210, OpenXRInteractionProfile, main, idx); return call_ret; }  // 11
-add_interaction_profile :: (main: *OpenXRActionMap, interaction_profile: OpenXRInteractionProfile) { sys_call("OpenXRActionMap", "add_interaction_profile", 2697953512, Nil, main, interaction_profile);  }  // 12
-remove_interaction_profile :: (main: *OpenXRActionMap, interaction_profile: OpenXRInteractionProfile) { sys_call("OpenXRActionMap", "remove_interaction_profile", 2697953512, Nil, main, interaction_profile);  }  // 13
+add_interaction_profile :: (main: *OpenXRActionMap, interaction_profile: *OpenXRInteractionProfile) { sys_call("OpenXRActionMap", "add_interaction_profile", 2697953512, Nil, main, interaction_profile);  }  // 12
+remove_interaction_profile :: (main: *OpenXRActionMap, interaction_profile: *OpenXRInteractionProfile) { sys_call("OpenXRActionMap", "remove_interaction_profile", 2697953512, Nil, main, interaction_profile);  }  // 13
 create_default_action_sets :: (main: *OpenXRActionMap) { sys_call("OpenXRActionMap", "create_default_action_sets", 3218959716, Nil, main);  }  // 14
 
 set_localized_name :: (main: *OpenXRActionSet, localized_name: string) { sys_call("OpenXRActionSet", "set_localized_name", 83702148, Nil, main, localized_name);  }  // 0
@@ -17721,23 +17721,23 @@ get_priority :: (main: *OpenXRActionSet) -> int { call_ret := cast(*int) sys_cal
 get_action_count :: (main: *OpenXRActionSet) -> int { call_ret := cast(*int) sys_call("OpenXRActionSet", "get_action_count", 3905245786, int, main); return call_ret.*; }  // 4
 set_actions :: (main: *OpenXRActionSet, actions: Array) { sys_call("OpenXRActionSet", "set_actions", 381264803, Nil, main, actions);  }  // 5
 get_actions :: (main: *OpenXRActionSet) -> Array { call_ret := cast(*Array) sys_call("OpenXRActionSet", "get_actions", 3995934104, Array, main); return call_ret.*; }  // 6
-add_action :: (main: *OpenXRActionSet, action: OpenXRAction) { sys_call("OpenXRActionSet", "add_action", 349361333, Nil, main, action);  }  // 7
-remove_action :: (main: *OpenXRActionSet, action: OpenXRAction) { sys_call("OpenXRActionSet", "remove_action", 349361333, Nil, main, action);  }  // 8
+add_action :: (main: *OpenXRActionSet, action: *OpenXRAction) { sys_call("OpenXRActionSet", "add_action", 349361333, Nil, main, action);  }  // 7
+remove_action :: (main: *OpenXRActionSet, action: *OpenXRAction) { sys_call("OpenXRActionSet", "remove_action", 349361333, Nil, main, action);  }  // 8
 
 set_on_threshold :: (main: *OpenXRAnalogThresholdModifier, on_threshold: float) { sys_call("OpenXRAnalogThresholdModifier", "set_on_threshold", 373806689, Nil, main, on_threshold);  }  // 0
 get_on_threshold :: (main: *OpenXRAnalogThresholdModifier) -> float { call_ret := cast(*float) sys_call("OpenXRAnalogThresholdModifier", "get_on_threshold", 1740695150, float, main); return call_ret.*; }  // 1
 set_off_threshold :: (main: *OpenXRAnalogThresholdModifier, off_threshold: float) { sys_call("OpenXRAnalogThresholdModifier", "set_off_threshold", 373806689, Nil, main, off_threshold);  }  // 2
 get_off_threshold :: (main: *OpenXRAnalogThresholdModifier) -> float { call_ret := cast(*float) sys_call("OpenXRAnalogThresholdModifier", "get_off_threshold", 1740695150, float, main); return call_ret.*; }  // 3
-set_on_haptic :: (main: *OpenXRAnalogThresholdModifier, haptic: OpenXRHapticBase) { sys_call("OpenXRAnalogThresholdModifier", "set_on_haptic", 2998020150, Nil, main, haptic);  }  // 4
+set_on_haptic :: (main: *OpenXRAnalogThresholdModifier, haptic: *OpenXRHapticBase) { sys_call("OpenXRAnalogThresholdModifier", "set_on_haptic", 2998020150, Nil, main, haptic);  }  // 4
 get_on_haptic :: (main: *OpenXRAnalogThresholdModifier) -> *OpenXRHapticBase { call_ret := cast(*OpenXRHapticBase) sys_call("OpenXRAnalogThresholdModifier", "get_on_haptic", 922310751, OpenXRHapticBase, main); return call_ret; }  // 5
-set_off_haptic :: (main: *OpenXRAnalogThresholdModifier, haptic: OpenXRHapticBase) { sys_call("OpenXRAnalogThresholdModifier", "set_off_haptic", 2998020150, Nil, main, haptic);  }  // 6
+set_off_haptic :: (main: *OpenXRAnalogThresholdModifier, haptic: *OpenXRHapticBase) { sys_call("OpenXRAnalogThresholdModifier", "set_off_haptic", 2998020150, Nil, main, haptic);  }  // 6
 get_off_haptic :: (main: *OpenXRAnalogThresholdModifier) -> *OpenXRHapticBase { call_ret := cast(*OpenXRHapticBase) sys_call("OpenXRAnalogThresholdModifier", "get_off_haptic", 922310751, OpenXRHapticBase, main); return call_ret; }  // 7
 
 
 get_binding_modifier :: (main: *OpenXRBindingModifierEditor) -> *OpenXRBindingModifier { call_ret := cast(*OpenXRBindingModifier) sys_call("OpenXRBindingModifierEditor", "get_binding_modifier", 2930765082, OpenXRBindingModifier, main); return call_ret; }  // 0
-setup :: (main: *OpenXRBindingModifierEditor, action_map: OpenXRActionMap, binding_modifier: OpenXRBindingModifier) { sys_call("OpenXRBindingModifierEditor", "setup", 1284787389, Nil, main, action_map, binding_modifier);  }  // 1
+setup :: (main: *OpenXRBindingModifierEditor, action_map: *OpenXRActionMap, binding_modifier: *OpenXRBindingModifier) { sys_call("OpenXRBindingModifierEditor", "setup", 1284787389, Nil, main, action_map, binding_modifier);  }  // 1
 
-set_layer_viewport :: (main: *OpenXRCompositionLayer, viewport: SubViewport) { sys_call("OpenXRCompositionLayer", "set_layer_viewport", 3888077664, Nil, main, viewport);  }  // 0
+set_layer_viewport :: (main: *OpenXRCompositionLayer, viewport: *SubViewport) { sys_call("OpenXRCompositionLayer", "set_layer_viewport", 3888077664, Nil, main, viewport);  }  // 0
 get_layer_viewport :: (main: *OpenXRCompositionLayer) -> *SubViewport { call_ret := cast(*SubViewport) sys_call("OpenXRCompositionLayer", "get_layer_viewport", 3750751911, SubViewport, main); return call_ret; }  // 1
 set_use_android_surface :: (main: *OpenXRCompositionLayer, enable: bool) { sys_call("OpenXRCompositionLayer", "set_use_android_surface", 2586408642, Nil, main, enable);  }  // 2
 get_use_android_surface :: (main: *OpenXRCompositionLayer) -> bool { call_ret := cast(*bool) sys_call("OpenXRCompositionLayer", "get_use_android_surface", 36873697, bool, main); return call_ret.*; }  // 3
@@ -17776,7 +17776,7 @@ get_fallback_segments :: (main: *OpenXRCompositionLayerEquirect) -> int { call_r
 set_quad_size :: (main: *OpenXRCompositionLayerQuad, size: Vector2) { sys_call("OpenXRCompositionLayerQuad", "set_quad_size", 743155724, Nil, main, size);  }  // 0
 get_quad_size :: (main: *OpenXRCompositionLayerQuad) -> Vector2 { call_ret := cast(*Vector2) sys_call("OpenXRCompositionLayerQuad", "get_quad_size", 3341600327, Vector2, main); return call_ret.*; }  // 1
 
-set_action_set :: (main: *OpenXRDpadBindingModifier, action_set: OpenXRActionSet) { sys_call("OpenXRDpadBindingModifier", "set_action_set", 2093310581, Nil, main, action_set);  }  // 0
+set_action_set :: (main: *OpenXRDpadBindingModifier, action_set: *OpenXRActionSet) { sys_call("OpenXRDpadBindingModifier", "set_action_set", 2093310581, Nil, main, action_set);  }  // 0
 get_action_set :: (main: *OpenXRDpadBindingModifier) -> *OpenXRActionSet { call_ret := cast(*OpenXRActionSet) sys_call("OpenXRDpadBindingModifier", "get_action_set", 619941079, OpenXRActionSet, main); return call_ret; }  // 1
 set_input_path :: (main: *OpenXRDpadBindingModifier, input_path: string) { sys_call("OpenXRDpadBindingModifier", "set_input_path", 83702148, Nil, main, input_path);  }  // 2
 get_input_path :: (main: *OpenXRDpadBindingModifier) -> gstring { call_ret := cast(*gstring) sys_call("OpenXRDpadBindingModifier", "get_input_path", 201670096, gstring, main); return call_ret.*; }  // 3
@@ -17790,9 +17790,9 @@ set_wedge_angle :: (main: *OpenXRDpadBindingModifier, wedge_angle: float) { sys_
 get_wedge_angle :: (main: *OpenXRDpadBindingModifier) -> float { call_ret := cast(*float) sys_call("OpenXRDpadBindingModifier", "get_wedge_angle", 1740695150, float, main); return call_ret.*; }  // 11
 set_is_sticky :: (main: *OpenXRDpadBindingModifier, is_sticky: bool) { sys_call("OpenXRDpadBindingModifier", "set_is_sticky", 2586408642, Nil, main, is_sticky);  }  // 12
 get_is_sticky :: (main: *OpenXRDpadBindingModifier) -> bool { call_ret := cast(*bool) sys_call("OpenXRDpadBindingModifier", "get_is_sticky", 36873697, bool, main); return call_ret.*; }  // 13
-set_on_haptic :: (main: *OpenXRDpadBindingModifier, haptic: OpenXRHapticBase) { sys_call("OpenXRDpadBindingModifier", "set_on_haptic", 2998020150, Nil, main, haptic);  }  // 14
+set_on_haptic :: (main: *OpenXRDpadBindingModifier, haptic: *OpenXRHapticBase) { sys_call("OpenXRDpadBindingModifier", "set_on_haptic", 2998020150, Nil, main, haptic);  }  // 14
 get_on_haptic :: (main: *OpenXRDpadBindingModifier) -> *OpenXRHapticBase { call_ret := cast(*OpenXRHapticBase) sys_call("OpenXRDpadBindingModifier", "get_on_haptic", 922310751, OpenXRHapticBase, main); return call_ret; }  // 15
-set_off_haptic :: (main: *OpenXRDpadBindingModifier, haptic: OpenXRHapticBase) { sys_call("OpenXRDpadBindingModifier", "set_off_haptic", 2998020150, Nil, main, haptic);  }  // 16
+set_off_haptic :: (main: *OpenXRDpadBindingModifier, haptic: *OpenXRHapticBase) { sys_call("OpenXRDpadBindingModifier", "set_off_haptic", 2998020150, Nil, main, haptic);  }  // 16
 get_off_haptic :: (main: *OpenXRDpadBindingModifier) -> *OpenXRHapticBase { call_ret := cast(*OpenXRHapticBase) sys_call("OpenXRDpadBindingModifier", "get_off_haptic", 922310751, OpenXRHapticBase, main); return call_ret; }  // 17
 
 get_openxr_api :: (main: *OpenXRExtensionWrapperExtension) -> *OpenXRAPIExtension { call_ret := cast(*OpenXRAPIExtension) sys_call("OpenXRExtensionWrapperExtension", "get_openxr_api", 1637791613, OpenXRAPIExtension, main); return call_ret; }  // 36
@@ -17817,7 +17817,7 @@ get_frequency :: (main: *OpenXRHapticVibration) -> float { call_ret := cast(*flo
 set_amplitude :: (main: *OpenXRHapticVibration, amplitude: float) { sys_call("OpenXRHapticVibration", "set_amplitude", 373806689, Nil, main, amplitude);  }  // 4
 get_amplitude :: (main: *OpenXRHapticVibration) -> float { call_ret := cast(*float) sys_call("OpenXRHapticVibration", "get_amplitude", 1740695150, float, main); return call_ret.*; }  // 5
 
-set_action :: (main: *OpenXRIPBinding, action: OpenXRAction) { sys_call("OpenXRIPBinding", "set_action", 349361333, Nil, main, action);  }  // 0
+set_action :: (main: *OpenXRIPBinding, action: *OpenXRAction) { sys_call("OpenXRIPBinding", "set_action", 349361333, Nil, main, action);  }  // 0
 get_action :: (main: *OpenXRIPBinding) -> *OpenXRAction { call_ret := cast(*OpenXRAction) sys_call("OpenXRIPBinding", "get_action", 4072409085, OpenXRAction, main); return call_ret; }  // 1
 set_binding_path :: (main: *OpenXRIPBinding, binding_path: string) { sys_call("OpenXRIPBinding", "set_binding_path", 83702148, Nil, main, binding_path);  }  // 2
 get_binding_path :: (main: *OpenXRIPBinding) -> gstring { call_ret := cast(*gstring) sys_call("OpenXRIPBinding", "get_binding_path", 201670096, gstring, main); return call_ret.*; }  // 3
@@ -17845,7 +17845,7 @@ set_binding_modifiers :: (main: *OpenXRInteractionProfile, binding_modifiers: Ar
 get_binding_modifiers :: (main: *OpenXRInteractionProfile) -> Array { call_ret := cast(*Array) sys_call("OpenXRInteractionProfile", "get_binding_modifiers", 3995934104, Array, main); return call_ret.*; }  // 9
 
 
-setup :: (main: *OpenXRInteractionProfileEditorBase, action_map: OpenXRActionMap, interaction_profile: OpenXRInteractionProfile) { sys_call("OpenXRInteractionProfileEditorBase", "setup", 421962938, Nil, main, action_map, interaction_profile);  }  // 0
+setup :: (main: *OpenXRInteractionProfileEditorBase, action_map: *OpenXRActionMap, interaction_profile: *OpenXRInteractionProfile) { sys_call("OpenXRInteractionProfileEditorBase", "setup", 421962938, Nil, main, action_map, interaction_profile);  }  // 0
 
 register_profile_rename :: (main: *OpenXRInteractionProfileMetadata, old_name: string, new_name: string) { sys_call("OpenXRInteractionProfileMetadata", "register_profile_rename", 3186203200, Nil, main, old_name, new_name);  }  // 0
 register_top_level_path :: (main: *OpenXRInteractionProfileMetadata, display_name: string, openxr_path: string, openxr_extension_name: string) { sys_call("OpenXRInteractionProfileMetadata", "register_top_level_path", 254767734, Nil, main, display_name, openxr_path, openxr_extension_name);  }  // 1
@@ -17883,12 +17883,12 @@ get_vrs_strength :: (main: *OpenXRInterface) -> float { call_ret := cast(*float)
 set_vrs_strength :: (main: *OpenXRInterface, strength: float) { sys_call("OpenXRInterface", "set_vrs_strength", 373806689, Nil, main, strength);  }  // 28
 
 
-generate :: (main: *OptimizedTranslation, from: Translation) { sys_call("OptimizedTranslation", "generate", 1466479800, Nil, main, from);  }  // 0
+generate :: (main: *OptimizedTranslation, from: *Translation) { sys_call("OptimizedTranslation", "generate", 1466479800, Nil, main, from);  }  // 0
 
 add_item :: (main: *OptionButton, label: string) { sys_call("OptionButton", "add_item", 2697778442, Nil, main, label);  }  // 0
-add_icon_item :: (main: *OptionButton, texture: Texture2D, label: string) { sys_call("OptionButton", "add_icon_item", 3781678508, Nil, main, texture, label);  }  // 1
+add_icon_item :: (main: *OptionButton, texture: *Texture2D, label: string) { sys_call("OptionButton", "add_icon_item", 3781678508, Nil, main, texture, label);  }  // 1
 set_item_text :: (main: *OptionButton, idx: int, text: string) { sys_call("OptionButton", "set_item_text", 501894301, Nil, main, idx, text);  }  // 2
-set_item_icon :: (main: *OptionButton, idx: int, texture: Texture2D) { sys_call("OptionButton", "set_item_icon", 666127730, Nil, main, idx, texture);  }  // 3
+set_item_icon :: (main: *OptionButton, idx: int, texture: *Texture2D) { sys_call("OptionButton", "set_item_icon", 666127730, Nil, main, idx, texture);  }  // 3
 set_item_disabled :: (main: *OptionButton, idx: int, disabled: bool) { sys_call("OptionButton", "set_item_disabled", 300928843, Nil, main, idx, disabled);  }  // 4
 set_item_id :: (main: *OptionButton, idx: int, id: int) { sys_call("OptionButton", "set_item_id", 3937882851, Nil, main, idx, id);  }  // 5
 set_item_metadata :: (main: *OptionButton, idx: int, metadata: Variant) { sys_call("OptionButton", "set_item_metadata", 2152698145, Nil, main, idx, metadata);  }  // 6
@@ -17930,7 +17930,7 @@ size :: (main: *PackedDataContainer) -> int { call_ret := cast(*int) sys_call("P
 
 size :: (main: *PackedDataContainerRef) -> int { call_ret := cast(*int) sys_call("PackedDataContainerRef", "size", 3905245786, int, main); return call_ret.*; }  // 0
 
-pack :: (main: *PackedScene, path: Node) -> Error { call_ret := cast(*Error) sys_call("PackedScene", "pack", 2584678054, Error, main, path); return call_ret.*; }  // 0
+pack :: (main: *PackedScene, path: *Node) -> Error { call_ret := cast(*Error) sys_call("PackedScene", "pack", 2584678054, Error, main, path); return call_ret.*; }  // 0
 instantiate :: (main: *PackedScene) -> *Node { call_ret := cast(*Node) sys_call("PackedScene", "instantiate", 2628778455, Node, main); return call_ret; }  // 1
 can_instantiate :: (main: *PackedScene) -> bool { call_ret := cast(*bool) sys_call("PackedScene", "can_instantiate", 36873697, bool, main); return call_ret.*; }  // 2
 get_state :: (main: *PackedScene) -> *SceneState { call_ret := cast(*SceneState) sys_call("PackedScene", "get_state", 3479783971, SceneState, main); return call_ret; }  // 3
@@ -17945,12 +17945,12 @@ get_encode_buffer_max_size :: (main: *PacketPeer) -> int { call_ret := cast(*int
 set_encode_buffer_max_size :: (main: *PacketPeer, max_size: int) { sys_call("PacketPeer", "set_encode_buffer_max_size", 1286410249, Nil, main, max_size);  }  // 7
 
 poll :: (main: *PacketPeerDTLS) { sys_call("PacketPeerDTLS", "poll", 3218959716, Nil, main);  }  // 0
-connect_to_peer :: (main: *PacketPeerDTLS, packet_peer: PacketPeerUDP, hostname: string) -> Error { call_ret := cast(*Error) sys_call("PacketPeerDTLS", "connect_to_peer", 2880188099, Error, main, packet_peer, hostname); return call_ret.*; }  // 1
+connect_to_peer :: (main: *PacketPeerDTLS, packet_peer: *PacketPeerUDP, hostname: string) -> Error { call_ret := cast(*Error) sys_call("PacketPeerDTLS", "connect_to_peer", 2880188099, Error, main, packet_peer, hostname); return call_ret.*; }  // 1
 get_status :: (main: *PacketPeerDTLS) -> PacketPeerDTLS.Status { call_ret := cast(*PacketPeerDTLS.Status) sys_call("PacketPeerDTLS", "get_status", 3248654679, PacketPeerDTLS.Status, main); return call_ret.*; }  // 2
 disconnect_from_peer :: (main: *PacketPeerDTLS) { sys_call("PacketPeerDTLS", "disconnect_from_peer", 3218959716, Nil, main);  }  // 3
 
 
-set_stream_peer :: (main: *PacketPeerStream, peer: StreamPeer) { sys_call("PacketPeerStream", "set_stream_peer", 3281897016, Nil, main, peer);  }  // 0
+set_stream_peer :: (main: *PacketPeerStream, peer: *StreamPeer) { sys_call("PacketPeerStream", "set_stream_peer", 3281897016, Nil, main, peer);  }  // 0
 get_stream_peer :: (main: *PacketPeerStream) -> *StreamPeer { call_ret := cast(*StreamPeer) sys_call("PacketPeerStream", "get_stream_peer", 2741655269, StreamPeer, main); return call_ret; }  // 1
 set_input_buffer_max_size :: (main: *PacketPeerStream, max_size_bytes: int) { sys_call("PacketPeerStream", "set_input_buffer_max_size", 1286410249, Nil, main, max_size_bytes);  }  // 2
 set_output_buffer_max_size :: (main: *PacketPeerStream, max_size_bytes: int) { sys_call("PacketPeerStream", "set_output_buffer_max_size", 1286410249, Nil, main, max_size_bytes);  }  // 3
@@ -17973,7 +17973,7 @@ leave_multicast_group :: (main: *PacketPeerUDP, multicast_address: string, inter
 
 
 
-set_panorama :: (main: *PanoramaSkyMaterial, texture: Texture2D) { sys_call("PanoramaSkyMaterial", "set_panorama", 4051416890, Nil, main, texture);  }  // 0
+set_panorama :: (main: *PanoramaSkyMaterial, texture: *Texture2D) { sys_call("PanoramaSkyMaterial", "set_panorama", 4051416890, Nil, main, texture);  }  // 0
 get_panorama :: (main: *PanoramaSkyMaterial) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("PanoramaSkyMaterial", "get_panorama", 3635182373, Texture2D, main); return call_ret; }  // 1
 set_filtering_enabled :: (main: *PanoramaSkyMaterial, enabled: bool) { sys_call("PanoramaSkyMaterial", "set_filtering_enabled", 2586408642, Nil, main, enabled);  }  // 2
 is_filtering_enabled :: (main: *PanoramaSkyMaterial) -> bool { call_ret := cast(*bool) sys_call("PanoramaSkyMaterial", "is_filtering_enabled", 36873697, bool, main); return call_ret.*; }  // 3
@@ -18035,19 +18035,19 @@ set_param_min :: (main: *ParticleProcessMaterial, param: ParticleProcessMaterial
 get_param_min :: (main: *ParticleProcessMaterial, param: ParticleProcessMaterial.Parameter) -> float { call_ret := cast(*float) sys_call("ParticleProcessMaterial", "get_param_min", 3903786503, float, main, param); return call_ret.*; }  // 11
 set_param_max :: (main: *ParticleProcessMaterial, param: ParticleProcessMaterial.Parameter, value: float) { sys_call("ParticleProcessMaterial", "set_param_max", 2295964248, Nil, main, param, value);  }  // 12
 get_param_max :: (main: *ParticleProcessMaterial, param: ParticleProcessMaterial.Parameter) -> float { call_ret := cast(*float) sys_call("ParticleProcessMaterial", "get_param_max", 3903786503, float, main, param); return call_ret.*; }  // 13
-set_param_texture :: (main: *ParticleProcessMaterial, param: ParticleProcessMaterial.Parameter, texture: Texture2D) { sys_call("ParticleProcessMaterial", "set_param_texture", 526976089, Nil, main, param, texture);  }  // 14
+set_param_texture :: (main: *ParticleProcessMaterial, param: ParticleProcessMaterial.Parameter, texture: *Texture2D) { sys_call("ParticleProcessMaterial", "set_param_texture", 526976089, Nil, main, param, texture);  }  // 14
 get_param_texture :: (main: *ParticleProcessMaterial, param: ParticleProcessMaterial.Parameter) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("ParticleProcessMaterial", "get_param_texture", 3489372978, Texture2D, main, param); return call_ret; }  // 15
 set_color :: (main: *ParticleProcessMaterial, color: Color) { sys_call("ParticleProcessMaterial", "set_color", 2920490490, Nil, main, color);  }  // 16
 get_color :: (main: *ParticleProcessMaterial) -> Color { call_ret := cast(*Color) sys_call("ParticleProcessMaterial", "get_color", 3444240500, Color, main); return call_ret.*; }  // 17
-set_color_ramp :: (main: *ParticleProcessMaterial, ramp: Texture2D) { sys_call("ParticleProcessMaterial", "set_color_ramp", 4051416890, Nil, main, ramp);  }  // 18
+set_color_ramp :: (main: *ParticleProcessMaterial, ramp: *Texture2D) { sys_call("ParticleProcessMaterial", "set_color_ramp", 4051416890, Nil, main, ramp);  }  // 18
 get_color_ramp :: (main: *ParticleProcessMaterial) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("ParticleProcessMaterial", "get_color_ramp", 3635182373, Texture2D, main); return call_ret; }  // 19
-set_alpha_curve :: (main: *ParticleProcessMaterial, curve: Texture2D) { sys_call("ParticleProcessMaterial", "set_alpha_curve", 4051416890, Nil, main, curve);  }  // 20
+set_alpha_curve :: (main: *ParticleProcessMaterial, curve: *Texture2D) { sys_call("ParticleProcessMaterial", "set_alpha_curve", 4051416890, Nil, main, curve);  }  // 20
 get_alpha_curve :: (main: *ParticleProcessMaterial) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("ParticleProcessMaterial", "get_alpha_curve", 3635182373, Texture2D, main); return call_ret; }  // 21
-set_emission_curve :: (main: *ParticleProcessMaterial, curve: Texture2D) { sys_call("ParticleProcessMaterial", "set_emission_curve", 4051416890, Nil, main, curve);  }  // 22
+set_emission_curve :: (main: *ParticleProcessMaterial, curve: *Texture2D) { sys_call("ParticleProcessMaterial", "set_emission_curve", 4051416890, Nil, main, curve);  }  // 22
 get_emission_curve :: (main: *ParticleProcessMaterial) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("ParticleProcessMaterial", "get_emission_curve", 3635182373, Texture2D, main); return call_ret; }  // 23
-set_color_initial_ramp :: (main: *ParticleProcessMaterial, ramp: Texture2D) { sys_call("ParticleProcessMaterial", "set_color_initial_ramp", 4051416890, Nil, main, ramp);  }  // 24
+set_color_initial_ramp :: (main: *ParticleProcessMaterial, ramp: *Texture2D) { sys_call("ParticleProcessMaterial", "set_color_initial_ramp", 4051416890, Nil, main, ramp);  }  // 24
 get_color_initial_ramp :: (main: *ParticleProcessMaterial) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("ParticleProcessMaterial", "get_color_initial_ramp", 3635182373, Texture2D, main); return call_ret; }  // 25
-set_velocity_limit_curve :: (main: *ParticleProcessMaterial, curve: Texture2D) { sys_call("ParticleProcessMaterial", "set_velocity_limit_curve", 4051416890, Nil, main, curve);  }  // 26
+set_velocity_limit_curve :: (main: *ParticleProcessMaterial, curve: *Texture2D) { sys_call("ParticleProcessMaterial", "set_velocity_limit_curve", 4051416890, Nil, main, curve);  }  // 26
 get_velocity_limit_curve :: (main: *ParticleProcessMaterial) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("ParticleProcessMaterial", "get_velocity_limit_curve", 3635182373, Texture2D, main); return call_ret; }  // 27
 set_particle_flag :: (main: *ParticleProcessMaterial, particle_flag: ParticleProcessMaterial.ParticleFlags, enable: bool) { sys_call("ParticleProcessMaterial", "set_particle_flag", 1711815571, Nil, main, particle_flag, enable);  }  // 28
 get_particle_flag :: (main: *ParticleProcessMaterial, particle_flag: ParticleProcessMaterial.ParticleFlags) -> bool { call_ret := cast(*bool) sys_call("ParticleProcessMaterial", "get_particle_flag", 3895316907, bool, main, particle_flag); return call_ret.*; }  // 29
@@ -18059,11 +18059,11 @@ set_emission_sphere_radius :: (main: *ParticleProcessMaterial, radius: float) { 
 get_emission_sphere_radius :: (main: *ParticleProcessMaterial) -> float { call_ret := cast(*float) sys_call("ParticleProcessMaterial", "get_emission_sphere_radius", 1740695150, float, main); return call_ret.*; }  // 35
 set_emission_box_extents :: (main: *ParticleProcessMaterial, extents: Vector3) { sys_call("ParticleProcessMaterial", "set_emission_box_extents", 3460891852, Nil, main, extents);  }  // 36
 get_emission_box_extents :: (main: *ParticleProcessMaterial) -> Vector3 { call_ret := cast(*Vector3) sys_call("ParticleProcessMaterial", "get_emission_box_extents", 3360562783, Vector3, main); return call_ret.*; }  // 37
-set_emission_point_texture :: (main: *ParticleProcessMaterial, texture: Texture2D) { sys_call("ParticleProcessMaterial", "set_emission_point_texture", 4051416890, Nil, main, texture);  }  // 38
+set_emission_point_texture :: (main: *ParticleProcessMaterial, texture: *Texture2D) { sys_call("ParticleProcessMaterial", "set_emission_point_texture", 4051416890, Nil, main, texture);  }  // 38
 get_emission_point_texture :: (main: *ParticleProcessMaterial) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("ParticleProcessMaterial", "get_emission_point_texture", 3635182373, Texture2D, main); return call_ret; }  // 39
-set_emission_normal_texture :: (main: *ParticleProcessMaterial, texture: Texture2D) { sys_call("ParticleProcessMaterial", "set_emission_normal_texture", 4051416890, Nil, main, texture);  }  // 40
+set_emission_normal_texture :: (main: *ParticleProcessMaterial, texture: *Texture2D) { sys_call("ParticleProcessMaterial", "set_emission_normal_texture", 4051416890, Nil, main, texture);  }  // 40
 get_emission_normal_texture :: (main: *ParticleProcessMaterial) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("ParticleProcessMaterial", "get_emission_normal_texture", 3635182373, Texture2D, main); return call_ret; }  // 41
-set_emission_color_texture :: (main: *ParticleProcessMaterial, texture: Texture2D) { sys_call("ParticleProcessMaterial", "set_emission_color_texture", 4051416890, Nil, main, texture);  }  // 42
+set_emission_color_texture :: (main: *ParticleProcessMaterial, texture: *Texture2D) { sys_call("ParticleProcessMaterial", "set_emission_color_texture", 4051416890, Nil, main, texture);  }  // 42
 get_emission_color_texture :: (main: *ParticleProcessMaterial) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("ParticleProcessMaterial", "get_emission_color_texture", 3635182373, Texture2D, main); return call_ret; }  // 43
 set_emission_point_count :: (main: *ParticleProcessMaterial, point_count: int) { sys_call("ParticleProcessMaterial", "set_emission_point_count", 1286410249, Nil, main, point_count);  }  // 44
 get_emission_point_count :: (main: *ParticleProcessMaterial) -> int { call_ret := cast(*int) sys_call("ParticleProcessMaterial", "get_emission_point_count", 3905245786, int, main); return call_ret.*; }  // 45
@@ -18118,10 +18118,10 @@ get_collision_friction :: (main: *ParticleProcessMaterial) -> float { call_ret :
 set_collision_bounce :: (main: *ParticleProcessMaterial, bounce: float) { sys_call("ParticleProcessMaterial", "set_collision_bounce", 373806689, Nil, main, bounce);  }  // 94
 get_collision_bounce :: (main: *ParticleProcessMaterial) -> float { call_ret := cast(*float) sys_call("ParticleProcessMaterial", "get_collision_bounce", 1740695150, float, main); return call_ret.*; }  // 95
 
-set_curve :: (main: *Path2D, curve: Curve2D) { sys_call("Path2D", "set_curve", 659985499, Nil, main, curve);  }  // 0
+set_curve :: (main: *Path2D, curve: *Curve2D) { sys_call("Path2D", "set_curve", 659985499, Nil, main, curve);  }  // 0
 get_curve :: (main: *Path2D) -> *Curve2D { call_ret := cast(*Curve2D) sys_call("Path2D", "get_curve", 660369445, Curve2D, main); return call_ret; }  // 1
 
-set_curve :: (main: *Path3D, curve: Curve3D) { sys_call("Path3D", "set_curve", 408955118, Nil, main, curve);  }  // 0
+set_curve :: (main: *Path3D, curve: *Curve3D) { sys_call("Path3D", "set_curve", 408955118, Nil, main, curve);  }  // 0
 get_curve :: (main: *Path3D) -> *Curve3D { call_ret := cast(*Curve3D) sys_call("Path3D", "get_curve", 4244715212, Curve3D, main); return call_ret; }  // 1
 
 set_progress :: (main: *PathFollow2D, progress: float) { sys_call("PathFollow2D", "set_progress", 373806689, Nil, main, progress);  }  // 0
@@ -18244,15 +18244,15 @@ set_energy_multiplier :: (main: *PhysicalSkyMaterial, multiplier: float) { sys_c
 get_energy_multiplier :: (main: *PhysicalSkyMaterial) -> float { call_ret := cast(*float) sys_call("PhysicalSkyMaterial", "get_energy_multiplier", 1740695150, float, main); return call_ret.*; }  // 17
 set_use_debanding :: (main: *PhysicalSkyMaterial, use_debanding: bool) { sys_call("PhysicalSkyMaterial", "set_use_debanding", 2586408642, Nil, main, use_debanding);  }  // 18
 get_use_debanding :: (main: *PhysicalSkyMaterial) -> bool { call_ret := cast(*bool) sys_call("PhysicalSkyMaterial", "get_use_debanding", 36873697, bool, main); return call_ret.*; }  // 19
-set_night_sky :: (main: *PhysicalSkyMaterial, night_sky: Texture2D) { sys_call("PhysicalSkyMaterial", "set_night_sky", 4051416890, Nil, main, night_sky);  }  // 20
+set_night_sky :: (main: *PhysicalSkyMaterial, night_sky: *Texture2D) { sys_call("PhysicalSkyMaterial", "set_night_sky", 4051416890, Nil, main, night_sky);  }  // 20
 get_night_sky :: (main: *PhysicalSkyMaterial) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("PhysicalSkyMaterial", "get_night_sky", 3635182373, Texture2D, main); return call_ret; }  // 21
 
 move_and_collide :: (main: *PhysicsBody2D, motion: Vector2) -> *KinematicCollision2D { call_ret := cast(*KinematicCollision2D) sys_call("PhysicsBody2D", "move_and_collide", 3681923724, KinematicCollision2D, main, motion); return call_ret; }  // 0
 test_move :: (main: *PhysicsBody2D, from: Transform2D, motion: Vector2) -> bool { call_ret := cast(*bool) sys_call("PhysicsBody2D", "test_move", 3324464701, bool, main, from, motion); return call_ret.*; }  // 1
 get_gravity :: (main: *PhysicsBody2D) -> Vector2 { call_ret := cast(*Vector2) sys_call("PhysicsBody2D", "get_gravity", 3341600327, Vector2, main); return call_ret.*; }  // 2
 get_collision_exceptions :: (main: *PhysicsBody2D) -> [] PhysicsBody2D { call_ret := cast(*[] PhysicsBody2D) sys_call("PhysicsBody2D", "get_collision_exceptions", 2915620761, [] PhysicsBody2D, main); return call_ret.*; }  // 3
-add_collision_exception_with :: (main: *PhysicsBody2D, body: Node) { sys_call("PhysicsBody2D", "add_collision_exception_with", 1078189570, Nil, main, body);  }  // 4
-remove_collision_exception_with :: (main: *PhysicsBody2D, body: Node) { sys_call("PhysicsBody2D", "remove_collision_exception_with", 1078189570, Nil, main, body);  }  // 5
+add_collision_exception_with :: (main: *PhysicsBody2D, body: *Node) { sys_call("PhysicsBody2D", "add_collision_exception_with", 1078189570, Nil, main, body);  }  // 4
+remove_collision_exception_with :: (main: *PhysicsBody2D, body: *Node) { sys_call("PhysicsBody2D", "remove_collision_exception_with", 1078189570, Nil, main, body);  }  // 5
 
 move_and_collide :: (main: *PhysicsBody3D, motion: Vector3) -> *KinematicCollision3D { call_ret := cast(*KinematicCollision3D) sys_call("PhysicsBody3D", "move_and_collide", 3208792678, KinematicCollision3D, main, motion); return call_ret; }  // 0
 test_move :: (main: *PhysicsBody3D, from: Transform3D, motion: Vector3) -> bool { call_ret := cast(*bool) sys_call("PhysicsBody3D", "test_move", 2481691619, bool, main, from, motion); return call_ret.*; }  // 1
@@ -18260,8 +18260,8 @@ get_gravity :: (main: *PhysicsBody3D) -> Vector3 { call_ret := cast(*Vector3) sy
 set_axis_lock :: (main: *PhysicsBody3D, axis: PhysicsServer3D.BodyAxis, lock: bool) { sys_call("PhysicsBody3D", "set_axis_lock", 1787895195, Nil, main, axis, lock);  }  // 3
 get_axis_lock :: (main: *PhysicsBody3D, axis: PhysicsServer3D.BodyAxis) -> bool { call_ret := cast(*bool) sys_call("PhysicsBody3D", "get_axis_lock", 2264617709, bool, main, axis); return call_ret.*; }  // 4
 get_collision_exceptions :: (main: *PhysicsBody3D) -> [] PhysicsBody3D { call_ret := cast(*[] PhysicsBody3D) sys_call("PhysicsBody3D", "get_collision_exceptions", 2915620761, [] PhysicsBody3D, main); return call_ret.*; }  // 5
-add_collision_exception_with :: (main: *PhysicsBody3D, body: Node) { sys_call("PhysicsBody3D", "add_collision_exception_with", 1078189570, Nil, main, body);  }  // 6
-remove_collision_exception_with :: (main: *PhysicsBody3D, body: Node) { sys_call("PhysicsBody3D", "remove_collision_exception_with", 1078189570, Nil, main, body);  }  // 7
+add_collision_exception_with :: (main: *PhysicsBody3D, body: *Node) { sys_call("PhysicsBody3D", "add_collision_exception_with", 1078189570, Nil, main, body);  }  // 6
+remove_collision_exception_with :: (main: *PhysicsBody3D, body: *Node) { sys_call("PhysicsBody3D", "remove_collision_exception_with", 1078189570, Nil, main, body);  }  // 7
 
 get_total_gravity :: (main: *PhysicsDirectBodyState2D) -> Vector2 { call_ret := cast(*Vector2) sys_call("PhysicsDirectBodyState2D", "get_total_gravity", 3341600327, Vector2, main); return call_ret.*; }  // 0
 get_total_linear_damp :: (main: *PhysicsDirectBodyState2D) -> float { call_ret := cast(*float) sys_call("PhysicsDirectBodyState2D", "get_total_linear_damp", 1740695150, float, main); return call_ret.*; }  // 1
@@ -18357,21 +18357,21 @@ integrate_forces :: (main: *PhysicsDirectBodyState3D) { sys_call("PhysicsDirectB
 get_space_state :: (main: *PhysicsDirectBodyState3D) -> *PhysicsDirectSpaceState3D { call_ret := cast(*PhysicsDirectSpaceState3D) sys_call("PhysicsDirectBodyState3D", "get_space_state", 2069328350, PhysicsDirectSpaceState3D, main); return call_ret; }  // 45
 
 
-intersect_point :: (main: *PhysicsDirectSpaceState2D, parameters: PhysicsPointQueryParameters2D) -> [] Dictionary { call_ret := cast(*[] Dictionary) sys_call("PhysicsDirectSpaceState2D", "intersect_point", 2118456068, [] Dictionary, main, parameters); return call_ret.*; }  // 0
-intersect_ray :: (main: *PhysicsDirectSpaceState2D, parameters: PhysicsRayQueryParameters2D) -> Dictionary { call_ret := cast(*Dictionary) sys_call("PhysicsDirectSpaceState2D", "intersect_ray", 1590275562, Dictionary, main, parameters); return call_ret.*; }  // 1
-intersect_shape :: (main: *PhysicsDirectSpaceState2D, parameters: PhysicsShapeQueryParameters2D) -> [] Dictionary { call_ret := cast(*[] Dictionary) sys_call("PhysicsDirectSpaceState2D", "intersect_shape", 2488867228, [] Dictionary, main, parameters); return call_ret.*; }  // 2
-cast_motion :: (main: *PhysicsDirectSpaceState2D, parameters: PhysicsShapeQueryParameters2D) -> PackedFloat32Array { call_ret := cast(*PackedFloat32Array) sys_call("PhysicsDirectSpaceState2D", "cast_motion", 711275086, PackedFloat32Array, main, parameters); return call_ret.*; }  // 3
-collide_shape :: (main: *PhysicsDirectSpaceState2D, parameters: PhysicsShapeQueryParameters2D) -> [] Vector2 { call_ret := cast(*[] Vector2) sys_call("PhysicsDirectSpaceState2D", "collide_shape", 2488867228, [] Vector2, main, parameters); return call_ret.*; }  // 4
-get_rest_info :: (main: *PhysicsDirectSpaceState2D, parameters: PhysicsShapeQueryParameters2D) -> Dictionary { call_ret := cast(*Dictionary) sys_call("PhysicsDirectSpaceState2D", "get_rest_info", 2803666496, Dictionary, main, parameters); return call_ret.*; }  // 5
+intersect_point :: (main: *PhysicsDirectSpaceState2D, parameters: *PhysicsPointQueryParameters2D) -> [] Dictionary { call_ret := cast(*[] Dictionary) sys_call("PhysicsDirectSpaceState2D", "intersect_point", 2118456068, [] Dictionary, main, parameters); return call_ret.*; }  // 0
+intersect_ray :: (main: *PhysicsDirectSpaceState2D, parameters: *PhysicsRayQueryParameters2D) -> Dictionary { call_ret := cast(*Dictionary) sys_call("PhysicsDirectSpaceState2D", "intersect_ray", 1590275562, Dictionary, main, parameters); return call_ret.*; }  // 1
+intersect_shape :: (main: *PhysicsDirectSpaceState2D, parameters: *PhysicsShapeQueryParameters2D) -> [] Dictionary { call_ret := cast(*[] Dictionary) sys_call("PhysicsDirectSpaceState2D", "intersect_shape", 2488867228, [] Dictionary, main, parameters); return call_ret.*; }  // 2
+cast_motion :: (main: *PhysicsDirectSpaceState2D, parameters: *PhysicsShapeQueryParameters2D) -> PackedFloat32Array { call_ret := cast(*PackedFloat32Array) sys_call("PhysicsDirectSpaceState2D", "cast_motion", 711275086, PackedFloat32Array, main, parameters); return call_ret.*; }  // 3
+collide_shape :: (main: *PhysicsDirectSpaceState2D, parameters: *PhysicsShapeQueryParameters2D) -> [] Vector2 { call_ret := cast(*[] Vector2) sys_call("PhysicsDirectSpaceState2D", "collide_shape", 2488867228, [] Vector2, main, parameters); return call_ret.*; }  // 4
+get_rest_info :: (main: *PhysicsDirectSpaceState2D, parameters: *PhysicsShapeQueryParameters2D) -> Dictionary { call_ret := cast(*Dictionary) sys_call("PhysicsDirectSpaceState2D", "get_rest_info", 2803666496, Dictionary, main, parameters); return call_ret.*; }  // 5
 
 is_body_excluded_from_query :: (main: *PhysicsDirectSpaceState2DExtension, body: RID) -> bool { call_ret := cast(*bool) sys_call("PhysicsDirectSpaceState2DExtension", "is_body_excluded_from_query", 4155700596, bool, main, body); return call_ret.*; }  // 6
 
-intersect_point :: (main: *PhysicsDirectSpaceState3D, parameters: PhysicsPointQueryParameters3D) -> [] Dictionary { call_ret := cast(*[] Dictionary) sys_call("PhysicsDirectSpaceState3D", "intersect_point", 975173756, [] Dictionary, main, parameters); return call_ret.*; }  // 0
-intersect_ray :: (main: *PhysicsDirectSpaceState3D, parameters: PhysicsRayQueryParameters3D) -> Dictionary { call_ret := cast(*Dictionary) sys_call("PhysicsDirectSpaceState3D", "intersect_ray", 3957970750, Dictionary, main, parameters); return call_ret.*; }  // 1
-intersect_shape :: (main: *PhysicsDirectSpaceState3D, parameters: PhysicsShapeQueryParameters3D) -> [] Dictionary { call_ret := cast(*[] Dictionary) sys_call("PhysicsDirectSpaceState3D", "intersect_shape", 3762137681, [] Dictionary, main, parameters); return call_ret.*; }  // 2
-cast_motion :: (main: *PhysicsDirectSpaceState3D, parameters: PhysicsShapeQueryParameters3D) -> PackedFloat32Array { call_ret := cast(*PackedFloat32Array) sys_call("PhysicsDirectSpaceState3D", "cast_motion", 1778757334, PackedFloat32Array, main, parameters); return call_ret.*; }  // 3
-collide_shape :: (main: *PhysicsDirectSpaceState3D, parameters: PhysicsShapeQueryParameters3D) -> [] Vector3 { call_ret := cast(*[] Vector3) sys_call("PhysicsDirectSpaceState3D", "collide_shape", 3762137681, [] Vector3, main, parameters); return call_ret.*; }  // 4
-get_rest_info :: (main: *PhysicsDirectSpaceState3D, parameters: PhysicsShapeQueryParameters3D) -> Dictionary { call_ret := cast(*Dictionary) sys_call("PhysicsDirectSpaceState3D", "get_rest_info", 1376751592, Dictionary, main, parameters); return call_ret.*; }  // 5
+intersect_point :: (main: *PhysicsDirectSpaceState3D, parameters: *PhysicsPointQueryParameters3D) -> [] Dictionary { call_ret := cast(*[] Dictionary) sys_call("PhysicsDirectSpaceState3D", "intersect_point", 975173756, [] Dictionary, main, parameters); return call_ret.*; }  // 0
+intersect_ray :: (main: *PhysicsDirectSpaceState3D, parameters: *PhysicsRayQueryParameters3D) -> Dictionary { call_ret := cast(*Dictionary) sys_call("PhysicsDirectSpaceState3D", "intersect_ray", 3957970750, Dictionary, main, parameters); return call_ret.*; }  // 1
+intersect_shape :: (main: *PhysicsDirectSpaceState3D, parameters: *PhysicsShapeQueryParameters3D) -> [] Dictionary { call_ret := cast(*[] Dictionary) sys_call("PhysicsDirectSpaceState3D", "intersect_shape", 3762137681, [] Dictionary, main, parameters); return call_ret.*; }  // 2
+cast_motion :: (main: *PhysicsDirectSpaceState3D, parameters: *PhysicsShapeQueryParameters3D) -> PackedFloat32Array { call_ret := cast(*PackedFloat32Array) sys_call("PhysicsDirectSpaceState3D", "cast_motion", 1778757334, PackedFloat32Array, main, parameters); return call_ret.*; }  // 3
+collide_shape :: (main: *PhysicsDirectSpaceState3D, parameters: *PhysicsShapeQueryParameters3D) -> [] Vector3 { call_ret := cast(*[] Vector3) sys_call("PhysicsDirectSpaceState3D", "collide_shape", 3762137681, [] Vector3, main, parameters); return call_ret.*; }  // 4
+get_rest_info :: (main: *PhysicsDirectSpaceState3D, parameters: *PhysicsShapeQueryParameters3D) -> Dictionary { call_ret := cast(*Dictionary) sys_call("PhysicsDirectSpaceState3D", "get_rest_info", 1376751592, Dictionary, main, parameters); return call_ret.*; }  // 5
 
 is_body_excluded_from_query :: (main: *PhysicsDirectSpaceState3DExtension, body: RID) -> bool { call_ret := cast(*bool) sys_call("PhysicsDirectSpaceState3DExtension", "is_body_excluded_from_query", 4155700596, bool, main, body); return call_ret.*; }  // 7
 
@@ -18540,7 +18540,7 @@ body_set_omit_force_integration :: (main: *PhysicsServer2D, body: RID, enable: b
 body_is_omitting_force_integration :: (main: *PhysicsServer2D, body: RID) -> bool { call_ret := cast(*bool) sys_call("PhysicsServer2D", "body_is_omitting_force_integration", 4155700596, bool, main, body); return call_ret.*; }  // 95
 body_set_state_sync_callback :: (main: *PhysicsServer2D, body: RID, callable: Callable) { sys_call("PhysicsServer2D", "body_set_state_sync_callback", 3379118538, Nil, main, body, callable);  }  // 96
 body_set_force_integration_callback :: (main: *PhysicsServer2D, body: RID, callable: Callable) { sys_call("PhysicsServer2D", "body_set_force_integration_callback", 3059434249, Nil, main, body, callable);  }  // 97
-body_test_motion :: (main: *PhysicsServer2D, body: RID, parameters: PhysicsTestMotionParameters2D) -> bool { call_ret := cast(*bool) sys_call("PhysicsServer2D", "body_test_motion", 1699844009, bool, main, body, parameters); return call_ret.*; }  // 98
+body_test_motion :: (main: *PhysicsServer2D, body: RID, parameters: *PhysicsTestMotionParameters2D) -> bool { call_ret := cast(*bool) sys_call("PhysicsServer2D", "body_test_motion", 1699844009, bool, main, body, parameters); return call_ret.*; }  // 98
 body_get_direct_state :: (main: *PhysicsServer2D, body: RID) -> *PhysicsDirectBodyState2D { call_ret := cast(*PhysicsDirectBodyState2D) sys_call("PhysicsServer2D", "body_get_direct_state", 1191931871, PhysicsDirectBodyState2D, main, body); return call_ret; }  // 99
 joint_create :: (main: *PhysicsServer2D) -> RID { call_ret := cast(*RID) sys_call("PhysicsServer2D", "joint_create", 529393457, RID, main); return call_ret.*; }  // 100
 joint_clear :: (main: *PhysicsServer2D, joint: RID) { sys_call("PhysicsServer2D", "joint_clear", 2722037293, Nil, main, joint);  }  // 101
@@ -18669,10 +18669,10 @@ body_is_omitting_force_integration :: (main: *PhysicsServer3D, body: RID) -> boo
 body_set_state_sync_callback :: (main: *PhysicsServer3D, body: RID, callable: Callable) { sys_call("PhysicsServer3D", "body_set_state_sync_callback", 3379118538, Nil, main, body, callable);  }  // 98
 body_set_force_integration_callback :: (main: *PhysicsServer3D, body: RID, callable: Callable) { sys_call("PhysicsServer3D", "body_set_force_integration_callback", 3059434249, Nil, main, body, callable);  }  // 99
 body_set_ray_pickable :: (main: *PhysicsServer3D, body: RID, enable: bool) { sys_call("PhysicsServer3D", "body_set_ray_pickable", 1265174801, Nil, main, body, enable);  }  // 100
-body_test_motion :: (main: *PhysicsServer3D, body: RID, parameters: PhysicsTestMotionParameters3D) -> bool { call_ret := cast(*bool) sys_call("PhysicsServer3D", "body_test_motion", 1944921792, bool, main, body, parameters); return call_ret.*; }  // 101
+body_test_motion :: (main: *PhysicsServer3D, body: RID, parameters: *PhysicsTestMotionParameters3D) -> bool { call_ret := cast(*bool) sys_call("PhysicsServer3D", "body_test_motion", 1944921792, bool, main, body, parameters); return call_ret.*; }  // 101
 body_get_direct_state :: (main: *PhysicsServer3D, body: RID) -> *PhysicsDirectBodyState3D { call_ret := cast(*PhysicsDirectBodyState3D) sys_call("PhysicsServer3D", "body_get_direct_state", 3029727957, PhysicsDirectBodyState3D, main, body); return call_ret; }  // 102
 soft_body_create :: (main: *PhysicsServer3D) -> RID { call_ret := cast(*RID) sys_call("PhysicsServer3D", "soft_body_create", 529393457, RID, main); return call_ret.*; }  // 103
-soft_body_update_rendering_server :: (main: *PhysicsServer3D, body: RID, rendering_server_handler: PhysicsServer3DRenderingServerHandler) { sys_call("PhysicsServer3D", "soft_body_update_rendering_server", 2218179753, Nil, main, body, rendering_server_handler);  }  // 104
+soft_body_update_rendering_server :: (main: *PhysicsServer3D, body: RID, rendering_server_handler: *PhysicsServer3DRenderingServerHandler) { sys_call("PhysicsServer3D", "soft_body_update_rendering_server", 2218179753, Nil, main, body, rendering_server_handler);  }  // 104
 soft_body_set_space :: (main: *PhysicsServer3D, body: RID, space: RID) { sys_call("PhysicsServer3D", "soft_body_set_space", 395945892, Nil, main, body, space);  }  // 105
 soft_body_get_space :: (main: *PhysicsServer3D, body: RID) -> RID { call_ret := cast(*RID) sys_call("PhysicsServer3D", "soft_body_get_space", 3814569979, RID, main, body); return call_ret.*; }  // 106
 soft_body_set_mesh :: (main: *PhysicsServer3D, body: RID, mesh: RID) { sys_call("PhysicsServer3D", "soft_body_set_mesh", 395945892, Nil, main, body, mesh);  }  // 107
@@ -18748,7 +18748,7 @@ set_vertex :: (main: *PhysicsServer3DRenderingServerHandler, vertex_id: int, ver
 set_normal :: (main: *PhysicsServer3DRenderingServerHandler, vertex_id: int, normal: Vector3) { sys_call("PhysicsServer3DRenderingServerHandler", "set_normal", 1530502735, Nil, main, vertex_id, normal);  }  // 4
 set_aabb :: (main: *PhysicsServer3DRenderingServerHandler, aabb: AABB) { sys_call("PhysicsServer3DRenderingServerHandler", "set_aabb", 259215842, Nil, main, aabb);  }  // 5
 
-set_shape :: (main: *PhysicsShapeQueryParameters2D, shape: Resource) { sys_call("PhysicsShapeQueryParameters2D", "set_shape", 968641751, Nil, main, shape);  }  // 0
+set_shape :: (main: *PhysicsShapeQueryParameters2D, shape: *Resource) { sys_call("PhysicsShapeQueryParameters2D", "set_shape", 968641751, Nil, main, shape);  }  // 0
 get_shape :: (main: *PhysicsShapeQueryParameters2D) -> *Resource { call_ret := cast(*Resource) sys_call("PhysicsShapeQueryParameters2D", "get_shape", 121922552, Resource, main); return call_ret; }  // 1
 set_shape_rid :: (main: *PhysicsShapeQueryParameters2D, shape: RID) { sys_call("PhysicsShapeQueryParameters2D", "set_shape_rid", 2722037293, Nil, main, shape);  }  // 2
 get_shape_rid :: (main: *PhysicsShapeQueryParameters2D) -> RID { call_ret := cast(*RID) sys_call("PhysicsShapeQueryParameters2D", "get_shape_rid", 2944877500, RID, main); return call_ret.*; }  // 3
@@ -18767,7 +18767,7 @@ is_collide_with_bodies_enabled :: (main: *PhysicsShapeQueryParameters2D) -> bool
 set_collide_with_areas :: (main: *PhysicsShapeQueryParameters2D, enable: bool) { sys_call("PhysicsShapeQueryParameters2D", "set_collide_with_areas", 2586408642, Nil, main, enable);  }  // 16
 is_collide_with_areas_enabled :: (main: *PhysicsShapeQueryParameters2D) -> bool { call_ret := cast(*bool) sys_call("PhysicsShapeQueryParameters2D", "is_collide_with_areas_enabled", 36873697, bool, main); return call_ret.*; }  // 17
 
-set_shape :: (main: *PhysicsShapeQueryParameters3D, shape: Resource) { sys_call("PhysicsShapeQueryParameters3D", "set_shape", 968641751, Nil, main, shape);  }  // 0
+set_shape :: (main: *PhysicsShapeQueryParameters3D, shape: *Resource) { sys_call("PhysicsShapeQueryParameters3D", "set_shape", 968641751, Nil, main, shape);  }  // 0
 get_shape :: (main: *PhysicsShapeQueryParameters3D) -> *Resource { call_ret := cast(*Resource) sys_call("PhysicsShapeQueryParameters3D", "get_shape", 121922552, Resource, main); return call_ret; }  // 1
 set_shape_rid :: (main: *PhysicsShapeQueryParameters3D, shape: RID) { sys_call("PhysicsShapeQueryParameters3D", "set_shape_rid", 2722037293, Nil, main, shape);  }  // 2
 get_shape_rid :: (main: *PhysicsShapeQueryParameters3D) -> RID { call_ret := cast(*RID) sys_call("PhysicsShapeQueryParameters3D", "get_shape_rid", 2944877500, RID, main); return call_ret.*; }  // 3
@@ -18889,7 +18889,7 @@ get_center_offset :: (main: *PlaneMesh) -> Vector3 { call_ret := cast(*Vector3) 
 set_orientation :: (main: *PlaneMesh, orientation: PlaneMesh.Orientation) { sys_call("PlaneMesh", "set_orientation", 2751399687, Nil, main, orientation);  }  // 8
 get_orientation :: (main: *PlaneMesh) -> PlaneMesh.Orientation { call_ret := cast(*PlaneMesh.Orientation) sys_call("PlaneMesh", "get_orientation", 3227599250, PlaneMesh.Orientation, main); return call_ret.*; }  // 9
 
-set_texture :: (main: *PointLight2D, texture: Texture2D) { sys_call("PointLight2D", "set_texture", 4051416890, Nil, main, texture);  }  // 0
+set_texture :: (main: *PointLight2D, texture: *Texture2D) { sys_call("PointLight2D", "set_texture", 4051416890, Nil, main, texture);  }  // 0
 get_texture :: (main: *PointLight2D) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("PointLight2D", "get_texture", 3635182373, Texture2D, main); return call_ret; }  // 1
 set_texture_offset :: (main: *PointLight2D, texture_offset: Vector2) { sys_call("PointLight2D", "set_texture_offset", 743155724, Nil, main, texture_offset);  }  // 2
 get_texture_offset :: (main: *PointLight2D) -> Vector2 { call_ret := cast(*Vector2) sys_call("PointLight2D", "get_texture_offset", 3341600327, Vector2, main); return call_ret.*; }  // 3
@@ -18907,7 +18907,7 @@ set_polygons :: (main: *Polygon2D, polygons: Array) { sys_call("Polygon2D", "set
 get_polygons :: (main: *Polygon2D) -> Array { call_ret := cast(*Array) sys_call("Polygon2D", "get_polygons", 3995934104, Array, main); return call_ret.*; }  // 7
 set_vertex_colors :: (main: *Polygon2D, vertex_colors: PackedColorArray) { sys_call("Polygon2D", "set_vertex_colors", 3546319833, Nil, main, vertex_colors);  }  // 8
 get_vertex_colors :: (main: *Polygon2D) -> PackedColorArray { call_ret := cast(*PackedColorArray) sys_call("Polygon2D", "get_vertex_colors", 1392750486, PackedColorArray, main); return call_ret.*; }  // 9
-set_texture :: (main: *Polygon2D, texture: Texture2D) { sys_call("Polygon2D", "set_texture", 4051416890, Nil, main, texture);  }  // 10
+set_texture :: (main: *Polygon2D, texture: *Texture2D) { sys_call("Polygon2D", "set_texture", 4051416890, Nil, main, texture);  }  // 10
 get_texture :: (main: *Polygon2D) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("Polygon2D", "get_texture", 3635182373, Texture2D, main); return call_ret; }  // 11
 set_texture_offset :: (main: *Polygon2D, texture_offset: Vector2) { sys_call("Polygon2D", "set_texture_offset", 743155724, Nil, main, texture_offset);  }  // 12
 get_texture_offset :: (main: *Polygon2D) -> Vector2 { call_ret := cast(*Vector2) sys_call("Polygon2D", "get_texture_offset", 3341600327, Vector2, main); return call_ret.*; }  // 13
@@ -18949,29 +18949,29 @@ get_point_penalty :: (main: *PolygonPathFinder, idx: int) -> float { call_ret :=
 get_bounds :: (main: *PolygonPathFinder) -> Rect2 { call_ret := cast(*Rect2) sys_call("PolygonPathFinder", "get_bounds", 1639390495, Rect2, main); return call_ret.*; }  // 7
 
 
-activate_item_by_event :: (main: *PopupMenu, event: InputEvent) -> bool { call_ret := cast(*bool) sys_call("PopupMenu", "activate_item_by_event", 3716412023, bool, main, event); return call_ret.*; }  // 0
+activate_item_by_event :: (main: *PopupMenu, event: *InputEvent) -> bool { call_ret := cast(*bool) sys_call("PopupMenu", "activate_item_by_event", 3716412023, bool, main, event); return call_ret.*; }  // 0
 set_prefer_native_menu :: (main: *PopupMenu, enabled: bool) { sys_call("PopupMenu", "set_prefer_native_menu", 2586408642, Nil, main, enabled);  }  // 1
 is_prefer_native_menu :: (main: *PopupMenu) -> bool { call_ret := cast(*bool) sys_call("PopupMenu", "is_prefer_native_menu", 36873697, bool, main); return call_ret.*; }  // 2
 is_native_menu :: (main: *PopupMenu) -> bool { call_ret := cast(*bool) sys_call("PopupMenu", "is_native_menu", 36873697, bool, main); return call_ret.*; }  // 3
 add_item :: (main: *PopupMenu, label: string) { sys_call("PopupMenu", "add_item", 3674230041, Nil, main, label);  }  // 4
-add_icon_item :: (main: *PopupMenu, texture: Texture2D, label: string) { sys_call("PopupMenu", "add_icon_item", 1086190128, Nil, main, texture, label);  }  // 5
+add_icon_item :: (main: *PopupMenu, texture: *Texture2D, label: string) { sys_call("PopupMenu", "add_icon_item", 1086190128, Nil, main, texture, label);  }  // 5
 add_check_item :: (main: *PopupMenu, label: string) { sys_call("PopupMenu", "add_check_item", 3674230041, Nil, main, label);  }  // 6
-add_icon_check_item :: (main: *PopupMenu, texture: Texture2D, label: string) { sys_call("PopupMenu", "add_icon_check_item", 1086190128, Nil, main, texture, label);  }  // 7
+add_icon_check_item :: (main: *PopupMenu, texture: *Texture2D, label: string) { sys_call("PopupMenu", "add_icon_check_item", 1086190128, Nil, main, texture, label);  }  // 7
 add_radio_check_item :: (main: *PopupMenu, label: string) { sys_call("PopupMenu", "add_radio_check_item", 3674230041, Nil, main, label);  }  // 8
-add_icon_radio_check_item :: (main: *PopupMenu, texture: Texture2D, label: string) { sys_call("PopupMenu", "add_icon_radio_check_item", 1086190128, Nil, main, texture, label);  }  // 9
+add_icon_radio_check_item :: (main: *PopupMenu, texture: *Texture2D, label: string) { sys_call("PopupMenu", "add_icon_radio_check_item", 1086190128, Nil, main, texture, label);  }  // 9
 add_multistate_item :: (main: *PopupMenu, label: string, max_states: int) { sys_call("PopupMenu", "add_multistate_item", 150780458, Nil, main, label, max_states);  }  // 10
-add_shortcut :: (main: *PopupMenu, shortcut: Shortcut) { sys_call("PopupMenu", "add_shortcut", 3451850107, Nil, main, shortcut);  }  // 11
-add_icon_shortcut :: (main: *PopupMenu, texture: Texture2D, shortcut: Shortcut) { sys_call("PopupMenu", "add_icon_shortcut", 2997871092, Nil, main, texture, shortcut);  }  // 12
-add_check_shortcut :: (main: *PopupMenu, shortcut: Shortcut) { sys_call("PopupMenu", "add_check_shortcut", 1642193386, Nil, main, shortcut);  }  // 13
-add_icon_check_shortcut :: (main: *PopupMenu, texture: Texture2D, shortcut: Shortcut) { sys_call("PopupMenu", "add_icon_check_shortcut", 3856247530, Nil, main, texture, shortcut);  }  // 14
-add_radio_check_shortcut :: (main: *PopupMenu, shortcut: Shortcut) { sys_call("PopupMenu", "add_radio_check_shortcut", 1642193386, Nil, main, shortcut);  }  // 15
-add_icon_radio_check_shortcut :: (main: *PopupMenu, texture: Texture2D, shortcut: Shortcut) { sys_call("PopupMenu", "add_icon_radio_check_shortcut", 3856247530, Nil, main, texture, shortcut);  }  // 16
+add_shortcut :: (main: *PopupMenu, shortcut: *Shortcut) { sys_call("PopupMenu", "add_shortcut", 3451850107, Nil, main, shortcut);  }  // 11
+add_icon_shortcut :: (main: *PopupMenu, texture: *Texture2D, shortcut: *Shortcut) { sys_call("PopupMenu", "add_icon_shortcut", 2997871092, Nil, main, texture, shortcut);  }  // 12
+add_check_shortcut :: (main: *PopupMenu, shortcut: *Shortcut) { sys_call("PopupMenu", "add_check_shortcut", 1642193386, Nil, main, shortcut);  }  // 13
+add_icon_check_shortcut :: (main: *PopupMenu, texture: *Texture2D, shortcut: *Shortcut) { sys_call("PopupMenu", "add_icon_check_shortcut", 3856247530, Nil, main, texture, shortcut);  }  // 14
+add_radio_check_shortcut :: (main: *PopupMenu, shortcut: *Shortcut) { sys_call("PopupMenu", "add_radio_check_shortcut", 1642193386, Nil, main, shortcut);  }  // 15
+add_icon_radio_check_shortcut :: (main: *PopupMenu, texture: *Texture2D, shortcut: *Shortcut) { sys_call("PopupMenu", "add_icon_radio_check_shortcut", 3856247530, Nil, main, texture, shortcut);  }  // 16
 add_submenu_item :: (main: *PopupMenu, label: string, submenu: string) { sys_call("PopupMenu", "add_submenu_item", 2979222410, Nil, main, label, submenu);  }  // 17
-add_submenu_node_item :: (main: *PopupMenu, label: string, submenu: PopupMenu) { sys_call("PopupMenu", "add_submenu_node_item", 1325455216, Nil, main, label, submenu);  }  // 18
+add_submenu_node_item :: (main: *PopupMenu, label: string, submenu: *PopupMenu) { sys_call("PopupMenu", "add_submenu_node_item", 1325455216, Nil, main, label, submenu);  }  // 18
 set_item_text :: (main: *PopupMenu, index: int, text: string) { sys_call("PopupMenu", "set_item_text", 501894301, Nil, main, index, text);  }  // 19
 set_item_text_direction :: (main: *PopupMenu, index: int, direction: Control.TextDirection) { sys_call("PopupMenu", "set_item_text_direction", 1707680378, Nil, main, index, direction);  }  // 20
 set_item_language :: (main: *PopupMenu, index: int, language: string) { sys_call("PopupMenu", "set_item_language", 501894301, Nil, main, index, language);  }  // 21
-set_item_icon :: (main: *PopupMenu, index: int, icon: Texture2D) { sys_call("PopupMenu", "set_item_icon", 666127730, Nil, main, index, icon);  }  // 22
+set_item_icon :: (main: *PopupMenu, index: int, icon: *Texture2D) { sys_call("PopupMenu", "set_item_icon", 666127730, Nil, main, index, icon);  }  // 22
 set_item_icon_max_width :: (main: *PopupMenu, index: int, width: int) { sys_call("PopupMenu", "set_item_icon_max_width", 3937882851, Nil, main, index, width);  }  // 23
 set_item_icon_modulate :: (main: *PopupMenu, index: int, modulate: Color) { sys_call("PopupMenu", "set_item_icon_modulate", 2878471219, Nil, main, index, modulate);  }  // 24
 set_item_checked :: (main: *PopupMenu, index: int, checked: bool) { sys_call("PopupMenu", "set_item_checked", 300928843, Nil, main, index, checked);  }  // 25
@@ -18980,12 +18980,12 @@ set_item_accelerator :: (main: *PopupMenu, index: int, accel: Key) { sys_call("P
 set_item_metadata :: (main: *PopupMenu, index: int, metadata: Variant) { sys_call("PopupMenu", "set_item_metadata", 2152698145, Nil, main, index, metadata);  }  // 28
 set_item_disabled :: (main: *PopupMenu, index: int, disabled: bool) { sys_call("PopupMenu", "set_item_disabled", 300928843, Nil, main, index, disabled);  }  // 29
 set_item_submenu :: (main: *PopupMenu, index: int, submenu: string) { sys_call("PopupMenu", "set_item_submenu", 501894301, Nil, main, index, submenu);  }  // 30
-set_item_submenu_node :: (main: *PopupMenu, index: int, submenu: PopupMenu) { sys_call("PopupMenu", "set_item_submenu_node", 1068370740, Nil, main, index, submenu);  }  // 31
+set_item_submenu_node :: (main: *PopupMenu, index: int, submenu: *PopupMenu) { sys_call("PopupMenu", "set_item_submenu_node", 1068370740, Nil, main, index, submenu);  }  // 31
 set_item_as_separator :: (main: *PopupMenu, index: int, enable: bool) { sys_call("PopupMenu", "set_item_as_separator", 300928843, Nil, main, index, enable);  }  // 32
 set_item_as_checkable :: (main: *PopupMenu, index: int, enable: bool) { sys_call("PopupMenu", "set_item_as_checkable", 300928843, Nil, main, index, enable);  }  // 33
 set_item_as_radio_checkable :: (main: *PopupMenu, index: int, enable: bool) { sys_call("PopupMenu", "set_item_as_radio_checkable", 300928843, Nil, main, index, enable);  }  // 34
 set_item_tooltip :: (main: *PopupMenu, index: int, tooltip: string) { sys_call("PopupMenu", "set_item_tooltip", 501894301, Nil, main, index, tooltip);  }  // 35
-set_item_shortcut :: (main: *PopupMenu, index: int, shortcut: Shortcut) { sys_call("PopupMenu", "set_item_shortcut", 825127832, Nil, main, index, shortcut);  }  // 36
+set_item_shortcut :: (main: *PopupMenu, index: int, shortcut: *Shortcut) { sys_call("PopupMenu", "set_item_shortcut", 825127832, Nil, main, index, shortcut);  }  // 36
 set_item_indent :: (main: *PopupMenu, index: int, indent: int) { sys_call("PopupMenu", "set_item_indent", 3937882851, Nil, main, index, indent);  }  // 37
 set_item_multistate :: (main: *PopupMenu, index: int, state: int) { sys_call("PopupMenu", "set_item_multistate", 3937882851, Nil, main, index, state);  }  // 38
 set_item_multistate_max :: (main: *PopupMenu, index: int, max_states: int) { sys_call("PopupMenu", "set_item_multistate_max", 3937882851, Nil, main, index, max_states);  }  // 39
@@ -19038,7 +19038,7 @@ set_system_menu :: (main: *PopupMenu, system_menu_id: NativeMenu.SystemMenus) { 
 get_system_menu :: (main: *PopupMenu) -> NativeMenu.SystemMenus { call_ret := cast(*NativeMenu.SystemMenus) sys_call("PopupMenu", "get_system_menu", 1222557358, NativeMenu.SystemMenus, main); return call_ret.*; }  // 86
 
 
-create_from_image :: (main: *PortableCompressedTexture2D, image: Image, compression_mode: PortableCompressedTexture2D.CompressionMode) { sys_call("PortableCompressedTexture2D", "create_from_image", 3679243433, Nil, main, image, compression_mode);  }  // 0
+create_from_image :: (main: *PortableCompressedTexture2D, image: *Image, compression_mode: PortableCompressedTexture2D.CompressionMode) { sys_call("PortableCompressedTexture2D", "create_from_image", 3679243433, Nil, main, image, compression_mode);  }  // 0
 get_format :: (main: *PortableCompressedTexture2D) -> Image.Format { call_ret := cast(*Image.Format) sys_call("PortableCompressedTexture2D", "get_format", 3847873762, Image.Format, main); return call_ret.*; }  // 1
 get_compression_mode :: (main: *PortableCompressedTexture2D) -> PortableCompressedTexture2D.CompressionMode { call_ret := cast(*PortableCompressedTexture2D.CompressionMode) sys_call("PortableCompressedTexture2D", "get_compression_mode", 3265612739, PortableCompressedTexture2D.CompressionMode, main); return call_ret.*; }  // 2
 set_size_override :: (main: *PortableCompressedTexture2D, size: Vector2) { sys_call("PortableCompressedTexture2D", "set_size_override", 743155724, Nil, main, size);  }  // 3
@@ -19048,7 +19048,7 @@ is_keeping_compressed_buffer :: (main: *PortableCompressedTexture2D) -> bool { c
 set_keep_all_compressed_buffers :: (main: *PortableCompressedTexture2D, keep: bool) { sys_call("PortableCompressedTexture2D", "set_keep_all_compressed_buffers", 2586408642, Nil, main, keep);  }  // 7
 is_keeping_all_compressed_buffers :: (main: *PortableCompressedTexture2D) -> bool { call_ret := cast(*bool) sys_call("PortableCompressedTexture2D", "is_keeping_all_compressed_buffers", 2240911060, bool, main); return call_ret.*; }  // 8
 
-set_material :: (main: *PrimitiveMesh, material: Material) { sys_call("PrimitiveMesh", "set_material", 2757459619, Nil, main, material);  }  // 1
+set_material :: (main: *PrimitiveMesh, material: *Material) { sys_call("PrimitiveMesh", "set_material", 2757459619, Nil, main, material);  }  // 1
 get_material :: (main: *PrimitiveMesh) -> *Material { call_ret := cast(*Material) sys_call("PrimitiveMesh", "get_material", 5934680, Material, main); return call_ret; }  // 2
 get_mesh_arrays :: (main: *PrimitiveMesh) -> Array { call_ret := cast(*Array) sys_call("PrimitiveMesh", "get_mesh_arrays", 3995934104, Array, main); return call_ret.*; }  // 3
 set_custom_aabb :: (main: *PrimitiveMesh, aabb: AABB) { sys_call("PrimitiveMesh", "set_custom_aabb", 259215842, Nil, main, aabb);  }  // 4
@@ -19080,7 +19080,7 @@ set_sky_curve :: (main: *ProceduralSkyMaterial, curve: float) { sys_call("Proced
 get_sky_curve :: (main: *ProceduralSkyMaterial) -> float { call_ret := cast(*float) sys_call("ProceduralSkyMaterial", "get_sky_curve", 1740695150, float, main); return call_ret.*; }  // 5
 set_sky_energy_multiplier :: (main: *ProceduralSkyMaterial, multiplier: float) { sys_call("ProceduralSkyMaterial", "set_sky_energy_multiplier", 373806689, Nil, main, multiplier);  }  // 6
 get_sky_energy_multiplier :: (main: *ProceduralSkyMaterial) -> float { call_ret := cast(*float) sys_call("ProceduralSkyMaterial", "get_sky_energy_multiplier", 1740695150, float, main); return call_ret.*; }  // 7
-set_sky_cover :: (main: *ProceduralSkyMaterial, sky_cover: Texture2D) { sys_call("ProceduralSkyMaterial", "set_sky_cover", 4051416890, Nil, main, sky_cover);  }  // 8
+set_sky_cover :: (main: *ProceduralSkyMaterial, sky_cover: *Texture2D) { sys_call("ProceduralSkyMaterial", "set_sky_cover", 4051416890, Nil, main, sky_cover);  }  // 8
 get_sky_cover :: (main: *ProceduralSkyMaterial) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("ProceduralSkyMaterial", "get_sky_cover", 3635182373, Texture2D, main); return call_ret; }  // 9
 set_sky_cover_modulate :: (main: *ProceduralSkyMaterial, color: Color) { sys_call("ProceduralSkyMaterial", "set_sky_cover_modulate", 2920490490, Nil, main, color);  }  // 10
 get_sky_cover_modulate :: (main: *ProceduralSkyMaterial) -> Color { call_ret := cast(*Color) sys_call("ProceduralSkyMaterial", "get_sky_cover_modulate", 3444240500, Color, main); return call_ret.*; }  // 11
@@ -19307,7 +19307,7 @@ get_border_color :: (main: *RDSamplerState) -> RenderingDevice.SamplerBorderColo
 set_unnormalized_uvw :: (main: *RDSamplerState, p_member: bool) { sys_call("RDSamplerState", "set_unnormalized_uvw", 2586408642, Nil, main, p_member);  }  // 28
 get_unnormalized_uvw :: (main: *RDSamplerState) -> bool { call_ret := cast(*bool) sys_call("RDSamplerState", "get_unnormalized_uvw", 36873697, bool, main); return call_ret.*; }  // 29
 
-set_bytecode :: (main: *RDShaderFile, bytecode: RDShaderSPIRV) { sys_call("RDShaderFile", "set_bytecode", 1526857008, Nil, main, bytecode);  }  // 0
+set_bytecode :: (main: *RDShaderFile, bytecode: *RDShaderSPIRV) { sys_call("RDShaderFile", "set_bytecode", 1526857008, Nil, main, bytecode);  }  // 0
 get_spirv :: (main: *RDShaderFile) -> *RDShaderSPIRV { call_ret := cast(*RDShaderSPIRV) sys_call("RDShaderFile", "get_spirv", 2689310080, RDShaderSPIRV, main); return call_ret; }  // 1
 get_version_list :: (main: *RDShaderFile) -> [] StringName { call_ret := cast(*[] StringName) sys_call("RDShaderFile", "get_version_list", 3995934104, [] StringName, main); return call_ret.*; }  // 2
 set_base_error :: (main: *RDShaderFile, error: string) { sys_call("RDShaderFile", "set_base_error", 83702148, Nil, main, error);  }  // 3
@@ -19411,7 +19411,7 @@ set_allow_greater :: (main: *Range, allow: bool) { sys_call("Range", "set_allow_
 is_greater_allowed :: (main: *Range) -> bool { call_ret := cast(*bool) sys_call("Range", "is_greater_allowed", 36873697, bool, main); return call_ret.*; }  // 19
 set_allow_lesser :: (main: *Range, allow: bool) { sys_call("Range", "set_allow_lesser", 2586408642, Nil, main, allow);  }  // 20
 is_lesser_allowed :: (main: *Range) -> bool { call_ret := cast(*bool) sys_call("Range", "is_lesser_allowed", 36873697, bool, main); return call_ret.*; }  // 21
-share :: (main: *Range, with: Node) { sys_call("Range", "share", 1078189570, Nil, main, with);  }  // 22
+share :: (main: *Range, with: *Node) { sys_call("Range", "share", 1078189570, Nil, main, with);  }  // 22
 unshare :: (main: *Range) { sys_call("Range", "unshare", 3218959716, Nil, main);  }  // 23
 
 set_enabled :: (main: *RayCast2D, enabled: bool) { sys_call("RayCast2D", "set_enabled", 2586408642, Nil, main, enabled);  }  // 0
@@ -19426,9 +19426,9 @@ get_collider_shape :: (main: *RayCast2D) -> int { call_ret := cast(*int) sys_cal
 get_collision_point :: (main: *RayCast2D) -> Vector2 { call_ret := cast(*Vector2) sys_call("RayCast2D", "get_collision_point", 3341600327, Vector2, main); return call_ret.*; }  // 9
 get_collision_normal :: (main: *RayCast2D) -> Vector2 { call_ret := cast(*Vector2) sys_call("RayCast2D", "get_collision_normal", 3341600327, Vector2, main); return call_ret.*; }  // 10
 add_exception_rid :: (main: *RayCast2D, rid: RID) { sys_call("RayCast2D", "add_exception_rid", 2722037293, Nil, main, rid);  }  // 11
-add_exception :: (main: *RayCast2D, node: CollisionObject2D) { sys_call("RayCast2D", "add_exception", 3090941106, Nil, main, node);  }  // 12
+add_exception :: (main: *RayCast2D, node: *CollisionObject2D) { sys_call("RayCast2D", "add_exception", 3090941106, Nil, main, node);  }  // 12
 remove_exception_rid :: (main: *RayCast2D, rid: RID) { sys_call("RayCast2D", "remove_exception_rid", 2722037293, Nil, main, rid);  }  // 13
-remove_exception :: (main: *RayCast2D, node: CollisionObject2D) { sys_call("RayCast2D", "remove_exception", 3090941106, Nil, main, node);  }  // 14
+remove_exception :: (main: *RayCast2D, node: *CollisionObject2D) { sys_call("RayCast2D", "remove_exception", 3090941106, Nil, main, node);  }  // 14
 clear_exceptions :: (main: *RayCast2D) { sys_call("RayCast2D", "clear_exceptions", 3218959716, Nil, main);  }  // 15
 set_collision_mask :: (main: *RayCast2D, mask: int) { sys_call("RayCast2D", "set_collision_mask", 1286410249, Nil, main, mask);  }  // 16
 get_collision_mask :: (main: *RayCast2D) -> int { call_ret := cast(*int) sys_call("RayCast2D", "get_collision_mask", 3905245786, int, main); return call_ret.*; }  // 17
@@ -19456,9 +19456,9 @@ get_collision_point :: (main: *RayCast3D) -> Vector3 { call_ret := cast(*Vector3
 get_collision_normal :: (main: *RayCast3D) -> Vector3 { call_ret := cast(*Vector3) sys_call("RayCast3D", "get_collision_normal", 3360562783, Vector3, main); return call_ret.*; }  // 10
 get_collision_face_index :: (main: *RayCast3D) -> int { call_ret := cast(*int) sys_call("RayCast3D", "get_collision_face_index", 3905245786, int, main); return call_ret.*; }  // 11
 add_exception_rid :: (main: *RayCast3D, rid: RID) { sys_call("RayCast3D", "add_exception_rid", 2722037293, Nil, main, rid);  }  // 12
-add_exception :: (main: *RayCast3D, node: CollisionObject3D) { sys_call("RayCast3D", "add_exception", 1976431078, Nil, main, node);  }  // 13
+add_exception :: (main: *RayCast3D, node: *CollisionObject3D) { sys_call("RayCast3D", "add_exception", 1976431078, Nil, main, node);  }  // 13
 remove_exception_rid :: (main: *RayCast3D, rid: RID) { sys_call("RayCast3D", "remove_exception_rid", 2722037293, Nil, main, rid);  }  // 14
-remove_exception :: (main: *RayCast3D, node: CollisionObject3D) { sys_call("RayCast3D", "remove_exception", 1976431078, Nil, main, node);  }  // 15
+remove_exception :: (main: *RayCast3D, node: *CollisionObject3D) { sys_call("RayCast3D", "remove_exception", 1976431078, Nil, main, node);  }  // 15
 clear_exceptions :: (main: *RayCast3D) { sys_call("RayCast3D", "clear_exceptions", 3218959716, Nil, main);  }  // 16
 set_collision_mask :: (main: *RayCast3D, mask: int) { sys_call("RayCast3D", "set_collision_mask", 1286410249, Nil, main, mask);  }  // 17
 get_collision_mask :: (main: *RayCast3D) -> int { call_ret := cast(*int) sys_call("RayCast3D", "get_collision_mask", 3905245786, int, main); return call_ret.*; }  // 18
@@ -19575,7 +19575,7 @@ get_camera_attributes :: (main: *RenderData) -> RID { call_ret := cast(*RID) sys
 
 
 
-configure :: (main: *RenderSceneBuffers, config: RenderSceneBuffersConfiguration) { sys_call("RenderSceneBuffers", "configure", 3072623270, Nil, main, config);  }  // 0
+configure :: (main: *RenderSceneBuffers, config: *RenderSceneBuffersConfiguration) { sys_call("RenderSceneBuffers", "configure", 3072623270, Nil, main, config);  }  // 0
 
 get_render_target :: (main: *RenderSceneBuffersConfiguration) -> RID { call_ret := cast(*RID) sys_call("RenderSceneBuffersConfiguration", "get_render_target", 2944877500, RID, main); return call_ret.*; }  // 0
 set_render_target :: (main: *RenderSceneBuffersConfiguration, render_target: RID) { sys_call("RenderSceneBuffersConfiguration", "set_render_target", 2722037293, Nil, main, render_target);  }  // 1
@@ -19601,12 +19601,12 @@ set_anisotropic_filtering_level :: (main: *RenderSceneBuffersConfiguration, anis
 
 has_texture :: (main: *RenderSceneBuffersRD, _context: string, name: string) -> bool { call_ret := cast(*bool) sys_call("RenderSceneBuffersRD", "has_texture", 471820014, bool, main, _context, name); return call_ret.*; }  // 0
 create_texture :: (main: *RenderSceneBuffersRD, _context: string, name: string, data_format: RenderingDevice.DataFormat, usage_bits: int, texture_samples: RenderingDevice.TextureSamples, size: Vector2i, layers: int, mipmaps: int, unique: bool, discardable: bool) -> RID { call_ret := cast(*RID) sys_call("RenderSceneBuffersRD", "create_texture", 2950875024, RID, main, _context, name, data_format, usage_bits, texture_samples, size, layers, mipmaps, unique, discardable); return call_ret.*; }  // 1
-create_texture_from_format :: (main: *RenderSceneBuffersRD, _context: string, name: string, format: RDTextureFormat, view: RDTextureView, unique: bool) -> RID { call_ret := cast(*RID) sys_call("RenderSceneBuffersRD", "create_texture_from_format", 3344669382, RID, main, _context, name, format, view, unique); return call_ret.*; }  // 2
-create_texture_view :: (main: *RenderSceneBuffersRD, _context: string, name: string, view_name: string, view: RDTextureView) -> RID { call_ret := cast(*RID) sys_call("RenderSceneBuffersRD", "create_texture_view", 283055834, RID, main, _context, name, view_name, view); return call_ret.*; }  // 3
+create_texture_from_format :: (main: *RenderSceneBuffersRD, _context: string, name: string, format: *RDTextureFormat, view: *RDTextureView, unique: bool) -> RID { call_ret := cast(*RID) sys_call("RenderSceneBuffersRD", "create_texture_from_format", 3344669382, RID, main, _context, name, format, view, unique); return call_ret.*; }  // 2
+create_texture_view :: (main: *RenderSceneBuffersRD, _context: string, name: string, view_name: string, view: *RDTextureView) -> RID { call_ret := cast(*RID) sys_call("RenderSceneBuffersRD", "create_texture_view", 283055834, RID, main, _context, name, view_name, view); return call_ret.*; }  // 3
 get_texture :: (main: *RenderSceneBuffersRD, _context: string, name: string) -> RID { call_ret := cast(*RID) sys_call("RenderSceneBuffersRD", "get_texture", 750006389, RID, main, _context, name); return call_ret.*; }  // 4
 get_texture_format :: (main: *RenderSceneBuffersRD, _context: string, name: string) -> *RDTextureFormat { call_ret := cast(*RDTextureFormat) sys_call("RenderSceneBuffersRD", "get_texture_format", 371461758, RDTextureFormat, main, _context, name); return call_ret; }  // 5
 get_texture_slice :: (main: *RenderSceneBuffersRD, _context: string, name: string, layer: int, mipmap: int, layers: int, mipmaps: int) -> RID { call_ret := cast(*RID) sys_call("RenderSceneBuffersRD", "get_texture_slice", 588440706, RID, main, _context, name, layer, mipmap, layers, mipmaps); return call_ret.*; }  // 6
-get_texture_slice_view :: (main: *RenderSceneBuffersRD, _context: string, name: string, layer: int, mipmap: int, layers: int, mipmaps: int, view: RDTextureView) -> RID { call_ret := cast(*RID) sys_call("RenderSceneBuffersRD", "get_texture_slice_view", 682451778, RID, main, _context, name, layer, mipmap, layers, mipmaps, view); return call_ret.*; }  // 7
+get_texture_slice_view :: (main: *RenderSceneBuffersRD, _context: string, name: string, layer: int, mipmap: int, layers: int, mipmaps: int, view: *RDTextureView) -> RID { call_ret := cast(*RID) sys_call("RenderSceneBuffersRD", "get_texture_slice_view", 682451778, RID, main, _context, name, layer, mipmap, layers, mipmaps, view); return call_ret.*; }  // 7
 get_texture_slice_size :: (main: *RenderSceneBuffersRD, _context: string, name: string, mipmap: int) -> Vector2i { call_ret := cast(*Vector2i) sys_call("RenderSceneBuffersRD", "get_texture_slice_size", 2617625368, Vector2i, main, _context, name, mipmap); return call_ret.*; }  // 8
 clear_context :: (main: *RenderSceneBuffersRD, _context: string) { sys_call("RenderSceneBuffersRD", "clear_context", 3304788590, Nil, main, _context);  }  // 9
 get_color_texture :: (main: *RenderSceneBuffersRD) -> RID { call_ret := cast(*RID) sys_call("RenderSceneBuffersRD", "get_color_texture", 3050822880, RID, main); return call_ret.*; }  // 10
@@ -19636,9 +19636,9 @@ get_uniform_buffer :: (main: *RenderSceneData) -> RID { call_ret := cast(*RID) s
 
 
 
-texture_create :: (main: *RenderingDevice, format: RDTextureFormat, view: RDTextureView) -> RID { call_ret := cast(*RID) sys_call("RenderingDevice", "texture_create", 3709173589, RID, main, format, view); return call_ret.*; }  // 0
-texture_create_shared :: (main: *RenderingDevice, view: RDTextureView, with_texture: RID) -> RID { call_ret := cast(*RID) sys_call("RenderingDevice", "texture_create_shared", 3178156134, RID, main, view, with_texture); return call_ret.*; }  // 1
-texture_create_shared_from_slice :: (main: *RenderingDevice, view: RDTextureView, with_texture: RID, layer: int, mipmap: int) -> RID { call_ret := cast(*RID) sys_call("RenderingDevice", "texture_create_shared_from_slice", 1808971279, RID, main, view, with_texture, layer, mipmap); return call_ret.*; }  // 2
+texture_create :: (main: *RenderingDevice, format: *RDTextureFormat, view: *RDTextureView) -> RID { call_ret := cast(*RID) sys_call("RenderingDevice", "texture_create", 3709173589, RID, main, format, view); return call_ret.*; }  // 0
+texture_create_shared :: (main: *RenderingDevice, view: *RDTextureView, with_texture: RID) -> RID { call_ret := cast(*RID) sys_call("RenderingDevice", "texture_create_shared", 3178156134, RID, main, view, with_texture); return call_ret.*; }  // 1
+texture_create_shared_from_slice :: (main: *RenderingDevice, view: *RDTextureView, with_texture: RID, layer: int, mipmap: int) -> RID { call_ret := cast(*RID) sys_call("RenderingDevice", "texture_create_shared_from_slice", 1808971279, RID, main, view, with_texture, layer, mipmap); return call_ret.*; }  // 2
 texture_create_from_extension :: (main: *RenderingDevice, type: RenderingDevice.TextureType, format: RenderingDevice.DataFormat, samples: RenderingDevice.TextureSamples, usage_flags: RenderingDevice.TextureUsageBits, image: int, width: int, height: int, depth: int, layers: int) -> RID { call_ret := cast(*RID) sys_call("RenderingDevice", "texture_create_from_extension", 1397171480, RID, main, type, format, samples, usage_flags, image, width, height, depth, layers); return call_ret.*; }  // 3
 texture_update :: (main: *RenderingDevice, texture: RID, layer: int, data: PackedByteArray) -> Error { call_ret := cast(*Error) sys_call("RenderingDevice", "texture_update", 1349464008, Error, main, texture, layer, data); return call_ret.*; }  // 4
 texture_get_data :: (main: *RenderingDevice, texture: RID, layer: int) -> PackedByteArray { call_ret := cast(*PackedByteArray) sys_call("RenderingDevice", "texture_get_data", 1859412099, PackedByteArray, main, texture, layer); return call_ret.*; }  // 5
@@ -19662,16 +19662,16 @@ framebuffer_create_multipass :: (main: *RenderingDevice, textures: [] RID, passe
 framebuffer_create_empty :: (main: *RenderingDevice, size: Vector2i) -> RID { call_ret := cast(*RID) sys_call("RenderingDevice", "framebuffer_create_empty", 3058360618, RID, main, size); return call_ret.*; }  // 23
 framebuffer_get_format :: (main: *RenderingDevice, framebuffer: RID) -> int { call_ret := cast(*int) sys_call("RenderingDevice", "framebuffer_get_format", 3917799429, int, main, framebuffer); return call_ret.*; }  // 24
 framebuffer_is_valid :: (main: *RenderingDevice, framebuffer: RID) -> bool { call_ret := cast(*bool) sys_call("RenderingDevice", "framebuffer_is_valid", 4155700596, bool, main, framebuffer); return call_ret.*; }  // 25
-sampler_create :: (main: *RenderingDevice, state: RDSamplerState) -> RID { call_ret := cast(*RID) sys_call("RenderingDevice", "sampler_create", 2327892535, RID, main, state); return call_ret.*; }  // 26
+sampler_create :: (main: *RenderingDevice, state: *RDSamplerState) -> RID { call_ret := cast(*RID) sys_call("RenderingDevice", "sampler_create", 2327892535, RID, main, state); return call_ret.*; }  // 26
 sampler_is_format_supported_for_filter :: (main: *RenderingDevice, format: RenderingDevice.DataFormat, sampler_filter: RenderingDevice.SamplerFilter) -> bool { call_ret := cast(*bool) sys_call("RenderingDevice", "sampler_is_format_supported_for_filter", 2247922238, bool, main, format, sampler_filter); return call_ret.*; }  // 27
 vertex_buffer_create :: (main: *RenderingDevice, size_bytes: int) -> RID { call_ret := cast(*RID) sys_call("RenderingDevice", "vertex_buffer_create", 2089548973, RID, main, size_bytes); return call_ret.*; }  // 28
 vertex_format_create :: (main: *RenderingDevice, vertex_descriptions: [] RDVertexAttribute) -> int { call_ret := cast(*int) sys_call("RenderingDevice", "vertex_format_create", 1242678479, int, main, vertex_descriptions); return call_ret.*; }  // 29
 vertex_array_create :: (main: *RenderingDevice, vertex_count: int, vertex_format: int, src_buffers: [] RID) -> RID { call_ret := cast(*RID) sys_call("RenderingDevice", "vertex_array_create", 3799816279, RID, main, vertex_count, vertex_format, src_buffers); return call_ret.*; }  // 30
 index_buffer_create :: (main: *RenderingDevice, size_indices: int, format: RenderingDevice.IndexBufferFormat) -> RID { call_ret := cast(*RID) sys_call("RenderingDevice", "index_buffer_create", 2368684885, RID, main, size_indices, format); return call_ret.*; }  // 31
 index_array_create :: (main: *RenderingDevice, index_buffer: RID, index_offset: int, index_count: int) -> RID { call_ret := cast(*RID) sys_call("RenderingDevice", "index_array_create", 2256026069, RID, main, index_buffer, index_offset, index_count); return call_ret.*; }  // 32
-shader_compile_spirv_from_source :: (main: *RenderingDevice, shader_source: RDShaderSource) -> *RDShaderSPIRV { call_ret := cast(*RDShaderSPIRV) sys_call("RenderingDevice", "shader_compile_spirv_from_source", 1178973306, RDShaderSPIRV, main, shader_source); return call_ret; }  // 33
-shader_compile_binary_from_spirv :: (main: *RenderingDevice, spirv_data: RDShaderSPIRV) -> PackedByteArray { call_ret := cast(*PackedByteArray) sys_call("RenderingDevice", "shader_compile_binary_from_spirv", 134910450, PackedByteArray, main, spirv_data); return call_ret.*; }  // 34
-shader_create_from_spirv :: (main: *RenderingDevice, spirv_data: RDShaderSPIRV) -> RID { call_ret := cast(*RID) sys_call("RenderingDevice", "shader_create_from_spirv", 342949005, RID, main, spirv_data); return call_ret.*; }  // 35
+shader_compile_spirv_from_source :: (main: *RenderingDevice, shader_source: *RDShaderSource) -> *RDShaderSPIRV { call_ret := cast(*RDShaderSPIRV) sys_call("RenderingDevice", "shader_compile_spirv_from_source", 1178973306, RDShaderSPIRV, main, shader_source); return call_ret; }  // 33
+shader_compile_binary_from_spirv :: (main: *RenderingDevice, spirv_data: *RDShaderSPIRV) -> PackedByteArray { call_ret := cast(*PackedByteArray) sys_call("RenderingDevice", "shader_compile_binary_from_spirv", 134910450, PackedByteArray, main, spirv_data); return call_ret.*; }  // 34
+shader_create_from_spirv :: (main: *RenderingDevice, spirv_data: *RDShaderSPIRV) -> RID { call_ret := cast(*RID) sys_call("RenderingDevice", "shader_create_from_spirv", 342949005, RID, main, spirv_data); return call_ret.*; }  // 35
 shader_create_from_bytecode :: (main: *RenderingDevice, binary_data: PackedByteArray) -> RID { call_ret := cast(*RID) sys_call("RenderingDevice", "shader_create_from_bytecode", 1687031350, RID, main, binary_data); return call_ret.*; }  // 36
 shader_create_placeholder :: (main: *RenderingDevice) -> RID { call_ret := cast(*RID) sys_call("RenderingDevice", "shader_create_placeholder", 529393457, RID, main); return call_ret.*; }  // 37
 shader_get_vertex_input_attribute_mask :: (main: *RenderingDevice, shader: RID) -> int { call_ret := cast(*int) sys_call("RenderingDevice", "shader_get_vertex_input_attribute_mask", 3917799429, int, main, shader); return call_ret.*; }  // 38
@@ -19686,7 +19686,7 @@ buffer_clear :: (main: *RenderingDevice, buffer: RID, offset: int, size_bytes: i
 buffer_get_data :: (main: *RenderingDevice, buffer: RID) -> PackedByteArray { call_ret := cast(*PackedByteArray) sys_call("RenderingDevice", "buffer_get_data", 3101830688, PackedByteArray, main, buffer); return call_ret.*; }  // 47
 buffer_get_data_async :: (main: *RenderingDevice, buffer: RID, callback: Callable) -> Error { call_ret := cast(*Error) sys_call("RenderingDevice", "buffer_get_data_async", 2370287848, Error, main, buffer, callback); return call_ret.*; }  // 48
 buffer_get_device_address :: (main: *RenderingDevice, buffer: RID) -> int { call_ret := cast(*int) sys_call("RenderingDevice", "buffer_get_device_address", 3917799429, int, main, buffer); return call_ret.*; }  // 49
-render_pipeline_create :: (main: *RenderingDevice, shader: RID, framebuffer_format: int, vertex_format: int, primitive: RenderingDevice.RenderPrimitive, rasterization_state: RDPipelineRasterizationState, multisample_state: RDPipelineMultisampleState, stencil_state: RDPipelineDepthStencilState, color_blend_state: RDPipelineColorBlendState) -> RID { call_ret := cast(*RID) sys_call("RenderingDevice", "render_pipeline_create", 2385451958, RID, main, shader, framebuffer_format, vertex_format, primitive, rasterization_state, multisample_state, stencil_state, color_blend_state); return call_ret.*; }  // 50
+render_pipeline_create :: (main: *RenderingDevice, shader: RID, framebuffer_format: int, vertex_format: int, primitive: RenderingDevice.RenderPrimitive, rasterization_state: *RDPipelineRasterizationState, multisample_state: *RDPipelineMultisampleState, stencil_state: *RDPipelineDepthStencilState, color_blend_state: *RDPipelineColorBlendState) -> RID { call_ret := cast(*RID) sys_call("RenderingDevice", "render_pipeline_create", 2385451958, RID, main, shader, framebuffer_format, vertex_format, primitive, rasterization_state, multisample_state, stencil_state, color_blend_state); return call_ret.*; }  // 50
 render_pipeline_is_valid :: (main: *RenderingDevice, render_pipeline: RID) -> bool { call_ret := cast(*bool) sys_call("RenderingDevice", "render_pipeline_is_valid", 3521089500, bool, main, render_pipeline); return call_ret.*; }  // 51
 compute_pipeline_create :: (main: *RenderingDevice, shader: RID) -> RID { call_ret := cast(*RID) sys_call("RenderingDevice", "compute_pipeline_create", 1448838280, RID, main, shader); return call_ret.*; }  // 52
 compute_pipeline_is_valid :: (main: *RenderingDevice, compute_pipeline: RID) -> bool { call_ret := cast(*bool) sys_call("RenderingDevice", "compute_pipeline_is_valid", 3521089500, bool, main, compute_pipeline); return call_ret.*; }  // 53
@@ -19754,12 +19754,12 @@ get_device_allocation_count :: (main: *RenderingDevice) -> int { call_ret := cas
 get_device_memory_by_object_type :: (main: *RenderingDevice, type: int) -> int { call_ret := cast(*int) sys_call("RenderingDevice", "get_device_memory_by_object_type", 923996154, int, main, type); return call_ret.*; }  // 115
 get_device_allocs_by_object_type :: (main: *RenderingDevice, type: int) -> int { call_ret := cast(*int) sys_call("RenderingDevice", "get_device_allocs_by_object_type", 923996154, int, main, type); return call_ret.*; }  // 116
 
-texture_2d_create :: (main: *RenderingServer, image: Image) -> RID { call_ret := cast(*RID) sys_call("RenderingServer", "texture_2d_create", 2010018390, RID, main, image); return call_ret.*; }  // 0
+texture_2d_create :: (main: *RenderingServer, image: *Image) -> RID { call_ret := cast(*RID) sys_call("RenderingServer", "texture_2d_create", 2010018390, RID, main, image); return call_ret.*; }  // 0
 texture_2d_layered_create :: (main: *RenderingServer, layers: [] Image, layered_type: RenderingServer.TextureLayeredType) -> RID { call_ret := cast(*RID) sys_call("RenderingServer", "texture_2d_layered_create", 913689023, RID, main, layers, layered_type); return call_ret.*; }  // 1
 texture_3d_create :: (main: *RenderingServer, format: Image.Format, width: int, height: int, depth: int, mipmaps: bool, data: [] Image) -> RID { call_ret := cast(*RID) sys_call("RenderingServer", "texture_3d_create", 4036838706, RID, main, format, width, height, depth, mipmaps, data); return call_ret.*; }  // 2
 texture_proxy_create :: (main: *RenderingServer, base: RID) -> RID { call_ret := cast(*RID) sys_call("RenderingServer", "texture_proxy_create", 41030802, RID, main, base); return call_ret.*; }  // 3
 texture_create_from_native_handle :: (main: *RenderingServer, type: RenderingServer.TextureType, format: Image.Format, native_handle: int, width: int, height: int, depth: int) -> RID { call_ret := cast(*RID) sys_call("RenderingServer", "texture_create_from_native_handle", 1682977582, RID, main, type, format, native_handle, width, height, depth); return call_ret.*; }  // 4
-texture_2d_update :: (main: *RenderingServer, texture: RID, image: Image, layer: int) { sys_call("RenderingServer", "texture_2d_update", 999539803, Nil, main, texture, image, layer);  }  // 5
+texture_2d_update :: (main: *RenderingServer, texture: RID, image: *Image, layer: int) { sys_call("RenderingServer", "texture_2d_update", 999539803, Nil, main, texture, image, layer);  }  // 5
 texture_3d_update :: (main: *RenderingServer, texture: RID, data: [] Image) { sys_call("RenderingServer", "texture_3d_update", 684822712, Nil, main, texture, data);  }  // 6
 texture_proxy_update :: (main: *RenderingServer, texture: RID, proxy_to: RID) { sys_call("RenderingServer", "texture_proxy_update", 395945892, Nil, main, texture, proxy_to);  }  // 7
 texture_2d_placeholder_create :: (main: *RenderingServer) -> RID { call_ret := cast(*RID) sys_call("RenderingServer", "texture_2d_placeholder_create", 529393457, RID, main); return call_ret.*; }  // 8
@@ -20257,7 +20257,7 @@ make_sphere_mesh :: (main: *RenderingServer, latitudes: int, longitudes: int, ra
 get_test_cube :: (main: *RenderingServer) -> RID { call_ret := cast(*RID) sys_call("RenderingServer", "get_test_cube", 529393457, RID, main); return call_ret.*; }  // 500
 get_test_texture :: (main: *RenderingServer) -> RID { call_ret := cast(*RID) sys_call("RenderingServer", "get_test_texture", 529393457, RID, main); return call_ret.*; }  // 501
 get_white_texture :: (main: *RenderingServer) -> RID { call_ret := cast(*RID) sys_call("RenderingServer", "get_white_texture", 529393457, RID, main); return call_ret.*; }  // 502
-set_boot_image :: (main: *RenderingServer, image: Image, color: Color, scale: bool) { sys_call("RenderingServer", "set_boot_image", 3759744527, Nil, main, image, color, scale);  }  // 503
+set_boot_image :: (main: *RenderingServer, image: *Image, color: Color, scale: bool) { sys_call("RenderingServer", "set_boot_image", 3759744527, Nil, main, image, color, scale);  }  // 503
 get_default_clear_color :: (main: *RenderingServer) -> Color { call_ret := cast(*Color) sys_call("RenderingServer", "get_default_clear_color", 3200896285, Color, main); return call_ret.*; }  // 504
 set_default_clear_color :: (main: *RenderingServer, color: Color) { sys_call("RenderingServer", "set_default_clear_color", 2920490490, Nil, main, color);  }  // 505
 has_os_feature :: (main: *RenderingServer, feature: string) -> bool { call_ret := cast(*bool) sys_call("RenderingServer", "has_os_feature", 3927539163, bool, main, feature); return call_ret.*; }  // 506
@@ -20314,17 +20314,32 @@ load_from_file :: (main: *ResourceImporterOggVorbis, path: string) -> *AudioStre
 
 
 
-add_resource :: (main: *ResourcePreloader, name: string, resource: Resource) { sys_call("ResourcePreloader", "add_resource", 1168801743, Nil, main, name, resource);  }  // 0
+load_threaded_request :: (main: *ResourceLoader, path: string) -> Error { call_ret := cast(*Error) sys_call("ResourceLoader", "load_threaded_request", 3614384323, Error, main, path); return call_ret.*; }  // 0
+load_threaded_get_status :: (main: *ResourceLoader, path: string) -> ResourceLoader.ThreadLoadStatus { call_ret := cast(*ResourceLoader.ThreadLoadStatus) sys_call("ResourceLoader", "load_threaded_get_status", 4137685479, ResourceLoader.ThreadLoadStatus, main, path); return call_ret.*; }  // 1
+load_threaded_get :: (main: *ResourceLoader, path: string) -> *Resource { call_ret := cast(*Resource) sys_call("ResourceLoader", "load_threaded_get", 1748875256, Resource, main, path); return call_ret; }  // 2
+load :: (main: *ResourceLoader, path: string) -> *Resource { call_ret := cast(*Resource) sys_call("ResourceLoader", "load", 3358495409, Resource, main, path); return call_ret; }  // 3
+get_recognized_extensions_for_type :: (main: *ResourceLoader, type: string) -> PackedStringArray { call_ret := cast(*PackedStringArray) sys_call("ResourceLoader", "get_recognized_extensions_for_type", 3538744774, PackedStringArray, main, type); return call_ret.*; }  // 4
+add_resource_format_loader :: (main: *ResourceLoader, format_loader: *ResourceFormatLoader) { sys_call("ResourceLoader", "add_resource_format_loader", 2896595483, Nil, main, format_loader);  }  // 5
+remove_resource_format_loader :: (main: *ResourceLoader, format_loader: *ResourceFormatLoader) { sys_call("ResourceLoader", "remove_resource_format_loader", 405397102, Nil, main, format_loader);  }  // 6
+set_abort_on_missing_resources :: (main: *ResourceLoader, abort: bool) { sys_call("ResourceLoader", "set_abort_on_missing_resources", 2586408642, Nil, main, abort);  }  // 7
+get_dependencies :: (main: *ResourceLoader, path: string) -> PackedStringArray { call_ret := cast(*PackedStringArray) sys_call("ResourceLoader", "get_dependencies", 3538744774, PackedStringArray, main, path); return call_ret.*; }  // 8
+has_cached :: (main: *ResourceLoader, path: string) -> bool { call_ret := cast(*bool) sys_call("ResourceLoader", "has_cached", 2323990056, bool, main, path); return call_ret.*; }  // 9
+get_cached_ref :: (main: *ResourceLoader, path: string) -> *Resource { call_ret := cast(*Resource) sys_call("ResourceLoader", "get_cached_ref", 1748875256, Resource, main, path); return call_ret; }  // 10
+exists :: (main: *ResourceLoader, path: string) -> bool { call_ret := cast(*bool) sys_call("ResourceLoader", "exists", 4185558881, bool, main, path); return call_ret.*; }  // 11
+get_resource_uid :: (main: *ResourceLoader, path: string) -> int { call_ret := cast(*int) sys_call("ResourceLoader", "get_resource_uid", 1597066294, int, main, path); return call_ret.*; }  // 12
+list_directory :: (main: *ResourceLoader, directory_path: string) -> PackedStringArray { call_ret := cast(*PackedStringArray) sys_call("ResourceLoader", "list_directory", 3538744774, PackedStringArray, main, directory_path); return call_ret.*; }  // 13
+
+add_resource :: (main: *ResourcePreloader, name: string, resource: *Resource) { sys_call("ResourcePreloader", "add_resource", 1168801743, Nil, main, name, resource);  }  // 0
 remove_resource :: (main: *ResourcePreloader, name: string) { sys_call("ResourcePreloader", "remove_resource", 3304788590, Nil, main, name);  }  // 1
 rename_resource :: (main: *ResourcePreloader, name: string, newname: string) { sys_call("ResourcePreloader", "rename_resource", 3740211285, Nil, main, name, newname);  }  // 2
 has_resource :: (main: *ResourcePreloader, name: string) -> bool { call_ret := cast(*bool) sys_call("ResourcePreloader", "has_resource", 2619796661, bool, main, name); return call_ret.*; }  // 3
 get_resource :: (main: *ResourcePreloader, name: string) -> *Resource { call_ret := cast(*Resource) sys_call("ResourcePreloader", "get_resource", 3742749261, Resource, main, name); return call_ret; }  // 4
 get_resource_list :: (main: *ResourcePreloader) -> PackedStringArray { call_ret := cast(*PackedStringArray) sys_call("ResourcePreloader", "get_resource_list", 1139954409, PackedStringArray, main); return call_ret.*; }  // 5
 
-save :: (main: *ResourceSaver, resource: Resource) -> Error { call_ret := cast(*Error) sys_call("ResourceSaver", "save", 2983274697, Error, main, resource); return call_ret.*; }  // 0
-get_recognized_extensions :: (main: *ResourceSaver, type: Resource) -> PackedStringArray { call_ret := cast(*PackedStringArray) sys_call("ResourceSaver", "get_recognized_extensions", 4223597960, PackedStringArray, main, type); return call_ret.*; }  // 1
-add_resource_format_saver :: (main: *ResourceSaver, format_saver: ResourceFormatSaver) { sys_call("ResourceSaver", "add_resource_format_saver", 362894272, Nil, main, format_saver);  }  // 2
-remove_resource_format_saver :: (main: *ResourceSaver, format_saver: ResourceFormatSaver) { sys_call("ResourceSaver", "remove_resource_format_saver", 3373026878, Nil, main, format_saver);  }  // 3
+save :: (main: *ResourceSaver, resource: *Resource) -> Error { call_ret := cast(*Error) sys_call("ResourceSaver", "save", 2983274697, Error, main, resource); return call_ret.*; }  // 0
+get_recognized_extensions :: (main: *ResourceSaver, type: *Resource) -> PackedStringArray { call_ret := cast(*PackedStringArray) sys_call("ResourceSaver", "get_recognized_extensions", 4223597960, PackedStringArray, main, type); return call_ret.*; }  // 1
+add_resource_format_saver :: (main: *ResourceSaver, format_saver: *ResourceFormatSaver) { sys_call("ResourceSaver", "add_resource_format_saver", 362894272, Nil, main, format_saver);  }  // 2
+remove_resource_format_saver :: (main: *ResourceSaver, format_saver: *ResourceFormatSaver) { sys_call("ResourceSaver", "remove_resource_format_saver", 3373026878, Nil, main, format_saver);  }  // 3
 get_resource_id_for_path :: (main: *ResourceSaver, path: string) -> int { call_ret := cast(*int) sys_call("ResourceSaver", "get_resource_id_for_path", 150756522, int, main, path); return call_ret.*; }  // 4
 
 id_to_text :: (main: *ResourceUID, id: int) -> gstring { call_ret := cast(*gstring) sys_call("ResourceUID", "id_to_text", 844755477, gstring, main, id); return call_ret.*; }  // 0
@@ -20336,7 +20351,7 @@ set_id :: (main: *ResourceUID, id: int, path: string) { sys_call("ResourceUID", 
 get_id_path :: (main: *ResourceUID, id: int) -> gstring { call_ret := cast(*gstring) sys_call("ResourceUID", "get_id_path", 844755477, gstring, main, id); return call_ret.*; }  // 6
 remove_id :: (main: *ResourceUID, id: int) { sys_call("ResourceUID", "remove_id", 1286410249, Nil, main, id);  }  // 7
 
-set_profile :: (main: *RetargetModifier3D, profile: SkeletonProfile) { sys_call("RetargetModifier3D", "set_profile", 3870374136, Nil, main, profile);  }  // 0
+set_profile :: (main: *RetargetModifier3D, profile: *SkeletonProfile) { sys_call("RetargetModifier3D", "set_profile", 3870374136, Nil, main, profile);  }  // 0
 get_profile :: (main: *RetargetModifier3D) -> *SkeletonProfile { call_ret := cast(*SkeletonProfile) sys_call("RetargetModifier3D", "get_profile", 4291782652, SkeletonProfile, main); return call_ret; }  // 1
 set_use_global_pose :: (main: *RetargetModifier3D, use_global_pose: bool) { sys_call("RetargetModifier3D", "set_use_global_pose", 2586408642, Nil, main, use_global_pose);  }  // 2
 is_using_global_pose :: (main: *RetargetModifier3D) -> bool { call_ret := cast(*bool) sys_call("RetargetModifier3D", "is_using_global_pose", 36873697, bool, main); return call_ret.*; }  // 3
@@ -20357,7 +20372,7 @@ set_section_length :: (main: *RibbonTrailMesh, section_length: float) { sys_call
 get_section_length :: (main: *RibbonTrailMesh) -> float { call_ret := cast(*float) sys_call("RibbonTrailMesh", "get_section_length", 1740695150, float, main); return call_ret.*; }  // 5
 set_section_segments :: (main: *RibbonTrailMesh, section_segments: int) { sys_call("RibbonTrailMesh", "set_section_segments", 1286410249, Nil, main, section_segments);  }  // 6
 get_section_segments :: (main: *RibbonTrailMesh) -> int { call_ret := cast(*int) sys_call("RibbonTrailMesh", "get_section_segments", 3905245786, int, main); return call_ret.*; }  // 7
-set_curve :: (main: *RibbonTrailMesh, curve: Curve) { sys_call("RibbonTrailMesh", "set_curve", 270443179, Nil, main, curve);  }  // 8
+set_curve :: (main: *RibbonTrailMesh, curve: *Curve) { sys_call("RibbonTrailMesh", "set_curve", 270443179, Nil, main, curve);  }  // 8
 get_curve :: (main: *RibbonTrailMesh) -> *Curve { call_ret := cast(*Curve) sys_call("RibbonTrailMesh", "get_curve", 2460114913, Curve, main); return call_ret; }  // 9
 set_shape :: (main: *RibbonTrailMesh, shape: RibbonTrailMesh.Shape) { sys_call("RibbonTrailMesh", "set_shape", 1684440262, Nil, main, shape);  }  // 10
 get_shape :: (main: *RibbonTrailMesh) -> RibbonTrailMesh.Shape { call_ret := cast(*RibbonTrailMesh.Shape) sys_call("RibbonTrailMesh", "get_shape", 1317484155, RibbonTrailMesh.Shape, main); return call_ret.*; }  // 11
@@ -20366,12 +20381,12 @@ get_shape :: (main: *RibbonTrailMesh) -> RibbonTrailMesh.Shape { call_ret := cas
 get_parsed_text :: (main: *RichTextLabel) -> gstring { call_ret := cast(*gstring) sys_call("RichTextLabel", "get_parsed_text", 201670096, gstring, main); return call_ret.*; }  // 0
 add_text :: (main: *RichTextLabel, text: string) { sys_call("RichTextLabel", "add_text", 83702148, Nil, main, text);  }  // 1
 set_text :: (main: *RichTextLabel, text: string) { sys_call("RichTextLabel", "set_text", 83702148, Nil, main, text);  }  // 2
-add_image :: (main: *RichTextLabel, image: Texture2D) { sys_call("RichTextLabel", "add_image", 3017663154, Nil, main, image);  }  // 3
-update_image :: (main: *RichTextLabel, key: Variant, mask: RichTextLabel.ImageUpdateMask, image: Texture2D) { sys_call("RichTextLabel", "update_image", 815048486, Nil, main, key, mask, image);  }  // 4
+add_image :: (main: *RichTextLabel, image: *Texture2D) { sys_call("RichTextLabel", "add_image", 3017663154, Nil, main, image);  }  // 3
+update_image :: (main: *RichTextLabel, key: Variant, mask: RichTextLabel.ImageUpdateMask, image: *Texture2D) { sys_call("RichTextLabel", "update_image", 815048486, Nil, main, key, mask, image);  }  // 4
 newline :: (main: *RichTextLabel) { sys_call("RichTextLabel", "newline", 3218959716, Nil, main);  }  // 5
 remove_paragraph :: (main: *RichTextLabel, paragraph: int) -> bool { call_ret := cast(*bool) sys_call("RichTextLabel", "remove_paragraph", 3262369265, bool, main, paragraph); return call_ret.*; }  // 6
 invalidate_paragraph :: (main: *RichTextLabel, paragraph: int) -> bool { call_ret := cast(*bool) sys_call("RichTextLabel", "invalidate_paragraph", 3067735520, bool, main, paragraph); return call_ret.*; }  // 7
-push_font :: (main: *RichTextLabel, font: Font) { sys_call("RichTextLabel", "push_font", 2347424842, Nil, main, font);  }  // 8
+push_font :: (main: *RichTextLabel, font: *Font) { sys_call("RichTextLabel", "push_font", 2347424842, Nil, main, font);  }  // 8
 push_font_size :: (main: *RichTextLabel, font_size: int) { sys_call("RichTextLabel", "push_font_size", 1286410249, Nil, main, font_size);  }  // 9
 push_normal :: (main: *RichTextLabel) { sys_call("RichTextLabel", "push_normal", 3218959716, Nil, main);  }  // 10
 push_bold :: (main: *RichTextLabel) { sys_call("RichTextLabel", "push_bold", 3218959716, Nil, main);  }  // 11
@@ -20390,7 +20405,7 @@ push_language :: (main: *RichTextLabel, language: string) { sys_call("RichTextLa
 push_underline :: (main: *RichTextLabel) { sys_call("RichTextLabel", "push_underline", 3218959716, Nil, main);  }  // 24
 push_strikethrough :: (main: *RichTextLabel) { sys_call("RichTextLabel", "push_strikethrough", 3218959716, Nil, main);  }  // 25
 push_table :: (main: *RichTextLabel, columns: int) { sys_call("RichTextLabel", "push_table", 2623499273, Nil, main, columns);  }  // 26
-push_dropcap :: (main: *RichTextLabel, _string: string, font: Font, size: int) { sys_call("RichTextLabel", "push_dropcap", 4061635501, Nil, main, _string, font, size);  }  // 27
+push_dropcap :: (main: *RichTextLabel, _string: string, font: *Font, size: int) { sys_call("RichTextLabel", "push_dropcap", 4061635501, Nil, main, _string, font, size);  }  // 27
 set_table_column_expand :: (main: *RichTextLabel, column: int, expand: bool) { sys_call("RichTextLabel", "set_table_column_expand", 117236061, Nil, main, column, expand);  }  // 28
 set_cell_row_background_color :: (main: *RichTextLabel, odd_row_bg: Color, even_row_bg: Color) { sys_call("RichTextLabel", "set_cell_row_background_color", 3465483165, Nil, main, odd_row_bg, even_row_bg);  }  // 29
 set_cell_border_color :: (main: *RichTextLabel, color: Color) { sys_call("RichTextLabel", "set_cell_border_color", 2920490490, Nil, main, color);  }  // 30
@@ -20399,7 +20414,7 @@ set_cell_padding :: (main: *RichTextLabel, padding: Rect2) { sys_call("RichTextL
 push_cell :: (main: *RichTextLabel) { sys_call("RichTextLabel", "push_cell", 3218959716, Nil, main);  }  // 33
 push_fgcolor :: (main: *RichTextLabel, fgcolor: Color) { sys_call("RichTextLabel", "push_fgcolor", 2920490490, Nil, main, fgcolor);  }  // 34
 push_bgcolor :: (main: *RichTextLabel, bgcolor: Color) { sys_call("RichTextLabel", "push_bgcolor", 2920490490, Nil, main, bgcolor);  }  // 35
-push_customfx :: (main: *RichTextLabel, effect: RichTextEffect, env: Dictionary) { sys_call("RichTextLabel", "push_customfx", 2337942958, Nil, main, effect, env);  }  // 36
+push_customfx :: (main: *RichTextLabel, effect: *RichTextEffect, env: Dictionary) { sys_call("RichTextLabel", "push_customfx", 2337942958, Nil, main, effect, env);  }  // 36
 _push_context :: (main: *RichTextLabel) { sys_call("RichTextLabel", "_push_context", 3218959716, Nil, main);  }  // 37
 pop_context :: (main: *RichTextLabel) { sys_call("RichTextLabel", "pop_context", 3218959716, Nil, main);  }  // 38
 pop :: (main: *RichTextLabel) { sys_call("RichTextLabel", "pop", 3218959716, Nil, main);  }  // 39
@@ -20500,7 +20515,7 @@ set_center_of_mass_mode :: (main: *RigidBody2D, mode: RigidBody2D.CenterOfMassMo
 get_center_of_mass_mode :: (main: *RigidBody2D) -> RigidBody2D.CenterOfMassMode { call_ret := cast(*RigidBody2D.CenterOfMassMode) sys_call("RigidBody2D", "get_center_of_mass_mode", 3277132817, RigidBody2D.CenterOfMassMode, main); return call_ret.*; }  // 6
 set_center_of_mass :: (main: *RigidBody2D, center_of_mass: Vector2) { sys_call("RigidBody2D", "set_center_of_mass", 743155724, Nil, main, center_of_mass);  }  // 7
 get_center_of_mass :: (main: *RigidBody2D) -> Vector2 { call_ret := cast(*Vector2) sys_call("RigidBody2D", "get_center_of_mass", 3341600327, Vector2, main); return call_ret.*; }  // 8
-set_physics_material_override :: (main: *RigidBody2D, physics_material_override: PhysicsMaterial) { sys_call("RigidBody2D", "set_physics_material_override", 1784508650, Nil, main, physics_material_override);  }  // 9
+set_physics_material_override :: (main: *RigidBody2D, physics_material_override: *PhysicsMaterial) { sys_call("RigidBody2D", "set_physics_material_override", 1784508650, Nil, main, physics_material_override);  }  // 9
 get_physics_material_override :: (main: *RigidBody2D) -> *PhysicsMaterial { call_ret := cast(*PhysicsMaterial) sys_call("RigidBody2D", "get_physics_material_override", 2521850424, PhysicsMaterial, main); return call_ret; }  // 10
 set_gravity_scale :: (main: *RigidBody2D, gravity_scale: float) { sys_call("RigidBody2D", "set_gravity_scale", 373806689, Nil, main, gravity_scale);  }  // 11
 get_gravity_scale :: (main: *RigidBody2D) -> float { call_ret := cast(*float) sys_call("RigidBody2D", "get_gravity_scale", 1740695150, float, main); return call_ret.*; }  // 12
@@ -20559,7 +20574,7 @@ set_center_of_mass_mode :: (main: *RigidBody3D, mode: RigidBody3D.CenterOfMassMo
 get_center_of_mass_mode :: (main: *RigidBody3D) -> RigidBody3D.CenterOfMassMode { call_ret := cast(*RigidBody3D.CenterOfMassMode) sys_call("RigidBody3D", "get_center_of_mass_mode", 237405040, RigidBody3D.CenterOfMassMode, main); return call_ret.*; }  // 6
 set_center_of_mass :: (main: *RigidBody3D, center_of_mass: Vector3) { sys_call("RigidBody3D", "set_center_of_mass", 3460891852, Nil, main, center_of_mass);  }  // 7
 get_center_of_mass :: (main: *RigidBody3D) -> Vector3 { call_ret := cast(*Vector3) sys_call("RigidBody3D", "get_center_of_mass", 3360562783, Vector3, main); return call_ret.*; }  // 8
-set_physics_material_override :: (main: *RigidBody3D, physics_material_override: PhysicsMaterial) { sys_call("RigidBody3D", "set_physics_material_override", 1784508650, Nil, main, physics_material_override);  }  // 9
+set_physics_material_override :: (main: *RigidBody3D, physics_material_override: *PhysicsMaterial) { sys_call("RigidBody3D", "set_physics_material_override", 1784508650, Nil, main, physics_material_override);  }  // 9
 get_physics_material_override :: (main: *RigidBody3D) -> *PhysicsMaterial { call_ret := cast(*PhysicsMaterial) sys_call("RigidBody3D", "get_physics_material_override", 2521850424, PhysicsMaterial, main); return call_ret; }  // 10
 set_linear_velocity :: (main: *RigidBody3D, linear_velocity: Vector3) { sys_call("RigidBody3D", "set_linear_velocity", 3460891852, Nil, main, linear_velocity);  }  // 11
 get_linear_velocity :: (main: *RigidBody3D) -> Vector3 { call_ret := cast(*Vector3) sys_call("RigidBody3D", "get_linear_velocity", 3360562783, Vector3, main); return call_ret.*; }  // 12
@@ -20693,7 +20708,7 @@ set_debug_paths_hint :: (main: *SceneTree, enable: bool) { sys_call("SceneTree",
 is_debugging_paths_hint :: (main: *SceneTree) -> bool { call_ret := cast(*bool) sys_call("SceneTree", "is_debugging_paths_hint", 36873697, bool, main); return call_ret.*; }  // 9
 set_debug_navigation_hint :: (main: *SceneTree, enable: bool) { sys_call("SceneTree", "set_debug_navigation_hint", 2586408642, Nil, main, enable);  }  // 10
 is_debugging_navigation_hint :: (main: *SceneTree) -> bool { call_ret := cast(*bool) sys_call("SceneTree", "is_debugging_navigation_hint", 36873697, bool, main); return call_ret.*; }  // 11
-set_edited_scene_root :: (main: *SceneTree, scene: Node) { sys_call("SceneTree", "set_edited_scene_root", 1078189570, Nil, main, scene);  }  // 12
+set_edited_scene_root :: (main: *SceneTree, scene: *Node) { sys_call("SceneTree", "set_edited_scene_root", 1078189570, Nil, main, scene);  }  // 12
 get_edited_scene_root :: (main: *SceneTree) -> *Node { call_ret := cast(*Node) sys_call("SceneTree", "get_edited_scene_root", 3160264692, Node, main); return call_ret; }  // 13
 set_pause :: (main: *SceneTree, enable: bool) { sys_call("SceneTree", "set_pause", 2586408642, Nil, main, enable);  }  // 14
 is_paused :: (main: *SceneTree) -> bool { call_ret := cast(*bool) sys_call("SceneTree", "is_paused", 36873697, bool, main); return call_ret.*; }  // 15
@@ -20705,7 +20720,7 @@ get_frame :: (main: *SceneTree) -> int { call_ret := cast(*int) sys_call("SceneT
 quit :: (main: *SceneTree) { sys_call("SceneTree", "quit", 1995695955, Nil, main);  }  // 21
 set_physics_interpolation_enabled :: (main: *SceneTree, enabled: bool) { sys_call("SceneTree", "set_physics_interpolation_enabled", 2586408642, Nil, main, enabled);  }  // 22
 is_physics_interpolation_enabled :: (main: *SceneTree) -> bool { call_ret := cast(*bool) sys_call("SceneTree", "is_physics_interpolation_enabled", 36873697, bool, main); return call_ret.*; }  // 23
-queue_delete :: (main: *SceneTree, obj: Object) { sys_call("SceneTree", "queue_delete", 3975164845, Nil, main, obj);  }  // 24
+queue_delete :: (main: *SceneTree, obj: *Object) { sys_call("SceneTree", "queue_delete", 3975164845, Nil, main, obj);  }  // 24
 call_group_flags :: (main: *SceneTree, flags: int, group: string, method: string) { sys_call("SceneTree", "call_group_flags", 1527739229, Nil, main, flags, group, method);  }  // 25
 notify_group_flags :: (main: *SceneTree, call_flags: int, group: string, notification: int) { sys_call("SceneTree", "notify_group_flags", 1245489420, Nil, main, call_flags, group, notification);  }  // 26
 set_group_flags :: (main: *SceneTree, call_flags: int, group: string, property: string, value: Variant) { sys_call("SceneTree", "set_group_flags", 3497599527, Nil, main, call_flags, group, property, value);  }  // 27
@@ -20715,13 +20730,13 @@ set_group :: (main: *SceneTree, group: string, property: string, value: Variant)
 get_nodes_in_group :: (main: *SceneTree, group: string) -> [] Node { call_ret := cast(*[] Node) sys_call("SceneTree", "get_nodes_in_group", 689397652, [] Node, main, group); return call_ret.*; }  // 31
 get_first_node_in_group :: (main: *SceneTree, group: string) -> *Node { call_ret := cast(*Node) sys_call("SceneTree", "get_first_node_in_group", 4071044623, Node, main, group); return call_ret; }  // 32
 get_node_count_in_group :: (main: *SceneTree, group: string) -> int { call_ret := cast(*int) sys_call("SceneTree", "get_node_count_in_group", 2458036349, int, main, group); return call_ret.*; }  // 33
-set_current_scene :: (main: *SceneTree, child_node: Node) { sys_call("SceneTree", "set_current_scene", 1078189570, Nil, main, child_node);  }  // 34
+set_current_scene :: (main: *SceneTree, child_node: *Node) { sys_call("SceneTree", "set_current_scene", 1078189570, Nil, main, child_node);  }  // 34
 get_current_scene :: (main: *SceneTree) -> *Node { call_ret := cast(*Node) sys_call("SceneTree", "get_current_scene", 3160264692, Node, main); return call_ret; }  // 35
 change_scene_to_file :: (main: *SceneTree, path: string) -> Error { call_ret := cast(*Error) sys_call("SceneTree", "change_scene_to_file", 166001499, Error, main, path); return call_ret.*; }  // 36
-change_scene_to_packed :: (main: *SceneTree, packed_scene: PackedScene) -> Error { call_ret := cast(*Error) sys_call("SceneTree", "change_scene_to_packed", 107349098, Error, main, packed_scene); return call_ret.*; }  // 37
+change_scene_to_packed :: (main: *SceneTree, packed_scene: *PackedScene) -> Error { call_ret := cast(*Error) sys_call("SceneTree", "change_scene_to_packed", 107349098, Error, main, packed_scene); return call_ret.*; }  // 37
 reload_current_scene :: (main: *SceneTree) -> Error { call_ret := cast(*Error) sys_call("SceneTree", "reload_current_scene", 166280745, Error, main); return call_ret.*; }  // 38
 unload_current_scene :: (main: *SceneTree) { sys_call("SceneTree", "unload_current_scene", 3218959716, Nil, main);  }  // 39
-set_multiplayer :: (main: *SceneTree, multiplayer: MultiplayerAPI) { sys_call("SceneTree", "set_multiplayer", 2385607013, Nil, main, multiplayer);  }  // 40
+set_multiplayer :: (main: *SceneTree, multiplayer: *MultiplayerAPI) { sys_call("SceneTree", "set_multiplayer", 2385607013, Nil, main, multiplayer);  }  // 40
 get_multiplayer :: (main: *SceneTree) -> *MultiplayerAPI { call_ret := cast(*MultiplayerAPI) sys_call("SceneTree", "get_multiplayer", 3453401404, MultiplayerAPI, main); return call_ret; }  // 41
 set_multiplayer_poll_enabled :: (main: *SceneTree, enabled: bool) { sys_call("SceneTree", "set_multiplayer_poll_enabled", 2586408642, Nil, main, enabled);  }  // 42
 is_multiplayer_poll_enabled :: (main: *SceneTree) -> bool { call_ret := cast(*bool) sys_call("SceneTree", "is_multiplayer_poll_enabled", 36873697, bool, main); return call_ret.*; }  // 43
@@ -20730,7 +20745,7 @@ set_time_left :: (main: *SceneTreeTimer, time: float) { sys_call("SceneTreeTimer
 get_time_left :: (main: *SceneTreeTimer) -> float { call_ret := cast(*float) sys_call("SceneTreeTimer", "get_time_left", 1740695150, float, main); return call_ret.*; }  // 1
 
 can_instantiate :: (main: *Script) -> bool { call_ret := cast(*bool) sys_call("Script", "can_instantiate", 36873697, bool, main); return call_ret.*; }  // 0
-instance_has :: (main: *Script, base_object: Object) -> bool { call_ret := cast(*bool) sys_call("Script", "instance_has", 397768994, bool, main, base_object); return call_ret.*; }  // 1
+instance_has :: (main: *Script, base_object: *Object) -> bool { call_ret := cast(*bool) sys_call("Script", "instance_has", 397768994, bool, main, base_object); return call_ret.*; }  // 1
 has_source_code :: (main: *Script) -> bool { call_ret := cast(*bool) sys_call("Script", "has_source_code", 36873697, bool, main); return call_ret.*; }  // 2
 get_source_code :: (main: *Script) -> gstring { call_ret := cast(*gstring) sys_call("Script", "get_source_code", 201670096, gstring, main); return call_ret.*; }  // 3
 set_source_code :: (main: *Script, source: string) { sys_call("Script", "set_source_code", 83702148, Nil, main, source);  }  // 4
@@ -20753,17 +20768,17 @@ config :: (main: *ScriptCreateDialog, inherits: string, path: string) { sys_call
 get_current_editor :: (main: *ScriptEditor) -> *ScriptEditorBase { call_ret := cast(*ScriptEditorBase) sys_call("ScriptEditor", "get_current_editor", 1906266726, ScriptEditorBase, main); return call_ret; }  // 0
 get_open_script_editors :: (main: *ScriptEditor) -> [] ScriptEditorBase { call_ret := cast(*[] ScriptEditorBase) sys_call("ScriptEditor", "get_open_script_editors", 3995934104, [] ScriptEditorBase, main); return call_ret.*; }  // 1
 get_breakpoints :: (main: *ScriptEditor) -> PackedStringArray { call_ret := cast(*PackedStringArray) sys_call("ScriptEditor", "get_breakpoints", 2981934095, PackedStringArray, main); return call_ret.*; }  // 2
-register_syntax_highlighter :: (main: *ScriptEditor, syntax_highlighter: EditorSyntaxHighlighter) { sys_call("ScriptEditor", "register_syntax_highlighter", 1092774468, Nil, main, syntax_highlighter);  }  // 3
-unregister_syntax_highlighter :: (main: *ScriptEditor, syntax_highlighter: EditorSyntaxHighlighter) { sys_call("ScriptEditor", "unregister_syntax_highlighter", 1092774468, Nil, main, syntax_highlighter);  }  // 4
+register_syntax_highlighter :: (main: *ScriptEditor, syntax_highlighter: *EditorSyntaxHighlighter) { sys_call("ScriptEditor", "register_syntax_highlighter", 1092774468, Nil, main, syntax_highlighter);  }  // 3
+unregister_syntax_highlighter :: (main: *ScriptEditor, syntax_highlighter: *EditorSyntaxHighlighter) { sys_call("ScriptEditor", "unregister_syntax_highlighter", 1092774468, Nil, main, syntax_highlighter);  }  // 4
 goto_line :: (main: *ScriptEditor, line_number: int) { sys_call("ScriptEditor", "goto_line", 1286410249, Nil, main, line_number);  }  // 5
 get_current_script :: (main: *ScriptEditor) -> *Script { call_ret := cast(*Script) sys_call("ScriptEditor", "get_current_script", 2146468882, Script, main); return call_ret; }  // 6
 get_open_scripts :: (main: *ScriptEditor) -> [] Script { call_ret := cast(*[] Script) sys_call("ScriptEditor", "get_open_scripts", 3995934104, [] Script, main); return call_ret.*; }  // 7
 open_script_create_dialog :: (main: *ScriptEditor, base_name: string, base_path: string) { sys_call("ScriptEditor", "open_script_create_dialog", 3186203200, Nil, main, base_name, base_path);  }  // 8
 goto_help :: (main: *ScriptEditor, topic: string) { sys_call("ScriptEditor", "goto_help", 83702148, Nil, main, topic);  }  // 9
-update_docs_from_script :: (main: *ScriptEditor, script: Script) { sys_call("ScriptEditor", "update_docs_from_script", 3657522847, Nil, main, script);  }  // 10
+update_docs_from_script :: (main: *ScriptEditor, script: *Script) { sys_call("ScriptEditor", "update_docs_from_script", 3657522847, Nil, main, script);  }  // 10
 
 get_base_editor :: (main: *ScriptEditorBase) -> *Control { call_ret := cast(*Control) sys_call("ScriptEditorBase", "get_base_editor", 2783021301, Control, main); return call_ret; }  // 0
-add_syntax_highlighter :: (main: *ScriptEditorBase, highlighter: EditorSyntaxHighlighter) { sys_call("ScriptEditorBase", "add_syntax_highlighter", 1092774468, Nil, main, highlighter);  }  // 1
+add_syntax_highlighter :: (main: *ScriptEditorBase, highlighter: *EditorSyntaxHighlighter) { sys_call("ScriptEditorBase", "add_syntax_highlighter", 1092774468, Nil, main, highlighter);  }  // 1
 
 
 
@@ -20789,7 +20804,7 @@ set_follow_focus :: (main: *ScrollContainer, enabled: bool) { sys_call("ScrollCo
 is_following_focus :: (main: *ScrollContainer) -> bool { call_ret := cast(*bool) sys_call("ScrollContainer", "is_following_focus", 36873697, bool, main); return call_ret.*; }  // 15
 get_h_scroll_bar :: (main: *ScrollContainer) -> *HScrollBar { call_ret := cast(*HScrollBar) sys_call("ScrollContainer", "get_h_scroll_bar", 4004517983, HScrollBar, main); return call_ret; }  // 16
 get_v_scroll_bar :: (main: *ScrollContainer) -> *VScrollBar { call_ret := cast(*VScrollBar) sys_call("ScrollContainer", "get_v_scroll_bar", 2630340773, VScrollBar, main); return call_ret; }  // 17
-ensure_control_visible :: (main: *ScrollContainer, control: Control) { sys_call("ScrollContainer", "ensure_control_visible", 1496901182, Nil, main, control);  }  // 18
+ensure_control_visible :: (main: *ScrollContainer, control: *Control) { sys_call("ScrollContainer", "ensure_control_visible", 1496901182, Nil, main, control);  }  // 18
 set_draw_focus_border :: (main: *ScrollContainer, draw: bool) { sys_call("ScrollContainer", "set_draw_focus_border", 2586408642, Nil, main, draw);  }  // 19
 get_draw_focus_border :: (main: *ScrollContainer) -> bool { call_ret := cast(*bool) sys_call("ScrollContainer", "get_draw_focus_border", 2240911060, bool, main); return call_ret.*; }  // 20
 
@@ -20816,7 +20831,7 @@ get_slide_on_slope :: (main: *SeparationRayShape3D) -> bool { call_ret := cast(*
 get_mode :: (main: *Shader) -> Shader.Mode { call_ret := cast(*Shader.Mode) sys_call("Shader", "get_mode", 3392948163, Shader.Mode, main); return call_ret.*; }  // 0
 set_code :: (main: *Shader, code: string) { sys_call("Shader", "set_code", 83702148, Nil, main, code);  }  // 1
 get_code :: (main: *Shader) -> gstring { call_ret := cast(*gstring) sys_call("Shader", "get_code", 201670096, gstring, main); return call_ret.*; }  // 2
-set_default_texture_parameter :: (main: *Shader, name: string, texture: Texture) { sys_call("Shader", "set_default_texture_parameter", 3850209648, Nil, main, name, texture);  }  // 3
+set_default_texture_parameter :: (main: *Shader, name: string, texture: *Texture) { sys_call("Shader", "set_default_texture_parameter", 3850209648, Nil, main, name, texture);  }  // 3
 get_default_texture_parameter :: (main: *Shader, name: string) -> *Texture { call_ret := cast(*Texture) sys_call("Shader", "get_default_texture_parameter", 4213877425, Texture, main, name); return call_ret; }  // 4
 get_shader_uniform_list :: (main: *Shader) -> Array { call_ret := cast(*Array) sys_call("Shader", "get_shader_uniform_list", 1230511656, Array, main); return call_ret.*; }  // 5
 inspect_native_shader_code :: (main: *Shader) { sys_call("Shader", "inspect_native_shader_code", 3218959716, Nil, main);  }  // 6
@@ -20829,17 +20844,17 @@ list_built_in_include_files :: (main: *ShaderIncludeDB) -> PackedStringArray { c
 has_built_in_include_file :: (main: *ShaderIncludeDB, filename: string) -> bool { call_ret := cast(*bool) sys_call("ShaderIncludeDB", "has_built_in_include_file", 2323990056, bool, main, filename); return call_ret.*; }  // 1
 get_built_in_include_file :: (main: *ShaderIncludeDB, filename: string) -> gstring { call_ret := cast(*gstring) sys_call("ShaderIncludeDB", "get_built_in_include_file", 1703090593, gstring, main, filename); return call_ret.*; }  // 2
 
-set_shader :: (main: *ShaderMaterial, shader: Shader) { sys_call("ShaderMaterial", "set_shader", 3341921675, Nil, main, shader);  }  // 0
+set_shader :: (main: *ShaderMaterial, shader: *Shader) { sys_call("ShaderMaterial", "set_shader", 3341921675, Nil, main, shader);  }  // 0
 get_shader :: (main: *ShaderMaterial) -> *Shader { call_ret := cast(*Shader) sys_call("ShaderMaterial", "get_shader", 2078273437, Shader, main); return call_ret; }  // 1
 set_shader_parameter :: (main: *ShaderMaterial, param: string, value: Variant) { sys_call("ShaderMaterial", "set_shader_parameter", 3776071444, Nil, main, param, value);  }  // 2
 get_shader_parameter :: (main: *ShaderMaterial, param: string) -> Variant { call_ret := cast(*Variant) sys_call("ShaderMaterial", "get_shader_parameter", 2760726917, Variant, main, param); return call_ret.*; }  // 3
 
 set_custom_solver_bias :: (main: *Shape2D, bias: float) { sys_call("Shape2D", "set_custom_solver_bias", 373806689, Nil, main, bias);  }  // 0
 get_custom_solver_bias :: (main: *Shape2D) -> float { call_ret := cast(*float) sys_call("Shape2D", "get_custom_solver_bias", 1740695150, float, main); return call_ret.*; }  // 1
-collide :: (main: *Shape2D, local_xform: Transform2D, with_shape: Shape2D, shape_xform: Transform2D) -> bool { call_ret := cast(*bool) sys_call("Shape2D", "collide", 3709843132, bool, main, local_xform, with_shape, shape_xform); return call_ret.*; }  // 2
-collide_with_motion :: (main: *Shape2D, local_xform: Transform2D, local_motion: Vector2, with_shape: Shape2D, shape_xform: Transform2D, shape_motion: Vector2) -> bool { call_ret := cast(*bool) sys_call("Shape2D", "collide_with_motion", 2869556801, bool, main, local_xform, local_motion, with_shape, shape_xform, shape_motion); return call_ret.*; }  // 3
-collide_and_get_contacts :: (main: *Shape2D, local_xform: Transform2D, with_shape: Shape2D, shape_xform: Transform2D) -> PackedVector2Array { call_ret := cast(*PackedVector2Array) sys_call("Shape2D", "collide_and_get_contacts", 3056932662, PackedVector2Array, main, local_xform, with_shape, shape_xform); return call_ret.*; }  // 4
-collide_with_motion_and_get_contacts :: (main: *Shape2D, local_xform: Transform2D, local_motion: Vector2, with_shape: Shape2D, shape_xform: Transform2D, shape_motion: Vector2) -> PackedVector2Array { call_ret := cast(*PackedVector2Array) sys_call("Shape2D", "collide_with_motion_and_get_contacts", 3620351573, PackedVector2Array, main, local_xform, local_motion, with_shape, shape_xform, shape_motion); return call_ret.*; }  // 5
+collide :: (main: *Shape2D, local_xform: Transform2D, with_shape: *Shape2D, shape_xform: Transform2D) -> bool { call_ret := cast(*bool) sys_call("Shape2D", "collide", 3709843132, bool, main, local_xform, with_shape, shape_xform); return call_ret.*; }  // 2
+collide_with_motion :: (main: *Shape2D, local_xform: Transform2D, local_motion: Vector2, with_shape: *Shape2D, shape_xform: Transform2D, shape_motion: Vector2) -> bool { call_ret := cast(*bool) sys_call("Shape2D", "collide_with_motion", 2869556801, bool, main, local_xform, local_motion, with_shape, shape_xform, shape_motion); return call_ret.*; }  // 3
+collide_and_get_contacts :: (main: *Shape2D, local_xform: Transform2D, with_shape: *Shape2D, shape_xform: Transform2D) -> PackedVector2Array { call_ret := cast(*PackedVector2Array) sys_call("Shape2D", "collide_and_get_contacts", 3056932662, PackedVector2Array, main, local_xform, with_shape, shape_xform); return call_ret.*; }  // 4
+collide_with_motion_and_get_contacts :: (main: *Shape2D, local_xform: Transform2D, local_motion: Vector2, with_shape: *Shape2D, shape_xform: Transform2D, shape_motion: Vector2) -> PackedVector2Array { call_ret := cast(*PackedVector2Array) sys_call("Shape2D", "collide_with_motion_and_get_contacts", 3620351573, PackedVector2Array, main, local_xform, local_motion, with_shape, shape_xform, shape_motion); return call_ret.*; }  // 5
 draw :: (main: *Shape2D, canvas_item: RID, color: Color) { sys_call("Shape2D", "draw", 2948539648, Nil, main, canvas_item, color);  }  // 6
 get_rect :: (main: *Shape2D) -> Rect2 { call_ret := cast(*Rect2) sys_call("Shape2D", "get_rect", 1639390495, Rect2, main); return call_ret.*; }  // 7
 
@@ -20851,7 +20866,7 @@ get_debug_mesh :: (main: *Shape3D) -> *ArrayMesh { call_ret := cast(*ArrayMesh) 
 
 set_enabled :: (main: *ShapeCast2D, enabled: bool) { sys_call("ShapeCast2D", "set_enabled", 2586408642, Nil, main, enabled);  }  // 0
 is_enabled :: (main: *ShapeCast2D) -> bool { call_ret := cast(*bool) sys_call("ShapeCast2D", "is_enabled", 36873697, bool, main); return call_ret.*; }  // 1
-set_shape :: (main: *ShapeCast2D, shape: Shape2D) { sys_call("ShapeCast2D", "set_shape", 771364740, Nil, main, shape);  }  // 2
+set_shape :: (main: *ShapeCast2D, shape: *Shape2D) { sys_call("ShapeCast2D", "set_shape", 771364740, Nil, main, shape);  }  // 2
 get_shape :: (main: *ShapeCast2D) -> *Shape2D { call_ret := cast(*Shape2D) sys_call("ShapeCast2D", "get_shape", 522005891, Shape2D, main); return call_ret; }  // 3
 set_target_position :: (main: *ShapeCast2D, local_point: Vector2) { sys_call("ShapeCast2D", "set_target_position", 743155724, Nil, main, local_point);  }  // 4
 get_target_position :: (main: *ShapeCast2D) -> Vector2 { call_ret := cast(*Vector2) sys_call("ShapeCast2D", "get_target_position", 3341600327, Vector2, main); return call_ret.*; }  // 5
@@ -20870,9 +20885,9 @@ get_collision_normal :: (main: *ShapeCast2D, index: int) -> Vector2 { call_ret :
 get_closest_collision_safe_fraction :: (main: *ShapeCast2D) -> float { call_ret := cast(*float) sys_call("ShapeCast2D", "get_closest_collision_safe_fraction", 1740695150, float, main); return call_ret.*; }  // 18
 get_closest_collision_unsafe_fraction :: (main: *ShapeCast2D) -> float { call_ret := cast(*float) sys_call("ShapeCast2D", "get_closest_collision_unsafe_fraction", 1740695150, float, main); return call_ret.*; }  // 19
 add_exception_rid :: (main: *ShapeCast2D, rid: RID) { sys_call("ShapeCast2D", "add_exception_rid", 2722037293, Nil, main, rid);  }  // 20
-add_exception :: (main: *ShapeCast2D, node: CollisionObject2D) { sys_call("ShapeCast2D", "add_exception", 3090941106, Nil, main, node);  }  // 21
+add_exception :: (main: *ShapeCast2D, node: *CollisionObject2D) { sys_call("ShapeCast2D", "add_exception", 3090941106, Nil, main, node);  }  // 21
 remove_exception_rid :: (main: *ShapeCast2D, rid: RID) { sys_call("ShapeCast2D", "remove_exception_rid", 2722037293, Nil, main, rid);  }  // 22
-remove_exception :: (main: *ShapeCast2D, node: CollisionObject2D) { sys_call("ShapeCast2D", "remove_exception", 3090941106, Nil, main, node);  }  // 23
+remove_exception :: (main: *ShapeCast2D, node: *CollisionObject2D) { sys_call("ShapeCast2D", "remove_exception", 3090941106, Nil, main, node);  }  // 23
 clear_exceptions :: (main: *ShapeCast2D) { sys_call("ShapeCast2D", "clear_exceptions", 3218959716, Nil, main);  }  // 24
 set_collision_mask :: (main: *ShapeCast2D, mask: int) { sys_call("ShapeCast2D", "set_collision_mask", 1286410249, Nil, main, mask);  }  // 25
 get_collision_mask :: (main: *ShapeCast2D) -> int { call_ret := cast(*int) sys_call("ShapeCast2D", "get_collision_mask", 3905245786, int, main); return call_ret.*; }  // 26
@@ -20886,10 +20901,10 @@ set_collide_with_bodies :: (main: *ShapeCast2D, enable: bool) { sys_call("ShapeC
 is_collide_with_bodies_enabled :: (main: *ShapeCast2D) -> bool { call_ret := cast(*bool) sys_call("ShapeCast2D", "is_collide_with_bodies_enabled", 36873697, bool, main); return call_ret.*; }  // 34
 get_collision_result :: (main: *ShapeCast2D) -> Array { call_ret := cast(*Array) sys_call("ShapeCast2D", "get_collision_result", 3995934104, Array, main); return call_ret.*; }  // 35
 
-resource_changed :: (main: *ShapeCast3D, resource: Resource) { sys_call("ShapeCast3D", "resource_changed", 968641751, Nil, main, resource);  }  // 0
+resource_changed :: (main: *ShapeCast3D, resource: *Resource) { sys_call("ShapeCast3D", "resource_changed", 968641751, Nil, main, resource);  }  // 0
 set_enabled :: (main: *ShapeCast3D, enabled: bool) { sys_call("ShapeCast3D", "set_enabled", 2586408642, Nil, main, enabled);  }  // 1
 is_enabled :: (main: *ShapeCast3D) -> bool { call_ret := cast(*bool) sys_call("ShapeCast3D", "is_enabled", 36873697, bool, main); return call_ret.*; }  // 2
-set_shape :: (main: *ShapeCast3D, shape: Shape3D) { sys_call("ShapeCast3D", "set_shape", 1549710052, Nil, main, shape);  }  // 3
+set_shape :: (main: *ShapeCast3D, shape: *Shape3D) { sys_call("ShapeCast3D", "set_shape", 1549710052, Nil, main, shape);  }  // 3
 get_shape :: (main: *ShapeCast3D) -> *Shape3D { call_ret := cast(*Shape3D) sys_call("ShapeCast3D", "get_shape", 3214262478, Shape3D, main); return call_ret; }  // 4
 set_target_position :: (main: *ShapeCast3D, local_point: Vector3) { sys_call("ShapeCast3D", "set_target_position", 3460891852, Nil, main, local_point);  }  // 5
 get_target_position :: (main: *ShapeCast3D) -> Vector3 { call_ret := cast(*Vector3) sys_call("ShapeCast3D", "get_target_position", 3360562783, Vector3, main); return call_ret.*; }  // 6
@@ -20908,9 +20923,9 @@ get_collision_normal :: (main: *ShapeCast3D, index: int) -> Vector3 { call_ret :
 get_closest_collision_safe_fraction :: (main: *ShapeCast3D) -> float { call_ret := cast(*float) sys_call("ShapeCast3D", "get_closest_collision_safe_fraction", 1740695150, float, main); return call_ret.*; }  // 19
 get_closest_collision_unsafe_fraction :: (main: *ShapeCast3D) -> float { call_ret := cast(*float) sys_call("ShapeCast3D", "get_closest_collision_unsafe_fraction", 1740695150, float, main); return call_ret.*; }  // 20
 add_exception_rid :: (main: *ShapeCast3D, rid: RID) { sys_call("ShapeCast3D", "add_exception_rid", 2722037293, Nil, main, rid);  }  // 21
-add_exception :: (main: *ShapeCast3D, node: CollisionObject3D) { sys_call("ShapeCast3D", "add_exception", 1976431078, Nil, main, node);  }  // 22
+add_exception :: (main: *ShapeCast3D, node: *CollisionObject3D) { sys_call("ShapeCast3D", "add_exception", 1976431078, Nil, main, node);  }  // 22
 remove_exception_rid :: (main: *ShapeCast3D, rid: RID) { sys_call("ShapeCast3D", "remove_exception_rid", 2722037293, Nil, main, rid);  }  // 23
-remove_exception :: (main: *ShapeCast3D, node: CollisionObject3D) { sys_call("ShapeCast3D", "remove_exception", 1976431078, Nil, main, node);  }  // 24
+remove_exception :: (main: *ShapeCast3D, node: *CollisionObject3D) { sys_call("ShapeCast3D", "remove_exception", 1976431078, Nil, main, node);  }  // 24
 clear_exceptions :: (main: *ShapeCast3D) { sys_call("ShapeCast3D", "clear_exceptions", 3218959716, Nil, main);  }  // 25
 set_collision_mask :: (main: *ShapeCast3D, mask: int) { sys_call("ShapeCast3D", "set_collision_mask", 1286410249, Nil, main, mask);  }  // 26
 get_collision_mask :: (main: *ShapeCast3D) -> int { call_ret := cast(*int) sys_call("ShapeCast3D", "get_collision_mask", 3905245786, int, main); return call_ret.*; }  // 27
@@ -20929,13 +20944,13 @@ get_debug_shape_custom_color :: (main: *ShapeCast3D) -> Color { call_ret := cast
 set_events :: (main: *Shortcut, events: Array) { sys_call("Shortcut", "set_events", 381264803, Nil, main, events);  }  // 0
 get_events :: (main: *Shortcut) -> Array { call_ret := cast(*Array) sys_call("Shortcut", "get_events", 3995934104, Array, main); return call_ret.*; }  // 1
 has_valid_event :: (main: *Shortcut) -> bool { call_ret := cast(*bool) sys_call("Shortcut", "has_valid_event", 36873697, bool, main); return call_ret.*; }  // 2
-matches_event :: (main: *Shortcut, event: InputEvent) -> bool { call_ret := cast(*bool) sys_call("Shortcut", "matches_event", 3738334489, bool, main, event); return call_ret.*; }  // 3
+matches_event :: (main: *Shortcut, event: *InputEvent) -> bool { call_ret := cast(*bool) sys_call("Shortcut", "matches_event", 3738334489, bool, main, event); return call_ret.*; }  // 3
 get_as_text :: (main: *Shortcut) -> gstring { call_ret := cast(*gstring) sys_call("Shortcut", "get_as_text", 201670096, gstring, main); return call_ret.*; }  // 4
 
 get_bone_count :: (main: *Skeleton2D) -> int { call_ret := cast(*int) sys_call("Skeleton2D", "get_bone_count", 3905245786, int, main); return call_ret.*; }  // 0
 get_bone :: (main: *Skeleton2D, idx: int) -> *Bone2D { call_ret := cast(*Bone2D) sys_call("Skeleton2D", "get_bone", 2556267111, Bone2D, main, idx); return call_ret; }  // 1
 get_skeleton :: (main: *Skeleton2D) -> RID { call_ret := cast(*RID) sys_call("Skeleton2D", "get_skeleton", 2944877500, RID, main); return call_ret.*; }  // 2
-set_modification_stack :: (main: *Skeleton2D, modification_stack: SkeletonModificationStack2D) { sys_call("Skeleton2D", "set_modification_stack", 3907307132, Nil, main, modification_stack);  }  // 3
+set_modification_stack :: (main: *Skeleton2D, modification_stack: *SkeletonModificationStack2D) { sys_call("Skeleton2D", "set_modification_stack", 3907307132, Nil, main, modification_stack);  }  // 3
 get_modification_stack :: (main: *Skeleton2D) -> *SkeletonModificationStack2D { call_ret := cast(*SkeletonModificationStack2D) sys_call("Skeleton2D", "get_modification_stack", 2107508396, SkeletonModificationStack2D, main); return call_ret; }  // 4
 execute_modifications :: (main: *Skeleton2D, delta: float, execution_mode: int) { sys_call("Skeleton2D", "execute_modifications", 1005356550, Nil, main, delta, execution_mode);  }  // 5
 set_bone_local_pose_override :: (main: *Skeleton2D, bone_idx: int, override_pose: Transform2D, strength: float, persistent: bool) { sys_call("Skeleton2D", "set_bone_local_pose_override", 555457532, Nil, main, bone_idx, override_pose, strength, persistent);  }  // 6
@@ -20961,7 +20976,7 @@ get_bone_rest :: (main: *Skeleton3D, bone_idx: int) -> Transform3D { call_ret :=
 set_bone_rest :: (main: *Skeleton3D, bone_idx: int, rest: Transform3D) { sys_call("Skeleton3D", "set_bone_rest", 3616898986, Nil, main, bone_idx, rest);  }  // 17
 get_bone_global_rest :: (main: *Skeleton3D, bone_idx: int) -> Transform3D { call_ret := cast(*Transform3D) sys_call("Skeleton3D", "get_bone_global_rest", 1965739696, Transform3D, main, bone_idx); return call_ret.*; }  // 18
 create_skin_from_rest_transforms :: (main: *Skeleton3D) -> *Skin { call_ret := cast(*Skin) sys_call("Skeleton3D", "create_skin_from_rest_transforms", 1032037385, Skin, main); return call_ret; }  // 19
-register_skin :: (main: *Skeleton3D, skin: Skin) -> *SkinReference { call_ret := cast(*SkinReference) sys_call("Skeleton3D", "register_skin", 3405789568, SkinReference, main, skin); return call_ret; }  // 20
+register_skin :: (main: *Skeleton3D, skin: *Skin) -> *SkinReference { call_ret := cast(*SkinReference) sys_call("Skeleton3D", "register_skin", 3405789568, SkinReference, main, skin); return call_ret; }  // 20
 localize_rests :: (main: *Skeleton3D) { sys_call("Skeleton3D", "localize_rests", 3218959716, Nil, main);  }  // 21
 clear_bones :: (main: *Skeleton3D) { sys_call("Skeleton3D", "clear_bones", 3218959716, Nil, main);  }  // 22
 get_bone_pose :: (main: *Skeleton3D, bone_idx: int) -> Transform3D { call_ret := cast(*Transform3D) sys_call("Skeleton3D", "get_bone_pose", 1965739696, Transform3D, main, bone_idx); return call_ret.*; }  // 23
@@ -21127,7 +21142,7 @@ fetch_physical_bones :: (main: *SkeletonModification2DPhysicalBones) { sys_call(
 start_simulation :: (main: *SkeletonModification2DPhysicalBones) { sys_call("SkeletonModification2DPhysicalBones", "start_simulation", 2787316981, Nil, main);  }  // 5
 stop_simulation :: (main: *SkeletonModification2DPhysicalBones) { sys_call("SkeletonModification2DPhysicalBones", "stop_simulation", 2787316981, Nil, main);  }  // 6
 
-set_held_modification_stack :: (main: *SkeletonModification2DStackHolder, held_modification_stack: SkeletonModificationStack2D) { sys_call("SkeletonModification2DStackHolder", "set_held_modification_stack", 3907307132, Nil, main, held_modification_stack);  }  // 0
+set_held_modification_stack :: (main: *SkeletonModification2DStackHolder, held_modification_stack: *SkeletonModificationStack2D) { sys_call("SkeletonModification2DStackHolder", "set_held_modification_stack", 3907307132, Nil, main, held_modification_stack);  }  // 0
 get_held_modification_stack :: (main: *SkeletonModification2DStackHolder) -> *SkeletonModificationStack2D { call_ret := cast(*SkeletonModificationStack2D) sys_call("SkeletonModification2DStackHolder", "get_held_modification_stack", 2107508396, SkeletonModificationStack2D, main); return call_ret; }  // 1
 
 set_target_node :: (main: *SkeletonModification2DTwoBoneIK, target_nodepath: string) { sys_call("SkeletonModification2DTwoBoneIK", "set_target_node", 1348162250, Nil, main, target_nodepath);  }  // 0
@@ -21151,9 +21166,9 @@ setup :: (main: *SkeletonModificationStack2D) { sys_call("SkeletonModificationSt
 execute :: (main: *SkeletonModificationStack2D, delta: float, execution_mode: int) { sys_call("SkeletonModificationStack2D", "execute", 1005356550, Nil, main, delta, execution_mode);  }  // 1
 enable_all_modifications :: (main: *SkeletonModificationStack2D, enabled: bool) { sys_call("SkeletonModificationStack2D", "enable_all_modifications", 2586408642, Nil, main, enabled);  }  // 2
 get_modification :: (main: *SkeletonModificationStack2D, mod_idx: int) -> *SkeletonModification2D { call_ret := cast(*SkeletonModification2D) sys_call("SkeletonModificationStack2D", "get_modification", 2570274329, SkeletonModification2D, main, mod_idx); return call_ret; }  // 3
-add_modification :: (main: *SkeletonModificationStack2D, modification: SkeletonModification2D) { sys_call("SkeletonModificationStack2D", "add_modification", 354162120, Nil, main, modification);  }  // 4
+add_modification :: (main: *SkeletonModificationStack2D, modification: *SkeletonModification2D) { sys_call("SkeletonModificationStack2D", "add_modification", 354162120, Nil, main, modification);  }  // 4
 delete_modification :: (main: *SkeletonModificationStack2D, mod_idx: int) { sys_call("SkeletonModificationStack2D", "delete_modification", 1286410249, Nil, main, mod_idx);  }  // 5
-set_modification :: (main: *SkeletonModificationStack2D, mod_idx: int, modification: SkeletonModification2D) { sys_call("SkeletonModificationStack2D", "set_modification", 1098262544, Nil, main, mod_idx, modification);  }  // 6
+set_modification :: (main: *SkeletonModificationStack2D, mod_idx: int, modification: *SkeletonModification2D) { sys_call("SkeletonModificationStack2D", "set_modification", 1098262544, Nil, main, mod_idx, modification);  }  // 6
 set_modification_count :: (main: *SkeletonModificationStack2D, count: int) { sys_call("SkeletonModificationStack2D", "set_modification_count", 1286410249, Nil, main, count);  }  // 7
 get_modification_count :: (main: *SkeletonModificationStack2D) -> int { call_ret := cast(*int) sys_call("SkeletonModificationStack2D", "get_modification_count", 3905245786, int, main); return call_ret.*; }  // 8
 get_is_setup :: (main: *SkeletonModificationStack2D) -> bool { call_ret := cast(*bool) sys_call("SkeletonModificationStack2D", "get_is_setup", 36873697, bool, main); return call_ret.*; }  // 9
@@ -21178,7 +21193,7 @@ get_group_size :: (main: *SkeletonProfile) -> int { call_ret := cast(*int) sys_c
 get_group_name :: (main: *SkeletonProfile, group_idx: int) -> StringName { call_ret := cast(*StringName) sys_call("SkeletonProfile", "get_group_name", 659327637, StringName, main, group_idx); return call_ret.*; }  // 6
 set_group_name :: (main: *SkeletonProfile, group_idx: int, group_name: string) { sys_call("SkeletonProfile", "set_group_name", 3780747571, Nil, main, group_idx, group_name);  }  // 7
 get_texture :: (main: *SkeletonProfile, group_idx: int) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("SkeletonProfile", "get_texture", 3536238170, Texture2D, main, group_idx); return call_ret; }  // 8
-set_texture :: (main: *SkeletonProfile, group_idx: int, texture: Texture2D) { sys_call("SkeletonProfile", "set_texture", 666127730, Nil, main, group_idx, texture);  }  // 9
+set_texture :: (main: *SkeletonProfile, group_idx: int, texture: *Texture2D) { sys_call("SkeletonProfile", "set_texture", 666127730, Nil, main, group_idx, texture);  }  // 9
 set_bone_size :: (main: *SkeletonProfile, size: int) { sys_call("SkeletonProfile", "set_bone_size", 1286410249, Nil, main, size);  }  // 10
 get_bone_size :: (main: *SkeletonProfile) -> int { call_ret := cast(*int) sys_call("SkeletonProfile", "get_bone_size", 2455072627, int, main); return call_ret.*; }  // 11
 find_bone :: (main: *SkeletonProfile, bone_name: string) -> int { call_ret := cast(*int) sys_call("SkeletonProfile", "find_bone", 2458036349, int, main, bone_name); return call_ret.*; }  // 12
@@ -21219,7 +21234,7 @@ set_radiance_size :: (main: *Sky, size: Sky.RadianceSize) { sys_call("Sky", "set
 get_radiance_size :: (main: *Sky) -> Sky.RadianceSize { call_ret := cast(*Sky.RadianceSize) sys_call("Sky", "get_radiance_size", 2708733976, Sky.RadianceSize, main); return call_ret.*; }  // 1
 set_process_mode :: (main: *Sky, mode: Sky.ProcessMode) { sys_call("Sky", "set_process_mode", 875986769, Nil, main, mode);  }  // 2
 get_process_mode :: (main: *Sky) -> Sky.ProcessMode { call_ret := cast(*Sky.ProcessMode) sys_call("Sky", "get_process_mode", 731245043, Sky.ProcessMode, main); return call_ret.*; }  // 3
-set_material :: (main: *Sky, material: Material) { sys_call("Sky", "set_material", 2757459619, Nil, main, material);  }  // 4
+set_material :: (main: *Sky, material: *Material) { sys_call("Sky", "set_material", 2757459619, Nil, main, material);  }  // 4
 get_material :: (main: *Sky) -> *Material { call_ret := cast(*Material) sys_call("Sky", "get_material", 5934680, Material, main); return call_ret; }  // 5
 
 set_ticks :: (main: *Slider, count: int) { sys_call("Slider", "set_ticks", 1286410249, Nil, main, count);  }  // 0
@@ -21248,8 +21263,8 @@ get_parent_collision_ignore :: (main: *SoftBody3D) -> NodePath { call_ret := cas
 set_disable_mode :: (main: *SoftBody3D, mode: SoftBody3D.DisableMode) { sys_call("SoftBody3D", "set_disable_mode", 1104158384, Nil, main, mode);  }  // 11
 get_disable_mode :: (main: *SoftBody3D) -> SoftBody3D.DisableMode { call_ret := cast(*SoftBody3D.DisableMode) sys_call("SoftBody3D", "get_disable_mode", 4135042476, SoftBody3D.DisableMode, main); return call_ret.*; }  // 12
 get_collision_exceptions :: (main: *SoftBody3D) -> [] PhysicsBody3D { call_ret := cast(*[] PhysicsBody3D) sys_call("SoftBody3D", "get_collision_exceptions", 2915620761, [] PhysicsBody3D, main); return call_ret.*; }  // 13
-add_collision_exception_with :: (main: *SoftBody3D, body: Node) { sys_call("SoftBody3D", "add_collision_exception_with", 1078189570, Nil, main, body);  }  // 14
-remove_collision_exception_with :: (main: *SoftBody3D, body: Node) { sys_call("SoftBody3D", "remove_collision_exception_with", 1078189570, Nil, main, body);  }  // 15
+add_collision_exception_with :: (main: *SoftBody3D, body: *Node) { sys_call("SoftBody3D", "add_collision_exception_with", 1078189570, Nil, main, body);  }  // 14
+remove_collision_exception_with :: (main: *SoftBody3D, body: *Node) { sys_call("SoftBody3D", "remove_collision_exception_with", 1078189570, Nil, main, body);  }  // 15
 set_simulation_precision :: (main: *SoftBody3D, simulation_precision: int) { sys_call("SoftBody3D", "set_simulation_precision", 1286410249, Nil, main, simulation_precision);  }  // 16
 get_simulation_precision :: (main: *SoftBody3D) -> int { call_ret := cast(*int) sys_call("SoftBody3D", "get_simulation_precision", 2455072627, int, main); return call_ret.*; }  // 17
 set_total_mass :: (main: *SoftBody3D, mass: float) { sys_call("SoftBody3D", "set_total_mass", 373806689, Nil, main, mass);  }  // 18
@@ -21327,7 +21342,7 @@ get_drag_area_control :: (main: *SplitContainer) -> *Control { call_ret := cast(
 get_hit_length :: (main: *SpringArm3D) -> float { call_ret := cast(*float) sys_call("SpringArm3D", "get_hit_length", 191475506, float, main); return call_ret.*; }  // 0
 set_length :: (main: *SpringArm3D, length: float) { sys_call("SpringArm3D", "set_length", 373806689, Nil, main, length);  }  // 1
 get_length :: (main: *SpringArm3D) -> float { call_ret := cast(*float) sys_call("SpringArm3D", "get_length", 1740695150, float, main); return call_ret.*; }  // 2
-set_shape :: (main: *SpringArm3D, shape: Shape3D) { sys_call("SpringArm3D", "set_shape", 1549710052, Nil, main, shape);  }  // 3
+set_shape :: (main: *SpringArm3D, shape: *Shape3D) { sys_call("SpringArm3D", "set_shape", 1549710052, Nil, main, shape);  }  // 3
 get_shape :: (main: *SpringArm3D) -> *Shape3D { call_ret := cast(*Shape3D) sys_call("SpringArm3D", "get_shape", 3214262478, Shape3D, main); return call_ret; }  // 4
 add_excluded_object :: (main: *SpringArm3D, rid: RID) { sys_call("SpringArm3D", "add_excluded_object", 2722037293, Nil, main, rid);  }  // 5
 remove_excluded_object :: (main: *SpringArm3D, rid: RID) -> bool { call_ret := cast(*bool) sys_call("SpringArm3D", "remove_excluded_object", 3521089500, bool, main, rid); return call_ret.*; }  // 6
@@ -21386,19 +21401,19 @@ set_radius :: (main: *SpringBoneSimulator3D, index: int, radius: float) { sys_ca
 get_radius :: (main: *SpringBoneSimulator3D, index: int) -> float { call_ret := cast(*float) sys_call("SpringBoneSimulator3D", "get_radius", 2339986948, float, main, index); return call_ret.*; }  // 23
 set_rotation_axis :: (main: *SpringBoneSimulator3D, index: int, axis: SpringBoneSimulator3D.RotationAxis) { sys_call("SpringBoneSimulator3D", "set_rotation_axis", 3534169209, Nil, main, index, axis);  }  // 24
 get_rotation_axis :: (main: *SpringBoneSimulator3D, index: int) -> SpringBoneSimulator3D.RotationAxis { call_ret := cast(*SpringBoneSimulator3D.RotationAxis) sys_call("SpringBoneSimulator3D", "get_rotation_axis", 748837671, SpringBoneSimulator3D.RotationAxis, main, index); return call_ret.*; }  // 25
-set_radius_damping_curve :: (main: *SpringBoneSimulator3D, index: int, curve: Curve) { sys_call("SpringBoneSimulator3D", "set_radius_damping_curve", 1447180063, Nil, main, index, curve);  }  // 26
+set_radius_damping_curve :: (main: *SpringBoneSimulator3D, index: int, curve: *Curve) { sys_call("SpringBoneSimulator3D", "set_radius_damping_curve", 1447180063, Nil, main, index, curve);  }  // 26
 get_radius_damping_curve :: (main: *SpringBoneSimulator3D, index: int) -> *Curve { call_ret := cast(*Curve) sys_call("SpringBoneSimulator3D", "get_radius_damping_curve", 747537754, Curve, main, index); return call_ret; }  // 27
 set_stiffness :: (main: *SpringBoneSimulator3D, index: int, stiffness: float) { sys_call("SpringBoneSimulator3D", "set_stiffness", 1602489585, Nil, main, index, stiffness);  }  // 28
 get_stiffness :: (main: *SpringBoneSimulator3D, index: int) -> float { call_ret := cast(*float) sys_call("SpringBoneSimulator3D", "get_stiffness", 2339986948, float, main, index); return call_ret.*; }  // 29
-set_stiffness_damping_curve :: (main: *SpringBoneSimulator3D, index: int, curve: Curve) { sys_call("SpringBoneSimulator3D", "set_stiffness_damping_curve", 1447180063, Nil, main, index, curve);  }  // 30
+set_stiffness_damping_curve :: (main: *SpringBoneSimulator3D, index: int, curve: *Curve) { sys_call("SpringBoneSimulator3D", "set_stiffness_damping_curve", 1447180063, Nil, main, index, curve);  }  // 30
 get_stiffness_damping_curve :: (main: *SpringBoneSimulator3D, index: int) -> *Curve { call_ret := cast(*Curve) sys_call("SpringBoneSimulator3D", "get_stiffness_damping_curve", 747537754, Curve, main, index); return call_ret; }  // 31
 set_drag :: (main: *SpringBoneSimulator3D, index: int, drag: float) { sys_call("SpringBoneSimulator3D", "set_drag", 1602489585, Nil, main, index, drag);  }  // 32
 get_drag :: (main: *SpringBoneSimulator3D, index: int) -> float { call_ret := cast(*float) sys_call("SpringBoneSimulator3D", "get_drag", 2339986948, float, main, index); return call_ret.*; }  // 33
-set_drag_damping_curve :: (main: *SpringBoneSimulator3D, index: int, curve: Curve) { sys_call("SpringBoneSimulator3D", "set_drag_damping_curve", 1447180063, Nil, main, index, curve);  }  // 34
+set_drag_damping_curve :: (main: *SpringBoneSimulator3D, index: int, curve: *Curve) { sys_call("SpringBoneSimulator3D", "set_drag_damping_curve", 1447180063, Nil, main, index, curve);  }  // 34
 get_drag_damping_curve :: (main: *SpringBoneSimulator3D, index: int) -> *Curve { call_ret := cast(*Curve) sys_call("SpringBoneSimulator3D", "get_drag_damping_curve", 747537754, Curve, main, index); return call_ret; }  // 35
 set_gravity :: (main: *SpringBoneSimulator3D, index: int, gravity: float) { sys_call("SpringBoneSimulator3D", "set_gravity", 1602489585, Nil, main, index, gravity);  }  // 36
 get_gravity :: (main: *SpringBoneSimulator3D, index: int) -> float { call_ret := cast(*float) sys_call("SpringBoneSimulator3D", "get_gravity", 2339986948, float, main, index); return call_ret.*; }  // 37
-set_gravity_damping_curve :: (main: *SpringBoneSimulator3D, index: int, curve: Curve) { sys_call("SpringBoneSimulator3D", "set_gravity_damping_curve", 1447180063, Nil, main, index, curve);  }  // 38
+set_gravity_damping_curve :: (main: *SpringBoneSimulator3D, index: int, curve: *Curve) { sys_call("SpringBoneSimulator3D", "set_gravity_damping_curve", 1447180063, Nil, main, index, curve);  }  // 38
 get_gravity_damping_curve :: (main: *SpringBoneSimulator3D, index: int) -> *Curve { call_ret := cast(*Curve) sys_call("SpringBoneSimulator3D", "get_gravity_damping_curve", 747537754, Curve, main, index); return call_ret; }  // 39
 set_gravity_direction :: (main: *SpringBoneSimulator3D, index: int, gravity_direction: Vector3) { sys_call("SpringBoneSimulator3D", "set_gravity_direction", 1530502735, Nil, main, index, gravity_direction);  }  // 40
 get_gravity_direction :: (main: *SpringBoneSimulator3D, index: int) -> Vector3 { call_ret := cast(*Vector3) sys_call("SpringBoneSimulator3D", "get_gravity_direction", 711720468, Vector3, main, index); return call_ret.*; }  // 41
@@ -21436,7 +21451,7 @@ get_collision_count :: (main: *SpringBoneSimulator3D, index: int) -> int { call_
 clear_collisions :: (main: *SpringBoneSimulator3D, index: int) { sys_call("SpringBoneSimulator3D", "clear_collisions", 1286410249, Nil, main, index);  }  // 73
 reset :: (main: *SpringBoneSimulator3D) { sys_call("SpringBoneSimulator3D", "reset", 3218959716, Nil, main);  }  // 74
 
-set_texture :: (main: *Sprite2D, texture: Texture2D) { sys_call("Sprite2D", "set_texture", 4051416890, Nil, main, texture);  }  // 0
+set_texture :: (main: *Sprite2D, texture: *Texture2D) { sys_call("Sprite2D", "set_texture", 4051416890, Nil, main, texture);  }  // 0
 get_texture :: (main: *Sprite2D) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("Sprite2D", "get_texture", 3635182373, Texture2D, main); return call_ret; }  // 1
 set_centered :: (main: *Sprite2D, centered: bool) { sys_call("Sprite2D", "set_centered", 2586408642, Nil, main, centered);  }  // 2
 is_centered :: (main: *Sprite2D) -> bool { call_ret := cast(*bool) sys_call("Sprite2D", "is_centered", 36873697, bool, main); return call_ret.*; }  // 3
@@ -21463,7 +21478,7 @@ set_hframes :: (main: *Sprite2D, hframes: int) { sys_call("Sprite2D", "set_hfram
 get_hframes :: (main: *Sprite2D) -> int { call_ret := cast(*int) sys_call("Sprite2D", "get_hframes", 3905245786, int, main); return call_ret.*; }  // 24
 get_rect :: (main: *Sprite2D) -> Rect2 { call_ret := cast(*Rect2) sys_call("Sprite2D", "get_rect", 1639390495, Rect2, main); return call_ret.*; }  // 25
 
-set_texture :: (main: *Sprite3D, texture: Texture2D) { sys_call("Sprite3D", "set_texture", 4051416890, Nil, main, texture);  }  // 0
+set_texture :: (main: *Sprite3D, texture: *Texture2D) { sys_call("Sprite3D", "set_texture", 4051416890, Nil, main, texture);  }  // 0
 get_texture :: (main: *Sprite3D) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("Sprite3D", "get_texture", 3635182373, Texture2D, main); return call_ret; }  // 1
 set_region_enabled :: (main: *Sprite3D, enabled: bool) { sys_call("Sprite3D", "set_region_enabled", 2586408642, Nil, main, enabled);  }  // 2
 is_region_enabled :: (main: *Sprite3D) -> bool { call_ret := cast(*bool) sys_call("Sprite3D", "is_region_enabled", 36873697, bool, main); return call_ret.*; }  // 3
@@ -21523,8 +21538,8 @@ set_animation_speed :: (main: *SpriteFrames, anim: string, fps: float) { sys_cal
 get_animation_speed :: (main: *SpriteFrames, anim: string) -> float { call_ret := cast(*float) sys_call("SpriteFrames", "get_animation_speed", 2349060816, float, main, anim); return call_ret.*; }  // 7
 set_animation_loop :: (main: *SpriteFrames, anim: string, loop: bool) { sys_call("SpriteFrames", "set_animation_loop", 2524380260, Nil, main, anim, loop);  }  // 8
 get_animation_loop :: (main: *SpriteFrames, anim: string) -> bool { call_ret := cast(*bool) sys_call("SpriteFrames", "get_animation_loop", 2619796661, bool, main, anim); return call_ret.*; }  // 9
-add_frame :: (main: *SpriteFrames, anim: string, texture: Texture2D) { sys_call("SpriteFrames", "add_frame", 1351332740, Nil, main, anim, texture);  }  // 10
-set_frame :: (main: *SpriteFrames, anim: string, idx: int, texture: Texture2D) { sys_call("SpriteFrames", "set_frame", 56804795, Nil, main, anim, idx, texture);  }  // 11
+add_frame :: (main: *SpriteFrames, anim: string, texture: *Texture2D) { sys_call("SpriteFrames", "add_frame", 1351332740, Nil, main, anim, texture);  }  // 10
+set_frame :: (main: *SpriteFrames, anim: string, idx: int, texture: *Texture2D) { sys_call("SpriteFrames", "set_frame", 56804795, Nil, main, anim, idx, texture);  }  // 11
 remove_frame :: (main: *SpriteFrames, anim: string, idx: int) { sys_call("SpriteFrames", "remove_frame", 2415702435, Nil, main, anim, idx);  }  // 12
 get_frame_count :: (main: *SpriteFrames, anim: string) -> int { call_ret := cast(*int) sys_call("SpriteFrames", "get_frame_count", 2458036349, int, main, anim); return call_ret.*; }  // 13
 get_frame_texture :: (main: *SpriteFrames, anim: string, idx: int) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("SpriteFrames", "get_frame_texture", 2900517879, Texture2D, main, anim, idx); return call_ret; }  // 14
@@ -21537,19 +21552,19 @@ set_constant_linear_velocity :: (main: *StaticBody2D, vel: Vector2) { sys_call("
 set_constant_angular_velocity :: (main: *StaticBody2D, vel: float) { sys_call("StaticBody2D", "set_constant_angular_velocity", 373806689, Nil, main, vel);  }  // 1
 get_constant_linear_velocity :: (main: *StaticBody2D) -> Vector2 { call_ret := cast(*Vector2) sys_call("StaticBody2D", "get_constant_linear_velocity", 3341600327, Vector2, main); return call_ret.*; }  // 2
 get_constant_angular_velocity :: (main: *StaticBody2D) -> float { call_ret := cast(*float) sys_call("StaticBody2D", "get_constant_angular_velocity", 1740695150, float, main); return call_ret.*; }  // 3
-set_physics_material_override :: (main: *StaticBody2D, physics_material_override: PhysicsMaterial) { sys_call("StaticBody2D", "set_physics_material_override", 1784508650, Nil, main, physics_material_override);  }  // 4
+set_physics_material_override :: (main: *StaticBody2D, physics_material_override: *PhysicsMaterial) { sys_call("StaticBody2D", "set_physics_material_override", 1784508650, Nil, main, physics_material_override);  }  // 4
 get_physics_material_override :: (main: *StaticBody2D) -> *PhysicsMaterial { call_ret := cast(*PhysicsMaterial) sys_call("StaticBody2D", "get_physics_material_override", 2521850424, PhysicsMaterial, main); return call_ret; }  // 5
 
 set_constant_linear_velocity :: (main: *StaticBody3D, vel: Vector3) { sys_call("StaticBody3D", "set_constant_linear_velocity", 3460891852, Nil, main, vel);  }  // 0
 set_constant_angular_velocity :: (main: *StaticBody3D, vel: Vector3) { sys_call("StaticBody3D", "set_constant_angular_velocity", 3460891852, Nil, main, vel);  }  // 1
 get_constant_linear_velocity :: (main: *StaticBody3D) -> Vector3 { call_ret := cast(*Vector3) sys_call("StaticBody3D", "get_constant_linear_velocity", 3360562783, Vector3, main); return call_ret.*; }  // 2
 get_constant_angular_velocity :: (main: *StaticBody3D) -> Vector3 { call_ret := cast(*Vector3) sys_call("StaticBody3D", "get_constant_angular_velocity", 3360562783, Vector3, main); return call_ret.*; }  // 3
-set_physics_material_override :: (main: *StaticBody3D, physics_material_override: PhysicsMaterial) { sys_call("StaticBody3D", "set_physics_material_override", 1784508650, Nil, main, physics_material_override);  }  // 4
+set_physics_material_override :: (main: *StaticBody3D, physics_material_override: *PhysicsMaterial) { sys_call("StaticBody3D", "set_physics_material_override", 1784508650, Nil, main, physics_material_override);  }  // 4
 get_physics_material_override :: (main: *StaticBody3D) -> *PhysicsMaterial { call_ret := cast(*PhysicsMaterial) sys_call("StaticBody3D", "get_physics_material_override", 2521850424, PhysicsMaterial, main); return call_ret; }  // 5
 
 set_tooltip :: (main: *StatusIndicator, tooltip: string) { sys_call("StatusIndicator", "set_tooltip", 83702148, Nil, main, tooltip);  }  // 0
 get_tooltip :: (main: *StatusIndicator) -> gstring { call_ret := cast(*gstring) sys_call("StatusIndicator", "get_tooltip", 201670096, gstring, main); return call_ret.*; }  // 1
-set_icon :: (main: *StatusIndicator, texture: Texture2D) { sys_call("StatusIndicator", "set_icon", 4051416890, Nil, main, texture);  }  // 2
+set_icon :: (main: *StatusIndicator, texture: *Texture2D) { sys_call("StatusIndicator", "set_icon", 4051416890, Nil, main, texture);  }  // 2
 get_icon :: (main: *StatusIndicator) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("StatusIndicator", "get_icon", 3635182373, Texture2D, main); return call_ret; }  // 3
 set_visible :: (main: *StatusIndicator, visible: bool) { sys_call("StatusIndicator", "set_visible", 2586408642, Nil, main, visible);  }  // 4
 is_visible :: (main: *StatusIndicator) -> bool { call_ret := cast(*bool) sys_call("StatusIndicator", "is_visible", 36873697, bool, main); return call_ret.*; }  // 5
@@ -21619,8 +21634,8 @@ disconnect_from_host :: (main: *StreamPeerTCP) { sys_call("StreamPeerTCP", "disc
 set_no_delay :: (main: *StreamPeerTCP, enabled: bool) { sys_call("StreamPeerTCP", "set_no_delay", 2586408642, Nil, main, enabled);  }  // 8
 
 poll :: (main: *StreamPeerTLS) { sys_call("StreamPeerTLS", "poll", 3218959716, Nil, main);  }  // 0
-accept_stream :: (main: *StreamPeerTLS, stream: StreamPeer, server_options: TLSOptions) -> Error { call_ret := cast(*Error) sys_call("StreamPeerTLS", "accept_stream", 4292689651, Error, main, stream, server_options); return call_ret.*; }  // 1
-connect_to_stream :: (main: *StreamPeerTLS, stream: StreamPeer, common_name: string) -> Error { call_ret := cast(*Error) sys_call("StreamPeerTLS", "connect_to_stream", 57169517, Error, main, stream, common_name); return call_ret.*; }  // 2
+accept_stream :: (main: *StreamPeerTLS, stream: *StreamPeer, server_options: *TLSOptions) -> Error { call_ret := cast(*Error) sys_call("StreamPeerTLS", "accept_stream", 4292689651, Error, main, stream, server_options); return call_ret.*; }  // 1
+connect_to_stream :: (main: *StreamPeerTLS, stream: *StreamPeer, common_name: string) -> Error { call_ret := cast(*Error) sys_call("StreamPeerTLS", "connect_to_stream", 57169517, Error, main, stream, common_name); return call_ret.*; }  // 2
 get_status :: (main: *StreamPeerTLS) -> StreamPeerTLS.Status { call_ret := cast(*StreamPeerTLS.Status) sys_call("StreamPeerTLS", "get_status", 1128380576, StreamPeerTLS.Status, main); return call_ret.*; }  // 3
 get_stream :: (main: *StreamPeerTLS) -> *StreamPeer { call_ret := cast(*StreamPeer) sys_call("StreamPeerTLS", "get_stream", 2741655269, StreamPeer, main); return call_ret; }  // 4
 disconnect_from_stream :: (main: *StreamPeerTLS) { sys_call("StreamPeerTLS", "disconnect_from_stream", 3218959716, Nil, main);  }  // 5
@@ -21680,7 +21695,7 @@ get_grow_end :: (main: *StyleBoxLine) -> float { call_ret := cast(*float) sys_ca
 set_vertical :: (main: *StyleBoxLine, vertical: bool) { sys_call("StyleBoxLine", "set_vertical", 2586408642, Nil, main, vertical);  }  // 8
 is_vertical :: (main: *StyleBoxLine) -> bool { call_ret := cast(*bool) sys_call("StyleBoxLine", "is_vertical", 36873697, bool, main); return call_ret.*; }  // 9
 
-set_texture :: (main: *StyleBoxTexture, texture: Texture2D) { sys_call("StyleBoxTexture", "set_texture", 4051416890, Nil, main, texture);  }  // 0
+set_texture :: (main: *StyleBoxTexture, texture: *Texture2D) { sys_call("StyleBoxTexture", "set_texture", 4051416890, Nil, main, texture);  }  // 0
 get_texture :: (main: *StyleBoxTexture) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("StyleBoxTexture", "get_texture", 3635182373, Texture2D, main); return call_ret; }  // 1
 set_texture_margin :: (main: *StyleBoxTexture, margin: Side, size: float) { sys_call("StyleBoxTexture", "set_texture_margin", 4290182280, Nil, main, margin, size);  }  // 2
 set_texture_margin_all :: (main: *StyleBoxTexture, size: float) { sys_call("StyleBoxTexture", "set_texture_margin_all", 373806689, Nil, main, size);  }  // 3
@@ -21743,13 +21758,13 @@ generate_tangents :: (main: *SurfaceTool) { sys_call("SurfaceTool", "generate_ta
 optimize_indices_for_cache :: (main: *SurfaceTool) { sys_call("SurfaceTool", "optimize_indices_for_cache", 3218959716, Nil, main);  }  // 21
 get_aabb :: (main: *SurfaceTool) -> AABB { call_ret := cast(*AABB) sys_call("SurfaceTool", "get_aabb", 1068685055, AABB, main); return call_ret.*; }  // 22
 generate_lod :: (main: *SurfaceTool, nd_threshold: float) -> PackedInt32Array { call_ret := cast(*PackedInt32Array) sys_call("SurfaceTool", "generate_lod", 1938056459, PackedInt32Array, main, nd_threshold); return call_ret.*; }  // 23
-set_material :: (main: *SurfaceTool, material: Material) { sys_call("SurfaceTool", "set_material", 2757459619, Nil, main, material);  }  // 24
+set_material :: (main: *SurfaceTool, material: *Material) { sys_call("SurfaceTool", "set_material", 2757459619, Nil, main, material);  }  // 24
 get_primitive_type :: (main: *SurfaceTool) -> Mesh.PrimitiveType { call_ret := cast(*Mesh.PrimitiveType) sys_call("SurfaceTool", "get_primitive_type", 768822145, Mesh.PrimitiveType, main); return call_ret.*; }  // 25
 clear :: (main: *SurfaceTool) { sys_call("SurfaceTool", "clear", 3218959716, Nil, main);  }  // 26
-create_from :: (main: *SurfaceTool, existing: Mesh, surface: int) { sys_call("SurfaceTool", "create_from", 1767024570, Nil, main, existing, surface);  }  // 27
+create_from :: (main: *SurfaceTool, existing: *Mesh, surface: int) { sys_call("SurfaceTool", "create_from", 1767024570, Nil, main, existing, surface);  }  // 27
 create_from_arrays :: (main: *SurfaceTool, arrays: Array) { sys_call("SurfaceTool", "create_from_arrays", 1894639680, Nil, main, arrays);  }  // 28
-create_from_blend_shape :: (main: *SurfaceTool, existing: Mesh, surface: int, blend_shape: string) { sys_call("SurfaceTool", "create_from_blend_shape", 1306185582, Nil, main, existing, surface, blend_shape);  }  // 29
-append_from :: (main: *SurfaceTool, existing: Mesh, surface: int, transform: Transform3D) { sys_call("SurfaceTool", "append_from", 2217967155, Nil, main, existing, surface, transform);  }  // 30
+create_from_blend_shape :: (main: *SurfaceTool, existing: *Mesh, surface: int, blend_shape: string) { sys_call("SurfaceTool", "create_from_blend_shape", 1306185582, Nil, main, existing, surface, blend_shape);  }  // 29
+append_from :: (main: *SurfaceTool, existing: *Mesh, surface: int, transform: Transform3D) { sys_call("SurfaceTool", "append_from", 2217967155, Nil, main, existing, surface, transform);  }  // 30
 commit :: (main: *SurfaceTool) -> *ArrayMesh { call_ret := cast(*ArrayMesh) sys_call("SurfaceTool", "commit", 4107864055, ArrayMesh, main); return call_ret; }  // 31
 commit_to_arrays :: (main: *SurfaceTool) -> Array { call_ret := cast(*Array) sys_call("SurfaceTool", "commit_to_arrays", 2915620761, Array, main); return call_ret.*; }  // 32
 
@@ -21798,7 +21813,7 @@ stop :: (main: *TCPServer) { sys_call("TCPServer", "stop", 3218959716, Nil, main
 
 client :: (main: *TLSOptions) -> *TLSOptions { call_ret := cast(*TLSOptions) sys_call("TLSOptions", "client", 3565000357, TLSOptions, main); return call_ret; }  // 0
 client_unsafe :: (main: *TLSOptions) -> *TLSOptions { call_ret := cast(*TLSOptions) sys_call("TLSOptions", "client_unsafe", 2090251749, TLSOptions, main); return call_ret; }  // 1
-server :: (main: *TLSOptions, key: CryptoKey, certificate: X509Certificate) -> *TLSOptions { call_ret := cast(*TLSOptions) sys_call("TLSOptions", "server", 36969539, TLSOptions, main, key, certificate); return call_ret; }  // 2
+server :: (main: *TLSOptions, key: *CryptoKey, certificate: *X509Certificate) -> *TLSOptions { call_ret := cast(*TLSOptions) sys_call("TLSOptions", "server", 36969539, TLSOptions, main, key, certificate); return call_ret; }  // 2
 is_server :: (main: *TLSOptions) -> bool { call_ret := cast(*bool) sys_call("TLSOptions", "is_server", 36873697, bool, main); return call_ret.*; }  // 3
 is_unsafe_client :: (main: *TLSOptions) -> bool { call_ret := cast(*bool) sys_call("TLSOptions", "is_unsafe_client", 36873697, bool, main); return call_ret.*; }  // 4
 get_common_name_override :: (main: *TLSOptions) -> gstring { call_ret := cast(*gstring) sys_call("TLSOptions", "get_common_name_override", 201670096, gstring, main); return call_ret.*; }  // 5
@@ -21821,11 +21836,11 @@ set_tab_text_direction :: (main: *TabBar, tab_idx: int, direction: Control.TextD
 get_tab_text_direction :: (main: *TabBar, tab_idx: int) -> Control.TextDirection { call_ret := cast(*Control.TextDirection) sys_call("TabBar", "get_tab_text_direction", 4235602388, Control.TextDirection, main, tab_idx); return call_ret.*; }  // 12
 set_tab_language :: (main: *TabBar, tab_idx: int, language: string) { sys_call("TabBar", "set_tab_language", 501894301, Nil, main, tab_idx, language);  }  // 13
 get_tab_language :: (main: *TabBar, tab_idx: int) -> gstring { call_ret := cast(*gstring) sys_call("TabBar", "get_tab_language", 844755477, gstring, main, tab_idx); return call_ret.*; }  // 14
-set_tab_icon :: (main: *TabBar, tab_idx: int, icon: Texture2D) { sys_call("TabBar", "set_tab_icon", 666127730, Nil, main, tab_idx, icon);  }  // 15
+set_tab_icon :: (main: *TabBar, tab_idx: int, icon: *Texture2D) { sys_call("TabBar", "set_tab_icon", 666127730, Nil, main, tab_idx, icon);  }  // 15
 get_tab_icon :: (main: *TabBar, tab_idx: int) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("TabBar", "get_tab_icon", 3536238170, Texture2D, main, tab_idx); return call_ret; }  // 16
 set_tab_icon_max_width :: (main: *TabBar, tab_idx: int, width: int) { sys_call("TabBar", "set_tab_icon_max_width", 3937882851, Nil, main, tab_idx, width);  }  // 17
 get_tab_icon_max_width :: (main: *TabBar, tab_idx: int) -> int { call_ret := cast(*int) sys_call("TabBar", "get_tab_icon_max_width", 923996154, int, main, tab_idx); return call_ret.*; }  // 18
-set_tab_button_icon :: (main: *TabBar, tab_idx: int, icon: Texture2D) { sys_call("TabBar", "set_tab_button_icon", 666127730, Nil, main, tab_idx, icon);  }  // 19
+set_tab_button_icon :: (main: *TabBar, tab_idx: int, icon: *Texture2D) { sys_call("TabBar", "set_tab_button_icon", 666127730, Nil, main, tab_idx, icon);  }  // 19
 get_tab_button_icon :: (main: *TabBar, tab_idx: int) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("TabBar", "get_tab_button_icon", 3536238170, Texture2D, main, tab_idx); return call_ret; }  // 20
 set_tab_disabled :: (main: *TabBar, tab_idx: int, disabled: bool) { sys_call("TabBar", "set_tab_disabled", 300928843, Nil, main, tab_idx, disabled);  }  // 21
 is_tab_disabled :: (main: *TabBar, tab_idx: int) -> bool { call_ret := cast(*bool) sys_call("TabBar", "is_tab_disabled", 1116898809, bool, main, tab_idx); return call_ret.*; }  // 22
@@ -21886,7 +21901,7 @@ set_tab_title :: (main: *TabContainer, tab_idx: int, title: string) { sys_call("
 get_tab_title :: (main: *TabContainer, tab_idx: int) -> gstring { call_ret := cast(*gstring) sys_call("TabContainer", "get_tab_title", 844755477, gstring, main, tab_idx); return call_ret.*; }  // 20
 set_tab_tooltip :: (main: *TabContainer, tab_idx: int, tooltip: string) { sys_call("TabContainer", "set_tab_tooltip", 501894301, Nil, main, tab_idx, tooltip);  }  // 21
 get_tab_tooltip :: (main: *TabContainer, tab_idx: int) -> gstring { call_ret := cast(*gstring) sys_call("TabContainer", "get_tab_tooltip", 844755477, gstring, main, tab_idx); return call_ret.*; }  // 22
-set_tab_icon :: (main: *TabContainer, tab_idx: int, icon: Texture2D) { sys_call("TabContainer", "set_tab_icon", 666127730, Nil, main, tab_idx, icon);  }  // 23
+set_tab_icon :: (main: *TabContainer, tab_idx: int, icon: *Texture2D) { sys_call("TabContainer", "set_tab_icon", 666127730, Nil, main, tab_idx, icon);  }  // 23
 get_tab_icon :: (main: *TabContainer, tab_idx: int) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("TabContainer", "get_tab_icon", 3536238170, Texture2D, main, tab_idx); return call_ret; }  // 24
 set_tab_icon_max_width :: (main: *TabContainer, tab_idx: int, width: int) { sys_call("TabContainer", "set_tab_icon_max_width", 3937882851, Nil, main, tab_idx, width);  }  // 25
 get_tab_icon_max_width :: (main: *TabContainer, tab_idx: int) -> int { call_ret := cast(*int) sys_call("TabContainer", "get_tab_icon_max_width", 923996154, int, main, tab_idx); return call_ret.*; }  // 26
@@ -21896,11 +21911,11 @@ set_tab_hidden :: (main: *TabContainer, tab_idx: int, hidden: bool) { sys_call("
 is_tab_hidden :: (main: *TabContainer, tab_idx: int) -> bool { call_ret := cast(*bool) sys_call("TabContainer", "is_tab_hidden", 1116898809, bool, main, tab_idx); return call_ret.*; }  // 30
 set_tab_metadata :: (main: *TabContainer, tab_idx: int, metadata: Variant) { sys_call("TabContainer", "set_tab_metadata", 2152698145, Nil, main, tab_idx, metadata);  }  // 31
 get_tab_metadata :: (main: *TabContainer, tab_idx: int) -> Variant { call_ret := cast(*Variant) sys_call("TabContainer", "get_tab_metadata", 4227898402, Variant, main, tab_idx); return call_ret.*; }  // 32
-set_tab_button_icon :: (main: *TabContainer, tab_idx: int, icon: Texture2D) { sys_call("TabContainer", "set_tab_button_icon", 666127730, Nil, main, tab_idx, icon);  }  // 33
+set_tab_button_icon :: (main: *TabContainer, tab_idx: int, icon: *Texture2D) { sys_call("TabContainer", "set_tab_button_icon", 666127730, Nil, main, tab_idx, icon);  }  // 33
 get_tab_button_icon :: (main: *TabContainer, tab_idx: int) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("TabContainer", "get_tab_button_icon", 3536238170, Texture2D, main, tab_idx); return call_ret; }  // 34
 get_tab_idx_at_point :: (main: *TabContainer, point: Vector2) -> int { call_ret := cast(*int) sys_call("TabContainer", "get_tab_idx_at_point", 3820158470, int, main, point); return call_ret.*; }  // 35
-get_tab_idx_from_control :: (main: *TabContainer, control: Control) -> int { call_ret := cast(*int) sys_call("TabContainer", "get_tab_idx_from_control", 2787397975, int, main, control); return call_ret.*; }  // 36
-set_popup :: (main: *TabContainer, popup: Node) { sys_call("TabContainer", "set_popup", 1078189570, Nil, main, popup);  }  // 37
+get_tab_idx_from_control :: (main: *TabContainer, control: *Control) -> int { call_ret := cast(*int) sys_call("TabContainer", "get_tab_idx_from_control", 2787397975, int, main, control); return call_ret.*; }  // 36
+set_popup :: (main: *TabContainer, popup: *Node) { sys_call("TabContainer", "set_popup", 1078189570, Nil, main, popup);  }  // 37
 get_popup :: (main: *TabContainer) -> *Popup { call_ret := cast(*Popup) sys_call("TabContainer", "get_popup", 111095082, Popup, main); return call_ret; }  // 38
 set_drag_to_rearrange_enabled :: (main: *TabContainer, enabled: bool) { sys_call("TabContainer", "set_drag_to_rearrange_enabled", 2586408642, Nil, main, enabled);  }  // 39
 get_drag_to_rearrange_enabled :: (main: *TabContainer) -> bool { call_ret := cast(*bool) sys_call("TabContainer", "get_drag_to_rearrange_enabled", 36873697, bool, main); return call_ret.*; }  // 40
@@ -22126,7 +22141,7 @@ set_line_gutter_metadata :: (main: *TextEdit, line: int, gutter: int, metadata: 
 get_line_gutter_metadata :: (main: *TextEdit, line: int, gutter: int) -> Variant { call_ret := cast(*Variant) sys_call("TextEdit", "get_line_gutter_metadata", 678354945, Variant, main, line, gutter); return call_ret.*; }  // 216
 set_line_gutter_text :: (main: *TextEdit, line: int, gutter: int, text: string) { sys_call("TextEdit", "set_line_gutter_text", 2285447957, Nil, main, line, gutter, text);  }  // 217
 get_line_gutter_text :: (main: *TextEdit, line: int, gutter: int) -> gstring { call_ret := cast(*gstring) sys_call("TextEdit", "get_line_gutter_text", 1391810591, gstring, main, line, gutter); return call_ret.*; }  // 218
-set_line_gutter_icon :: (main: *TextEdit, line: int, gutter: int, icon: Texture2D) { sys_call("TextEdit", "set_line_gutter_icon", 176101966, Nil, main, line, gutter, icon);  }  // 219
+set_line_gutter_icon :: (main: *TextEdit, line: int, gutter: int, icon: *Texture2D) { sys_call("TextEdit", "set_line_gutter_icon", 176101966, Nil, main, line, gutter, icon);  }  // 219
 get_line_gutter_icon :: (main: *TextEdit, line: int, gutter: int) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("TextEdit", "get_line_gutter_icon", 2584904275, Texture2D, main, line, gutter); return call_ret; }  // 220
 set_line_gutter_item_color :: (main: *TextEdit, line: int, gutter: int, color: Color) { sys_call("TextEdit", "set_line_gutter_item_color", 3733378741, Nil, main, line, gutter, color);  }  // 221
 get_line_gutter_item_color :: (main: *TextEdit, line: int, gutter: int) -> Color { call_ret := cast(*Color) sys_call("TextEdit", "get_line_gutter_item_color", 2165839948, Color, main, line, gutter); return call_ret.*; }  // 222
@@ -22134,7 +22149,7 @@ set_line_gutter_clickable :: (main: *TextEdit, line: int, gutter: int, clickable
 is_line_gutter_clickable :: (main: *TextEdit, line: int, gutter: int) -> bool { call_ret := cast(*bool) sys_call("TextEdit", "is_line_gutter_clickable", 2522259332, bool, main, line, gutter); return call_ret.*; }  // 224
 set_line_background_color :: (main: *TextEdit, line: int, color: Color) { sys_call("TextEdit", "set_line_background_color", 2878471219, Nil, main, line, color);  }  // 225
 get_line_background_color :: (main: *TextEdit, line: int) -> Color { call_ret := cast(*Color) sys_call("TextEdit", "get_line_background_color", 3457211756, Color, main, line); return call_ret.*; }  // 226
-set_syntax_highlighter :: (main: *TextEdit, syntax_highlighter: SyntaxHighlighter) { sys_call("TextEdit", "set_syntax_highlighter", 2765644541, Nil, main, syntax_highlighter);  }  // 227
+set_syntax_highlighter :: (main: *TextEdit, syntax_highlighter: *SyntaxHighlighter) { sys_call("TextEdit", "set_syntax_highlighter", 2765644541, Nil, main, syntax_highlighter);  }  // 227
 get_syntax_highlighter :: (main: *TextEdit) -> *SyntaxHighlighter { call_ret := cast(*SyntaxHighlighter) sys_call("TextEdit", "get_syntax_highlighter", 2721131626, SyntaxHighlighter, main); return call_ret; }  // 228
 set_highlight_current_line :: (main: *TextEdit, enabled: bool) { sys_call("TextEdit", "set_highlight_current_line", 2586408642, Nil, main, enabled);  }  // 229
 is_highlight_current_line_enabled :: (main: *TextEdit) -> bool { call_ret := cast(*bool) sys_call("TextEdit", "is_highlight_current_line_enabled", 36873697, bool, main); return call_ret.*; }  // 230
@@ -22164,7 +22179,7 @@ get_preserve_invalid :: (main: *TextLine) -> bool { call_ret := cast(*bool) sys_
 set_preserve_control :: (main: *TextLine, enabled: bool) { sys_call("TextLine", "set_preserve_control", 2586408642, Nil, main, enabled);  }  // 7
 get_preserve_control :: (main: *TextLine) -> bool { call_ret := cast(*bool) sys_call("TextLine", "get_preserve_control", 36873697, bool, main); return call_ret.*; }  // 8
 set_bidi_override :: (main: *TextLine, override: Array) { sys_call("TextLine", "set_bidi_override", 381264803, Nil, main, override);  }  // 9
-add_string :: (main: *TextLine, text: string, font: Font, font_size: int) -> bool { call_ret := cast(*bool) sys_call("TextLine", "add_string", 621426851, bool, main, text, font, font_size); return call_ret.*; }  // 10
+add_string :: (main: *TextLine, text: string, font: *Font, font_size: int) -> bool { call_ret := cast(*bool) sys_call("TextLine", "add_string", 621426851, bool, main, text, font, font_size); return call_ret.*; }  // 10
 add_object :: (main: *TextLine, key: Variant, size: Vector2) -> bool { call_ret := cast(*bool) sys_call("TextLine", "add_object", 1316529304, bool, main, key, size); return call_ret.*; }  // 11
 resize_object :: (main: *TextLine, key: Variant, size: Vector2) -> bool { call_ret := cast(*bool) sys_call("TextLine", "resize_object", 2095776372, bool, main, key, size); return call_ret.*; }  // 12
 set_width :: (main: *TextLine, width: float) { sys_call("TextLine", "set_width", 373806689, Nil, main, width);  }  // 13
@@ -22197,7 +22212,7 @@ set_vertical_alignment :: (main: *TextMesh, alignment: VerticalAlignment) { sys_
 get_vertical_alignment :: (main: *TextMesh) -> VerticalAlignment { call_ret := cast(*VerticalAlignment) sys_call("TextMesh", "get_vertical_alignment", 3274884059, VerticalAlignment, main); return call_ret.*; }  // 3
 set_text :: (main: *TextMesh, text: string) { sys_call("TextMesh", "set_text", 83702148, Nil, main, text);  }  // 4
 get_text :: (main: *TextMesh) -> gstring { call_ret := cast(*gstring) sys_call("TextMesh", "get_text", 201670096, gstring, main); return call_ret.*; }  // 5
-set_font :: (main: *TextMesh, font: Font) { sys_call("TextMesh", "set_font", 1262170328, Nil, main, font);  }  // 6
+set_font :: (main: *TextMesh, font: *Font) { sys_call("TextMesh", "set_font", 1262170328, Nil, main, font);  }  // 6
 get_font :: (main: *TextMesh) -> *Font { call_ret := cast(*Font) sys_call("TextMesh", "get_font", 3229501585, Font, main); return call_ret; }  // 7
 set_font_size :: (main: *TextMesh, font_size: int) { sys_call("TextMesh", "set_font_size", 1286410249, Nil, main, font_size);  }  // 8
 get_font_size :: (main: *TextMesh) -> int { call_ret := cast(*int) sys_call("TextMesh", "get_font_size", 3905245786, int, main); return call_ret.*; }  // 9
@@ -22240,9 +22255,9 @@ get_preserve_invalid :: (main: *TextParagraph) -> bool { call_ret := cast(*bool)
 set_preserve_control :: (main: *TextParagraph, enabled: bool) { sys_call("TextParagraph", "set_preserve_control", 2586408642, Nil, main, enabled);  }  // 9
 get_preserve_control :: (main: *TextParagraph) -> bool { call_ret := cast(*bool) sys_call("TextParagraph", "get_preserve_control", 36873697, bool, main); return call_ret.*; }  // 10
 set_bidi_override :: (main: *TextParagraph, override: Array) { sys_call("TextParagraph", "set_bidi_override", 381264803, Nil, main, override);  }  // 11
-set_dropcap :: (main: *TextParagraph, text: string, font: Font, font_size: int) -> bool { call_ret := cast(*bool) sys_call("TextParagraph", "set_dropcap", 2498990330, bool, main, text, font, font_size); return call_ret.*; }  // 12
+set_dropcap :: (main: *TextParagraph, text: string, font: *Font, font_size: int) -> bool { call_ret := cast(*bool) sys_call("TextParagraph", "set_dropcap", 2498990330, bool, main, text, font, font_size); return call_ret.*; }  // 12
 clear_dropcap :: (main: *TextParagraph) { sys_call("TextParagraph", "clear_dropcap", 3218959716, Nil, main);  }  // 13
-add_string :: (main: *TextParagraph, text: string, font: Font, font_size: int) -> bool { call_ret := cast(*bool) sys_call("TextParagraph", "add_string", 621426851, bool, main, text, font, font_size); return call_ret.*; }  // 14
+add_string :: (main: *TextParagraph, text: string, font: *Font, font_size: int) -> bool { call_ret := cast(*bool) sys_call("TextParagraph", "add_string", 621426851, bool, main, text, font, font_size); return call_ret.*; }  // 14
 add_object :: (main: *TextParagraph, key: Variant, size: Vector2) -> bool { call_ret := cast(*bool) sys_call("TextParagraph", "add_object", 1316529304, bool, main, key, size); return call_ret.*; }  // 15
 resize_object :: (main: *TextParagraph, key: Variant, size: Vector2) -> bool { call_ret := cast(*bool) sys_call("TextParagraph", "resize_object", 2095776372, bool, main, key, size); return call_ret.*; }  // 16
 set_alignment :: (main: *TextParagraph, alignment: HorizontalAlignment) { sys_call("TextParagraph", "set_alignment", 2312603777, Nil, main, alignment);  }  // 17
@@ -22371,7 +22386,7 @@ font_get_scale :: (main: *TextServer, font_rid: RID, size: int) -> float { call_
 font_get_texture_count :: (main: *TextServer, font_rid: RID, size: Vector2i) -> int { call_ret := cast(*int) sys_call("TextServer", "font_get_texture_count", 1311001310, int, main, font_rid, size); return call_ret.*; }  // 81
 font_clear_textures :: (main: *TextServer, font_rid: RID, size: Vector2i) { sys_call("TextServer", "font_clear_textures", 2450610377, Nil, main, font_rid, size);  }  // 82
 font_remove_texture :: (main: *TextServer, font_rid: RID, size: Vector2i, texture_index: int) { sys_call("TextServer", "font_remove_texture", 3810512262, Nil, main, font_rid, size, texture_index);  }  // 83
-font_set_texture_image :: (main: *TextServer, font_rid: RID, size: Vector2i, texture_index: int, image: Image) { sys_call("TextServer", "font_set_texture_image", 2354485091, Nil, main, font_rid, size, texture_index, image);  }  // 84
+font_set_texture_image :: (main: *TextServer, font_rid: RID, size: Vector2i, texture_index: int, image: *Image) { sys_call("TextServer", "font_set_texture_image", 2354485091, Nil, main, font_rid, size, texture_index, image);  }  // 84
 font_get_texture_image :: (main: *TextServer, font_rid: RID, size: Vector2i, texture_index: int) -> *Image { call_ret := cast(*Image) sys_call("TextServer", "font_get_texture_image", 2451761155, Image, main, font_rid, size, texture_index); return call_ret; }  // 85
 font_set_texture_offsets :: (main: *TextServer, font_rid: RID, size: Vector2i, texture_index: int, offset: PackedInt32Array) { sys_call("TextServer", "font_set_texture_offsets", 3005398047, Nil, main, font_rid, size, texture_index, offset);  }  // 86
 font_get_texture_offsets :: (main: *TextServer, font_rid: RID, size: Vector2i, texture_index: int) -> PackedInt32Array { call_ret := cast(*PackedInt32Array) sys_call("TextServer", "font_get_texture_offsets", 3420028887, PackedInt32Array, main, font_rid, size, texture_index); return call_ret.*; }  // 87
@@ -22509,13 +22524,13 @@ parse_structured_text :: (main: *TextServer, parser_type: TextServer.StructuredT
 
 
 
-add_interface :: (main: *TextServerManager, _interface: TextServer) { sys_call("TextServerManager", "add_interface", 1799689403, Nil, main, _interface);  }  // 0
+add_interface :: (main: *TextServerManager, _interface: *TextServer) { sys_call("TextServerManager", "add_interface", 1799689403, Nil, main, _interface);  }  // 0
 get_interface_count :: (main: *TextServerManager) -> int { call_ret := cast(*int) sys_call("TextServerManager", "get_interface_count", 3905245786, int, main); return call_ret.*; }  // 1
-remove_interface :: (main: *TextServerManager, _interface: TextServer) { sys_call("TextServerManager", "remove_interface", 1799689403, Nil, main, _interface);  }  // 2
+remove_interface :: (main: *TextServerManager, _interface: *TextServer) { sys_call("TextServerManager", "remove_interface", 1799689403, Nil, main, _interface);  }  // 2
 get_interface :: (main: *TextServerManager, idx: int) -> *TextServer { call_ret := cast(*TextServer) sys_call("TextServerManager", "get_interface", 1672475555, TextServer, main, idx); return call_ret; }  // 3
 get_interfaces :: (main: *TextServerManager) -> [] Dictionary { call_ret := cast(*[] Dictionary) sys_call("TextServerManager", "get_interfaces", 3995934104, [] Dictionary, main); return call_ret.*; }  // 4
 find_interface :: (main: *TextServerManager, name: string) -> *TextServer { call_ret := cast(*TextServer) sys_call("TextServerManager", "find_interface", 2240905781, TextServer, main, name); return call_ret; }  // 5
-set_primary_interface :: (main: *TextServerManager, index: TextServer) { sys_call("TextServerManager", "set_primary_interface", 1799689403, Nil, main, index);  }  // 6
+set_primary_interface :: (main: *TextServerManager, index: *TextServer) { sys_call("TextServerManager", "set_primary_interface", 1799689403, Nil, main, index);  }  // 6
 get_primary_interface :: (main: *TextServerManager) -> *TextServer { call_ret := cast(*TextServer) sys_call("TextServerManager", "get_primary_interface", 905850878, TextServer, main); return call_ret; }  // 7
 
 
@@ -22546,12 +22561,12 @@ create_placeholder :: (main: *Texture3D) -> *Resource { call_ret := cast(*Resour
 set_texture_rd_rid :: (main: *Texture3DRD, texture_rd_rid: RID) { sys_call("Texture3DRD", "set_texture_rd_rid", 2722037293, Nil, main, texture_rd_rid);  }  // 0
 get_texture_rd_rid :: (main: *Texture3DRD) -> RID { call_ret := cast(*RID) sys_call("Texture3DRD", "get_texture_rd_rid", 2944877500, RID, main); return call_ret.*; }  // 1
 
-set_texture_normal :: (main: *TextureButton, texture: Texture2D) { sys_call("TextureButton", "set_texture_normal", 4051416890, Nil, main, texture);  }  // 0
-set_texture_pressed :: (main: *TextureButton, texture: Texture2D) { sys_call("TextureButton", "set_texture_pressed", 4051416890, Nil, main, texture);  }  // 1
-set_texture_hover :: (main: *TextureButton, texture: Texture2D) { sys_call("TextureButton", "set_texture_hover", 4051416890, Nil, main, texture);  }  // 2
-set_texture_disabled :: (main: *TextureButton, texture: Texture2D) { sys_call("TextureButton", "set_texture_disabled", 4051416890, Nil, main, texture);  }  // 3
-set_texture_focused :: (main: *TextureButton, texture: Texture2D) { sys_call("TextureButton", "set_texture_focused", 4051416890, Nil, main, texture);  }  // 4
-set_click_mask :: (main: *TextureButton, mask: BitMap) { sys_call("TextureButton", "set_click_mask", 698588216, Nil, main, mask);  }  // 5
+set_texture_normal :: (main: *TextureButton, texture: *Texture2D) { sys_call("TextureButton", "set_texture_normal", 4051416890, Nil, main, texture);  }  // 0
+set_texture_pressed :: (main: *TextureButton, texture: *Texture2D) { sys_call("TextureButton", "set_texture_pressed", 4051416890, Nil, main, texture);  }  // 1
+set_texture_hover :: (main: *TextureButton, texture: *Texture2D) { sys_call("TextureButton", "set_texture_hover", 4051416890, Nil, main, texture);  }  // 2
+set_texture_disabled :: (main: *TextureButton, texture: *Texture2D) { sys_call("TextureButton", "set_texture_disabled", 4051416890, Nil, main, texture);  }  // 3
+set_texture_focused :: (main: *TextureButton, texture: *Texture2D) { sys_call("TextureButton", "set_texture_focused", 4051416890, Nil, main, texture);  }  // 4
+set_click_mask :: (main: *TextureButton, mask: *BitMap) { sys_call("TextureButton", "set_click_mask", 698588216, Nil, main, mask);  }  // 5
 set_ignore_texture_size :: (main: *TextureButton, ignore: bool) { sys_call("TextureButton", "set_ignore_texture_size", 2586408642, Nil, main, ignore);  }  // 6
 set_stretch_mode :: (main: *TextureButton, mode: TextureButton.StretchMode) { sys_call("TextureButton", "set_stretch_mode", 252530840, Nil, main, mode);  }  // 7
 set_flip_h :: (main: *TextureButton, enable: bool) { sys_call("TextureButton", "set_flip_h", 2586408642, Nil, main, enable);  }  // 8
@@ -22580,11 +22595,11 @@ get_layer_data :: (main: *TextureLayered, layer: int) -> *Image { call_ret := ca
 set_texture_rd_rid :: (main: *TextureLayeredRD, texture_rd_rid: RID) { sys_call("TextureLayeredRD", "set_texture_rd_rid", 2722037293, Nil, main, texture_rd_rid);  }  // 0
 get_texture_rd_rid :: (main: *TextureLayeredRD) -> RID { call_ret := cast(*RID) sys_call("TextureLayeredRD", "get_texture_rd_rid", 2944877500, RID, main); return call_ret.*; }  // 1
 
-set_under_texture :: (main: *TextureProgressBar, tex: Texture2D) { sys_call("TextureProgressBar", "set_under_texture", 4051416890, Nil, main, tex);  }  // 0
+set_under_texture :: (main: *TextureProgressBar, tex: *Texture2D) { sys_call("TextureProgressBar", "set_under_texture", 4051416890, Nil, main, tex);  }  // 0
 get_under_texture :: (main: *TextureProgressBar) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("TextureProgressBar", "get_under_texture", 3635182373, Texture2D, main); return call_ret; }  // 1
-set_progress_texture :: (main: *TextureProgressBar, tex: Texture2D) { sys_call("TextureProgressBar", "set_progress_texture", 4051416890, Nil, main, tex);  }  // 2
+set_progress_texture :: (main: *TextureProgressBar, tex: *Texture2D) { sys_call("TextureProgressBar", "set_progress_texture", 4051416890, Nil, main, tex);  }  // 2
 get_progress_texture :: (main: *TextureProgressBar) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("TextureProgressBar", "get_progress_texture", 3635182373, Texture2D, main); return call_ret; }  // 3
-set_over_texture :: (main: *TextureProgressBar, tex: Texture2D) { sys_call("TextureProgressBar", "set_over_texture", 4051416890, Nil, main, tex);  }  // 4
+set_over_texture :: (main: *TextureProgressBar, tex: *Texture2D) { sys_call("TextureProgressBar", "set_over_texture", 4051416890, Nil, main, tex);  }  // 4
 get_over_texture :: (main: *TextureProgressBar) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("TextureProgressBar", "get_over_texture", 3635182373, Texture2D, main); return call_ret; }  // 5
 set_fill_mode :: (main: *TextureProgressBar, mode: int) { sys_call("TextureProgressBar", "set_fill_mode", 1286410249, Nil, main, mode);  }  // 6
 get_fill_mode :: (main: *TextureProgressBar) -> int { call_ret := cast(*int) sys_call("TextureProgressBar", "get_fill_mode", 2455072627, int, main); return call_ret.*; }  // 7
@@ -22607,7 +22622,7 @@ get_stretch_margin :: (main: *TextureProgressBar, margin: Side) -> int { call_re
 set_nine_patch_stretch :: (main: *TextureProgressBar, stretch: bool) { sys_call("TextureProgressBar", "set_nine_patch_stretch", 2586408642, Nil, main, stretch);  }  // 24
 get_nine_patch_stretch :: (main: *TextureProgressBar) -> bool { call_ret := cast(*bool) sys_call("TextureProgressBar", "get_nine_patch_stretch", 36873697, bool, main); return call_ret.*; }  // 25
 
-set_texture :: (main: *TextureRect, texture: Texture2D) { sys_call("TextureRect", "set_texture", 4051416890, Nil, main, texture);  }  // 0
+set_texture :: (main: *TextureRect, texture: *Texture2D) { sys_call("TextureRect", "set_texture", 4051416890, Nil, main, texture);  }  // 0
 get_texture :: (main: *TextureRect) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("TextureRect", "get_texture", 3635182373, Texture2D, main); return call_ret; }  // 1
 set_expand_mode :: (main: *TextureRect, expand_mode: TextureRect.ExpandMode) { sys_call("TextureRect", "set_expand_mode", 1870766882, Nil, main, expand_mode);  }  // 2
 get_expand_mode :: (main: *TextureRect) -> TextureRect.ExpandMode { call_ret := cast(*TextureRect.ExpandMode) sys_call("TextureRect", "get_expand_mode", 3863824733, TextureRect.ExpandMode, main); return call_ret.*; }  // 3
@@ -22618,21 +22633,21 @@ is_flipped_v :: (main: *TextureRect) -> bool { call_ret := cast(*bool) sys_call(
 set_stretch_mode :: (main: *TextureRect, stretch_mode: TextureRect.StretchMode) { sys_call("TextureRect", "set_stretch_mode", 58788729, Nil, main, stretch_mode);  }  // 8
 get_stretch_mode :: (main: *TextureRect) -> TextureRect.StretchMode { call_ret := cast(*TextureRect.StretchMode) sys_call("TextureRect", "get_stretch_mode", 346396079, TextureRect.StretchMode, main); return call_ret.*; }  // 9
 
-set_icon :: (main: *Theme, name: string, theme_type: string, texture: Texture2D) { sys_call("Theme", "set_icon", 2188371082, Nil, main, name, theme_type, texture);  }  // 0
+set_icon :: (main: *Theme, name: string, theme_type: string, texture: *Texture2D) { sys_call("Theme", "set_icon", 2188371082, Nil, main, name, theme_type, texture);  }  // 0
 get_icon :: (main: *Theme, name: string, theme_type: string) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("Theme", "get_icon", 934555193, Texture2D, main, name, theme_type); return call_ret; }  // 1
 has_icon :: (main: *Theme, name: string, theme_type: string) -> bool { call_ret := cast(*bool) sys_call("Theme", "has_icon", 471820014, bool, main, name, theme_type); return call_ret.*; }  // 2
 rename_icon :: (main: *Theme, old_name: string, name: string, theme_type: string) { sys_call("Theme", "rename_icon", 642128662, Nil, main, old_name, name, theme_type);  }  // 3
 clear_icon :: (main: *Theme, name: string, theme_type: string) { sys_call("Theme", "clear_icon", 3740211285, Nil, main, name, theme_type);  }  // 4
 get_icon_list :: (main: *Theme, theme_type: string) -> PackedStringArray { call_ret := cast(*PackedStringArray) sys_call("Theme", "get_icon_list", 4291131558, PackedStringArray, main, theme_type); return call_ret.*; }  // 5
 get_icon_type_list :: (main: *Theme) -> PackedStringArray { call_ret := cast(*PackedStringArray) sys_call("Theme", "get_icon_type_list", 1139954409, PackedStringArray, main); return call_ret.*; }  // 6
-set_stylebox :: (main: *Theme, name: string, theme_type: string, texture: StyleBox) { sys_call("Theme", "set_stylebox", 2075907568, Nil, main, name, theme_type, texture);  }  // 7
+set_stylebox :: (main: *Theme, name: string, theme_type: string, texture: *StyleBox) { sys_call("Theme", "set_stylebox", 2075907568, Nil, main, name, theme_type, texture);  }  // 7
 get_stylebox :: (main: *Theme, name: string, theme_type: string) -> *StyleBox { call_ret := cast(*StyleBox) sys_call("Theme", "get_stylebox", 3405608165, StyleBox, main, name, theme_type); return call_ret; }  // 8
 has_stylebox :: (main: *Theme, name: string, theme_type: string) -> bool { call_ret := cast(*bool) sys_call("Theme", "has_stylebox", 471820014, bool, main, name, theme_type); return call_ret.*; }  // 9
 rename_stylebox :: (main: *Theme, old_name: string, name: string, theme_type: string) { sys_call("Theme", "rename_stylebox", 642128662, Nil, main, old_name, name, theme_type);  }  // 10
 clear_stylebox :: (main: *Theme, name: string, theme_type: string) { sys_call("Theme", "clear_stylebox", 3740211285, Nil, main, name, theme_type);  }  // 11
 get_stylebox_list :: (main: *Theme, theme_type: string) -> PackedStringArray { call_ret := cast(*PackedStringArray) sys_call("Theme", "get_stylebox_list", 4291131558, PackedStringArray, main, theme_type); return call_ret.*; }  // 12
 get_stylebox_type_list :: (main: *Theme) -> PackedStringArray { call_ret := cast(*PackedStringArray) sys_call("Theme", "get_stylebox_type_list", 1139954409, PackedStringArray, main); return call_ret.*; }  // 13
-set_font :: (main: *Theme, name: string, theme_type: string, font: Font) { sys_call("Theme", "set_font", 177292320, Nil, main, name, theme_type, font);  }  // 14
+set_font :: (main: *Theme, name: string, theme_type: string, font: *Font) { sys_call("Theme", "set_font", 177292320, Nil, main, name, theme_type, font);  }  // 14
 get_font :: (main: *Theme, name: string, theme_type: string) -> *Font { call_ret := cast(*Font) sys_call("Theme", "get_font", 3445063586, Font, main, name, theme_type); return call_ret; }  // 15
 has_font :: (main: *Theme, name: string, theme_type: string) -> bool { call_ret := cast(*bool) sys_call("Theme", "has_font", 471820014, bool, main, name, theme_type); return call_ret.*; }  // 16
 rename_font :: (main: *Theme, old_name: string, name: string, theme_type: string) { sys_call("Theme", "rename_font", 642128662, Nil, main, old_name, name, theme_type);  }  // 17
@@ -22663,7 +22678,7 @@ get_constant_type_list :: (main: *Theme) -> PackedStringArray { call_ret := cast
 set_default_base_scale :: (main: *Theme, base_scale: float) { sys_call("Theme", "set_default_base_scale", 373806689, Nil, main, base_scale);  }  // 42
 get_default_base_scale :: (main: *Theme) -> float { call_ret := cast(*float) sys_call("Theme", "get_default_base_scale", 1740695150, float, main); return call_ret.*; }  // 43
 has_default_base_scale :: (main: *Theme) -> bool { call_ret := cast(*bool) sys_call("Theme", "has_default_base_scale", 36873697, bool, main); return call_ret.*; }  // 44
-set_default_font :: (main: *Theme, font: Font) { sys_call("Theme", "set_default_font", 1262170328, Nil, main, font);  }  // 45
+set_default_font :: (main: *Theme, font: *Font) { sys_call("Theme", "set_default_font", 1262170328, Nil, main, font);  }  // 45
 get_default_font :: (main: *Theme) -> *Font { call_ret := cast(*Font) sys_call("Theme", "get_default_font", 3229501585, Font, main); return call_ret; }  // 46
 has_default_font :: (main: *Theme) -> bool { call_ret := cast(*bool) sys_call("Theme", "has_default_font", 36873697, bool, main); return call_ret.*; }  // 47
 set_default_font_size :: (main: *Theme, font_size: int) { sys_call("Theme", "set_default_font_size", 1286410249, Nil, main, font_size);  }  // 48
@@ -22684,20 +22699,20 @@ get_type_variation_list :: (main: *Theme, base_type: string) -> PackedStringArra
 add_type :: (main: *Theme, theme_type: string) { sys_call("Theme", "add_type", 3304788590, Nil, main, theme_type);  }  // 63
 remove_type :: (main: *Theme, theme_type: string) { sys_call("Theme", "remove_type", 3304788590, Nil, main, theme_type);  }  // 64
 get_type_list :: (main: *Theme) -> PackedStringArray { call_ret := cast(*PackedStringArray) sys_call("Theme", "get_type_list", 1139954409, PackedStringArray, main); return call_ret.*; }  // 65
-merge_with :: (main: *Theme, other: Theme) { sys_call("Theme", "merge_with", 2326690814, Nil, main, other);  }  // 66
+merge_with :: (main: *Theme, other: *Theme) { sys_call("Theme", "merge_with", 2326690814, Nil, main, other);  }  // 66
 clear :: (main: *Theme) { sys_call("Theme", "clear", 3218959716, Nil, main);  }  // 67
 
 get_default_theme :: (main: *ThemeDB) -> *Theme { call_ret := cast(*Theme) sys_call("ThemeDB", "get_default_theme", 754276358, Theme, main); return call_ret; }  // 0
 get_project_theme :: (main: *ThemeDB) -> *Theme { call_ret := cast(*Theme) sys_call("ThemeDB", "get_project_theme", 754276358, Theme, main); return call_ret; }  // 1
 set_fallback_base_scale :: (main: *ThemeDB, base_scale: float) { sys_call("ThemeDB", "set_fallback_base_scale", 373806689, Nil, main, base_scale);  }  // 2
 get_fallback_base_scale :: (main: *ThemeDB) -> float { call_ret := cast(*float) sys_call("ThemeDB", "get_fallback_base_scale", 191475506, float, main); return call_ret.*; }  // 3
-set_fallback_font :: (main: *ThemeDB, font: Font) { sys_call("ThemeDB", "set_fallback_font", 1262170328, Nil, main, font);  }  // 4
+set_fallback_font :: (main: *ThemeDB, font: *Font) { sys_call("ThemeDB", "set_fallback_font", 1262170328, Nil, main, font);  }  // 4
 get_fallback_font :: (main: *ThemeDB) -> *Font { call_ret := cast(*Font) sys_call("ThemeDB", "get_fallback_font", 3656929885, Font, main); return call_ret; }  // 5
 set_fallback_font_size :: (main: *ThemeDB, font_size: int) { sys_call("ThemeDB", "set_fallback_font_size", 1286410249, Nil, main, font_size);  }  // 6
 get_fallback_font_size :: (main: *ThemeDB) -> int { call_ret := cast(*int) sys_call("ThemeDB", "get_fallback_font_size", 2455072627, int, main); return call_ret.*; }  // 7
-set_fallback_icon :: (main: *ThemeDB, icon: Texture2D) { sys_call("ThemeDB", "set_fallback_icon", 4051416890, Nil, main, icon);  }  // 8
+set_fallback_icon :: (main: *ThemeDB, icon: *Texture2D) { sys_call("ThemeDB", "set_fallback_icon", 4051416890, Nil, main, icon);  }  // 8
 get_fallback_icon :: (main: *ThemeDB) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("ThemeDB", "get_fallback_icon", 255860311, Texture2D, main); return call_ret; }  // 9
-set_fallback_stylebox :: (main: *ThemeDB, stylebox: StyleBox) { sys_call("ThemeDB", "set_fallback_stylebox", 2797200388, Nil, main, stylebox);  }  // 10
+set_fallback_stylebox :: (main: *ThemeDB, stylebox: *StyleBox) { sys_call("ThemeDB", "set_fallback_stylebox", 2797200388, Nil, main, stylebox);  }  // 10
 get_fallback_stylebox :: (main: *ThemeDB) -> *StyleBox { call_ret := cast(*StyleBox) sys_call("ThemeDB", "get_fallback_stylebox", 496040854, StyleBox, main); return call_ret; }  // 11
 
 start :: (main: *Thread, callable: Callable) -> Error { call_ret := cast(*Error) sys_call("Thread", "start", 1327203254, Error, main, callable); return call_ret.*; }  // 0
@@ -22713,7 +22728,7 @@ set_flip_v :: (main: *TileData, flip_v: bool) { sys_call("TileData", "set_flip_v
 get_flip_v :: (main: *TileData) -> bool { call_ret := cast(*bool) sys_call("TileData", "get_flip_v", 36873697, bool, main); return call_ret.*; }  // 3
 set_transpose :: (main: *TileData, transpose: bool) { sys_call("TileData", "set_transpose", 2586408642, Nil, main, transpose);  }  // 4
 get_transpose :: (main: *TileData) -> bool { call_ret := cast(*bool) sys_call("TileData", "get_transpose", 36873697, bool, main); return call_ret.*; }  // 5
-set_material :: (main: *TileData, material: Material) { sys_call("TileData", "set_material", 2757459619, Nil, main, material);  }  // 6
+set_material :: (main: *TileData, material: *Material) { sys_call("TileData", "set_material", 2757459619, Nil, main, material);  }  // 6
 get_material :: (main: *TileData) -> *Material { call_ret := cast(*Material) sys_call("TileData", "get_material", 5934680, Material, main); return call_ret; }  // 7
 set_texture_origin :: (main: *TileData, texture_origin: Vector2i) { sys_call("TileData", "set_texture_origin", 1130785943, Nil, main, texture_origin);  }  // 8
 get_texture_origin :: (main: *TileData) -> Vector2i { call_ret := cast(*Vector2i) sys_call("TileData", "get_texture_origin", 3690982128, Vector2i, main); return call_ret.*; }  // 9
@@ -22727,9 +22742,9 @@ set_occluder_polygons_count :: (main: *TileData, layer_id: int, polygons_count: 
 get_occluder_polygons_count :: (main: *TileData, layer_id: int) -> int { call_ret := cast(*int) sys_call("TileData", "get_occluder_polygons_count", 923996154, int, main, layer_id); return call_ret.*; }  // 17
 add_occluder_polygon :: (main: *TileData, layer_id: int) { sys_call("TileData", "add_occluder_polygon", 1286410249, Nil, main, layer_id);  }  // 18
 remove_occluder_polygon :: (main: *TileData, layer_id: int, polygon_index: int) { sys_call("TileData", "remove_occluder_polygon", 3937882851, Nil, main, layer_id, polygon_index);  }  // 19
-set_occluder_polygon :: (main: *TileData, layer_id: int, polygon_index: int, polygon: OccluderPolygon2D) { sys_call("TileData", "set_occluder_polygon", 164249167, Nil, main, layer_id, polygon_index, polygon);  }  // 20
+set_occluder_polygon :: (main: *TileData, layer_id: int, polygon_index: int, polygon: *OccluderPolygon2D) { sys_call("TileData", "set_occluder_polygon", 164249167, Nil, main, layer_id, polygon_index, polygon);  }  // 20
 get_occluder_polygon :: (main: *TileData, layer_id: int, polygon_index: int) -> *OccluderPolygon2D { call_ret := cast(*OccluderPolygon2D) sys_call("TileData", "get_occluder_polygon", 971166743, OccluderPolygon2D, main, layer_id, polygon_index); return call_ret; }  // 21
-set_occluder :: (main: *TileData, layer_id: int, occluder_polygon: OccluderPolygon2D) { sys_call("TileData", "set_occluder", 914399637, Nil, main, layer_id, occluder_polygon);  }  // 22
+set_occluder :: (main: *TileData, layer_id: int, occluder_polygon: *OccluderPolygon2D) { sys_call("TileData", "set_occluder", 914399637, Nil, main, layer_id, occluder_polygon);  }  // 22
 get_occluder :: (main: *TileData, layer_id: int) -> *OccluderPolygon2D { call_ret := cast(*OccluderPolygon2D) sys_call("TileData", "get_occluder", 2377324099, OccluderPolygon2D, main, layer_id); return call_ret; }  // 23
 set_constant_linear_velocity :: (main: *TileData, layer_id: int, velocity: Vector2) { sys_call("TileData", "set_constant_linear_velocity", 163021252, Nil, main, layer_id, velocity);  }  // 24
 get_constant_linear_velocity :: (main: *TileData, layer_id: int) -> Vector2 { call_ret := cast(*Vector2) sys_call("TileData", "get_constant_linear_velocity", 2299179447, Vector2, main, layer_id); return call_ret.*; }  // 25
@@ -22752,7 +22767,7 @@ get_terrain :: (main: *TileData) -> int { call_ret := cast(*int) sys_call("TileD
 set_terrain_peering_bit :: (main: *TileData, peering_bit: TileSet.CellNeighbor, terrain: int) { sys_call("TileData", "set_terrain_peering_bit", 1084452308, Nil, main, peering_bit, terrain);  }  // 42
 get_terrain_peering_bit :: (main: *TileData, peering_bit: TileSet.CellNeighbor) -> int { call_ret := cast(*int) sys_call("TileData", "get_terrain_peering_bit", 3831796792, int, main, peering_bit); return call_ret.*; }  // 43
 is_valid_terrain_peering_bit :: (main: *TileData, peering_bit: TileSet.CellNeighbor) -> bool { call_ret := cast(*bool) sys_call("TileData", "is_valid_terrain_peering_bit", 845723972, bool, main, peering_bit); return call_ret.*; }  // 44
-set_navigation_polygon :: (main: *TileData, layer_id: int, navigation_polygon: NavigationPolygon) { sys_call("TileData", "set_navigation_polygon", 2224691167, Nil, main, layer_id, navigation_polygon);  }  // 45
+set_navigation_polygon :: (main: *TileData, layer_id: int, navigation_polygon: *NavigationPolygon) { sys_call("TileData", "set_navigation_polygon", 2224691167, Nil, main, layer_id, navigation_polygon);  }  // 45
 get_navigation_polygon :: (main: *TileData, layer_id: int) -> *NavigationPolygon { call_ret := cast(*NavigationPolygon) sys_call("TileData", "get_navigation_polygon", 2907127272, NavigationPolygon, main, layer_id); return call_ret; }  // 46
 set_probability :: (main: *TileData, probability: float) { sys_call("TileData", "set_probability", 373806689, Nil, main, probability);  }  // 47
 get_probability :: (main: *TileData) -> float { call_ret := cast(*float) sys_call("TileData", "get_probability", 1740695150, float, main); return call_ret.*; }  // 48
@@ -22765,7 +22780,7 @@ get_custom_data_by_layer_id :: (main: *TileData, layer_id: int) -> Variant { cal
 set_navigation_map :: (main: *TileMap, layer: int, map: RID) { sys_call("TileMap", "set_navigation_map", 4040184819, Nil, main, layer, map);  }  // 2
 get_navigation_map :: (main: *TileMap, layer: int) -> RID { call_ret := cast(*RID) sys_call("TileMap", "get_navigation_map", 495598643, RID, main, layer); return call_ret.*; }  // 3
 force_update :: (main: *TileMap) { sys_call("TileMap", "force_update", 1025054187, Nil, main);  }  // 4
-set_tileset :: (main: *TileMap, tileset: TileSet) { sys_call("TileMap", "set_tileset", 774531446, Nil, main, tileset);  }  // 5
+set_tileset :: (main: *TileMap, tileset: *TileSet) { sys_call("TileMap", "set_tileset", 774531446, Nil, main, tileset);  }  // 5
 get_tileset :: (main: *TileMap) -> *TileSet { call_ret := cast(*TileSet) sys_call("TileMap", "get_tileset", 2678226422, TileSet, main); return call_ret; }  // 6
 set_rendering_quadrant_size :: (main: *TileMap, size: int) { sys_call("TileMap", "set_rendering_quadrant_size", 1286410249, Nil, main, size);  }  // 7
 get_rendering_quadrant_size :: (main: *TileMap) -> int { call_ret := cast(*int) sys_call("TileMap", "get_rendering_quadrant_size", 3905245786, int, main); return call_ret.*; }  // 8
@@ -22807,8 +22822,8 @@ is_cell_transposed :: (main: *TileMap, layer: int, coords: Vector2i) -> bool { c
 get_coords_for_body_rid :: (main: *TileMap, body: RID) -> Vector2i { call_ret := cast(*Vector2i) sys_call("TileMap", "get_coords_for_body_rid", 291584212, Vector2i, main, body); return call_ret.*; }  // 44
 get_layer_for_body_rid :: (main: *TileMap, body: RID) -> int { call_ret := cast(*int) sys_call("TileMap", "get_layer_for_body_rid", 3917799429, int, main, body); return call_ret.*; }  // 45
 get_pattern :: (main: *TileMap, layer: int, coords_array: [] Vector2i) -> *TileMapPattern { call_ret := cast(*TileMapPattern) sys_call("TileMap", "get_pattern", 2833570986, TileMapPattern, main, layer, coords_array); return call_ret; }  // 46
-map_pattern :: (main: *TileMap, position_in_tilemap: Vector2i, coords_in_pattern: Vector2i, pattern: TileMapPattern) -> Vector2i { call_ret := cast(*Vector2i) sys_call("TileMap", "map_pattern", 1864516957, Vector2i, main, position_in_tilemap, coords_in_pattern, pattern); return call_ret.*; }  // 47
-set_pattern :: (main: *TileMap, layer: int, position: Vector2i, pattern: TileMapPattern) { sys_call("TileMap", "set_pattern", 1195853946, Nil, main, layer, position, pattern);  }  // 48
+map_pattern :: (main: *TileMap, position_in_tilemap: Vector2i, coords_in_pattern: Vector2i, pattern: *TileMapPattern) -> Vector2i { call_ret := cast(*Vector2i) sys_call("TileMap", "map_pattern", 1864516957, Vector2i, main, position_in_tilemap, coords_in_pattern, pattern); return call_ret.*; }  // 47
+set_pattern :: (main: *TileMap, layer: int, position: Vector2i, pattern: *TileMapPattern) { sys_call("TileMap", "set_pattern", 1195853946, Nil, main, layer, position, pattern);  }  // 48
 set_cells_terrain_connect :: (main: *TileMap, layer: int, cells: [] Vector2i, terrain_set: int, terrain: int) { sys_call("TileMap", "set_cells_terrain_connect", 3578627656, Nil, main, layer, cells, terrain_set, terrain);  }  // 49
 set_cells_terrain_path :: (main: *TileMap, layer: int, path: [] Vector2i, terrain_set: int, terrain: int) { sys_call("TileMap", "set_cells_terrain_path", 3578627656, Nil, main, layer, path, terrain_set, terrain);  }  // 50
 fix_invalid_tiles :: (main: *TileMap) { sys_call("TileMap", "fix_invalid_tiles", 3218959716, Nil, main);  }  // 51
@@ -22839,14 +22854,14 @@ get_used_cells :: (main: *TileMapLayer) -> [] Vector2i { call_ret := cast(*[] Ve
 get_used_cells_by_id :: (main: *TileMapLayer) -> [] Vector2i { call_ret := cast(*[] Vector2i) sys_call("TileMapLayer", "get_used_cells_by_id", 4175304538, [] Vector2i, main); return call_ret.*; }  // 15
 get_used_rect :: (main: *TileMapLayer) -> Rect2i { call_ret := cast(*Rect2i) sys_call("TileMapLayer", "get_used_rect", 410525958, Rect2i, main); return call_ret.*; }  // 16
 get_pattern :: (main: *TileMapLayer, coords_array: [] Vector2i) -> *TileMapPattern { call_ret := cast(*TileMapPattern) sys_call("TileMapLayer", "get_pattern", 3820813253, TileMapPattern, main, coords_array); return call_ret; }  // 17
-set_pattern :: (main: *TileMapLayer, position: Vector2i, pattern: TileMapPattern) { sys_call("TileMapLayer", "set_pattern", 1491151770, Nil, main, position, pattern);  }  // 18
+set_pattern :: (main: *TileMapLayer, position: Vector2i, pattern: *TileMapPattern) { sys_call("TileMapLayer", "set_pattern", 1491151770, Nil, main, position, pattern);  }  // 18
 set_cells_terrain_connect :: (main: *TileMapLayer, cells: [] Vector2i, terrain_set: int, terrain: int) { sys_call("TileMapLayer", "set_cells_terrain_connect", 748968311, Nil, main, cells, terrain_set, terrain);  }  // 19
 set_cells_terrain_path :: (main: *TileMapLayer, path: [] Vector2i, terrain_set: int, terrain: int) { sys_call("TileMapLayer", "set_cells_terrain_path", 748968311, Nil, main, path, terrain_set, terrain);  }  // 20
 has_body_rid :: (main: *TileMapLayer, body: RID) -> bool { call_ret := cast(*bool) sys_call("TileMapLayer", "has_body_rid", 4155700596, bool, main, body); return call_ret.*; }  // 21
 get_coords_for_body_rid :: (main: *TileMapLayer, body: RID) -> Vector2i { call_ret := cast(*Vector2i) sys_call("TileMapLayer", "get_coords_for_body_rid", 733700038, Vector2i, main, body); return call_ret.*; }  // 22
 update_internals :: (main: *TileMapLayer) { sys_call("TileMapLayer", "update_internals", 3218959716, Nil, main);  }  // 23
 notify_runtime_tile_data_update :: (main: *TileMapLayer) { sys_call("TileMapLayer", "notify_runtime_tile_data_update", 3218959716, Nil, main);  }  // 24
-map_pattern :: (main: *TileMapLayer, position_in_tilemap: Vector2i, coords_in_pattern: Vector2i, pattern: TileMapPattern) -> Vector2i { call_ret := cast(*Vector2i) sys_call("TileMapLayer", "map_pattern", 1864516957, Vector2i, main, position_in_tilemap, coords_in_pattern, pattern); return call_ret.*; }  // 25
+map_pattern :: (main: *TileMapLayer, position_in_tilemap: Vector2i, coords_in_pattern: Vector2i, pattern: *TileMapPattern) -> Vector2i { call_ret := cast(*Vector2i) sys_call("TileMapLayer", "map_pattern", 1864516957, Vector2i, main, position_in_tilemap, coords_in_pattern, pattern); return call_ret.*; }  // 25
 get_surrounding_cells :: (main: *TileMapLayer, coords: Vector2i) -> [] Vector2i { call_ret := cast(*[] Vector2i) sys_call("TileMapLayer", "get_surrounding_cells", 2673526557, [] Vector2i, main, coords); return call_ret.*; }  // 26
 get_neighbor_cell :: (main: *TileMapLayer, coords: Vector2i, neighbor: TileSet.CellNeighbor) -> Vector2i { call_ret := cast(*Vector2i) sys_call("TileMapLayer", "get_neighbor_cell", 986575103, Vector2i, main, coords, neighbor); return call_ret.*; }  // 27
 map_to_local :: (main: *TileMapLayer, map_position: Vector2i) -> Vector2 { call_ret := cast(*Vector2) sys_call("TileMapLayer", "map_to_local", 108438297, Vector2, main, map_position); return call_ret.*; }  // 28
@@ -22855,7 +22870,7 @@ set_tile_map_data_from_array :: (main: *TileMapLayer, tile_map_layer_data: Packe
 get_tile_map_data_as_array :: (main: *TileMapLayer) -> PackedByteArray { call_ret := cast(*PackedByteArray) sys_call("TileMapLayer", "get_tile_map_data_as_array", 2362200018, PackedByteArray, main); return call_ret.*; }  // 31
 set_enabled :: (main: *TileMapLayer, enabled: bool) { sys_call("TileMapLayer", "set_enabled", 2586408642, Nil, main, enabled);  }  // 32
 is_enabled :: (main: *TileMapLayer) -> bool { call_ret := cast(*bool) sys_call("TileMapLayer", "is_enabled", 36873697, bool, main); return call_ret.*; }  // 33
-set_tile_set :: (main: *TileMapLayer, tile_set: TileSet) { sys_call("TileMapLayer", "set_tile_set", 774531446, Nil, main, tile_set);  }  // 34
+set_tile_set :: (main: *TileMapLayer, tile_set: *TileSet) { sys_call("TileMapLayer", "set_tile_set", 774531446, Nil, main, tile_set);  }  // 34
 get_tile_set :: (main: *TileMapLayer) -> *TileSet { call_ret := cast(*TileSet) sys_call("TileMapLayer", "get_tile_set", 2678226422, TileSet, main); return call_ret; }  // 35
 set_y_sort_origin :: (main: *TileMapLayer, y_sort_origin: int) { sys_call("TileMapLayer", "set_y_sort_origin", 1286410249, Nil, main, y_sort_origin);  }  // 36
 get_y_sort_origin :: (main: *TileMapLayer) -> int { call_ret := cast(*int) sys_call("TileMapLayer", "get_y_sort_origin", 3905245786, int, main); return call_ret.*; }  // 37
@@ -22890,7 +22905,7 @@ set_size :: (main: *TileMapPattern, size: Vector2i) { sys_call("TileMapPattern",
 is_empty :: (main: *TileMapPattern) -> bool { call_ret := cast(*bool) sys_call("TileMapPattern", "is_empty", 36873697, bool, main); return call_ret.*; }  // 9
 
 get_next_source_id :: (main: *TileSet) -> int { call_ret := cast(*int) sys_call("TileSet", "get_next_source_id", 3905245786, int, main); return call_ret.*; }  // 0
-add_source :: (main: *TileSet, source: TileSetSource) -> int { call_ret := cast(*int) sys_call("TileSet", "add_source", 1059186179, int, main, source); return call_ret.*; }  // 1
+add_source :: (main: *TileSet, source: *TileSetSource) -> int { call_ret := cast(*int) sys_call("TileSet", "add_source", 1059186179, int, main, source); return call_ret.*; }  // 1
 remove_source :: (main: *TileSet, source_id: int) { sys_call("TileSet", "remove_source", 1286410249, Nil, main, source_id);  }  // 2
 set_source_id :: (main: *TileSet, source_id: int, new_source_id: int) { sys_call("TileSet", "set_source_id", 3937882851, Nil, main, source_id, new_source_id);  }  // 3
 get_source_count :: (main: *TileSet) -> int { call_ret := cast(*int) sys_call("TileSet", "get_source_count", 3905245786, int, main); return call_ret.*; }  // 4
@@ -22925,7 +22940,7 @@ set_physics_layer_collision_mask :: (main: *TileSet, layer_index: int, mask: int
 get_physics_layer_collision_mask :: (main: *TileSet, layer_index: int) -> int { call_ret := cast(*int) sys_call("TileSet", "get_physics_layer_collision_mask", 923996154, int, main, layer_index); return call_ret.*; }  // 33
 set_physics_layer_collision_priority :: (main: *TileSet, layer_index: int, priority: float) { sys_call("TileSet", "set_physics_layer_collision_priority", 1602489585, Nil, main, layer_index, priority);  }  // 34
 get_physics_layer_collision_priority :: (main: *TileSet, layer_index: int) -> float { call_ret := cast(*float) sys_call("TileSet", "get_physics_layer_collision_priority", 2339986948, float, main, layer_index); return call_ret.*; }  // 35
-set_physics_layer_physics_material :: (main: *TileSet, layer_index: int, physics_material: PhysicsMaterial) { sys_call("TileSet", "set_physics_layer_physics_material", 1018687357, Nil, main, layer_index, physics_material);  }  // 36
+set_physics_layer_physics_material :: (main: *TileSet, layer_index: int, physics_material: *PhysicsMaterial) { sys_call("TileSet", "set_physics_layer_physics_material", 1018687357, Nil, main, layer_index, physics_material);  }  // 36
 get_physics_layer_physics_material :: (main: *TileSet, layer_index: int) -> *PhysicsMaterial { call_ret := cast(*PhysicsMaterial) sys_call("TileSet", "get_physics_layer_physics_material", 788318639, PhysicsMaterial, main, layer_index); return call_ret; }  // 37
 get_terrain_sets_count :: (main: *TileSet) -> int { call_ret := cast(*int) sys_call("TileSet", "get_terrain_sets_count", 3905245786, int, main); return call_ret.*; }  // 38
 add_terrain_set :: (main: *TileSet) { sys_call("TileSet", "add_terrain_set", 1025054187, Nil, main);  }  // 39
@@ -22974,12 +22989,12 @@ remove_alternative_level_tile_proxy :: (main: *TileSet, source_from: int, coords
 map_tile_proxy :: (main: *TileSet, source_from: int, coords_from: Vector2i, alternative_from: int) -> Array { call_ret := cast(*Array) sys_call("TileSet", "map_tile_proxy", 4267935328, Array, main, source_from, coords_from, alternative_from); return call_ret.*; }  // 82
 cleanup_invalid_tile_proxies :: (main: *TileSet) { sys_call("TileSet", "cleanup_invalid_tile_proxies", 3218959716, Nil, main);  }  // 83
 clear_tile_proxies :: (main: *TileSet) { sys_call("TileSet", "clear_tile_proxies", 3218959716, Nil, main);  }  // 84
-add_pattern :: (main: *TileSet, pattern: TileMapPattern) -> int { call_ret := cast(*int) sys_call("TileSet", "add_pattern", 763712015, int, main, pattern); return call_ret.*; }  // 85
+add_pattern :: (main: *TileSet, pattern: *TileMapPattern) -> int { call_ret := cast(*int) sys_call("TileSet", "add_pattern", 763712015, int, main, pattern); return call_ret.*; }  // 85
 get_pattern :: (main: *TileSet) -> *TileMapPattern { call_ret := cast(*TileMapPattern) sys_call("TileSet", "get_pattern", 4207737510, TileMapPattern, main); return call_ret; }  // 86
 remove_pattern :: (main: *TileSet, index: int) { sys_call("TileSet", "remove_pattern", 1286410249, Nil, main, index);  }  // 87
 get_patterns_count :: (main: *TileSet) -> int { call_ret := cast(*int) sys_call("TileSet", "get_patterns_count", 2455072627, int, main); return call_ret.*; }  // 88
 
-set_texture :: (main: *TileSetAtlasSource, texture: Texture2D) { sys_call("TileSetAtlasSource", "set_texture", 4051416890, Nil, main, texture);  }  // 0
+set_texture :: (main: *TileSetAtlasSource, texture: *Texture2D) { sys_call("TileSetAtlasSource", "set_texture", 4051416890, Nil, main, texture);  }  // 0
 get_texture :: (main: *TileSetAtlasSource) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("TileSetAtlasSource", "get_texture", 3635182373, Texture2D, main); return call_ret; }  // 1
 set_margins :: (main: *TileSetAtlasSource, margins: Vector2i) { sys_call("TileSetAtlasSource", "set_margins", 1130785943, Nil, main, margins);  }  // 2
 get_margins :: (main: *TileSetAtlasSource) -> Vector2i { call_ret := cast(*Vector2i) sys_call("TileSetAtlasSource", "get_margins", 3690982128, Vector2i, main); return call_ret.*; }  // 3
@@ -22994,7 +23009,7 @@ remove_tile :: (main: *TileSetAtlasSource, atlas_coords: Vector2i) { sys_call("T
 move_tile_in_atlas :: (main: *TileSetAtlasSource, atlas_coords: Vector2i) { sys_call("TileSetAtlasSource", "move_tile_in_atlas", 3870111920, Nil, main, atlas_coords);  }  // 12
 get_tile_size_in_atlas :: (main: *TileSetAtlasSource, atlas_coords: Vector2i) -> Vector2i { call_ret := cast(*Vector2i) sys_call("TileSetAtlasSource", "get_tile_size_in_atlas", 3050897911, Vector2i, main, atlas_coords); return call_ret.*; }  // 13
 has_room_for_tile :: (main: *TileSetAtlasSource, atlas_coords: Vector2i, size: Vector2i, animation_columns: int, animation_separation: Vector2i, frames_count: int) -> bool { call_ret := cast(*bool) sys_call("TileSetAtlasSource", "has_room_for_tile", 3018597268, bool, main, atlas_coords, size, animation_columns, animation_separation, frames_count); return call_ret.*; }  // 14
-get_tiles_to_be_removed_on_change :: (main: *TileSetAtlasSource, texture: Texture2D, margins: Vector2i, separation: Vector2i, texture_region_size: Vector2i) -> PackedVector2Array { call_ret := cast(*PackedVector2Array) sys_call("TileSetAtlasSource", "get_tiles_to_be_removed_on_change", 1240378054, PackedVector2Array, main, texture, margins, separation, texture_region_size); return call_ret.*; }  // 15
+get_tiles_to_be_removed_on_change :: (main: *TileSetAtlasSource, texture: *Texture2D, margins: Vector2i, separation: Vector2i, texture_region_size: Vector2i) -> PackedVector2Array { call_ret := cast(*PackedVector2Array) sys_call("TileSetAtlasSource", "get_tiles_to_be_removed_on_change", 1240378054, PackedVector2Array, main, texture, margins, separation, texture_region_size); return call_ret.*; }  // 15
 get_tile_at_coords :: (main: *TileSetAtlasSource, atlas_coords: Vector2i) -> Vector2i { call_ret := cast(*Vector2i) sys_call("TileSetAtlasSource", "get_tile_at_coords", 3050897911, Vector2i, main, atlas_coords); return call_ret.*; }  // 16
 has_tiles_outside_texture :: (main: *TileSetAtlasSource) -> bool { call_ret := cast(*bool) sys_call("TileSetAtlasSource", "has_tiles_outside_texture", 36873697, bool, main); return call_ret.*; }  // 17
 clear_tiles_outside_texture :: (main: *TileSetAtlasSource) { sys_call("TileSetAtlasSource", "clear_tiles_outside_texture", 3218959716, Nil, main);  }  // 18
@@ -23024,9 +23039,9 @@ get_runtime_tile_texture_region :: (main: *TileSetAtlasSource, atlas_coords: Vec
 get_scene_tiles_count :: (main: *TileSetScenesCollectionSource) -> int { call_ret := cast(*int) sys_call("TileSetScenesCollectionSource", "get_scene_tiles_count", 2455072627, int, main); return call_ret.*; }  // 0
 get_scene_tile_id :: (main: *TileSetScenesCollectionSource, index: int) -> int { call_ret := cast(*int) sys_call("TileSetScenesCollectionSource", "get_scene_tile_id", 3744713108, int, main, index); return call_ret.*; }  // 1
 has_scene_tile_id :: (main: *TileSetScenesCollectionSource, id: int) -> bool { call_ret := cast(*bool) sys_call("TileSetScenesCollectionSource", "has_scene_tile_id", 3067735520, bool, main, id); return call_ret.*; }  // 2
-create_scene_tile :: (main: *TileSetScenesCollectionSource, packed_scene: PackedScene) -> int { call_ret := cast(*int) sys_call("TileSetScenesCollectionSource", "create_scene_tile", 1117465415, int, main, packed_scene); return call_ret.*; }  // 3
+create_scene_tile :: (main: *TileSetScenesCollectionSource, packed_scene: *PackedScene) -> int { call_ret := cast(*int) sys_call("TileSetScenesCollectionSource", "create_scene_tile", 1117465415, int, main, packed_scene); return call_ret.*; }  // 3
 set_scene_tile_id :: (main: *TileSetScenesCollectionSource, id: int, new_id: int) { sys_call("TileSetScenesCollectionSource", "set_scene_tile_id", 3937882851, Nil, main, id, new_id);  }  // 4
-set_scene_tile_scene :: (main: *TileSetScenesCollectionSource, id: int, packed_scene: PackedScene) { sys_call("TileSetScenesCollectionSource", "set_scene_tile_scene", 3435852839, Nil, main, id, packed_scene);  }  // 5
+set_scene_tile_scene :: (main: *TileSetScenesCollectionSource, id: int, packed_scene: *PackedScene) { sys_call("TileSetScenesCollectionSource", "set_scene_tile_scene", 3435852839, Nil, main, id, packed_scene);  }  // 5
 get_scene_tile_scene :: (main: *TileSetScenesCollectionSource, id: int) -> *PackedScene { call_ret := cast(*PackedScene) sys_call("TileSetScenesCollectionSource", "get_scene_tile_scene", 511017218, PackedScene, main, id); return call_ret; }  // 6
 set_scene_tile_display_placeholder :: (main: *TileSetScenesCollectionSource, id: int, display_placeholder: bool) { sys_call("TileSetScenesCollectionSource", "set_scene_tile_display_placeholder", 300928843, Nil, main, id, display_placeholder);  }  // 7
 get_scene_tile_display_placeholder :: (main: *TileSetScenesCollectionSource, id: int) -> bool { call_ret := cast(*bool) sys_call("TileSetScenesCollectionSource", "get_scene_tile_display_placeholder", 1116898809, bool, main, id); return call_ret.*; }  // 8
@@ -23088,13 +23103,13 @@ get_rings :: (main: *TorusMesh) -> int { call_ret := cast(*int) sys_call("TorusM
 set_ring_segments :: (main: *TorusMesh, rings: int) { sys_call("TorusMesh", "set_ring_segments", 1286410249, Nil, main, rings);  }  // 6
 get_ring_segments :: (main: *TorusMesh) -> int { call_ret := cast(*int) sys_call("TorusMesh", "get_ring_segments", 3905245786, int, main); return call_ret.*; }  // 7
 
-set_texture_normal :: (main: *TouchScreenButton, texture: Texture2D) { sys_call("TouchScreenButton", "set_texture_normal", 4051416890, Nil, main, texture);  }  // 0
+set_texture_normal :: (main: *TouchScreenButton, texture: *Texture2D) { sys_call("TouchScreenButton", "set_texture_normal", 4051416890, Nil, main, texture);  }  // 0
 get_texture_normal :: (main: *TouchScreenButton) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("TouchScreenButton", "get_texture_normal", 3635182373, Texture2D, main); return call_ret; }  // 1
-set_texture_pressed :: (main: *TouchScreenButton, texture: Texture2D) { sys_call("TouchScreenButton", "set_texture_pressed", 4051416890, Nil, main, texture);  }  // 2
+set_texture_pressed :: (main: *TouchScreenButton, texture: *Texture2D) { sys_call("TouchScreenButton", "set_texture_pressed", 4051416890, Nil, main, texture);  }  // 2
 get_texture_pressed :: (main: *TouchScreenButton) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("TouchScreenButton", "get_texture_pressed", 3635182373, Texture2D, main); return call_ret; }  // 3
-set_bitmask :: (main: *TouchScreenButton, bitmask: BitMap) { sys_call("TouchScreenButton", "set_bitmask", 698588216, Nil, main, bitmask);  }  // 4
+set_bitmask :: (main: *TouchScreenButton, bitmask: *BitMap) { sys_call("TouchScreenButton", "set_bitmask", 698588216, Nil, main, bitmask);  }  // 4
 get_bitmask :: (main: *TouchScreenButton) -> *BitMap { call_ret := cast(*BitMap) sys_call("TouchScreenButton", "get_bitmask", 2459671998, BitMap, main); return call_ret; }  // 5
-set_shape :: (main: *TouchScreenButton, shape: Shape2D) { sys_call("TouchScreenButton", "set_shape", 771364740, Nil, main, shape);  }  // 6
+set_shape :: (main: *TouchScreenButton, shape: *Shape2D) { sys_call("TouchScreenButton", "set_shape", 771364740, Nil, main, shape);  }  // 6
 get_shape :: (main: *TouchScreenButton) -> *Shape2D { call_ret := cast(*Shape2D) sys_call("TouchScreenButton", "get_shape", 522005891, Shape2D, main); return call_ret; }  // 7
 set_shape_centered :: (main: *TouchScreenButton, _bool: bool) { sys_call("TouchScreenButton", "set_shape_centered", 2586408642, Nil, main, _bool);  }  // 8
 is_shape_centered :: (main: *TouchScreenButton) -> bool { call_ret := cast(*bool) sys_call("TouchScreenButton", "is_shape_centered", 36873697, bool, main); return call_ret.*; }  // 9
@@ -23120,8 +23135,8 @@ get_translated_message_list :: (main: *Translation) -> PackedStringArray { call_
 get_message_count :: (main: *Translation) -> int { call_ret := cast(*int) sys_call("Translation", "get_message_count", 3905245786, int, main); return call_ret.*; }  // 11
 
 get_translation_object :: (main: *TranslationDomain, locale: string) -> *Translation { call_ret := cast(*Translation) sys_call("TranslationDomain", "get_translation_object", 606768082, Translation, main, locale); return call_ret; }  // 0
-add_translation :: (main: *TranslationDomain, translation: Translation) { sys_call("TranslationDomain", "add_translation", 1466479800, Nil, main, translation);  }  // 1
-remove_translation :: (main: *TranslationDomain, translation: Translation) { sys_call("TranslationDomain", "remove_translation", 1466479800, Nil, main, translation);  }  // 2
+add_translation :: (main: *TranslationDomain, translation: *Translation) { sys_call("TranslationDomain", "add_translation", 1466479800, Nil, main, translation);  }  // 1
+remove_translation :: (main: *TranslationDomain, translation: *Translation) { sys_call("TranslationDomain", "remove_translation", 1466479800, Nil, main, translation);  }  // 2
 clear :: (main: *TranslationDomain) { sys_call("TranslationDomain", "clear", 3218959716, Nil, main);  }  // 3
 translate :: (main: *TranslationDomain, message: string) -> StringName { call_ret := cast(*StringName) sys_call("TranslationDomain", "translate", 1829228469, StringName, main, message); return call_ret.*; }  // 4
 translate_plural :: (main: *TranslationDomain, message: string, message_plural: string, n: int) -> StringName { call_ret := cast(*StringName) sys_call("TranslationDomain", "translate_plural", 229954002, StringName, main, message, message_plural, n); return call_ret.*; }  // 5
@@ -23159,8 +23174,8 @@ get_country_name :: (main: *TranslationServer, country: string) -> gstring { cal
 get_locale_name :: (main: *TranslationServer, locale: string) -> gstring { call_ret := cast(*gstring) sys_call("TranslationServer", "get_locale_name", 3135753539, gstring, main, locale); return call_ret.*; }  // 11
 translate :: (main: *TranslationServer, message: string) -> StringName { call_ret := cast(*StringName) sys_call("TranslationServer", "translate", 1829228469, StringName, main, message); return call_ret.*; }  // 12
 translate_plural :: (main: *TranslationServer, message: string, plural_message: string, n: int) -> StringName { call_ret := cast(*StringName) sys_call("TranslationServer", "translate_plural", 229954002, StringName, main, message, plural_message, n); return call_ret.*; }  // 13
-add_translation :: (main: *TranslationServer, translation: Translation) { sys_call("TranslationServer", "add_translation", 1466479800, Nil, main, translation);  }  // 14
-remove_translation :: (main: *TranslationServer, translation: Translation) { sys_call("TranslationServer", "remove_translation", 1466479800, Nil, main, translation);  }  // 15
+add_translation :: (main: *TranslationServer, translation: *Translation) { sys_call("TranslationServer", "add_translation", 1466479800, Nil, main, translation);  }  // 14
+remove_translation :: (main: *TranslationServer, translation: *Translation) { sys_call("TranslationServer", "remove_translation", 1466479800, Nil, main, translation);  }  // 15
 get_translation_object :: (main: *TranslationServer, locale: string) -> *Translation { call_ret := cast(*Translation) sys_call("TranslationServer", "get_translation_object", 2065240175, Translation, main, locale); return call_ret; }  // 16
 has_domain :: (main: *TranslationServer, domain: string) -> bool { call_ret := cast(*bool) sys_call("TranslationServer", "has_domain", 2619796661, bool, main, domain); return call_ret.*; }  // 17
 get_or_add_domain :: (main: *TranslationServer, domain: string) -> *TranslationDomain { call_ret := cast(*TranslationDomain) sys_call("TranslationServer", "get_or_add_domain", 397200075, TranslationDomain, main, domain); return call_ret; }  // 18
@@ -23185,9 +23200,9 @@ get_column_expand_ratio :: (main: *Tree, column: int) -> int { call_ret := cast(
 get_column_width :: (main: *Tree, column: int) -> int { call_ret := cast(*int) sys_call("Tree", "get_column_width", 923996154, int, main, column); return call_ret.*; }  // 10
 set_hide_root :: (main: *Tree, enable: bool) { sys_call("Tree", "set_hide_root", 2586408642, Nil, main, enable);  }  // 11
 is_root_hidden :: (main: *Tree) -> bool { call_ret := cast(*bool) sys_call("Tree", "is_root_hidden", 36873697, bool, main); return call_ret.*; }  // 12
-get_next_selected :: (main: *Tree, from: TreeItem) -> *TreeItem { call_ret := cast(*TreeItem) sys_call("Tree", "get_next_selected", 873446299, TreeItem, main, from); return call_ret; }  // 13
+get_next_selected :: (main: *Tree, from: *TreeItem) -> *TreeItem { call_ret := cast(*TreeItem) sys_call("Tree", "get_next_selected", 873446299, TreeItem, main, from); return call_ret; }  // 13
 get_selected :: (main: *Tree) -> *TreeItem { call_ret := cast(*TreeItem) sys_call("Tree", "get_selected", 1514277247, TreeItem, main); return call_ret; }  // 14
-set_selected :: (main: *Tree, item: TreeItem, column: int) { sys_call("Tree", "set_selected", 2662547442, Nil, main, item, column);  }  // 15
+set_selected :: (main: *Tree, item: *TreeItem, column: int) { sys_call("Tree", "set_selected", 2662547442, Nil, main, item, column);  }  // 15
 get_selected_column :: (main: *Tree) -> int { call_ret := cast(*int) sys_call("Tree", "get_selected_column", 3905245786, int, main); return call_ret.*; }  // 16
 get_pressed_button :: (main: *Tree) -> int { call_ret := cast(*int) sys_call("Tree", "get_pressed_button", 3905245786, int, main); return call_ret.*; }  // 17
 set_select_mode :: (main: *Tree, mode: Tree.SelectMode) { sys_call("Tree", "set_select_mode", 3223887270, Nil, main, mode);  }  // 18
@@ -23199,7 +23214,7 @@ get_edited :: (main: *Tree) -> *TreeItem { call_ret := cast(*TreeItem) sys_call(
 get_edited_column :: (main: *Tree) -> int { call_ret := cast(*int) sys_call("Tree", "get_edited_column", 3905245786, int, main); return call_ret.*; }  // 24
 edit_selected :: (main: *Tree) -> bool { call_ret := cast(*bool) sys_call("Tree", "edit_selected", 2595650253, bool, main); return call_ret.*; }  // 25
 get_custom_popup_rect :: (main: *Tree) -> Rect2 { call_ret := cast(*Rect2) sys_call("Tree", "get_custom_popup_rect", 1639390495, Rect2, main); return call_ret.*; }  // 26
-get_item_area_rect :: (main: *Tree, item: TreeItem) -> Rect2 { call_ret := cast(*Rect2) sys_call("Tree", "get_item_area_rect", 47968679, Rect2, main, item); return call_ret.*; }  // 27
+get_item_area_rect :: (main: *Tree, item: *TreeItem) -> Rect2 { call_ret := cast(*Rect2) sys_call("Tree", "get_item_area_rect", 47968679, Rect2, main, item); return call_ret.*; }  // 27
 get_item_at_position :: (main: *Tree, position: Vector2) -> *TreeItem { call_ret := cast(*TreeItem) sys_call("Tree", "get_item_at_position", 4193340126, TreeItem, main, position); return call_ret; }  // 28
 get_column_at_position :: (main: *Tree, position: Vector2) -> int { call_ret := cast(*int) sys_call("Tree", "get_column_at_position", 3820158470, int, main, position); return call_ret.*; }  // 29
 get_drop_section_at_position :: (main: *Tree, position: Vector2) -> int { call_ret := cast(*int) sys_call("Tree", "get_drop_section_at_position", 3820158470, int, main, position); return call_ret.*; }  // 30
@@ -23216,7 +23231,7 @@ get_column_title_direction :: (main: *Tree, column: int) -> Control.TextDirectio
 set_column_title_language :: (main: *Tree, column: int, language: string) { sys_call("Tree", "set_column_title_language", 501894301, Nil, main, column, language);  }  // 41
 get_column_title_language :: (main: *Tree, column: int) -> gstring { call_ret := cast(*gstring) sys_call("Tree", "get_column_title_language", 844755477, gstring, main, column); return call_ret.*; }  // 42
 get_scroll :: (main: *Tree) -> Vector2 { call_ret := cast(*Vector2) sys_call("Tree", "get_scroll", 3341600327, Vector2, main); return call_ret.*; }  // 43
-scroll_to_item :: (main: *Tree, item: TreeItem) { sys_call("Tree", "scroll_to_item", 1314737213, Nil, main, item);  }  // 44
+scroll_to_item :: (main: *Tree, item: *TreeItem) { sys_call("Tree", "scroll_to_item", 1314737213, Nil, main, item);  }  // 44
 set_h_scroll_enabled :: (main: *Tree, h_scroll: bool) { sys_call("Tree", "set_h_scroll_enabled", 2586408642, Nil, main, h_scroll);  }  // 45
 is_h_scroll_enabled :: (main: *Tree) -> bool { call_ret := cast(*bool) sys_call("Tree", "is_h_scroll_enabled", 36873697, bool, main); return call_ret.*; }  // 46
 set_v_scroll_enabled :: (main: *Tree, h_scroll: bool) { sys_call("Tree", "set_v_scroll_enabled", 2586408642, Nil, main, h_scroll);  }  // 47
@@ -23263,9 +23278,9 @@ set_language :: (main: *TreeItem, column: int, language: string) { sys_call("Tre
 get_language :: (main: *TreeItem, column: int) -> gstring { call_ret := cast(*gstring) sys_call("TreeItem", "get_language", 844755477, gstring, main, column); return call_ret.*; }  // 24
 set_suffix :: (main: *TreeItem, column: int, text: string) { sys_call("TreeItem", "set_suffix", 501894301, Nil, main, column, text);  }  // 25
 get_suffix :: (main: *TreeItem, column: int) -> gstring { call_ret := cast(*gstring) sys_call("TreeItem", "get_suffix", 844755477, gstring, main, column); return call_ret.*; }  // 26
-set_icon :: (main: *TreeItem, column: int, texture: Texture2D) { sys_call("TreeItem", "set_icon", 666127730, Nil, main, column, texture);  }  // 27
+set_icon :: (main: *TreeItem, column: int, texture: *Texture2D) { sys_call("TreeItem", "set_icon", 666127730, Nil, main, column, texture);  }  // 27
 get_icon :: (main: *TreeItem, column: int) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("TreeItem", "get_icon", 3536238170, Texture2D, main, column); return call_ret; }  // 28
-set_icon_overlay :: (main: *TreeItem, column: int, texture: Texture2D) { sys_call("TreeItem", "set_icon_overlay", 666127730, Nil, main, column, texture);  }  // 29
+set_icon_overlay :: (main: *TreeItem, column: int, texture: *Texture2D) { sys_call("TreeItem", "set_icon_overlay", 666127730, Nil, main, column, texture);  }  // 29
 get_icon_overlay :: (main: *TreeItem, column: int) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("TreeItem", "get_icon_overlay", 3536238170, Texture2D, main, column); return call_ret; }  // 30
 set_icon_region :: (main: *TreeItem, column: int, region: Rect2) { sys_call("TreeItem", "set_icon_region", 1356297692, Nil, main, column, region);  }  // 31
 get_icon_region :: (main: *TreeItem, column: int) -> Rect2 { call_ret := cast(*Rect2) sys_call("TreeItem", "get_icon_region", 3327874267, Rect2, main, column); return call_ret.*; }  // 32
@@ -23279,7 +23294,7 @@ set_range_config :: (main: *TreeItem, column: int, min: float, max: float, step:
 get_range_config :: (main: *TreeItem, column: int) -> Dictionary { call_ret := cast(*Dictionary) sys_call("TreeItem", "get_range_config", 3554694381, Dictionary, main, column); return call_ret.*; }  // 40
 set_metadata :: (main: *TreeItem, column: int, meta: Variant) { sys_call("TreeItem", "set_metadata", 2152698145, Nil, main, column, meta);  }  // 41
 get_metadata :: (main: *TreeItem, column: int) -> Variant { call_ret := cast(*Variant) sys_call("TreeItem", "get_metadata", 4227898402, Variant, main, column); return call_ret.*; }  // 42
-set_custom_draw :: (main: *TreeItem, column: int, object: Object, callback: string) { sys_call("TreeItem", "set_custom_draw", 272420368, Nil, main, column, object, callback);  }  // 43
+set_custom_draw :: (main: *TreeItem, column: int, object: *Object, callback: string) { sys_call("TreeItem", "set_custom_draw", 272420368, Nil, main, column, object, callback);  }  // 43
 set_custom_draw_callback :: (main: *TreeItem, column: int, callback: Callable) { sys_call("TreeItem", "set_custom_draw_callback", 957362965, Nil, main, column, callback);  }  // 44
 get_custom_draw_callback :: (main: *TreeItem, column: int) -> Callable { call_ret := cast(*Callable) sys_call("TreeItem", "get_custom_draw_callback", 1317077508, Callable, main, column); return call_ret.*; }  // 45
 set_collapsed :: (main: *TreeItem, enable: bool) { sys_call("TreeItem", "set_collapsed", 2586408642, Nil, main, enable);  }  // 46
@@ -23302,7 +23317,7 @@ is_editable :: (main: *TreeItem, column: int) -> bool { call_ret := cast(*bool) 
 set_custom_color :: (main: *TreeItem, column: int, color: Color) { sys_call("TreeItem", "set_custom_color", 2878471219, Nil, main, column, color);  }  // 63
 get_custom_color :: (main: *TreeItem, column: int) -> Color { call_ret := cast(*Color) sys_call("TreeItem", "get_custom_color", 3457211756, Color, main, column); return call_ret.*; }  // 64
 clear_custom_color :: (main: *TreeItem, column: int) { sys_call("TreeItem", "clear_custom_color", 1286410249, Nil, main, column);  }  // 65
-set_custom_font :: (main: *TreeItem, column: int, font: Font) { sys_call("TreeItem", "set_custom_font", 2637609184, Nil, main, column, font);  }  // 66
+set_custom_font :: (main: *TreeItem, column: int, font: *Font) { sys_call("TreeItem", "set_custom_font", 2637609184, Nil, main, column, font);  }  // 66
 get_custom_font :: (main: *TreeItem, column: int) -> *Font { call_ret := cast(*Font) sys_call("TreeItem", "get_custom_font", 4244553094, Font, main, column); return call_ret; }  // 67
 set_custom_font_size :: (main: *TreeItem, column: int, font_size: int) { sys_call("TreeItem", "set_custom_font_size", 3937882851, Nil, main, column, font_size);  }  // 68
 get_custom_font_size :: (main: *TreeItem, column: int) -> int { call_ret := cast(*int) sys_call("TreeItem", "get_custom_font_size", 923996154, int, main, column); return call_ret.*; }  // 69
@@ -23312,7 +23327,7 @@ get_custom_bg_color :: (main: *TreeItem, column: int) -> Color { call_ret := cas
 set_custom_as_button :: (main: *TreeItem, column: int, enable: bool) { sys_call("TreeItem", "set_custom_as_button", 300928843, Nil, main, column, enable);  }  // 73
 is_custom_set_as_button :: (main: *TreeItem, column: int) -> bool { call_ret := cast(*bool) sys_call("TreeItem", "is_custom_set_as_button", 1116898809, bool, main, column); return call_ret.*; }  // 74
 clear_buttons :: (main: *TreeItem) { sys_call("TreeItem", "clear_buttons", 3218959716, Nil, main);  }  // 75
-add_button :: (main: *TreeItem, column: int, button: Texture2D) { sys_call("TreeItem", "add_button", 1688223362, Nil, main, column, button);  }  // 76
+add_button :: (main: *TreeItem, column: int, button: *Texture2D) { sys_call("TreeItem", "add_button", 1688223362, Nil, main, column, button);  }  // 76
 get_button_count :: (main: *TreeItem, column: int) -> int { call_ret := cast(*int) sys_call("TreeItem", "get_button_count", 923996154, int, main, column); return call_ret.*; }  // 77
 get_button_tooltip_text :: (main: *TreeItem, column: int, button_index: int) -> gstring { call_ret := cast(*gstring) sys_call("TreeItem", "get_button_tooltip_text", 1391810591, gstring, main, column, button_index); return call_ret.*; }  // 78
 get_button_id :: (main: *TreeItem, column: int, button_index: int) -> int { call_ret := cast(*int) sys_call("TreeItem", "get_button_id", 3175239445, int, main, column, button_index); return call_ret.*; }  // 79
@@ -23320,7 +23335,7 @@ get_button_by_id :: (main: *TreeItem, column: int, id: int) -> int { call_ret :=
 get_button_color :: (main: *TreeItem, column: int, id: int) -> Color { call_ret := cast(*Color) sys_call("TreeItem", "get_button_color", 2165839948, Color, main, column, id); return call_ret.*; }  // 81
 get_button :: (main: *TreeItem, column: int, button_index: int) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("TreeItem", "get_button", 2584904275, Texture2D, main, column, button_index); return call_ret; }  // 82
 set_button_tooltip_text :: (main: *TreeItem, column: int, button_index: int, tooltip: string) { sys_call("TreeItem", "set_button_tooltip_text", 2285447957, Nil, main, column, button_index, tooltip);  }  // 83
-set_button :: (main: *TreeItem, column: int, button_index: int, button: Texture2D) { sys_call("TreeItem", "set_button", 176101966, Nil, main, column, button_index, button);  }  // 84
+set_button :: (main: *TreeItem, column: int, button_index: int, button: *Texture2D) { sys_call("TreeItem", "set_button", 176101966, Nil, main, column, button_index, button);  }  // 84
 erase_button :: (main: *TreeItem, column: int, button_index: int) { sys_call("TreeItem", "erase_button", 3937882851, Nil, main, column, button_index);  }  // 85
 set_button_disabled :: (main: *TreeItem, column: int, button_index: int, disabled: bool) { sys_call("TreeItem", "set_button_disabled", 1383440665, Nil, main, column, button_index, disabled);  }  // 86
 set_button_color :: (main: *TreeItem, column: int, button_index: int, color: Color) { sys_call("TreeItem", "set_button_color", 3733378741, Nil, main, column, button_index, color);  }  // 87
@@ -23334,8 +23349,8 @@ get_expand_right :: (main: *TreeItem, column: int) -> bool { call_ret := cast(*b
 set_disable_folding :: (main: *TreeItem, disable: bool) { sys_call("TreeItem", "set_disable_folding", 2586408642, Nil, main, disable);  }  // 95
 is_folding_disabled :: (main: *TreeItem) -> bool { call_ret := cast(*bool) sys_call("TreeItem", "is_folding_disabled", 36873697, bool, main); return call_ret.*; }  // 96
 create_child :: (main: *TreeItem) -> *TreeItem { call_ret := cast(*TreeItem) sys_call("TreeItem", "create_child", 954243986, TreeItem, main); return call_ret; }  // 97
-add_child :: (main: *TreeItem, child: TreeItem) { sys_call("TreeItem", "add_child", 1819951137, Nil, main, child);  }  // 98
-remove_child :: (main: *TreeItem, child: TreeItem) { sys_call("TreeItem", "remove_child", 1819951137, Nil, main, child);  }  // 99
+add_child :: (main: *TreeItem, child: *TreeItem) { sys_call("TreeItem", "add_child", 1819951137, Nil, main, child);  }  // 98
+remove_child :: (main: *TreeItem, child: *TreeItem) { sys_call("TreeItem", "remove_child", 1819951137, Nil, main, child);  }  // 99
 get_tree :: (main: *TreeItem) -> *Tree { call_ret := cast(*Tree) sys_call("TreeItem", "get_tree", 2243340556, Tree, main); return call_ret; }  // 100
 get_next :: (main: *TreeItem) -> *TreeItem { call_ret := cast(*TreeItem) sys_call("TreeItem", "get_next", 1514277247, TreeItem, main); return call_ret; }  // 101
 get_prev :: (main: *TreeItem) -> *TreeItem { call_ret := cast(*TreeItem) sys_call("TreeItem", "get_prev", 2768121250, TreeItem, main); return call_ret; }  // 102
@@ -23349,8 +23364,8 @@ get_child :: (main: *TreeItem, index: int) -> *TreeItem { call_ret := cast(*Tree
 get_child_count :: (main: *TreeItem) -> int { call_ret := cast(*int) sys_call("TreeItem", "get_child_count", 2455072627, int, main); return call_ret.*; }  // 110
 get_children :: (main: *TreeItem) -> [] TreeItem { call_ret := cast(*[] TreeItem) sys_call("TreeItem", "get_children", 2915620761, [] TreeItem, main); return call_ret.*; }  // 111
 get_index :: (main: *TreeItem) -> int { call_ret := cast(*int) sys_call("TreeItem", "get_index", 2455072627, int, main); return call_ret.*; }  // 112
-move_before :: (main: *TreeItem, item: TreeItem) { sys_call("TreeItem", "move_before", 1819951137, Nil, main, item);  }  // 113
-move_after :: (main: *TreeItem, item: TreeItem) { sys_call("TreeItem", "move_after", 1819951137, Nil, main, item);  }  // 114
+move_before :: (main: *TreeItem, item: *TreeItem) { sys_call("TreeItem", "move_before", 1819951137, Nil, main, item);  }  // 113
+move_after :: (main: *TreeItem, item: *TreeItem) { sys_call("TreeItem", "move_after", 1819951137, Nil, main, item);  }  // 114
 call_recursive :: (main: *TreeItem, method: string) { sys_call("TreeItem", "call_recursive", 2866548813, Nil, main, method);  }  // 115
 
 
@@ -23368,14 +23383,14 @@ set_cap_top :: (main: *TubeTrailMesh, cap_top: bool) { sys_call("TubeTrailMesh",
 is_cap_top :: (main: *TubeTrailMesh) -> bool { call_ret := cast(*bool) sys_call("TubeTrailMesh", "is_cap_top", 36873697, bool, main); return call_ret.*; }  // 11
 set_cap_bottom :: (main: *TubeTrailMesh, cap_bottom: bool) { sys_call("TubeTrailMesh", "set_cap_bottom", 2586408642, Nil, main, cap_bottom);  }  // 12
 is_cap_bottom :: (main: *TubeTrailMesh) -> bool { call_ret := cast(*bool) sys_call("TubeTrailMesh", "is_cap_bottom", 36873697, bool, main); return call_ret.*; }  // 13
-set_curve :: (main: *TubeTrailMesh, curve: Curve) { sys_call("TubeTrailMesh", "set_curve", 270443179, Nil, main, curve);  }  // 14
+set_curve :: (main: *TubeTrailMesh, curve: *Curve) { sys_call("TubeTrailMesh", "set_curve", 270443179, Nil, main, curve);  }  // 14
 get_curve :: (main: *TubeTrailMesh) -> *Curve { call_ret := cast(*Curve) sys_call("TubeTrailMesh", "get_curve", 2460114913, Curve, main); return call_ret; }  // 15
 
-tween_property :: (main: *Tween, object: Object, property: string, final_val: Variant, duration: float) -> *PropertyTweener { call_ret := cast(*PropertyTweener) sys_call("Tween", "tween_property", 4049770449, PropertyTweener, main, object, property, final_val, duration); return call_ret; }  // 0
+tween_property :: (main: *Tween, object: *Object, property: string, final_val: Variant, duration: float) -> *PropertyTweener { call_ret := cast(*PropertyTweener) sys_call("Tween", "tween_property", 4049770449, PropertyTweener, main, object, property, final_val, duration); return call_ret; }  // 0
 tween_interval :: (main: *Tween, time: float) -> *IntervalTweener { call_ret := cast(*IntervalTweener) sys_call("Tween", "tween_interval", 413360199, IntervalTweener, main, time); return call_ret; }  // 1
 tween_callback :: (main: *Tween, callback: Callable) -> *CallbackTweener { call_ret := cast(*CallbackTweener) sys_call("Tween", "tween_callback", 1540176488, CallbackTweener, main, callback); return call_ret; }  // 2
 tween_method :: (main: *Tween, method: Callable, from: Variant, to: Variant, duration: float) -> *MethodTweener { call_ret := cast(*MethodTweener) sys_call("Tween", "tween_method", 2337877153, MethodTweener, main, method, from, to, duration); return call_ret; }  // 3
-tween_subtween :: (main: *Tween, subtween: Tween) -> *SubtweenTweener { call_ret := cast(*SubtweenTweener) sys_call("Tween", "tween_subtween", 1567358477, SubtweenTweener, main, subtween); return call_ret; }  // 4
+tween_subtween :: (main: *Tween, subtween: *Tween) -> *SubtweenTweener { call_ret := cast(*SubtweenTweener) sys_call("Tween", "tween_subtween", 1567358477, SubtweenTweener, main, subtween); return call_ret; }  // 4
 custom_step :: (main: *Tween, delta: float) -> bool { call_ret := cast(*bool) sys_call("Tween", "custom_step", 330693286, bool, main, delta); return call_ret.*; }  // 5
 stop :: (main: *Tween) { sys_call("Tween", "stop", 3218959716, Nil, main);  }  // 6
 pause :: (main: *Tween) { sys_call("Tween", "pause", 3218959716, Nil, main);  }  // 7
@@ -23384,7 +23399,7 @@ kill :: (main: *Tween) { sys_call("Tween", "kill", 3218959716, Nil, main);  }  /
 get_total_elapsed_time :: (main: *Tween) -> float { call_ret := cast(*float) sys_call("Tween", "get_total_elapsed_time", 1740695150, float, main); return call_ret.*; }  // 10
 is_running :: (main: *Tween) -> bool { call_ret := cast(*bool) sys_call("Tween", "is_running", 2240911060, bool, main); return call_ret.*; }  // 11
 is_valid :: (main: *Tween) -> bool { call_ret := cast(*bool) sys_call("Tween", "is_valid", 2240911060, bool, main); return call_ret.*; }  // 12
-bind_node :: (main: *Tween, node: Node) -> *Tween { call_ret := cast(*Tween) sys_call("Tween", "bind_node", 2946786331, Tween, main, node); return call_ret; }  // 13
+bind_node :: (main: *Tween, node: *Node) -> *Tween { call_ret := cast(*Tween) sys_call("Tween", "bind_node", 2946786331, Tween, main, node); return call_ret; }  // 13
 set_process_mode :: (main: *Tween, mode: Tween.TweenProcessMode) -> *Tween { call_ret := cast(*Tween) sys_call("Tween", "set_process_mode", 855258840, Tween, main, mode); return call_ret; }  // 14
 set_pause_mode :: (main: *Tween, mode: Tween.TweenPauseMode) -> *Tween { call_ret := cast(*Tween) sys_call("Tween", "set_pause_mode", 3363368837, Tween, main, mode); return call_ret; }  // 15
 set_ignore_time_scale :: (main: *Tween) -> *Tween { call_ret := cast(*Tween) sys_call("Tween", "set_ignore_time_scale", 1942052223, Tween, main); return call_ret; }  // 16
@@ -23411,8 +23426,8 @@ get_max_pending_connections :: (main: *UDPServer) -> int { call_ret := cast(*int
 
 get_device_count :: (main: *UPNP) -> int { call_ret := cast(*int) sys_call("UPNP", "get_device_count", 3905245786, int, main); return call_ret.*; }  // 0
 get_device :: (main: *UPNP, index: int) -> *UPNPDevice { call_ret := cast(*UPNPDevice) sys_call("UPNP", "get_device", 2193290270, UPNPDevice, main, index); return call_ret; }  // 1
-add_device :: (main: *UPNP, device: UPNPDevice) { sys_call("UPNP", "add_device", 986715920, Nil, main, device);  }  // 2
-set_device :: (main: *UPNP, index: int, device: UPNPDevice) { sys_call("UPNP", "set_device", 3015133723, Nil, main, index, device);  }  // 3
+add_device :: (main: *UPNP, device: *UPNPDevice) { sys_call("UPNP", "add_device", 986715920, Nil, main, device);  }  // 2
+set_device :: (main: *UPNP, index: int, device: *UPNPDevice) { sys_call("UPNP", "set_device", 3015133723, Nil, main, index, device);  }  // 3
 remove_device :: (main: *UPNP, index: int) { sys_call("UPNP", "remove_device", 1286410249, Nil, main, index);  }  // 4
 clear_devices :: (main: *UPNP) { sys_call("UPNP", "clear_devices", 3218959716, Nil, main);  }  // 5
 get_gateway :: (main: *UPNP) -> *UPNPDevice { call_ret := cast(*UPNPDevice) sys_call("UPNP", "get_gateway", 2276800779, UPNPDevice, main); return call_ret; }  // 6
@@ -23449,10 +23464,10 @@ commit_action :: (main: *UndoRedo) { sys_call("UndoRedo", "commit_action", 32166
 is_committing_action :: (main: *UndoRedo) -> bool { call_ret := cast(*bool) sys_call("UndoRedo", "is_committing_action", 36873697, bool, main); return call_ret.*; }  // 2
 add_do_method :: (main: *UndoRedo, callable: Callable) { sys_call("UndoRedo", "add_do_method", 1611583062, Nil, main, callable);  }  // 3
 add_undo_method :: (main: *UndoRedo, callable: Callable) { sys_call("UndoRedo", "add_undo_method", 1611583062, Nil, main, callable);  }  // 4
-add_do_property :: (main: *UndoRedo, object: Object, property: string, value: Variant) { sys_call("UndoRedo", "add_do_property", 1017172818, Nil, main, object, property, value);  }  // 5
-add_undo_property :: (main: *UndoRedo, object: Object, property: string, value: Variant) { sys_call("UndoRedo", "add_undo_property", 1017172818, Nil, main, object, property, value);  }  // 6
-add_do_reference :: (main: *UndoRedo, object: Object) { sys_call("UndoRedo", "add_do_reference", 3975164845, Nil, main, object);  }  // 7
-add_undo_reference :: (main: *UndoRedo, object: Object) { sys_call("UndoRedo", "add_undo_reference", 3975164845, Nil, main, object);  }  // 8
+add_do_property :: (main: *UndoRedo, object: *Object, property: string, value: Variant) { sys_call("UndoRedo", "add_do_property", 1017172818, Nil, main, object, property, value);  }  // 5
+add_undo_property :: (main: *UndoRedo, object: *Object, property: string, value: Variant) { sys_call("UndoRedo", "add_undo_property", 1017172818, Nil, main, object, property, value);  }  // 6
+add_do_reference :: (main: *UndoRedo, object: *Object) { sys_call("UndoRedo", "add_do_reference", 3975164845, Nil, main, object);  }  // 7
+add_undo_reference :: (main: *UndoRedo, object: *Object) { sys_call("UndoRedo", "add_undo_reference", 3975164845, Nil, main, object);  }  // 8
 start_force_keep_in_merge_ends :: (main: *UndoRedo) { sys_call("UndoRedo", "start_force_keep_in_merge_ends", 3218959716, Nil, main);  }  // 9
 end_force_keep_in_merge_ends :: (main: *UndoRedo) { sys_call("UndoRedo", "end_force_keep_in_merge_ends", 3218959716, Nil, main);  }  // 10
 get_history_count :: (main: *UndoRedo) -> int { call_ret := cast(*int) sys_call("UndoRedo", "get_history_count", 2455072627, int, main); return call_ret.*; }  // 11
@@ -23523,7 +23538,7 @@ get_file :: (main: *VideoStream) -> gstring { call_ret := cast(*gstring) sys_cal
 
 mix_audio :: (main: *VideoStreamPlayback, num_frames: int) -> int { call_ret := cast(*int) sys_call("VideoStreamPlayback", "mix_audio", 93876830, int, main, num_frames); return call_ret.*; }  // 13
 
-set_stream :: (main: *VideoStreamPlayer, stream: VideoStream) { sys_call("VideoStreamPlayer", "set_stream", 2317102564, Nil, main, stream);  }  // 0
+set_stream :: (main: *VideoStreamPlayer, stream: *VideoStream) { sys_call("VideoStreamPlayer", "set_stream", 2317102564, Nil, main, stream);  }  // 0
 get_stream :: (main: *VideoStreamPlayer) -> *VideoStream { call_ret := cast(*VideoStream) sys_call("VideoStreamPlayer", "get_stream", 438621487, VideoStream, main); return call_ret; }  // 1
 play :: (main: *VideoStreamPlayer) { sys_call("VideoStreamPlayer", "play", 3218959716, Nil, main);  }  // 2
 stop :: (main: *VideoStreamPlayer) { sys_call("VideoStreamPlayer", "stop", 3218959716, Nil, main);  }  // 3
@@ -23553,7 +23568,7 @@ get_bus :: (main: *VideoStreamPlayer) -> StringName { call_ret := cast(*StringNa
 get_video_texture :: (main: *VideoStreamPlayer) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("VideoStreamPlayer", "get_video_texture", 3635182373, Texture2D, main); return call_ret; }  // 27
 
 
-set_world_2d :: (main: *Viewport, world_2d: World2D) { sys_call("Viewport", "set_world_2d", 2736080068, Nil, main, world_2d);  }  // 0
+set_world_2d :: (main: *Viewport, world_2d: *World2D) { sys_call("Viewport", "set_world_2d", 2736080068, Nil, main, world_2d);  }  // 0
 get_world_2d :: (main: *Viewport) -> *World2D { call_ret := cast(*World2D) sys_call("Viewport", "get_world_2d", 2339128592, World2D, main); return call_ret; }  // 1
 find_world_2d :: (main: *Viewport) -> *World2D { call_ret := cast(*World2D) sys_call("Viewport", "find_world_2d", 2339128592, World2D, main); return call_ret; }  // 2
 set_canvas_transform :: (main: *Viewport, xform: Transform2D) { sys_call("Viewport", "set_canvas_transform", 2761652528, Nil, main, xform);  }  // 3
@@ -23592,8 +23607,8 @@ set_physics_object_picking_first_only :: (main: *Viewport, enable: bool) { sys_c
 get_physics_object_picking_first_only :: (main: *Viewport) -> bool { call_ret := cast(*bool) sys_call("Viewport", "get_physics_object_picking_first_only", 2240911060, bool, main); return call_ret.*; }  // 36
 get_viewport_rid :: (main: *Viewport) -> RID { call_ret := cast(*RID) sys_call("Viewport", "get_viewport_rid", 2944877500, RID, main); return call_ret.*; }  // 37
 push_text_input :: (main: *Viewport, text: string) { sys_call("Viewport", "push_text_input", 83702148, Nil, main, text);  }  // 38
-push_input :: (main: *Viewport, event: InputEvent) { sys_call("Viewport", "push_input", 3644664830, Nil, main, event);  }  // 39
-push_unhandled_input :: (main: *Viewport, event: InputEvent) { sys_call("Viewport", "push_unhandled_input", 3644664830, Nil, main, event);  }  // 40
+push_input :: (main: *Viewport, event: *InputEvent) { sys_call("Viewport", "push_input", 3644664830, Nil, main, event);  }  // 39
+push_unhandled_input :: (main: *Viewport, event: *InputEvent) { sys_call("Viewport", "push_unhandled_input", 3644664830, Nil, main, event);  }  // 40
 notify_mouse_entered :: (main: *Viewport) { sys_call("Viewport", "notify_mouse_entered", 3218959716, Nil, main);  }  // 41
 notify_mouse_exited :: (main: *Viewport) { sys_call("Viewport", "notify_mouse_exited", 3218959716, Nil, main);  }  // 42
 get_mouse_position :: (main: *Viewport) -> Vector2 { call_ret := cast(*Vector2) sys_call("Viewport", "get_mouse_position", 3341600327, Vector2, main); return call_ret.*; }  // 43
@@ -23645,7 +23660,7 @@ set_as_audio_listener_2d :: (main: *Viewport, enable: bool) { sys_call("Viewport
 is_audio_listener_2d :: (main: *Viewport) -> bool { call_ret := cast(*bool) sys_call("Viewport", "is_audio_listener_2d", 36873697, bool, main); return call_ret.*; }  // 89
 get_audio_listener_2d :: (main: *Viewport) -> *AudioListener2D { call_ret := cast(*AudioListener2D) sys_call("Viewport", "get_audio_listener_2d", 1840977180, AudioListener2D, main); return call_ret; }  // 90
 get_camera_2d :: (main: *Viewport) -> *Camera2D { call_ret := cast(*Camera2D) sys_call("Viewport", "get_camera_2d", 3551466917, Camera2D, main); return call_ret; }  // 91
-set_world_3d :: (main: *Viewport, world_3d: World3D) { sys_call("Viewport", "set_world_3d", 1400875337, Nil, main, world_3d);  }  // 92
+set_world_3d :: (main: *Viewport, world_3d: *World3D) { sys_call("Viewport", "set_world_3d", 1400875337, Nil, main, world_3d);  }  // 92
 get_world_3d :: (main: *Viewport) -> *World3D { call_ret := cast(*World3D) sys_call("Viewport", "get_world_3d", 317588385, World3D, main); return call_ret; }  // 93
 find_world_3d :: (main: *Viewport) -> *World3D { call_ret := cast(*World3D) sys_call("Viewport", "find_world_3d", 317588385, World3D, main); return call_ret; }  // 94
 set_use_own_world_3d :: (main: *Viewport, enable: bool) { sys_call("Viewport", "set_use_own_world_3d", 2586408642, Nil, main, enable);  }  // 95
@@ -23672,7 +23687,7 @@ set_vrs_mode :: (main: *Viewport, mode: Viewport.VRSMode) { sys_call("Viewport",
 get_vrs_mode :: (main: *Viewport) -> Viewport.VRSMode { call_ret := cast(*Viewport.VRSMode) sys_call("Viewport", "get_vrs_mode", 349660525, Viewport.VRSMode, main); return call_ret.*; }  // 116
 set_vrs_update_mode :: (main: *Viewport, mode: Viewport.VRSUpdateMode) { sys_call("Viewport", "set_vrs_update_mode", 3182412319, Nil, main, mode);  }  // 117
 get_vrs_update_mode :: (main: *Viewport) -> Viewport.VRSUpdateMode { call_ret := cast(*Viewport.VRSUpdateMode) sys_call("Viewport", "get_vrs_update_mode", 2255951583, Viewport.VRSUpdateMode, main); return call_ret.*; }  // 118
-set_vrs_texture :: (main: *Viewport, texture: Texture2D) { sys_call("Viewport", "set_vrs_texture", 4051416890, Nil, main, texture);  }  // 119
+set_vrs_texture :: (main: *Viewport, texture: *Texture2D) { sys_call("Viewport", "set_vrs_texture", 4051416890, Nil, main, texture);  }  // 119
 get_vrs_texture :: (main: *Viewport) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("Viewport", "get_vrs_texture", 3635182373, Texture2D, main); return call_ret; }  // 120
 
 set_viewport_path_in_scene :: (main: *ViewportTexture, path: string) { sys_call("ViewportTexture", "set_viewport_path_in_scene", 1348162250, Nil, main, path);  }  // 0
@@ -23709,7 +23724,7 @@ is_sorting_use_aabb_center :: (main: *VisualInstance3D) -> bool { call_ret := ca
 get_aabb :: (main: *VisualInstance3D) -> AABB { call_ret := cast(*AABB) sys_call("VisualInstance3D", "get_aabb", 1068685055, AABB, main); return call_ret.*; }  // 12
 
 set_mode :: (main: *VisualShader, mode: Shader.Mode) { sys_call("VisualShader", "set_mode", 3978014962, Nil, main, mode);  }  // 0
-add_node :: (main: *VisualShader, type: VisualShader.Type, node: VisualShaderNode, position: Vector2, id: int) { sys_call("VisualShader", "add_node", 1560769431, Nil, main, type, node, position, id);  }  // 1
+add_node :: (main: *VisualShader, type: VisualShader.Type, node: *VisualShaderNode, position: Vector2, id: int) { sys_call("VisualShader", "add_node", 1560769431, Nil, main, type, node, position, id);  }  // 1
 get_node :: (main: *VisualShader, type: VisualShader.Type, id: int) -> *VisualShaderNode { call_ret := cast(*VisualShaderNode) sys_call("VisualShader", "get_node", 3784670312, VisualShaderNode, main, type, id); return call_ret; }  // 2
 set_node_position :: (main: *VisualShader, type: VisualShader.Type, id: int, position: Vector2) { sys_call("VisualShader", "set_node_position", 2726660721, Nil, main, type, id, position);  }  // 3
 get_node_position :: (main: *VisualShader, type: VisualShader.Type, id: int) -> Vector2 { call_ret := cast(*Vector2) sys_call("VisualShader", "get_node_position", 2175036082, Vector2, main, type, id); return call_ret.*; }  // 4
@@ -23786,16 +23801,16 @@ get_condition :: (main: *VisualShaderNodeCompare) -> VisualShaderNodeCompare.Con
 
 set_source :: (main: *VisualShaderNodeCubemap, value: VisualShaderNodeCubemap.Source) { sys_call("VisualShaderNodeCubemap", "set_source", 1625400621, Nil, main, value);  }  // 0
 get_source :: (main: *VisualShaderNodeCubemap) -> VisualShaderNodeCubemap.Source { call_ret := cast(*VisualShaderNodeCubemap.Source) sys_call("VisualShaderNodeCubemap", "get_source", 2222048781, VisualShaderNodeCubemap.Source, main); return call_ret.*; }  // 1
-set_cube_map :: (main: *VisualShaderNodeCubemap, value: TextureLayered) { sys_call("VisualShaderNodeCubemap", "set_cube_map", 1278366092, Nil, main, value);  }  // 2
+set_cube_map :: (main: *VisualShaderNodeCubemap, value: *TextureLayered) { sys_call("VisualShaderNodeCubemap", "set_cube_map", 1278366092, Nil, main, value);  }  // 2
 get_cube_map :: (main: *VisualShaderNodeCubemap) -> *TextureLayered { call_ret := cast(*TextureLayered) sys_call("VisualShaderNodeCubemap", "get_cube_map", 3984243839, TextureLayered, main); return call_ret; }  // 3
 set_texture_type :: (main: *VisualShaderNodeCubemap, value: VisualShaderNodeCubemap.TextureType) { sys_call("VisualShaderNodeCubemap", "set_texture_type", 1899718876, Nil, main, value);  }  // 4
 get_texture_type :: (main: *VisualShaderNodeCubemap) -> VisualShaderNodeCubemap.TextureType { call_ret := cast(*VisualShaderNodeCubemap.TextureType) sys_call("VisualShaderNodeCubemap", "get_texture_type", 3356498888, VisualShaderNodeCubemap.TextureType, main); return call_ret.*; }  // 5
 
 
-set_texture :: (main: *VisualShaderNodeCurveTexture, texture: CurveTexture) { sys_call("VisualShaderNodeCurveTexture", "set_texture", 181872837, Nil, main, texture);  }  // 0
+set_texture :: (main: *VisualShaderNodeCurveTexture, texture: *CurveTexture) { sys_call("VisualShaderNodeCurveTexture", "set_texture", 181872837, Nil, main, texture);  }  // 0
 get_texture :: (main: *VisualShaderNodeCurveTexture) -> *CurveTexture { call_ret := cast(*CurveTexture) sys_call("VisualShaderNodeCurveTexture", "get_texture", 2800800579, CurveTexture, main); return call_ret; }  // 1
 
-set_texture :: (main: *VisualShaderNodeCurveXYZTexture, texture: CurveXYZTexture) { sys_call("VisualShaderNodeCurveXYZTexture", "set_texture", 8031783, Nil, main, texture);  }  // 0
+set_texture :: (main: *VisualShaderNodeCurveXYZTexture, texture: *CurveXYZTexture) { sys_call("VisualShaderNodeCurveXYZTexture", "set_texture", 8031783, Nil, main, texture);  }  // 0
 get_texture :: (main: *VisualShaderNodeCurveXYZTexture) -> *CurveXYZTexture { call_ret := cast(*CurveXYZTexture) sys_call("VisualShaderNodeCurveXYZTexture", "get_texture", 1950275015, CurveXYZTexture, main); return call_ret; }  // 1
 
 get_option_index :: (main: *VisualShaderNodeCustom, option: int) -> int { call_ret := cast(*int) sys_call("VisualShaderNodeCustom", "get_option_index", 923996154, int, main, option); return call_ret.*; }  // 21
@@ -23933,7 +23948,7 @@ get_flags :: (main: *VisualShaderNodeParticleEmit) -> VisualShaderNodeParticleEm
 set_mode_2d :: (main: *VisualShaderNodeParticleEmitter, enabled: bool) { sys_call("VisualShaderNodeParticleEmitter", "set_mode_2d", 2586408642, Nil, main, enabled);  }  // 0
 is_mode_2d :: (main: *VisualShaderNodeParticleEmitter) -> bool { call_ret := cast(*bool) sys_call("VisualShaderNodeParticleEmitter", "is_mode_2d", 36873697, bool, main); return call_ret.*; }  // 1
 
-set_mesh :: (main: *VisualShaderNodeParticleMeshEmitter, mesh: Mesh) { sys_call("VisualShaderNodeParticleMeshEmitter", "set_mesh", 194775623, Nil, main, mesh);  }  // 0
+set_mesh :: (main: *VisualShaderNodeParticleMeshEmitter, mesh: *Mesh) { sys_call("VisualShaderNodeParticleMeshEmitter", "set_mesh", 194775623, Nil, main, mesh);  }  // 0
 get_mesh :: (main: *VisualShaderNodeParticleMeshEmitter) -> *Mesh { call_ret := cast(*Mesh) sys_call("VisualShaderNodeParticleMeshEmitter", "get_mesh", 1808005922, Mesh, main); return call_ret; }  // 1
 set_use_all_surfaces :: (main: *VisualShaderNodeParticleMeshEmitter, enabled: bool) { sys_call("VisualShaderNodeParticleMeshEmitter", "set_use_all_surfaces", 2586408642, Nil, main, enabled);  }  // 2
 is_use_all_surfaces :: (main: *VisualShaderNodeParticleMeshEmitter) -> bool { call_ret := cast(*bool) sys_call("VisualShaderNodeParticleMeshEmitter", "is_use_all_surfaces", 36873697, bool, main); return call_ret.*; }  // 3
@@ -23978,17 +23993,17 @@ get_op_type :: (main: *VisualShaderNodeSwitch) -> VisualShaderNodeSwitch.OpType 
 
 set_source :: (main: *VisualShaderNodeTexture, value: VisualShaderNodeTexture.Source) { sys_call("VisualShaderNodeTexture", "set_source", 905262939, Nil, main, value);  }  // 0
 get_source :: (main: *VisualShaderNodeTexture) -> VisualShaderNodeTexture.Source { call_ret := cast(*VisualShaderNodeTexture.Source) sys_call("VisualShaderNodeTexture", "get_source", 2896297444, VisualShaderNodeTexture.Source, main); return call_ret.*; }  // 1
-set_texture :: (main: *VisualShaderNodeTexture, value: Texture2D) { sys_call("VisualShaderNodeTexture", "set_texture", 4051416890, Nil, main, value);  }  // 2
+set_texture :: (main: *VisualShaderNodeTexture, value: *Texture2D) { sys_call("VisualShaderNodeTexture", "set_texture", 4051416890, Nil, main, value);  }  // 2
 get_texture :: (main: *VisualShaderNodeTexture) -> *Texture2D { call_ret := cast(*Texture2D) sys_call("VisualShaderNodeTexture", "get_texture", 3635182373, Texture2D, main); return call_ret; }  // 3
 set_texture_type :: (main: *VisualShaderNodeTexture, value: VisualShaderNodeTexture.TextureType) { sys_call("VisualShaderNodeTexture", "set_texture_type", 986314081, Nil, main, value);  }  // 4
 get_texture_type :: (main: *VisualShaderNodeTexture) -> VisualShaderNodeTexture.TextureType { call_ret := cast(*VisualShaderNodeTexture.TextureType) sys_call("VisualShaderNodeTexture", "get_texture_type", 3290430153, VisualShaderNodeTexture.TextureType, main); return call_ret.*; }  // 5
 
-set_texture_array :: (main: *VisualShaderNodeTexture2DArray, value: TextureLayered) { sys_call("VisualShaderNodeTexture2DArray", "set_texture_array", 1278366092, Nil, main, value);  }  // 0
+set_texture_array :: (main: *VisualShaderNodeTexture2DArray, value: *TextureLayered) { sys_call("VisualShaderNodeTexture2DArray", "set_texture_array", 1278366092, Nil, main, value);  }  // 0
 get_texture_array :: (main: *VisualShaderNodeTexture2DArray) -> *TextureLayered { call_ret := cast(*TextureLayered) sys_call("VisualShaderNodeTexture2DArray", "get_texture_array", 3984243839, TextureLayered, main); return call_ret; }  // 1
 
 
 
-set_texture :: (main: *VisualShaderNodeTexture3D, value: Texture3D) { sys_call("VisualShaderNodeTexture3D", "set_texture", 1188404210, Nil, main, value);  }  // 0
+set_texture :: (main: *VisualShaderNodeTexture3D, value: *Texture3D) { sys_call("VisualShaderNodeTexture3D", "set_texture", 1188404210, Nil, main, value);  }  // 0
 get_texture :: (main: *VisualShaderNodeTexture3D) -> *Texture3D { call_ret := cast(*Texture3D) sys_call("VisualShaderNodeTexture3D", "get_texture", 373985333, Texture3D, main); return call_ret; }  // 1
 
 
@@ -24089,13 +24104,13 @@ get_operator :: (main: *VisualShaderNodeVectorOp) -> VisualShaderNodeVectorOp.Op
 
 
 
-set_probe_data :: (main: *VoxelGI, data: VoxelGIData) { sys_call("VoxelGI", "set_probe_data", 1637849675, Nil, main, data);  }  // 0
+set_probe_data :: (main: *VoxelGI, data: *VoxelGIData) { sys_call("VoxelGI", "set_probe_data", 1637849675, Nil, main, data);  }  // 0
 get_probe_data :: (main: *VoxelGI) -> *VoxelGIData { call_ret := cast(*VoxelGIData) sys_call("VoxelGI", "get_probe_data", 1730645405, VoxelGIData, main); return call_ret; }  // 1
 set_subdiv :: (main: *VoxelGI, subdiv: VoxelGI.Subdiv) { sys_call("VoxelGI", "set_subdiv", 2240898472, Nil, main, subdiv);  }  // 2
 get_subdiv :: (main: *VoxelGI) -> VoxelGI.Subdiv { call_ret := cast(*VoxelGI.Subdiv) sys_call("VoxelGI", "get_subdiv", 4261647950, VoxelGI.Subdiv, main); return call_ret.*; }  // 3
 set_size :: (main: *VoxelGI, size: Vector3) { sys_call("VoxelGI", "set_size", 3460891852, Nil, main, size);  }  // 4
 get_size :: (main: *VoxelGI) -> Vector3 { call_ret := cast(*Vector3) sys_call("VoxelGI", "get_size", 3360562783, Vector3, main); return call_ret.*; }  // 5
-set_camera_attributes :: (main: *VoxelGI, camera_attributes: CameraAttributes) { sys_call("VoxelGI", "set_camera_attributes", 2817810567, Nil, main, camera_attributes);  }  // 6
+set_camera_attributes :: (main: *VoxelGI, camera_attributes: *CameraAttributes) { sys_call("VoxelGI", "set_camera_attributes", 2817810567, Nil, main, camera_attributes);  }  // 6
 get_camera_attributes :: (main: *VoxelGI) -> *CameraAttributes { call_ret := cast(*CameraAttributes) sys_call("VoxelGI", "get_camera_attributes", 3921283215, CameraAttributes, main); return call_ret; }  // 7
 bake :: (main: *VoxelGI) { sys_call("VoxelGI", "bake", 2781551026, Nil, main);  }  // 8
 debug_bake :: (main: *VoxelGI) { sys_call("VoxelGI", "debug_bake", 3218959716, Nil, main);  }  // 9
@@ -24143,7 +24158,7 @@ get_buffered_amount :: (main: *WebRTCDataChannel) -> int { call_ret := cast(*int
 create_server :: (main: *WebRTCMultiplayerPeer) -> Error { call_ret := cast(*Error) sys_call("WebRTCMultiplayerPeer", "create_server", 2865356025, Error, main); return call_ret.*; }  // 0
 create_client :: (main: *WebRTCMultiplayerPeer, peer_id: int) -> Error { call_ret := cast(*Error) sys_call("WebRTCMultiplayerPeer", "create_client", 2641732907, Error, main, peer_id); return call_ret.*; }  // 1
 create_mesh :: (main: *WebRTCMultiplayerPeer, peer_id: int) -> Error { call_ret := cast(*Error) sys_call("WebRTCMultiplayerPeer", "create_mesh", 2641732907, Error, main, peer_id); return call_ret.*; }  // 2
-add_peer :: (main: *WebRTCMultiplayerPeer, peer: WebRTCPeerConnection, peer_id: int) -> Error { call_ret := cast(*Error) sys_call("WebRTCMultiplayerPeer", "add_peer", 4078953270, Error, main, peer, peer_id); return call_ret.*; }  // 3
+add_peer :: (main: *WebRTCMultiplayerPeer, peer: *WebRTCPeerConnection, peer_id: int) -> Error { call_ret := cast(*Error) sys_call("WebRTCMultiplayerPeer", "add_peer", 4078953270, Error, main, peer, peer_id); return call_ret.*; }  // 3
 remove_peer :: (main: *WebRTCMultiplayerPeer, peer_id: int) { sys_call("WebRTCMultiplayerPeer", "remove_peer", 1286410249, Nil, main, peer_id);  }  // 4
 has_peer :: (main: *WebRTCMultiplayerPeer, peer_id: int) -> bool { call_ret := cast(*bool) sys_call("WebRTCMultiplayerPeer", "has_peer", 3067735520, bool, main, peer_id); return call_ret.*; }  // 5
 get_peer :: (main: *WebRTCMultiplayerPeer, peer_id: int) -> Dictionary { call_ret := cast(*Dictionary) sys_call("WebRTCMultiplayerPeer", "get_peer", 3554694381, Dictionary, main, peer_id); return call_ret.*; }  // 6
@@ -24182,7 +24197,7 @@ set_max_queued_packets :: (main: *WebSocketMultiplayerPeer, max_queued_packets: 
 get_max_queued_packets :: (main: *WebSocketMultiplayerPeer) -> int { call_ret := cast(*int) sys_call("WebSocketMultiplayerPeer", "get_max_queued_packets", 3905245786, int, main); return call_ret.*; }  // 16
 
 connect_to_url :: (main: *WebSocketPeer, url: string) -> Error { call_ret := cast(*Error) sys_call("WebSocketPeer", "connect_to_url", 1966198364, Error, main, url); return call_ret.*; }  // 0
-accept_stream :: (main: *WebSocketPeer, stream: StreamPeer) -> Error { call_ret := cast(*Error) sys_call("WebSocketPeer", "accept_stream", 255125695, Error, main, stream); return call_ret.*; }  // 1
+accept_stream :: (main: *WebSocketPeer, stream: *StreamPeer) -> Error { call_ret := cast(*Error) sys_call("WebSocketPeer", "accept_stream", 255125695, Error, main, stream); return call_ret.*; }  // 1
 send :: (main: *WebSocketPeer, message: PackedByteArray) -> Error { call_ret := cast(*Error) sys_call("WebSocketPeer", "send", 2780360567, Error, main, message); return call_ret.*; }  // 2
 send_text :: (main: *WebSocketPeer, message: string) -> Error { call_ret := cast(*Error) sys_call("WebSocketPeer", "send_text", 166001499, Error, main, message); return call_ret.*; }  // 3
 was_string_packet :: (main: *WebSocketPeer) -> bool { call_ret := cast(*bool) sys_call("WebSocketPeer", "was_string_packet", 36873697, bool, main); return call_ret.*; }  // 4
@@ -24296,15 +24311,15 @@ get_mouse_passthrough_polygon :: (main: *Window) -> PackedVector2Array { call_re
 set_wrap_controls :: (main: *Window, enable: bool) { sys_call("Window", "set_wrap_controls", 2586408642, Nil, main, enable);  }  // 65
 is_wrapping_controls :: (main: *Window) -> bool { call_ret := cast(*bool) sys_call("Window", "is_wrapping_controls", 36873697, bool, main); return call_ret.*; }  // 66
 child_controls_changed :: (main: *Window) { sys_call("Window", "child_controls_changed", 3218959716, Nil, main);  }  // 67
-set_theme :: (main: *Window, theme: Theme) { sys_call("Window", "set_theme", 2326690814, Nil, main, theme);  }  // 68
+set_theme :: (main: *Window, theme: *Theme) { sys_call("Window", "set_theme", 2326690814, Nil, main, theme);  }  // 68
 get_theme :: (main: *Window) -> *Theme { call_ret := cast(*Theme) sys_call("Window", "get_theme", 3846893731, Theme, main); return call_ret; }  // 69
 set_theme_type_variation :: (main: *Window, theme_type: string) { sys_call("Window", "set_theme_type_variation", 3304788590, Nil, main, theme_type);  }  // 70
 get_theme_type_variation :: (main: *Window) -> StringName { call_ret := cast(*StringName) sys_call("Window", "get_theme_type_variation", 2002593661, StringName, main); return call_ret.*; }  // 71
 begin_bulk_theme_override :: (main: *Window) { sys_call("Window", "begin_bulk_theme_override", 3218959716, Nil, main);  }  // 72
 end_bulk_theme_override :: (main: *Window) { sys_call("Window", "end_bulk_theme_override", 3218959716, Nil, main);  }  // 73
-add_theme_icon_override :: (main: *Window, name: string, texture: Texture2D) { sys_call("Window", "add_theme_icon_override", 1373065600, Nil, main, name, texture);  }  // 74
-add_theme_stylebox_override :: (main: *Window, name: string, stylebox: StyleBox) { sys_call("Window", "add_theme_stylebox_override", 4188838905, Nil, main, name, stylebox);  }  // 75
-add_theme_font_override :: (main: *Window, name: string, font: Font) { sys_call("Window", "add_theme_font_override", 3518018674, Nil, main, name, font);  }  // 76
+add_theme_icon_override :: (main: *Window, name: string, texture: *Texture2D) { sys_call("Window", "add_theme_icon_override", 1373065600, Nil, main, name, texture);  }  // 74
+add_theme_stylebox_override :: (main: *Window, name: string, stylebox: *StyleBox) { sys_call("Window", "add_theme_stylebox_override", 4188838905, Nil, main, name, stylebox);  }  // 75
+add_theme_font_override :: (main: *Window, name: string, font: *Font) { sys_call("Window", "add_theme_font_override", 3518018674, Nil, main, name, font);  }  // 76
 add_theme_font_size_override :: (main: *Window, name: string, font_size: int) { sys_call("Window", "add_theme_font_size_override", 2415702435, Nil, main, name, font_size);  }  // 77
 add_theme_color_override :: (main: *Window, name: string, color: Color) { sys_call("Window", "add_theme_color_override", 4260178595, Nil, main, name, color);  }  // 78
 add_theme_constant_override :: (main: *Window, name: string, constant: int) { sys_call("Window", "add_theme_constant_override", 2415702435, Nil, main, name, constant);  }  // 79
@@ -24345,11 +24360,11 @@ popup_on_parent :: (main: *Window, parent_rect: Rect2i) { sys_call("Window", "po
 popup_centered :: (main: *Window) { sys_call("Window", "popup_centered", 3447975422, Nil, main);  }  // 114
 popup_centered_ratio :: (main: *Window) { sys_call("Window", "popup_centered_ratio", 1014814997, Nil, main);  }  // 115
 popup_centered_clamped :: (main: *Window) { sys_call("Window", "popup_centered_clamped", 2613752477, Nil, main);  }  // 116
-popup_exclusive :: (main: *Window, from_node: Node) { sys_call("Window", "popup_exclusive", 2134721627, Nil, main, from_node);  }  // 117
-popup_exclusive_on_parent :: (main: *Window, from_node: Node, parent_rect: Rect2i) { sys_call("Window", "popup_exclusive_on_parent", 2344671043, Nil, main, from_node, parent_rect);  }  // 118
-popup_exclusive_centered :: (main: *Window, from_node: Node) { sys_call("Window", "popup_exclusive_centered", 3357594017, Nil, main, from_node);  }  // 119
-popup_exclusive_centered_ratio :: (main: *Window, from_node: Node) { sys_call("Window", "popup_exclusive_centered_ratio", 2284776287, Nil, main, from_node);  }  // 120
-popup_exclusive_centered_clamped :: (main: *Window, from_node: Node) { sys_call("Window", "popup_exclusive_centered_clamped", 2612708785, Nil, main, from_node);  }  // 121
+popup_exclusive :: (main: *Window, from_node: *Node) { sys_call("Window", "popup_exclusive", 2134721627, Nil, main, from_node);  }  // 117
+popup_exclusive_on_parent :: (main: *Window, from_node: *Node, parent_rect: Rect2i) { sys_call("Window", "popup_exclusive_on_parent", 2344671043, Nil, main, from_node, parent_rect);  }  // 118
+popup_exclusive_centered :: (main: *Window, from_node: *Node) { sys_call("Window", "popup_exclusive_centered", 3357594017, Nil, main, from_node);  }  // 119
+popup_exclusive_centered_ratio :: (main: *Window, from_node: *Node) { sys_call("Window", "popup_exclusive_centered_ratio", 2284776287, Nil, main, from_node);  }  // 120
+popup_exclusive_centered_clamped :: (main: *Window, from_node: *Node) { sys_call("Window", "popup_exclusive_centered_clamped", 2612708785, Nil, main, from_node);  }  // 121
 
 add_task :: (main: *WorkerThreadPool, action: Callable) -> int { call_ret := cast(*int) sys_call("WorkerThreadPool", "add_task", 3745067146, int, main, action); return call_ret.*; }  // 0
 is_task_completed :: (main: *WorkerThreadPool, task_id: int) -> bool { call_ret := cast(*bool) sys_call("WorkerThreadPool", "is_task_completed", 1116898809, bool, main, task_id); return call_ret.*; }  // 1
@@ -24367,11 +24382,11 @@ get_direct_space_state :: (main: *World2D) -> *PhysicsDirectSpaceState2D { call_
 get_space :: (main: *World3D) -> RID { call_ret := cast(*RID) sys_call("World3D", "get_space", 2944877500, RID, main); return call_ret.*; }  // 0
 get_navigation_map :: (main: *World3D) -> RID { call_ret := cast(*RID) sys_call("World3D", "get_navigation_map", 2944877500, RID, main); return call_ret.*; }  // 1
 get_scenario :: (main: *World3D) -> RID { call_ret := cast(*RID) sys_call("World3D", "get_scenario", 2944877500, RID, main); return call_ret.*; }  // 2
-set_environment :: (main: *World3D, env: Environment) { sys_call("World3D", "set_environment", 4143518816, Nil, main, env);  }  // 3
+set_environment :: (main: *World3D, env: *Environment) { sys_call("World3D", "set_environment", 4143518816, Nil, main, env);  }  // 3
 get_environment :: (main: *World3D) -> *Environment { call_ret := cast(*Environment) sys_call("World3D", "get_environment", 3082064660, Environment, main); return call_ret; }  // 4
-set_fallback_environment :: (main: *World3D, env: Environment) { sys_call("World3D", "set_fallback_environment", 4143518816, Nil, main, env);  }  // 5
+set_fallback_environment :: (main: *World3D, env: *Environment) { sys_call("World3D", "set_fallback_environment", 4143518816, Nil, main, env);  }  // 5
 get_fallback_environment :: (main: *World3D) -> *Environment { call_ret := cast(*Environment) sys_call("World3D", "get_fallback_environment", 3082064660, Environment, main); return call_ret; }  // 6
-set_camera_attributes :: (main: *World3D, attributes: CameraAttributes) { sys_call("World3D", "set_camera_attributes", 2817810567, Nil, main, attributes);  }  // 7
+set_camera_attributes :: (main: *World3D, attributes: *CameraAttributes) { sys_call("World3D", "set_camera_attributes", 2817810567, Nil, main, attributes);  }  // 7
 get_camera_attributes :: (main: *World3D) -> *CameraAttributes { call_ret := cast(*CameraAttributes) sys_call("World3D", "get_camera_attributes", 3921283215, CameraAttributes, main); return call_ret; }  // 8
 get_direct_space_state :: (main: *World3D) -> *PhysicsDirectSpaceState3D { call_ret := cast(*PhysicsDirectSpaceState3D) sys_call("World3D", "get_direct_space_state", 2069328350, PhysicsDirectSpaceState3D, main); return call_ret; }  // 9
 
@@ -24383,11 +24398,11 @@ get_distance :: (main: *WorldBoundaryShape2D) -> float { call_ret := cast(*float
 set_plane :: (main: *WorldBoundaryShape3D, plane: Plane) { sys_call("WorldBoundaryShape3D", "set_plane", 3505987427, Nil, main, plane);  }  // 0
 get_plane :: (main: *WorldBoundaryShape3D) -> Plane { call_ret := cast(*Plane) sys_call("WorldBoundaryShape3D", "get_plane", 2753500971, Plane, main); return call_ret.*; }  // 1
 
-set_environment :: (main: *WorldEnvironment, env: Environment) { sys_call("WorldEnvironment", "set_environment", 4143518816, Nil, main, env);  }  // 0
+set_environment :: (main: *WorldEnvironment, env: *Environment) { sys_call("WorldEnvironment", "set_environment", 4143518816, Nil, main, env);  }  // 0
 get_environment :: (main: *WorldEnvironment) -> *Environment { call_ret := cast(*Environment) sys_call("WorldEnvironment", "get_environment", 3082064660, Environment, main); return call_ret; }  // 1
-set_camera_attributes :: (main: *WorldEnvironment, camera_attributes: CameraAttributes) { sys_call("WorldEnvironment", "set_camera_attributes", 2817810567, Nil, main, camera_attributes);  }  // 2
+set_camera_attributes :: (main: *WorldEnvironment, camera_attributes: *CameraAttributes) { sys_call("WorldEnvironment", "set_camera_attributes", 2817810567, Nil, main, camera_attributes);  }  // 2
 get_camera_attributes :: (main: *WorldEnvironment) -> *CameraAttributes { call_ret := cast(*CameraAttributes) sys_call("WorldEnvironment", "get_camera_attributes", 3921283215, CameraAttributes, main); return call_ret; }  // 3
-set_compositor :: (main: *WorldEnvironment, compositor: Compositor) { sys_call("WorldEnvironment", "set_compositor", 1586754307, Nil, main, compositor);  }  // 4
+set_compositor :: (main: *WorldEnvironment, compositor: *Compositor) { sys_call("WorldEnvironment", "set_compositor", 1586754307, Nil, main, compositor);  }  // 4
 get_compositor :: (main: *WorldEnvironment) -> *Compositor { call_ret := cast(*Compositor) sys_call("WorldEnvironment", "get_compositor", 3647707413, Compositor, main); return call_ret; }  // 5
 
 save :: (main: *X509Certificate, path: string) -> Error { call_ret := cast(*Error) sys_call("X509Certificate", "save", 166001499, Error, main, path); return call_ret.*; }  // 0
@@ -24556,18 +24571,18 @@ center_on_hmd :: (main: *XRServer, rotation_mode: XRServer.RotationMode, keep_he
 get_hmd_transform :: (main: *XRServer) -> Transform3D { call_ret := cast(*Transform3D) sys_call("XRServer", "get_hmd_transform", 4183770049, Transform3D, main); return call_ret.*; }  // 7
 set_camera_locked_to_origin :: (main: *XRServer, enabled: bool) { sys_call("XRServer", "set_camera_locked_to_origin", 2586408642, Nil, main, enabled);  }  // 8
 is_camera_locked_to_origin :: (main: *XRServer) -> bool { call_ret := cast(*bool) sys_call("XRServer", "is_camera_locked_to_origin", 36873697, bool, main); return call_ret.*; }  // 9
-add_interface :: (main: *XRServer, _interface: XRInterface) { sys_call("XRServer", "add_interface", 1898711491, Nil, main, _interface);  }  // 10
+add_interface :: (main: *XRServer, _interface: *XRInterface) { sys_call("XRServer", "add_interface", 1898711491, Nil, main, _interface);  }  // 10
 get_interface_count :: (main: *XRServer) -> int { call_ret := cast(*int) sys_call("XRServer", "get_interface_count", 3905245786, int, main); return call_ret.*; }  // 11
-remove_interface :: (main: *XRServer, _interface: XRInterface) { sys_call("XRServer", "remove_interface", 1898711491, Nil, main, _interface);  }  // 12
+remove_interface :: (main: *XRServer, _interface: *XRInterface) { sys_call("XRServer", "remove_interface", 1898711491, Nil, main, _interface);  }  // 12
 get_interface :: (main: *XRServer, idx: int) -> *XRInterface { call_ret := cast(*XRInterface) sys_call("XRServer", "get_interface", 4237347919, XRInterface, main, idx); return call_ret; }  // 13
 get_interfaces :: (main: *XRServer) -> [] Dictionary { call_ret := cast(*[] Dictionary) sys_call("XRServer", "get_interfaces", 3995934104, [] Dictionary, main); return call_ret.*; }  // 14
 find_interface :: (main: *XRServer, name: string) -> *XRInterface { call_ret := cast(*XRInterface) sys_call("XRServer", "find_interface", 1395192955, XRInterface, main, name); return call_ret; }  // 15
-add_tracker :: (main: *XRServer, tracker: XRTracker) { sys_call("XRServer", "add_tracker", 684804553, Nil, main, tracker);  }  // 16
-remove_tracker :: (main: *XRServer, tracker: XRTracker) { sys_call("XRServer", "remove_tracker", 684804553, Nil, main, tracker);  }  // 17
+add_tracker :: (main: *XRServer, tracker: *XRTracker) { sys_call("XRServer", "add_tracker", 684804553, Nil, main, tracker);  }  // 16
+remove_tracker :: (main: *XRServer, tracker: *XRTracker) { sys_call("XRServer", "remove_tracker", 684804553, Nil, main, tracker);  }  // 17
 get_trackers :: (main: *XRServer, tracker_types: int) -> Dictionary { call_ret := cast(*Dictionary) sys_call("XRServer", "get_trackers", 3554694381, Dictionary, main, tracker_types); return call_ret.*; }  // 18
 get_tracker :: (main: *XRServer, tracker_name: string) -> *XRTracker { call_ret := cast(*XRTracker) sys_call("XRServer", "get_tracker", 147382240, XRTracker, main, tracker_name); return call_ret; }  // 19
 get_primary_interface :: (main: *XRServer) -> *XRInterface { call_ret := cast(*XRInterface) sys_call("XRServer", "get_primary_interface", 2143545064, XRInterface, main); return call_ret; }  // 20
-set_primary_interface :: (main: *XRServer, _interface: XRInterface) { sys_call("XRServer", "set_primary_interface", 1898711491, Nil, main, _interface);  }  // 21
+set_primary_interface :: (main: *XRServer, _interface: *XRInterface) { sys_call("XRServer", "set_primary_interface", 1898711491, Nil, main, _interface);  }  // 21
 
 get_tracker_type :: (main: *XRTracker) -> XRServer.TrackerType { call_ret := cast(*XRServer.TrackerType) sys_call("XRTracker", "get_tracker_type", 2784508102, XRServer.TrackerType, main); return call_ret.*; }  // 0
 set_tracker_type :: (main: *XRTracker, type: XRServer.TrackerType) { sys_call("XRTracker", "set_tracker_type", 3055763575, Nil, main, type);  }  // 1
@@ -24634,7 +24649,7 @@ file_exists :: (main: *ZIPReader, path: string) -> bool { call_ret := cast(*bool
 
 
 
-// ====== SINGLETONS ======
+// ------ Singletons ------
 
 S_Performance: Performance;
 S_Engine: Engine;
@@ -24713,6 +24728,5 @@ S_XRServer: XRServer;
     assert(size_of(Variant) == 24);
 }
 
-#scope_file
-
+// #scope_file
 // #import "Hash_Table";

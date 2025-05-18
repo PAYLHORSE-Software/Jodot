@@ -27,6 +27,7 @@ AT_COMPILE_TIME :: true;
 
 generate_bindings :: (args: [] string) -> bool {
 
+    print_muted("Generating sys bindings...");
     output_filename: string;
     opts: Generate_Bindings_Options;
     {
@@ -60,9 +61,13 @@ OUTPUT_PATH :: "sys/sys_bindings.jai";
 // DECLARATIONS_TO_OMIT :: string.[
 // ];
 
+print_muted :: (msg: string) {
+    log("\x1b[38;5;246m%\x1b[0m", msg);
+}
+
 SYS_HEADER :: #string DONE
 //  --------------------
-// | JODOT SYS BINDINGS |
+// | Jodot sys bindings |
 //  --------------------
 DONE
 

@@ -1,8 +1,8 @@
 //  --------------------------
-// | JODOT GDT NATIVE STRUCTS |
+// | Jodot gdt native structs |
 //  --------------------------
 
-OpaqueClass :: struct {
+GodotClass :: struct {
     p_object: GDExtensionConstObjectPtr = null;
     object_id: GDObjectInstanceID;
     variant: Variant;
