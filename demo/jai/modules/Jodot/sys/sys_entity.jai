@@ -13,7 +13,7 @@ ExtensionEntity :: struct {
     _ready : #type (cast_me: *ExtensionEntity) = null;
     _process : #type (cast_me: *ExtensionEntity, delta: float64) = null;
     _physics_process : #type (cast_me: *ExtensionEntity, delta: float64) = null;
-    // _input : #type (cast_me: *ExtensionEntity, event: *InputEvent) = null;
+    _input : #type (cast_me: *ExtensionEntity, event: *InputEvent) = null;
     _enter_tree : #type (cast_me: *ExtensionEntity) = null;
     _exit_tree : #type (cast_me: *ExtensionEntity) = null;
 }
@@ -68,22 +68,12 @@ call_virtual_with_data_fn :: (p_instance: GDExtensionClassInstancePtr, p_name: G
                 entity._physics_process(instance, delta);
             }
         // == INPUT PROC == @Incomplete
-        // } else if sn_equal(sn_vfn, vfn_stringnames[3]) {
-            // if entity._input != null {
-                // event: InputEvent;
-                // (1) An object?
-                // object := Object;
-                // memcpy(*object, p_args.*, size_of(Object));
-                // classname := alloc(size_of(StringName));
-                // if object_get_class_name(*object, P_LIBRARY, *classname) print_warn("IT WORKED!");
-                // (2) A variant?
-                // p_object := alloc(size_of(Object));
-                // variant_to_Object(p_object, p_args.*);
-                // object := (cast(*Object) p_object).*;
-                // classname := alloc(size_of(StringName));
-                // if object_get_class_name(*object, P_LIBRARY, *classname) print_warn("IT WORKED!");
-                // entity._input(instance, *event);
-            // }
+        } else if sn_equal(sn_vfn, vfn_stringnames[3]) {
+            if entity._input != null {
+                event: InputEvent;
+                event.p_object = ref_get_object(p_args.*);
+                entity._input(instance, *event);
+            }
         // == ENTER TREE PROC ==
         } else if sn_equal(sn_vfn, vfn_stringnames[4]) {
             if entity._enter_tree != null {
@@ -149,13 +139,25 @@ register_extension_entities :: () {
     }
 }
 
-new_gdt_obj :: (gdt_type: $T) -> *void {
-    name := to_sring(T);
+new_gdt_obj :: ($gdt_type: Type) -> gdt_type {
+    
+    name := tprint("%", gdt_type);
     p_sn := make_stringname(name, null);
     p_object := classdb_construct_object2(p_sn);
-    object_set_instance(p_object, name, objects_gdt[cursor_gdt]);
-    objects_gdt[cursor_gdt].p_object = p_object;
-    objects_gdt[cursor_gdt].object_id = object_get_instance_id(p_object);
-    cursor_gdt += 1;
-    return *objects_gdt[cursor_gdt];
+    
+    // object_set_instance(p_object, p_sn, *objects_gdt[cursor_gdt]);
+    // objects_gdt[cursor_gdt].p_object = p_object;
+    // print_muted("New Text Pointer: %", objects_gdt[cursor_gdt].p_object);
+    // objects_gdt[cursor_gdt].object_id = object_get_instance_id(p_object);
+    // cursor_gdt += 1;
+    // return objects_gdt[cursor_gdt].(gdt_type);
+    
+    object: gdt_type;
+    // object_set_instance(p_object, p_sn, *object);
+    object.p_object = p_object;
+    object.object_id = object_get_instance_id(p_object);
+    NOTIFICATION_POSTINITIALIZE :: 0;
+    propagate_notification((*object).(*Node), NOTIFICATION_POSTINITIALIZE);
+    
+    return object;
 }

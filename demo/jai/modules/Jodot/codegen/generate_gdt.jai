@@ -165,6 +165,7 @@ gdt_bindings_codegen :: () {
 
     // NOTE: this gives us valid native procedures, it's just atrocious and not worth it.
     for class: godot_api.classes {
+        if class.name == "ResourceLoader" continue;
         for * method: class.methods {
             if method.is_virtual != null if method.is_virtual.* == true continue;
             if method.name == "remove" method.name = "_remove";
@@ -229,6 +230,7 @@ gdt_bindings_codegen :: () {
                 if it.type.* == "**uint8_" it.type.* = "**u8";
                 if it.type.* == "*uint8_t" it.type.* = "*u8";
                 print_to_builder(*builder, ", %: %", it.name, it.type.*);
+                // if it.default_value != null print_to_builder(*builder, " = %", it.default_value);
             }
 
             if method.return_value {
@@ -296,8 +298,8 @@ gdt_bindings_codegen :: () {
             } else { append(*builder, ")"); }
 
             append(*builder, " { ");
-            if method.return_value print_to_builder(*builder, "call_ret := cast(*%) sys_call(\"%\", \"%\", %, %, main.p_object", method.return_value.type.*, class.name, method.name, method.hash, method.return_value.type.*);
-            else print_to_builder(*builder, "sys_call(\"%\", \"%\", %, Nil, main.p_object", class.name, method.name, method.hash);
+            if method.return_value print_to_builder(*builder, "call_ret := cast(*%) sys_call(\"%\", \"%\", %, %, main", method.return_value.type.*, class.name, method.name, method.hash, method.return_value.type.*);
+            else print_to_builder(*builder, "sys_call(\"%\", \"%\", %, Nil, main", class.name, method.name, method.hash);
             for method.arguments {
                 if it.default_value != null continue; // @Temp
                 print_to_builder(*builder, ", %", it.name);
@@ -521,12 +523,6 @@ GDT_HEADER :: #string DONE
 //  --------------------
 // | JODOT GDT BINDINGS |
 //  --------------------
-
-OpaqueClass :: struct {
-    p_object: GDExtensionObjectPtr;
-    object_id: GDObjectInstanceID;
-    variant: Variant;
-}
 
 DONE
 

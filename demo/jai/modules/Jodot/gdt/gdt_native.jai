@@ -2,6 +2,12 @@
 // | JODOT GDT NATIVE STRUCTS |
 //  --------------------------
 
+OpaqueClass :: struct {
+    p_object: GDExtensionConstObjectPtr = null;
+    object_id: GDObjectInstanceID;
+    variant: Variant;
+}
+
 // Commented out cause compiler crash for some reason... @Incomplete
 
 AudioFrame :: struct {
@@ -30,9 +36,7 @@ CaretInfo :: struct {
 //     index : s32 = 0;
 // }
 
-ObjectID :: struct {
-    id : u64 = 0;
-}
+ObjectID :: #type GDObjectInstanceID;
 
 // PhysicsServer2DExtensionMotionResult :: struct {
 //     travel: Vector2;

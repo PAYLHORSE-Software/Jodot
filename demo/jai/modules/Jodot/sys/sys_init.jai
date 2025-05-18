@@ -42,6 +42,9 @@ get_native_struct_size: GDExtensionInterfaceGetNativeStructSize;
 variant_get_ptr_builtin_method: GDExtensionInterfaceVariantGetPtrBuiltinMethod;
 variant_get_type: GDExtensionInterfaceVariantGetType;
 variant_get_object_instance_id: GDExtensionInterfaceVariantGetObjectInstanceId;
+variant_new_copy: GDExtensionInterfaceVariantNewCopy;
+variant_new_nil: GDExtensionInterfaceVariantNewNil;
+ref_get_object: GDExtensionInterfaceRefGetObject;
 
 // == VARIANT PROCS ==
 
@@ -86,8 +89,9 @@ variant_from_PackedStringArray: GDExtensionVariantFromTypeConstructorFunc;
 variant_from_PackedVector2Array: GDExtensionVariantFromTypeConstructorFunc;
 variant_from_PackedVector3Array: GDExtensionVariantFromTypeConstructorFunc;
 variant_from_PackedColorArray: GDExtensionVariantFromTypeConstructorFunc;
+variant_from_PackedVector4Array: GDExtensionVariantFromTypeConstructorFunc;
 
-VARIANT_FROM : [38] *GDExtensionVariantFromTypeConstructorFunc : .[
+VARIANT_FROM : [39] *GDExtensionVariantFromTypeConstructorFunc : .[
     *variant_from_Nil,
     *variant_from_bool,
     *variant_from_int,
@@ -126,6 +130,7 @@ VARIANT_FROM : [38] *GDExtensionVariantFromTypeConstructorFunc : .[
     *variant_from_PackedVector2Array,
     *variant_from_PackedVector3Array,
     *variant_from_PackedColorArray,
+    *variant_from_PackedVector4Array
 ];
 
 variant_to_Nil: GDExtensionTypeFromVariantConstructorFunc;
@@ -170,8 +175,9 @@ variant_to_PackedStringArray: GDExtensionTypeFromVariantConstructorFunc;
 variant_to_PackedVector2Array: GDExtensionTypeFromVariantConstructorFunc;
 variant_to_PackedVector3Array: GDExtensionTypeFromVariantConstructorFunc;
 variant_to_PackedColorArray: GDExtensionTypeFromVariantConstructorFunc;
+variant_to_PackedVector4Array: GDExtensionTypeFromVariantConstructorFunc;
 
-VARIANT_TO : [38] *GDExtensionTypeFromVariantConstructorFunc : .[
+VARIANT_TO : [39] *GDExtensionTypeFromVariantConstructorFunc : .[
     *variant_to_Nil,
     *variant_to_bool,
     *variant_to_int,
@@ -210,6 +216,7 @@ VARIANT_TO : [38] *GDExtensionTypeFromVariantConstructorFunc : .[
     *variant_to_PackedVector2Array,
     *variant_to_PackedVector3Array,
     *variant_to_PackedColorArray,
+    *variant_to_PackedVector4Array
 ];
 
 get_gstring_length: GDExtensionPtrBuiltInMethod;
@@ -268,8 +275,10 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
         get_native_struct_size = xx P_GET_PROC_ADDRESS("get_native_struct_size");
         variant_get_ptr_builtin_method = xx P_GET_PROC_ADDRESS("variant_get_ptr_builtin_method");
         variant_get_type = xx P_GET_PROC_ADDRESS("variant_get_type");
-        
         variant_get_object_instance_id = xx P_GET_PROC_ADDRESS("variant_get_object_instance_id");
+        variant_new_copy = xx P_GET_PROC_ADDRESS("variant_new_copy");
+        variant_new_nil = xx P_GET_PROC_ADDRESS("variant_new_nil");
+        ref_get_object = xx P_GET_PROC_ADDRESS("ref_get_object");
 
         // == VARIANT CONVERSION ==
         for enum_values_as_s64(GDExtensionVariantType) {
@@ -307,7 +316,7 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
         // assert(get_native_struct_size(make_stringname("ScriptLanguageExtensionProfilingInfo", null)) == size_of(ScriptLanguageExtensionProfilingInfo));
 
         // == ENGINE SINGLETONS ==
-        // NOTE: copied over from gdt_bindings
+        // NOTE: list copied over from gdt_bindings
         S_Performance.p_object = global_get_singleton(make_stringname("Performance", null));
         S_TextServerManager.p_object = global_get_singleton(make_stringname("TextServerManager", null));
         S_PhysicsServer2DManager.p_object = global_get_singleton(make_stringname("PhysicsServer2DManager", null));

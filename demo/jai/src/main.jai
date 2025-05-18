@@ -7,8 +7,8 @@ using Jodot;
 // We declare an Extension Entity as a struct, as follows:
 
 // (1) Use the @jodot note in struct declaration.
-#poke_name Jodot MyCharacter;
-MyCharacter :: struct @jodot {
+#poke_name Jodot MyCustomEntity;
+MyCustomEntity :: struct @jodot {
 
     // (2) Designate a parent class from Godot's builtin classes, as 'parent'.
     #as using parent: CharacterBody3D;
@@ -31,13 +31,12 @@ MyCharacter :: struct @jodot {
     // _physics_process is called at a frame-independent tick rate
     // _input is called when the node recieves an input event
     // _exit_tree is called when the node is destroyed
-    _enter_tree = enter_tree_MyCharacter;
-    _ready = ready_MyCharacter;
-    _process = process_MyCharacter;
-    _physics_process = physics_process_MyCharacter;
-    // The input vfn is incomplete, but it's best to use the Input singleton instead anyway.
-    // _input = input_MyCharacter;
-    _exit_tree = exit_tree_MyCharacter;
+    _enter_tree = enter_tree_MyCustomEntity;
+    _ready = ready_MyCustomEntity;
+    _process = process_MyCustomEntity;
+    _physics_process = physics_process_MyCustomEntity;
+    _input = input_MyCustomEntity;
+    _exit_tree = exit_tree_MyCustomEntity;
 
     // The way of thinking encouraged by the node system, signals, and
     // these virtual functions especially can and will bite you in the ass.
@@ -46,106 +45,193 @@ MyCharacter :: struct @jodot {
 
 
 // Each 'virtual function' declaration must match the respective signature shown below.
-enter_tree_MyCharacter :: (cast_me: *ExtensionEntity) {
-    print("Enter tree from MyCharacter!");
+enter_tree_MyCustomEntity :: (cast_me: *ExtensionEntity) {
+    print("Enter tree from MyCustomEntity!");
 }
 
-ready_MyCharacter :: (cast_me: *ExtensionEntity) {
+ready_MyCustomEntity :: (cast_me: *ExtensionEntity) {
 
     // You must cast the provided pointer to the right type to use your struct.
-    as_node := cast(*Node) cast_me;
+    as_self := cast_me.(*MyCustomEntity);
+    as_node := cast_me.(*Node);
 
     // Call builtin class methods like so: method(target, args...);
     set_name(as_node, "Sailor");
 
-    // You must also cast to the respective type when using a method.
+    // You must cast to the respective type when using a method.
     // Otherwise, there may be ambiguity as to which procedure overload to use.
-    // set_name(entity, "Sailor"); // Uncomment this line for an error.
+    // set_name(as_self, "Sailor"); // Uncomment this line for an error.
     // This emulation of class methods is pretty sad and will be improved soon.
 
     // Use the Godot Docs as your reference: https://docs.godotengine.org/en/stable/classes/index.html
-    // All methods are available, and match Godot names and arguments exactly.
+    // All methods are available, and should match Godot names and arguments exactly.
     // NOTE: don't worry about String vs. StringName. Just use native strings.
+    // NOTE: currently, arguments with default values are skipped
 }
 
-process_MyCharacter :: (cast_me: *ExtensionEntity, delta: float64) {}
-physics_process_MyCharacter :: (cast_me: *ExtensionEntity, delta: float64) {}
-// input_MyCharacter :: (cast_me: *ExtensionEntity, event: *InputEvent) {}
-exit_tree_MyCharacter :: (cast_me: *ExtensionEntity) {}
+process_MyCustomEntity :: (cast_me: *ExtensionEntity, delta: float64) {}
+physics_process_MyCustomEntity :: (cast_me: *ExtensionEntity, delta: float64) {}
+input_MyCustomEntity :: (cast_me: *ExtensionEntity, event: *InputEvent) {}
+exit_tree_MyCustomEntity :: (cast_me: *ExtensionEntity) {}
 
 // ----------
 // DEMO SCENE
 
 // Here's the test entity we've used as the root of the demo scene:
 
-#poke_name Jodot JodotTestEntity;
-JodotTestEntity :: struct @jodot {
+PRINT_DELTA :: 0.04;
+full_message := "I'm sorry! GDScript is in another castle.";
+onscreen_message: [..] u8;
+
+#poke_name Jodot DemoRoot;
+DemoRoot :: struct @jodot {
 
     #as using parent: Node3D;
     #insert def_extension_entity;
 
     time_accumulator : float = 0.0;
-    greeter_text : *RichTextLabel = null;
+    greeter_text: RichTextLabel;
 
-    _ready = ready_JodotTestEntity;
-    _process = process_JodotTestEntity;
+    _ready = ready_DemoRoot;
+    _process = process_DemoRoot;
+    _input = input_DemoRoot;
 }
 
-ready_JodotTestEntity :: (cast_me: *ExtensionEntity) {
+ready_DemoRoot :: (cast_me: *ExtensionEntity) {
     
-    as_self := cast_me.(*JodotTestEntity);
+    as_self := cast_me.(*DemoRoot);
     as_node := cast_me.(*Node);
     as_node3d := cast_me.(*Node3D);
     
-    // WORKING!
-    print_muted("Object Pointer: %", as_node.p_object);
-    print_muted("Object ID: %", as_node.object_id);
-    name := get_name(as_node);
-    print_muted("Name Before: %", name);
-    set_name(as_node, "Sailor");
-    name = get_name(as_node);
-    print_muted("Name After: %", name);
-    
     // This is 'tree-climbing', the simplest way to reference other nodes.
     rich_text := get_node(as_node, "greeter/RichTextLabel");
-    // Try not to abuse this. It can ending up locking you into a strict hierarchy.
-    as_self.greeter_text = rich_text.(*RichTextLabel);
-    // name = get_name(rich_text);
-    // print_muted("Text Name: %", name);
-    message := get_text(as_self.greeter_text);
-    set_text(as_self.greeter_text, "[center]GDScript is in another castle.");
+    // We can store this reference as a struct field.
+    as_self.greeter_text = rich_text.(*RichTextLabel).*;
     
-    // @BORKED load is successful, but this time resource instance not returned properly
-    mouse_cursor := load(*S_ResourceLoader, "res://menu/sprite/mouse_cursor.png");
-    set_custom_mouse_cursor(*S_Input, mouse_cursor);
-    
-    // WORKING!
-    set_position(as_node3d, Vector3.{1.0, 1.0, 2.0});
+    // Test setting & getting a property (3D position doesn't do anything in this case)
+    set_position(as_node3d, Vector3.{1, 1, 2});
     vec3 := get_position(as_node3d);
-    print_muted(tprint("Position: %", vec3));
+    print_muted(tprint("Position: % should be {1, 1, 2}", vec3));
+
+    // Creating and instantiating a Label
+    hint_text := new_gdt_obj(Label);
+    hint_text_as_ctrl := (*hint_text).(*Control);
+    set_text(*hint_text, "Press Esc to exit.");
+    // set_horizontal_alignment(*hint_text, .HORIZONTAL_ALIGNMENT_RIGHT);
+    set_v_size_flags(hint_text_as_ctrl, .SIZE_FILL);
+    canvas := get_node(as_node, "canvas");
+    add_child(canvas, xx,force hint_text);
     
-    print("Ready from JodotTestEntity!\n");
-    // print_muted("Wait for it...");
+    bbcode := "[center]";
+    array_copy(*onscreen_message, bbcode.([] u8));
+    
+    // TODO find a way to load resources!!
+    // The image is loaded and cached successfuly, but the resource object returned seems to be invalid.
+    // mouse_cursor := load(*S_ResourceLoader, "res://menu/sprite/mouse_cursor.png");
+    // assert(has_cached(*S_ResourceLoader, "res://menu/sprite/mouse_cursor.png"));
+    
+    // Setting custom mouse cursor
+    // set_custom_mouse_cursor(*S_Input, mouse_cursor.*);
+    
+    // Creating and instantiating a TextureRect
+    // img_tex := new_gdt_obj(ImageTexture);
+    // set_image(*img_tex, xx,force mouse_cursor.*);
+    // tex_rect := new_gdt_obj(TextureRect);
+    // set_texture((*tex_rect).(*TextureRect), xx,force img_tex);
+    // add_child(canvas, xx,force tex_rect);
+    
+    print("Ready from DemoRoot!\n");
 }
 
-process_JodotTestEntity :: (cast_me: *ExtensionEntity, delta: float64) {
+process_DemoRoot :: (cast_me: *ExtensionEntity, delta: float64) {
     
-    // WORKING!
-    as_self := cast(*JodotTestEntity) cast_me;
+    as_self := cast(*DemoRoot) cast_me;
+    as_node := cast_me.(*Node);
+    
+    // Print message one letter per delta
     as_self.time_accumulator += cast(float) delta;
-    // if as_self.time_accumulator > 10.0 print_muted("Greeter's Pocketwatch: %", as_self.time_accumulator);
-    
-    // @BORKED: input virtual function not set up properly
-    // handle_input();
+    if as_self.time_accumulator > PRINT_DELTA {
+        
+        as_self.time_accumulator = 0;
+        next_char := full_message.data.*;
+        array_add(*onscreen_message, next_char);
+        full_message.data += 1;
+
+        set_text(*as_self.greeter_text, onscreen_message.(string));
+    }
 }
 
-handle_input :: () #expand {
-    if is_action_pressed(*S_Input, "escape") {
-        as_node := cast(*Node) `cast_me;
+input_DemoRoot :: (cast_me: *ExtensionEntity, event: *InputEvent) {
+
+    as_node := cast_me.(*Node);
+    
+    // Quit on pressing Esc
+    // The 'escape' action was created and bound to Esc key in editor!
+    if is_action_pressed(event, "escape") {
         scene_tree := get_tree(as_node);
         quit(scene_tree);
     }
 }
 
+// Here's the scrolling platform at the bottom:
+
+GROUND_SCROLL_SPEED :: -0.03;
+ground_offset := 0.0;
+
+#poke_name Jodot ScrollingGround;
+ScrollingGround :: struct @jodot {
+
+    #as using parent: Sprite2D;
+    #insert def_extension_entity;
+
+    shader_mat: ShaderMaterial;
+
+    _ready = ready_ScrollingGround;
+    _process = process_ScrollingGround;    
+}
+
+ready_ScrollingGround :: (cast_me: *ExtensionEntity) {
+
+    as_self := cast_me.(*ScrollingGround);
+    as_canvas_item := cast_me.(*CanvasItem);
+    
+    // shader_mat := load(*S_ResourceLoader, "res://shader/ground_shader_mat.tres", "ShaderMaterial");
+    // shader_mat_name := get_name(shader_mat.(*Resource));
+    // as_self.shader_mat = shader_mat.(*ShaderMaterial).*;
+    // set_material(as_canvas_item, xx,force as_self.shader_mat);
+    
+    // offset_var: Variant;
+    // offset_vec := Vector2.{0.4, 0.0};
+    // variant_from_Vector2(*offset_var, *offset_vec);
+    // set_instance_shader_parameter(as_canvas_item, "offset", offset_var);
+}
+
+process_ScrollingGround :: (cast_me: *ExtensionEntity, delta: float64) {
+    
+    as_self := cast_me.(*ScrollingGround);
+    as_canvas_item := cast_me.(*CanvasItem);
+    
+    ground_offset += xx delta * GROUND_SCROLL_SPEED;
+    ground_offset = Math.fmod_cycling(ground_offset, 1);
+    offset_var: Variant;
+    offset_vec := Vector2.{ground_offset, 0.0};
+    variant_from_Vector2(*offset_var, *offset_vec);
+    // set_shader_parameter(*as_self.shader_mat, "offset", offset_var);
+    shader_mat := get_material(as_canvas_item).(*ShaderMaterial);
+    // current_offset := get_shader_parameter(shader_mat, "offset");
+    current_offset := get_instance_shader_parameter(as_canvas_item, "offset");
+    print_muted("Offset variant: %", current_offset);
+    vec: Vector2;
+    // variant_to_Vector2(*vec, *offset_var);
+    variant_to_Vector2(*vec, *current_offset);
+    print_affirm("Offset: %", vec);
+    // set_shader_parameter(shader_mat, "offset", offset_var);
+    print_muted("Offset variant: %", current_offset);
+    // set_shader_parameter(shader_mat, "offset", current_offset);
+    set_instance_shader_parameter(as_canvas_item, "offset", offset_var);
+    // assert(false);
+}
+
 #import "Basic";
+Math :: #import "Math";
 Jodot :: #import "Jodot";

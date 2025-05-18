@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cuxwg17yf8tcd" path="res://menu/sprite/greeter/walking 11.png" id="12_snx6w"]
 [ext_resource type="Texture2D" uid="uid://dea4tric6hyxu" path="res://menu/sprite/greeter/walking 12.png" id="13_ixjrd"]
 [ext_resource type="Texture2D" uid="uid://50c0u6q4iyj" path="res://menu/graphic/ground.png" id="14_6fiel"]
-[ext_resource type="Script" uid="uid://bmqbrwv671565" path="res://script/scroll.gd" id="15_72wix"]
+[ext_resource type="Material" uid="uid://bf2fhsxqk4yba" path="res://shader/ground_shader_mat.tres" id="14_jbdfk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m76yy"]
 animations = [{
@@ -60,7 +60,7 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="JodotTestEntity" type="JodotTestEntity"]
+[node name="root" type="DemoRoot"]
 
 [node name="canvas" type="PanelContainer" parent="."]
 anchors_preset = 15
@@ -97,7 +97,7 @@ theme_override_constants/shadow_outline_size = 2
 theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
-text = "[center]I'm sorry, but GDScript is in another castle."
+text = "Placeholder Text"
 fit_content = true
 
 [node name="PointLight2D" type="PointLight2D" parent="greeter"]
@@ -111,8 +111,8 @@ scale = Vector2(0.33, 0.33)
 sprite_frames = SubResource("SpriteFrames_m76yy")
 autoplay = "default"
 
-[node name="bg" type="Sprite2D" parent="greeter"]
+[node name="ground" type="ScrollingGround" parent="greeter"]
+material = ExtResource("14_jbdfk")
 position = Vector2(-3, -140.985)
 scale = Vector2(0.54, 0.54)
 texture = ExtResource("14_6fiel")
-script = ExtResource("15_72wix")

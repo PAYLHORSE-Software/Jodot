@@ -123,6 +123,15 @@ sn_equal :: (a: StringName, b: StringName) -> bool {
     else return false;
 }
 
+sn_equal :: (a: StringName, native_string: string) -> bool {
+    b := make_stringname(native_string, null).*;
+    if a[0] == b[0] &&
+        a[1] == b[1] &&
+        a[2] == b[2] &&
+        a[3] == b[3] return true;
+    else return false;
+}
+
 NodePath :: #type,distinct [4] u8;
 RID :: #type,distinct [8] u8;
 Object :: #type,distinct [4] u8;
@@ -140,7 +149,7 @@ PackedVector2Array :: #type,distinct [8] u8;
 PackedVector3Array :: #type,distinct [8] u8;
 PackedColorArray :: #type,distinct [8] u8;
 PackedVector4Array :: #type,distinct [8] u8;
-Variant :: [24] u8;
+Variant :: #type [24] u8;
 
 #scope_file
 

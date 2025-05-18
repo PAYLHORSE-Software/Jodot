@@ -71,6 +71,8 @@ handle_call_error :: (err: GDExtensionCallError) {
           print_error("gdt_call failed! instance is null");
         case ERROR_METHOD_NOT_CONST;
           print_error("gdt_call failed! method not const");
+        case;
+          print_error("gdt_call failed!");
     }
 }
 
