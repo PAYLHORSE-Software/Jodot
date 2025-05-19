@@ -75,7 +75,7 @@ We'll set up our Godot project to link against Jodot's output.
 ```
 [configuration]
 entry_symbol = "jodot_init"
-compatibility_minimum = 4.3
+compatibility_minimum = 4.4
 
 [libraries]
 linux.debug.x86_64 = "res://../jai/bin/demo.so"
@@ -131,14 +131,18 @@ build :: () {
 #import "Compiler";
 JodotMeta :: #import "Jodot/Meta";
 ```
-
 Import the Jodot module in your main source file...
 
 **main.jai**
 ```jai
 Jodot :: #import "Jodot";
 ```
-And you're set! Refer to [**demo/jai/src/main.jai**](https://github.com/paylanon/Jodot/blob/main/demo/jai/src/main.jai) for comprehensive usage instructions.
+And you're set!
+
+Our workflow is now running `jai build.jai` in the jai directory to compile our extension library, then running `godot` in the godot directory to run our project.
+Make sure to open the project in editor (`godot -e` or `godot -e -w`) at least once prior to that, if you haven't done so already.
+
+Refer to [**demo/jai/src/main.jai**](https://github.com/paylanon/Jodot/blob/main/demo/jai/src/main.jai) for comprehensive usage instructions.
 
 ## ROADMAP/TODO
 
@@ -149,11 +153,12 @@ And you're set! Refer to [**demo/jai/src/main.jai**](https://github.com/paylanon
 - [x] Feature-complete with opaque godot classes.
 - [ ] Godot integration pass: export custom properties and procedures.
 - [ ] Performance pass: bespoke allocator and fast class method lookups.
+- [ ] Extenstion library hot-reloading.
 
 == v0.2 ==
 
 - [ ] Exposed godot classes, directly get and set class properties.
-- [ ] 'Jodot System' custom MainLoop to replace SceneTree.
+- [ ] 'Jodot System' MainLoop, DOD, abolish virtual functions.
 
 == v0.3 ==
 
