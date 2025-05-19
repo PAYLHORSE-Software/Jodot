@@ -9,7 +9,7 @@ Pursuing antagonism to Godot's OOP and GDScript-free performance.
 
 > 🛈 **A testament to language design and to temperance:**
 >
-> Currently at: **982 LOC**
+> Currently at: **1400 LOC** (pre-codegen)
 >
 > Compared to:
 >
@@ -19,9 +19,9 @@ Pursuing antagonism to Godot's OOP and GDScript-free performance.
 
 ## THE CHOPPING BLOCK
 
-Jodot aims to be language idiomatic, and is thus selective and experimental. For a traditional alternative, see the aforementioned godot-rust, an excellent library. With that said, here's the gist of it:
+Jodot aims to be language idiomatic, and can thus be deemed as experimentally selective. For a traditional alternative, see the aforementioned godot-rust, an excellent library. With that said, here's the gist of it:
 
-Jodot's version of the user class is an **Extension Entity**.
+Jodot's version of the custom extension class is an **Extension Entity**.
 
 **Methods, or member functions, have been abolished.** Except from this abolishment are the **ready**, **process**, **physics process**, **input**, **enter tree** and **exit tree** virtual methods, which can be declared as members of an Extension Entity.
 
@@ -47,6 +47,12 @@ More will be added to the chopping block as opportunities to favor language idio
 
 ## HANDBOOK
 ### Getting Started
+> 🛈 Note
+>
+> The Jodot module folder is located at [demo/jai/modules/Jodot](demo/jai/modules/Jodot).
+>
+> The Jodot module depends on [Jaison](https://github.com/rluba/jaison), so copy or git clone that into [demo/jai/modules/Jodot/modules/Jaison](demo/jai/modules/Jodot/modules/Jaison).
+
 Recommended directory setup:
 ```
 project_dir
@@ -89,9 +95,11 @@ The next little file should be generated automatically by the editor, but you ma
 ```
 res://demo.gdextension
 ```
-That should be all Godot-side. Next, we'll configure our build in the language to output to a **dynamic library**. We also have to pull in Jodot's **metaprogram** with an import.
+That should be all Godot-side. 
 
-This is a minimal example. The only hard requirements on your workspace are `entry_point_name = "jodot_init"` and `JodotMeta.message_loop()` in place.
+Next, we'll configure our build script to output to a **dynamic library**. We also have to pull in Jodot's **metaprogram** with an import.
+
+This is an example. The only hard requirements on your workspace are `entry_point_name = "jodot_init"` and `JodotMeta.message_loop()` in place.
 
 **build.jai**
 ```jai
@@ -128,26 +136,25 @@ Import the Jodot module in your main source file...
 
 **main.jai**
 ```jai
-#import "Jodot";
+Jodot :: #import "Jodot";
 ```
 And you're set! Refer to [**demo/jai/src/main.jai**](https://github.com/paylanon/Jodot/blob/main/demo/jai/src/main.jai) for comprehensive usage instructions.
 
-## ROADMAP
+## ROADMAP/TODO
 
 - [x] Proof of concept: "It just works!"
 
 == v0.1 ==
 
-- [ ] Fully-featured with opaque classes
-
-== v0.2 ==
-
+- [x] Fully-featured with opaque godot classes.
 - [ ] Godot integration pass: export custom properties and procedures.
 - [ ] Performance pass: bespoke allocator and perfect class method lookups.
 
-== v0.3 ==
+== v0.2 ==
 
-- [ ] Exposed godot classes, depracate `gdt_call()`.
+- [ ] Exposed godot classes, direct get and set class properties.
 - [ ] 'Jodot System' god object, DOD, abolish virtual functions.
+
+== v0.3 ==
 
 == v0.4 ==
