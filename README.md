@@ -146,14 +146,14 @@ And you're set! Refer to [**demo/jai/src/main.jai**](https://github.com/paylanon
 
 == v0.1 ==
 
-- [x] Fully-featured with opaque godot classes.
+- [x] Feature-complete with opaque godot classes.
 - [ ] Godot integration pass: export custom properties and procedures.
-- [ ] Performance pass: bespoke allocator and perfect class method lookups.
+- [ ] Performance pass: bespoke allocator and fast class method lookups.
 
 == v0.2 ==
 
-- [ ] Exposed godot classes, direct get and set class properties.
-- [ ] 'Jodot System' god object, DOD, abolish virtual functions.
+- [ ] Exposed godot classes, directly get and set class properties.
+- [ ] 'Jodot System' custom MainLoop to replace SceneTree.
 
 == v0.3 ==
 
