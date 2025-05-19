@@ -901,7 +901,7 @@ GDExtensionInterfaceMemRealloc :: #type (p_ptr: *void, p_bytes: u64) -> *void #c
 GDExtensionInterfaceMemFree :: #type (p_ptr: *void) -> void #c_call;
 
 /**
-* @name print_error
+* @name log_error
 * @since 4.1
 *
 * Logs an error to Godot's built-in debugger and to the OS terminal.
@@ -930,7 +930,7 @@ GDExtensionInterfacePrintError :: #type (p_description: *u8, p_function: *u8, p_
 GDExtensionInterfacePrintErrorWithMessage :: #type (p_description: *u8, p_message: *u8, p_function: *u8, p_file: *u8, p_line: s32, p_editor_notify: GDExtensionBool) -> void #c_call;
 
 /**
-* @name print_warning
+* @name log_warning
 * @since 4.1
 *
 * Logs a warning to Godot's built-in debugger and to the OS terminal.

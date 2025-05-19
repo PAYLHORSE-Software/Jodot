@@ -1,9 +1,6 @@
 P_GET_PROC_ADDRESS: GDExtensionInterfaceGetProcAddress;
 P_LIBRARY: GDExtensionClassLibraryPtr;
 
-objects_gdt: [1000] GodotClass;
-cursor_gdt: u16;
-
 jodot_ctx: #Context;
 
 pool: Flat_Pool;
@@ -242,7 +239,7 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
     push_context jodot_ctx {
         
         // if DEBUG print("The Flat Pool is at % bytes.\n", pool.current_point - pool.memory_base);
-        // if DEBUG print_warn(tprint("Temp Storage is at % bytes.\n", temp_storage.current_page_bytes_occupied));
+        // if DEBUG log_warn(tprint("Temp Storage is at % bytes.\n", temp_storage.current_page_bytes_occupied));
         log("Hello from secret language!");
         log("Initializing Jodot module...");
 
@@ -285,9 +282,9 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
         for enum_values_as_s64(GDExtensionVariantType) {
             if it == 0 continue;
             if it == 38 break;
-            VARIANT_FROM[it].* = get_variant_from_type_constructor(cast(GDExtensionVariantType) it);
-            VARIANT_TO[it].* = get_variant_to_type_constructor(cast(GDExtensionVariantType) it);
-            // if DEBUG print_muted(tprint("Variant procs ready for: %", cast(GDExtensionVariantType) it));
+            VARIANT_FROM[it].* = get_variant_from_type_constructor(it.(GDExtensionVariantType));
+            VARIANT_TO[it].* = get_variant_to_type_constructor(it.(GDExtensionVariantType));
+            // if DEBUG log_muted(tprint("Variant procs ready for: %", cast(GDExtensionVariantType) it));
         }
 
         // Static StringNames
@@ -364,7 +361,7 @@ initialize_jodot_module :: (userdata: *void, p_level: GDExtensionInitializationL
         register_extension_entities();
         log("All systems Jo :)");
         reset_temporary_storage; // ! StringNames wiped !
-        // if DEBUG print_warn(tprint("Temp Storage is at % bytes.\n", temp_storage.current_page_bytes_occupied));
+        // if DEBUG log_warn(tprint("Temp Storage is at % bytes.\n", temp_storage.current_page_bytes_occupied));
     }
 }
 

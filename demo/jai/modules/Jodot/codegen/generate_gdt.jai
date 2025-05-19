@@ -95,7 +95,7 @@ GodotAPI :: struct {
 
 fill_godot_api :: () {
 
-    print_muted("Parsing Extension API JSON...");
+    log_muted("Parsing Extension API JSON...");
     success: bool;
     success, godot_api = json_parse_file("codegen/gdextension/extension_api.json", GodotAPI);
     assert(success);
@@ -108,7 +108,7 @@ fill_godot_api :: () {
 
 gdt_bindings_codegen :: () {
 
-    print_muted("Generating gdt bindings...");
+    log_muted("Generating gdt bindings...");
     builder: String_Builder;
     init_string_builder(*builder);
     append(*builder, GDT_HEADER);
@@ -160,7 +160,7 @@ gdt_bindings_codegen :: () {
     for godot_api.classes { array_add(*all_classes, it); }
     for godot_api.builtin_classes { array_add(*all_classes, it); }
 
-    // print_muted(tprint("ALL CLASSES COUNT: %", all_classes.count));
+    // log_muted(tprint("ALL CLASSES COUNT: %", all_classes.count));
 
     for class: godot_api.classes {
         for * method: class.methods {
@@ -517,7 +517,7 @@ gdt_visitor :: () {}
 #import "File";
 #import "String";
 
-print_muted :: (msg: string) {
+log_muted :: (msg: string) {
     log("\x1b[38;5;246m%\x1b[0m", msg);
 }
 
@@ -525,7 +525,6 @@ GDT_HEADER :: #string DONE
 //  --------------------
 // | Jodot gdt bindings |
 //  --------------------
-
 DONE
 
 GDT_FOOTER :: #string DONE

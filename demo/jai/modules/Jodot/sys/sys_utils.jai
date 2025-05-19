@@ -6,30 +6,32 @@ Option :: enum u8 {
     SOME :: 1;
 }
 
-print_error :: (msg: string, args: .. Any) {
+log_error :: (msg: string, args: .. Any) {
     final_msg := tprint(msg, .. args);
     log_error("\n\x1b[1;38;5;9mERROR: %\n\x1b[0m", final_msg);
 }
 
-print_affirm :: (msg: string, args: .. Any) {
+log_affirm :: (msg: string, args: .. Any) {
     final_msg := tprint(msg, .. args);
     log("\x1b[1;38;5;144m%\x1b[0m", final_msg);
 }
 
-print_muted :: (msg: string, args: .. Any) {
+log_muted :: (msg: string, args: .. Any) {
     final_msg := tprint(msg, .. args);
     log("\x1b[38;5;246m%\x1b[0m", final_msg);
 }
 
-print_warn :: (msg: string, args: .. Any) {
+log_warn :: (msg: string, args: .. Any) {
     final_msg := tprint(msg, .. args);
     log("\x1b[38;5;180m%\x1b[0m", final_msg);
 }
 
 // TODO: debug print gstring and stringname
+// TODO cleaner allocation?
 make_stringname :: (native_string: string, dst: *StringName) -> *StringName {
     c_string := to_c_string(native_string);
     p_stringname := alloc(size_of(StringName),, allocator=temp);
+    // p_stringname := alloc(size_of(StringName),, allocator=temp);
     string_name_new_with_utf8_chars(p_stringname, c_string);
     if dst != null memcpy(dst, p_stringname, size_of(StringName));
     // NOTE: For some reason, godot requires the *exact* pointer it generates here, as opposed to an arbitrary pointer to the StringName value.
@@ -64,7 +66,7 @@ make_gstring :: (native_string: string, dst: *gstring) -> *gstring {
 
 break_gstring :: (src: *gstring) -> string {
     len := string_to_utf8_chars(src, null, 0);
-    print_muted(tprint("gstring length: %", len));
+    log_muted(tprint("gstring length: %", len));
     buffer := NewArray(len, u8);
     string_to_utf8_chars(src, buffer.data, len);
     return buffer.(string);
@@ -74,23 +76,23 @@ handle_call_error :: (err: GDExtensionCallError) {
     using GDExtensionCallErrorType;
     if err.error == {
         case OK;
-          // if DEBUG print_affirm("gdt_call OK!")(, p_final_var);
+          // if DEBUG log_affirm("gdt_call OK!")(, p_final_var);
         case ERROR_INVALID_METHOD;
-          print_error("gdt_call failed! invalid method");
+          log_error("gdt_call failed! invalid method");
         case ERROR_INVALID_ARGUMENT;
-          print_error("gdt_call failed! invalid argument");
-          print_muted(tprint("argument given: %", cast(GDExtensionVariantType) err.argument));
-          print_muted(tprint("argument expected: %", cast(GDExtensionVariantType) err.expected));
+          log_error("gdt_call failed! invalid argument");
+          log_muted(tprint("argument given: %", err.argument.(GDExtensionVariantType)));
+          log_muted(tprint("argument expected: %", err.expected.(GDExtensionVariantType)));
         case ERROR_TOO_MANY_ARGUMENTS;
-          print_error("gdt_call failed! too many arguments");
+          log_error("gdt_call failed! too many arguments");
         case ERROR_TOO_FEW_ARGUMENTS;
-          print_error("gdt_call failed! too few arguments");
+          log_error("gdt_call failed! too few arguments");
         case ERROR_INSTANCE_IS_NULL;
-          print_error("gdt_call failed! instance is null");
+          log_error("gdt_call failed! instance is null");
         case ERROR_METHOD_NOT_CONST;
-          print_error("gdt_call failed! method not const");
+          log_error("gdt_call failed! method not const");
         case;
-          print_error("gdt_call failed!");
+          log_error("gdt_call failed!");
     }
 }
 

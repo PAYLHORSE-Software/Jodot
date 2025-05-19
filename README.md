@@ -35,8 +35,8 @@ MyCharacter :: struct @jodot {
 }
 
 ready_MyCharacter :: (cast_me: *ExtensionEntity) {
-    as_self := cast(*MyCharacter) cast_me;
-    as_node3d := cast(*Node3D) cast_me;
+    as_self := cast_me.(*MyCharacter);
+    as_node3d := cast_me.(*Node3D);
     as_self.character_name = "John Doe";
     set_visible(as_node3d, true);
     pos : Vector3 = get_global_position(as_node3d);

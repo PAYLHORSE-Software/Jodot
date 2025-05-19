@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bf2fhsxqk4yba"]
+
+[ext_resource type="Shader" uid="uid://8ful0y0l2d6" path="res://shader/scroll.gdshader" id="1_6r3h7"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_6r3h7")

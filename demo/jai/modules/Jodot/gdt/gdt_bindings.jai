@@ -2,7 +2,6 @@
 // | Jodot gdt bindings |
 //  --------------------
 
-
 Side :: enum s32 {    // 0
     SIDE_LEFT :: 0;
     SIDE_TOP :: 1;
@@ -13516,7 +13515,7 @@ is_embedded_in_editor :: (main: *Engine) -> bool { call_ret := cast(*bool) sys_c
 get_write_movie_path :: (main: *Engine) -> gstring { call_ret := cast(*gstring) sys_call("Engine", "get_write_movie_path", 201670096, gstring, main); return call_ret.*; }  // 35
 set_print_to_stdout :: (main: *Engine, enabled: bool) { sys_call("Engine", "set_print_to_stdout", 2586408642, Nil, main, enabled);  }  // 36
 is_printing_to_stdout :: (main: *Engine) -> bool { call_ret := cast(*bool) sys_call("Engine", "is_printing_to_stdout", 36873697, bool, main); return call_ret.*; }  // 37
-set_print_error_messages :: (main: *Engine, enabled: bool) { sys_call("Engine", "set_print_error_messages", 2586408642, Nil, main, enabled);  }  // 38
+set_log_error_messages :: (main: *Engine, enabled: bool) { sys_call("Engine", "set_log_error_messages", 2586408642, Nil, main, enabled);  }  // 38
 is_printing_error_messages :: (main: *Engine) -> bool { call_ret := cast(*bool) sys_call("Engine", "is_printing_error_messages", 36873697, bool, main); return call_ret.*; }  // 39
 
 is_active :: (main: *EngineDebugger) -> bool { call_ret := cast(*bool) sys_call("EngineDebugger", "is_active", 2240911060, bool, main); return call_ret.*; }  // 0

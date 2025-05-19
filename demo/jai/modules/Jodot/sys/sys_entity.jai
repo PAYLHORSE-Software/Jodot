@@ -43,8 +43,8 @@ call_virtual_with_data_fn :: (p_instance: GDExtensionClassInstancePtr, p_name: G
     push_context jodot_ctx {
         sn_vfn: StringName;
         memcpy(*sn_vfn, p_name, size_of(StringName));
-        instance := cast(*ExtensionEntity) p_instance;
-        entity := cast(*ExtensionEntity) p_virtual_call_userdata;
+        instance := p_instance.(*ExtensionEntity);
+        entity := p_virtual_call_userdata.(*ExtensionEntity);
 
         // ready proc
         if sn_equal(sn_vfn, vfn_stringnames[0]) {
@@ -87,21 +87,21 @@ call_virtual_with_data_fn :: (p_instance: GDExtensionClassInstancePtr, p_name: G
 }
 
 // --------
-// MEMALLOC
+// Memalloc
 
 class_create_instance :: (p_class_userdata: *void) -> GDExtensionObjectPtr #c_call {
 
     push_context jodot_ctx {
-        extension_entity := cast(*ExtensionEntity) p_class_userdata;
+        extension_entity := p_class_userdata.(*ExtensionEntity);
         p_class_name := make_stringname(tprint("%", extension_entity.type), null);
         p_parent_class_name := make_stringname(tprint("%", extension_entity.parent_type), null);
         p_object := classdb_construct_object2(p_parent_class_name);
         push_context jodot_ctx {
-            print_muted(tprint("** New entity: % **", extension_entity.type));
+            log_muted(tprint("** New entity: % **", extension_entity.type));
             #insert user_entity_case;
         }
 
-        if DEBUG print("++++++ P_OBJECT: % ++++++\n", p_object);
+        // if DEBUG print("++++++ p_object: % ++++++\n", p_object);
         return p_object;
     }
 }
@@ -133,25 +133,33 @@ register_extension_entities :: () {
 
         tag := classdb_get_class_tag(p_class_name);
         if tag == null print_error_with_message(null, "Extension entity registration failed!", null, "Jodot", 0, 1);
-        print_affirm(tprint("Extension entity registered: %", user_entity_declarations[it_index].type));
+        log_affirm(tprint("Extension entity registered: %", user_entity_declarations[it_index].type));
     }
 }
 
-new_gdt :: ($gdt_type: Type) -> *gdt_type {
+//  -----------------------------
+// | Godot Class Object Creation |
+//  -----------------------------
+
+// @ObjectLimit
+GDT_OBJECT_LIMIT :: 1024;
+gdt_objects: [GDT_OBJECT_LIMIT] GodotClass;
+gdt_objects_cursor: u16;
+
+new_gdt :: inline ($gdt_type: Type) -> *gdt_type {
     
     name := tprint("%", gdt_type);
     p_sn := make_stringname(name, null);
     p_object := classdb_construct_object2(p_sn);
     
-    // object_set_instance(p_object, p_sn, *objects_gdt[cursor_gdt]);
-    // objects_gdt[cursor_gdt].p_object = p_object;
-    // print_muted("New Text Pointer: %", objects_gdt[cursor_gdt].p_object);
-    // objects_gdt[cursor_gdt].object_id = object_get_instance_id(p_object);
-    // cursor_gdt += 1;
-    // return objects_gdt[cursor_gdt].(gdt_type);
+    // Option: array allocation
+    // if gdt_objects_cursor >= 1024 assert(false, "gdt object allocation limit reached! Increase limit at tag @ObjectLimit");
+    // object := gdt_objects[gdt_objects_cursor];
+    // gdt_objects_cursor += 1;
     
+    // Option: stack allocation
     object: gdt_type;
-    // object_set_instance(p_object, p_sn, *object);
+    // object_set_instance(p_object, p_sn, object);
     object.p_object = p_object;
     object.object_id = object_get_instance_id(p_object);
     NOTIFICATION_POSTINITIALIZE :: 0;

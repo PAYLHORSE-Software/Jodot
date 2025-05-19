@@ -840,7 +840,7 @@ typedef void (*GDExtensionInterfaceMemFree)(void *p_ptr);
 /* INTERFACE: Godot Core */
 
 /**
- * @name print_error
+ * @name log_error
  * @since 4.1
  *
  * Logs an error to Godot's built-in debugger and to the OS terminal.
@@ -869,7 +869,7 @@ typedef void (*GDExtensionInterfacePrintError)(const char *p_description, const 
 typedef void (*GDExtensionInterfacePrintErrorWithMessage)(const char *p_description, const char *p_message, const char *p_function, const char *p_file, int32_t p_line, GDExtensionBool p_editor_notify);
 
 /**
- * @name print_warning
+ * @name log_warning
  * @since 4.1
  *
  * Logs a warning to Godot's built-in debugger and to the OS terminal.

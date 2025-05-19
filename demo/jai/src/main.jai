@@ -3,16 +3,17 @@
 
 using Jodot;
 
-// We declare an Extension Entity as a struct, as follows:
+// We declare an Extension Entity as follows:
 
+// (1) Poke struct name into Jodot's scope.
 #poke_name Jodot MyCustomEntity;
-// (1) Use the @jodot note in struct declaration.
+// (2) Use the @jodot note in struct declaration.
 MyCustomEntity :: struct @jodot {
 
-    // (2) Designate a parent class from Godot's builtin classes, as 'parent'.
+    // (3) Designate a parent class from Godot's builtin classes, as 'parent'.
     #as using parent: CharacterBody3D;
 
-    // (3) Insert this macro to complete the definition.
+    // (4) Insert this macro to complete the definition.
     // (This just inserts another #as using statement that declares this struct
     // as an 'Extension Entity' and sets it's type fields appropriately.)
     #insert def_extension_entity;
@@ -21,7 +22,7 @@ MyCustomEntity :: struct @jodot {
     health : float = 0.0;
     character_name : string = "Nameless One";
 
-    // (4) Assign to 'virtual function' slots if necessary.
+    // (5) Assign to virtual function slots if necessary.
     // These procedures are called automatically on each node in the scene as follows:
     // _enter_tree is called as soon as the node is instantiated into the scene tree
     // _ready is called once the node is fully initialized
@@ -50,7 +51,7 @@ ready_MyCustomEntity :: (cast_me: *ExtensionEntity) {
     as_node := cast_me.(*Node);
 
     // ExtentionEntity 'inherits' from it's parent GodotClass.
-    // All GodotClass structs are identical, and just an opaque representation of an object instance.
+    // All GodotClass structs are identical, and just an opaque reference to an object instance.
     
     // Call builtin class methods like so: method(target, args...);
     set_name(as_node, "Sailor");
@@ -105,46 +106,56 @@ ready_DemoRoot :: (cast_me: *ExtensionEntity) {
     // We can store this reference as a struct field
     as_self.greeter_text = rich_text.(*RichTextLabel).*;
     
-    // Test setting & getting a property (3D position doesn't do anything in this case)
+    // Setting & getting a vector (3D position doesn't do anything in this case)
     set_position(as_node3d, Vector3.{1, 1, 2});
-    vec3 := get_position(as_node3d);
-    print_muted(tprint("Position: % should be {1, 1, 2}", vec3));
+    pos : Vector3 = get_position(as_node3d);
+    log_muted(tprint("Position: % should be {1, 1, 2}", pos));
 
     // Creating and instantiating a Label
     // We use new_gdt() to construct GodotClass objects
+    
     hint_text := new_gdt(Label);
+    
+    // NOTE:
+    // new_gdt() returns a pointer to a GodotClass struct.
+    // This struct is stack allocated inline.
+    // Again, the GodotClass struct is just an opaque reference, holding an ID and/or pointer to the object instantiated in-engine.
+    // To hold onto a reference, we can dereference the *GodotClass returned into a GodotClass and copy it somewhere.
+    // Otherwise, we lose the reference once it's out of scope!
+    
+    // Setting a string property
     set_text(hint_text, "Press Esc to exit.");
     set_v_size_flags(hint_text.(*Control), .SIZE_FILL);
     canvas := get_node(as_node, "canvas");
+    // Add our hint text to the node tree
     add_child(canvas, hint_text.(*Node));
     
-    bbcode := "[center]";
-    array_copy(*onscreen_message, bbcode.([] u8));
-    
-    // Load an image and set it as the mouse cursor
+    // Load an image and set as custom mouse cursor
     // TODO wrapper for ResourceLoader::load
     mouse_cursor_tex := load(*S_ResourceLoader, "res://menu/sprite/mouse_cursor.png"); // Loading a .png returns CompressedTexture2D
     assert(has_cached(*S_ResourceLoader, "res://menu/sprite/mouse_cursor.png"));
 
     mouse_cursor_image := get_image(mouse_cursor_tex.(*Texture2D));
-    // TEMP TODO for some reason, the Image object ID becomes invalid after it's passed into set_custom_mouse_cursor...
-    // Something to do with reference count on Resources I think.
-    // We can circumvent this for now by setting it's object pointer, so that the method call uses that instead.
+    // TEMP TODO ADVANCED for some reason, the Image object ID becomes invalid after it's passed into set_custom_mouse_cursor...
+    // Something to do with reference count on Resources I think, so this may be the case for all Resources.
+    // We can circumvent this for now by setting it's object pointer here, so that the sys_call uses that instead.
     mouse_cursor_image.p_object = object_get_instance_from_id(mouse_cursor_image.object_id);
     
-    // Setting custom mouse cursor
     set_custom_mouse_cursor(*S_Input, mouse_cursor_image.(*Resource));
     
-    print("Ready from DemoRoot!\n");
+    bbcode := "[center]";
+    array_copy(*onscreen_message, bbcode.([] u8));
+    
+    log("DemoRoot is ready!");
 }
 
 process_DemoRoot :: (cast_me: *ExtensionEntity, delta: float64) {
     
-    as_self := cast(*DemoRoot) cast_me;
+    as_self := cast_me.(*DemoRoot);
     as_node := cast_me.(*Node);
     
     // Print message one letter per delta
-    as_self.time_accumulator += cast(float) delta;
+    as_self.time_accumulator += delta.(float);
     if as_self.time_accumulator > PRINT_DELTA {
         
         as_self.time_accumulator = 0;
@@ -163,6 +174,7 @@ input_DemoRoot :: (cast_me: *ExtensionEntity, event: *InputEvent) {
     // Quit on pressing Esc
     // The 'escape' action was created and bound to Esc key in editor!
     if is_action_pressed(event, "escape") {
+        // TODO free Resources?
         scene_tree := get_tree(as_node);
         quit(scene_tree);
     }
@@ -179,19 +191,11 @@ ScrollingGround :: struct @jodot {
     #as using parent: Sprite2D;
     #insert def_extension_entity;
 
-    _ready = ready_ScrollingGround;
     _process = process_ScrollingGround;
-}
-
-ready_ScrollingGround :: (cast_me: *ExtensionEntity) {
-
-    as_self := cast_me.(*ScrollingGround);
-    as_canvas_item := cast_me.(*CanvasItem);
 }
 
 process_ScrollingGround :: (cast_me: *ExtensionEntity, delta: float64) {
     
-    as_self := cast_me.(*ScrollingGround);
     as_canvas_item := cast_me.(*CanvasItem);
     
     ground_offset += xx delta * GROUND_SCROLL_SPEED;

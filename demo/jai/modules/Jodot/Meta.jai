@@ -19,13 +19,13 @@ message_loop :: (DEMO: bool = false) {
         message := compiler_wait_for_message();
         if message.kind == {
             case .IMPORT;
-                import := cast(*Message_Import) message;
+                import := message.(*Message_Import);
                 if equal(import.module_name, "Jodot") {
                     jodot_import = import;
                 }
 
             case .TYPECHECKED;
-                typechecked := cast(*Message_Typechecked) message;
+                typechecked := message.(*Message_Typechecked);
 
                 for decl: typechecked.declarations {
                     for note: decl.expression.notes {
@@ -36,19 +36,20 @@ message_loop :: (DEMO: bool = false) {
                     }
                 }
             case .PHASE;
-                phase := cast(*Message_Phase) message;
+                phase := message.(*Message_Phase);
                 if phase.phase == .TYPECHECKED_ALL_WE_CAN {
                     builder: String_Builder;
                     print_to_builder(*builder, "user_entity_declarations: [%] ExtensionEntity;\n", tagged_names.count);
                     list_builder: String_Builder;
+                    poke_builder: String_Builder;
                     for tagged_names {
-                        // TODO: better allocation this is sad
+                        // TODO: better allocation this is sad...
                         // See @shwa entity system: https://discord.com/channels/661732390355337246/784843664651190273/1253563063978692608
                         code := #string DONE
-#placeholder %;
-entities_%: [64] %;
-cursor_%: u16;
-DONE
+                        #placeholder %;
+                        entities_%: [64] %;
+                        cursor_%: u16;
+                        DONE
                         print_to_builder(*builder, code, it, it, it, it);
                         print_to_builder(*list_builder, "user_entity_declarations[%] = %.{}; ", it_index, it);
                     }
