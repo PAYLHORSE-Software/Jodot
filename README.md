@@ -47,11 +47,11 @@ More will be added to the chopping block as opportunities to favor language idio
 
 ## HANDBOOK
 ### Getting Started
-> 🛈 Note
->
-> The Jodot module folder is located at [demo/jai/modules/Jodot](demo/jai/modules/Jodot).
+> 🛈 The Jodot **module directory** is located at [demo/jai/modules/Jodot](demo/jai/modules/Jodot).
 >
 > The Jodot module depends on [Jaison](https://github.com/rluba/jaison), so copy or git clone that into [demo/jai/modules/Jodot/modules/Jaison](demo/jai/modules/Jodot/modules/Jaison).
+
+**Make sure to first run `jai generate.jai` in the Jodot module directory to generate bindings.**
 
 Recommended directory setup:
 ```
@@ -69,7 +69,7 @@ project_dir
     └── bin/
         └── .dll / .so / .dylib
 ```
-First, we'll set up our Godot project to link against Jodot's output.
+We'll set up our Godot project to link against Jodot's output.
 
 **demo.gdextension**
 ```
