@@ -43,8 +43,6 @@ ready_MyCharacter :: (cast_me: *ExtensionEntity) {
 }
 ```
 
-**Interoperability with GDScript and Signals is neglected.** It's possible to register 'extension class methods' and 'extension class signals' with the bindings provided and a little extra work, but it's not a supported feature.
-
 More will be added to the chopping block as opportunities to favor language idioms arise.
 
 ## HANDBOOK
