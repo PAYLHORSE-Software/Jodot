@@ -236,6 +236,10 @@ gdt_bindings_codegen :: () {
                 if arg.type.* == "*int32_t" arg.type.* = "*s32";
                 if arg.type.* == "**uint8_" arg.type.* = "**u8";
                 if arg.type.* == "*uint8_t" arg.type.* = "*u8";
+                
+                // NOTE: godot methods use float64 for float args, despite using float32 elsewhere
+                if arg.type.* == "float" arg.type.* = "float64";
+                
                 print_to_builder(*builder, ", %: %", arg.name, arg.type.*);
                 // if arg.default_value != null print_to_builder(*builder, " = %", arg.default_value);
             }
@@ -298,10 +302,13 @@ gdt_bindings_codegen :: () {
                 if method.return_value.type.* == "*int32_t" method.return_value.type.* = "*s32";
                 if method.return_value.type.* == "**uint8_" method.return_value.type.* = "**u8";
                 if method.return_value.type.* == "*uint8_t" method.return_value.type.* = "*u8";
+                
+                if method.return_value.type.* == "float" method.return_value.type.* = "float64";
+                
                 print_to_builder(*builder, "%", method.return_value.type.*);
 		// NOTE: switch back for gstring
                 // if method.return_value.type.* == "string" method.return_value.type.* = "gstring";
-                // if method.return_value.type.* == "[] string" method.return_value.type.* = "[] gstring";
+                // if method.return_value.type.* == "[] string" method.return_value.type.* = "[] gstring";                
             } else { append(*builder, ")"); }
 
             append(*builder, " { ");

@@ -45,7 +45,9 @@ sys_call :: (class_name: string, method_name: string, hash: s64, return_type: $T
         if !generic_hit if type == {
             
             // @GodotClassArgs
-            // TODO add other godot classes that can be secondary args
+            // TODO add all other godot classes that can be secondary args
+            case *AudioStream; #through;
+            case *Environment; #through;
             case *Image; #through;
             case *Resource; #through;
             case *Node;
