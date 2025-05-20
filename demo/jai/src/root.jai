@@ -7,13 +7,14 @@ PRINT_DELTA :: 0.04;
 full_message := "I'm sorry! GDScript is in another castle.";
 onscreen_message: [..] u8;
 
+g_root_node: Node;
+
 #poke_name Jodot DemoRoot;
 DemoRoot :: struct @jodot {
 
     #as using parent: Node3D;
     #insert def_extension_entity;
 
-    time_accumulator : float = 0.0;
     greeter_text: RichTextLabel;
 
     _ready = ready;
@@ -23,6 +24,9 @@ DemoRoot :: struct @jodot {
 
 #scope_file
 
+time_accumulator : float = 0.0;
+greeter_text: RichTextLabel;
+
 ready :: (cast_me: *ExtensionEntity) {
     
     as_self := cast_me.(*DemoRoot);
@@ -31,8 +35,13 @@ ready :: (cast_me: *ExtensionEntity) {
     
     // Get a reference to a child node
     rich_text := get_node(as_node, "greeter/RichTextLabel");
+    
     // We can store this reference as a struct field
     as_self.greeter_text = rich_text.(*RichTextLabel).*;
+    // We *could* also just store it in a local variable
+    greeter_text = rich_text.(*RichTextLabel).*;
+    
+    // (I much prefer the latter, and keeping everything in file scoped variables/structs instead of using as_self)
     
     // Setting & getting a vector (3D position doesn't do anything in this case)
     set_position(as_node3d, Vector3.{1, 1, 2});
@@ -73,25 +82,27 @@ ready :: (cast_me: *ExtensionEntity) {
     
     bbcode := "[center]";
     array_copy(*onscreen_message, bbcode.([] u8));
+
+    // Store a reference to this node as a global
+    g_root_node := as_node.*;
     
     log("DemoRoot is ready!");
 }
 
 process :: (cast_me: *ExtensionEntity, delta: float64) {
     
-    as_self := cast_me.(*DemoRoot);
     as_node := cast_me.(*Node);
     
     // Print message one letter per delta
-    as_self.time_accumulator += delta.(float);
-    if as_self.time_accumulator > PRINT_DELTA {
+    time_accumulator += delta.(float);
+    if time_accumulator > PRINT_DELTA {
         
-        as_self.time_accumulator = 0;
+        time_accumulator = 0;
         next_char := full_message.data.*;
         array_add(*onscreen_message, next_char);
         full_message.data += 1;
 
-        set_text(*as_self.greeter_text, onscreen_message.(string));
+        set_text(*greeter_text, onscreen_message.(string));
     }
 }
 
