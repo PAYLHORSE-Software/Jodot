@@ -155,7 +155,6 @@ Refer to [**demo/jai/src/main.jai**](https://github.com/paylanon/Jodot/blob/main
 - [x] Feature-complete with opaque godot classes.
 - [ ] Editor integration pass: export properties, description etc.
 - [ ] Performance pass: bespoke allocator and fast class method lookups.
-- [ ] Extenstion library hot-reloading.
 
 == v0.2 ==
 
