@@ -19,7 +19,7 @@ Pursuing antagonism to Godot's OOP and GDScript-free performance.
 
 ## THE CHOPPING BLOCK
 
-Jodot aims to be language idiomatic, and can thus be deemed as experimentally selective. For a traditional alternative, see the aforementioned godot-rust, an excellent library. With that said, here's the gist of it:
+Jodot aims to be language idiomatic, and can thus be deemed experimental and opinionated. If you prefer traditional OOP, see the aforementioned godot-rust - an excellent library. With that said, here's the gist of it:
 
 Jodot's version of the custom extension class is an **Extension Entity**.
 
@@ -42,6 +42,8 @@ ready_MyCharacter :: (cast_me: *ExtensionEntity) {
     pos : Vector3 = get_global_position(as_node3d);
 }
 ```
+
+**Interoperability with GDScript and Signals is neglected.** It's possible to register 'extension class methods' and 'extension class signals' with the bindings provided and a little extra work, but it's not a supported feature.
 
 More will be added to the chopping block as opportunities to favor language idioms arise.
 
