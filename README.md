@@ -153,7 +153,7 @@ Refer to [**demo/jai/src/main.jai**](https://github.com/paylanon/Jodot/blob/main
 == v0.1 ==
 
 - [x] Feature-complete with opaque godot classes.
-- [ ] Godot integration pass: export custom properties and procedures.
+- [ ] Editor integration pass: export properties, description etc.
 - [ ] Performance pass: bespoke allocator and fast class method lookups.
 - [ ] Extenstion library hot-reloading.
 
