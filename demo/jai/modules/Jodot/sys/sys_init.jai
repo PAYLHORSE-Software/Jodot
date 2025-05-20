@@ -390,10 +390,3 @@ jodot_init :: (p_get_proc_address: GDExtensionInterfaceGetProcAddress, p_library
     success: GDExtensionBool = 1;
     return success;
 }
-
-#import "Basic";
-#import "Compiler";
-#import "String";
-#import "Flat_Pool";
-// #import "Hash_Table";
-#import "Math";

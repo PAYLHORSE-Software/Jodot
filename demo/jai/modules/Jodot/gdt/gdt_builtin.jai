@@ -8,7 +8,7 @@ Nil :: void;
 
 gstring :: #type,distinct [4] u8;
 
-Vector2 :: Math.Vector2;
+// Vector2 matches native (Math)
 
 Vector2i :: struct {
     x: s32;
@@ -25,7 +25,7 @@ Rect2i :: struct {
     size: Vector2i;
 }
 
-Vector3 :: Math.Vector3;
+// Vector3 matches native (Math)
 
 Vector3i :: struct {
     x: s32;
@@ -39,7 +39,7 @@ Transform2D :: struct {
     origin: Vector2;
 }
 
-Vector4 :: Math.Vector4;
+// Vector3 matches native (Math)
 
 Vector4i :: struct {
     x: s32;
@@ -53,7 +53,7 @@ Plane :: struct {
     d: float;
 }
 
-Quaternion :: Math.Quaternion;
+// Quaternion matches native (Math)
 
 AABB :: struct {
     position: Vector3;
@@ -132,7 +132,3 @@ PackedVector3Array :: #type,distinct [8] u8;
 PackedColorArray :: #type,distinct [8] u8;
 PackedVector4Array :: #type,distinct [8] u8;
 Variant :: #type [24] u8;
-
-#scope_file
-
-Math :: #import "Math";

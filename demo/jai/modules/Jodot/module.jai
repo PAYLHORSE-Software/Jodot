@@ -17,3 +17,10 @@
 def_extension_entity :: "#as using sys: ExtensionEntity; type = #this; parent_type = type_of(parent);";
 
 #module_parameters(DEBUG := false);
+
+#import "Basic";
+#import "Compiler";
+#import "String";
+#import "Flat_Pool";
+// #import "Hash_Table";
+#import "Math";

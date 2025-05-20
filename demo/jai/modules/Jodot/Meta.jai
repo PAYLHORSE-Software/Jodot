@@ -81,12 +81,12 @@ message_loop :: (DEMO: bool = false) {
     }
 }
 
+#scope_file
+
 #import "Basic";
 #import "Compiler";
 #import "String";
 #import "File_Utilities";
-
-#scope_file
 
 log_muted :: (msg: string) {
     log("\x1b[38;5;246m%\x1b[0m", msg);
