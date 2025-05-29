@@ -9,7 +9,7 @@ Pursuing antagonism to Godot's OOP and GDScript-free performance.
 
 > 🛈 **A testament to language design and to temperance:**
 >
-> Currently at: **1400 LOC** (pre-codegen)
+> Currently at: **3287 LOC** (pre-codegen)
 >
 > Compared to:
 >
