@@ -1,4 +1,4 @@
-sys_call :: (class_name: string, method_name: string, hash: s64, return_type: $T, object: GodotClass, args: .. Any) -> *void {
+sys_call :: (class_name: string, method_name: string, hash: s64, return_type: $T, object: Godot_Class, args: .. Any) -> *void {
 
     // @Speed
 
@@ -51,7 +51,7 @@ sys_call :: (class_name: string, method_name: string, hash: s64, return_type: $T
             case *Image; #through;
             case *Resource; #through;
             case *Node;
-              p_val := it.value_pointer.(**GodotClass).*;
+              p_val := it.value_pointer.(**Godot_Class).*;
               p_object := ifx object.p_object != null then p_val.p_object else {
                   assert(object.object_id != 0, "Method call on object without constant pointer or ID!");
                   object_get_instance_from_id(p_val.object_id);
@@ -347,8 +347,8 @@ sys_call :: (class_name: string, method_name: string, hash: s64, return_type: $T
         case STRUCT;
           // @GodotClassReturn
           // NOTE: I can't for the life of me get variant_to_Object to work as intended. Thankfully, we can use variant_get_object_instance_id instead.
-          opaque := New(GodotClass);
-          // opaque: GodotClass;
+          opaque := New(Godot_Class);
+          // opaque: Godot_Class;
           opaque.object_id = variant_get_object_instance_id(*ret_var);
           assert(opaque.object_id != 0, "Object returned is empty/invalid!");
         

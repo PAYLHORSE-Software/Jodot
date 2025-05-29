@@ -28,14 +28,16 @@ Jodot's version of the custom extension class is an **Extension Entity**.
 You are offered all of Godot's class methods as pure procedures instead.
 
 ```jai
-MyCharacter :: struct @jodot {
+My_Character :: struct @jodot {
     ...
-    character_name := "Nameless One";
-    _ready = ready_MyCharacter;
+    character_name : string = "Nameless One";
+    health : float = 100.0; @export
+    
+    _ready = ready_proc;
 }
 
-ready_MyCharacter :: (cast_me: *ExtensionEntity) {
-    as_self := cast_me.(*MyCharacter);
+ready_proc :: (cast_me: *Extension_Entity) {
+    as_self := cast_me.(*My_Character);
     as_node3d := cast_me.(*Node3D);
     as_self.character_name = "John Doe";
     set_visible(as_node3d, true);

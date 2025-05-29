@@ -2,7 +2,7 @@
 // | Jodot gdt native structs |
 //  --------------------------
 
-GodotClass :: struct {
+Godot_Class :: struct {
     p_object: GDExtensionConstObjectPtr = null;
     object_id: GDObjectInstanceID;
     variant: Variant;

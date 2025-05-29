@@ -17,9 +17,9 @@ MyCustomEntity :: struct @jodot {
 
 #scope_file
 
-enter_tree :: (cast_me: *ExtensionEntity) {}
-ready :: (cast_me: *ExtensionEntity) {}
-process :: (cast_me: *ExtensionEntity, delta: float64) {}
-physics_process :: (cast_me: *ExtensionEntity, delta: float64) {}
-input :: (cast_me: *ExtensionEntity, event: *InputEvent) {}
-exit_tree :: (cast_me: *ExtensionEntity) {}
+enter_tree :: (cast_me: *Extension_Entity) {}
+ready :: (cast_me: *Extension_Entity) {}
+process :: (cast_me: *Extension_Entity, delta: float64) {}
+physics_process :: (cast_me: *Extension_Entity, delta: float64) {}
+input :: (cast_me: *Extension_Entity, event: *InputEvent) {}
+exit_tree :: (cast_me: *Extension_Entity) {}

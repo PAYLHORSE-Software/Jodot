@@ -15,6 +15,7 @@ DemoRoot :: struct @jodot {
     #as using parent: Node3D;
     #insert def_extension_entity;
 
+    test_export: float; @export
     greeter_text: RichTextLabel;
 
     _ready = ready;
@@ -27,7 +28,7 @@ DemoRoot :: struct @jodot {
 time_accumulator : float = 0.0;
 greeter_text: RichTextLabel;
 
-ready :: (cast_me: *ExtensionEntity) {
+ready :: (cast_me: *Extension_Entity) {
     
     as_self := cast_me.(*DemoRoot);
     as_node := cast_me.(*Node);
@@ -89,7 +90,7 @@ ready :: (cast_me: *ExtensionEntity) {
     log("DemoRoot is ready!");
 }
 
-process :: (cast_me: *ExtensionEntity, delta: float64) {
+process :: (cast_me: *Extension_Entity, delta: float64) {
     
     as_node := cast_me.(*Node);
     
@@ -106,7 +107,7 @@ process :: (cast_me: *ExtensionEntity, delta: float64) {
     }
 }
 
-input :: (cast_me: *ExtensionEntity, event: *InputEvent) {
+input :: (cast_me: *Extension_Entity, event: *InputEvent) {
 
     as_node := cast_me.(*Node);
     

@@ -134,8 +134,8 @@ gdt_bindings_codegen :: () {
     for * godot_api.classes {
         array_add(*godot_classes, it.name);
         if it.name == "Object" it.name = "_Object";
-        if it.enums print_to_builder(*builder, "\n% :: struct {  // %\n\n        #as using base: GodotClass;", it.name, it_index);
-        else print_to_builder(*builder, "\n% :: struct { #as using base: GodotClass; } // %\n", it.name, it_index);
+        if it.enums print_to_builder(*builder, "\n% :: struct {  // %\n\n        #as using base: Godot_Class;", it.name, it_index);
+        else print_to_builder(*builder, "\n% :: struct { #as using base: Godot_Class; } // %\n", it.name, it_index);
         for it.enums {
             // A few class enums are bitfields with very large values
             if it.is_bitfield print_to_builder(*builder, "\n\n    % :: enum u64 {\n", it.name);
@@ -523,10 +523,7 @@ gdt_visitor :: () {}
 #import "Jaison";
 #import "File";
 #import "String";
-
-log_muted :: (msg: string) {
-    log("\x1b[38;5;246m%\x1b[0m", msg);
-}
+#import "Global_Utilities";
 
 GDT_HEADER :: #string DONE
 //  --------------------

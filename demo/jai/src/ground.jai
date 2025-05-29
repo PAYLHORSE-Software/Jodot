@@ -17,7 +17,7 @@ ScrollingGround :: struct @jodot {
 
 #scope_file
 
-process :: (cast_me: *ExtensionEntity, delta: float64) {
+process :: (cast_me: *Extension_Entity, delta: float64) {
     
     as_canvas_item := cast_me.(*CanvasItem);
     

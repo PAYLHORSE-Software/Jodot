@@ -21,9 +21,12 @@ MyCustomEntity :: struct @jodot {
     // as an 'Extension Entity' and sets it's type fields appropriately.)
     #insert def_extension_entity;
 
-    // You can now declare fields as you would with any native struct.
-    health : float = 0.0;
+    // You can now declare fields as you would with any native struct:
+    entity_id: u16;
     character_name : string = "Nameless One";
+
+    // We can 'export' a field, making it visible in editor:
+    health : float = 0.0; @export
 
     // (5) Assign to virtual function slots if necessary.
     // These procedures are called automatically on each node in the scene as follows:
@@ -45,11 +48,11 @@ MyCustomEntity :: struct @jodot {
 #scope_file
 
 // Each 'virtual function' declaration must match the respective signature shown below.
-enter_tree :: (cast_me: *ExtensionEntity) {
+enter_tree :: (cast_me: *Extension_Entity) {
     print("Enter tree from MyCustomEntity!");
 }
 
-ready :: (cast_me: *ExtensionEntity) {
+ready :: (cast_me: *Extension_Entity) {
 
     // You must cast the provided pointer to the right type to use your struct.
     as_self := cast_me.(*MyCustomEntity);
@@ -72,10 +75,10 @@ ready :: (cast_me: *ExtensionEntity) {
 }
 
 // Signatures for the rest of the virtual functions:
-process :: (cast_me: *ExtensionEntity, delta: float64) {}
-physics_process :: (cast_me: *ExtensionEntity, delta: float64) {}
-input :: (cast_me: *ExtensionEntity, event: *InputEvent) {}
-exit_tree :: (cast_me: *ExtensionEntity) {}
+process :: (cast_me: *Extension_Entity, delta: float64) {}
+physics_process :: (cast_me: *Extension_Entity, delta: float64) {}
+input :: (cast_me: *Extension_Entity, event: *InputEvent) {}
+exit_tree :: (cast_me: *Extension_Entity) {}
 
 #scope_export
 
@@ -87,3 +90,4 @@ exit_tree :: (cast_me: *ExtensionEntity) {}
 
 #import "Basic";
 #import "Math";
+#import "Global_Utilities";

@@ -54,16 +54,13 @@ generate_bindings :: (args: [] string) -> bool {
 #import "Bindings_Generator";
 #import "Compiler";
 #import "File";
+#import "Global_Utilities";
 
 GDEXT_PATH :: "codegen/gdextension";
 OUTPUT_PATH :: "sys/sys_bindings.jai";
 
 // DECLARATIONS_TO_OMIT :: string.[
 // ];
-
-log_muted :: (msg: string) {
-    log("\x1b[38;5;246m%\x1b[0m", msg);
-}
 
 SYS_HEADER :: #string DONE
 //  --------------------

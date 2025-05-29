@@ -14,7 +14,7 @@
 #load "gdt/gdt_builtin.jai";
 #load "gdt/gdt_native.jai";
 
-def_extension_entity :: "#as using sys: ExtensionEntity; type = #this; parent_type = type_of(parent);";
+def_extension_entity :: "#as using sys: Extension_Entity; type = #this; parent_type = type_of(parent);";
 
 #module_parameters(DEBUG := false);
 
@@ -24,3 +24,7 @@ def_extension_entity :: "#as using sys: ExtensionEntity; type = #this; parent_ty
 #import "Flat_Pool";
 // #import "Hash_Table";
 #import "Math";
+#import "Global_Utilities";
+
+// TEMP since we don't have codegen for method arguments with default values yet
+play_2 :: (main: *AnimationPlayer, name: string) { sys_call("AnimationPlayer", "play", 3118260607, Nil, main, name);  }  // 14

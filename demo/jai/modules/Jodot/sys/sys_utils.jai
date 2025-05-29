@@ -6,26 +6,6 @@ Option :: enum u8 {
     SOME :: 1;
 }
 
-log_error :: (msg: string, args: .. Any) {
-    final_msg := tprint(msg, .. args);
-    log_error("\n\x1b[1;38;5;9mERROR: %\n\x1b[0m", final_msg);
-}
-
-log_affirm :: (msg: string, args: .. Any) {
-    final_msg := tprint(msg, .. args);
-    log("\x1b[1;38;5;144m%\x1b[0m", final_msg);
-}
-
-log_muted :: (msg: string, args: .. Any) {
-    final_msg := tprint(msg, .. args);
-    log("\x1b[38;5;246m%\x1b[0m", final_msg);
-}
-
-log_warn :: (msg: string, args: .. Any) {
-    final_msg := tprint(msg, .. args);
-    log("\x1b[38;5;180m%\x1b[0m", final_msg);
-}
-
 // TODO: debug print gstring and stringname
 // TODO cleaner allocation?
 make_stringname :: (native_string: string, dst: *StringName) -> *StringName {
@@ -96,7 +76,12 @@ handle_call_error :: (err: GDExtensionCallError) {
     }
 }
 
-// ==== WRAPPERS ====
+// TEMP
+set_object_pointer :: (object: *Godot_Class) {
+    object.p_object = object_get_instance_from_id(object.object_id);
+}
+
+// ==== Wrappers ====
 
 // TODO: these should push line number from the .jai source file
 godot_error :: (message: string) {
